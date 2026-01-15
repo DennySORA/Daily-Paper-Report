@@ -1,0 +1,47 @@
+version: "1.0"
+defaults:
+  max_items: 50
+
+sources:
+  - id: openai-blog
+    name: OpenAI Blog
+    url: https://openai.com/blog/rss.xml
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 20
+    enabled: true
+
+  - id: anthropic-blog
+    name: Anthropic Blog
+    url: https://www.anthropic.com/blog/rss.xml
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+
+  - id: deepmind-blog
+    name: DeepMind Blog
+    url: https://deepmind.google/discover/blog/rss.xml
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: Europe/London
+
+  - id: arxiv-cs-ai
+    name: arXiv cs.AI
+    url: https://rss.arxiv.org/rss/cs.AI
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 100
+
+  - id: hf-openai
+    name: Hugging Face OpenAI
+    url: https://huggingface.co/api/models?author=openai
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC

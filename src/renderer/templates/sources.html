@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+
+{% block title %}Research Digest - Sources{% endblock %}
+
+{% block header_title %}Sources Status{% endblock %}
+
+{% block content %}
+<style>
+    /* Sources page specific styles */
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: var(--space-3);
+        margin-bottom: var(--space-6);
+    }
+
+    .summary-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+        border: 1px solid transparent;
+        transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .summary-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .summary-card--success {
+        background: var(--color-success-bg);
+        border-color: var(--color-success);
+    }
+
+    .summary-card--info {
+        background: var(--color-info-bg);
+        border-color: var(--color-info);
+    }
+
+    .summary-card--error {
+        background: var(--color-error-bg);
+        border-color: var(--color-error);
+    }
+
+    .summary-card--warning {
+        background: var(--color-warning-bg);
+        border-color: var(--color-warning);
+    }
+
+    .summary-card__count {
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .summary-card__label {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        margin-top: var(--space-1);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .summary-card--success .summary-card__count,
+    .summary-card--success .summary-card__label {
+        color: var(--color-success);
+    }
+
+    .summary-card--info .summary-card__count,
+    .summary-card--info .summary-card__label {
+        color: var(--color-info);
+    }
+
+    .summary-card--error .summary-card__count,
+    .summary-card--error .summary-card__label {
+        color: var(--color-error);
+    }
+
+    .summary-card--warning .summary-card__count,
+    .summary-card--warning .summary-card__label {
+        color: var(--color-warning);
+    }
+
+    /* Enhanced status badges */
+    .status-badge {
+        transition: transform var(--transition-fast);
+    }
+
+    .status-badge:hover {
+        transform: scale(1.05);
+    }
+
+    /* Source row enhancements */
+    .source-name {
+        font-weight: 600;
+        color: var(--color-text);
+    }
+
+    .source-id {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+    }
+
+    .detail-text {
+        color: var(--color-text-secondary);
+        font-size: 0.875rem;
+    }
+
+    .hint-text {
+        display: block;
+        margin-top: var(--space-1);
+        font-size: 0.8125rem;
+        color: var(--color-warning);
+        font-style: italic;
+    }
+
+    .meta-text {
+        display: block;
+        margin-top: var(--space-1);
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    /* Tier badge */
+    .tier-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--color-bg-muted);
+        color: var(--color-text-secondary);
+    }
+
+    .tier-badge--0 {
+        background: var(--color-primary-light);
+        color: var(--color-primary);
+    }
+
+    /* Method tag */
+    .method-tag {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        padding: var(--space-1) var(--space-2);
+        background: var(--color-bg-muted);
+        border-radius: var(--radius-sm);
+        color: var(--color-text-muted);
+    }
+
+    /* Item counts */
+    .item-count {
+        font-family: var(--font-mono);
+        font-weight: 500;
+    }
+
+    .item-count--positive {
+        color: var(--color-success);
+    }
+
+    .item-count--zero {
+        color: var(--color-text-muted);
+    }
+
+    /* Category section */
+    .category-section {
+        margin-bottom: var(--space-8);
+    }
+
+    .category-section h2 {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .category-count {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: var(--color-text-muted);
+    }
+
+    /* Responsive table */
+    @media (max-width: 768px) {
+        .summary-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hide-mobile {
+            display: none;
+        }
+    }
+</style>
+
+<p class="meta">Per-source update status for the latest run. Sources are grouped by category.</p>
+
+{% macro render_status_badge(status) %}
+    {% if status.value == 'HAS_UPDATE' %}
+        <span class="status-badge status-success" role="status" aria-label="Has updates">HAS_UPDATE</span>
+    {% elif status.value == 'NO_UPDATE' %}
+        <span class="status-badge status-info" role="status" aria-label="No updates">NO_UPDATE</span>
+    {% elif status.value == 'FETCH_FAILED' %}
+        <span class="status-badge status-error" role="status" aria-label="Fetch failed">FETCH_FAILED</span>
+    {% elif status.value == 'PARSE_FAILED' %}
+        <span class="status-badge status-error" role="status" aria-label="Parse failed">PARSE_FAILED</span>
+    {% elif status.value == 'CANNOT_CONFIRM' %}
+        <span class="status-badge status-warning" role="status" aria-label="Cannot confirm">CANNOT_CONFIRM</span>
+    {% elif status.value == 'STATUS_ONLY' %}
+        <span class="status-badge status-info" role="status" aria-label="Status only">STATUS_ONLY</span>
+    {% else %}
+        <span class="status-badge status-info" role="status">{{ status.value }}</span>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_item_count(count) %}
+    {% if count > 0 %}
+        <span class="item-count item-count--positive">{{ count }}</span>
+    {% else %}
+        <span class="item-count item-count--zero">{{ count }}</span>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_source_table(sources) %}
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th class="hide-mobile">Tier</th>
+                <th class="hide-mobile">Method</th>
+                <th>Status</th>
+                <th>New</th>
+                <th>Updated</th>
+                <th class="hide-mobile">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for source in sources %}
+            <tr>
+                <td>
+                    <span class="source-name">{{ source.name or source.source_id }}</span>
+                    <br><span class="source-id">{{ source.source_id }}</span>
+                </td>
+                <td class="hide-mobile">
+                    <span class="tier-badge tier-badge--{{ source.tier }}">{{ source.tier }}</span>
+                </td>
+                <td class="hide-mobile">
+                    <span class="method-tag">{{ source.method }}</span>
+                </td>
+                <td>
+                    {{ render_status_badge(source.status) }}
+                </td>
+                <td>{{ render_item_count(source.items_new) }}</td>
+                <td>{{ render_item_count(source.items_updated) }}</td>
+                <td class="hide-mobile">
+                    {% if source.reason_text %}
+                        <span class="detail-text">{{ source.reason_text }}</span>
+                    {% endif %}
+                    {% if source.remediation_hint %}
+                        <span class="hint-text">Hint: {{ source.remediation_hint }}</span>
+                    {% endif %}
+                    {% if source.newest_item_date %}
+                        <span class="meta-text">Newest: {{ source.newest_item_date.strftime('%Y-%m-%d %H:%M') }}</span>
+                    {% endif %}
+                    {% if source.last_fetch_status_code %}
+                        <span class="meta-text">HTTP: {{ source.last_fetch_status_code }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endmacro %}
+
+{% if sources_status %}
+    {# Group sources by category #}
+    {% set intl_labs = [] %}
+    {% set cn_ecosystem = [] %}
+    {% set platforms = [] %}
+    {% set paper_sources = [] %}
+    {% set other = [] %}
+
+    {% for source in sources_status %}
+        {% if source.category is defined %}
+            {% if source.category == 'intl_labs' %}
+                {% set _ = intl_labs.append(source) %}
+            {% elif source.category == 'cn_ecosystem' %}
+                {% set _ = cn_ecosystem.append(source) %}
+            {% elif source.category == 'platforms' %}
+                {% set _ = platforms.append(source) %}
+            {% elif source.category == 'paper_sources' %}
+                {% set _ = paper_sources.append(source) %}
+            {% else %}
+                {% set _ = other.append(source) %}
+            {% endif %}
+        {% else %}
+            {% set _ = other.append(source) %}
+        {% endif %}
+    {% endfor %}
+
+    {# Use pre-computed summary if available, otherwise compute inline #}
+    {% if status_summary %}
+        {% set has_update_count = status_summary.has_update %}
+        {% set no_update_count = status_summary.no_update %}
+        {% set fetch_failed_count = status_summary.fetch_failed %}
+        {% set parse_failed_count = status_summary.parse_failed %}
+        {% set cannot_confirm_count = status_summary.cannot_confirm %}
+        {% set failed_total = status_summary.failed_total %}
+    {% else %}
+        {% set has_update_count = sources_status|selectattr('status.value', 'equalto', 'HAS_UPDATE')|list|length %}
+        {% set no_update_count = sources_status|selectattr('status.value', 'equalto', 'NO_UPDATE')|list|length %}
+        {% set fetch_failed_count = sources_status|selectattr('status.value', 'equalto', 'FETCH_FAILED')|list|length %}
+        {% set parse_failed_count = sources_status|selectattr('status.value', 'equalto', 'PARSE_FAILED')|list|length %}
+        {% set cannot_confirm_count = sources_status|selectattr('status.value', 'equalto', 'CANNOT_CONFIRM')|list|length %}
+        {% set failed_total = fetch_failed_count + parse_failed_count %}
+    {% endif %}
+
+    <section aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Summary</h2>
+        <div class="summary-grid" role="list">
+            <div class="summary-card summary-card--success" role="listitem">
+                <span class="summary-card__count">{{ has_update_count }}</span>
+                <span class="summary-card__label">Has Updates</span>
+            </div>
+            <div class="summary-card summary-card--info" role="listitem">
+                <span class="summary-card__count">{{ no_update_count }}</span>
+                <span class="summary-card__label">No Updates</span>
+            </div>
+            {% if failed_total > 0 %}
+            <div class="summary-card summary-card--error" role="listitem">
+                <span class="summary-card__count">{{ failed_total }}</span>
+                <span class="summary-card__label">Failed</span>
+            </div>
+            {% endif %}
+            {% if cannot_confirm_count > 0 %}
+            <div class="summary-card summary-card--warning" role="listitem">
+                <span class="summary-card__count">{{ cannot_confirm_count }}</span>
+                <span class="summary-card__label">Cannot Confirm</span>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    {# Render category sections #}
+    {% if intl_labs or cn_ecosystem or platforms or paper_sources %}
+        {% if intl_labs %}
+        <section class="category-section" aria-labelledby="intl-labs-heading">
+            <h2 id="intl-labs-heading">International Labs <span class="category-count">({{ intl_labs|length }})</span></h2>
+            {{ render_source_table(intl_labs) }}
+        </section>
+        {% endif %}
+
+        {% if cn_ecosystem %}
+        <section class="category-section" aria-labelledby="cn-ecosystem-heading">
+            <h2 id="cn-ecosystem-heading">CN / Chinese Ecosystem <span class="category-count">({{ cn_ecosystem|length }})</span></h2>
+            {{ render_source_table(cn_ecosystem) }}
+        </section>
+        {% endif %}
+
+        {% if platforms %}
+        <section class="category-section" aria-labelledby="platforms-heading">
+            <h2 id="platforms-heading">Platforms <span class="category-count">({{ platforms|length }})</span></h2>
+            {{ render_source_table(platforms) }}
+        </section>
+        {% endif %}
+
+        {% if paper_sources %}
+        <section class="category-section" aria-labelledby="paper-sources-heading">
+            <h2 id="paper-sources-heading">Paper Sources <span class="category-count">({{ paper_sources|length }})</span></h2>
+            {{ render_source_table(paper_sources) }}
+        </section>
+        {% endif %}
+
+        {% if other %}
+        <section class="category-section" aria-labelledby="other-sources-heading">
+            <h2 id="other-sources-heading">Other Sources <span class="category-count">({{ other|length }})</span></h2>
+            {{ render_source_table(other) }}
+        </section>
+        {% endif %}
+    {% else %}
+        <section class="category-section" aria-labelledby="all-sources-heading">
+            <h2 id="all-sources-heading">All Sources <span class="category-count">({{ sources_status|length }})</span></h2>
+            {{ render_source_table(sources_status) }}
+        </section>
+    {% endif %}
+{% else %}
+<div class="empty-state" role="alert">
+    <p>No source status available for this run.</p>
+</div>
+{% endif %}
+{% endblock %}
