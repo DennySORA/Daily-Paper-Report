@@ -1,0 +1,14 @@
+add-yaml-config-contracts
+add-sqlite-state-store
+add-http-fetch-layer
+add-collectors-framework
+add-arxiv-rss-and-api-ingestion
+add-platform-release-collectors
+add-html-domain-profiles
+add-story-linker-and-dedupe
+add-worth-reading-ranker
+add-static-html-renderer
+add-github-actions-pages-and-state-branch
+add-sources-status-and-degradation-reporting
+add-evidence-capture-and-audit-trail
+add-int-e2e-harness

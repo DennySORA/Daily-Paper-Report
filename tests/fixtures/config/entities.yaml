@@ -1,0 +1,69 @@
+version: "1.0"
+
+entities:
+  - id: openai
+    name: OpenAI
+    region: intl
+    keywords:
+      - OpenAI
+      - GPT-4
+      - GPT-5
+      - ChatGPT
+      - o1
+      - o3
+    prefer_links:
+      - official
+      - github
+      - arxiv
+      - huggingface
+    aliases:
+      - Open AI
+
+  - id: anthropic
+    name: Anthropic
+    region: intl
+    keywords:
+      - Anthropic
+      - Claude
+      - Claude 3
+      - Claude 4
+      - Constitutional AI
+    prefer_links:
+      - official
+      - arxiv
+      - github
+    aliases: []
+
+  - id: deepmind
+    name: DeepMind
+    region: intl
+    keywords:
+      - DeepMind
+      - Google DeepMind
+      - Gemini
+      - AlphaFold
+      - AlphaGo
+    prefer_links:
+      - official
+      - arxiv
+      - github
+    aliases:
+      - Google DeepMind
+
+  - id: qwen
+    name: Qwen
+    region: cn
+    keywords:
+      - Qwen
+      - Qwen2
+      - Qwen3
+      - Alibaba Cloud
+      - DAMO Academy
+    prefer_links:
+      - official
+      - huggingface
+      - modelscope
+      - arxiv
+      - github
+    aliases:
+      - Tongyi Qianwen

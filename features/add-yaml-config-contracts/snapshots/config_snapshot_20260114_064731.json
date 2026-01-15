@@ -1,0 +1,255 @@
+{
+  "config": {
+    "entities": {
+      "entities": [
+        {
+          "aliases": [
+            "Open AI"
+          ],
+          "id": "openai",
+          "keywords": [
+            "OpenAI",
+            "GPT-4",
+            "GPT-5",
+            "ChatGPT",
+            "o1",
+            "o3"
+          ],
+          "name": "OpenAI",
+          "prefer_links": [
+            "official",
+            "github",
+            "arxiv",
+            "huggingface"
+          ],
+          "region": "intl"
+        },
+        {
+          "aliases": [],
+          "id": "anthropic",
+          "keywords": [
+            "Anthropic",
+            "Claude",
+            "Claude 3",
+            "Claude 4",
+            "Constitutional AI"
+          ],
+          "name": "Anthropic",
+          "prefer_links": [
+            "official",
+            "arxiv",
+            "github"
+          ],
+          "region": "intl"
+        },
+        {
+          "aliases": [
+            "Google DeepMind"
+          ],
+          "id": "deepmind",
+          "keywords": [
+            "DeepMind",
+            "Google DeepMind",
+            "Gemini",
+            "AlphaFold",
+            "AlphaGo"
+          ],
+          "name": "DeepMind",
+          "prefer_links": [
+            "official",
+            "arxiv",
+            "github"
+          ],
+          "region": "intl"
+        },
+        {
+          "aliases": [
+            "Tongyi Qianwen"
+          ],
+          "id": "qwen",
+          "keywords": [
+            "Qwen",
+            "Qwen2",
+            "Qwen3",
+            "Alibaba Cloud",
+            "DAMO Academy"
+          ],
+          "name": "Qwen",
+          "prefer_links": [
+            "official",
+            "huggingface",
+            "modelscope",
+            "arxiv",
+            "github"
+          ],
+          "region": "cn"
+        }
+      ],
+      "version": "1.0"
+    },
+    "file_checksums": {
+      "/Users/denny_lee/Desktop/Denny/git/temp/tests/fixtures/config/entities.yaml": "b7cdf460fcd2793362d6d34ea6bd649f3d3d6afaa7431313bd9c5340da010500",
+      "/Users/denny_lee/Desktop/Denny/git/temp/tests/fixtures/config/sources.yaml": "642df41d319f9dce36e30f432e5b63ce2cc64660929d745dba60b0e6c90e2bf1",
+      "/Users/denny_lee/Desktop/Denny/git/temp/tests/fixtures/config/topics.yaml": "0ab411e138addddbad2bdb60fe690f562ca732ea177aa3ee9f686e5f28497545"
+    },
+    "run_id": "b181f75b-78d3-4a48-9bee-61e47714aeb6",
+    "sources": {
+      "defaults": {
+        "max_items": 50
+      },
+      "sources": [
+        {
+          "enabled": true,
+          "headers": {},
+          "id": "openai-blog",
+          "kind": "blog",
+          "max_items": 20,
+          "method": "rss_atom",
+          "name": "OpenAI Blog",
+          "query": null,
+          "tier": 0,
+          "timezone": "America/Los_Angeles",
+          "url": "https://openai.com/blog/rss.xml"
+        },
+        {
+          "enabled": true,
+          "headers": {},
+          "id": "anthropic-blog",
+          "kind": "blog",
+          "max_items": 100,
+          "method": "rss_atom",
+          "name": "Anthropic Blog",
+          "query": null,
+          "tier": 0,
+          "timezone": "America/Los_Angeles",
+          "url": "https://www.anthropic.com/blog/rss.xml"
+        },
+        {
+          "enabled": true,
+          "headers": {},
+          "id": "deepmind-blog",
+          "kind": "blog",
+          "max_items": 100,
+          "method": "rss_atom",
+          "name": "DeepMind Blog",
+          "query": null,
+          "tier": 0,
+          "timezone": "Europe/London",
+          "url": "https://deepmind.google/discover/blog/rss.xml"
+        },
+        {
+          "enabled": true,
+          "headers": {},
+          "id": "arxiv-cs-ai",
+          "kind": "paper",
+          "max_items": 100,
+          "method": "rss_atom",
+          "name": "arXiv cs.AI",
+          "query": null,
+          "tier": 1,
+          "timezone": "UTC",
+          "url": "https://rss.arxiv.org/rss/cs.AI"
+        },
+        {
+          "enabled": true,
+          "headers": {},
+          "id": "hf-openai",
+          "kind": "model",
+          "max_items": 100,
+          "method": "hf_org",
+          "name": "Hugging Face OpenAI",
+          "query": null,
+          "tier": 1,
+          "timezone": "UTC",
+          "url": "https://huggingface.co/api/models?author=openai"
+        }
+      ],
+      "version": "1.0"
+    },
+    "topics": {
+      "dedupe": {
+        "canonical_url_strip_params": [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "ref",
+          "fbclid",
+          "gclid"
+        ]
+      },
+      "prefer_primary_link_order": [
+        "official",
+        "arxiv",
+        "github",
+        "huggingface",
+        "paper",
+        "blog"
+      ],
+      "quotas": {
+        "arxiv_per_category_max": 10,
+        "per_source_max": 10,
+        "radar_max": 10,
+        "top5_max": 5
+      },
+      "scoring": {
+        "entity_match_weight": 2.0,
+        "recency_decay_factor": 0.1,
+        "tier_0_weight": 3.0,
+        "tier_1_weight": 2.0,
+        "tier_2_weight": 1.0,
+        "topic_match_weight": 1.5
+      },
+      "topics": [
+        {
+          "boost_weight": 1.5,
+          "keywords": [
+            "LLM",
+            "large language model",
+            "GPT",
+            "transformer",
+            "attention mechanism"
+          ],
+          "name": "Large Language Models"
+        },
+        {
+          "boost_weight": 1.2,
+          "keywords": [
+            "multimodal",
+            "vision-language",
+            "VLM",
+            "image understanding"
+          ],
+          "name": "Multimodal AI"
+        },
+        {
+          "boost_weight": 1.3,
+          "keywords": [
+            "AI safety",
+            "alignment",
+            "RLHF",
+            "constitutional AI",
+            "red teaming"
+          ],
+          "name": "AI Safety"
+        }
+      ],
+      "version": "1.0"
+    }
+  },
+  "git_commit": "unknown",
+  "run_id": "b181f75b-78d3-4a48-9bee-61e47714aeb6",
+  "summary": {
+    "config_checksum": "d8df0f409131e275ce506ef8356f29ddba3a47a9bf66f5ac9c0fcf93d51843cc",
+    "enabled_sources_count": 5,
+    "entities_count": 4,
+    "file_checksums": {
+      "/Users/denny_lee/Desktop/Denny/git/temp/tests/fixtures/config/entities.yaml": "b7cdf460fcd2793362d6d34ea6bd649f3d3d6afaa7431313bd9c5340da010500",
+      "/Users/denny_lee/Desktop/Denny/git/temp/tests/fixtures/config/sources.yaml": "642df41d319f9dce36e30f432e5b63ce2cc64660929d745dba60b0e6c90e2bf1",
+      "/Users/denny_lee/Desktop/Denny/git/temp/tests/fixtures/config/topics.yaml": "0ab411e138addddbad2bdb60fe690f562ca732ea177aa3ee9f686e5f28497545"
+    },
+    "run_id": "b181f75b-78d3-4a48-9bee-61e47714aeb6",
+    "sources_count": 5,
+    "topics_count": 3
+  },
+  "timestamp": "2026-01-14T06:47:31.190463+00:00"
+}

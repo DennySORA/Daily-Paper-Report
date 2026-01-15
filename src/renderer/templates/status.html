@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Research Digest - Status{% endblock %}
+
+{% block header_title %}Run Status{% endblock %}
+
+{% block content %}
+<p class="meta">Recent pipeline runs and their outcomes.</p>
+
+{% if recent_runs %}
+<section>
+    <h2>Recent Runs</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Run ID</th>
+                    <th>Started</th>
+                    <th>Finished</th>
+                    <th>Status</th>
+                    <th>Items</th>
+                    <th>Stories</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for run in recent_runs %}
+                <tr>
+                    <td><code>{{ run.run_id[:12] }}...</code></td>
+                    <td>{{ run.started_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>
+                        {% if run.finished_at %}
+                            {{ run.finished_at.strftime('%Y-%m-%d %H:%M') }}
+                        {% else %}
+                            <em>In progress</em>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if run.success is none %}
+                            <span class="status-badge status-warning">RUNNING</span>
+                        {% elif run.success %}
+                            <span class="status-badge status-success">SUCCESS</span>
+                        {% else %}
+                            <span class="status-badge status-error">FAILED</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ run.items_total }}</td>
+                    <td>{{ run.stories_total }}</td>
+                </tr>
+                {% if run.error_summary and not run.success %}
+                <tr>
+                    <td colspan="6">
+                        <small><strong>Error:</strong> {{ run.error_summary }}</small>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% else %}
+<div class="empty-state">
+    <p>No run history available.</p>
+</div>
+{% endif %}
+{% endblock %}

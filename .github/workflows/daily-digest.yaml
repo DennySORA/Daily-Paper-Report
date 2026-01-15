@@ -1,0 +1,340 @@
+# Daily Digest Pipeline Workflow
+# Runs the digest pipeline daily and deploys static site to GitHub Pages
+# Persists state.sqlite to a dedicated state branch
+
+name: Daily Digest
+
+"on":
+  schedule:
+    # Asia/Taipei 07:00 = UTC 23:00 (previous day)
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Enable debug logging'
+        required: false
+        default: 'false'
+        type: boolean
+
+# Least privilege permissions
+permissions:
+  contents: write      # Push to state branch
+  pages: write         # Deploy to GitHub Pages
+  id-token: write      # OIDC for Pages deployment
+
+# Prevent concurrent runs to avoid state conflicts
+concurrency:
+  group: digest-deploy
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: '3.13'
+  STATE_BRANCH: state
+  STATE_FILE: state.sqlite
+  OUTPUT_DIR: public
+  CONFIG_DIR: tests/fixtures/config
+  TIMEZONE: Asia/Taipei
+
+jobs:
+  digest:
+    name: Run Digest Pipeline
+    runs-on: ubuntu-latest
+    outputs:
+      run_success: ${{ steps.pipeline.outcome == 'success' }}
+      run_id: ${{ steps.init.outputs.run_id }}
+      state_checksum: ${{ steps.checksums.outputs.state_checksum }}
+      manifest_checksum: ${{ steps.checksums.outputs.manifest_checksum }}
+
+    steps:
+      - name: Initialize run context
+        id: init
+        run: |
+          RUN_ID="${{ github.run_id }}-${{ github.run_attempt }}"
+          echo "run_id=${RUN_ID}" >> "$GITHUB_OUTPUT"
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"init","event":"run_started","commit":"${{ github.sha }}","trigger":"${{ github.event_name }}"}'
+
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Restore state from state branch
+        id: restore-state
+        run: |
+          START_TIME=$(date +%s%3N)
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+
+          # Try to fetch state branch
+          if git fetch origin "${{ env.STATE_BRANCH }}":"${{ env.STATE_BRANCH }}" 2>/dev/null; then
+            # Extract state.sqlite from state branch
+            if git show "${{ env.STATE_BRANCH }}":"${{ env.STATE_FILE }}" > "${{ env.STATE_FILE }}" 2>/dev/null; then
+              echo "state_restored=true" >> "$GITHUB_OUTPUT"
+              STATE_SIZE=$(stat -c%s "${{ env.STATE_FILE }}" 2>/dev/null || stat -f%z "${{ env.STATE_FILE }}")
+              echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_restored","state_size_bytes":'"${STATE_SIZE}"'}'
+            else
+              echo "state_restored=false" >> "$GITHUB_OUTPUT"
+              echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_file_not_found"}'
+            fi
+          else
+            echo "state_restored=false" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_branch_not_found","message":"Starting fresh"}'
+          fi
+
+          END_TIME=$(date +%s%3N)
+          DURATION=$((END_TIME - START_TIME))
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","duration_ms":'"${DURATION}"'}'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: 'uv.lock'
+
+      - name: Install dependencies
+        run: |
+          START_TIME=$(date +%s%3N)
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+
+          uv sync --frozen
+
+          END_TIME=$(date +%s%3N)
+          DURATION=$((END_TIME - START_TIME))
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"install_deps","duration_ms":'"${DURATION}"',"exit_code":0}'
+
+      - name: Run digest pipeline
+        id: pipeline
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          OPENREVIEW_TOKEN: ${{ secrets.OPENREVIEW_TOKEN }}
+        run: |
+          START_TIME=$(date +%s%3N)
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+
+          # Create output directory
+          mkdir -p "${{ env.OUTPUT_DIR }}"
+
+          # Run the digest pipeline
+          uv run python main.py run \
+            --config "${{ env.CONFIG_DIR }}/sources.yaml" \
+            --entities "${{ env.CONFIG_DIR }}/entities.yaml" \
+            --topics "${{ env.CONFIG_DIR }}/topics.yaml" \
+            --state "${{ env.STATE_FILE }}" \
+            --out "${{ env.OUTPUT_DIR }}" \
+            --tz "${{ env.TIMEZONE }}" \
+            --json-logs \
+            ${{ inputs.debug_enabled == 'true' && '--verbose' || '' }}
+
+          EXIT_CODE=$?
+          END_TIME=$(date +%s%3N)
+          DURATION=$((END_TIME - START_TIME))
+
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"pipeline","duration_ms":'"${DURATION}"',"exit_code":'"${EXIT_CODE}"'}'
+
+          if [ ${EXIT_CODE} -eq 0 ]; then
+            echo "pipeline_success=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "pipeline_success=false" >> "$GITHUB_OUTPUT"
+            exit ${EXIT_CODE}
+          fi
+
+      - name: Generate checksums
+        id: checksums
+        if: success()
+        run: |
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+
+          # State checksum
+          if [ -f "${{ env.STATE_FILE }}" ]; then
+            STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
+            echo "state_checksum=${STATE_CHECKSUM}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"checksums","artifact":"state.sqlite","sha256":"'"${STATE_CHECKSUM}"'"}'
+          fi
+
+          # Public directory manifest
+          if [ -d "${{ env.OUTPUT_DIR }}" ]; then
+            MANIFEST_FILE="manifest.txt"
+            find "${{ env.OUTPUT_DIR }}" -type f -exec sha256sum {} \; | sort > "${MANIFEST_FILE}"
+            MANIFEST_CHECKSUM=$(sha256sum "${MANIFEST_FILE}" | cut -d' ' -f1)
+            echo "manifest_checksum=${MANIFEST_CHECKSUM}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"checksums","artifact":"public_manifest","sha256":"'"${MANIFEST_CHECKSUM}"'"}'
+
+            # Show manifest contents
+            echo "=== Public Directory Manifest ==="
+            cat "${MANIFEST_FILE}"
+          fi
+
+      - name: Upload state artifact
+        if: success() && hashFiles(env.STATE_FILE) != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: state-sqlite
+          path: ${{ env.STATE_FILE }}
+          retention-days: 1
+          if-no-files-found: warn
+
+      - name: Upload Pages artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.OUTPUT_DIR }}
+
+      - name: Log pipeline completion
+        if: always()
+        run: |
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+          STATUS="${{ job.status }}"
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"complete","job_status":"'"${STATUS}"'"}'
+
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: digest
+    if: success()
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Log deployment
+        run: |
+          RUN_ID="${{ needs.digest.outputs.run_id }}"
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"deploy_pages","event":"deployment_complete","url":"${{ steps.deployment.outputs.page_url }}"}'
+
+  persist-state:
+    name: Persist State to Branch
+    needs: digest
+    if: success()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Download state artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: state-sqlite
+          path: .
+
+      - name: Verify state file
+        id: verify
+        run: |
+          RUN_ID="${{ needs.digest.outputs.run_id }}"
+
+          if [ -f "${{ env.STATE_FILE }}" ]; then
+            STATE_SIZE=$(stat -c%s "${{ env.STATE_FILE }}" 2>/dev/null || stat -f%z "${{ env.STATE_FILE }}")
+            STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
+            echo "state_exists=true" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"artifact_downloaded","size_bytes":'"${STATE_SIZE}"',"sha256":"'"${STATE_CHECKSUM}"'"}'
+          else
+            echo "state_exists=false" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"artifact_missing"}'
+            exit 1
+          fi
+
+      - name: Push state to state branch
+        if: steps.verify.outputs.state_exists == 'true'
+        run: |
+          RUN_ID="${{ needs.digest.outputs.run_id }}"
+          START_TIME=$(date +%s%3N)
+
+          # Save state file to temp location before branch switch
+          TEMP_STATE="/tmp/${{ env.STATE_FILE }}"
+          cp "${{ env.STATE_FILE }}" "${TEMP_STATE}"
+          STATE_CHECKSUM=$(sha256sum "${TEMP_STATE}" | cut -d' ' -f1)
+
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check if state branch exists
+          if git ls-remote --heads origin "${{ env.STATE_BRANCH }}" | grep -q "${{ env.STATE_BRANCH }}"; then
+            # Checkout existing state branch
+            git fetch origin "${{ env.STATE_BRANCH }}"
+            git checkout "${{ env.STATE_BRANCH }}"
+          else
+            # Create orphan branch
+            git checkout --orphan "${{ env.STATE_BRANCH }}"
+            git rm -rf . 2>/dev/null || true
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"created_orphan_branch"}'
+          fi
+
+          # Restore state file from temp location
+          cp "${TEMP_STATE}" "${{ env.STATE_FILE }}"
+          git add "${{ env.STATE_FILE }}"
+
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"no_changes"}'
+          else
+            git commit -m "$(cat <<EOF
+          chore(state): update state.sqlite
+
+          Run ID: ${RUN_ID}
+          Commit: ${{ github.sha }}
+          Checksum: ${STATE_CHECKSUM}
+
+          Generated by GitHub Actions [skip ci]
+          EOF
+          )"
+
+            git push origin "${{ env.STATE_BRANCH }}"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_pushed","sha256":"'"${STATE_CHECKSUM}"'"}'
+          fi
+
+          END_TIME=$(date +%s%3N)
+          DURATION=$((END_TIME - START_TIME))
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","duration_ms":'"${DURATION}"'}'
+
+  report:
+    name: Generate Run Report
+    needs: [digest, deploy-pages, persist-state]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate summary
+        run: |
+          RUN_ID="${{ needs.digest.outputs.run_id }}"
+          DIGEST_STATUS="${{ needs.digest.result }}"
+          DEPLOY_STATUS="${{ needs.deploy-pages.result }}"
+          PERSIST_STATUS="${{ needs.persist-state.result }}"
+
+          echo "## Daily Digest Run Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Run ID | ${RUN_ID} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | ${{ github.sha }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Trigger | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Digest | ${DIGEST_STATUS} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deploy | ${DEPLOY_STATUS} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Persist | ${PERSIST_STATUS} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Checksums" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Artifact | SHA-256 |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|---------|" >> $GITHUB_STEP_SUMMARY
+          echo "| state.sqlite | ${{ needs.digest.outputs.state_checksum || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| public manifest | ${{ needs.digest.outputs.manifest_checksum || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+
+          # Log final metrics
+          if [ "${DIGEST_STATUS}" = "success" ] && [ "${DEPLOY_STATUS}" = "success" ]; then
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"report","metric":"workflow_success_total","value":1}'
+          else
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"report","metric":"workflow_failure_total","value":1}'
+          fi
