@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Research Digest - Archive{% endblock %}
+
+{% block header_title %}Archive{% endblock %}
+
+{% block content %}
+<p class="meta">Browse past digests by date.</p>
+
+{% if archive_dates %}
+<section>
+    <h2>Available Dates</h2>
+    <ul class="archive-list">
+        {% for date in archive_dates %}
+        <li>
+            <a href="day/{{ date }}.html">{{ date }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% else %}
+<p>No archived digests available yet.</p>
+{% endif %}
+{% endblock %}
