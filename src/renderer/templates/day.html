@@ -1,46 +1,47 @@
 {% extends "base.html" %}
-{% from "_macros.html" import story_item, story_section %}
+{% from "_macros.html" import story_card, story_section, entity_group %}
 
 {% block title %}Research Digest - {{ run_date }}{% endblock %}
 
-{% block header_title %}Research Digest - {{ run_date }}{% endblock %}
-
 {% block content %}
-<p class="meta">Digest for {{ run_date }}. <a href="../index.html">Back to latest</a></p>
+<div class="page-header">
+    <h1>Digest Archive</h1>
+    <p class="page-meta">{{ run_date }} · <a href="../index.html" class="link-animated">Back to latest</a></p>
+</div>
 
 {% if top5 %}
-<section>
-    <h2>Top 5 Must-Read</h2>
-    <ol class="story-list">
+<section class="section-top5">
+    <h2>
+        <span class="section-icon">⭐</span>
+        Top 5 Must-Read
+    </h2>
+    <ul class="story-list">
         {% for story in top5 %}
-        {{ story_item(story, show_entities=true) }}
+        {{ story_card(story, show_entities=true, rank=loop.index) }}
         {% endfor %}
-    </ol>
+    </ul>
 </section>
 {% endif %}
 
 {% if model_releases_by_entity %}
-<section>
-    <h2>Model Releases</h2>
+<section class="section-models">
+    <h2>
+        <span class="section-icon">🚀</span>
+        Model Releases
+    </h2>
     {% for entity_id, stories in model_releases_by_entity.items() %}
-    <div class="entity-group">
-        <div class="entity-name">{{ entity_id }}</div>
-        <ul class="story-list">
-            {% for story in stories %}
-            {{ story_item(story) }}
-            {% endfor %}
-        </ul>
-    </div>
+    {{ entity_group(entity_id, stories) }}
     {% endfor %}
 </section>
 {% endif %}
 
-{{ story_section('Papers', papers, show_arxiv=true) }}
+{{ story_section('Papers', papers, section_class='papers', icon='📄', show_arxiv=true) }}
 
-{{ story_section('Radar', radar) }}
+{{ story_section('Radar', radar, section_class='radar', icon='📡') }}
 
 {% if not top5 and not model_releases_by_entity and not papers and not radar %}
 <div class="empty-state">
+    <div class="empty-state-icon">📭</div>
     <p>No stories available for this date.</p>
 </div>
 {% endif %}

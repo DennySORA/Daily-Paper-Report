@@ -358,3 +358,15 @@ $RECYCLE.BIN/
 
 # Feature runner logs
 **/runner_logs/
+
+# Runtime state database
+state.sqlite
+state.sqlite-journal
+state.sqlite-wal
+state.sqlite-shm
+
+# Feature development snapshots
+features/*/snapshots/*.json
+
+# Temporary git rewriting tools
+.rewrite/

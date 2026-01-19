@@ -80,6 +80,7 @@ class QuotasConfig(BaseModel):
         radar_max: Maximum items in Radar.
         per_source_max: Maximum items per source.
         arxiv_per_category_max: Maximum arXiv items per category.
+        papers_max: Maximum items in Papers section.
     """
 
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -88,6 +89,7 @@ class QuotasConfig(BaseModel):
     radar_max: Annotated[int, Field(ge=0)] = 10
     per_source_max: Annotated[int, Field(ge=0)] = 10
     arxiv_per_category_max: Annotated[int, Field(ge=0)] = 10
+    papers_max: Annotated[int, Field(ge=0)] = 20
 
 
 class TopicsConfig(BaseModel):

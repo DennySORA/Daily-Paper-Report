@@ -6,11 +6,13 @@ import sys
 import uuid
 import zoneinfo
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 
 import click
 import structlog
 
+from src.collectors.runner import CollectorRunner
 from src.config.constants import (
     COMPONENT_CLI,
     FEATURE_KEY,
@@ -21,7 +23,13 @@ from src.config.error_hints import format_validation_error
 from src.config.loader import ConfigLoader
 from src.config.state_machine import ConfigState
 from src.evidence.capture import EvidenceCapture
+from src.fetch.client import HttpFetcher
+from src.fetch.config import FetchConfig
+from src.linker import StoryLinker
 from src.observability.logging import bind_run_context, configure_logging
+from src.ranker import StoryRanker
+from src.renderer import RunInfo, StaticRenderer
+from src.status import StatusComputer
 from src.store.store import StateStore
 
 
@@ -168,7 +176,120 @@ def _execute_run(options: RunOptions) -> None:
             else:
                 log.info("no_previous_successful_run")
 
-            # TODO: Actual collection and rendering will happen here in future features
+            # === PHASE 1: COLLECTION ===
+            log.info("phase_started", phase="collection")
+
+            # Initialize HTTP client
+            fetch_config = FetchConfig()
+            http_client = HttpFetcher(
+                config=fetch_config,
+                store=store,
+                run_id=run_id,
+            )
+
+            # Run collectors (sequential to avoid SQLite thread issues)
+            collector_runner = CollectorRunner(
+                store=store,
+                http_client=http_client,
+                run_id=run_id,
+                max_workers=1,  # Sequential execution
+                strip_params=strip_params,
+            )
+
+            runner_result = collector_runner.run(
+                sources=effective_config.sources.sources,
+                now=datetime.now(UTC),
+            )
+
+            log.info(
+                "collection_complete",
+                total_items=runner_result.total_items,
+                total_new=runner_result.total_new,
+                sources_succeeded=runner_result.sources_succeeded,
+                sources_failed=runner_result.sources_failed,
+            )
+
+            # === PHASE 2: LINKING ===
+            log.info("phase_started", phase="linking")
+
+            # Get all items collected in this run
+            all_items = store.get_items_since(run_record.started_at)
+
+            linker = StoryLinker(
+                run_id=run_id,
+                entities_config=effective_config.entities,
+                topics_config=effective_config.topics,
+            )
+
+            linker_result = linker.link_items(all_items)
+
+            log.info(
+                "linking_complete",
+                stories_count=len(linker_result.stories),
+                items_in=linker_result.items_in,
+            )
+
+            # === PHASE 3: RANKING ===
+            log.info("phase_started", phase="ranking")
+
+            ranker = StoryRanker(
+                run_id=run_id,
+                topics_config=effective_config.topics,
+                entities_config=effective_config.entities,
+            )
+
+            ranker_result = ranker.rank_stories(linker_result.stories)
+
+            log.info(
+                "ranking_complete",
+                top5_count=len(ranker_result.output.top5),
+                papers_count=len(ranker_result.output.papers),
+                radar_count=len(ranker_result.output.radar),
+            )
+
+            # === PHASE 4: RENDERING ===
+            log.info("phase_started", phase="rendering")
+
+            # Compute source health status
+            source_configs_dict = {s.id: s for s in effective_config.sources.sources}
+            status_computer = StatusComputer(
+                run_id=run_id,
+                source_configs=source_configs_dict,
+            )
+            sources_status = status_computer.compute_all(runner_result)
+
+            # Build run info
+            run_info = RunInfo(
+                run_id=run_id,
+                started_at=run_record.started_at,
+                finished_at=datetime.now(UTC),
+                items_total=runner_result.total_items,
+                stories_total=len(linker_result.stories),
+                success=True,
+            )
+
+            # Render static site
+            renderer = StaticRenderer(
+                run_id=run_id,
+                output_dir=options.output_dir,
+                timezone=options.timezone,
+            )
+
+            render_result = renderer.render(
+                ranker_output=ranker_result.output,
+                sources_status=sources_status,
+                run_info=run_info,
+                recent_runs=[run_info],
+            )
+
+            if render_result.success:
+                log.info(
+                    "rendering_complete",
+                    files_count=len(render_result.manifest.files),
+                    total_bytes=render_result.manifest.total_bytes,
+                )
+            else:
+                log.error("rendering_failed", error=render_result.error_summary)
 
             # End run successfully
             run_record = store.end_run(run_id, success=True)
