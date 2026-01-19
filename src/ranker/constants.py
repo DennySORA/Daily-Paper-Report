@@ -24,8 +24,13 @@ ARXIV_CATEGORY_PATTERNS: list[str] = [
 # Days for recency calculation
 MAX_RECENCY_DAYS: int = 30
 
-# Output section names
-SECTION_TOP5 = "top5"
-SECTION_MODEL_RELEASES = "model_releases"
-SECTION_PAPERS = "papers"
-SECTION_RADAR = "radar"
+# Quality signal sources for cross-source scoring
+QUALITY_SIGNAL_SOURCES: frozenset[str] = frozenset(
+    {
+        "papers_with_code",
+        "hf_daily_papers",
+    }
+)
+
+# Maximum cross-source score to prevent overfitting
+CROSS_SOURCE_SCORE_CAP: float = 3.0
