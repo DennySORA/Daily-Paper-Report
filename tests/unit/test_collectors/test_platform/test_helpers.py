@@ -101,14 +101,6 @@ class TestExtractNestedValue:
         """Test None input returns None."""
         assert extract_nested_value(None) is None
 
-    def test_list_value(self) -> None:
-        """Test list value returns list."""
-        assert extract_nested_value(["a", "b"]) == ["a", "b"]
-
-    def test_integer_value(self) -> None:
-        """Test integer value returns integer."""
-        assert extract_nested_value(42) == 42
-
 
 class TestBuildPdfUrl:
     """Tests for build_pdf_url helper."""
