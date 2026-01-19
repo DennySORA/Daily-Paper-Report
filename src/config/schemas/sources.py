@@ -7,6 +7,15 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
 
 
+__all__ = [
+    "SourceConfig",
+    "SourcesConfig",
+    "SourceKind",
+    "SourceMethod",
+    "SourceTier",
+]
+
+
 class SourceConfig(BaseModel):
     """Configuration for a single source.
 

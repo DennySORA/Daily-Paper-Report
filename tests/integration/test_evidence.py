@@ -74,7 +74,8 @@ class TestEvidenceCaptureIntegration:
         )
 
         # State should transition to WRITING
-        assert capture.state == EvidenceState.EVIDENCE_WRITING
+        # After state transition, mypy incorrectly narrows state type
+        assert capture.state == EvidenceState.EVIDENCE_WRITING  # type: ignore[comparison-overlap]
 
         # Verify STATE.md content
         assert state_path.exists()

@@ -1,5 +1,7 @@
 """Unit tests for platform metrics."""
 
+from typing import Any
+
 from src.collectors.platform.constants import (
     PLATFORM_GITHUB,
     PLATFORM_HUGGINGFACE,
@@ -65,8 +67,9 @@ class TestPlatformMetrics:
         metrics.record_items(PLATFORM_HUGGINGFACE, 20)
 
         data = metrics.to_dict()
-        assert data["items_by_platform"][PLATFORM_GITHUB] == 10
-        assert data["items_by_platform"][PLATFORM_HUGGINGFACE] == 20
+        items_by_platform: dict[str, Any] = data["items_by_platform"]  # type: ignore[assignment]
+        assert items_by_platform[PLATFORM_GITHUB] == 10
+        assert items_by_platform[PLATFORM_HUGGINGFACE] == 20
 
     def test_record_error(self) -> None:
         """Test recording errors."""
@@ -77,9 +80,10 @@ class TestPlatformMetrics:
         metrics.record_error(PLATFORM_HUGGINGFACE, "auth")
 
         data = metrics.to_dict()
-        assert data["errors_by_platform"]["github:auth"] == 1
-        assert data["errors_by_platform"]["github:fetch"] == 1
-        assert data["errors_by_platform"]["huggingface:auth"] == 1
+        errors_by_platform: dict[str, Any] = data["errors_by_platform"]  # type: ignore[assignment]
+        assert errors_by_platform["github:auth"] == 1
+        assert errors_by_platform["github:fetch"] == 1
+        assert errors_by_platform["huggingface:auth"] == 1
 
     def test_to_prometheus_format(self) -> None:
         """Test Prometheus format export."""

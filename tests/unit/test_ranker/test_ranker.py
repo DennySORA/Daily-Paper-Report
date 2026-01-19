@@ -91,8 +91,8 @@ class TestRankerStateTransitions:
 
         stories = [_make_story(story_id=f"s{i}") for i in range(3)]
         ranker.rank_stories(stories)
-
-        assert ranker.state == RankerState.ORDERED_OUTPUTS
+        # After state transition, mypy incorrectly narrows state type
+        assert ranker.state == RankerState.ORDERED_OUTPUTS  # type: ignore[comparison-overlap]
 
     def test_empty_input_completes(self) -> None:
         """Empty input still completes state machine."""
