@@ -324,14 +324,18 @@ class QuotaFilter:
         sections: dict[StorySection, list[ScoredStory]],
         assigned_ids: set[str],
     ) -> None:
-        """Assign papers to PAPERS section."""
+        """Assign papers to PAPERS section (up to papers_max)."""
+        papers_count = 0
         for s in stories:
             if s.story.story_id in assigned_ids:
                 continue
             if self._is_paper(s.story):
+                if papers_count >= self._quotas.papers_max:
+                    continue
                 s.assigned_section = StorySection.PAPERS
                 sections[StorySection.PAPERS].append(s)
                 assigned_ids.add(s.story.story_id)
+                papers_count += 1
 
     def _assign_radar(
         self,

@@ -1,215 +1,48 @@
 {
-  "generated_at": "2026-01-15T09:43:22.209024+00:00",
-  "model_releases_by_entity": {
-    "openai": [
-      {
-        "arxiv_id": null,
-        "entities": [
-          "openai"
-        ],
-        "github_release_url": null,
-        "hf_model_id": null,
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "official",
-            "source_id": "openai-blog",
-            "tier": 0,
-            "title": "Test Story for E2E Validation",
-            "url": "https://example.com/test"
-          }
-        ],
-        "primary_link": {
-          "link_type": "official",
-          "source_id": "openai-blog",
-          "tier": 0,
-          "title": "Test Story for E2E Validation",
-          "url": "https://example.com/test"
-        },
-        "published_at": "2026-01-15T09:43:22.208377+00:00",
-        "section": null,
-        "story_id": "test-story",
-        "title": "Test Story for E2E Validation"
-      }
-    ]
-  },
+  "generated_at": "2026-01-19T10:09:19.600652+00:00",
+  "model_releases_by_entity": {},
   "papers": [],
-  "radar": [
-    {
-      "arxiv_id": null,
-      "entities": [
-        "openai"
-      ],
-      "github_release_url": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "official",
-          "source_id": "openai-blog",
-          "tier": 0,
-          "title": "Test Story for E2E Validation",
-          "url": "https://example.com/test"
-        }
-      ],
-      "primary_link": {
-        "link_type": "official",
-        "source_id": "openai-blog",
-        "tier": 0,
-        "title": "Test Story for E2E Validation",
-        "url": "https://example.com/test"
-      },
-      "published_at": "2026-01-15T09:43:22.208377+00:00",
-      "section": null,
-      "story_id": "test-story",
-      "title": "Test Story for E2E Validation"
-    }
-  ],
-  "run_date": "2026-01-15",
-  "run_id": "e2e-test-run-001",
+  "radar": [],
+  "run_date": "2026-01-19",
+  "run_id": "b32a8de4-8f5c-4209-840b-ba36e8d378f7",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-01-15T09:43:22.208829+00:00",
-    "items_total": 50,
-    "run_id": "e2e-test-run-001",
-    "started_at": "2026-01-15T09:43:22.208829+00:00",
-    "stories_total": 1,
+    "finished_at": "2026-01-19T10:09:19.600549+00:00",
+    "items_total": 120,
+    "run_id": "b32a8de4-8f5c-4209-840b-ba36e8d378f7",
+    "started_at": "2026-01-19T10:09:18.199024+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
     {
-      "category": "intl_labs",
-      "items_new": 3,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "OpenAI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
-      "remediation_hint": null,
-      "source_id": "openai-blog",
-      "status": "HAS_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "intl_labs",
+      "category": "other",
       "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "rss_atom",
-      "name": "Anthropic Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "anthropic-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "intl_labs",
-      "items_new": 0,
-      "items_updated": 2,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "Google AI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_HAS_UPDATED",
-      "reason_text": "Fetch and parse succeeded; items updated.",
-      "remediation_hint": null,
-      "source_id": "google-ai-blog",
-      "status": "HAS_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "cn_ecosystem",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "html_list",
-      "name": "Baidu AI Blog",
-      "newest_item_date": null,
-      "reason_code": "DATES_MISSING_NO_ORDERING",
-      "reason_text": "Published dates missing for all items; cannot confirm update status.",
-      "remediation_hint": "Consider using item page date recovery or stable identifiers.",
-      "source_id": "baidu-blog",
-      "status": "CANNOT_CONFIRM",
-      "tier": 1
-    },
-    {
-      "category": "cn_ecosystem",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "html_profile",
-      "name": "Alibaba DAMO Academy",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "alibaba-damo",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "platforms",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "HuggingFace Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_TIMEOUT",
-      "reason_text": "HTTP fetch timed out.",
-      "remediation_hint": "Consider increasing timeout or checking network connectivity.",
-      "source_id": "huggingface-blog",
-      "status": "FETCH_FAILED",
-      "tier": 1
-    },
-    {
-      "category": "platforms",
-      "items_new": 5,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub Trending",
-      "newest_item_date": "2026-01-15T09:43:22.208817+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
-      "remediation_hint": null,
-      "source_id": "github-trending",
-      "status": "HAS_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "platforms",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "openreview_venue",
-      "name": "OpenReview Venue",
-      "newest_item_date": null,
-      "reason_code": "PARSE_JSON_ERROR",
-      "reason_text": "Failed to parse JSON content.",
-      "remediation_hint": "Source JSON format may have changed; update schema.",
-      "source_id": "openreview-venue",
-      "status": "PARSE_FAILED",
-      "tier": 1
-    },
-    {
-      "category": "paper_sources",
-      "items_new": 42,
-      "items_updated": 3,
-      "last_fetch_status_code": null,
-      "method": "arxiv_api",
       "name": "arXiv cs.AI",
-      "newest_item_date": "2026-01-15T09:43:22.208824+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "arxiv-cs-ai",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "DeepMind Blog",
+      "newest_item_date": "2026-01-13T09:00:18+00:00",
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "deepmind-blog",
+      "status": "NO_UPDATE",
       "tier": 0
     },
     {
@@ -217,46 +50,31 @@
       "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
-      "method": "html_list",
-      "name": "Miscellaneous Source",
+      "method": "hf_org",
+      "name": "Hugging Face OpenAI",
       "newest_item_date": null,
-      "reason_code": "STATUS_ONLY_SOURCE",
-      "reason_text": "Source is status-only; no items expected.",
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
-      "source_id": "misc-source",
-      "status": "STATUS_ONLY",
-      "tier": 2
+      "source_id": "hf-openai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "OpenAI Blog",
+      "newest_item_date": "2026-01-18T04:00:00+00:00",
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "openai-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "entities": [
-        "openai"
-      ],
-      "github_release_url": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "official",
-          "source_id": "openai-blog",
-          "tier": 0,
-          "title": "Test Story for E2E Validation",
-          "url": "https://example.com/test"
-        }
-      ],
-      "primary_link": {
-        "link_type": "official",
-        "source_id": "openai-blog",
-        "tier": 0,
-        "title": "Test Story for E2E Validation",
-        "url": "https://example.com/test"
-      },
-      "published_at": "2026-01-15T09:43:22.208377+00:00",
-      "section": null,
-      "story_id": "test-story",
-      "title": "Test Story for E2E Validation"
-    }
-  ]
+  "top5": []
 }

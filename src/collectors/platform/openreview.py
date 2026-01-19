@@ -397,7 +397,7 @@ class OpenReviewVenueCollector(BaseCollector):
         if timestamp:
             try:
                 # OpenReview uses millisecond timestamps
-                if isinstance(timestamp, (int, float)):
+                if isinstance(timestamp, int | float):
                     published_at = datetime.fromtimestamp(timestamp / 1000, tz=UTC)
                     date_confidence = DateConfidence.HIGH
                 elif isinstance(timestamp, str):
