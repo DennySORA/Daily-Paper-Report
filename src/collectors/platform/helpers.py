@@ -5,7 +5,6 @@ to reduce code duplication and improve maintainability.
 """
 
 import os
-from typing import Any
 
 from src.collectors.platform.constants import (
     AUTH_TOKEN_ENV_VARS,
@@ -62,17 +61,17 @@ def build_bearer_auth_header(token: str | None) -> dict[str, str]:
     return {}
 
 
-def extract_nested_value(field: Any) -> Any:
+def extract_nested_value(field: str | dict[str, str] | None) -> str | None:
     """Extract value from potentially nested OpenReview-style field.
 
     OpenReview API returns some fields as either direct values or
     as objects with a 'value' key. This helper handles both cases.
 
     Args:
-        field: Field value that may be nested.
+        field: Field value that may be nested (string, dict with 'value', or None).
 
     Returns:
-        Extracted value (unwrapped from dict if needed).
+        Extracted value (unwrapped from dict if needed), or None.
 
     Examples:
         >>> extract_nested_value("direct value")
@@ -85,7 +84,7 @@ def extract_nested_value(field: Any) -> Any:
     return field
 
 
-def build_pdf_url(pdf_field: Any, forum_id: str) -> str | None:
+def build_pdf_url(pdf_field: str | dict[str, str] | None, forum_id: str) -> str | None:
     """Build full PDF URL from OpenReview PDF field.
 
     Handles various PDF URL formats:
@@ -104,14 +103,11 @@ def build_pdf_url(pdf_field: Any, forum_id: str) -> str | None:
     if not pdf:
         return None
 
-    if isinstance(pdf, str):
-        if pdf.startswith("/pdf"):
-            return f"https://openreview.net{pdf}"
-        if pdf.startswith("http"):
-            return pdf
-        return f"https://openreview.net/pdf?id={forum_id}"
-
-    return None
+    if pdf.startswith("/pdf"):
+        return f"https://openreview.net{pdf}"
+    if pdf.startswith("http"):
+        return pdf
+    return f"https://openreview.net/pdf?id={forum_id}"
 
 
 def truncate_text(text: str, max_length: int) -> str:
