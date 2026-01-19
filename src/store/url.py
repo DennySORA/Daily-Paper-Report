@@ -193,28 +193,3 @@ def _should_upgrade_to_https(netloc: str) -> bool:
             return True
 
     return False
-
-
-def extract_arxiv_id(url: str) -> str | None:
-    """Extract arXiv ID from a URL.
-
-    Args:
-        url: A URL that might be an arXiv URL.
-
-    Returns:
-        The arXiv ID if found, None otherwise.
-    """
-    # First normalize
-    normalized = _normalize_arxiv_url(url)
-
-    # Try to extract from /abs/ URL
-    match = ARXIV_ABS_PATTERN.match(normalized)
-    if match:
-        return match.group(1)
-
-    # Try old-style ID
-    match = ARXIV_OLD_ID_PATTERN.match(normalized)
-    if match:
-        return match.group(1)
-
-    return None

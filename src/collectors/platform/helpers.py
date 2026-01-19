@@ -47,20 +47,6 @@ def get_auth_token(platform: str) -> str | None:
     return None
 
 
-def build_bearer_auth_header(token: str | None) -> dict[str, str]:
-    """Build Authorization header with Bearer token if provided.
-
-    Args:
-        token: Optional Bearer token.
-
-    Returns:
-        Dictionary with Authorization header, or empty dict if no token.
-    """
-    if token:
-        return {"Authorization": f"Bearer {token}"}
-    return {}
-
-
 def extract_nested_value(field: str | dict[str, str] | None) -> str | None:
     """Extract value from potentially nested OpenReview-style field.
 
