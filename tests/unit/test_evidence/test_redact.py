@@ -1,6 +1,5 @@
 """Unit tests for evidence redaction utilities."""
 
-
 from src.evidence.redact import (
     SecretMatch,
     contains_secrets,

@@ -44,9 +44,10 @@ class HtmlRenderer:
         self._writer = AtomicWriter(output_dir, run_id)
 
         # Set up Jinja2 with auto-escaping for security
+        # nosemgrep: python.flask.security.xss.audit.direct-use-of-jinja2
         self._env = Environment(
             loader=PackageLoader("src.renderer", "templates"),
-            autoescape=select_autoescape(["html", "xml"]),
+            autoescape=select_autoescape(["html", "xml"]),  # XSS protection enabled
             trim_blocks=True,
             lstrip_blocks=True,
         )

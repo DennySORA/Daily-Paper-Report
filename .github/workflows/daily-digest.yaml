@@ -112,29 +112,36 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           OPENREVIEW_TOKEN: ${{ secrets.OPENREVIEW_TOKEN }}
+          STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
+          DEBUG_ENABLED: ${{ inputs.debug_enabled }}
         run: |
           START_TIME=$(date +%s%3N)
-          RUN_ID="${{ steps.init.outputs.run_id }}"
 
           # Create output directory
-          mkdir -p "${{ env.OUTPUT_DIR }}"
+          mkdir -p "${OUTPUT_DIR}"
+
+          # Build verbose flag safely
+          VERBOSE_FLAG=""
+          if [ "${DEBUG_ENABLED}" = "true" ]; then
+            VERBOSE_FLAG="--verbose"
+          fi
 
           # Run the digest pipeline
           uv run python main.py run \
-            --config "${{ env.CONFIG_DIR }}/sources.yaml" \
-            --entities "${{ env.CONFIG_DIR }}/entities.yaml" \
-            --topics "${{ env.CONFIG_DIR }}/topics.yaml" \
-            --state "${{ env.STATE_FILE }}" \
-            --out "${{ env.OUTPUT_DIR }}" \
-            --tz "${{ env.TIMEZONE }}" \
+            --config "${CONFIG_DIR}/sources.yaml" \
+            --entities "${CONFIG_DIR}/entities.yaml" \
+            --topics "${CONFIG_DIR}/topics.yaml" \
+            --state "${STATE_FILE}" \
+            --out "${OUTPUT_DIR}" \
+            --tz "${TIMEZONE}" \
             --json-logs \
-            ${{ inputs.debug_enabled == 'true' && '--verbose' || '' }}
+            ${VERBOSE_FLAG}
 
           EXIT_CODE=$?
           END_TIME=$(date +%s%3N)
           DURATION=$((END_TIME - START_TIME))
 
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"pipeline","duration_ms":'"${DURATION}"',"exit_code":'"${EXIT_CODE}"'}'
+          echo '{"run_id":"'"${STEP_RUN_ID}"'","component":"workflow","step":"pipeline","duration_ms":'"${DURATION}"',"exit_code":'"${EXIT_CODE}"'}'
 
           if [ ${EXIT_CODE} -eq 0 ]; then
             echo "pipeline_success=true" >> "$GITHUB_OUTPUT"

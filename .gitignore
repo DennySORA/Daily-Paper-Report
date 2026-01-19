@@ -356,3 +356,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,intellij+all,macos,windows,linux
 
+# Feature runner logs
+**/runner_logs/

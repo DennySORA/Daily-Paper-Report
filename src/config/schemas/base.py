@@ -27,6 +27,8 @@ class SourceMethod(str, Enum):
     HTML_LIST = "html_list"
     HTML_SINGLE = "html_single"
     STATUS_ONLY = "status_only"
+    PAPERS_WITH_CODE = "papers_with_code"
+    HF_DAILY_PAPERS = "hf_daily_papers"
 
 
 class SourceKind(str, Enum):

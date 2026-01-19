@@ -178,4 +178,3 @@ class JsonRenderer:
             "items_total": run_info.items_total,
             "stories_total": run_info.stories_total,
         }
-
