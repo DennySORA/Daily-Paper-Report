@@ -119,7 +119,7 @@ class TestPerSourceQuota:
         assert "s1" in kept_ids  # Second highest
 
         # Should drop 3
-        dropped_ids = [s.story.story_id for s in dropped]
+        [s.story.story_id for s in dropped]
         assert len(dropped) == 3
         assert all(s.dropped for s in dropped)
 
@@ -210,7 +210,7 @@ class TestDeterministicOrdering:
         quotas = QuotasConfig()
         quota_filter = QuotaFilter(run_id="test", quotas_config=quotas)
 
-        now = datetime.now(UTC)
+        datetime.now(UTC)
         old_time = datetime(2024, 1, 1, tzinfo=UTC)
         new_time = datetime(2024, 1, 15, tzinfo=UTC)
 

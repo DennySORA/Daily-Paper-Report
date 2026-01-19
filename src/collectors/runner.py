@@ -12,8 +12,10 @@ from src.collectors.errors import CollectorErrorClass, ErrorRecord
 from src.collectors.html_list import HtmlListCollector
 from src.collectors.metrics import CollectorMetrics
 from src.collectors.platform.github import GitHubReleasesCollector
+from src.collectors.platform.hf_daily_papers import HuggingFaceDailyPapersCollector
 from src.collectors.platform.huggingface import HuggingFaceOrgCollector
 from src.collectors.platform.openreview import OpenReviewVenueCollector
+from src.collectors.platform.papers_with_code import PapersWithCodeCollector
 from src.collectors.rss_atom import RssAtomCollector
 from src.collectors.state_machine import SourceState
 from src.config.schemas.base import SourceMethod
@@ -112,6 +114,12 @@ class CollectorRunner:
             SourceMethod.GITHUB_RELEASES: GitHubReleasesCollector(strip_params, run_id),
             SourceMethod.HF_ORG: HuggingFaceOrgCollector(strip_params, run_id),
             SourceMethod.OPENREVIEW_VENUE: OpenReviewVenueCollector(
+                strip_params, run_id
+            ),
+            SourceMethod.PAPERS_WITH_CODE: PapersWithCodeCollector(
+                strip_params, run_id
+            ),
+            SourceMethod.HF_DAILY_PAPERS: HuggingFaceDailyPapersCollector(
                 strip_params, run_id
             ),
         }

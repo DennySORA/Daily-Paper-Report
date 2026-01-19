@@ -15,6 +15,18 @@ class EntityRegion(str, Enum):
     INTL = "intl"
 
 
+class EntityType(str, Enum):
+    """Entity type classification for quality filtering.
+
+    Used to distinguish between organizations (companies/labs),
+    individual researchers, and academic institutions.
+    """
+
+    ORGANIZATION = "organization"
+    RESEARCHER = "researcher"
+    INSTITUTION = "institution"
+
+
 class EntityConfig(BaseModel):
     """Configuration for a single entity.
 
@@ -22,6 +34,7 @@ class EntityConfig(BaseModel):
         id: Unique identifier for the entity.
         name: Human-readable name.
         region: Region classification (cn or intl).
+        entity_type: Type classification (organization, researcher, institution).
         keywords: Keywords for matching (non-empty).
         prefer_links: Preferred link types for primary link selection.
         aliases: Alternative names for the entity.
@@ -32,6 +45,7 @@ class EntityConfig(BaseModel):
     id: Annotated[str, Field(min_length=1, max_length=100, pattern=r"^[a-z0-9_-]+$")]
     name: Annotated[str, Field(min_length=1, max_length=200)]
     region: EntityRegion
+    entity_type: EntityType = EntityType.ORGANIZATION
     keywords: Annotated[list[str], Field(min_length=1)]
     prefer_links: Annotated[list[LinkType], Field(min_length=1)]
     aliases: list[str] = Field(default_factory=list)

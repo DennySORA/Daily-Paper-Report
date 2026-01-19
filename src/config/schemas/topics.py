@@ -29,6 +29,9 @@ class ScoringConfig(BaseModel):
         topic_match_weight: Weight for topic keyword matches.
         entity_match_weight: Weight for entity matches.
         recency_decay_factor: Decay factor for older items.
+        citation_weight: Weight for citation count contribution.
+        citation_normalization_cap: Cap for citation normalization (log scale).
+        cross_source_weight: Weight per quality signal source matched.
     """
 
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -39,6 +42,9 @@ class ScoringConfig(BaseModel):
     topic_match_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 1.5
     entity_match_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 2.0
     recency_decay_factor: Annotated[float, Field(ge=0.0, le=5.0)] = 0.1
+    citation_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 0.5
+    citation_normalization_cap: Annotated[int, Field(ge=1, le=100000)] = 1000
+    cross_source_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 1.0
 
 
 class TopicConfig(BaseModel):

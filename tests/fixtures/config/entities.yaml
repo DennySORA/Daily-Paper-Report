@@ -53,6 +53,7 @@ entities:
   - id: qwen
     name: Qwen
     region: cn
+    entity_type: organization
     keywords:
       - Qwen
       - Qwen2
@@ -67,3 +68,118 @@ entities:
       - github
     aliases:
       - Tongyi Qianwen
+
+  # Research Institutions
+  - id: google-research
+    name: Google Research
+    region: intl
+    entity_type: institution
+    keywords:
+      - Google Research
+      - Google Brain
+      - Google DeepMind
+      - "@google.com"
+    prefer_links:
+      - official
+      - arxiv
+      - github
+    aliases:
+      - Google AI
+
+  - id: meta-ai
+    name: Meta AI
+    region: intl
+    entity_type: institution
+    keywords:
+      - Meta AI
+      - FAIR
+      - Facebook AI Research
+      - "@meta.com"
+      - "@fb.com"
+    prefer_links:
+      - official
+      - arxiv
+      - github
+      - huggingface
+    aliases:
+      - Facebook AI
+
+  - id: microsoft-research
+    name: Microsoft Research
+    region: intl
+    entity_type: institution
+    keywords:
+      - Microsoft Research
+      - MSR
+      - "@microsoft.com"
+    prefer_links:
+      - official
+      - arxiv
+      - github
+    aliases:
+      - MSR
+
+  # Notable Researchers
+  - id: ilya-sutskever
+    name: Ilya Sutskever
+    region: intl
+    entity_type: researcher
+    keywords:
+      - Ilya Sutskever
+      - Sutskever
+    prefer_links:
+      - arxiv
+      - official
+    aliases: []
+
+  - id: yann-lecun
+    name: Yann LeCun
+    region: intl
+    entity_type: researcher
+    keywords:
+      - Yann LeCun
+      - LeCun
+    prefer_links:
+      - arxiv
+      - official
+    aliases:
+      - Y. LeCun
+
+  - id: geoffrey-hinton
+    name: Geoffrey Hinton
+    region: intl
+    entity_type: researcher
+    keywords:
+      - Geoffrey Hinton
+      - Hinton
+      - G. Hinton
+    prefer_links:
+      - arxiv
+      - official
+    aliases: []
+
+  - id: andrej-karpathy
+    name: Andrej Karpathy
+    region: intl
+    entity_type: researcher
+    keywords:
+      - Andrej Karpathy
+      - Karpathy
+    prefer_links:
+      - arxiv
+      - github
+      - official
+    aliases: []
+
+  - id: yoshua-bengio
+    name: Yoshua Bengio
+    region: intl
+    entity_type: researcher
+    keywords:
+      - Yoshua Bengio
+      - Bengio
+      - Y. Bengio
+    prefer_links:
+      - arxiv
+      - official
+    aliases: []

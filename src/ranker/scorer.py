@@ -1,5 +1,6 @@
 """Scoring engine for Story ranking."""
 
+import json
 import math
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -8,7 +9,12 @@ import structlog
 
 from src.config.schemas.topics import ScoringConfig, TopicConfig
 from src.linker.models import Story
-from src.ranker.constants import DEFAULT_KIND_WEIGHTS, MAX_RECENCY_DAYS
+from src.ranker.constants import (
+    CROSS_SOURCE_SCORE_CAP,
+    DEFAULT_KIND_WEIGHTS,
+    MAX_RECENCY_DAYS,
+    QUALITY_SIGNAL_SOURCES,
+)
 from src.ranker.models import ScoreComponents, ScoredStory
 from src.ranker.topic_matcher import TopicMatcher
 
@@ -37,7 +43,8 @@ class StoryScorer:
     """Computes numeric scores for Stories based on configurable weights.
 
     Scoring formula:
-        score = tier_score + kind_score + topic_score + recency_score + entity_score
+        score = tier_score + kind_score + topic_score + recency_score
+              + entity_score + citation_score + cross_source_score
 
     Where:
         - tier_score: Based on primary link tier (0/1/2) and tier weights
@@ -45,6 +52,8 @@ class StoryScorer:
         - topic_score: Sum of matched topic boosts
         - recency_score: Exponential decay based on age
         - entity_score: Bonus for matching configured entities
+        - citation_score: Bonus based on Semantic Scholar citation count
+        - cross_source_score: Bonus for appearing in quality signal sources
     """
 
     def __init__(self, run_id: str, config: ScorerConfig) -> None:
@@ -82,9 +91,17 @@ class StoryScorer:
         topic_score = self._compute_topic_score(story)
         recency_score = self._compute_recency_score(story)
         entity_score = self._compute_entity_score(story)
+        citation_score = self._compute_citation_score(story)
+        cross_source_score = self._compute_cross_source_score(story)
 
         total_score = (
-            tier_score + kind_score + topic_score + recency_score + entity_score
+            tier_score
+            + kind_score
+            + topic_score
+            + recency_score
+            + entity_score
+            + citation_score
+            + cross_source_score
         )
 
         components = ScoreComponents(
@@ -93,6 +110,8 @@ class StoryScorer:
             topic_score=topic_score,
             recency_score=recency_score,
             entity_score=entity_score,
+            citation_score=citation_score,
+            cross_source_score=cross_source_score,
             total_score=total_score,
         )
 
@@ -214,6 +233,72 @@ class StoryScorer:
             return self._scoring.entity_match_weight * matched
 
         return 0.0
+
+    def _compute_citation_score(self, story: Story) -> float:
+        """Compute citation-based score from Semantic Scholar data.
+
+        Uses log normalization: log(1 + citations) / log(1 + cap)
+        to prevent high-citation papers from dominating.
+
+        Args:
+            story: Story to score.
+
+        Returns:
+            Citation score component.
+        """
+        citation_count = 0
+
+        # Look for citation data in raw items
+        for item in story.raw_items:
+            try:
+                raw = json.loads(item.raw_json)
+                if "citation_count" in raw:
+                    citation_count = max(citation_count, int(raw["citation_count"]))
+            except (json.JSONDecodeError, KeyError, ValueError, TypeError):
+                continue
+
+        if citation_count <= 0:
+            return 0.0
+
+        cap = self._scoring.citation_normalization_cap
+        normalized = math.log(1 + citation_count) / math.log(1 + cap)
+        return min(normalized, 1.0) * self._scoring.citation_weight
+
+    def _compute_cross_source_score(self, story: Story) -> float:
+        """Compute cross-source quality signal score.
+
+        Adds bonus when the story appears in quality signal sources
+        like Papers With Code or HuggingFace Daily Papers.
+
+        Args:
+            story: Story to score.
+
+        Returns:
+            Cross-source score component (capped at CROSS_SOURCE_SCORE_CAP).
+        """
+        matched_sources: set[str] = set()
+
+        # Check source IDs of all items
+        for item in story.raw_items:
+            # Check if the source is a quality signal source
+            if item.source_id in QUALITY_SIGNAL_SOURCES:
+                matched_sources.add(item.source_id)
+                continue
+
+            # Also check raw_json for quality signal flags
+            try:
+                raw = json.loads(item.raw_json)
+                for source in QUALITY_SIGNAL_SOURCES:
+                    if raw.get(f"from_{source}"):
+                        matched_sources.add(source)
+            except (json.JSONDecodeError, KeyError):
+                continue
+
+        if not matched_sources:
+            return 0.0
+
+        score = len(matched_sources) * self._scoring.cross_source_weight
+        return min(score, CROSS_SOURCE_SCORE_CAP)
 
 
 def score_stories_pure(

@@ -711,6 +711,9 @@ class StateStore:
 
         stats: dict[str, int] = {}
 
+        # Table names are hardcoded constants, not user input - safe from SQL injection
+        # nosemgrep: python.lang.security.audit.formatted-sql-query
+        # nosemgrep: python.sqlalchemy.security.sqlalchemy-execute-raw-query
         for table in ("runs", "items", "http_cache"):
             cursor = conn.execute(f"SELECT COUNT(*) FROM {table}")  # noqa: S608
             stats[table] = cursor.fetchone()[0]

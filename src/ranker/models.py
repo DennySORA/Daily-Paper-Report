@@ -18,6 +18,8 @@ class ScoreComponents:
         topic_score: Score contribution from topic keyword matches.
         recency_score: Score contribution from recency decay.
         entity_score: Score contribution from entity matches.
+        citation_score: Score contribution from citation count (Semantic Scholar).
+        cross_source_score: Score contribution from cross-source signals.
         total_score: Sum of all components.
     """
 
@@ -26,7 +28,9 @@ class ScoreComponents:
     topic_score: float
     recency_score: float
     entity_score: float
-    total_score: float
+    citation_score: float = 0.0
+    cross_source_score: float = 0.0
+    total_score: float = 0.0
 
     def to_dict(self) -> dict[str, float]:
         """Convert to dictionary for serialization.
@@ -40,6 +44,8 @@ class ScoreComponents:
             "topic_score": self.topic_score,
             "recency_score": self.recency_score,
             "entity_score": self.entity_score,
+            "citation_score": self.citation_score,
+            "cross_source_score": self.cross_source_score,
             "total_score": self.total_score,
         }
 

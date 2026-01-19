@@ -19,6 +19,7 @@ def _make_item(
     kind: str = "blog",
     title: str = "Test Item",
     published_at: datetime | None = None,
+    raw_json: str = "{}",
 ) -> Item:
     """Create a test Item."""
     return Item(
@@ -30,7 +31,7 @@ def _make_item(
         published_at=published_at,
         date_confidence=DateConfidence.HIGH if published_at else DateConfidence.LOW,
         content_hash="test-hash",
-        raw_json="{}",
+        raw_json=raw_json,
     )
 
 
@@ -351,3 +352,197 @@ class TestPureFunction:
         scored = score_stories_pure(stories=stories, config=config)
         assert len(scored) == 2
         assert all(s.components.total_score > 0 for s in scored)
+
+
+class TestCitationScoring:
+    """Tests for citation-based scoring."""
+
+    def test_no_citation_data_zero_score(self) -> None:
+        """Story without citation data gets zero citation score."""
+        scorer = _make_scorer(ScoringConfig(citation_weight=0.5))
+        story = _make_story()
+        scored = scorer.score_story(story)
+        assert scored.components.citation_score == 0.0
+
+    def test_citation_count_contributes_to_score(self) -> None:
+        """Story with citation count gets positive citation score."""
+        import json
+
+        raw_json = json.dumps({"citation_count": 100})
+        item = _make_item(raw_json=raw_json)
+        story = _make_story(raw_items=[item])
+
+        scorer = _make_scorer(
+            ScoringConfig(citation_weight=0.5, citation_normalization_cap=1000)
+        )
+        scored = scorer.score_story(story)
+
+        # log(1 + 100) / log(1 + 1000) * 0.5 ≈ 0.333
+        expected = math.log(1 + 100) / math.log(1 + 1000) * 0.5
+        assert scored.components.citation_score == pytest.approx(expected, rel=0.01)
+
+    def test_high_citation_count_normalized(self) -> None:
+        """High citation count is normalized and capped."""
+        import json
+
+        raw_json = json.dumps({"citation_count": 10000})
+        item = _make_item(raw_json=raw_json)
+        story = _make_story(raw_items=[item])
+
+        scorer = _make_scorer(
+            ScoringConfig(citation_weight=0.5, citation_normalization_cap=1000)
+        )
+        scored = scorer.score_story(story)
+
+        # Should be capped at weight since citations exceed cap
+        assert scored.components.citation_score <= 0.5
+
+    def test_max_citation_from_multiple_items(self) -> None:
+        """Takes max citation count when multiple items present."""
+        import json
+
+        item1 = _make_item(raw_json=json.dumps({"citation_count": 50}))
+        item2 = _make_item(
+            url="https://example.com/item2",
+            raw_json=json.dumps({"citation_count": 200}),
+        )
+        story = _make_story(raw_items=[item1, item2])
+
+        scorer = _make_scorer(
+            ScoringConfig(citation_weight=0.5, citation_normalization_cap=1000)
+        )
+        scored = scorer.score_story(story)
+
+        # Should use 200, not 50
+        expected = math.log(1 + 200) / math.log(1 + 1000) * 0.5
+        assert scored.components.citation_score == pytest.approx(expected, rel=0.01)
+
+    def test_invalid_citation_data_graceful(self) -> None:
+        """Invalid citation data is handled gracefully."""
+        import json
+
+        raw_json = json.dumps({"citation_count": "invalid"})
+        item = _make_item(raw_json=raw_json)
+        story = _make_story(raw_items=[item])
+
+        scorer = _make_scorer(ScoringConfig(citation_weight=0.5))
+        scored = scorer.score_story(story)
+
+        assert scored.components.citation_score == 0.0
+
+
+class TestCrossSourceScoring:
+    """Tests for cross-source quality signal scoring."""
+
+    def test_no_quality_signals_zero_score(self) -> None:
+        """Story without quality signals gets zero score."""
+        scorer = _make_scorer(ScoringConfig(cross_source_weight=1.0))
+        story = _make_story()
+        scored = scorer.score_story(story)
+        assert scored.components.cross_source_score == 0.0
+
+    def test_papers_with_code_source_bonus(self) -> None:
+        """Item from papers_with_code source gets bonus."""
+        item = _make_item(source_id="papers_with_code")
+        story = _make_story(raw_items=[item])
+
+        scorer = _make_scorer(ScoringConfig(cross_source_weight=1.0))
+        scored = scorer.score_story(story)
+
+        assert scored.components.cross_source_score == 1.0
+
+    def test_hf_daily_papers_source_bonus(self) -> None:
+        """Item from hf_daily_papers source gets bonus."""
+        item = _make_item(source_id="hf_daily_papers")
+        story = _make_story(raw_items=[item])
+
+        scorer = _make_scorer(ScoringConfig(cross_source_weight=1.0))
+        scored = scorer.score_story(story)
+
+        assert scored.components.cross_source_score == 1.0
+
+    def test_multiple_quality_sources_stack(self) -> None:
+        """Multiple quality sources stack up to cap."""
+        item1 = _make_item(source_id="papers_with_code")
+        item2 = _make_item(url="https://example.com/item2", source_id="hf_daily_papers")
+        story = _make_story(raw_items=[item1, item2])
+
+        scorer = _make_scorer(ScoringConfig(cross_source_weight=1.0))
+        scored = scorer.score_story(story)
+
+        # Two sources: 1.0 + 1.0 = 2.0
+        assert scored.components.cross_source_score == 2.0
+
+    def test_cross_source_score_capped(self) -> None:
+        """Cross-source score is capped at max."""
+
+        # Create story with both source IDs and raw_json flags
+        item1 = _make_item(source_id="papers_with_code")
+        item2 = _make_item(url="https://example.com/item2", source_id="hf_daily_papers")
+        story = _make_story(raw_items=[item1, item2])
+
+        scorer = _make_scorer(ScoringConfig(cross_source_weight=2.0))
+        scored = scorer.score_story(story)
+
+        # 2 sources * 2.0 weight = 4.0, but capped at 3.0
+        assert scored.components.cross_source_score == 3.0
+
+    def test_raw_json_quality_signal_flags(self) -> None:
+        """Quality signal flags in raw_json are detected."""
+        import json
+
+        raw_json = json.dumps({"from_papers_with_code": True})
+        item = _make_item(source_id="other-source", raw_json=raw_json)
+        story = _make_story(raw_items=[item])
+
+        scorer = _make_scorer(ScoringConfig(cross_source_weight=1.0))
+        scored = scorer.score_story(story)
+
+        assert scored.components.cross_source_score == 1.0
+
+
+class TestTotalScoreWithNewComponents:
+    """Tests for total score including new components."""
+
+    def test_total_includes_citation_and_cross_source(self) -> None:
+        """Total score includes citation and cross-source scores."""
+        import json
+
+        now = datetime.now(UTC)
+        raw_json = json.dumps({"citation_count": 100})
+        item = _make_item(
+            source_id="papers_with_code",
+            raw_json=raw_json,
+            published_at=now,
+        )
+        story = _make_story(
+            tier=0,
+            kind="paper",
+            title="Research Paper",
+            raw_items=[item],
+            published_at=now,
+        )
+
+        scorer = _make_scorer(
+            ScoringConfig(
+                tier_0_weight=3.0,
+                recency_decay_factor=0.0,
+                citation_weight=0.5,
+                citation_normalization_cap=1000,
+                cross_source_weight=1.0,
+            ),
+            now=now,
+        )
+        scored = scorer.score_story(story)
+
+        # Total should include all components
+        expected = (
+            scored.components.tier_score
+            + scored.components.kind_score
+            + scored.components.topic_score
+            + scored.components.recency_score
+            + scored.components.entity_score
+            + scored.components.citation_score
+            + scored.components.cross_source_score
+        )
+        assert scored.components.total_score == pytest.approx(expected)
