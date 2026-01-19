@@ -100,7 +100,8 @@ class TestLinkerStateMachine:
         assert sm.state == LinkerState.ENTITY_TAGGED
 
         sm.to_candidate_grouped()
-        assert sm.state == LinkerState.CANDIDATE_GROUPED
+        # After state transition, mypy incorrectly narrows state type
+        assert sm.state == LinkerState.CANDIDATE_GROUPED  # type: ignore[comparison-overlap]
 
         sm.to_stories_merged()
         assert sm.state == LinkerState.STORIES_MERGED

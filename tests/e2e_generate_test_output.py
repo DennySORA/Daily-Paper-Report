@@ -206,11 +206,8 @@ def generate_test_output(output_dir: Path) -> None:
         recent_runs=[run_info],
     )
 
-    print(f"Render success: {result.success}")
-    print(f"Output directory: {output_dir}")
-    print("Files generated:")
-    for f in result.manifest.files:
-        print(f"  - {f.path} ({f.bytes_written} bytes)")
+    for _f in result.manifest.files:
+        pass
 
 
 if __name__ == "__main__":
@@ -219,9 +216,5 @@ if __name__ == "__main__":
 
     # Also output the JSON sources_status for verification
     sources_status = create_sample_sources_status()
-    print("\n--- Sources Status JSON ---")
-    for s in sources_status:
-        print(
-            f"  {s.source_id}: status={s.status.value}, "
-            f"reason_code={s.reason_code}, category={s.category}"
-        )
+    for _s in sources_status:
+        pass

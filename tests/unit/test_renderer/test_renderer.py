@@ -1,6 +1,7 @@
 """Unit tests for the main StaticRenderer orchestrator."""
 
 import tempfile
+from collections.abc import Generator
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -16,7 +17,7 @@ from src.renderer.state_machine import RenderState
 
 
 @pytest.fixture
-def temp_output_dir() -> Path:
+def temp_output_dir() -> Generator[Path]:
     """Create a temporary output directory."""
     with tempfile.TemporaryDirectory() as tmpdir:
         yield Path(tmpdir)

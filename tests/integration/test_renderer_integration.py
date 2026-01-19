@@ -2,6 +2,7 @@
 
 import json
 import tempfile
+from collections.abc import Generator
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -16,7 +17,7 @@ from src.renderer.renderer import StaticRenderer
 
 
 @pytest.fixture
-def temp_output_dir() -> Path:
+def temp_output_dir() -> Generator[Path]:
     """Create a temporary output directory."""
     with tempfile.TemporaryDirectory() as tmpdir:
         yield Path(tmpdir)

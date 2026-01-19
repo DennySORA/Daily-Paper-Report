@@ -205,7 +205,8 @@ class TestEvidenceCapture:
         )
         assert capture.state == EvidenceState.EVIDENCE_PENDING
         capture.write_state_md(config=mock_config)
-        assert capture.state == EvidenceState.EVIDENCE_WRITING
+        # After state transition, mypy incorrectly narrows state type
+        assert capture.state == EvidenceState.EVIDENCE_WRITING  # type: ignore[comparison-overlap]
 
     def test_write_state_md_includes_config_summary(
         self, temp_base_path: Path, mock_config: MagicMock

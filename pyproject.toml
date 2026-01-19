@@ -102,6 +102,7 @@ ignore = [
     "PLR2004", # magic values allowed in tests
     "ARG001",  # unused function args for fixtures
     "ARG002",  # unused method args for fixtures
+    "PLR0913", # many args allowed in test helper functions
 ]
 "main.py" = [
     "PLC0415", # import inside function ok for entry point

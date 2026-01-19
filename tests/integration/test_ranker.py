@@ -213,7 +213,7 @@ class TestFourOutputSections:
 
         # Model releases should have the model
         has_model = any(
-            "model1" in stories
+            any(s.story_id == "model1" for s in stories)
             for stories in result.output.model_releases_by_entity.values()
         )
         # Note: model might be in top5 due to scoring
