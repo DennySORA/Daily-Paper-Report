@@ -41,12 +41,12 @@
     <div class="mb-6 animate-fade-in-up">
       <div class="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
+          <h1 class="text-xl font-semibold text-[var(--color-text-primary)] tracking-tight">
             Daily Digest
           </h1>
           <p
             v-if="runDate"
-            class="text-[var(--color-text-muted)] mt-1"
+            class="text-sm text-[var(--color-text-muted)] mt-0.5"
           >
             {{ runDate }} ·
             <RouterLink
@@ -58,21 +58,21 @@
           </p>
           <p
             v-else-if="isLoading"
-            class="h-5 bg-[var(--color-surface-tertiary)] rounded w-32 mt-1 animate-pulse"
+            class="h-4 bg-[var(--color-surface-tertiary)] rounded w-32 mt-1 animate-pulse"
           />
         </div>
 
         <!-- Stats & Controls -->
         <div
           v-if="!isLoading && !hasError"
-          class="flex flex-wrap items-center gap-3"
+          class="flex flex-wrap items-center gap-2"
         >
           <!-- Story count badge -->
           <div
-            class="px-3 py-1.5 bg-[var(--color-surface-secondary)] rounded-lg border border-[var(--color-border-light)] text-sm"
+            class="px-2.5 py-1 bg-[var(--color-surface-secondary)] rounded-md border border-[var(--color-border-light)] text-xs"
           >
             <span class="text-[var(--color-text-muted)]">Stories:</span>
-            <span class="ml-1 font-semibold text-[var(--color-text-primary)]">
+            <span class="ml-1 font-medium text-[var(--color-text-primary)]">
               {{ totalStories }}
             </span>
           </div>
@@ -80,7 +80,7 @@
           <!-- Last updated -->
           <div
             v-if="lastUpdated"
-            class="px-3 py-1.5 bg-[var(--color-surface-secondary)] rounded-lg border border-[var(--color-border-light)] text-sm"
+            class="px-2.5 py-1 bg-[var(--color-surface-secondary)] rounded-md border border-[var(--color-border-light)] text-xs"
           >
             <span class="text-[var(--color-text-muted)]">Updated:</span>
             <span class="ml-1 text-[var(--color-text-secondary)]">
@@ -90,13 +90,13 @@
 
           <!-- Time filter toggle -->
           <div
-            class="inline-flex rounded-lg bg-[var(--color-surface-secondary)] p-1 border border-[var(--color-border-light)]"
+            class="inline-flex rounded-md bg-[var(--color-surface-secondary)] p-0.5 border border-[var(--color-border-light)]"
           >
             <button
-              class="px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-[var(--duration-fast)]"
+              class="px-2.5 py-1 text-[11px] font-medium rounded transition-all duration-[var(--duration-fast)]"
               :class="
                 timeFilter === 'all'
-                  ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]'
+                  ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-xs)]'
                   : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
               "
               @click="timeFilter = 'all'"
@@ -104,10 +104,10 @@
               All Time
             </button>
             <button
-              class="px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-[var(--duration-fast)]"
+              class="px-2.5 py-1 text-[11px] font-medium rounded transition-all duration-[var(--duration-fast)]"
               :class="
                 timeFilter === '24h'
-                  ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]'
+                  ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-xs)]'
                   : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
               "
               @click="timeFilter = '24h'"
@@ -137,17 +137,17 @@
     <!-- Error State -->
     <div
       v-else-if="hasError"
-      class="bg-[var(--color-error)]/10 border border-[var(--color-error)]/20 rounded-xl p-6 text-center animate-fade-in"
+      class="bg-[var(--color-error)]/8 border border-[var(--color-error)]/15 rounded-lg p-5 text-center animate-fade-in"
       data-testid="error-state"
     >
-      <p class="text-[var(--color-error)] font-medium">
+      <p class="text-[var(--color-error)] font-medium text-sm">
         Failed to load digest
       </p>
-      <p class="text-sm text-[var(--color-text-muted)] mt-1">
+      <p class="text-xs text-[var(--color-text-muted)] mt-1">
         {{ errorMessage }}
       </p>
       <button
-        class="mt-4 px-4 py-2 bg-[var(--color-primary-600)] text-white rounded-lg font-medium hover:bg-[var(--color-primary-700)] active:bg-[var(--color-primary-800)] transition-all duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 active:scale-[0.98]"
+        class="mt-3 px-3.5 py-1.5 bg-[var(--color-primary-600)] text-white rounded-md text-sm font-medium hover:bg-[var(--color-primary-700)] transition-colors duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2"
         data-testid="retry-button"
         @click="digestStore.fetchDigest()"
       >

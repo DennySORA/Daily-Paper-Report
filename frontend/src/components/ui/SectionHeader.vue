@@ -31,23 +31,23 @@
 </script>
 
 <template>
-  <div class="mb-6 animate-fade-in-up group">
-    <div class="flex items-center gap-3 mb-3">
+  <div class="mb-5 animate-fade-in-up group">
+    <div class="flex items-center gap-3 mb-2.5">
       <span
-        class="w-11 h-11 flex items-center justify-center rounded-xl transition-all duration-[var(--duration-base)] ease-[var(--ease-out)] group-hover:scale-105"
+        class="w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-[var(--duration-base)] ease-[var(--ease-out)] group-hover:scale-105"
         :style="{
-          backgroundColor: `color-mix(in oklch, var(${accentVar}), transparent 85%)`,
+          backgroundColor: `color-mix(in oklch, var(${accentVar}), transparent 88%)`,
           color: `var(${accentVar})`,
         }"
       >
         <component
           :is="IconComponent"
-          :size="22"
+          :size="20"
           class="transition-transform duration-[var(--duration-slow)] ease-[var(--ease-spring)]"
         />
       </span>
       <h2
-        class="text-xl font-semibold tracking-tight"
+        class="text-lg font-semibold tracking-tight"
         :style="{ color: `var(${accentVar})` }"
         :data-testid="`section-title-${config.type}`"
       >
@@ -55,8 +55,7 @@
       </h2>
     </div>
     <p
-      class="text-sm text-[var(--color-text-muted)] leading-relaxed pl-14 border-l-2 transition-colors duration-[var(--duration-base)]"
-      :style="{ borderColor: `color-mix(in oklch, var(${accentVar}), transparent 60%)` }"
+      class="text-sm text-[var(--color-text-muted)] leading-relaxed pl-[52px] border-l border-[var(--color-border-light)] transition-colors duration-[var(--duration-base)]"
     >
       {{ config.description }}
     </p>

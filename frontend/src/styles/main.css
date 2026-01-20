@@ -6,23 +6,23 @@
    ============================================================ */
 
 @theme {
-  /* ---- Primary Palette (Refined Blue) ---- */
-  --color-primary-50: oklch(0.97 0.01 250);
-  --color-primary-100: oklch(0.94 0.025 250);
-  --color-primary-200: oklch(0.88 0.05 250);
-  --color-primary-300: oklch(0.78 0.09 250);
-  --color-primary-400: oklch(0.65 0.14 250);
-  --color-primary-500: oklch(0.55 0.18 250);
-  --color-primary-600: oklch(0.48 0.2 250);
-  --color-primary-700: oklch(0.42 0.18 250);
-  --color-primary-800: oklch(0.36 0.14 250);
-  --color-primary-900: oklch(0.28 0.1 250);
+  /* ---- Primary Palette (Sophisticated Blue-Slate) ---- */
+  --color-primary-50: oklch(0.975 0.008 250);
+  --color-primary-100: oklch(0.95 0.018 250);
+  --color-primary-200: oklch(0.9 0.035 250);
+  --color-primary-300: oklch(0.82 0.065 250);
+  --color-primary-400: oklch(0.7 0.1 250);
+  --color-primary-500: oklch(0.58 0.13 250);
+  --color-primary-600: oklch(0.5 0.14 250);
+  --color-primary-700: oklch(0.44 0.12 250);
+  --color-primary-800: oklch(0.38 0.09 250);
+  --color-primary-900: oklch(0.3 0.06 250);
 
-  /* ---- Section Accent Colors (Harmonized) ---- */
-  --color-accent-top5: oklch(0.72 0.14 75);
-  --color-accent-papers: oklch(0.62 0.18 290);
-  --color-accent-models: oklch(0.68 0.14 200);
-  --color-accent-radar: oklch(0.65 0.15 155);
+  /* ---- Section Accent Colors (Muted & Sophisticated) ---- */
+  --color-accent-top5: oklch(0.7 0.1 75);
+  --color-accent-papers: oklch(0.6 0.12 280);
+  --color-accent-models: oklch(0.65 0.1 200);
+  --color-accent-radar: oklch(0.62 0.1 155);
 
   /* ---- Surface Colors ---- */
   --color-surface-primary: oklch(0.99 0 0);
@@ -81,24 +81,31 @@
 /* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   @theme {
-    --color-surface-primary: oklch(0.14 0.01 250);
-    --color-surface-secondary: oklch(0.17 0.012 250);
-    --color-surface-tertiary: oklch(0.21 0.015 250);
-    --color-surface-elevated: oklch(0.19 0.012 250);
+    --color-surface-primary: oklch(0.12 0.008 250);
+    --color-surface-secondary: oklch(0.15 0.01 250);
+    --color-surface-tertiary: oklch(0.19 0.012 250);
+    --color-surface-elevated: oklch(0.17 0.01 250);
 
-    --color-text-primary: oklch(0.95 0.008 250);
-    --color-text-secondary: oklch(0.78 0.008 250);
-    --color-text-muted: oklch(0.58 0.006 250);
-    --color-text-subtle: oklch(0.42 0.005 250);
+    --color-text-primary: oklch(0.94 0.006 250);
+    --color-text-secondary: oklch(0.75 0.006 250);
+    --color-text-muted: oklch(0.55 0.005 250);
+    --color-text-subtle: oklch(0.4 0.004 250);
 
-    --color-border-default: oklch(0.28 0.015 250);
-    --color-border-light: oklch(0.23 0.01 250);
-    --color-border-strong: oklch(0.38 0.02 250);
+    --color-border-default: oklch(0.26 0.012 250);
+    --color-border-light: oklch(0.21 0.008 250);
+    --color-border-strong: oklch(0.35 0.015 250);
 
-    --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.15);
-    --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.2), 0 1px 2px oklch(0 0 0 / 0.15);
-    --shadow-md: 0 4px 6px -1px oklch(0 0 0 / 0.25), 0 2px 4px -2px oklch(0 0 0 / 0.15);
-    --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.3), 0 4px 6px -4px oklch(0 0 0 / 0.2);
+    /* Refined dark mode accent colors - slightly brighter for visibility */
+    --color-accent-top5: oklch(0.72 0.11 75);
+    --color-accent-papers: oklch(0.65 0.13 280);
+    --color-accent-models: oklch(0.68 0.11 200);
+    --color-accent-radar: oklch(0.65 0.11 155);
+
+    --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.25);
+    --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3), 0 1px 2px oklch(0 0 0 / 0.2);
+    --shadow-md: 0 4px 6px -1px oklch(0 0 0 / 0.35), 0 2px 4px -2px oklch(0 0 0 / 0.2);
+    --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.4), 0 4px 6px -4px oklch(0 0 0 / 0.25);
+    --shadow-glow: 0 0 0 3px oklch(0.5 0.14 250 / 0.2);
   }
 }
 
@@ -126,63 +133,64 @@ body {
    COMPONENT UTILITIES
    ============================================================ */
 
-/* Card base - Enhanced with better depth and transitions */
+/* Card base - Premium with refined depth and smooth transitions */
 .card {
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
   transition:
     box-shadow var(--duration-base) var(--ease-out),
     transform var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
     background-color var(--duration-base) var(--ease-out);
+  will-change: transform, box-shadow;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   border-color: var(--color-border-default);
 }
 
 .card:focus-within {
-  box-shadow: var(--shadow-md), var(--shadow-glow);
-  border-color: var(--color-primary-300);
+  box-shadow: var(--shadow-sm), var(--shadow-glow);
+  border-color: var(--color-primary-400);
 }
 
-/* Section accent borders - Enhanced with gradient effect */
+/* Section accent borders - Subtle and sophisticated */
 .accent-top5 {
-  border-left: 3px solid var(--color-accent-top5);
+  border-left: 2px solid var(--color-accent-top5);
   background: linear-gradient(
     to right,
-    color-mix(in oklch, var(--color-accent-top5), transparent 96%),
-    transparent 40%
+    color-mix(in oklch, var(--color-accent-top5), transparent 97%),
+    transparent 25%
   );
 }
 
 .accent-papers {
-  border-left: 3px solid var(--color-accent-papers);
+  border-left: 2px solid var(--color-accent-papers);
   background: linear-gradient(
     to right,
-    color-mix(in oklch, var(--color-accent-papers), transparent 96%),
-    transparent 40%
+    color-mix(in oklch, var(--color-accent-papers), transparent 97%),
+    transparent 25%
   );
 }
 
 .accent-models {
-  border-left: 3px solid var(--color-accent-models);
+  border-left: 2px solid var(--color-accent-models);
   background: linear-gradient(
     to right,
-    color-mix(in oklch, var(--color-accent-models), transparent 96%),
-    transparent 40%
+    color-mix(in oklch, var(--color-accent-models), transparent 97%),
+    transparent 25%
   );
 }
 
 .accent-radar {
-  border-left: 3px solid var(--color-accent-radar);
+  border-left: 2px solid var(--color-accent-radar);
   background: linear-gradient(
     to right,
-    color-mix(in oklch, var(--color-accent-radar), transparent 96%),
-    transparent 40%
+    color-mix(in oklch, var(--color-accent-radar), transparent 97%),
+    transparent 25%
   );
 }
 
@@ -430,8 +438,8 @@ body {
 }
 
 .hover-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .hover-scale {
