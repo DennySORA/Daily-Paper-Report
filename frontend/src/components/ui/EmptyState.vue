@@ -1,25 +1,26 @@
 <script setup lang="ts">
+  import { IconInbox } from '@/components/icons'
+
   interface Props {
-    icon?: string
     title: string
     description?: string
   }
 
   withDefaults(defineProps<Props>(), {
-    icon: '📭',
     description: undefined,
   })
 </script>
 
 <template>
   <div
-    class="flex flex-col items-center justify-center py-12 px-6 bg-[var(--color-surface-secondary)] border border-dashed border-[var(--color-border-default)] rounded-xl text-center animate-fade-in"
+    class="flex flex-col items-center justify-center py-14 px-6 bg-[var(--color-surface-secondary)] border border-dashed border-[var(--color-border-default)] rounded-xl text-center animate-fade-in"
     data-testid="empty-state"
   >
     <span
-      class="text-4xl mb-3 opacity-60"
-      aria-hidden="true"
-    >{{ icon }}</span>
+      class="w-14 h-14 flex items-center justify-center rounded-full bg-[var(--color-surface-tertiary)] text-[var(--color-text-subtle)] mb-4"
+    >
+      <IconInbox :size="28" />
+    </span>
     <p class="text-[var(--color-text-secondary)] font-medium">
       {{ title }}
     </p>

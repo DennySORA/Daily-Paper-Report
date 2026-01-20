@@ -11,20 +11,13 @@ describe('EmptyState', () => {
     expect(wrapper.text()).toContain('No content available')
   })
 
-  it('renders default icon when not provided', () => {
+  it('renders the inbox icon', () => {
     const wrapper = mount(EmptyState, {
       props: { title: 'Test title' },
     })
 
-    expect(wrapper.text()).toContain('📭')
-  })
-
-  it('renders custom icon when provided', () => {
-    const wrapper = mount(EmptyState, {
-      props: { title: 'Test title', icon: '🎉' },
-    })
-
-    expect(wrapper.text()).toContain('🎉')
+    // Check that an SVG icon is rendered
+    expect(wrapper.find('svg').exists()).toBe(true)
   })
 
   it('renders description when provided', () => {
@@ -51,5 +44,14 @@ describe('EmptyState', () => {
     })
 
     expect(wrapper.find('[data-testid="empty-state"]').exists()).toBe(true)
+  })
+
+  it('applies correct styling classes', () => {
+    const wrapper = mount(EmptyState, {
+      props: { title: 'Test title' },
+    })
+
+    const container = wrapper.find('[data-testid="empty-state"]')
+    expect(container.classes()).toContain('animate-fade-in')
   })
 })

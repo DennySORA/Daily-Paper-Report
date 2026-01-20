@@ -41,17 +41,16 @@ test.describe('Home Page', () => {
 
   test('displays content sections', async ({ page }) => {
     // Wait for data to load (either content or empty states)
-    await page.waitForSelector('[data-testid="section-top5"]')
+    await expect(page.locator('[data-testid="section-top5"]')).toBeVisible()
 
     // Check all sections exist
-    await expect(page.locator('[data-testid="section-top5"]')).toBeVisible()
     await expect(page.locator('[data-testid="section-models"]')).toBeVisible()
     await expect(page.locator('[data-testid="section-papers"]')).toBeVisible()
     await expect(page.locator('[data-testid="section-radar"]')).toBeVisible()
   })
 
   test('section headers have correct titles', async ({ page }) => {
-    await page.waitForSelector('[data-testid="section-title-top5"]')
+    await expect(page.locator('[data-testid="section-title-top5"]')).toBeVisible()
 
     await expect(page.locator('[data-testid="section-title-top5"]')).toContainText(
       'Top 5 Must-Read',

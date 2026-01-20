@@ -63,13 +63,14 @@ export interface DigestData {
 }
 
 export type SectionType = 'top5' | 'papers' | 'models' | 'radar'
+export type IconName = 'star' | 'document' | 'rocket' | 'radar' | 'cpu' | 'inbox'
 
 export interface SectionConfig {
   type: SectionType
   title: string
   description: string
-  icon: string
-  accentColor: string
+  iconName: IconName
+  accentColor: 'amber' | 'purple' | 'cyan' | 'emerald'
 }
 
 export const SECTION_CONFIGS: Record<SectionType, SectionConfig> = {
@@ -78,7 +79,7 @@ export const SECTION_CONFIGS: Record<SectionType, SectionConfig> = {
     title: 'Top 5 Must-Read',
     description:
       'Curated selection of the most significant AI/ML developments today, combining breakthrough research, major releases, and high-impact announcements.',
-    icon: '⭐',
+    iconName: 'star',
     accentColor: 'amber',
   },
   papers: {
@@ -86,7 +87,7 @@ export const SECTION_CONFIGS: Record<SectionType, SectionConfig> = {
     title: 'Papers',
     description:
       'Latest research papers from arXiv and academic sources, covering machine learning, NLP, computer vision, and AI safety.',
-    icon: '📄',
+    iconName: 'document',
     accentColor: 'purple',
   },
   models: {
@@ -94,7 +95,7 @@ export const SECTION_CONFIGS: Record<SectionType, SectionConfig> = {
     title: 'Model Releases',
     description:
       'New model releases and updates from leading AI labs and the open-source community.',
-    icon: '🚀',
+    iconName: 'rocket',
     accentColor: 'cyan',
   },
   radar: {
@@ -102,7 +103,7 @@ export const SECTION_CONFIGS: Record<SectionType, SectionConfig> = {
     title: 'Radar',
     description:
       'Broader AI ecosystem updates including blog posts, tools, datasets, and industry news worth tracking.',
-    icon: '📡',
+    iconName: 'radar',
     accentColor: 'emerald',
   },
 }

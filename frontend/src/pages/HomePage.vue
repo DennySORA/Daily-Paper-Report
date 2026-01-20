@@ -5,6 +5,7 @@
   import PapersSection from '@/components/sections/PapersSection.vue'
   import ModelsSection from '@/components/sections/ModelsSection.vue'
   import RadarSection from '@/components/sections/RadarSection.vue'
+  import SkeletonSection from '@/components/ui/SkeletonSection.vue'
 
   const digestStore = useDigestStore()
 
@@ -28,33 +29,36 @@
         {{ runDate }} ·
         <RouterLink
           :to="`/day/${runDate}`"
-          class="text-[var(--color-primary-600)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 rounded"
+          class="text-[var(--color-primary-600)] hover:text-[var(--color-primary-700)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 rounded transition-colors duration-[var(--duration-fast)]"
         >
           Permanent link
         </RouterLink>
       </p>
+      <p
+        v-else-if="isLoading"
+        class="h-5 bg-[var(--color-surface-tertiary)] rounded w-32 mt-1 animate-pulse"
+      />
     </div>
 
-    <!-- Loading State -->
+    <!-- Loading State with Skeleton -->
     <div
       v-if="isLoading"
-      class="flex items-center justify-center py-20"
+      class="space-y-10"
       data-testid="loading-state"
     >
-      <div class="flex flex-col items-center gap-4">
-        <div
-          class="w-10 h-10 border-3 border-[var(--color-primary-200)] border-t-[var(--color-primary-600)] rounded-full animate-spin"
-        />
-        <p class="text-[var(--color-text-muted)]">
-          Loading digest...
-        </p>
-      </div>
+      <SkeletonSection
+        :card-count="5"
+        :show-ranks="true"
+      />
+      <SkeletonSection :card-count="2" />
+      <SkeletonSection :card-count="3" />
+      <SkeletonSection :card-count="2" />
     </div>
 
     <!-- Error State -->
     <div
       v-else-if="hasError"
-      class="bg-[var(--color-error)]/10 border border-[var(--color-error)]/20 rounded-xl p-6 text-center"
+      class="bg-[var(--color-error)]/10 border border-[var(--color-error)]/20 rounded-xl p-6 text-center animate-fade-in"
       data-testid="error-state"
     >
       <p class="text-[var(--color-error)] font-medium">
@@ -64,7 +68,7 @@
         {{ errorMessage }}
       </p>
       <button
-        class="mt-4 px-4 py-2 bg-[var(--color-primary-600)] text-white rounded-lg font-medium hover:bg-[var(--color-primary-700)] transition-colors duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2"
+        class="mt-4 px-4 py-2 bg-[var(--color-primary-600)] text-white rounded-lg font-medium hover:bg-[var(--color-primary-700)] active:bg-[var(--color-primary-800)] transition-all duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 active:scale-[0.98]"
         data-testid="retry-button"
         @click="digestStore.fetchDigest()"
       >
