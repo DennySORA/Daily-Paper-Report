@@ -14,30 +14,30 @@
 
 <template>
   <footer
-    class="border-t border-[var(--color-border-light)] bg-[var(--color-surface-secondary)] py-6"
+    class="border-t border-[var(--color-border-light)] bg-[var(--color-surface-secondary)]/50 py-4"
   >
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <div
-          class="flex items-center gap-2 text-[var(--color-text-muted)] transition-colors duration-[var(--duration-fast)] hover:text-[var(--color-text-secondary)]"
+          class="flex items-center gap-1.5 text-[var(--color-text-muted)] transition-colors duration-[var(--duration-fast)] hover:text-[var(--color-text-secondary)]"
         >
           <IconBook
-            :size="16"
-            class="transition-transform duration-[var(--duration-base)] ease-[var(--ease-spring)] hover:scale-110"
+            :size="14"
+            class="transition-transform duration-[var(--duration-base)]"
           />
           <span>Daily Paper Report</span>
         </div>
 
         <div
           v-if="runInfo"
-          class="flex items-center gap-4 text-[var(--color-text-subtle)]"
+          class="flex items-center gap-3 text-[var(--color-text-subtle)]"
         >
           <span class="tabular-nums">Last updated: {{ formatDate(runInfo.finished_at) }}</span>
           <span
             v-if="runInfo.success"
-            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--color-success)]/10 text-[var(--color-success)] text-xs font-medium transition-all duration-[var(--duration-fast)] hover:bg-[var(--color-success)]/15"
+            class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-success)]/10 text-[var(--color-success)] text-[10px] font-medium"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse-subtle" />
+            <span class="w-1 h-1 rounded-full bg-current animate-pulse-subtle" />
             Healthy
           </span>
         </div>
