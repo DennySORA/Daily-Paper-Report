@@ -544,6 +544,49 @@ class StateStore:
 
         return [self._row_to_item(row) for row in cursor.fetchall()]
 
+    def get_items_published_since(
+        self, published_since: datetime, first_seen_since: datetime | None = None
+    ) -> list[Item]:
+        """Get items published since a timestamp.
+
+        This method filters by published_at (original publication time),
+        not first_seen_at. Useful for getting only recently published content.
+
+        Args:
+            published_since: Get items published after this time.
+            first_seen_since: Optional filter for first_seen_at (for this run).
+
+        Returns:
+            List of items, ordered by published_at descending.
+        """
+        conn = self._ensure_connected()
+
+        if first_seen_since is not None:
+            # Filter by both published_at and first_seen_at
+            cursor = conn.execute(
+                """
+                SELECT * FROM items
+                WHERE published_at IS NOT NULL
+                  AND published_at > ?
+                  AND first_seen_at > ?
+                ORDER BY published_at DESC
+                """,
+                (published_since.isoformat(), first_seen_since.isoformat()),
+            )
+        else:
+            # Filter by published_at only
+            cursor = conn.execute(
+                """
+                SELECT * FROM items
+                WHERE published_at IS NOT NULL
+                  AND published_at > ?
+                ORDER BY published_at DESC
+                """,
+                (published_since.isoformat(),),
+            )
+
+        return [self._row_to_item(row) for row in cursor.fetchall()]
+
     def get_items_by_source(self, source_id: str) -> list[Item]:
         """Get all items for a source.
 
