@@ -138,9 +138,16 @@ class Story(BaseModel):
         summary: str | None = None
         categories: list[str] = []
         source_name: str | None = None
+        first_seen_at: datetime | None = None
 
         for item in self.raw_items:
             raw_data = self._parse_raw_json(item)
+
+            # Track earliest first_seen_at across all items
+            if item.first_seen_at:
+                if first_seen_at is None or item.first_seen_at < first_seen_at:
+                    first_seen_at = item.first_seen_at
+
             if not raw_data:
                 continue
 
@@ -158,6 +165,7 @@ class Story(BaseModel):
             "summary": summary,
             "categories": categories,
             "source_name": source_name,
+            "first_seen_at": first_seen_at,
         }
 
     def to_json_dict(self) -> dict[str, object]:
@@ -209,6 +217,11 @@ class Story(BaseModel):
             "summary": metadata["summary"],
             "categories": metadata["categories"],
             "source_name": metadata["source_name"],
+            "first_seen_at": (
+                metadata["first_seen_at"].isoformat()
+                if metadata["first_seen_at"]
+                else None
+            ),
         }
 
 

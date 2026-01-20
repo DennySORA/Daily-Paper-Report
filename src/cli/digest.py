@@ -212,8 +212,29 @@ def _execute_run(options: RunOptions) -> None:
             # === PHASE 2: LINKING ===
             log.info("phase_started", phase="linking")
 
-            # Get all items collected in this run
-            all_items = store.get_items_since(run_record.started_at)
+            # Calculate 24-hour lookback from run start time
+            # Only include items PUBLISHED within the last 24 hours
+            lookback_hours = 24
+            published_cutoff = datetime.fromtimestamp(
+                run_record.started_at.timestamp() - (lookback_hours * 60 * 60),
+                tz=UTC,
+            )
+
+            # Get items published within the last 24 hours
+            # This filters by published_at (original publication time), not first_seen_at
+            # This ensures we only show content published recently, regardless of
+            # when it was first discovered by the crawler
+            all_items = store.get_items_published_since(
+                published_since=published_cutoff,
+                first_seen_since=None,  # Don't filter by first_seen_at
+            )
+
+            log.info(
+                "items_filtered_by_published_at",
+                lookback_hours=lookback_hours,
+                published_cutoff=published_cutoff.isoformat(),
+                items_after_filter=len(all_items),
+            )
 
             linker = StoryLinker(
                 run_id=run_id,

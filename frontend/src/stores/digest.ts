@@ -91,6 +91,7 @@ export const useDigestStore = defineStore('digest', () => {
   const sourceIdsWithStories = computed(() => Object.keys(allStoriesBySource.value).sort())
 
   // Filter stories within last 24 hours (based on report generation time, not current time)
+  // Uses first_seen_at (when crawler first saw the item) for accurate filtering
   const storiesLast24Hours = computed(() => {
     // Use report generation time as baseline, fallback to current time
     const baseTime = runInfo.value?.finished_at
@@ -100,8 +101,11 @@ export const useDigestStore = defineStore('digest', () => {
 
     const filterRecent = (stories: Story[]) =>
       stories.filter((s) => {
-        if (!s.published_at) return false
-        return new Date(s.published_at) >= cutoff
+        // Use first_seen_at (crawler discovery time) as primary filter
+        // Fall back to published_at if first_seen_at is not available
+        const timeStr = s.first_seen_at || s.published_at
+        if (!timeStr) return false
+        return new Date(timeStr) >= cutoff
       })
 
     return {

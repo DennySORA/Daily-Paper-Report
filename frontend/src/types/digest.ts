@@ -27,6 +27,7 @@ export interface Story {
   summary: string | null
   categories: string[]
   source_name: string | null
+  first_seen_at: string | null // When item was first seen by crawler
 }
 
 export interface SourceStatus {
