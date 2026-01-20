@@ -1,17 +1,533 @@
 {
-  "generated_at": "2026-01-20T09:56:16.734929+00:00",
-  "model_releases_by_entity": {},
-  "papers": [],
+  "generated_at": "2026-01-20T10:32:46.302804+00:00",
+  "model_releases_by_entity": {
+    "qwen": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "qwen"
+        ],
+        "first_seen_at": "2026-01-20T09:10:06.080502+00:00",
+        "github_release_url": null,
+        "hf_model_id": "qwen/qwen3-vl-embedding-2b",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-qwen",
+            "tier": 1,
+            "title": "Qwen/Qwen3-VL-Embedding-2B",
+            "url": "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3-VL-Embedding-2B",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B"
+        },
+        "published_at": "2026-01-19T06:00:03+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:qwen/qwen3-vl-embedding-2b",
+        "summary": null,
+        "title": "Qwen/Qwen3-VL-Embedding-2B"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "qwen"
+        ],
+        "first_seen_at": "2026-01-20T09:10:06.080695+00:00",
+        "github_release_url": null,
+        "hf_model_id": "qwen/qwen3-vl-embedding-8b",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-qwen",
+            "tier": 1,
+            "title": "Qwen/Qwen3-VL-Embedding-8B",
+            "url": "https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3-VL-Embedding-8B",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B"
+        },
+        "published_at": "2026-01-19T05:59:58+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:qwen/qwen3-vl-embedding-8b",
+        "summary": null,
+        "title": "Qwen/Qwen3-VL-Embedding-8B"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "qwen"
+        ],
+        "first_seen_at": "2026-01-20T09:10:06.080122+00:00",
+        "github_release_url": null,
+        "hf_model_id": "qwen/qwen3-vl-reranker-8b",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-qwen",
+            "tier": 1,
+            "title": "Qwen/Qwen3-VL-Reranker-8B",
+            "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-8B"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3-VL-Reranker-8B",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-8B"
+        },
+        "published_at": "2026-01-19T06:00:54+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:qwen/qwen3-vl-reranker-8b",
+        "summary": null,
+        "title": "Qwen/Qwen3-VL-Reranker-8B"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "qwen"
+        ],
+        "first_seen_at": "2026-01-20T09:10:06.080336+00:00",
+        "github_release_url": null,
+        "hf_model_id": "qwen/qwen3-vl-reranker-2b",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-qwen",
+            "tier": 1,
+            "title": "Qwen/Qwen3-VL-Reranker-2B",
+            "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3-VL-Reranker-2B",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+        },
+        "published_at": "2026-01-19T06:00:44+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:qwen/qwen3-vl-reranker-2b",
+        "summary": null,
+        "title": "Qwen/Qwen3-VL-Reranker-2B"
+      }
+    ]
+  },
+  "papers": [
+    {
+      "arxiv_id": "2506.10622",
+      "authors": [
+        "Sergio Burdisso, S\\'everin Baroudi, Yanis Labrak, David Grunert, Pawel Cyrta, Yiyang Chen, Srikanth Madikeri, Thomas Schaaf, Esa\\'u Villatoro-Tello, Ahmed Hassoon, Ricard Marxer, Petr Motlicek"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.717061+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "SDialog: A Python Toolkit for End-to-End Agent Building, User Simulation, Dialog Generation, and Evaluation",
+          "url": "https://arxiv.org/abs/2506.10622"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "SDialog: A Python Toolkit for End-to-End Agent Building, User Simulation, Dialog Generation, and Evaluation",
+        "url": "https://arxiv.org/abs/2506.10622"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.10622",
+      "summary": "arXiv:2506.10622v3 Announce Type: replace-cross \nAbstract: We present SDialog, an MIT-licensed open-source Python toolkit that unifies dialog generation, evaluation and mechanistic interpretability into a single end-to-end framework for building and analyzing LLM-based conversational agents. Built around a standardized Dialog representation, SDialog provides: (1) persona-driven multi-agent simulation with composable orchestration for controlled, synthetic dialog generation, (2) comprehensive evaluation combining linguistic metrics, LLM-as-a-judge and functional correctness validators, (3) mechanistic interpretability tools for activation inspection and steering via feature ablation and induction, and (4) audio generation with full acoustic simulation including 3D room modeling and microphone effects. The toolkit integrates with all major LLM backends, enabling mixed-backend experiments under a unified API. By coupling generation, evaluation, and interpretability in a dialog-centric arc",
+      "title": "SDialog: A Python Toolkit for End-to-End Agent Building, User Simulation, Dialog Generation, and Evaluation"
+    },
+    {
+      "arxiv_id": "2507.03585",
+      "authors": [
+        "Tao Tang, Shijie Xu, Jionglong Su, Zhixiang Lu"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.717315+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Causal-SAM-LLM: Large Language Models as Causal Reasoners for Robust Medical Segmentation",
+          "url": "https://arxiv.org/abs/2507.03585"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Causal-SAM-LLM: Large Language Models as Causal Reasoners for Robust Medical Segmentation",
+        "url": "https://arxiv.org/abs/2507.03585"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2507.03585",
+      "summary": "arXiv:2507.03585v2 Announce Type: replace-cross \nAbstract: The clinical utility of deep learning models for medical image segmentation is severely constrained by their inability to generalize to unseen domains. This failure is often rooted in the models learning spurious correlations between anatomical content and domain-specific imaging styles. To overcome this fundamental challenge, we introduce Causal-SAM-LLM, a novel framework that elevates Large Language Models (LLMs) to the role of causal reasoners. Our framework, built upon a frozen Segment Anything Model (SAM) encoder, incorporates two synergistic innovations. First, Linguistic Adversarial Disentanglement (LAD) employs a Vision-Language Model to generate rich, textual descriptions of confounding image styles. By training the segmentation model's features to be contrastively dissimilar to these style descriptions, it learns a representation robustly purged of non-causal information. Second, Test-Time Causal Intervention (TCI) pr",
+      "title": "Causal-SAM-LLM: Large Language Models as Causal Reasoners for Robust Medical Segmentation"
+    },
+    {
+      "arxiv_id": "2601.10820",
+      "authors": [
+        "Himanshu Thakur, Anusha Kamath, Anurag Muthyala, Dhwani Sanmukhani, Smruthi Mukund, Jay Katukuri"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL",
+        "cs.MA"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.725314+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Towards Reliable ML Feature Engineering via Planning in Constrained-Topology of LLM Agents",
+          "url": "https://arxiv.org/abs/2601.10820"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Towards Reliable ML Feature Engineering via Planning in Constrained-Topology of LLM Agents",
+        "url": "https://arxiv.org/abs/2601.10820"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.10820",
+      "summary": "arXiv:2601.10820v1 Announce Type: cross \nAbstract: Recent advances in code generation models have unlocked unprecedented opportunities for automating feature engineering, yet their adoption in real-world ML teams remains constrained by critical challenges: (i) the scarcity of datasets capturing the iterative and complex coding processes of production-level feature engineering, (ii) limited integration and personalization of widely used coding agents, such as CoPilot and Devin, with a team's unique tools, codebases, workflows, and practices, and (iii) suboptimal human-AI collaboration due to poorly timed or insufficient feedback. We address these challenges with a planner-guided, constrained-topology multi-agent framework that generates code for repositories in a multi-step fashion. The LLM-powered planner leverages a team's environment, represented as a graph, to orchestrate calls to available agents, generate context-aware prompts, and use downstream failures to retroactively correct ",
+      "title": "Towards Reliable ML Feature Engineering via Planning in Constrained-Topology of LLM Agents"
+    },
+    {
+      "arxiv_id": "2508.08435",
+      "authors": [
+        "Kazuki Irie, Samuel J. Gershman"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "q-bio.NC"
+      ],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-01-19T08:59:05.719762+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Fast weight programming and linear transformers: from machine learning to neurobiology",
+          "url": "https://arxiv.org/abs/2508.08435"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Fast weight programming and linear transformers: from machine learning to neurobiology",
+        "url": "https://arxiv.org/abs/2508.08435"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2508.08435",
+      "summary": "arXiv:2508.08435v4 Announce Type: replace-cross \nAbstract: Recent advances in artificial neural networks for machine learning, and language modeling in particular, have established a family of recurrent neural network (RNN) architectures that, unlike conventional RNNs with vector-form hidden states, use two-dimensional (2D) matrix-form hidden states. Such 2D-state RNNs, known as Fast Weight Programmers (FWPs), can be interpreted as a neural network whose synaptic weights (called fast weights) dynamically change over time as a function of input observations, and serve as short-term memory storage; corresponding synaptic weight modifications are controlled or programmed by another network (the programmer) whose parameters are trained (e.g., by gradient descent). In this Primer, we review the technical foundations of FWPs, their computational characteristics, and their connections to transformers and state space models. We also discuss connections between FWPs and models of synaptic plast",
+      "title": "Fast weight programming and linear transformers: from machine learning to neurobiology"
+    },
+    {
+      "arxiv_id": "2506.11578",
+      "authors": [
+        "Byeongchan Lee, Jonghoon Lee, Dongyoung Kim, Jaehyung Kim, Kyungjoon Park, Dongjun Lee, Jinwoo Shin"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.717144+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Efficient LLM Collaboration via Planning",
+          "url": "https://arxiv.org/abs/2506.11578"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Efficient LLM Collaboration via Planning",
+        "url": "https://arxiv.org/abs/2506.11578"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.11578",
+      "summary": "arXiv:2506.11578v3 Announce Type: replace \nAbstract: Recently, large language models (LLMs) have demonstrated strong performance, ranging from simple to complex tasks. However, while large proprietary models (e.g., models with over 100B parameters) achieve remarkable results across diverse tasks, they are often accessible through costly APIs, making frequent use too costly for many applications. In contrast, small open-source models (e.g., models with fewer than 3B parameters) are freely available and easy to deploy locally, but their performance on complex tasks remains limited. This trade-off raises a natural question: how can small and large models efficiently collaborate to combine their complementary strengths? To bridge this trade-off, we propose COPE, a test-time collaboration framework. A planner model first generates a plan that serves as a lightweight intermediate that guides a downstream executor model. Small and large models take turns acting as planner and executor, exchan",
+      "title": "Efficient LLM Collaboration via Planning"
+    },
+    {
+      "arxiv_id": "2501.18100",
+      "authors": [
+        "Yibo Wang, Tiansheng Huang, Li Shen, Huanjin Yao, Haotian Luo, Rui Liu, Naiqiang Tan, Jiaxing Huang, Dacheng Tao"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.716044+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Panacea: Mitigating Harmful Fine-tuning for Large Language Models via Post-fine-tuning Perturbation",
+          "url": "https://arxiv.org/abs/2501.18100"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Panacea: Mitigating Harmful Fine-tuning for Large Language Models via Post-fine-tuning Perturbation",
+        "url": "https://arxiv.org/abs/2501.18100"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2501.18100",
+      "summary": "arXiv:2501.18100v2 Announce Type: replace-cross \nAbstract: Harmful fine-tuning attack introduces significant security risks to the fine-tuning services. Main-stream defenses aim to vaccinate the model such that the later harmful fine-tuning attack is less effective. However, our evaluation results show that such defenses are fragile--with a few fine-tuning steps, the model still can learn the harmful knowledge. To this end, we do further experiment and find that an embarrassingly simple solution--adding purely random perturbations to the fine-tuned model, can recover the model from harmful behaviors, though it leads to a degradation in the model's fine-tuning performance. To address the degradation of fine-tuning performance, we further propose Panacea, which optimizes an adaptive perturbation that will be applied to the model after fine-tuning. Panacea maintains model's safety alignment performance without compromising downstream fine-tuning performance. Comprehensive experiments are ",
+      "title": "Panacea: Mitigating Harmful Fine-tuning for Large Language Models via Post-fine-tuning Perturbation"
+    },
+    {
+      "arxiv_id": "2510.06534",
+      "authors": [
+        "Jiahe Jin, Abhijay Paladugu, Chenyan Xiong"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.720728+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Beneficial Reasoning Behaviors in Agentic Search and Effective Post-training to Obtain Them",
+          "url": "https://arxiv.org/abs/2510.06534"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Beneficial Reasoning Behaviors in Agentic Search and Effective Post-training to Obtain Them",
+        "url": "https://arxiv.org/abs/2510.06534"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.06534",
+      "summary": "arXiv:2510.06534v3 Announce Type: replace \nAbstract: Agentic search requires large language models (LLMs) to perform multi-step search to solve complex information-seeking tasks, imposing unique challenges on their reasoning capabilities. However, what constitutes effective reasoning for agentic search and how it can be learned remains unclear. In this work, we first investigate the reasoning behaviors that enable success in agentic search. By comparing successful and failed trajectories via an LLM-based analysis pipeline, we identify four beneficial behaviors: Information Verification, Authority Evaluation, Adaptive Search, and Error Recovery. Building on this, we propose Behavior Priming, a training approach that equips agentic search models with these reasoning behaviors before reinforcement learning (RL). Specifically, it first performs supervised fine-tuning (SFT) on collected trajectories exhibiting the identified behaviors to cultivate these behaviors, and then applies standard ",
+      "title": "Beneficial Reasoning Behaviors in Agentic Search and Effective Post-training to Obtain Them"
+    },
+    {
+      "arxiv_id": "2601.10738",
+      "authors": [
+        "Percy Jardine"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.724415+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "CTHA: Constrained Temporal Hierarchical Architecture for Stable Multi-Agent LLM Systems",
+          "url": "https://arxiv.org/abs/2601.10738"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "CTHA: Constrained Temporal Hierarchical Architecture for Stable Multi-Agent LLM Systems",
+        "url": "https://arxiv.org/abs/2601.10738"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.10738",
+      "summary": "arXiv:2601.10738v1 Announce Type: new \nAbstract: Recently, multi-time-scale agent architectures have extended the ubiquitous single-loop paradigm by introducing temporal hierarchies with distinct cognitive layers. While yielding substantial performance gains, this diversification fundamentally compromises the coordination stability intrinsic to unified agent systems, which causes severe inter-layer conflicts, unbounded error propagation, and restricted scalability. To address these challenges, we propose Constrained Temporal Hierarchical Architecture (CTHA), a general framework that projects the inter-layer communication space onto structured manifolds to restore coordination stability, while incorporating principled arbitration mechanisms to ensure coherent decision-making. Specifically, CTHA enforces three key constraints: (1) Message Contract Constraints that formalize information flow between layers via typed summary, plan, and policy packets; (2) Authority Manifold Constraints tha",
+      "title": "CTHA: Constrained Temporal Hierarchical Architecture for Stable Multi-Agent LLM Systems"
+    },
+    {
+      "arxiv_id": "2509.00105",
+      "authors": [
+        "Shaoting Feng, Hanchen Li, Kuntai Du, Zhuohan Gu, Yuhan Liu, Jiayi Yao, Siddhant Ray, Samuel Shen, Yihua Cheng, Ganesh Ananthanarayanan, Junchen Jiang"
+      ],
+      "categories": [
+        "cs.OS",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.720064+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "AdaptCache: KV Cache Native Storage Hierarchy for Low-Delay and High-Quality Language Model Serving",
+          "url": "https://arxiv.org/abs/2509.00105"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "AdaptCache: KV Cache Native Storage Hierarchy for Low-Delay and High-Quality Language Model Serving",
+        "url": "https://arxiv.org/abs/2509.00105"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.00105",
+      "summary": "arXiv:2509.00105v2 Announce Type: replace-cross \nAbstract: Large language model (LLM) applications often reuse previously processed context, such as chat history and documents, which introduces significant redundant computation. Existing LLM serving systems address such redundant computation by storing the KV caches of processed context and loading the corresponding KV cache when a new request reuses the context. Further, as these LLM applications scale, the total size of KV caches becomes excessively large and requires both DRAM and SSD for full storage.\n  However, prior work that stores KV caches in DRAM and SSD suffers from high loading delays, as most KV cache hits come from SSD, which is slow to load. To increase the KV cache hit rate on DRAM, we identify lossy KV cache compression as a promising approach. We design a lossy compression system that decides the compression algorithm, compression rate and device placement for each KV cache entry to maximise DRAM hits and minimise loa",
+      "title": "AdaptCache: KV Cache Native Storage Hierarchy for Low-Delay and High-Quality Language Model Serving"
+    },
+    {
+      "arxiv_id": "2601.01452",
+      "authors": [
+        "Jian Feng, Zhihong Huang"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-19T08:59:05.722474+00:00",
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Robust and Efficient Zeroth-Order LLM Fine-Tuning via Adaptive Bayesian Subspace Optimizer",
+          "url": "https://arxiv.org/abs/2601.01452"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Robust and Efficient Zeroth-Order LLM Fine-Tuning via Adaptive Bayesian Subspace Optimizer",
+        "url": "https://arxiv.org/abs/2601.01452"
+      },
+      "published_at": "2026-01-18T21:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.01452",
+      "summary": "arXiv:2601.01452v4 Announce Type: replace-cross \nAbstract: Fine-tuning large language models (LLMs) with zeroth-order (ZO) optimization reduces memory by approximating gradients through function evaluations. However, existing methods essentially perform updates in a one-dimensional space, and suffer from collapse or substantial performance degradation under low-precision training. We introduce BSZO, an adaptive \\textbf{B}ayesian \\textbf{S}ubspace \\textbf{Z}eroth-Order \\textbf{O}ptimizer, which applies Kalman filtering to combine finite-difference information across multiple perturbation directions within a subspace. By treating each finite-difference measurement as a noisy observation, BSZO builds a posterior distribution over the subspace-projected gradient and updates it through Bayesian inference, with a residual-based adaptive mechanism to adapt to noise variations. Theoretical analysis shows that BSZO improves the convergence rate by a factor of $k/\\gamma$ compared to standard ZO ",
+      "title": "Robust and Efficient Zeroth-Order LLM Fine-Tuning via Adaptive Bayesian Subspace Optimizer"
+    }
+  ],
   "radar": [],
   "run_date": "2026-01-20",
-  "run_id": "7d792c26-9263-4e8d-84c4-50ad4ae649cc",
+  "run_id": "b8f60891-e7ae-4e96-a9ae-5768dc93c2d4",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-01-20T09:56:16.734778+00:00",
-    "items_total": 127,
-    "run_id": "7d792c26-9263-4e8d-84c4-50ad4ae649cc",
-    "started_at": "2026-01-20T09:56:04.111047+00:00",
-    "stories_total": 5,
+    "finished_at": "2026-01-20T10:32:46.302666+00:00",
+    "items_total": 0,
+    "run_id": "b8f60891-e7ae-4e96-a9ae-5768dc93c2d4",
+    "started_at": "2026-01-20T10:32:37.133081+00:00",
+    "stories_total": 103,
     "success": true
   },
   "sources_status": [
@@ -125,99 +641,9 @@
       "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub LangChain",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "gh-langchain",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub llama.cpp",
-      "newest_item_date": "2026-01-19T23:24:58+00:00",
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "gh-llama-cpp",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub Ollama",
-      "newest_item_date": "2026-01-16T19:53:57+00:00",
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "gh-ollama",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub PyTorch",
-      "newest_item_date": "2025-11-12T19:27:19+00:00",
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "gh-pytorch",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub Transformers",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "gh-transformers",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "github_releases",
-      "name": "GitHub vLLM",
-      "newest_item_date": "2026-01-20T09:20:31+00:00",
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "gh-vllm",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "Google AI Blog",
-      "newest_item_date": "2026-01-15T08:06:00+00:00",
+      "newest_item_date": null,
       "reason_code": "FETCH_PARSE_OK_NO_DELTA",
       "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
@@ -262,7 +688,7 @@
       "last_fetch_status_code": null,
       "method": "hf_daily_papers",
       "name": "Hugging Face Daily Papers",
-      "newest_item_date": "2026-01-16T18:54:29+00:00",
+      "newest_item_date": null,
       "reason_code": "FETCH_PARSE_OK_NO_DELTA",
       "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
@@ -442,7 +868,7 @@
       "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "OpenAI Blog",
-      "newest_item_date": "2026-01-18T04:00:00+00:00",
+      "newest_item_date": null,
       "reason_code": "FETCH_PARSE_OK_NO_DELTA",
       "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
@@ -468,164 +894,188 @@
   ],
   "top5": [
     {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
+      "arxiv_id": "2601.10744",
+      "authors": [
+        "Sen Wang, Bangwei Liu, Zhenkun Gao, Lizhuang Ma, Xuhong Wang, Yuan Xie, Xin Tan"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
       "entities": [],
-      "first_seen_at": "2026-01-20T09:48:32.096694+00:00",
-      "github_release_url": "https://github.com/vllm-project/vllm/releases/tag/v0.14.0",
+      "first_seen_at": "2026-01-19T08:59:05.724732+00:00",
+      "github_release_url": null,
       "hf_model_id": null,
       "item_count": 1,
       "links": [
         {
-          "link_type": "github",
-          "source_id": "gh-vllm",
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "v0.14.0",
-          "url": "https://github.com/vllm-project/vllm/releases/tag/v0.14.0"
+          "title": "Explore with Long-term Memory: A Benchmark and Multimodal LLM-based Reinforcement Learning Framework for Embodied Exploration",
+          "url": "https://arxiv.org/abs/2601.10744"
         }
       ],
       "primary_link": {
-        "link_type": "github",
-        "source_id": "gh-vllm",
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "v0.14.0",
-        "url": "https://github.com/vllm-project/vllm/releases/tag/v0.14.0"
+        "title": "Explore with Long-term Memory: A Benchmark and Multimodal LLM-based Reinforcement Learning Framework for Embodied Exploration",
+        "url": "https://arxiv.org/abs/2601.10744"
       },
-      "published_at": "2026-01-20T09:20:31+00:00",
+      "published_at": "2026-01-18T21:00:00+00:00",
       "section": null,
-      "source_name": null,
-      "story_id": "github:vllm-project/vllm:v0.14.0",
-      "summary": null,
-      "title": "v0.14.0"
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.10744",
+      "summary": "arXiv:2601.10744v1 Announce Type: new \nAbstract: An ideal embodied agent should possess lifelong learning capabilities to handle long-horizon and complex tasks, enabling continuous operation in general environments. This not only requires the agent to accurately accomplish given tasks but also to leverage long-term episodic memory to optimize decision-making. However, existing mainstream one-shot embodied tasks primarily focus on task completion results, neglecting the crucial process of exploration and memory utilization. To address this, we propose Long-term Memory Embodied Exploration (LMEE), which aims to unify the agent's exploratory cognition and decision-making behaviors to promote lifelong learning.We further construct a corresponding dataset and benchmark, LMEE-Bench, incorporating multi-goal navigation and memory-based question answering to comprehensively evaluate both the process and outcome of embodied exploration. To enhance the agent's memory recall and proactive explora",
+      "title": "Explore with Long-term Memory: A Benchmark and Multimodal LLM-based Reinforcement Learning Framework for Embodied Exploration"
     },
     {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
+      "arxiv_id": "2511.09122",
+      "authors": [
+        "Joschka Kersting, Michael Rummel, Gesa Benndorf"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
       "entities": [],
-      "first_seen_at": "2026-01-20T09:48:33.375236+00:00",
-      "github_release_url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7779",
+      "first_seen_at": "2026-01-19T08:59:05.721211+00:00",
+      "github_release_url": null,
       "hf_model_id": null,
       "item_count": 1,
       "links": [
         {
-          "link_type": "github",
-          "source_id": "gh-llama-cpp",
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "b7779",
-          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7779"
+          "title": "Vendor-Aware Industrial Agents: RAG-Enhanced LLMs for Secure On-Premise PLC Code Generation",
+          "url": "https://arxiv.org/abs/2511.09122"
         }
       ],
       "primary_link": {
-        "link_type": "github",
-        "source_id": "gh-llama-cpp",
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "b7779",
-        "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7779"
+        "title": "Vendor-Aware Industrial Agents: RAG-Enhanced LLMs for Secure On-Premise PLC Code Generation",
+        "url": "https://arxiv.org/abs/2511.09122"
       },
-      "published_at": "2026-01-19T23:24:58+00:00",
+      "published_at": "2026-01-18T21:00:00+00:00",
       "section": null,
-      "source_name": null,
-      "story_id": "github:ggml-org/llama.cpp:b7779",
-      "summary": null,
-      "title": "b7779"
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2511.09122",
+      "summary": "arXiv:2511.09122v2 Announce Type: replace-cross \nAbstract: Programmable Logic Controllers are operated by proprietary code dialects; this makes it challenging to train coding assistants. Current LLMs are trained on large code datasets and are capable of writing IEC 61131-3 compatible code out of the box, but they neither know specific function blocks, nor related project code. Moreover, companies like Mitsubishi Electric and their customers do not trust cloud providers. Hence, an own coding agent is the desired solution to cope with this. In this study, we present our work on a low-data domain coding assistant solution for industrial use. We show how we achieved high quality code generation without fine-tuning large models and by fine-tuning small local models for edge device usage. Our tool lets several AI models compete with each other, uses reasoning, corrects bugs automatically and checks code validity by compiling it directly in the chat interface. We support our approach with an ",
+      "title": "Vendor-Aware Industrial Agents: RAG-Enhanced LLMs for Secure On-Premise PLC Code Generation"
     },
     {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
+      "arxiv_id": "2511.15304",
+      "authors": [
+        "Piercosma Bisconti, Matteo Prandi, Federico Pierucci, Francesco Giarrusso, Marcantonio Bracale Syrnikov, Marcello Galisai, Vincenzo Suriani, Olga Sorokoletova, Federico Sartore, Daniele Nardi"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
       "entities": [],
-      "first_seen_at": "2026-01-20T09:48:33.375427+00:00",
-      "github_release_url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7777",
+      "first_seen_at": "2026-01-19T08:59:05.721543+00:00",
+      "github_release_url": null,
       "hf_model_id": null,
       "item_count": 1,
       "links": [
         {
-          "link_type": "github",
-          "source_id": "gh-llama-cpp",
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "b7777",
-          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7777"
+          "title": "Adversarial Poetry as a Universal Single-Turn Jailbreak Mechanism in Large Language Models",
+          "url": "https://arxiv.org/abs/2511.15304"
         }
       ],
       "primary_link": {
-        "link_type": "github",
-        "source_id": "gh-llama-cpp",
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "b7777",
-        "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7777"
+        "title": "Adversarial Poetry as a Universal Single-Turn Jailbreak Mechanism in Large Language Models",
+        "url": "https://arxiv.org/abs/2511.15304"
       },
-      "published_at": "2026-01-19T21:37:36+00:00",
+      "published_at": "2026-01-18T21:00:00+00:00",
       "section": null,
-      "source_name": null,
-      "story_id": "github:ggml-org/llama.cpp:b7777",
-      "summary": null,
-      "title": "b7777"
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2511.15304",
+      "summary": "arXiv:2511.15304v3 Announce Type: replace-cross \nAbstract: We present evidence that adversarial poetry functions as a universal single-turn jailbreak technique for Large Language Models (LLMs). Across 25 frontier proprietary and open-weight models, curated poetic prompts yielded high attack-success rates (ASR), with some providers exceeding 90%. Mapping prompts to MLCommons and EU CoP risk taxonomies shows that poetic attacks transfer across CBRN, manipulation, cyber-offence, and loss-of-control domains. Converting 1,200 MLCommons harmful prompts into verse via a standardized meta-prompt produced ASRs up to 18 times higher than their prose baselines. Outputs are evaluated using an ensemble of 3 open-weight LLM judges, whose binary safety assessments were validated on a stratified human-labeled subset. Poetic framing achieved an average jailbreak success rate of 62% for hand-crafted poems and approximately 43% for meta-prompt conversions (compared to non-poetic baselines), substantially",
+      "title": "Adversarial Poetry as a Universal Single-Turn Jailbreak Mechanism in Large Language Models"
     },
     {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
+      "arxiv_id": "2512.04359",
+      "authors": [
+        "Hongye Cao, Zhixin Bai, Ziyue Peng, Boyan Wang, Tianpei Yang, Jing Huo, Yuyao Zhang, Yang Gao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
       "entities": [],
-      "first_seen_at": "2026-01-20T09:48:33.375591+00:00",
-      "github_release_url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7775",
+      "first_seen_at": "2026-01-19T08:59:05.722009+00:00",
+      "github_release_url": null,
       "hf_model_id": null,
       "item_count": 1,
       "links": [
         {
-          "link_type": "github",
-          "source_id": "gh-llama-cpp",
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "b7775",
-          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7775"
+          "title": "Efficient Reinforcement Learning with Semantic and Token Entropy for LLM Reasoning",
+          "url": "https://arxiv.org/abs/2512.04359"
         }
       ],
       "primary_link": {
-        "link_type": "github",
-        "source_id": "gh-llama-cpp",
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "b7775",
-        "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7775"
+        "title": "Efficient Reinforcement Learning with Semantic and Token Entropy for LLM Reasoning",
+        "url": "https://arxiv.org/abs/2512.04359"
       },
-      "published_at": "2026-01-19T20:58:28+00:00",
+      "published_at": "2026-01-18T21:00:00+00:00",
       "section": null,
-      "source_name": null,
-      "story_id": "github:ggml-org/llama.cpp:b7775",
-      "summary": null,
-      "title": "b7775"
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2512.04359",
+      "summary": "arXiv:2512.04359v3 Announce Type: replace \nAbstract: Reinforcement learning with verifiable rewards (RLVR) has demonstrated superior performance in enhancing the reasoning capability of large language models (LLMs). However, this accuracy-oriented learning paradigm often suffers from entropy collapse, which reduces policy exploration and limits reasoning capabilities. To address this challenge, we propose an efficient reinforcement learning framework that leverages entropy signals at both the semantic and token levels to improve reasoning. From the data perspective, we introduce semantic entropy-guided curriculum learning, organizing training data from low to high semantic entropy to guide progressive optimization from easier to more challenging tasks. For the algorithmic design, we adopt non-uniform token treatment by imposing KL regularization on low-entropy tokens that critically impact policy exploration and applying stronger constraints on high-covariance portions within these tok",
+      "title": "Efficient Reinforcement Learning with Semantic and Token Entropy for LLM Reasoning"
     },
     {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
+      "arxiv_id": "2601.10343",
+      "authors": [
+        "Deming Ding, Shichun Liu, Enhui Yang, Jiahang Lin, Ziying Chen, Shihan Dou, Honglin Guo, Weiyu Cheng, Pengyu Zhao, Chengjun Xiao, Qunhong Zeng, Qi Zhang, Xuanjing Huang, Qidi Xu, Tao Gui"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
       "entities": [],
-      "first_seen_at": "2026-01-20T09:48:33.375727+00:00",
-      "github_release_url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7774",
+      "first_seen_at": "2026-01-19T08:59:05.723499+00:00",
+      "github_release_url": null,
       "hf_model_id": null,
       "item_count": 1,
       "links": [
         {
-          "link_type": "github",
-          "source_id": "gh-llama-cpp",
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "b7774",
-          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7774"
+          "title": "OctoBench: Benchmarking Scaffold-Aware Instruction Following in Repository-Grounded Agentic Coding",
+          "url": "https://arxiv.org/abs/2601.10343"
         }
       ],
       "primary_link": {
-        "link_type": "github",
-        "source_id": "gh-llama-cpp",
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "b7774",
-        "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b7774"
+        "title": "OctoBench: Benchmarking Scaffold-Aware Instruction Following in Repository-Grounded Agentic Coding",
+        "url": "https://arxiv.org/abs/2601.10343"
       },
-      "published_at": "2026-01-19T20:57:24+00:00",
+      "published_at": "2026-01-18T21:00:00+00:00",
       "section": null,
-      "source_name": null,
-      "story_id": "github:ggml-org/llama.cpp:b7774",
-      "summary": null,
-      "title": "b7774"
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.10343",
+      "summary": "arXiv:2601.10343v2 Announce Type: replace-cross \nAbstract: Modern coding scaffolds turn LLMs into capable software agents, but their ability to follow scaffold-specified instructions remains under-examined, especially when constraints are heterogeneous and persist across interactions. To fill this gap, we introduce OctoBench, which benchmarks scaffold-aware instruction following in repository-grounded agentic coding. OctoBench includes 34 environments and 217 tasks instantiated under three scaffold types, and is paired with 7,098 objective checklist items. To disentangle solving the task from following the rules, we provide an automated observation-and-scoring toolkit that captures full trajectories and performs fine-grained checks. Experiments on eight representative models reveal a systematic gap between task-solving and scaffold-aware compliance, underscoring the need for training and evaluation that explicitly targets heterogeneous instruction following. We release the benchmark to",
+      "title": "OctoBench: Benchmarking Scaffold-Aware Instruction Following in Repository-Grounded Agentic Coding"
     }
   ]
 }
