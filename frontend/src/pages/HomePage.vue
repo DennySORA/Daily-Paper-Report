@@ -15,21 +15,27 @@
   const errorMessage = computed(() => digestStore.error)
   const runDate = computed(() => digestStore.runDate)
   const runInfo = computed(() => digestStore.runInfo)
+  const timeFilter = computed(() => digestStore.timeFilter)
 
   // Active tab state
   const activeTab = ref<string>('top5')
 
-  // Tab configuration with counts
+  // Time filter toggle handler
+  const setTimeFilter = (filter: 'all' | '24h') => {
+    digestStore.setTimeFilter(filter)
+  }
+
+  // Tab configuration with counts (using filtered data)
   const tabs = computed<Tab[]>(() => {
-    const modelCount = Object.values(digestStore.modelReleases).reduce(
+    const modelCount = Object.values(digestStore.filteredModelReleases).reduce(
       (sum, stories) => sum + stories.length,
       0,
     )
     return [
-      { id: 'top5', label: 'Top Stories', count: digestStore.top5.length, icon: 'star' },
-      { id: 'papers', label: 'Papers', count: digestStore.papers.length, icon: 'document' },
+      { id: 'top5', label: 'Top Stories', count: digestStore.filteredTop5.length, icon: 'star' },
+      { id: 'papers', label: 'Papers', count: digestStore.filteredPapers.length, icon: 'document' },
       { id: 'models', label: 'Models', count: modelCount, icon: 'cpu' },
-      { id: 'radar', label: 'Radar', count: digestStore.radar.length, icon: 'globe' },
+      { id: 'radar', label: 'Radar', count: digestStore.filteredRadar.length, icon: 'globe' },
     ]
   })
 
@@ -46,8 +52,8 @@
     })
   })
 
-  // Total story count
-  const totalStories = computed(() => digestStore.totalStories)
+  // Total story count (using filtered data)
+  const totalStories = computed(() => digestStore.filteredTotalStories)
 </script>
 
 <template>
@@ -80,11 +86,39 @@
           />
         </div>
 
-        <!-- Stats badges -->
+        <!-- Stats badges and time filter -->
         <div
           v-if="!isLoading && !hasError"
           class="flex flex-wrap items-center gap-2"
         >
+          <!-- Time Filter Toggle -->
+          <div
+            class="inline-flex rounded-lg bg-[var(--color-surface-secondary)] p-1 border border-[var(--color-border-light)]"
+          >
+            <button
+              class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all"
+              :class="
+                timeFilter === 'all'
+                  ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-sm'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
+              "
+              @click="setTimeFilter('all')"
+            >
+              All Time
+            </button>
+            <button
+              class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all"
+              :class="
+                timeFilter === '24h'
+                  ? 'bg-[var(--color-primary-500)] text-white shadow-sm'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
+              "
+              @click="setTimeFilter('24h')"
+            >
+              Last 24h
+            </button>
+          </div>
+
           <div
             class="px-3 py-1.5 bg-[var(--color-surface-secondary)] rounded-lg border border-[var(--color-border-light)] text-sm"
           >

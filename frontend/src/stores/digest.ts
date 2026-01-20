@@ -7,6 +7,7 @@ export const useDigestStore = defineStore('digest', () => {
   const data = ref<DigestData | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
+  const timeFilter = ref<'all' | '24h'>('all')
 
   // Getters
   const hasData = computed(() => data.value !== null)
@@ -89,10 +90,13 @@ export const useDigestStore = defineStore('digest', () => {
   // Get all unique source IDs with stories
   const sourceIdsWithStories = computed(() => Object.keys(allStoriesBySource.value).sort())
 
-  // Filter stories within last 24 hours
+  // Filter stories within last 24 hours (based on report generation time, not current time)
   const storiesLast24Hours = computed(() => {
-    const now = new Date()
-    const cutoff = new Date(now.getTime() - 24 * 60 * 60 * 1000)
+    // Use report generation time as baseline, fallback to current time
+    const baseTime = runInfo.value?.finished_at
+      ? new Date(runInfo.value.finished_at)
+      : new Date()
+    const cutoff = new Date(baseTime.getTime() - 24 * 60 * 60 * 1000)
 
     const filterRecent = (stories: Story[]) =>
       stories.filter((s) => {
@@ -109,6 +113,58 @@ export const useDigestStore = defineStore('digest', () => {
       ),
     }
   })
+
+  // Filtered getters based on time filter setting
+  const filteredTop5 = computed(() =>
+    timeFilter.value === '24h' ? storiesLast24Hours.value.top5 : top5.value,
+  )
+
+  const filteredPapers = computed(() =>
+    timeFilter.value === '24h' ? storiesLast24Hours.value.papers : papers.value,
+  )
+
+  const filteredRadar = computed(() =>
+    timeFilter.value === '24h' ? storiesLast24Hours.value.radar : radar.value,
+  )
+
+  const filteredModelReleases = computed(() =>
+    timeFilter.value === '24h' ? storiesLast24Hours.value.modelReleases : modelReleases.value,
+  )
+
+  // Filtered papers by category
+  const filteredPapersByCategory = computed(() => {
+    const papersToGroup = filteredPapers.value
+    const grouped: Record<string, Story[]> = {}
+    for (const paper of papersToGroup) {
+      const category = paper.categories?.[0] ?? 'Uncategorized'
+      if (!grouped[category]) {
+        grouped[category] = []
+      }
+      grouped[category].push(paper)
+    }
+    return grouped
+  })
+
+  const filteredPaperCategories = computed(() => Object.keys(filteredPapersByCategory.value).sort())
+
+  // Filtered total count
+  const filteredTotalStories = computed(() => {
+    const modelStoriesCount = Object.values(filteredModelReleases.value).reduce(
+      (sum, stories) => sum + stories.length,
+      0,
+    )
+    return (
+      filteredTop5.value.length +
+      filteredPapers.value.length +
+      modelStoriesCount +
+      filteredRadar.value.length
+    )
+  })
+
+  // Action to toggle time filter
+  function setTimeFilter(filter: 'all' | '24h'): void {
+    timeFilter.value = filter
+  }
 
   // Get sources grouped by status
   const sourcesByStatus = computed(() => {
@@ -161,6 +217,7 @@ export const useDigestStore = defineStore('digest', () => {
     data,
     isLoading,
     error,
+    timeFilter,
     // Getters
     hasData,
     top5,
@@ -180,9 +237,18 @@ export const useDigestStore = defineStore('digest', () => {
     sourceIdsWithStories,
     storiesLast24Hours,
     sourcesByStatus,
+    // Filtered getters (based on time filter)
+    filteredTop5,
+    filteredPapers,
+    filteredRadar,
+    filteredModelReleases,
+    filteredPapersByCategory,
+    filteredPaperCategories,
+    filteredTotalStories,
     // Actions
     fetchDigest,
     setData,
     getStoriesByEntity,
+    setTimeFilter,
   }
 })

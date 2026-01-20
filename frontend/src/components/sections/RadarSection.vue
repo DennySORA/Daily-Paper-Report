@@ -6,7 +6,7 @@
   import EmptyState from '@/components/ui/EmptyState.vue'
 
   const digestStore = useDigestStore()
-  const stories = computed(() => digestStore.radar)
+  const stories = computed(() => digestStore.filteredRadar)
   const sourceNames = computed(() => digestStore.sourceNames)
 
   // View mode: 'all' or 'by-source'
