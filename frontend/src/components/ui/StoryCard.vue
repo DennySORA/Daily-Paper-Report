@@ -115,8 +115,14 @@
             class="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface-tertiary)] rounded-lg hover:bg-[var(--color-primary-50)] hover:text-[var(--color-primary-600)] hover:shadow-[var(--shadow-sm)] transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] active:scale-[0.97]"
             :title="link.title"
           >
-            <IconGithub v-if="link.link_type === 'github'" :size="14" />
-            <IconDocument v-else :size="14" />
+            <IconGithub
+              v-if="link.link_type === 'github'"
+              :size="14"
+            />
+            <IconDocument
+              v-else
+              :size="14"
+            />
             <span>{{ getLinkTypeLabel(link.link_type) }}</span>
           </a>
         </div>

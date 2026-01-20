@@ -12,10 +12,16 @@
 </script>
 
 <template>
-  <section class="mb-10" data-testid="section-radar">
+  <section
+    class="mb-10"
+    data-testid="section-radar"
+  >
     <SectionHeader :config="config" />
 
-    <div v-if="stories.length > 0" class="space-y-3">
+    <div
+      v-if="stories.length > 0"
+      class="space-y-3"
+    >
       <StoryCard
         v-for="story in stories"
         :key="story.story_id"
@@ -24,6 +30,10 @@
       />
     </div>
 
-    <EmptyState v-else title="No radar items today" description="Check back tomorrow!" />
+    <EmptyState
+      v-else
+      title="No radar items today"
+      description="Check back tomorrow!"
+    />
   </section>
 </template>

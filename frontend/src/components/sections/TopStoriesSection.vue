@@ -12,10 +12,16 @@
 </script>
 
 <template>
-  <section class="mb-10" data-testid="section-top5">
+  <section
+    class="mb-10"
+    data-testid="section-top5"
+  >
     <SectionHeader :config="config" />
 
-    <div v-if="stories.length > 0" class="space-y-3">
+    <div
+      v-if="stories.length > 0"
+      class="space-y-3"
+    >
       <StoryCard
         v-for="(story, index) in stories"
         :key="story.story_id"
@@ -26,6 +32,10 @@
       />
     </div>
 
-    <EmptyState v-else title="No top stories today" description="Check back tomorrow!" />
+    <EmptyState
+      v-else
+      title="No top stories today"
+      description="Check back tomorrow!"
+    />
   </section>
 </template>

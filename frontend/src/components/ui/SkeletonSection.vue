@@ -13,7 +13,10 @@
 </script>
 
 <template>
-  <div class="space-y-4" data-testid="skeleton-section">
+  <div
+    class="space-y-4"
+    data-testid="skeleton-section"
+  >
     <!-- Section header skeleton -->
     <div class="mb-6 animate-pulse">
       <div class="flex items-center gap-3 mb-3">
@@ -25,7 +28,11 @@
 
     <!-- Cards skeleton -->
     <div class="space-y-3">
-      <SkeletonCard v-for="i in cardCount" :key="i" :show-rank="showRanks" />
+      <SkeletonCard
+        v-for="i in cardCount"
+        :key="i"
+        :show-rank="showRanks"
+      />
     </div>
   </div>
 </template>

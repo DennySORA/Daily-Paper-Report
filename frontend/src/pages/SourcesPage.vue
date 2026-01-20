@@ -49,11 +49,18 @@
 <template>
   <div data-testid="sources-page">
     <div class="mb-8 animate-fade-in-up">
-      <h1 class="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">Sources</h1>
-      <p class="text-[var(--color-text-muted)] mt-1">Data sources and their current status</p>
+      <h1 class="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
+        Sources
+      </h1>
+      <p class="text-[var(--color-text-muted)] mt-1">
+        Data sources and their current status
+      </p>
     </div>
 
-    <div v-if="sources.length > 0" class="space-y-3">
+    <div
+      v-if="sources.length > 0"
+      class="space-y-3"
+    >
       <div
         v-for="(source, index) in sources"
         :key="source.source_id"
@@ -89,7 +96,10 @@
               </template>
             </div>
 
-            <p v-if="source.reason_text" class="text-sm text-[var(--color-text-subtle)] mt-2">
+            <p
+              v-if="source.reason_text"
+              class="text-sm text-[var(--color-text-subtle)] mt-2"
+            >
               {{ source.reason_text }}
             </p>
           </div>
@@ -101,8 +111,13 @@
       v-else
       class="flex flex-col items-center justify-center py-20 bg-[var(--color-surface-secondary)] rounded-xl border border-dashed border-[var(--color-border-default)] animate-fade-in-scale transition-all duration-[var(--duration-base)] hover:border-[var(--color-border-strong)]"
     >
-      <span class="text-5xl mb-4 animate-float" aria-hidden="true">📡</span>
-      <p class="text-[var(--color-text-secondary)] font-medium">No source data available</p>
+      <span
+        class="text-5xl mb-4 animate-float"
+        aria-hidden="true"
+      >📡</span>
+      <p class="text-[var(--color-text-secondary)] font-medium">
+        No source data available
+      </p>
     </div>
   </div>
 </template>
