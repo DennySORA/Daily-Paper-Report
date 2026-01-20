@@ -1,15 +1,13 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { useDigestStore } from '@/stores/digest'
-  import { SECTION_CONFIGS, type Story } from '@/types/digest'
-  import SectionHeader from '@/components/ui/SectionHeader.vue'
+  import type { Story } from '@/types/digest'
   import StoryCard from '@/components/ui/StoryCard.vue'
   import EmptyState from '@/components/ui/EmptyState.vue'
 
   const digestStore = useDigestStore()
   const stories = computed(() => digestStore.radar)
   const sourceNames = computed(() => digestStore.sourceNames)
-  const config = SECTION_CONFIGS.radar
 
   // View mode: 'all' or 'by-source'
   const viewMode = ref<'all' | 'by-source'>('all')
@@ -45,11 +43,12 @@
 </script>
 
 <template>
-  <section
-    class="mb-10"
-    data-testid="section-radar"
-  >
-    <SectionHeader :config="config" />
+  <div data-testid="section-radar">
+    <!-- Section description -->
+    <p class="text-sm text-[var(--color-text-muted)] mb-4">
+      Broader AI ecosystem updates including blog posts, tools, datasets, and industry news worth
+      tracking.
+    </p>
 
     <!-- View Controls -->
     <div
@@ -61,10 +60,10 @@
         class="inline-flex rounded-lg bg-[var(--color-surface-secondary)] p-1 border border-[var(--color-border-light)]"
       >
         <button
-          class="px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-[var(--duration-fast)]"
+          class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all"
           :class="
             viewMode === 'all'
-              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]'
+              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-sm'
               : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
           "
           @click="viewMode = 'all'; selectedSource = null"
@@ -72,10 +71,10 @@
           All Items
         </button>
         <button
-          class="px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-[var(--duration-fast)]"
+          class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all"
           :class="
             viewMode === 'by-source'
-              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]'
+              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-sm'
               : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
           "
           @click="viewMode = 'by-source'"
@@ -90,11 +89,11 @@
         class="flex flex-wrap gap-2"
       >
         <button
-          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-[var(--duration-fast)] border"
+          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all border"
           :class="
             selectedSource === null
               ? 'bg-[var(--color-accent-radar)] text-white border-[var(--color-accent-radar)]'
-              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-accent-radar)]/50 hover:text-[var(--color-accent-radar)]'
+              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-accent-radar)] hover:text-[var(--color-accent-radar)]'
           "
           @click="selectedSource = null"
         >
@@ -103,11 +102,11 @@
         <button
           v-for="sourceId in radarSourceIds"
           :key="sourceId"
-          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-[var(--duration-fast)] border"
+          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all border"
           :class="
             selectedSource === sourceId
               ? 'bg-[var(--color-accent-radar)] text-white border-[var(--color-accent-radar)]'
-              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-accent-radar)]/50 hover:text-[var(--color-accent-radar)]'
+              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-accent-radar)] hover:text-[var(--color-accent-radar)]'
           "
           @click="selectedSource = sourceId"
         >
@@ -119,7 +118,7 @@
     <!-- Radar List - Grouped by Source -->
     <div
       v-if="stories.length > 0 && viewMode === 'by-source' && selectedSource === null"
-      class="space-y-8"
+      class="space-y-6"
     >
       <div
         v-for="sourceId in radarSourceIds"
@@ -128,6 +127,7 @@
       >
         <h3
           class="flex items-center gap-2 text-sm font-semibold text-[var(--color-text-secondary)] mb-3 pb-2 border-b border-[var(--color-border-light)]"
+          style="font-family: var(--font-display)"
         >
           <span class="w-2 h-2 rounded-full bg-[var(--color-accent-radar)]" />
           {{ getSourceDisplayName(sourceId) }}
@@ -140,6 +140,7 @@
             v-for="story in radarBySource[sourceId]"
             :key="story.story_id"
             :story="story"
+            :show-summary="true"
             accent-class="accent-radar"
           />
         </div>
@@ -155,6 +156,7 @@
         v-for="story in filteredStories"
         :key="story.story_id"
         :story="story"
+        :show-summary="true"
         accent-class="accent-radar"
       />
     </div>
@@ -164,5 +166,5 @@
       title="No radar items today"
       description="Check back tomorrow!"
     />
-  </section>
+  </div>
 </template>

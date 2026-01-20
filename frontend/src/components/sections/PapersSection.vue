@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { useDigestStore } from '@/stores/digest'
-  import { SECTION_CONFIGS } from '@/types/digest'
-  import SectionHeader from '@/components/ui/SectionHeader.vue'
   import StoryCard from '@/components/ui/StoryCard.vue'
   import EmptyState from '@/components/ui/EmptyState.vue'
 
@@ -10,7 +8,6 @@
   const stories = computed(() => digestStore.papers)
   const papersByCategory = computed(() => digestStore.papersByCategory)
   const categories = computed(() => digestStore.paperCategories)
-  const config = SECTION_CONFIGS.papers
 
   // View mode: 'all' or 'by-category'
   const viewMode = ref<'all' | 'by-category'>('by-category')
@@ -26,7 +23,6 @@
   })
 
   const getCategoryDisplayName = (category: string): string => {
-    // Format arXiv categories nicely
     const categoryNames: Record<string, string> = {
       'cs.AI': 'Artificial Intelligence',
       'cs.CL': 'Computation & Language',
@@ -42,11 +38,12 @@
 </script>
 
 <template>
-  <section
-    class="mb-10"
-    data-testid="section-papers"
-  >
-    <SectionHeader :config="config" />
+  <div data-testid="section-papers">
+    <!-- Section description -->
+    <p class="text-sm text-[var(--color-text-muted)] mb-4">
+      Latest research papers from arXiv and academic sources, covering machine learning, NLP,
+      computer vision, and AI safety.
+    </p>
 
     <!-- View Controls -->
     <div
@@ -58,10 +55,10 @@
         class="inline-flex rounded-lg bg-[var(--color-surface-secondary)] p-1 border border-[var(--color-border-light)]"
       >
         <button
-          class="px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-[var(--duration-fast)]"
+          class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all"
           :class="
             viewMode === 'by-category'
-              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]'
+              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-sm'
               : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
           "
           @click="viewMode = 'by-category'"
@@ -69,10 +66,10 @@
           By Category
         </button>
         <button
-          class="px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-[var(--duration-fast)]"
+          class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all"
           :class="
             viewMode === 'all'
-              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]'
+              ? 'bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)] shadow-sm'
               : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
           "
           @click="viewMode = 'all'; selectedCategory = null"
@@ -87,11 +84,11 @@
         class="flex flex-wrap gap-2"
       >
         <button
-          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-[var(--duration-fast)] border"
+          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all border"
           :class="
             selectedCategory === null
-              ? 'bg-[var(--color-primary-600)] text-white border-[var(--color-primary-600)]'
-              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-primary-300)] hover:text-[var(--color-primary-600)]'
+              ? 'bg-[var(--color-accent-papers)] text-white border-[var(--color-accent-papers)]'
+              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-accent-papers)] hover:text-[var(--color-accent-papers)]'
           "
           @click="selectedCategory = null"
         >
@@ -100,11 +97,11 @@
         <button
           v-for="category in categories"
           :key="category"
-          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-[var(--duration-fast)] border"
+          class="px-2.5 py-1 text-xs font-medium rounded-full transition-all border"
           :class="
             selectedCategory === category
-              ? 'bg-[var(--color-primary-600)] text-white border-[var(--color-primary-600)]'
-              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-primary-300)] hover:text-[var(--color-primary-600)]'
+              ? 'bg-[var(--color-accent-papers)] text-white border-[var(--color-accent-papers)]'
+              : 'bg-[var(--color-surface-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border-default)] hover:border-[var(--color-accent-papers)] hover:text-[var(--color-accent-papers)]'
           "
           @click="selectedCategory = category"
         >
@@ -116,7 +113,7 @@
     <!-- Papers List - Grouped by Category -->
     <div
       v-if="stories.length > 0 && viewMode === 'by-category' && selectedCategory === null"
-      class="space-y-8"
+      class="space-y-6"
     >
       <div
         v-for="category in categories"
@@ -125,6 +122,7 @@
       >
         <h3
           class="flex items-center gap-2 text-sm font-semibold text-[var(--color-text-secondary)] mb-3 pb-2 border-b border-[var(--color-border-light)]"
+          style="font-family: var(--font-display)"
         >
           <span class="w-2 h-2 rounded-full bg-[var(--color-accent-papers)]" />
           {{ getCategoryDisplayName(category) }}
@@ -139,6 +137,7 @@
             :story="story"
             :show-arxiv="true"
             :show-categories="false"
+            :show-summary="true"
             accent-class="accent-papers"
           />
         </div>
@@ -155,6 +154,7 @@
         :key="story.story_id"
         :story="story"
         :show-arxiv="true"
+        :show-summary="true"
         accent-class="accent-papers"
       />
     </div>
@@ -164,5 +164,5 @@
       title="No new papers today"
       description="Check back tomorrow!"
     />
-  </section>
+  </div>
 </template>
