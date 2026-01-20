@@ -370,3 +370,11 @@ features/*/snapshots/*.json
 
 # Temporary git rewriting tools
 .rewrite/
+
+# Frontend (Node.js)
+frontend/node_modules/
+frontend/dist/
+frontend/.eslintcache
+frontend/test-results/
+frontend/playwright-report/
+frontend/tsconfig.tsbuildinfo
