@@ -63,6 +63,7 @@ class RunOptions:
     json_logs: bool
     verbose: bool
     dry_run: bool = False
+    lookback_hours: int = 24
 
 
 def _execute_run(options: RunOptions) -> None:
@@ -212,9 +213,9 @@ def _execute_run(options: RunOptions) -> None:
             # === PHASE 2: LINKING ===
             log.info("phase_started", phase="linking")
 
-            # Calculate 24-hour lookback from run start time
-            # Only include items PUBLISHED within the last 24 hours
-            lookback_hours = 24
+            # Calculate lookback from run start time
+            # Only include items PUBLISHED within the lookback window
+            lookback_hours = options.lookback_hours
             published_cutoff = datetime.fromtimestamp(
                 run_record.started_at.timestamp() - (lookback_hours * 60 * 60),
                 tz=UTC,
@@ -425,6 +426,13 @@ def cli() -> None:
     is_flag=True,
     help="Validate configuration without writing state or evidence.",
 )
+@click.option(
+    "--lookback",
+    "lookback_hours",
+    type=int,
+    default=24,
+    help="Lookback window in hours for filtering items by published_at (default: 24).",
+)
 def run(  # noqa: PLR0913
     config_path: Path,
     entities_path: Path,
@@ -435,6 +443,7 @@ def run(  # noqa: PLR0913
     json_logs: bool,
     verbose: bool,
     dry_run: bool,
+    lookback_hours: int,
 ) -> None:
     """Run the digest pipeline.
 
@@ -454,6 +463,7 @@ def run(  # noqa: PLR0913
         json_logs=json_logs,
         verbose=verbose,
         dry_run=dry_run,
+        lookback_hours=lookback_hours,
     )
     _execute_run(options)
 
