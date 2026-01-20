@@ -31,11 +31,11 @@
       <div class="flex items-center justify-between h-16">
         <RouterLink
           to="/"
-          class="flex items-center gap-3 group"
+          class="flex items-center gap-3 group focus-ring rounded-lg"
           data-testid="logo-link"
         >
           <span
-            class="w-9 h-9 flex items-center justify-center rounded-lg bg-[var(--color-primary-100)] text-[var(--color-primary-600)] group-hover:bg-[var(--color-primary-200)] transition-colors duration-[var(--duration-fast)]"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-[var(--color-primary-100)] text-[var(--color-primary-600)] group-hover:bg-[var(--color-primary-200)] group-hover:scale-105 transition-all duration-[var(--duration-fast)] ease-[var(--ease-spring)] group-active:scale-95"
           >
             <IconBook :size="20" />
           </span>
@@ -45,10 +45,7 @@
             >
               Daily Paper Report
             </span>
-            <span
-              v-if="runDate"
-              class="text-xs text-[var(--color-text-muted)]"
-            >
+            <span v-if="runDate" class="text-xs text-[var(--color-text-muted)]">
               {{ runDate }}
             </span>
           </div>
@@ -59,11 +56,11 @@
             v-for="link in navLinks"
             :key="link.to"
             :to="link.to"
-            class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2"
+            class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 active:scale-[0.97]"
             :class="[
               isActiveRoute(link.to)
-                ? 'text-[var(--color-primary-600)] bg-[var(--color-primary-50)]'
-                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-tertiary)]',
+                ? 'text-[var(--color-primary-600)] bg-[var(--color-primary-50)] shadow-[var(--shadow-xs)]'
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-tertiary)] hover:shadow-[var(--shadow-xs)]',
             ]"
             :data-testid="`nav-${link.testId}`"
           >

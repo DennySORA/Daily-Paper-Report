@@ -18,21 +18,23 @@
   >
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-        <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
-          <IconBook :size="16" />
+        <div
+          class="flex items-center gap-2 text-[var(--color-text-muted)] transition-colors duration-[var(--duration-fast)] hover:text-[var(--color-text-secondary)]"
+        >
+          <IconBook
+            :size="16"
+            class="transition-transform duration-[var(--duration-base)] ease-[var(--ease-spring)] hover:scale-110"
+          />
           <span>Daily Paper Report</span>
         </div>
 
-        <div
-          v-if="runInfo"
-          class="flex items-center gap-4 text-[var(--color-text-subtle)]"
-        >
+        <div v-if="runInfo" class="flex items-center gap-4 text-[var(--color-text-subtle)]">
           <span class="tabular-nums">Last updated: {{ formatDate(runInfo.finished_at) }}</span>
           <span
             v-if="runInfo.success"
-            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--color-success)]/10 text-[var(--color-success)] text-xs font-medium"
+            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--color-success)]/10 text-[var(--color-success)] text-xs font-medium transition-all duration-[var(--duration-fast)] hover:bg-[var(--color-success)]/15"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+            <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse-subtle" />
             Healthy
           </span>
         </div>
