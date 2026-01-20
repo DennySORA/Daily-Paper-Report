@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { DigestData, Story } from '@/types/digest'
+import type { DigestData, Story, SourceStatus } from '@/types/digest'
 
 export const useDigestStore = defineStore('digest', () => {
   // State
@@ -39,6 +39,94 @@ export const useDigestStore = defineStore('digest', () => {
       modelStoriesCount +
       data.value.radar.length
     )
+  })
+
+  // Group papers by category (arXiv category or first category tag)
+  const papersByCategory = computed(() => {
+    const grouped: Record<string, Story[]> = {}
+    for (const paper of papers.value) {
+      const category = paper.categories?.[0] ?? 'Uncategorized'
+      if (!grouped[category]) {
+        grouped[category] = []
+      }
+      grouped[category].push(paper)
+    }
+    return grouped
+  })
+
+  // Get all unique categories from papers
+  const paperCategories = computed(() => Object.keys(papersByCategory.value).sort())
+
+  // Group stories by source (source_id from primary_link)
+  const allStoriesBySource = computed(() => {
+    const allStories = [
+      ...top5.value,
+      ...papers.value,
+      ...radar.value,
+      ...Object.values(modelReleases.value).flat(),
+    ]
+
+    const grouped: Record<string, Story[]> = {}
+    for (const story of allStories) {
+      const sourceId = story.primary_link.source_id
+      if (!grouped[sourceId]) {
+        grouped[sourceId] = []
+      }
+      grouped[sourceId].push(story)
+    }
+    return grouped
+  })
+
+  // Get source names from sources_status
+  const sourceNames = computed(() => {
+    const names: Record<string, string> = {}
+    for (const source of sourcesStatus.value) {
+      names[source.source_id] = source.name
+    }
+    return names
+  })
+
+  // Get all unique source IDs with stories
+  const sourceIdsWithStories = computed(() => Object.keys(allStoriesBySource.value).sort())
+
+  // Filter stories within last 24 hours
+  const storiesLast24Hours = computed(() => {
+    const now = new Date()
+    const cutoff = new Date(now.getTime() - 24 * 60 * 60 * 1000)
+
+    const filterRecent = (stories: Story[]) =>
+      stories.filter((s) => {
+        if (!s.published_at) return false
+        return new Date(s.published_at) >= cutoff
+      })
+
+    return {
+      top5: filterRecent(top5.value),
+      papers: filterRecent(papers.value),
+      radar: filterRecent(radar.value),
+      modelReleases: Object.fromEntries(
+        Object.entries(modelReleases.value).map(([key, stories]) => [key, filterRecent(stories)]),
+      ),
+    }
+  })
+
+  // Get sources grouped by status
+  const sourcesByStatus = computed(() => {
+    const healthy: SourceStatus[] = []
+    const failed: SourceStatus[] = []
+    const noUpdate: SourceStatus[] = []
+
+    for (const source of sourcesStatus.value) {
+      if (source.status === 'HAS_UPDATE') {
+        healthy.push(source)
+      } else if (source.status === 'FETCH_FAILED' || source.status === 'PARSE_FAILED') {
+        failed.push(source)
+      } else {
+        noUpdate.push(source)
+      }
+    }
+
+    return { healthy, failed, noUpdate }
   })
 
   // Actions
@@ -84,6 +172,14 @@ export const useDigestStore = defineStore('digest', () => {
     runDate,
     runInfo,
     totalStories,
+    // New grouping getters
+    papersByCategory,
+    paperCategories,
+    allStoriesBySource,
+    sourceNames,
+    sourceIdsWithStories,
+    storiesLast24Hours,
+    sourcesByStatus,
     // Actions
     fetchDigest,
     setData,
