@@ -104,18 +104,19 @@ class GitHubReleasesCollector(BaseCollector):
         self,
         source_config: SourceConfig,
         http_client: HttpFetcher,
-        now: datetime,  # noqa: ARG002
+        now: datetime,
     ) -> CollectorResult:
         """Collect releases from a GitHub repository.
 
         Args:
             source_config: Configuration for the source.
             http_client: HTTP client for fetching.
-            now: Current timestamp for consistency (unused, for interface compliance).
+            now: Current timestamp for time-based filtering.
 
         Returns:
             CollectorResult with items and status.
         """
+        self._now = now  # Store for use in filtering
         log = logger.bind(
             component="platform",
             platform=PLATFORM_GITHUB,
@@ -230,6 +231,14 @@ class GitHubReleasesCollector(BaseCollector):
                     parse_warnings=parse_warnings,
                     state=SourceState.SOURCE_DONE,
                 )
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=self._now,
+                lookback_hours=24,
+                source_id=source_config.id,
+            )
 
             items = self.sort_items_deterministically(items)
             items = self.enforce_max_items(items, source_config.max_items)

@@ -4,8 +4,10 @@ import json
 from abc import ABC, abstractmethod
 from collections.abc import Mapping
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any, Protocol, runtime_checkable
+
+import structlog
 
 from src.collectors.errors import ErrorRecord
 from src.collectors.state_machine import SourceState
@@ -260,3 +262,67 @@ class BaseCollector(ABC):
         if max_items <= 0:
             return items
         return items[:max_items]
+
+    def filter_items_by_time(
+        self,
+        items: list[Item],
+        now: datetime,
+        lookback_hours: int = 24,
+        source_id: str = "",
+    ) -> list[Item]:
+        """Filter items to only include those published within the lookback window.
+
+        This method filters items at collection time to ensure only recently
+        published content is collected. Items without a published_at date
+        are excluded.
+
+        Args:
+            items: List of items to filter.
+            now: Current timestamp (typically run start time).
+            lookback_hours: Number of hours to look back (default 24).
+            source_id: Source ID for logging.
+
+        Returns:
+            Filtered list of items published within the lookback window.
+        """
+        log = structlog.get_logger().bind(
+            component="collector",
+            source_id=source_id,
+        )
+
+        # Calculate cutoff time
+        cutoff = now - timedelta(hours=lookback_hours)
+
+        # Ensure cutoff is timezone-aware (UTC)
+        if cutoff.tzinfo is None:
+            cutoff = cutoff.replace(tzinfo=UTC)
+
+        original_count = len(items)
+        filtered_items = []
+
+        for item in items:
+            if item.published_at is None:
+                # Skip items without published_at
+                continue
+
+            # Ensure item's published_at is timezone-aware
+            item_published = item.published_at
+            if item_published.tzinfo is None:
+                item_published = item_published.replace(tzinfo=UTC)
+
+            if item_published >= cutoff:
+                filtered_items.append(item)
+
+        filtered_count = len(filtered_items)
+        dropped_count = original_count - filtered_count
+
+        log.info(
+            "time_filter_applied",
+            lookback_hours=lookback_hours,
+            cutoff=cutoff.isoformat(),
+            original_count=original_count,
+            filtered_count=filtered_count,
+            dropped_count=dropped_count,
+        )
+
+        return filtered_items

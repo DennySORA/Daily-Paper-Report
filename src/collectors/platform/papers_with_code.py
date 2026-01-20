@@ -131,6 +131,15 @@ class PapersWithCodeCollector(BaseCollector):
         try:
             data = json.loads(result.body_bytes.decode("utf-8"))
             items = self._parse_response(data, source_config, now)
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=now,
+                lookback_hours=24,
+                source_id=source_config.id,
+            )
+
             state_machine.to_done()
 
             self._log.info(
