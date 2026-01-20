@@ -9,7 +9,10 @@
 </script>
 
 <template>
-  <div class="card p-5 animate-pulse" data-testid="skeleton-card">
+  <div
+    class="card p-5 animate-pulse"
+    data-testid="skeleton-card"
+  >
     <div class="flex items-start gap-4">
       <!-- Rank skeleton -->
       <div

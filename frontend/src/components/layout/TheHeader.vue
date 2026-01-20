@@ -45,7 +45,10 @@
             >
               Daily Paper Report
             </span>
-            <span v-if="runDate" class="text-xs text-[var(--color-text-muted)]">
+            <span
+              v-if="runDate"
+              class="text-xs text-[var(--color-text-muted)]"
+            >
               {{ runDate }}
             </span>
           </div>

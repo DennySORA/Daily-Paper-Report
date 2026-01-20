@@ -28,7 +28,10 @@
           <span>Daily Paper Report</span>
         </div>
 
-        <div v-if="runInfo" class="flex items-center gap-4 text-[var(--color-text-subtle)]">
+        <div
+          v-if="runInfo"
+          class="flex items-center gap-4 text-[var(--color-text-subtle)]"
+        >
           <span class="tabular-nums">Last updated: {{ formatDate(runInfo.finished_at) }}</span>
           <span
             v-if="runInfo.success"

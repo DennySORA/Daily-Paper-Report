@@ -26,11 +26,18 @@
 <template>
   <div data-testid="status-page">
     <div class="mb-8 animate-fade-in-up">
-      <h1 class="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">Status</h1>
-      <p class="text-[var(--color-text-muted)] mt-1">System health and pipeline status</p>
+      <h1 class="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
+        Status
+      </h1>
+      <p class="text-[var(--color-text-muted)] mt-1">
+        System health and pipeline status
+      </p>
     </div>
 
-    <div v-if="runInfo" class="space-y-6">
+    <div
+      v-if="runInfo"
+      class="space-y-6"
+    >
       <!-- Overall Status -->
       <div class="card p-6 animate-fade-in-up hover-lift">
         <div class="flex items-center gap-3 mb-4">
@@ -61,7 +68,9 @@
             <p class="text-2xl font-bold text-[var(--color-text-primary)]">
               {{ runInfo.items_total }}
             </p>
-            <p class="text-xs text-[var(--color-text-muted)]">Items Processed</p>
+            <p class="text-xs text-[var(--color-text-muted)]">
+              Items Processed
+            </p>
           </div>
           <div
             class="bg-[var(--color-surface-secondary)] rounded-lg p-3 text-center transition-all duration-[var(--duration-fast)] hover:bg-[var(--color-surface-tertiary)] hover:shadow-[var(--shadow-sm)]"
@@ -69,7 +78,9 @@
             <p class="text-2xl font-bold text-[var(--color-text-primary)]">
               {{ runInfo.stories_total }}
             </p>
-            <p class="text-xs text-[var(--color-text-muted)]">Stories Created</p>
+            <p class="text-xs text-[var(--color-text-muted)]">
+              Stories Created
+            </p>
           </div>
           <div
             class="bg-[var(--color-surface-secondary)] rounded-lg p-3 text-center transition-all duration-[var(--duration-fast)] hover:bg-[var(--color-surface-tertiary)] hover:shadow-[var(--shadow-sm)]"
@@ -77,7 +88,9 @@
             <p class="text-2xl font-bold text-[var(--color-success)]">
               {{ healthySources }}
             </p>
-            <p class="text-xs text-[var(--color-text-muted)]">Sources OK</p>
+            <p class="text-xs text-[var(--color-text-muted)]">
+              Sources OK
+            </p>
           </div>
           <div
             class="bg-[var(--color-surface-secondary)] rounded-lg p-3 text-center transition-all duration-[var(--duration-fast)] hover:bg-[var(--color-surface-tertiary)] hover:shadow-[var(--shadow-sm)]"
@@ -90,19 +103,25 @@
             >
               {{ failedSources }}
             </p>
-            <p class="text-xs text-[var(--color-text-muted)]">Sources Failed</p>
+            <p class="text-xs text-[var(--color-text-muted)]">
+              Sources Failed
+            </p>
           </div>
         </div>
       </div>
 
       <!-- Run Details -->
       <div class="card p-6 animate-fade-in-up stagger-2 hover-lift">
-        <h2 class="text-lg font-semibold text-[var(--color-text-primary)] mb-4">Run Details</h2>
+        <h2 class="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
+          Run Details
+        </h2>
         <dl class="space-y-3">
           <div
             class="flex justify-between py-2 border-b border-[var(--color-border-light)] transition-colors duration-[var(--duration-fast)] hover:bg-[var(--color-surface-secondary)]/50 -mx-2 px-2 rounded"
           >
-            <dt class="text-[var(--color-text-muted)]">Run ID</dt>
+            <dt class="text-[var(--color-text-muted)]">
+              Run ID
+            </dt>
             <dd class="font-mono text-sm text-[var(--color-text-secondary)]">
               {{ runInfo.run_id }}
             </dd>
@@ -110,7 +129,9 @@
           <div
             class="flex justify-between py-2 border-b border-[var(--color-border-light)] transition-colors duration-[var(--duration-fast)] hover:bg-[var(--color-surface-secondary)]/50 -mx-2 px-2 rounded"
           >
-            <dt class="text-[var(--color-text-muted)]">Started</dt>
+            <dt class="text-[var(--color-text-muted)]">
+              Started
+            </dt>
             <dd class="text-[var(--color-text-secondary)]">
               {{ formatDate(runInfo.started_at) }}
             </dd>
@@ -118,13 +139,20 @@
           <div
             class="flex justify-between py-2 border-b border-[var(--color-border-light)] transition-colors duration-[var(--duration-fast)] hover:bg-[var(--color-surface-secondary)]/50 -mx-2 px-2 rounded"
           >
-            <dt class="text-[var(--color-text-muted)]">Finished</dt>
+            <dt class="text-[var(--color-text-muted)]">
+              Finished
+            </dt>
             <dd class="text-[var(--color-text-secondary)]">
               {{ formatDate(runInfo.finished_at) }}
             </dd>
           </div>
-          <div v-if="runInfo.error_summary" class="py-2">
-            <dt class="text-[var(--color-text-muted)] mb-1">Error</dt>
+          <div
+            v-if="runInfo.error_summary"
+            class="py-2"
+          >
+            <dt class="text-[var(--color-text-muted)] mb-1">
+              Error
+            </dt>
             <dd class="text-sm text-[var(--color-error)] bg-[var(--color-error)]/10 p-3 rounded-lg">
               {{ runInfo.error_summary }}
             </dd>
@@ -137,8 +165,13 @@
       v-else
       class="flex flex-col items-center justify-center py-20 bg-[var(--color-surface-secondary)] rounded-xl border border-dashed border-[var(--color-border-default)] animate-fade-in-scale transition-all duration-[var(--duration-base)] hover:border-[var(--color-border-strong)]"
     >
-      <span class="text-5xl mb-4 animate-float" aria-hidden="true">📊</span>
-      <p class="text-[var(--color-text-secondary)] font-medium">No status data available</p>
+      <span
+        class="text-5xl mb-4 animate-float"
+        aria-hidden="true"
+      >📊</span>
+      <p class="text-[var(--color-text-secondary)] font-medium">
+        No status data available
+      </p>
     </div>
   </div>
 </template>

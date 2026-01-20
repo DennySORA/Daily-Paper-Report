@@ -24,7 +24,10 @@
     <p class="text-[var(--color-text-secondary)] font-medium">
       {{ title }}
     </p>
-    <p v-if="description" class="text-sm text-[var(--color-text-muted)] mt-1">
+    <p
+      v-if="description"
+      class="text-sm text-[var(--color-text-muted)] mt-1"
+    >
       {{ description }}
     </p>
   </div>
