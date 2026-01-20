@@ -69,7 +69,18 @@
 {% endmacro %}
 
 {#
+  Section descriptions for each content type.
+#}
+{% set section_descriptions = {
+    'top5': 'Curated selection of the most significant AI/ML developments today, combining breakthrough research, major releases, and high-impact announcements.',
+    'papers': 'Latest research papers from arXiv and academic sources, covering machine learning, NLP, computer vision, and AI safety.',
+    'models': 'New model releases and updates from leading AI labs and the open-source community.',
+    'radar': 'Broader AI ecosystem updates including blog posts, tools, datasets, and industry news worth tracking.'
+} %}
+
+{#
   Renders a section with stories and proper styling.
+  Always shows the section with description, displays empty state when no content.
 
   Args:
     title: Section heading text
@@ -79,21 +90,28 @@
     show_entities: Whether to show entity tags
     show_arxiv: Whether to show arXiv IDs
     show_rank: Whether to show rank numbers
+    description: Optional custom description (uses default from section_descriptions if not provided)
 #}
-{% macro story_section(title, stories, section_class='', icon='', show_entities=false, show_arxiv=false, show_rank=false) %}
-{% if stories %}
+{% macro story_section(title, stories, section_class='', icon='', show_entities=false, show_arxiv=false, show_rank=false, description=none) %}
 <section class="section-{{ section_class }}">
     <h2>
         {% if icon %}<span class="section-icon">{{ icon }}</span>{% endif %}
         {{ title }}
     </h2>
+    <p class="section-description">{{ description or section_descriptions.get(section_class, '') }}</p>
+    {% if stories %}
     <ul class="story-list">
         {% for story in stories %}
         {{ story_card(story, show_entities=show_entities, show_arxiv=show_arxiv, rank=(loop.index if show_rank else none)) }}
         {% endfor %}
     </ul>
+    {% else %}
+    <div class="section-empty">
+        <span class="section-empty-icon">📭</span>
+        <p>No new {{ title | lower }} today. Check back tomorrow!</p>
+    </div>
+    {% endif %}
 </section>
-{% endif %}
 {% endmacro %}
 
 {#
