@@ -5,7 +5,7 @@
   import EmptyState from '@/components/ui/EmptyState.vue'
 
   const digestStore = useDigestStore()
-  const stories = computed(() => digestStore.top5)
+  const stories = computed(() => digestStore.filteredTop5)
 </script>
 
 <template>

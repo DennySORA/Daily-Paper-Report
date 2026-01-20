@@ -5,9 +5,9 @@
   import EmptyState from '@/components/ui/EmptyState.vue'
 
   const digestStore = useDigestStore()
-  const stories = computed(() => digestStore.papers)
-  const papersByCategory = computed(() => digestStore.papersByCategory)
-  const categories = computed(() => digestStore.paperCategories)
+  const stories = computed(() => digestStore.filteredPapers)
+  const papersByCategory = computed(() => digestStore.filteredPapersByCategory)
+  const categories = computed(() => digestStore.filteredPaperCategories)
 
   // View mode: 'all' or 'by-category'
   const viewMode = ref<'all' | 'by-category'>('by-category')

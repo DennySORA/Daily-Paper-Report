@@ -6,8 +6,8 @@
   import { IconCpu } from '@/components/icons'
 
   const digestStore = useDigestStore()
-  const modelReleases = computed(() => digestStore.modelReleases)
-  const hasModels = computed(() => digestStore.hasModelReleases)
+  const modelReleases = computed(() => digestStore.filteredModelReleases)
+  const hasModels = computed(() => Object.keys(modelReleases.value).length > 0)
 
   // Format entity name for display
   const formatEntityName = (entityId: string): string => {
