@@ -19,6 +19,11 @@ const router = createRouter({
       component: HomePage,
     },
     {
+      path: '/day/:date',
+      name: 'day',
+      component: HomePage,
+    },
+    {
       path: '/archive',
       name: 'archive',
       component: ArchivePage,

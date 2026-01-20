@@ -1,9 +1,26 @@
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
   import { useDigestStore } from '@/stores/digest'
+  import { IconBook } from '@/components/icons'
 
   const digestStore = useDigestStore()
+  const route = useRoute()
   const runDate = computed(() => digestStore.runDate)
+
+  const navLinks = [
+    { to: '/', label: 'Today', testId: 'today' },
+    { to: '/archive', label: 'Archive', testId: 'archive' },
+    { to: '/sources', label: 'Sources', testId: 'sources' },
+    { to: '/status', label: 'Status', testId: 'status' },
+  ]
+
+  const isActiveRoute = (to: string) => {
+    if (to === '/') {
+      return route.path === '/' || route.path.startsWith('/day/')
+    }
+    return route.path === to
+  }
 </script>
 
 <template>
@@ -18,9 +35,10 @@
           data-testid="logo-link"
         >
           <span
-            class="text-2xl"
-            aria-hidden="true"
-          >📚</span>
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-[var(--color-primary-100)] text-[var(--color-primary-600)] group-hover:bg-[var(--color-primary-200)] transition-colors duration-[var(--duration-fast)]"
+          >
+            <IconBook :size="20" />
+          </span>
           <div class="flex flex-col">
             <span
               class="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary-600)] transition-colors duration-[var(--duration-fast)]"
@@ -38,16 +56,16 @@
 
         <nav class="flex items-center gap-1">
           <RouterLink
-            v-for="link in [
-              { to: '/', label: 'Today' },
-              { to: '/archive', label: 'Archive' },
-              { to: '/sources', label: 'Sources' },
-              { to: '/status', label: 'Status' },
-            ]"
+            v-for="link in navLinks"
             :key="link.to"
             :to="link.to"
-            class="px-3 py-2 text-sm font-medium text-[var(--color-text-secondary)] rounded-lg hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-tertiary)] transition-all duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2"
-            :data-testid="`nav-${link.label.toLowerCase()}`"
+            class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-[var(--duration-fast)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2"
+            :class="[
+              isActiveRoute(link.to)
+                ? 'text-[var(--color-primary-600)] bg-[var(--color-primary-50)]'
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-tertiary)]',
+            ]"
+            :data-testid="`nav-${link.testId}`"
           >
             {{ link.label }}
           </RouterLink>
