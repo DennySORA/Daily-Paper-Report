@@ -216,8 +216,6 @@ class ArxivApiCollector(BaseCollector):
                 parse_warnings=parse_warnings,
             )
 
-            _ = now  # Keep for interface compliance
-
             if not items:
                 log.info("empty_response")
                 state_machine.to_done()
@@ -226,6 +224,14 @@ class ArxivApiCollector(BaseCollector):
                     parse_warnings=parse_warnings,
                     state=SourceState.SOURCE_DONE,
                 )
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=now,
+                lookback_hours=24,
+                source_id=source_config.id,
+            )
 
             items = self.sort_items_deterministically(items)
             items = self.enforce_max_items(items, source_config.max_items)

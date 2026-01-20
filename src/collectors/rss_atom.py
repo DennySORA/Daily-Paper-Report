@@ -137,13 +137,20 @@ class RssAtomCollector(BaseCollector):
                     state=SourceState.SOURCE_DONE,
                 )
 
-            # Parse entries (now parameter unused but kept in signature for interface)
-            _ = now  # Mark as used for interface compliance
+            # Parse entries
             items = self._parse_entries(
                 entries=feed.entries,
                 source_config=source_config,
                 base_url=source_config.url,
                 parse_warnings=parse_warnings,
+            )
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=now,
+                lookback_hours=24,
+                source_id=source_config.id,
             )
 
             # Sort deterministically

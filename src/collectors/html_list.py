@@ -84,7 +84,7 @@ class HtmlListCollector(BaseCollector):
         Returns:
             CollectorResult with items and status.
         """
-        _ = now  # Interface compliance - timestamp available for future use
+        self._now = now  # Store for time-based filtering
         start_time = time.perf_counter_ns()
         domain = urlparse(source_config.url).netloc
 
@@ -223,6 +223,14 @@ class HtmlListCollector(BaseCollector):
                     item_pages_fetched=recovery_report.pages_fetched,
                     date_recovered_count=recovery_report.dates_recovered,
                 )
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=self._now,
+                lookback_hours=24,
+                source_id=source_config.id,
+            )
 
             # Sort deterministically
             items = self.sort_items_deterministically(items)
