@@ -215,6 +215,7 @@ sources:
 
   # ============================================================
   # TIER 1 - GitHub Releases (Major LLM/AI Projects)
+  # DISABLED: Release titles are just version numbers without meaningful content
   # ============================================================
 
   - id: gh-transformers
@@ -225,6 +226,7 @@ sources:
     kind: release
     timezone: UTC
     max_items: 10
+    enabled: false  # Release titles lack meaningful content
 
   - id: gh-langchain
     name: GitHub LangChain
@@ -234,6 +236,7 @@ sources:
     kind: release
     timezone: UTC
     max_items: 10
+    enabled: false  # Release titles lack meaningful content
 
   - id: gh-vllm
     name: GitHub vLLM
@@ -243,6 +246,7 @@ sources:
     kind: release
     timezone: UTC
     max_items: 10
+    enabled: false  # Release titles lack meaningful content
 
   - id: gh-ollama
     name: GitHub Ollama
@@ -252,6 +256,7 @@ sources:
     kind: release
     timezone: UTC
     max_items: 10
+    enabled: false  # Release titles lack meaningful content
 
   - id: gh-llama-cpp
     name: GitHub llama.cpp
@@ -261,6 +266,7 @@ sources:
     kind: release
     timezone: UTC
     max_items: 10
+    enabled: false  # Release titles lack meaningful content
 
   - id: gh-pytorch
     name: GitHub PyTorch
@@ -270,6 +276,7 @@ sources:
     kind: release
     timezone: UTC
     max_items: 10
+    enabled: false  # Release titles lack meaningful content
 
   # ============================================================
   # TIER 1 - Paper Aggregators (High-Quality Curated Sources)
