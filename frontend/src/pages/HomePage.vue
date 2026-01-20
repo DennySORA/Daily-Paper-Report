@@ -22,10 +22,7 @@
       <h1 class="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
         Daily Digest
       </h1>
-      <p
-        v-if="runDate"
-        class="text-[var(--color-text-muted)] mt-1"
-      >
+      <p v-if="runDate" class="text-[var(--color-text-muted)] mt-1">
         {{ runDate }} ·
         <RouterLink
           :to="`/day/${runDate}`"
@@ -41,15 +38,8 @@
     </div>
 
     <!-- Loading State with Skeleton -->
-    <div
-      v-if="isLoading"
-      class="space-y-10"
-      data-testid="loading-state"
-    >
-      <SkeletonSection
-        :card-count="5"
-        :show-ranks="true"
-      />
+    <div v-if="isLoading" class="space-y-10" data-testid="loading-state">
+      <SkeletonSection :card-count="5" :show-ranks="true" />
       <SkeletonSection :card-count="2" />
       <SkeletonSection :card-count="3" />
       <SkeletonSection :card-count="2" />
@@ -61,9 +51,7 @@
       class="bg-[var(--color-error)]/10 border border-[var(--color-error)]/20 rounded-xl p-6 text-center animate-fade-in"
       data-testid="error-state"
     >
-      <p class="text-[var(--color-error)] font-medium">
-        Failed to load digest
-      </p>
+      <p class="text-[var(--color-error)] font-medium">Failed to load digest</p>
       <p class="text-sm text-[var(--color-text-muted)] mt-1">
         {{ errorMessage }}
       </p>

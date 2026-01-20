@@ -14,16 +14,10 @@
 </script>
 
 <template>
-  <section
-    class="mb-10"
-    data-testid="section-models"
-  >
+  <section class="mb-10" data-testid="section-models">
     <SectionHeader :config="config" />
 
-    <div
-      v-if="hasModels"
-      class="space-y-6"
-    >
+    <div v-if="hasModels" class="space-y-6">
       <div
         v-for="(stories, entityId) in modelReleases"
         :key="entityId"
@@ -51,10 +45,6 @@
       </div>
     </div>
 
-    <EmptyState
-      v-else
-      title="No new model releases today"
-      description="Check back tomorrow!"
-    />
+    <EmptyState v-else title="No new model releases today" description="Check back tomorrow!" />
   </section>
 </template>

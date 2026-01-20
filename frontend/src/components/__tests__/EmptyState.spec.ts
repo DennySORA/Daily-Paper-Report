@@ -52,6 +52,6 @@ describe('EmptyState', () => {
     })
 
     const container = wrapper.find('[data-testid="empty-state"]')
-    expect(container.classes()).toContain('animate-fade-in')
+    expect(container.classes()).toContain('animate-fade-in-scale')
   })
 })
