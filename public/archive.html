@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Digest - Archive</title>
+    <title>Daily Paper Report - Archive</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
     <style>
         /* ============================================================
-           DESIGN SYSTEM - Premium Research Digest UI
+           DESIGN SYSTEM - Premium Daily Paper Report UI
            ============================================================ */
 
         :root {
@@ -428,6 +428,48 @@
         .section-radar .section-icon { background: var(--accent-radar-light); color: var(--accent-radar); }
         .section-radar .story-card { border-left: 3px solid var(--accent-radar); }
         .section-radar .story-card:hover { box-shadow: var(--shadow-md), 0 0 0 1px var(--accent-radar-glow); }
+
+        /* Section Descriptions */
+        .section-description {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            margin-bottom: var(--space-5);
+            padding: var(--space-3) var(--space-4);
+            background: var(--color-bg-subtle);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--color-border);
+        }
+
+        .section-top5 .section-description { border-left-color: var(--accent-top5); }
+        .section-papers .section-description { border-left-color: var(--accent-papers); }
+        .section-models .section-description { border-left-color: var(--accent-models); }
+        .section-radar .section-description { border-left-color: var(--accent-radar); }
+
+        /* Section Empty State */
+        .section-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-10) var(--space-6);
+            background: var(--color-bg-subtle);
+            border: 1px dashed var(--color-border);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .section-empty-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-3);
+            opacity: 0.6;
+        }
+
+        .section-empty p {
+            font-size: 0.9375rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
 
         /* ============================================================
            STORY CARDS
@@ -1004,7 +1046,7 @@
             <div class="header-inner">
                 <a href="index.html" class="logo">
                     <span class="logo-icon">📚</span>
-                    <span>Research Digest</span>
+                    <span>Daily Paper Report</span>
                 </a>
                 <nav aria-label="Main navigation">
                     <a href="index.html">Latest</a>
@@ -1030,6 +1072,7 @@
         Available Dates
     </h2>
     <nav class="archive-grid" aria-label="Archive dates">
+        <a href="day/2026-01-20.html" class="archive-item">2026-01-20</a>
         <a href="day/2026-01-19.html" class="archive-item">2026-01-19</a>
         <a href="day/2026-01-15.html" class="archive-item">2026-01-15</a>
     </nav>
@@ -1041,9 +1084,9 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-meta">
-                    <span>Generated 2026-01-19T10:09:19.600589+00:00 (Asia/Taipei)</span>
+                    <span>Generated 2026-01-20T06:49:00.075128+00:00 (Asia/Taipei)</span>
                 </div>
-                <span class="run-id">b32a8de4-8f5c-4209-840b-ba36e8d378f7</span>
+                <span class="run-id">61445b01-d678-415f-9a50-6fe52d316aef</span>
             </div>
         </div>
     </footer>
