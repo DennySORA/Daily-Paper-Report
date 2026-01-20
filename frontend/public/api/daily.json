@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-01-20T06:49:00.075198+00:00",
+  "model_releases_by_entity": {},
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-01-20",
+  "run_id": "61445b01-d678-415f-9a50-6fe52d316aef",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-20T06:49:00.075080+00:00",
+    "items_total": 158,
+    "run_id": "61445b01-d678-415f-9a50-6fe52d316aef",
+    "started_at": "2026-01-20T06:48:58.306777+00:00",
+    "stories_total": 1,
+    "success": true
+  },
+  "sources_status": [
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "arXiv cs.AI",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "arxiv-cs-ai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "DeepMind Blog",
+      "newest_item_date": "2026-01-13T09:00:18+00:00",
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "deepmind-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face OpenAI",
+      "newest_item_date": "2026-01-14T18:38:05+00:00",
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-openai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 1,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "OpenAI Blog",
+      "newest_item_date": "2026-01-18T04:00:00+00:00",
+      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
+      "reason_text": "Fetch and parse succeeded; new items found.",
+      "remediation_hint": null,
+      "source_id": "openai-blog",
+      "status": "HAS_UPDATE",
+      "tier": 0
+    }
+  ],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "entities": [],
+      "github_release_url": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "AI for self empowerment",
+          "url": "https://openai.com/index/ai-for-self-empowerment"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "AI for self empowerment",
+        "url": "https://openai.com/index/ai-for-self-empowerment"
+      },
+      "published_at": "2026-01-18T04:00:00+00:00",
+      "section": null,
+      "story_id": "fallback:f5cb9c5657574d23",
+      "title": "AI for self empowerment"
+    }
+  ]
+}

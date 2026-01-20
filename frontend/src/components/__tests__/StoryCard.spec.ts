@@ -1,0 +1,122 @@
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
+import StoryCard from '../ui/StoryCard.vue'
+import type { Story } from '@/types/digest'
+
+const mockStory: Story = {
+  story_id: 'test-story-1',
+  title: 'Test Story Title',
+  arxiv_id: '2401.12345',
+  entities: ['OpenAI', 'DeepMind'],
+  github_release_url: null,
+  hf_model_id: null,
+  item_count: 1,
+  links: [
+    {
+      link_type: 'blog',
+      source_id: 'test-source',
+      tier: 0,
+      title: 'Test Story Title',
+      url: 'https://example.com/test',
+    },
+  ],
+  primary_link: {
+    link_type: 'blog',
+    source_id: 'test-source',
+    tier: 0,
+    title: 'Test Story Title',
+    url: 'https://example.com/test',
+  },
+  published_at: '2026-01-20T10:00:00Z',
+  section: null,
+}
+
+describe('StoryCard', () => {
+  it('renders the story title', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory },
+    })
+
+    expect(wrapper.text()).toContain('Test Story Title')
+  })
+
+  it('renders the story link with correct href', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory },
+    })
+
+    const link = wrapper.find(`[data-testid="story-link-${mockStory.story_id}"]`)
+    expect(link.attributes('href')).toBe('https://example.com/test')
+  })
+
+  it('renders rank badge when rank prop is provided', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory, rank: 1 },
+    })
+
+    const rankBadge = wrapper.find('[data-testid="story-rank-1"]')
+    expect(rankBadge.exists()).toBe(true)
+    expect(rankBadge.text()).toBe('1')
+  })
+
+  it('does not render rank badge when rank prop is not provided', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory },
+    })
+
+    const rankBadge = wrapper.find('[data-testid^="story-rank-"]')
+    expect(rankBadge.exists()).toBe(false)
+  })
+
+  it('renders entities when showEntities is true', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory, showEntities: true },
+    })
+
+    expect(wrapper.text()).toContain('OpenAI')
+    expect(wrapper.text()).toContain('DeepMind')
+  })
+
+  it('does not render entities when showEntities is false', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory, showEntities: false },
+    })
+
+    expect(wrapper.text()).not.toContain('OpenAI')
+    expect(wrapper.text()).not.toContain('DeepMind')
+  })
+
+  it('renders arxiv ID when showArxiv is true', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory, showArxiv: true },
+    })
+
+    expect(wrapper.text()).toContain('arXiv:2401.12345')
+  })
+
+  it('formats date correctly', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory },
+    })
+
+    // The date should be formatted as "Jan 20, 2026" or similar
+    expect(wrapper.text()).toMatch(/Jan\s+20,\s+2026/)
+  })
+
+  it('shows "Date unknown" when published_at is null', () => {
+    const storyWithoutDate = { ...mockStory, published_at: null }
+    const wrapper = mount(StoryCard, {
+      props: { story: storyWithoutDate },
+    })
+
+    expect(wrapper.text()).toContain('Date unknown')
+  })
+
+  it('applies accent class when provided', () => {
+    const wrapper = mount(StoryCard, {
+      props: { story: mockStory, accentClass: 'accent-top5' },
+    })
+
+    expect(wrapper.find('article').classes()).toContain('accent-top5')
+  })
+})
