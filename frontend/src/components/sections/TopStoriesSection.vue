@@ -1,22 +1,20 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useDigestStore } from '@/stores/digest'
-  import { SECTION_CONFIGS } from '@/types/digest'
-  import SectionHeader from '@/components/ui/SectionHeader.vue'
   import StoryCard from '@/components/ui/StoryCard.vue'
   import EmptyState from '@/components/ui/EmptyState.vue'
 
   const digestStore = useDigestStore()
   const stories = computed(() => digestStore.top5)
-  const config = SECTION_CONFIGS.top5
 </script>
 
 <template>
-  <section
-    class="mb-10"
-    data-testid="section-top5"
-  >
-    <SectionHeader :config="config" />
+  <div data-testid="section-top5">
+    <!-- Section description -->
+    <p class="text-sm text-[var(--color-text-muted)] mb-4">
+      Curated selection of the most significant AI/ML developments, combining breakthrough research
+      and high-impact announcements.
+    </p>
 
     <div
       v-if="stories.length > 0"
@@ -28,6 +26,7 @@
         :story="story"
         :rank="index + 1"
         :show-entities="true"
+        :show-summary="true"
         accent-class="accent-top5"
       />
     </div>
@@ -37,5 +36,5 @@
       title="No top stories today"
       description="Check back tomorrow!"
     />
-  </section>
+  </div>
 </template>

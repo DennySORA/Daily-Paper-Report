@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useDigestStore } from '@/stores/digest'
-  import { SECTION_CONFIGS } from '@/types/digest'
-  import SectionHeader from '@/components/ui/SectionHeader.vue'
   import StoryCard from '@/components/ui/StoryCard.vue'
   import EmptyState from '@/components/ui/EmptyState.vue'
   import { IconCpu } from '@/components/icons'
@@ -10,15 +8,22 @@
   const digestStore = useDigestStore()
   const modelReleases = computed(() => digestStore.modelReleases)
   const hasModels = computed(() => digestStore.hasModelReleases)
-  const config = SECTION_CONFIGS.models
+
+  // Format entity name for display
+  const formatEntityName = (entityId: string): string => {
+    return entityId
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }
 </script>
 
 <template>
-  <section
-    class="mb-10"
-    data-testid="section-models"
-  >
-    <SectionHeader :config="config" />
+  <div data-testid="section-models">
+    <!-- Section description -->
+    <p class="text-sm text-[var(--color-text-muted)] mb-4">
+      New model releases and updates from leading AI labs and the open-source community.
+    </p>
 
     <div
       v-if="hasModels"
@@ -27,24 +32,36 @@
       <div
         v-for="(stories, entityId) in modelReleases"
         :key="entityId"
-        class="bg-[var(--color-surface-secondary)] rounded-xl p-5 border border-[var(--color-border-light)] transition-all duration-[var(--duration-base)] hover:border-[var(--color-border-default)]"
+        class="bg-[var(--color-surface-secondary)] rounded-xl p-5 border border-[var(--color-border-light)]"
       >
-        <div class="flex items-center gap-3 mb-4 pb-4 border-b border-[var(--color-border-light)]">
+        <!-- Entity header -->
+        <div class="flex items-center gap-3 mb-4 pb-3 border-b border-[var(--color-border-light)]">
           <span
-            class="w-9 h-9 flex items-center justify-center rounded-lg bg-[var(--color-accent-models)]/15 text-[var(--color-accent-models)]"
+            class="w-10 h-10 flex items-center justify-center rounded-lg bg-[var(--color-accent-models)]/15 text-[var(--color-accent-models)]"
           >
-            <IconCpu :size="18" />
+            <IconCpu :size="20" />
           </span>
-          <h3 class="font-semibold text-[var(--color-text-primary)]">
-            {{ entityId }}
-          </h3>
+          <div>
+            <h3
+              class="font-semibold text-[var(--color-text-primary)]"
+              style="font-family: var(--font-display)"
+            >
+              {{ formatEntityName(entityId) }}
+            </h3>
+            <p class="text-xs text-[var(--color-text-muted)]">
+              {{ stories.length }} release{{ stories.length !== 1 ? 's' : '' }}
+            </p>
+          </div>
         </div>
 
+        <!-- Model cards -->
         <div class="space-y-3">
           <StoryCard
             v-for="story in stories"
             :key="story.story_id"
             :story="story"
+            :show-summary="true"
+            :show-authors="true"
             accent-class="accent-models"
           />
         </div>
@@ -56,5 +73,5 @@
       title="No new model releases today"
       description="Check back tomorrow!"
     />
-  </section>
+  </div>
 </template>
