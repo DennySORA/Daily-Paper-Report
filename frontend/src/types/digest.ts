@@ -22,6 +22,11 @@ export interface Story {
   primary_link: StoryLink
   published_at: string | null
   section: string | null
+  // New metadata fields
+  authors: string[]
+  summary: string | null
+  categories: string[]
+  source_name: string | null
 }
 
 export interface SourceStatus {

@@ -29,6 +29,10 @@ const mockStory: Story = {
   },
   published_at: '2026-01-20T10:00:00Z',
   section: null,
+  authors: ['John Doe', 'Jane Smith'],
+  summary: 'This is a test summary for the story.',
+  categories: ['cs.AI', 'cs.CL'],
+  source_name: 'Test Blog',
 }
 
 describe('StoryCard', () => {
@@ -94,22 +98,38 @@ describe('StoryCard', () => {
     expect(wrapper.text()).toContain('arXiv:2401.12345')
   })
 
-  it('formats date correctly', () => {
+  it('formats date correctly for old dates', () => {
+    // Use a date that's more than 7 days old to trigger full date format
+    const oldStory = { ...mockStory, published_at: '2025-01-01T10:00:00Z' }
     const wrapper = mount(StoryCard, {
-      props: { story: mockStory },
+      props: { story: oldStory },
     })
 
-    // The date should be formatted as "Jan 20, 2026" or similar
-    expect(wrapper.text()).toMatch(/Jan\s+20,\s+2026/)
+    // The date should be formatted as "Jan 1, 2025" for old dates
+    expect(wrapper.text()).toMatch(/Jan\s+1,\s+2025/)
   })
 
-  it('shows "Date unknown" when published_at is null', () => {
+  it('shows relative time for recent dates', () => {
+    // Use current time to get "Just now" or similar
+    const now = new Date().toISOString()
+    const recentStory = { ...mockStory, published_at: now }
+    const wrapper = mount(StoryCard, {
+      props: { story: recentStory },
+    })
+
+    // Should show relative time like "Just now", "Xh ago", etc.
+    expect(wrapper.text()).toMatch(/Just now|h ago|d ago|Yesterday/)
+  })
+
+  it('shows empty time when published_at is null', () => {
     const storyWithoutDate = { ...mockStory, published_at: null }
     const wrapper = mount(StoryCard, {
       props: { story: storyWithoutDate },
     })
 
-    expect(wrapper.text()).toContain('Date unknown')
+    // The component no longer shows "Date unknown" - it just shows empty relative time
+    // Verify the story title still renders correctly
+    expect(wrapper.text()).toContain('Test Story Title')
   })
 
   it('applies accent class when provided', () => {

@@ -1,9 +1,10 @@
 """Data models for the Story linker."""
 
+import json
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import TYPE_CHECKING, Annotated, NewType
+from typing import TYPE_CHECKING, Annotated, Any, NewType
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -93,12 +94,87 @@ class Story(BaseModel):
     item_count: int = 1
     raw_items: list[Item] = Field(default_factory=list)
 
+    def _parse_raw_json(self, item: Item) -> dict[str, Any]:
+        """Parse raw_json from an item safely."""
+        try:
+            return json.loads(item.raw_json) if item.raw_json else {}
+        except (json.JSONDecodeError, TypeError):
+            return {}
+
+    def _extract_authors(self, raw_data: dict[str, Any]) -> list[str]:
+        """Extract authors from raw_data."""
+        if "authors" in raw_data and isinstance(raw_data["authors"], list):
+            return [a for a in raw_data["authors"] if isinstance(a, str)]
+        if "author" in raw_data and isinstance(raw_data["author"], str):
+            return [raw_data["author"]]
+        return []
+
+    def _extract_summary(self, raw_data: dict[str, Any]) -> str | None:
+        """Extract summary/abstract from raw_data."""
+        summary = raw_data.get("abstract_snippet") or raw_data.get("summary")
+        return summary if isinstance(summary, str) else None
+
+    def _extract_categories(self, raw_data: dict[str, Any]) -> list[str]:
+        """Extract categories from raw_data."""
+        feed_cat = raw_data.get("feed_category")
+        if feed_cat and isinstance(feed_cat, str):
+            return [feed_cat]
+        if "categories" in raw_data and isinstance(raw_data["categories"], list):
+            return [c for c in raw_data["categories"] if isinstance(c, str)]
+        return []
+
+    def _extract_source_name(self, raw_data: dict[str, Any]) -> str | None:
+        """Extract source name from raw_data."""
+        source_name = raw_data.get("source_name")
+        return source_name if isinstance(source_name, str) else None
+
+    def _extract_metadata_from_raw_items(self) -> dict[str, Any]:
+        """Extract metadata (authors, summary, categories) from raw_items.
+
+        Returns:
+            Dictionary with extracted metadata.
+        """
+        authors: list[str] = []
+        summary: str | None = None
+        categories: list[str] = []
+        source_name: str | None = None
+
+        for item in self.raw_items:
+            raw_data = self._parse_raw_json(item)
+            if not raw_data:
+                continue
+
+            if not authors:
+                authors = self._extract_authors(raw_data)
+            if not summary:
+                summary = self._extract_summary(raw_data)
+            if not categories:
+                categories = self._extract_categories(raw_data)
+            if not source_name:
+                source_name = self._extract_source_name(raw_data)
+
+        return {
+            "authors": authors,
+            "summary": summary,
+            "categories": categories,
+            "source_name": source_name,
+        }
+
     def to_json_dict(self) -> dict[str, object]:
         """Convert to JSON-serializable dictionary (without raw_items).
+
+        Extracts and includes metadata from raw_items:
+        - authors: List of author names
+        - summary: Abstract or description
+        - categories: Content categories (arXiv categories, tags, etc.)
+        - source_name: Human-readable source name
 
         Returns:
             Dictionary suitable for JSON serialization.
         """
+        # Extract metadata from raw_items
+        metadata = self._extract_metadata_from_raw_items()
+
         return {
             "story_id": self.story_id,
             "title": self.title,
@@ -128,6 +204,11 @@ class Story(BaseModel):
             "hf_model_id": self.hf_model_id,
             "github_release_url": self.github_release_url,
             "item_count": self.item_count,
+            # New metadata fields
+            "authors": metadata["authors"],
+            "summary": metadata["summary"],
+            "categories": metadata["categories"],
+            "source_name": metadata["source_name"],
         }
 
 
