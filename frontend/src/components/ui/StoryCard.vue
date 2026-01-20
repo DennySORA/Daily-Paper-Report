@@ -26,6 +26,7 @@
     compact: false,
   })
 
+  // Format date as absolute date
   const formatDate = (dateStr: string | null): string => {
     if (!dateStr) return 'Date unknown'
     const date = new Date(dateStr)
@@ -36,6 +37,7 @@
     })
   }
 
+  // Format as relative time
   const formatRelativeTime = (dateStr: string | null): string => {
     if (!dateStr) return ''
     const date = new Date(dateStr)
@@ -48,9 +50,11 @@
     const diffDays = Math.floor(diffHours / 24)
     if (diffDays === 1) return 'Yesterday'
     if (diffDays < 7) return `${diffDays}d ago`
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`
     return formatDate(dateStr)
   }
 
+  // Get link type label
   const getLinkTypeLabel = (linkType: string): string => {
     const labels: Record<string, string> = {
       blog: 'Blog',
@@ -58,39 +62,72 @@
       model: 'Model',
       github: 'GitHub',
       arxiv: 'arXiv',
-      hf: 'HuggingFace',
+      huggingface: 'HuggingFace',
       official: 'Official',
     }
     return labels[linkType] ?? linkType
   }
 
+  // Strip HTML tags from text
+  const stripHtml = (html: string): string => {
+    return html.replace(/<[^>]*>/g, '').replace(/&[a-zA-Z0-9#]+;/g, ' ').trim()
+  }
+
+  // Truncate summary with smart word boundary
   const truncatedSummary = computed(() => {
     if (!props.story.summary) return null
-    const maxLength = props.compact ? 120 : 200
-    if (props.story.summary.length <= maxLength) return props.story.summary
-    return props.story.summary.slice(0, maxLength).trim() + '...'
+    // Strip HTML tags first
+    const cleanSummary = stripHtml(props.story.summary)
+    if (!cleanSummary) return null
+
+    const maxLength = props.compact ? 120 : 220
+    if (cleanSummary.length <= maxLength) return cleanSummary
+
+    // Find last space before maxLength
+    const truncated = cleanSummary.slice(0, maxLength)
+    const lastSpace = truncated.lastIndexOf(' ')
+    return (lastSpace > maxLength * 0.7 ? truncated.slice(0, lastSpace) : truncated).trim() + '...'
   })
 
+  // Display authors with smart truncation
   const displayAuthors = computed(() => {
     if (!props.story.authors || props.story.authors.length === 0) return null
     if (props.story.authors.length <= 3) return props.story.authors.join(', ')
     return `${props.story.authors.slice(0, 3).join(', ')} +${props.story.authors.length - 3} more`
   })
 
+  // Get category label
   const categoryLabel = computed(() => {
     if (!props.story.categories || props.story.categories.length === 0) return null
     return props.story.categories[0]
+  })
+
+  // Get source display name
+  const sourceName = computed(() => {
+    return props.story.source_name || formatSourceId(props.story.primary_link.source_id)
+  })
+
+  // Format source ID to readable name
+  const formatSourceId = (sourceId: string): string => {
+    return sourceId
+      .replace(/^hf-/, '')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase())
+  }
+
+  // Check if story has meaningful content to display
+  const hasContent = computed(() => {
+    return truncatedSummary.value || displayAuthors.value
   })
 </script>
 
 <template>
   <article
-    class="card group hover-lift overflow-hidden"
+    class="card group"
     :class="[
       accentClass,
       'animate-fade-in-up',
-      `stagger-${Math.min(rank ?? 1, 5)}`,
-      compact ? 'p-4' : 'p-4 sm:p-5',
+      compact ? 'p-4' : 'p-5',
     ]"
     :data-testid="`story-card-${story.story_id}`"
   >
@@ -98,7 +135,12 @@
       <!-- Rank badge -->
       <div
         v-if="rank"
-        class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-[var(--color-accent-top5)]/12 text-[var(--color-accent-top5)] font-semibold text-sm transition-all duration-[var(--duration-base)] ease-[var(--ease-out)] group-hover:bg-[var(--color-accent-top5)]/20"
+        class="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-xl font-bold text-sm transition-all duration-[var(--duration-base)] ease-[var(--ease-out)]"
+        :class="[
+          rank <= 3
+            ? 'bg-[var(--color-accent-top5)]/15 text-[var(--color-accent-top5)] group-hover:bg-[var(--color-accent-top5)]/25'
+            : 'bg-[var(--color-surface-tertiary)] text-[var(--color-text-muted)] group-hover:bg-[var(--color-surface-secondary)]',
+        ]"
         :data-testid="`story-rank-${rank}`"
       >
         {{ rank }}
@@ -107,39 +149,39 @@
       <div class="flex-1 min-w-0">
         <!-- Header: Category & Source -->
         <div
-          v-if="(showCategories && categoryLabel) || story.source_name"
-          class="flex flex-wrap items-center gap-2 mb-1.5"
+          v-if="(showCategories && categoryLabel) || sourceName"
+          class="flex flex-wrap items-center gap-2 mb-2"
         >
           <span
             v-if="showCategories && categoryLabel"
-            class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-medium rounded bg-[var(--color-primary-50)] text-[var(--color-primary-600)]"
+            class="badge badge-category badge-primary"
           >
             {{ categoryLabel }}
           </span>
           <span
-            v-if="story.source_name"
-            class="text-[11px] text-[var(--color-text-muted)]"
+            v-if="sourceName"
+            class="text-[11px] text-[var(--color-text-hint)] font-medium"
           >
-            {{ story.source_name }}
+            {{ sourceName }}
           </span>
         </div>
 
         <!-- Title -->
         <h3
-          class="font-medium leading-snug"
+          class="font-semibold leading-snug"
           :class="compact ? 'text-sm' : 'text-[15px]'"
         >
           <a
             :href="story.primary_link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-start gap-1.5 text-[var(--color-text-primary)] hover:text-[var(--color-primary-600)] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 rounded group/link"
+            class="inline-flex items-start gap-2 text-[var(--color-text-primary)] hover:text-[var(--color-primary-500)] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] focus-visible:outline-offset-2 rounded group/link"
             :data-testid="`story-link-${story.story_id}`"
           >
             <span class="line-clamp-2">{{ story.title }}</span>
             <IconExternalLink
-              :size="13"
-              class="flex-shrink-0 mt-0.5 opacity-0 -translate-x-1 group-hover/link:opacity-70 group-hover/link:translate-x-0 transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] text-[var(--color-text-muted)]"
+              :size="14"
+              class="flex-shrink-0 mt-1 opacity-0 -translate-x-1 group-hover/link:opacity-60 group-hover/link:translate-x-0 transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] text-[var(--color-text-muted)]"
             />
           </a>
         </h3>
@@ -147,7 +189,7 @@
         <!-- Authors -->
         <p
           v-if="showAuthors && displayAuthors"
-          class="mt-1 text-[13px] text-[var(--color-text-secondary)] line-clamp-1"
+          class="mt-1.5 text-[13px] text-[var(--color-text-secondary)] line-clamp-1"
         >
           {{ displayAuthors }}
         </p>
@@ -155,22 +197,22 @@
         <!-- Summary/Abstract -->
         <p
           v-if="showSummary && truncatedSummary"
-          class="mt-2 text-[13px] text-[var(--color-text-muted)] leading-relaxed line-clamp-3"
+          class="mt-2.5 text-[13px] text-[var(--color-text-muted)] leading-relaxed line-clamp-3"
         >
           {{ truncatedSummary }}
         </p>
 
         <!-- Meta info -->
         <div
-          class="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-2.5 text-[11px] text-[var(--color-text-muted)]"
+          class="flex flex-wrap items-center gap-x-3 gap-y-1.5 mt-3 text-[11px] text-[var(--color-text-hint)]"
         >
           <!-- Time -->
           <span
-            class="inline-flex items-center gap-1 tabular-nums"
+            class="inline-flex items-center gap-1.5 tabular-nums"
             :title="formatDate(story.published_at)"
           >
             <svg
-              class="w-3 h-3"
+              class="w-3.5 h-3.5 opacity-60"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -188,11 +230,11 @@
           <!-- Entity badges -->
           <template v-if="showEntities && story.entities.length > 0">
             <span class="text-[var(--color-border-default)]">·</span>
-            <div class="flex flex-wrap gap-1">
+            <div class="flex flex-wrap gap-1.5">
               <span
                 v-for="entity in story.entities"
                 :key="entity"
-                class="px-1.5 py-0.5 rounded bg-[var(--color-surface-tertiary)] text-[var(--color-text-secondary)] font-medium transition-colors duration-[var(--duration-fast)] hover:text-[var(--color-primary-600)] cursor-default"
+                class="badge badge-default text-[10px] py-0.5"
               >
                 {{ entity }}
               </span>
@@ -203,7 +245,7 @@
           <template v-if="showArxiv && story.arxiv_id">
             <span class="text-[var(--color-border-default)]">·</span>
             <span
-              class="font-mono bg-[var(--color-surface-tertiary)] px-1.5 py-0.5 rounded text-[10px]"
+              class="font-mono bg-[var(--color-surface-tertiary)] px-2 py-0.5 rounded-md text-[10px] text-[var(--color-text-muted)]"
             >
               arXiv:{{ story.arxiv_id }}
             </span>
@@ -213,7 +255,7 @@
         <!-- Additional links -->
         <div
           v-if="story.links.length > 1"
-          class="flex flex-wrap gap-1.5 mt-2.5 pt-2.5 border-t border-[var(--color-border-light)]"
+          class="flex flex-wrap gap-2 mt-3 pt-3 border-t border-[var(--color-border-light)]"
         >
           <a
             v-for="link in story.links"
@@ -221,16 +263,16 @@
             :href="link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 px-2 py-1 text-[11px] font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface-tertiary)] rounded-md hover:bg-[var(--color-surface-primary)] hover:text-[var(--color-primary-600)] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)]"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)] bg-[var(--color-surface-secondary)] rounded-lg border border-[var(--color-border-light)] hover:bg-[var(--color-surface-tertiary)] hover:border-[var(--color-border-default)] hover:text-[var(--color-primary-500)] transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary-500)] press-effect"
             :title="link.title"
           >
             <IconGithub
               v-if="link.link_type === 'github'"
-              :size="11"
+              :size="12"
             />
             <IconDocument
               v-else
-              :size="11"
+              :size="12"
             />
             <span>{{ getLinkTypeLabel(link.link_type) }}</span>
           </a>
