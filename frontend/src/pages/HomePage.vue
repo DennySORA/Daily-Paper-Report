@@ -14,6 +14,10 @@ const runDate = computed(() => digestStore.runDate)
 const runInfo = computed(() => digestStore.runInfo)
 const timeFilter = computed(() => digestStore.timeFilter)
 
+// Search state
+const searchQuery = ref('')
+const isSearchFocused = ref(false)
+
 // Tab state
 type TabView = 'category' | 'source'
 const activeTab = ref<TabView>('category')
@@ -48,22 +52,46 @@ const stats = computed(() => {
   }
 })
 
+// Search filter function
+const matchesSearch = (story: Story, query: string): boolean => {
+  if (!query.trim()) return true
+  const lowerQuery = query.toLowerCase()
+  const titleMatch = story.title.toLowerCase().includes(lowerQuery)
+  const authorMatch = story.authors?.some(a => a.toLowerCase().includes(lowerQuery)) ?? false
+  const summaryMatch = story.summary?.toLowerCase().includes(lowerQuery) ?? false
+  return titleMatch || authorMatch || summaryMatch
+}
+
 // Papers by category with top pick
 const categoriesWithPapers = computed(() => {
   const data = digestStore.papersByCategoryWithPicks
+  const query = searchQuery.value.trim()
+
   return digestStore.sortedCategories
     .filter(cat => data[cat])
-    .map(category => ({
-      category,
-      papers: data[category].stories,
-      topPick: data[category].topPick,
-      count: data[category].stories.length,
-    }))
+    .map(category => {
+      const allPapers = data[category].stories
+      const filteredPapers = query ? allPapers.filter(s => matchesSearch(s, query)) : allPapers
+      const topPick = filteredPapers.length > 0
+        ? (data[category].topPick && matchesSearch(data[category].topPick!, query)
+            ? data[category].topPick
+            : filteredPapers[0])
+        : null
+
+      return {
+        category,
+        papers: filteredPapers,
+        topPick,
+        count: filteredPapers.length,
+      }
+    })
+    .filter(cat => cat.count > 0)
 })
 
 // Papers by source with top pick per source
 const sourceGroups = computed(() => {
   const groups = digestStore.allStoriesBySourceCategory
+  const query = searchQuery.value.trim()
   const labels: Record<string, string> = {
     arxiv: 'arXiv Papers',
     huggingface: 'Hugging Face',
@@ -85,8 +113,10 @@ const sourceGroups = computed(() => {
     .filter(([_, sourceList]) => sourceList.length > 0 && sourceList.some(s => s.stories.length > 0))
     .map(([sourceType, sourceList]) => {
       const allStories = sourceList.flatMap(source => source.stories)
+      // Filter by search query
+      const filteredStories = query ? allStories.filter(s => matchesSearch(s, query)) : allStories
       // Sort by date, most recent first
-      const sortedStories = [...allStories].sort((a, b) => {
+      const sortedStories = [...filteredStories].sort((a, b) => {
         const dateA = a.published_at ? new Date(a.published_at).getTime() : 0
         const dateB = b.published_at ? new Date(b.published_at).getTime() : 0
         return dateB - dateA
@@ -105,6 +135,17 @@ const sourceGroups = computed(() => {
     .filter(group => group.count > 0)
     .sort((a, b) => b.count - a.count)
 })
+
+// Total search results count
+const totalSearchResults = computed(() => {
+  if (!searchQuery.value.trim()) return null
+  return categoriesWithPapers.value.reduce((sum, cat) => sum + cat.count, 0)
+})
+
+// Clear search
+const clearSearch = () => {
+  searchQuery.value = ''
+}
 
 // Auto-select first category/source on mount
 onMounted(() => {
@@ -322,6 +363,60 @@ const timezoneInfo = computed(() => {
         </div>
       </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SEARCH BAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <div
+      v-if="!isLoading && !hasError"
+      class="search-container"
+    >
+      <div
+        class="search-box"
+        :class="{ 'search-box--focused': isSearchFocused, 'search-box--has-query': searchQuery.length > 0 }"
+      >
+        <svg
+          class="search-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input
+          v-model="searchQuery"
+          type="text"
+          class="search-input"
+          placeholder="Search papers by title, author, or content..."
+          @focus="isSearchFocused = true"
+          @blur="isSearchFocused = false"
+        >
+        <Transition name="fade">
+          <button
+            v-if="searchQuery.length > 0"
+            class="search-clear-btn"
+            @click="clearSearch"
+            title="Clear search"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </Transition>
+      </div>
+      <Transition name="slide-fade">
+        <div
+          v-if="totalSearchResults !== null"
+          class="search-results-indicator"
+        >
+          <span class="results-count">{{ totalSearchResults }}</span>
+          <span class="results-label">{{ totalSearchResults === 1 ? 'result' : 'results' }}</span>
+        </div>
+      </Transition>
+    </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
          TAB NAVIGATION
@@ -884,6 +979,186 @@ const timezoneInfo = computed(() => {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   SEARCH BAR
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: searchReveal 0.4s var(--ease-out) both;
+  animation-delay: 100ms;
+}
+
+@keyframes searchReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
+  .search-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 560px;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  transition: all var(--duration-base) var(--ease-out);
+  overflow: hidden;
+}
+
+.search-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-accent-primary-glow) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.search-box--focused {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 3px var(--color-accent-primary-glow), var(--shadow-md);
+  background: var(--color-surface-primary);
+}
+
+.search-box--focused::before {
+  opacity: 0.5;
+}
+
+.search-box--has-query {
+  border-color: var(--color-border-default);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+  pointer-events: none;
+}
+
+.search-box--focused .search-icon {
+  color: var(--color-accent-primary);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.875rem 3rem 0.875rem 3rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.search-input:focus::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--color-surface-overlay);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.search-clear-btn svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.search-clear-btn:hover {
+  background: var(--color-accent-error);
+}
+
+.search-clear-btn:hover svg {
+  color: #fff;
+}
+
+.search-results-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent-primary);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.results-count {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.results-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.8);
+}
+
+/* Transitions */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    MAIN TABS
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -997,84 +1272,145 @@ const timezoneInfo = computed(() => {
   gap: 1.25rem;
 }
 
-/* Pill Navigation */
+/* ═══════════════════════════════════════════════════════════════════════════
+   PILL NAVIGATION - Prominent Sub-Tab Design
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .pill-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0.875rem;
-  background: var(--color-surface-secondary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-xl);
+  gap: 0.625rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, var(--color-surface-secondary) 0%, var(--color-surface-primary) 100%);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.pill-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-primary), transparent);
+  opacity: 0.5;
 }
 
 .pill-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.875rem;
+  gap: 0.625rem;
+  padding: 0.75rem 1.125rem;
   font-family: var(--font-display);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-text-tertiary);
-  background: transparent;
-  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-overlay);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-out);
-  animation: pillReveal 0.3s var(--ease-out) both;
-  animation-delay: calc(var(--idx, 0) * 30ms);
+  animation: pillReveal 0.35s var(--ease-out) both;
+  animation-delay: calc(var(--idx, 0) * 40ms);
+  position: relative;
+  overflow: hidden;
+}
+
+.pill-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 @keyframes pillReveal {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: translateY(8px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
 .pill-btn:hover:not(.active) {
-  color: var(--color-text-secondary);
-  background: var(--color-surface-overlay);
+  color: var(--color-text-primary);
+  background: var(--color-surface-elevated);
+  border-color: var(--color-border-default);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pill-btn:hover:not(.active)::before {
+  opacity: 1;
 }
 
 .pill-btn:active:not(.active) {
-  transform: scale(0.97);
+  transform: translateY(0) scale(0.98);
 }
 
 .pill-btn.active {
-  color: var(--color-text-primary);
-  background: var(--color-surface-primary);
-  border-color: var(--color-border-default);
-  box-shadow: var(--shadow-sm);
-  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-primary-hover) 100%);
+  border-color: transparent;
+  box-shadow: var(--shadow-glow-primary), var(--shadow-md);
+  font-weight: 700;
+}
+
+.pill-btn.active::before {
+  opacity: 0.3;
+}
+
+.pill-btn.active:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
 }
 
 .pill-emoji {
-  font-size: 1rem;
+  font-size: 1.125rem;
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.pill-btn:hover .pill-emoji {
+  transform: scale(1.1);
+}
+
+.pill-btn.active .pill-emoji {
+  filter: drop-shadow(0 0 4px rgb(255 255 255 / 0.5));
 }
 
 .pill-label {
   white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .pill-count {
-  padding: 0.125rem 0.4375rem;
-  font-size: 0.625rem;
+  padding: 0.1875rem 0.5rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   font-family: var(--font-mono);
-  color: var(--color-text-muted);
-  background: var(--color-surface-overlay);
+  color: var(--color-text-tertiary);
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-full);
   transition: all var(--duration-fast) var(--ease-out);
 }
 
+.pill-btn:hover:not(.active) .pill-count {
+  background: var(--color-surface-overlay);
+  border-color: var(--color-border-default);
+}
+
 .pill-btn.active .pill-count {
-  background: var(--color-accent-primary);
+  background: rgb(255 255 255 / 0.25);
+  border-color: transparent;
   color: #fff;
 }
 
