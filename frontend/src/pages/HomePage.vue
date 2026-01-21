@@ -15,12 +15,12 @@ const runInfo = computed(() => digestStore.runInfo)
 const timeFilter = computed(() => digestStore.timeFilter)
 
 // Tab state
-type TabView = 'all' | 'category' | 'source'
-const activeTab = ref<TabView>('all')
+type TabView = 'category' | 'source'
+const activeTab = ref<TabView>('category')
 
-// Accordion state
-const expandedCategories = ref<Set<string>>(new Set())
-const expandedSources = ref<Set<string>>(new Set())
+// Sub-tab state for nested navigation
+const activeCategory = ref<string | null>(null)
+const activeSource = ref<string | null>(null)
 
 // Time filter handler
 function setTimeFilter(filter: 'all' | '24h') {
@@ -120,71 +120,49 @@ const sourceGroups = computed(() => {
     .sort((a, b) => b.count - a.count)
 })
 
-// Toggle handlers
-function toggleCategory(category: string) {
-  const newSet = new Set(expandedCategories.value)
-  if (newSet.has(category)) {
-    newSet.delete(category)
-  } else {
-    newSet.add(category)
-  }
-  expandedCategories.value = newSet
-}
-
-function toggleSource(sourceType: string) {
-  const newSet = new Set(expandedSources.value)
-  if (newSet.has(sourceType)) {
-    newSet.delete(sourceType)
-  } else {
-    newSet.add(sourceType)
-  }
-  expandedSources.value = newSet
-}
-
-// Auto-expand ALL categories and first source on mount for faster scanning
+// Auto-select first category/source on mount
 onMounted(() => {
-  // Expand all categories by default - researchers need to scan quickly
-  for (const cat of categoriesWithPapers.value) {
-    expandedCategories.value.add(cat.category)
+  if (categoriesWithPapers.value.length > 0) {
+    activeCategory.value = categoriesWithPapers.value[0].category
   }
-  // Expand all sources by default
-  for (const group of sourceGroups.value) {
-    expandedSources.value.add(group.sourceType)
+  if (sourceGroups.value.length > 0) {
+    activeSource.value = sourceGroups.value[0].sourceType
   }
 })
 
-// When switching tabs, expand all items for fast scanning
-watch(activeTab, newTab => {
-  expandedCategories.value = new Set()
-  expandedSources.value = new Set()
+// Reset sub-tab selection when data changes
+watch(categoriesWithPapers, (cats) => {
+  if (cats.length > 0 && !cats.find(c => c.category === activeCategory.value)) {
+    activeCategory.value = cats[0].category
+  }
+}, { deep: true })
 
-  setTimeout(() => {
-    if (newTab === 'category') {
-      // Expand all categories
-      for (const cat of categoriesWithPapers.value) {
-        expandedCategories.value.add(cat.category)
-      }
-    }
-    if (newTab === 'source') {
-      // Expand all sources
-      for (const group of sourceGroups.value) {
-        expandedSources.value.add(group.sourceType)
-      }
-    }
-  }, 50)
+watch(sourceGroups, (groups) => {
+  if (groups.length > 0 && !groups.find(g => g.sourceType === activeSource.value)) {
+    activeSource.value = groups[0].sourceType
+  }
+}, { deep: true })
+
+// Get current category papers
+const currentCategoryData = computed(() => {
+  if (!activeCategory.value) return null
+  return categoriesWithPapers.value.find(c => c.category === activeCategory.value)
 })
 
-// Tab definitions
+// Get current source papers
+const currentSourceData = computed(() => {
+  if (!activeSource.value) return null
+  return sourceGroups.value.find(g => g.sourceType === activeSource.value)
+})
+
+// Tab definitions (only category and source - no "All Papers")
 const tabs = [
-  { id: 'all' as const, label: 'All Papers', icon: '📄' },
   { id: 'category' as const, label: 'By Category', icon: '📁' },
   { id: 'source' as const, label: 'By Source', icon: '🔗' },
 ]
 
 function getTabCount(tabId: TabView): number {
   switch (tabId) {
-    case 'all':
-      return allPapers.value.length
     case 'category':
       return categoriesWithPapers.value.length
     case 'source':
@@ -393,7 +371,7 @@ function getTabCount(tabId: TabView): number {
     >
       <div class="tabs-container">
         <div
-          v-for="i in 3"
+          v-for="i in 2"
           :key="i"
           class="tab-skeleton"
         />
@@ -461,103 +439,60 @@ function getTabCount(tabId: TabView): number {
       v-else
       class="content-main"
     >
-      <!-- ALL PAPERS VIEW -->
-      <div
-        v-show="activeTab === 'all'"
-        class="content-panel"
-      >
-        <div
-          v-if="allPapers.length > 0"
-          class="papers-grid"
-        >
-          <StoryCard
-            v-for="(story, index) in allPapers"
-            :key="story.story_id"
-            :story="story"
-            :rank="index < 5 ? index + 1 : undefined"
-            :accent-type="index < 5 ? 'highlight' : undefined"
-            :featured="index < 5"
-            :show-entities="true"
-            :show-categories="true"
-            :show-source="true"
-            :show-authors="true"
-            :show-summary="true"
-            class="paper-item"
-            :style="{ '--index': Math.min(index, 10) }"
-          />
-        </div>
-
-        <div
-          v-else
-          class="empty-panel"
-        >
-          <div class="empty-icon">
-            📭
-          </div>
-          <h3 class="empty-title">
-            No papers found
-          </h3>
-          <p class="empty-desc">
-            Try selecting "All" in the time filter above.
-          </p>
-        </div>
-      </div>
-
-      <!-- BY CATEGORY VIEW -->
+      <!-- BY CATEGORY VIEW with Sub-Tabs -->
       <div
         v-show="activeTab === 'category'"
         class="content-panel"
       >
         <div
           v-if="categoriesWithPapers.length > 0"
-          class="accordion-list"
+          class="subtab-layout"
         >
-          <div
-            v-for="cat in categoriesWithPapers"
-            :key="cat.category"
-            class="accordion-item"
-            :class="{ expanded: expandedCategories.has(cat.category) }"
-          >
+          <!-- Category Sub-Tabs -->
+          <nav class="subtab-nav">
             <button
-              class="accordion-trigger"
-              @click="toggleCategory(cat.category)"
+              v-for="cat in categoriesWithPapers"
+              :key="cat.category"
+              class="subtab-btn"
+              :class="{ active: activeCategory === cat.category }"
+              @click="activeCategory = cat.category"
             >
-              <span class="accordion-arrow">
-                {{ expandedCategories.has(cat.category) ? '▼' : '▶' }}
-              </span>
-              <span class="accordion-title">{{ cat.category }}</span>
-              <span class="accordion-count">{{ cat.count }}</span>
+              <span class="subtab-label">{{ cat.category }}</span>
+              <span class="subtab-count">{{ cat.count }}</span>
             </button>
+          </nav>
 
+          <!-- Category Content -->
+          <div
+            v-if="currentCategoryData"
+            class="subtab-content"
+          >
+            <!-- Top Pick -->
             <div
-              v-show="expandedCategories.has(cat.category)"
-              class="accordion-body"
+              v-if="currentCategoryData.topPick"
+              class="top-pick-section"
             >
-              <!-- Top Pick -->
-              <div
-                v-if="cat.topPick"
-                class="top-pick-section"
-              >
-                <div class="top-pick-label">
-                  ⭐ Top Pick
-                </div>
-                <StoryCard
-                  :story="cat.topPick"
-                  :rank="1"
-                  accent-type="highlight"
-                  :featured="true"
-                  :show-entities="true"
-                  :show-categories="false"
-                  :show-source="true"
-                  :show-authors="true"
-                  :show-summary="true"
-                  class="top-pick-card"
-                />
+              <div class="top-pick-label">
+                ⭐ Top Pick
               </div>
-
-              <!-- Other Papers -->
               <StoryCard
-                v-for="(story, idx) in cat.papers.filter(s => s.story_id !== cat.topPick?.story_id)"
+                :story="currentCategoryData.topPick"
+                :rank="1"
+                accent-type="highlight"
+                :featured="true"
+                :show-entities="true"
+                :show-categories="false"
+                :show-source="true"
+                :show-authors="true"
+                :show-summary="true"
+                class="top-pick-card"
+              />
+            </div>
+
+            <!-- Other Papers -->
+            <div class="papers-grid">
+              <StoryCard
+                v-for="(story, idx) in currentCategoryData.papers.filter(s => s.story_id !== currentCategoryData?.topPick?.story_id)"
                 :key="story.story_id"
                 :story="story"
                 :show-entities="true"
@@ -588,39 +523,38 @@ function getTabCount(tabId: TabView): number {
         </div>
       </div>
 
-      <!-- BY SOURCE VIEW -->
+      <!-- BY SOURCE VIEW with Sub-Tabs -->
       <div
         v-show="activeTab === 'source'"
         class="content-panel"
       >
         <div
           v-if="sourceGroups.length > 0"
-          class="accordion-list"
+          class="subtab-layout"
         >
-          <div
-            v-for="group in sourceGroups"
-            :key="group.sourceType"
-            class="accordion-item"
-            :class="{ expanded: expandedSources.has(group.sourceType) }"
-          >
+          <!-- Source Sub-Tabs -->
+          <nav class="subtab-nav">
             <button
-              class="accordion-trigger"
-              @click="toggleSource(group.sourceType)"
+              v-for="group in sourceGroups"
+              :key="group.sourceType"
+              class="subtab-btn"
+              :class="{ active: activeSource === group.sourceType }"
+              @click="activeSource = group.sourceType"
             >
-              <span class="accordion-arrow">
-                {{ expandedSources.has(group.sourceType) ? '▼' : '▶' }}
-              </span>
-              <span class="accordion-emoji">{{ group.icon }}</span>
-              <span class="accordion-title">{{ group.label }}</span>
-              <span class="accordion-count">{{ group.count }}</span>
+              <span class="subtab-emoji">{{ group.icon }}</span>
+              <span class="subtab-label">{{ group.label }}</span>
+              <span class="subtab-count">{{ group.count }}</span>
             </button>
+          </nav>
 
-            <div
-              v-show="expandedSources.has(group.sourceType)"
-              class="accordion-body"
-            >
+          <!-- Source Content -->
+          <div
+            v-if="currentSourceData"
+            class="subtab-content"
+          >
+            <div class="papers-grid">
               <StoryCard
-                v-for="(story, idx) in group.stories"
+                v-for="(story, idx) in currentSourceData.stories"
                 :key="story.story_id"
                 :story="story"
                 :show-entities="true"
@@ -1071,90 +1005,99 @@ function getTabCount(tabId: TabView): number {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   ACCORDION - For category/source views
+   SUB-TABS - Nested navigation under main tabs
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.accordion-list {
+.subtab-layout {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.accordion-item {
-  background: var(--color-surface-primary);
+.subtab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--color-surface-secondary);
   border: 1px solid var(--color-border-subtle);
   border-radius: 0.75rem;
-  overflow: hidden;
-  transition: border-color 0.2s ease;
 }
 
-.accordion-item.expanded {
-  border-color: var(--color-accent-primary);
-}
-
-.accordion-trigger {
-  width: 100%;
-  display: flex;
+.subtab-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background-color 0.15s ease;
-}
-
-.accordion-trigger:hover {
-  background: var(--color-surface-secondary);
-}
-
-.accordion-arrow {
-  font-size: 0.625rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   color: var(--color-text-tertiary);
-  transition: color 0.2s ease;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
-.accordion-item.expanded .accordion-arrow {
-  color: var(--color-accent-primary);
+.subtab-btn:hover:not(.active) {
+  color: var(--color-text-secondary);
+  background: var(--color-surface-overlay);
 }
 
-.accordion-emoji {
-  font-size: 1.125rem;
+.subtab-btn.active {
+  color: var(--color-text-primary);
+  background: var(--color-surface-primary);
+  border-color: var(--color-border-default);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
 }
 
-.accordion-title {
-  flex: 1;
+.subtab-emoji {
+  font-size: 1rem;
+}
+
+.subtab-label {
   font-family: var(--font-display);
 }
 
-.accordion-count {
-  padding: 0.25rem 0.625rem;
-  font-size: 0.6875rem;
+.subtab-count {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--color-text-muted);
-  background: var(--color-surface-secondary);
+  background: var(--color-surface-overlay);
   border-radius: 1rem;
 }
 
-.accordion-body {
-  padding: 0 0.75rem 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.subtab-btn.active .subtab-count {
+  background: var(--color-accent-primary);
+  color: #fff;
+}
+
+.subtab-content {
+  animation: subtabFadeIn 0.25s ease-out;
+}
+
+@keyframes subtabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Top Pick */
 .top-pick-section {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .top-pick-label {
-  padding: 0.5rem 0.5rem 0.25rem;
+  padding: 0.5rem 0;
   font-size: 0.6875rem;
   font-weight: 700;
   color: var(--color-accent-highlight);
