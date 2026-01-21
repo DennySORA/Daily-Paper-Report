@@ -11,8 +11,8 @@
 
   const filters: { id: StatusFilter; label: string; icon: string }[] = [
     { id: 'all', label: 'All', icon: '📋' },
-    { id: 'has_update', label: 'Has Updates', icon: '✨' },
-    { id: 'no_change', label: 'No Changes', icon: '➖' },
+    { id: 'has_update', label: 'New Data', icon: '✨' },
+    { id: 'no_change', label: 'Synced', icon: '✓' },
     { id: 'failed', label: 'Failed', icon: '⚠️' },
   ]
 
@@ -76,9 +76,9 @@
   const getStatusLabel = (status: string): string => {
     switch (status) {
       case 'HAS_UPDATE':
-        return 'Updated'
+        return 'New Data'
       case 'NO_UPDATE':
-        return 'No Changes'
+        return 'Synced'
       case 'FETCH_FAILED':
         return 'Fetch Failed'
       case 'PARSE_FAILED':
@@ -87,6 +87,9 @@
         return status
     }
   }
+
+  // Get story count per source
+  const storiesBySource = computed(() => digestStore.allStoriesBySource)
 
   const getStatusIcon = (status: string): string => {
     switch (status) {
@@ -138,11 +141,11 @@
       >
         <div class="summary-stat summary-stat--success">
           <span class="summary-stat-value">{{ filterCounts.has_update }}</span>
-          <span class="summary-stat-label">Updated</span>
+          <span class="summary-stat-label">New Data</span>
         </div>
-        <div class="summary-stat summary-stat--muted">
+        <div class="summary-stat summary-stat--synced">
           <span class="summary-stat-value">{{ filterCounts.no_change }}</span>
-          <span class="summary-stat-label">No Change</span>
+          <span class="summary-stat-label">Synced</span>
         </div>
         <div class="summary-stat summary-stat--error">
           <span class="summary-stat-value">{{ filterCounts.failed }}</span>
@@ -206,7 +209,11 @@
             <div class="source-meta">
               <span class="method-badge">{{ source.method }}</span>
               <span class="meta-divider">·</span>
-              <span class="tier-label">{{ getTierLabel(source.tier) }}</span>
+              <span class="tier-label">Tier {{ source.tier + 1 }}</span>
+              <template v-if="storiesBySource[source.source_id]?.length > 0">
+                <span class="meta-divider">·</span>
+                <span class="papers-count">{{ storiesBySource[source.source_id].length }} papers</span>
+              </template>
               <template v-if="source.items_new > 0">
                 <span class="meta-divider">·</span>
                 <span class="new-items">+{{ source.items_new }} new</span>
@@ -350,8 +357,8 @@
   border-left: 3px solid var(--color-accent-success);
 }
 
-.summary-stat--muted {
-  border-left: 3px solid var(--color-text-muted);
+.summary-stat--synced {
+  border-left: 3px solid var(--color-accent-primary);
 }
 
 .summary-stat--error {
@@ -367,6 +374,7 @@
 }
 
 .summary-stat--success .summary-stat-value { color: var(--color-accent-success); }
+.summary-stat--synced .summary-stat-value { color: var(--color-accent-primary); }
 .summary-stat--error .summary-stat-value { color: var(--color-accent-error); }
 
 .summary-stat-label {
@@ -671,6 +679,11 @@
 
 .tier-label {
   font-size: 0.75rem;
+}
+
+.papers-count {
+  color: var(--color-accent-primary);
+  font-weight: 600;
 }
 
 .new-items {
