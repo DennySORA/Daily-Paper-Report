@@ -159,12 +159,13 @@ const getSourceBadgeClass = (sourceId: string): string => {
       <!-- Rank badge -->
       <div
         v-if="rank"
-        class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm transition-all duration-[var(--duration-base)] ease-[var(--ease-out)]"
+        class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm transition-all"
         :class="
           rank <= 3
-            ? 'bg-[oklch(0.82_0.19_85/0.15)] text-[oklch(0.65_0.18_85)] group-hover:bg-[oklch(0.82_0.19_85/0.25)]'
-            : 'bg-[var(--color-surface-sunken)] text-[var(--color-text-tertiary)] group-hover:bg-[var(--color-surface-overlay)]'
+            ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 group-hover:bg-amber-500/25'
+            : 'bg-[var(--color-surface-overlay)] text-[var(--color-text-tertiary)] group-hover:bg-[var(--color-surface-sunken)]'
         "
+        style="font-family: var(--font-mono)"
         :data-testid="`story-rank-${rank}`"
       >
         {{ rank }}
@@ -204,7 +205,7 @@ const getSourceBadgeClass = (sourceId: string): string => {
             :href="story.primary_link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-start gap-2 text-[var(--color-text-primary)] hover:text-[oklch(0.55_0.20_264)] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-outline rounded group/link"
+            class="inline-flex items-start gap-2 text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] transition-colors focus-outline rounded group/link"
             :data-testid="`story-link-${story.story_id}`"
           >
             <span class="line-clamp-2">{{ story.title }}</span>
@@ -297,7 +298,7 @@ const getSourceBadgeClass = (sourceId: string): string => {
             :href="link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 px-2 py-1 text-[0.6875rem] font-semibold text-[var(--color-text-secondary)] bg-[var(--color-surface-sunken)] rounded-md border border-[var(--color-border-subtle)] hover:bg-[var(--color-surface-overlay)] hover:border-[var(--color-border-default)] hover:text-[oklch(0.55_0.20_264)] transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-outline"
+            class="inline-flex items-center gap-1 px-2 py-1 text-[0.6875rem] font-semibold text-[var(--color-text-secondary)] bg-[var(--color-surface-overlay)] rounded-md border border-[var(--color-border-subtle)] hover:bg-[var(--color-surface-sunken)] hover:border-[var(--color-border-default)] hover:text-[var(--color-accent-primary)] transition-all focus-outline"
             :title="link.title"
           >
             <svg

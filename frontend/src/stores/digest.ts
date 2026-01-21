@@ -289,13 +289,25 @@ export const useDigestStore = defineStore('digest', () => {
     })
   })
 
-  // Group papers by arXiv category with top pick per category
+  // Group ALL stories by category (not just papers) with top pick per category
+  // This includes stories from top5, papers, model_releases, and radar that have categories
   const papersByCategoryWithPicks = computed(() => {
     const grouped: Record<string, { stories: Story[]; topPick: Story | null; displayName: string }> = {}
 
-    for (const paper of filteredPapers.value) {
-      // Use first category or 'Uncategorized'
-      const category = paper.categories?.[0] ?? 'Uncategorized'
+    // Collect all stories that might have categories
+    const allCategorizedStories = [
+      ...filteredPapers.value,
+      ...filteredTop5.value,
+      ...filteredRadar.value,
+      ...Object.values(filteredModelReleases.value).flat(),
+    ]
+
+    for (const story of allCategorizedStories) {
+      // Only include stories that have categories
+      if (!story.categories || story.categories.length === 0) continue
+
+      // Use first category
+      const category = story.categories[0]
       if (!grouped[category]) {
         grouped[category] = {
           stories: [],
@@ -303,7 +315,7 @@ export const useDigestStore = defineStore('digest', () => {
           displayName: getCategoryDisplayName(category),
         }
       }
-      grouped[category].stories.push(paper)
+      grouped[category].stories.push(story)
     }
 
     // Sort stories within each category by date and set top pick
