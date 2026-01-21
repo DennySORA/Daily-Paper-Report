@@ -28,6 +28,7 @@ const mockStory: Story = {
     url: 'https://example.com/test',
   },
   published_at: '2026-01-20T10:00:00Z',
+  first_seen_at: '2026-01-20T10:00:00Z',
   section: null,
   authors: ['John Doe', 'Jane Smith'],
   summary: 'This is a test summary for the story.',
@@ -117,8 +118,8 @@ describe('StoryCard', () => {
       props: { story: recentStory },
     })
 
-    // Should show relative time like "Just now", "Xh ago", etc.
-    expect(wrapper.text()).toMatch(/Just now|h ago|d ago|Yesterday/)
+    // Should show relative time like "0m ago", "Xh ago", etc.
+    expect(wrapper.text()).toMatch(/m ago|h ago|d ago|Yesterday/)
   })
 
   it('shows empty time when published_at is null', () => {
@@ -132,11 +133,12 @@ describe('StoryCard', () => {
     expect(wrapper.text()).toContain('Test Story Title')
   })
 
-  it('applies accent class when provided', () => {
+  it('applies accent type styling when provided', () => {
     const wrapper = mount(StoryCard, {
-      props: { story: mockStory, accentClass: 'accent-top5' },
+      props: { story: mockStory, accentType: 'highlight' },
     })
 
-    expect(wrapper.find('article').classes()).toContain('accent-top5')
+    // The component applies card-accent-* classes based on accentType
+    expect(wrapper.find('article').classes()).toContain('card-accent-highlight')
   })
 })
