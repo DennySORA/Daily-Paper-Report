@@ -156,6 +156,15 @@ const stripHtml = (html: string): string => {
     .trim()
 }
 
+// Clean arXiv metadata prefix from summary
+const cleanArxivPrefix = (text: string): string => {
+  // Remove patterns like "arXiv:2507.23541v4 Announce Type: replace Abstract: "
+  // or "arXiv:2507.23541 Announce Type: new Abstract: "
+  return text
+    .replace(/^arXiv:\d+\.\d+(?:v\d+)?\s+Announce Type:\s*\w+\s*Abstract:\s*/i, '')
+    .trim()
+}
+
 // Check if text looks like image alt text (not a real summary)
 const looksLikeImageAlt = (text: string): boolean => {
   const altPatterns = [
@@ -173,7 +182,11 @@ const looksLikeImageAlt = (text: string): boolean => {
 // Truncate summary with smart word boundary
 const truncatedSummary = computed(() => {
   if (!props.story.summary) return null
-  const cleanSummary = stripHtml(props.story.summary)
+  let cleanSummary = stripHtml(props.story.summary)
+  if (!cleanSummary) return null
+
+  // Remove arXiv metadata prefix
+  cleanSummary = cleanArxivPrefix(cleanSummary)
   if (!cleanSummary) return null
 
   // Filter out summaries that look like image alt text
