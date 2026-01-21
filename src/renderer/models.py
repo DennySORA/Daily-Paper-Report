@@ -108,6 +108,7 @@ class DailyDigest(BaseModel):
         radar: Worth monitoring section.
         sources_status: Per-source status.
         run_info: Run information.
+        archive_dates: Available archive dates (YYYY-MM-DD, descending order).
     """
 
     model_config = ConfigDict(extra="forbid")
@@ -123,6 +124,7 @@ class DailyDigest(BaseModel):
     radar: list[dict[str, object]] = Field(default_factory=list)
     sources_status: list[dict[str, object]] = Field(default_factory=list)
     run_info: dict[str, object] = Field(default_factory=dict)
+    archive_dates: list[str] = Field(default_factory=list)
 
 
 @dataclass(frozen=True)

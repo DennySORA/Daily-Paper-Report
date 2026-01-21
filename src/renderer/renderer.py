@@ -104,6 +104,9 @@ class StaticRenderer:
         )
 
         try:
+            # Collect archive dates before rendering (needed for both JSON and HTML)
+            archive_dates = self._get_archive_dates(run_date)
+
             # Phase 1: Render JSON
             self._state_machine.to_rendering_json()
             json_renderer = JsonRenderer(
@@ -116,14 +119,12 @@ class StaticRenderer:
                 sources_status=sources_status,
                 run_info=run_info,
                 run_date=run_date,
+                archive_dates=archive_dates,
             )
             manifest.add_file(json_file)
 
             # Phase 2: Render HTML
             self._state_machine.to_rendering_html()
-
-            # Collect archive dates before rendering
-            archive_dates = self._get_archive_dates(run_date)
 
             context = RenderContext(
                 run_id=self._run_id,

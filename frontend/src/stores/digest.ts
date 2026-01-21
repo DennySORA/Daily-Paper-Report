@@ -68,6 +68,8 @@ export const useDigestStore = defineStore('digest', () => {
 
   const runInfo = computed(() => data.value?.run_info ?? null)
 
+  const archiveDates = computed(() => data.value?.archive_dates ?? [])
+
   const totalStories = computed(() => {
     if (!data.value) return 0
     const modelStoriesCount = Object.values(data.value.model_releases_by_entity).reduce(
@@ -400,6 +402,7 @@ export const useDigestStore = defineStore('digest', () => {
     sourcesStatus,
     runDate,
     runInfo,
+    archiveDates,
     totalStories,
     // New grouping getters
     papersByCategory,

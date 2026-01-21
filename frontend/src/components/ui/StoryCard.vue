@@ -105,7 +105,7 @@ const truncatedSummary = computed(() => {
   // Filter out summaries that look like image alt text
   if (looksLikeImageAlt(cleanSummary)) return null
 
-  const maxLength = props.compact ? 100 : 200
+  const maxLength = props.compact ? 120 : 220
   if (cleanSummary.length <= maxLength) return cleanSummary
 
   const truncated = cleanSummary.slice(0, maxLength)
@@ -152,7 +152,7 @@ const cardClasses = computed(() => {
   }
 
   if (props.compact) {
-    classes.push('py-3', 'px-4')
+    classes.push('paper-card--compact')
   }
 
   return classes
@@ -165,6 +165,12 @@ const getSourceBadgeClass = (sourceId: string): string => {
   if (sourceId.includes('blog')) return 'badge-source-blog'
   return 'badge-muted'
 }
+
+// Get accent badge class
+const getAccentBadgeClass = computed(() => {
+  if (!props.accentType) return 'badge-muted'
+  return `badge-${props.accentType}`
+})
 </script>
 
 <template>
@@ -173,33 +179,37 @@ const getSourceBadgeClass = (sourceId: string): string => {
     :data-testid="`story-card-${story.story_id}`"
   >
     <div class="flex items-start gap-3">
-      <!-- Rank badge -->
+      <!-- Rank badge (for top picks) -->
       <div
         v-if="rank"
-        class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm transition-all"
-        :class="
-          rank <= 3
-            ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 group-hover:bg-amber-500/25'
-            : 'bg-[var(--color-surface-overlay)] text-[var(--color-text-tertiary)] group-hover:bg-[var(--color-surface-sunken)]'
-        "
+        class="rank-badge"
+        :class="{ 'rank-badge--top': rank <= 3 }"
         style="font-family: var(--font-mono)"
         :data-testid="`story-rank-${rank}`"
       >
         {{ rank }}
       </div>
 
-      <div class="flex-1 min-w-0 space-y-2">
+      <div class="flex-1 min-w-0 space-y-2.5">
         <!-- Header: Featured badge, Category & Source -->
         <div class="flex flex-wrap items-center gap-2">
           <span
             v-if="featured"
             class="badge badge-top-pick"
           >
+            <svg
+              class="w-3 h-3"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
             Top Pick
           </span>
           <span
             v-if="showCategories && categoryLabel"
-            class="badge badge-category badge-papers"
+            class="badge badge-category"
+            :class="getAccentBadgeClass"
           >
             {{ categoryLabel }}
           </span>
@@ -214,20 +224,19 @@ const getSourceBadgeClass = (sourceId: string): string => {
 
         <!-- Title -->
         <h3
-          class="font-semibold leading-snug"
+          class="paper-card-title"
           :class="compact ? 'text-[0.8125rem]' : 'text-[0.9375rem]'"
-          style="font-family: var(--font-display)"
         >
           <a
             :href="story.primary_link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-start gap-2 text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] transition-colors focus-outline rounded group/link"
+            class="paper-card-link group/link"
             :data-testid="`story-link-${story.story_id}`"
           >
-            <span class="line-clamp-2">{{ story.title }}</span>
+            <span :class="compact ? 'line-clamp-2' : 'line-clamp-3'">{{ story.title }}</span>
             <svg
-              class="flex-shrink-0 w-3.5 h-3.5 mt-0.5 opacity-0 -translate-x-1 group-hover/link:opacity-50 group-hover/link:translate-x-0 transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] text-[var(--color-text-tertiary)]"
+              class="paper-card-external-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -245,15 +254,28 @@ const getSourceBadgeClass = (sourceId: string): string => {
         <!-- Authors -->
         <p
           v-if="showAuthors && displayAuthors"
-          class="text-[0.8125rem] text-[var(--color-text-secondary)] line-clamp-1"
+          class="paper-card-authors"
         >
+          <svg
+            class="inline-block w-3.5 h-3.5 mr-1.5 opacity-50"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
           {{ displayAuthors }}
         </p>
 
         <!-- Summary/Abstract -->
         <p
           v-if="showSummary && truncatedSummary"
-          class="text-[0.8125rem] text-[var(--color-text-tertiary)] leading-relaxed line-clamp-3"
+          class="paper-card-summary"
         >
           {{ truncatedSummary }}
         </p>
@@ -266,7 +288,7 @@ const getSourceBadgeClass = (sourceId: string): string => {
             :title="formatDate(story.published_at)"
           >
             <svg
-              class="w-3 h-3 opacity-50"
+              class="w-3.5 h-3.5 opacity-60"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -283,22 +305,28 @@ const getSourceBadgeClass = (sourceId: string): string => {
 
           <!-- Entity badges -->
           <template v-if="showEntities && story.entities.length > 0">
-            <span class="text-[var(--color-border-default)]">·</span>
-            <div class="flex flex-wrap gap-1">
+            <span class="meta-divider">·</span>
+            <div class="flex flex-wrap gap-1.5">
               <span
-                v-for="entity in story.entities"
+                v-for="entity in story.entities.slice(0, 3)"
                 :key="entity"
-                class="badge badge-muted text-[0.625rem] py-0.5"
+                class="badge badge-muted text-[0.625rem] py-0.5 px-2"
               >
                 {{ entity }}
+              </span>
+              <span
+                v-if="story.entities.length > 3"
+                class="badge badge-muted text-[0.625rem] py-0.5 px-2"
+              >
+                +{{ story.entities.length - 3 }}
               </span>
             </div>
           </template>
 
           <!-- arXiv ID -->
           <template v-if="showArxiv && story.arxiv_id">
-            <span class="text-[var(--color-border-default)]">·</span>
-            <code class="bg-[var(--color-surface-sunken)] px-1.5 py-0.5 rounded text-[0.625rem] text-[var(--color-text-tertiary)]">
+            <span class="meta-divider">·</span>
+            <code class="arxiv-id">
               arXiv:{{ story.arxiv_id }}
             </code>
           </template>
@@ -306,21 +334,21 @@ const getSourceBadgeClass = (sourceId: string): string => {
 
         <!-- Additional links -->
         <div
-          v-if="story.links.length > 1"
-          class="flex flex-wrap gap-1.5 pt-3 border-t border-[var(--color-border-subtle)]"
+          v-if="story.links.length > 1 && !compact"
+          class="paper-card-links"
         >
           <a
-            v-for="link in story.links"
+            v-for="link in story.links.slice(0, 4)"
             :key="link.url"
             :href="link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 px-2 py-1 text-[0.6875rem] font-semibold text-[var(--color-text-secondary)] bg-[var(--color-surface-overlay)] rounded-md border border-[var(--color-border-subtle)] hover:bg-[var(--color-surface-sunken)] hover:border-[var(--color-border-default)] hover:text-[var(--color-accent-primary)] transition-all focus-outline"
+            class="paper-card-link-btn"
             :title="link.title"
           >
             <svg
               v-if="link.link_type === 'github'"
-              class="w-3 h-3"
+              class="w-3.5 h-3.5"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -329,8 +357,8 @@ const getSourceBadgeClass = (sourceId: string): string => {
               />
             </svg>
             <svg
-              v-else
-              class="w-3 h-3"
+              v-else-if="link.link_type === 'arxiv'"
+              class="w-3.5 h-3.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -339,7 +367,21 @@ const getSourceBadgeClass = (sourceId: string): string => {
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+            <svg
+              v-else
+              class="w-3.5 h-3.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
               />
             </svg>
             <span>{{ getLinkTypeLabel(link.link_type) }}</span>
@@ -349,3 +391,147 @@ const getSourceBadgeClass = (sourceId: string): string => {
     </div>
   </article>
 </template>
+
+<style scoped>
+/* Rank badge */
+.rank-badge {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border-subtle);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.rank-badge--top {
+  background: linear-gradient(135deg, rgb(251 191 36 / 0.15) 0%, rgb(245 158 11 / 0.1) 100%);
+  color: var(--color-section-top);
+  border-color: rgb(251 191 36 / 0.3);
+}
+
+.group:hover .rank-badge {
+  transform: scale(1.05);
+}
+
+.group:hover .rank-badge--top {
+  box-shadow: 0 0 12px rgb(251 191 36 / 0.25);
+}
+
+/* Compact variant */
+.paper-card--compact {
+  padding: 0.875rem 1rem;
+}
+
+.paper-card--compact .paper-card-meta {
+  padding-top: 0.625rem;
+  margin-top: 0.5rem;
+}
+
+/* Title link */
+.paper-card-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+  border-radius: var(--radius-sm);
+}
+
+.paper-card-link:hover {
+  color: var(--color-accent-primary);
+}
+
+.paper-card-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface-base), 0 0 0 4px var(--color-border-focus);
+}
+
+/* External link icon */
+.paper-card-external-icon {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-top: 0.125rem;
+  opacity: 0;
+  transform: translateX(-4px) translateY(2px);
+  transition: all var(--duration-fast) var(--ease-out);
+  color: var(--color-text-muted);
+}
+
+.paper-card-link:hover .paper-card-external-icon {
+  opacity: 0.7;
+  transform: translateX(0) translateY(0);
+}
+
+/* Authors */
+.paper-card-authors {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Meta divider */
+.meta-divider {
+  color: var(--color-border-default);
+}
+
+/* arXiv ID */
+.arxiv-id {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-tertiary);
+  padding: 0.1875rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Additional links section */
+.paper-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-subtle);
+  margin-top: 0.25rem;
+}
+
+.paper-card-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.paper-card-link-btn:hover {
+  background: var(--color-surface-overlay);
+  border-color: var(--color-border-default);
+  color: var(--color-accent-primary);
+  transform: translateY(-1px);
+}
+
+.paper-card-link-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.paper-card-link-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface-base), 0 0 0 4px var(--color-border-focus);
+}
+</style>

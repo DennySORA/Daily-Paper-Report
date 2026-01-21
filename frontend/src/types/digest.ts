@@ -66,6 +66,7 @@ export interface DigestData {
   model_releases_by_entity: Record<string, Story[]>
   radar: Story[]
   sources_status: SourceStatus[]
+  archive_dates: string[]
 }
 
 export type SectionType = 'top5' | 'papers' | 'models' | 'radar'

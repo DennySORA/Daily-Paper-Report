@@ -89,6 +89,7 @@ const mockDigestData: DigestData = {
       last_fetch_status_code: 200,
     },
   ],
+  archive_dates: ['2026-01-20', '2026-01-19', '2026-01-18'],
 }
 
 describe('useDigestStore', () => {
