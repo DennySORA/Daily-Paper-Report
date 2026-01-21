@@ -19,6 +19,11 @@ const router = createRouter({
       component: HomePage,
     },
     {
+      // Handle /index.html route (GitHub Pages default)
+      path: '/index.html',
+      redirect: '/',
+    },
+    {
       path: '/day/:date',
       name: 'day',
       component: HomePage,
