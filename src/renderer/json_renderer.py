@@ -53,6 +53,7 @@ class JsonRenderer:
         sources_status: list[SourceStatus],
         run_info: RunInfo,
         run_date: str,
+        archive_dates: list[str] | None = None,
     ) -> GeneratedFile:
         """Render api/daily.json.
 
@@ -61,6 +62,7 @@ class JsonRenderer:
             sources_status: Per-source status list.
             run_info: Run information.
             run_date: Date string (YYYY-MM-DD).
+            archive_dates: List of available archive dates.
 
         Returns:
             GeneratedFile with path and checksum.
@@ -87,6 +89,7 @@ class JsonRenderer:
             radar=[self._story_to_dict(s) for s in ranker_output.radar],
             sources_status=[self._source_status_to_dict(s) for s in sources_status],
             run_info=self._run_info_to_dict(run_info),
+            archive_dates=archive_dates or [],
         )
 
         # Serialize with stable formatting
