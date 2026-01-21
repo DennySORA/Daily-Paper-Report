@@ -77,7 +77,19 @@ const getLinkTypeLabel = (linkType: string): string => {
 // Decode LaTeX escape sequences commonly found in arXiv data
 const decodeLatex = (text: string): string => {
   if (!text) return text
-  return text
+
+  // First handle math mode superscripts and subscripts (e.g., $^3$, $_{10}$)
+  let result = text
+    // Superscripts in math mode: $^{...}$ or $^X$
+    .replace(/\$\^{([^}]+)}\$/g, (_, content) => toSuperscript(content))
+    .replace(/\$\^([0-9a-zA-Z])\$/g, (_, char) => toSuperscript(char))
+    // Subscripts in math mode: $_{...}$ or $_X$
+    .replace(/\$_{([^}]+)}\$/g, (_, content) => toSubscript(content))
+    .replace(/\$_([0-9a-zA-Z])\$/g, (_, char) => toSubscript(char))
+    // Remove remaining empty math delimiters
+    .replace(/\$\$/g, '')
+
+  return result
     // Accented characters
     .replace(/\\'e/g, 'é')
     .replace(/\\'a/g, 'á')
@@ -112,6 +124,28 @@ const decodeLatex = (text: string): string => {
     .replace(/\\}/g, '}')
     // Handle remaining backslash escapes
     .replace(/\\\\/g, '')
+}
+
+// Convert digits/letters to Unicode superscript
+const toSuperscript = (str: string): string => {
+  const superscriptMap: Record<string, string> = {
+    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+    '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾',
+    'n': 'ⁿ', 'i': 'ⁱ',
+  }
+  return str.split('').map(c => superscriptMap[c] || c).join('')
+}
+
+// Convert digits/letters to Unicode subscript
+const toSubscript = (str: string): string => {
+  const subscriptMap: Record<string, string> = {
+    '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
+    '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
+    '+': '₊', '-': '₋', '=': '₌', '(': '₍', ')': '₎',
+    'a': 'ₐ', 'e': 'ₑ', 'o': 'ₒ', 'x': 'ₓ',
+  }
+  return str.split('').map(c => subscriptMap[c] || c).join('')
 }
 
 // Strip HTML tags from text
