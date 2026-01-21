@@ -141,27 +141,35 @@ function toggleSource(sourceType: string) {
   expandedSources.value = newSet
 }
 
-// Auto-expand first item on mount
+// Auto-expand ALL categories and first source on mount for faster scanning
 onMounted(() => {
-  if (categoriesWithPapers.value.length > 0) {
-    expandedCategories.value.add(categoriesWithPapers.value[0].category)
+  // Expand all categories by default - researchers need to scan quickly
+  for (const cat of categoriesWithPapers.value) {
+    expandedCategories.value.add(cat.category)
   }
-  if (sourceGroups.value.length > 0) {
-    expandedSources.value.add(sourceGroups.value[0].sourceType)
+  // Expand all sources by default
+  for (const group of sourceGroups.value) {
+    expandedSources.value.add(group.sourceType)
   }
 })
 
-// Reset expansions when changing tabs
+// When switching tabs, expand all items for fast scanning
 watch(activeTab, newTab => {
   expandedCategories.value = new Set()
   expandedSources.value = new Set()
 
   setTimeout(() => {
-    if (newTab === 'category' && categoriesWithPapers.value.length > 0) {
-      expandedCategories.value.add(categoriesWithPapers.value[0].category)
+    if (newTab === 'category') {
+      // Expand all categories
+      for (const cat of categoriesWithPapers.value) {
+        expandedCategories.value.add(cat.category)
+      }
     }
-    if (newTab === 'source' && sourceGroups.value.length > 0) {
-      expandedSources.value.add(sourceGroups.value[0].sourceType)
+    if (newTab === 'source') {
+      // Expand all sources
+      for (const group of sourceGroups.value) {
+        expandedSources.value.add(group.sourceType)
+      }
     }
   }, 50)
 })
@@ -240,7 +248,7 @@ function getTabCount(tabId: TabView): number {
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         STATS DASHBOARD - Prominent metrics
+         STATS DASHBOARD - Prominent metrics with clear visual hierarchy
          ═══════════════════════════════════════════════════════════════ -->
     <section
       v-if="!isLoading && !hasError"
@@ -248,7 +256,12 @@ function getTabCount(tabId: TabView): number {
     >
       <div class="stat-card stat-papers">
         <div class="stat-icon">
-          📄
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
         </div>
         <div class="stat-content">
           <div class="stat-value">
@@ -262,7 +275,9 @@ function getTabCount(tabId: TabView): number {
 
       <div class="stat-card stat-categories">
         <div class="stat-icon">
-          📁
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+          </svg>
         </div>
         <div class="stat-content">
           <div class="stat-value">
@@ -276,7 +291,9 @@ function getTabCount(tabId: TabView): number {
 
       <div class="stat-card stat-sources-ok">
         <div class="stat-icon">
-          ✓
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
         </div>
         <div class="stat-content">
           <div class="stat-value">
@@ -293,7 +310,13 @@ function getTabCount(tabId: TabView): number {
         :class="stats.sourcesFailed > 0 ? 'stat-sources-failed' : 'stat-muted'"
       >
         <div class="stat-icon">
-          {{ stats.sourcesFailed > 0 ? '✗' : '—' }}
+          <svg v-if="stats.sourcesFailed > 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
         </div>
         <div class="stat-content">
           <div class="stat-value">
@@ -307,7 +330,10 @@ function getTabCount(tabId: TabView): number {
 
       <div class="stat-card stat-updated">
         <div class="stat-icon">
-          ⏱
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
         </div>
         <div class="stat-content">
           <div class="stat-value stat-value-time">
@@ -812,14 +838,17 @@ function getTabCount(tabId: TabView): number {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1.125rem;
-  background: currentColor;
-  color: #fff;
-  border-radius: 0.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.625rem;
   flex-shrink: 0;
-  background: linear-gradient(135deg, currentColor 0%, color-mix(in srgb, currentColor 80%, black) 100%);
+  background: linear-gradient(135deg, currentColor 0%, color-mix(in srgb, currentColor 70%, black) 100%);
+}
+
+.stat-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: #fff;
 }
 
 .stat-content {
