@@ -79,7 +79,7 @@ const decodeLatex = (text: string): string => {
   if (!text) return text
 
   // First handle math mode superscripts and subscripts (e.g., $^3$, $_{10}$)
-  let result = text
+  const result = text
     // Superscripts in math mode: $^{...}$ or $^X$
     .replace(/\$\^{([^}]+)}\$/g, (_, content) => toSuperscript(content))
     .replace(/\$\^([0-9a-zA-Z])\$/g, (_, char) => toSuperscript(char))
