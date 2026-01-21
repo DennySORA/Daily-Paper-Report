@@ -35,8 +35,9 @@ const lastUpdated = computed(() => {
   })
 })
 
-// Get top picks for overview
-const topPicks = computed(() => digestStore.topPicksBySource.slice(0, 5))
+// Get top picks for overview - show all filtered top5 stories
+// These are the curated "most important" items selected by the backend
+const topPicks = computed(() => digestStore.filteredTop5)
 
 // Total story count (using filtered data)
 const totalStories = computed(() => digestStore.filteredTotalStories)
@@ -241,7 +242,7 @@ const sourceStats = computed(() => {
         v-show="activeView === 'overview'"
         class="space-y-8 animate-fade-up delay-2"
       >
-        <!-- Top Picks Section -->
+        <!-- Featured Stories Section -->
         <section v-if="topPicks.length > 0">
           <div class="flex items-center justify-between mb-4">
             <div>
@@ -249,10 +250,10 @@ const sourceStats = computed(() => {
                 class="text-lg font-bold text-[var(--color-text-primary)]"
                 style="font-family: var(--font-display)"
               >
-                Top Picks
+                Featured Stories
               </h2>
               <p class="text-sm text-[var(--color-text-tertiary)] mt-0.5">
-                Most notable items from each source
+                Today's most important updates curated from all sources
               </p>
             </div>
           </div>
@@ -275,9 +276,9 @@ const sourceStats = computed(() => {
           </div>
         </section>
 
-        <!-- Quick Stats -->
+        <!-- Quick Stats - Data Breakdown -->
         <section class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div class="card p-4 text-center">
+          <div class="card p-4 text-center group hover:border-[var(--color-accent-highlight)]/30 transition-colors">
             <div
               class="text-2xl font-bold text-[var(--color-accent-highlight)]"
               style="font-family: var(--font-mono)"
@@ -285,10 +286,10 @@ const sourceStats = computed(() => {
               {{ digestStore.filteredTop5.length }}
             </div>
             <div class="text-xs text-[var(--color-text-tertiary)] mt-1">
-              Top Stories
+              Featured
             </div>
           </div>
-          <div class="card p-4 text-center">
+          <div class="card p-4 text-center group hover:border-[var(--color-accent-papers)]/30 transition-colors">
             <div
               class="text-2xl font-bold text-[var(--color-accent-papers)]"
               style="font-family: var(--font-mono)"
@@ -296,10 +297,10 @@ const sourceStats = computed(() => {
               {{ digestStore.filteredPapers.length }}
             </div>
             <div class="text-xs text-[var(--color-text-tertiary)] mt-1">
-              Papers
+              arXiv Papers
             </div>
           </div>
-          <div class="card p-4 text-center">
+          <div class="card p-4 text-center group hover:border-[var(--color-accent-models)]/30 transition-colors">
             <div
               class="text-2xl font-bold text-[var(--color-accent-models)]"
               style="font-family: var(--font-mono)"
@@ -310,7 +311,7 @@ const sourceStats = computed(() => {
               Model Releases
             </div>
           </div>
-          <div class="card p-4 text-center">
+          <div class="card p-4 text-center group hover:border-[var(--color-accent-radar)]/30 transition-colors">
             <div
               class="text-2xl font-bold text-[var(--color-accent-radar)]"
               style="font-family: var(--font-mono)"
@@ -318,7 +319,7 @@ const sourceStats = computed(() => {
               {{ digestStore.filteredRadar.length }}
             </div>
             <div class="text-xs text-[var(--color-text-tertiary)] mt-1">
-              Radar Items
+              Radar
             </div>
           </div>
         </section>
