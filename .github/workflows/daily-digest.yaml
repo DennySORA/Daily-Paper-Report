@@ -157,6 +157,31 @@ jobs:
             exit ${EXIT_CODE}
           fi
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Build Vue.js frontend
+        run: |
+          START_TIME=$(date +%s%3N)
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+
+          cd frontend
+          npm ci
+          npm run build-only
+
+          # Copy built files to public directory
+          cp dist/index.html ../${OUTPUT_DIR}/
+          cp dist/index.html ../${OUTPUT_DIR}/404.html
+          cp -r dist/assets ../${OUTPUT_DIR}/
+
+          END_TIME=$(date +%s%3N)
+          DURATION=$((END_TIME - START_TIME))
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"build_frontend","duration_ms":'"${DURATION}"'}'
+
       - name: Generate checksums
         id: checksums
         if: success()
