@@ -310,7 +310,7 @@ code, pre {
 .paper-card-summary {
   font-size: 0.8125rem;
   line-height: 1.7;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
