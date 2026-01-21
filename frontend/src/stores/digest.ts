@@ -2,12 +2,52 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { DigestData, Story, SourceStatus } from '@/types/digest'
 
+// Source metadata for display
+const SOURCE_DISPLAY_NAMES: Record<string, { name: string; category: 'arxiv' | 'huggingface' | 'blog' | 'other' }> = {
+  'arxiv-cs-ai': { name: 'arXiv cs.AI', category: 'arxiv' },
+  'arxiv-cs-cl': { name: 'arXiv cs.CL', category: 'arxiv' },
+  'arxiv-cs-cv': { name: 'arXiv cs.CV', category: 'arxiv' },
+  'arxiv-cs-lg': { name: 'arXiv cs.LG', category: 'arxiv' },
+  'arxiv-stat-ml': { name: 'arXiv stat.ML', category: 'arxiv' },
+  'hf-daily-papers': { name: 'HF Daily Papers', category: 'huggingface' },
+  'hf-qwen': { name: 'Qwen', category: 'huggingface' },
+  'hf-openai': { name: 'OpenAI', category: 'huggingface' },
+  'hf-meta-llama': { name: 'Meta Llama', category: 'huggingface' },
+  'hf-google': { name: 'Google', category: 'huggingface' },
+  'hf-microsoft': { name: 'Microsoft', category: 'huggingface' },
+  'hf-mistralai': { name: 'Mistral AI', category: 'huggingface' },
+  'hf-deepseek-ai': { name: 'DeepSeek', category: 'huggingface' },
+  'hf-stabilityai': { name: 'Stability AI', category: 'huggingface' },
+  'hf-cohere': { name: 'Cohere', category: 'huggingface' },
+  'hf-01-ai': { name: '01.AI (Yi)', category: 'huggingface' },
+  'google-ai-blog': { name: 'Google AI', category: 'blog' },
+  'openai-blog': { name: 'OpenAI', category: 'blog' },
+  'deepmind-blog': { name: 'DeepMind', category: 'blog' },
+  'meta-ai-blog': { name: 'Meta AI', category: 'blog' },
+  'aws-ml-blog': { name: 'AWS ML', category: 'blog' },
+  'microsoft-research-blog': { name: 'Microsoft Research', category: 'blog' },
+  'nvidia-ai-blog': { name: 'NVIDIA AI', category: 'blog' },
+  'papers-with-code': { name: 'Papers With Code', category: 'other' },
+}
+
+// Category display names for arXiv categories
+const CATEGORY_DISPLAY_NAMES: Record<string, string> = {
+  'cs.AI': 'Artificial Intelligence',
+  'cs.CL': 'Computation & Language',
+  'cs.CV': 'Computer Vision',
+  'cs.LG': 'Machine Learning',
+  'stat.ML': 'Statistical ML',
+  'cs.NE': 'Neural & Evolutionary',
+  'cs.RO': 'Robotics',
+  'cs.SE': 'Software Engineering',
+}
+
 export const useDigestStore = defineStore('digest', () => {
   // State
   const data = ref<DigestData | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
-  const timeFilter = ref<'all' | '24h'>('all')
+  const timeFilter = ref<'all' | '24h'>('24h') // Default to 24h for strict time filter
 
   // Getters
   const hasData = computed(() => data.value !== null)
@@ -170,6 +210,122 @@ export const useDigestStore = defineStore('digest', () => {
     timeFilter.value = filter
   }
 
+  // Get source display name and category info
+  function getSourceInfo(sourceId: string): { name: string; category: string } {
+    const info = SOURCE_DISPLAY_NAMES[sourceId]
+    if (info) return info
+    // Fallback: format source ID
+    const name = sourceId
+      .replace(/^(hf|arxiv)-/, '')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase())
+    return { name, category: 'other' }
+  }
+
+  // Get category display name
+  function getCategoryDisplayName(category: string): string {
+    return CATEGORY_DISPLAY_NAMES[category] || category
+  }
+
+  // Group all stories by source category (arXiv, HuggingFace, Blogs)
+  const allStoriesBySourceCategory = computed(() => {
+    const allStories = [
+      ...filteredTop5.value,
+      ...filteredPapers.value,
+      ...filteredRadar.value,
+      ...Object.values(filteredModelReleases.value).flat(),
+    ]
+
+    const grouped: Record<string, { sourceId: string; name: string; stories: Story[] }[]> = {
+      arxiv: [],
+      huggingface: [],
+      blog: [],
+      other: [],
+    }
+
+    // First group by source_id
+    const bySourceId: Record<string, Story[]> = {}
+    for (const story of allStories) {
+      const sourceId = story.primary_link.source_id
+      if (!bySourceId[sourceId]) bySourceId[sourceId] = []
+      bySourceId[sourceId].push(story)
+    }
+
+    // Then organize by category
+    for (const [sourceId, stories] of Object.entries(bySourceId)) {
+      const info = getSourceInfo(sourceId)
+      const category = info.category as keyof typeof grouped
+      // Sort stories by published_at descending
+      const sortedStories = [...stories].sort((a, b) => {
+        const dateA = a.published_at ? new Date(a.published_at).getTime() : 0
+        const dateB = b.published_at ? new Date(b.published_at).getTime() : 0
+        return dateB - dateA
+      })
+      grouped[category].push({ sourceId, name: info.name, stories: sortedStories })
+    }
+
+    // Sort each category by story count descending
+    for (const category of Object.keys(grouped)) {
+      grouped[category].sort((a, b) => b.stories.length - a.stories.length)
+    }
+
+    return grouped
+  })
+
+  // Get top picks from each source (most recent item from each source)
+  const topPicksBySource = computed(() => {
+    const picks: Story[] = []
+    for (const categoryGroups of Object.values(allStoriesBySourceCategory.value)) {
+      for (const group of categoryGroups) {
+        if (group.stories.length > 0) {
+          picks.push(group.stories[0]) // First story is most recent due to sorting
+        }
+      }
+    }
+    return picks.sort((a, b) => {
+      const dateA = a.published_at ? new Date(a.published_at).getTime() : 0
+      const dateB = b.published_at ? new Date(b.published_at).getTime() : 0
+      return dateB - dateA
+    })
+  })
+
+  // Group papers by arXiv category with top pick per category
+  const papersByCategoryWithPicks = computed(() => {
+    const grouped: Record<string, { stories: Story[]; topPick: Story | null; displayName: string }> = {}
+
+    for (const paper of filteredPapers.value) {
+      // Use first category or 'Uncategorized'
+      const category = paper.categories?.[0] ?? 'Uncategorized'
+      if (!grouped[category]) {
+        grouped[category] = {
+          stories: [],
+          topPick: null,
+          displayName: getCategoryDisplayName(category),
+        }
+      }
+      grouped[category].stories.push(paper)
+    }
+
+    // Sort stories within each category by date and set top pick
+    for (const category of Object.keys(grouped)) {
+      grouped[category].stories.sort((a, b) => {
+        const dateA = a.published_at ? new Date(a.published_at).getTime() : 0
+        const dateB = b.published_at ? new Date(b.published_at).getTime() : 0
+        return dateB - dateA
+      })
+      grouped[category].topPick = grouped[category].stories[0] || null
+    }
+
+    return grouped
+  })
+
+  // Get all category names sorted by story count
+  const sortedCategories = computed(() => {
+    return Object.entries(papersByCategoryWithPicks.value)
+      .sort(([, a], [, b]) => b.stories.length - a.stories.length)
+      .map(([category]) => category)
+  })
+
   // Get sources grouped by status
   const sourcesByStatus = computed(() => {
     const healthy: SourceStatus[] = []
@@ -249,10 +405,18 @@ export const useDigestStore = defineStore('digest', () => {
     filteredPapersByCategory,
     filteredPaperCategories,
     filteredTotalStories,
+    // Enhanced grouping with top picks
+    allStoriesBySourceCategory,
+    topPicksBySource,
+    papersByCategoryWithPicks,
+    sortedCategories,
     // Actions
     fetchDigest,
     setData,
     getStoriesByEntity,
     setTimeFilter,
+    // Utility functions
+    getSourceInfo,
+    getCategoryDisplayName,
   }
 })

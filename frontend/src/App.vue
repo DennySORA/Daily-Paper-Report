@@ -12,10 +12,10 @@
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-[var(--color-surface-primary)]">
+  <div class="min-h-screen flex flex-col bg-[var(--color-surface-base)]">
     <TheHeader />
     <main class="flex-1">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+      <div class="container-app py-6 sm:py-8">
         <RouterView />
       </div>
     </main>
