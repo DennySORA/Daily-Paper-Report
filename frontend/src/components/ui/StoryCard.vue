@@ -160,9 +160,27 @@ const stripHtml = (html: string): string => {
 const cleanArxivPrefix = (text: string): string => {
   // Remove patterns like "arXiv:2507.23541v4 Announce Type: replace Abstract: "
   // or "arXiv:2507.23541 Announce Type: new Abstract: "
+  // or "arXiv:2410.01553v2 Announce Type: replace-cross Abstract: "
   return text
-    .replace(/^arXiv:\d+\.\d+(?:v\d+)?\s+Announce Type:\s*\w+\s*Abstract:\s*/i, '')
+    .replace(/^arXiv:\d+\.\d+(?:v\d+)?\s+Announce Type:\s*[\w-]+\s*Abstract:\s*/i, '')
     .trim()
+}
+
+// Clean LaTeX emphasis and formatting commands from text
+const cleanLatexEmphasis = (text: string): string => {
+  return text
+    // Handle {\em text} -> text
+    .replace(/\{\\em\s+([^}]+)\}/g, '$1')
+    // Handle \emph{text} -> text
+    .replace(/\\emph\{([^}]+)\}/g, '$1')
+    // Handle {\it text} -> text
+    .replace(/\{\\it\s+([^}]+)\}/g, '$1')
+    // Handle {\bf text} -> text
+    .replace(/\{\\bf\s+([^}]+)\}/g, '$1')
+    // Handle \textit{text} -> text
+    .replace(/\\textit\{([^}]+)\}/g, '$1')
+    // Handle \textbf{text} -> text
+    .replace(/\\textbf\{([^}]+)\}/g, '$1')
 }
 
 // Check if text looks like image alt text (not a real summary)
@@ -188,6 +206,9 @@ const truncatedSummary = computed(() => {
   // Remove arXiv metadata prefix
   cleanSummary = cleanArxivPrefix(cleanSummary)
   if (!cleanSummary) return null
+
+  // Clean LaTeX emphasis commands
+  cleanSummary = cleanLatexEmphasis(cleanSummary)
 
   // Filter out summaries that look like image alt text
   if (looksLikeImageAlt(cleanSummary)) return null
