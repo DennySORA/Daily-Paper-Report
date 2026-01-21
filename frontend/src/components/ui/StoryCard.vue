@@ -74,6 +74,46 @@ const getLinkTypeLabel = (linkType: string): string => {
   return labels[linkType] ?? linkType
 }
 
+// Decode LaTeX escape sequences commonly found in arXiv data
+const decodeLatex = (text: string): string => {
+  if (!text) return text
+  return text
+    // Accented characters
+    .replace(/\\'e/g, 'é')
+    .replace(/\\'a/g, 'á')
+    .replace(/\\'i/g, 'í')
+    .replace(/\\'o/g, 'ó')
+    .replace(/\\'u/g, 'ú')
+    .replace(/\\"e/g, 'ë')
+    .replace(/\\"a/g, 'ä')
+    .replace(/\\"i/g, 'ï')
+    .replace(/\\"o/g, 'ö')
+    .replace(/\\"u/g, 'ü')
+    .replace(/\\`e/g, 'è')
+    .replace(/\\`a/g, 'à')
+    .replace(/\\`i/g, 'ì')
+    .replace(/\\`o/g, 'ò')
+    .replace(/\\`u/g, 'ù')
+    .replace(/\\~n/g, 'ñ')
+    .replace(/\\c\{c\}/g, 'ç')
+    .replace(/\\c c/g, 'ç')
+    .replace(/\\\^e/g, 'ê')
+    .replace(/\\\^a/g, 'â')
+    .replace(/\\\^i/g, 'î')
+    .replace(/\\\^o/g, 'ô')
+    .replace(/\\\^u/g, 'û')
+    // Common LaTeX symbols
+    .replace(/\\&/g, '&')
+    .replace(/\\\$/g, '$')
+    .replace(/\\%/g, '%')
+    .replace(/\\_/g, '_')
+    .replace(/\\#/g, '#')
+    .replace(/\\{/g, '{')
+    .replace(/\\}/g, '}')
+    // Handle remaining backslash escapes
+    .replace(/\\\\/g, '')
+}
+
 // Strip HTML tags from text
 const stripHtml = (html: string): string => {
   return html
@@ -113,11 +153,17 @@ const truncatedSummary = computed(() => {
   return (lastSpace > maxLength * 0.7 ? truncated.slice(0, lastSpace) : truncated).trim() + '...'
 })
 
-// Display authors with smart truncation
+// Display authors with smart truncation and LaTeX decoding
 const displayAuthors = computed(() => {
   if (!props.story.authors || props.story.authors.length === 0) return null
-  if (props.story.authors.length <= 3) return props.story.authors.join(', ')
-  return `${props.story.authors.slice(0, 3).join(', ')} +${props.story.authors.length - 3} more`
+  const decodedAuthors = props.story.authors.map(author => decodeLatex(author))
+  if (decodedAuthors.length <= 3) return decodedAuthors.join(', ')
+  return `${decodedAuthors.slice(0, 3).join(', ')} +${decodedAuthors.length - 3} more`
+})
+
+// Decoded title for display
+const displayTitle = computed(() => {
+  return decodeLatex(props.story.title)
 })
 
 // Get category label
@@ -234,7 +280,7 @@ const getAccentBadgeClass = computed(() => {
             class="paper-card-link group/link"
             :data-testid="`story-link-${story.story_id}`"
           >
-            <span :class="compact ? 'line-clamp-2' : 'line-clamp-3'">{{ story.title }}</span>
+            <span :class="compact ? 'line-clamp-2' : 'line-clamp-3'">{{ displayTitle }}</span>
             <svg
               class="paper-card-external-icon"
               fill="none"
