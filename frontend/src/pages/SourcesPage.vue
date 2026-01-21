@@ -45,40 +45,22 @@
     })
   })
 
-  const getStatusColor = (status: string): string => {
-    switch (status) {
-      case 'HAS_UPDATE':
-        return 'status-badge status-badge--success'
-      case 'NO_UPDATE':
-        return 'status-badge status-badge--muted'
-      case 'FETCH_FAILED':
-      case 'PARSE_FAILED':
-        return 'status-badge status-badge--error'
-      default:
-        return 'status-badge status-badge--warning'
-    }
+
+  // Get story count per source
+  const storiesBySource = computed(() => digestStore.allStoriesBySource)
+
+  // Determine if source has papers (for color differentiation)
+  const sourceHasPapers = (sourceId: string): boolean => {
+    return (storiesBySource.value[sourceId]?.length ?? 0) > 0
   }
 
-  const getRowClass = (status: string): string => {
-    switch (status) {
-      case 'HAS_UPDATE':
-        return 'source-row source-row--success'
-      case 'NO_UPDATE':
-        return 'source-row source-row--muted'
-      case 'FETCH_FAILED':
-      case 'PARSE_FAILED':
-        return 'source-row source-row--error'
-      default:
-        return 'source-row source-row--warning'
-    }
-  }
-
-  const getStatusLabel = (status: string): string => {
+  const getStatusLabel = (status: string, sourceId: string): string => {
     switch (status) {
       case 'HAS_UPDATE':
         return 'New Data'
       case 'NO_UPDATE':
-        return 'Synced'
+        // Show "Synced" if has papers, "No Change" if empty
+        return sourceHasPapers(sourceId) ? 'Synced' : 'No Change'
       case 'FETCH_FAILED':
         return 'Fetch Failed'
       case 'PARSE_FAILED':
@@ -88,8 +70,38 @@
     }
   }
 
-  // Get story count per source
-  const storiesBySource = computed(() => digestStore.allStoriesBySource)
+  const getStatusColor = (status: string, sourceId: string): string => {
+    switch (status) {
+      case 'HAS_UPDATE':
+        return 'status-badge status-badge--success'
+      case 'NO_UPDATE':
+        // Green if has papers, gray if empty
+        return sourceHasPapers(sourceId)
+          ? 'status-badge status-badge--synced'
+          : 'status-badge status-badge--muted'
+      case 'FETCH_FAILED':
+      case 'PARSE_FAILED':
+        return 'status-badge status-badge--error'
+      default:
+        return 'status-badge status-badge--warning'
+    }
+  }
+
+  const getRowClass = (status: string, sourceId: string): string => {
+    switch (status) {
+      case 'HAS_UPDATE':
+        return 'source-row source-row--success'
+      case 'NO_UPDATE':
+        return sourceHasPapers(sourceId)
+          ? 'source-row source-row--synced'
+          : 'source-row source-row--muted'
+      case 'FETCH_FAILED':
+      case 'PARSE_FAILED':
+        return 'source-row source-row--error'
+      default:
+        return 'source-row source-row--warning'
+    }
+  }
 
   const getStatusIcon = (status: string): string => {
     switch (status) {
@@ -188,7 +200,7 @@
         <div
           v-for="(source, index) in filteredSources"
           :key="source.source_id"
-          :class="getRowClass(source.status)"
+          :class="getRowClass(source.status, source.source_id)"
           :style="{ '--idx': index }"
           :data-testid="`source-card-${source.source_id}`"
         >
@@ -201,8 +213,8 @@
           <div class="source-info">
             <div class="source-header">
               <h3 class="source-name">{{ source.name }}</h3>
-              <span :class="getStatusColor(source.status)">
-                {{ getStatusLabel(source.status) }}
+              <span :class="getStatusColor(source.status, source.source_id)">
+                {{ getStatusLabel(source.status, source.source_id) }}
               </span>
             </div>
 
@@ -358,7 +370,7 @@
 }
 
 .summary-stat--synced {
-  border-left: 3px solid var(--color-accent-primary);
+  border-left: 3px solid var(--color-accent-success);
 }
 
 .summary-stat--error {
@@ -374,7 +386,7 @@
 }
 
 .summary-stat--success .summary-stat-value { color: var(--color-accent-success); }
-.summary-stat--synced .summary-stat-value { color: var(--color-accent-primary); }
+.summary-stat--synced .summary-stat-value { color: var(--color-accent-success); }
 .summary-stat--error .summary-stat-value { color: var(--color-accent-error); }
 
 .summary-stat-label {
@@ -526,13 +538,22 @@
   background: linear-gradient(90deg, rgb(52 211 153 / 0.08) 0%, var(--color-surface-primary) 30%);
 }
 
+.source-row--synced {
+  border-left: 3px solid var(--color-accent-success);
+  background: linear-gradient(90deg, rgb(52 211 153 / 0.03) 0%, var(--color-surface-primary) 15%);
+}
+
+.source-row--synced:hover {
+  background: linear-gradient(90deg, rgb(52 211 153 / 0.06) 0%, var(--color-surface-primary) 25%);
+}
+
 .source-row--muted {
   border-left: 3px solid var(--color-text-muted);
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 .source-row--muted:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .source-row--error {
@@ -567,6 +588,12 @@
 .source-row--success .status-indicator {
   background: rgb(52 211 153 / 0.15);
   border-color: rgb(52 211 153 / 0.3);
+  color: var(--color-accent-success);
+}
+
+.source-row--synced .status-indicator {
+  background: rgb(52 211 153 / 0.1);
+  border-color: rgb(52 211 153 / 0.2);
   color: var(--color-accent-success);
 }
 
@@ -626,6 +653,12 @@
   background: rgb(52 211 153 / 0.15);
   color: var(--color-accent-success);
   border: 1px solid rgb(52 211 153 / 0.3);
+}
+
+.status-badge--synced {
+  background: rgb(52 211 153 / 0.12);
+  color: var(--color-accent-success);
+  border: 1px solid rgb(52 211 153 / 0.25);
 }
 
 .status-badge--muted {
