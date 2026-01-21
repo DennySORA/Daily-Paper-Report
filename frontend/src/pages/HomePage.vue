@@ -12,8 +12,6 @@ const hasError = computed(() => digestStore.error !== null)
 const errorMessage = computed(() => digestStore.error)
 const runDate = computed(() => digestStore.runDate)
 const runInfo = computed(() => digestStore.runInfo)
-const timeFilter = computed(() => digestStore.timeFilter)
-
 // Search state
 const searchQuery = ref('')
 const isSearchFocused = ref(false)
@@ -25,11 +23,6 @@ const activeTab = ref<TabView>('category')
 // Sub-tab state for nested navigation
 const activeCategory = ref<string | null>(null)
 const activeSource = ref<string | null>(null)
-
-// Time filter handler - enforce 24h by default
-function setTimeFilter(filter: 'all' | '24h') {
-  digestStore.setTimeFilter(filter)
-}
 
 // Stats computation
 const stats = computed(() => {
@@ -239,30 +232,6 @@ const timezoneInfo = computed(() => {
           </div>
         </div>
 
-        <!-- Time Filter Toggle -->
-        <div
-          v-if="!isLoading && !hasError"
-          class="time-toggle"
-        >
-          <button
-            class="time-toggle-btn"
-            :class="{ active: timeFilter === 'all' }"
-            @click="setTimeFilter('all')"
-          >
-            All
-          </button>
-          <button
-            class="time-toggle-btn"
-            :class="{ active: timeFilter === '24h' }"
-            @click="setTimeFilter('24h')"
-          >
-            24h
-          </button>
-          <div
-            class="time-toggle-indicator"
-            :class="{ 'is-right': timeFilter === '24h' }"
-          />
-        </div>
       </div>
     </header>
 
@@ -725,21 +694,25 @@ const timezoneInfo = computed(() => {
 .header-title {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: -0.025em;
 }
 
 .title-icon {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 @media (min-width: 640px) {
   .header-title {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
+  }
+
+  .title-icon {
+    font-size: 1.875rem;
   }
 }
 
@@ -770,54 +743,6 @@ const timezoneInfo = computed(() => {
 .header-link:hover {
   color: var(--color-accent-primary-hover);
   text-decoration: underline;
-}
-
-/* Time Toggle */
-.time-toggle {
-  position: relative;
-  display: inline-flex;
-  padding: 0.25rem;
-  background: var(--color-surface-secondary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-}
-
-.time-toggle-btn {
-  position: relative;
-  z-index: 1;
-  padding: 0.5rem 1rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.time-toggle-btn:hover:not(.active) {
-  color: var(--color-text-secondary);
-}
-
-.time-toggle-btn.active {
-  color: #fff;
-}
-
-.time-toggle-indicator {
-  position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
-  width: calc(50% - 0.25rem);
-  height: calc(100% - 0.5rem);
-  background: var(--color-accent-primary);
-  border-radius: var(--radius-md);
-  transition: transform var(--duration-slow) var(--ease-spring);
-  box-shadow: 0 2px 8px var(--color-accent-primary-glow);
-}
-
-.time-toggle-indicator.is-right {
-  transform: translateX(100%);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
