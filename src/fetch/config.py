@@ -72,7 +72,9 @@ class FetchConfig(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     user_agent: Annotated[str, Field(min_length=1, max_length=500)] = (
-        "research-report/1.0"
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/122.0.0.0 Safari/537.36"
     )
     default_timeout_seconds: Annotated[float, Field(ge=1.0, le=300.0)] = 30.0
     max_response_size_bytes: Annotated[int, Field(ge=1024, le=100 * 1024 * 1024)] = (
