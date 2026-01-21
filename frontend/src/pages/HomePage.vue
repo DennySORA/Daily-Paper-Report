@@ -22,7 +22,7 @@ const activeTab = ref<TabView>('category')
 const activeCategory = ref<string | null>(null)
 const activeSource = ref<string | null>(null)
 
-// Time filter handler
+// Time filter handler - enforce 24h by default
 function setTimeFilter(filter: 'all' | '24h') {
   digestStore.setTimeFilter(filter)
 }
@@ -48,32 +48,7 @@ const stats = computed(() => {
   }
 })
 
-// All papers combined
-const allPapers = computed(() => {
-  const seen = new Set<string>()
-  const result: Story[] = []
-
-  const addStories = (stories: Story[]) => {
-    for (const story of stories) {
-      if (!seen.has(story.story_id)) {
-        seen.add(story.story_id)
-        result.push(story)
-      }
-    }
-  }
-
-  addStories(digestStore.filteredTop5)
-  addStories(digestStore.filteredPapers)
-  addStories(digestStore.filteredRadar)
-
-  for (const stories of Object.values(digestStore.filteredModelReleases)) {
-    addStories(stories)
-  }
-
-  return result
-})
-
-// Papers by category
+// Papers by category with top pick
 const categoriesWithPapers = computed(() => {
   const data = digestStore.papersByCategoryWithPicks
   return digestStore.sortedCategories
@@ -86,7 +61,7 @@ const categoriesWithPapers = computed(() => {
     }))
 })
 
-// Papers by source
+// Papers by source with top pick per source
 const sourceGroups = computed(() => {
   const groups = digestStore.allStoriesBySourceCategory
   const labels: Record<string, string> = {
@@ -95,6 +70,7 @@ const sourceGroups = computed(() => {
     blog: 'Blog Posts',
     github: 'GitHub',
     news: 'News',
+    other: 'Other Sources',
   }
   const icons: Record<string, string> = {
     arxiv: '📄',
@@ -102,16 +78,26 @@ const sourceGroups = computed(() => {
     blog: '📝',
     github: '🐙',
     news: '📰',
+    other: '📌',
   }
 
   return Object.entries(groups)
-    .filter(([_, sourceList]) => sourceList.length > 0)
+    .filter(([_, sourceList]) => sourceList.length > 0 && sourceList.some(s => s.stories.length > 0))
     .map(([sourceType, sourceList]) => {
       const allStories = sourceList.flatMap(source => source.stories)
+      // Sort by date, most recent first
+      const sortedStories = [...allStories].sort((a, b) => {
+        const dateA = a.published_at ? new Date(a.published_at).getTime() : 0
+        const dateB = b.published_at ? new Date(b.published_at).getTime() : 0
+        return dateB - dateA
+      })
+      // First story is the top pick for this source type
+      const topPick = sortedStories[0] || null
       return {
         sourceType,
-        stories: allStories,
-        count: allStories.length,
+        stories: sortedStories,
+        topPick,
+        count: sortedStories.length,
         label: labels[sourceType] || sourceType,
         icon: icons[sourceType] || '📌',
       }
@@ -155,7 +141,7 @@ const currentSourceData = computed(() => {
   return sourceGroups.value.find(g => g.sourceType === activeSource.value)
 })
 
-// Tab definitions (only category and source - no "All Papers")
+// Tab definitions
 const tabs = [
   { id: 'category' as const, label: 'By Category', icon: '📁' },
   { id: 'source' as const, label: 'By Source', icon: '🔗' },
@@ -169,6 +155,17 @@ function getTabCount(tabId: TabView): number {
       return sourceGroups.value.length
   }
 }
+
+// Format timezone info
+const timezoneInfo = computed(() => {
+  if (!runInfo.value?.finished_at) return null
+  const date = new Date(runInfo.value.finished_at)
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+  return {
+    time: date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }),
+    timezone,
+  }
+})
 </script>
 
 <template>
@@ -177,157 +174,141 @@ function getTabCount(tabId: TabView): number {
     class="dashboard"
   >
     <!-- ═══════════════════════════════════════════════════════════════
-         DASHBOARD HEADER - Title + Date + Time Filter
+         DASHBOARD HEADER
          ═══════════════════════════════════════════════════════════════ -->
     <header class="dashboard-header">
-      <div class="header-title-group">
-        <h1 class="header-title">
-          Daily Paper Report
-        </h1>
-        <div
-          v-if="runDate"
-          class="header-meta"
-        >
-          <span class="header-date">{{ runDate }}</span>
-          <span class="header-separator">·</span>
-          <RouterLink
-            :to="`/day/${runDate}`"
-            class="header-link"
+      <div class="header-content">
+        <div class="header-title-group">
+          <h1 class="header-title">
+            <span class="title-icon">📊</span>
+            Daily Paper Report
+          </h1>
+          <div
+            v-if="runDate"
+            class="header-meta"
           >
-            Permalink
-          </RouterLink>
+            <span class="header-date">{{ runDate }}</span>
+            <span class="meta-dot">•</span>
+            <RouterLink
+              :to="`/day/${runDate}`"
+              class="header-link"
+            >
+              Permalink
+            </RouterLink>
+          </div>
         </div>
-        <div
-          v-else-if="isLoading"
-          class="header-meta-skeleton"
-        />
-      </div>
 
-      <!-- Time Filter -->
-      <div
-        v-if="!isLoading && !hasError"
-        class="time-filter"
-      >
-        <button
-          class="time-filter-btn"
-          :class="{ active: timeFilter === 'all' }"
-          @click="setTimeFilter('all')"
+        <!-- Time Filter Toggle -->
+        <div
+          v-if="!isLoading && !hasError"
+          class="time-toggle"
         >
-          All
-        </button>
-        <button
-          class="time-filter-btn"
-          :class="{ active: timeFilter === '24h' }"
-          @click="setTimeFilter('24h')"
-        >
-          24h
-        </button>
+          <button
+            class="time-toggle-btn"
+            :class="{ active: timeFilter === 'all' }"
+            @click="setTimeFilter('all')"
+          >
+            All
+          </button>
+          <button
+            class="time-toggle-btn"
+            :class="{ active: timeFilter === '24h' }"
+            @click="setTimeFilter('24h')"
+          >
+            24h
+          </button>
+          <div
+            class="time-toggle-indicator"
+            :class="{ 'is-right': timeFilter === '24h' }"
+          />
+        </div>
       </div>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         STATS DASHBOARD - Prominent metrics with clear visual hierarchy
+         STATS DASHBOARD
          ═══════════════════════════════════════════════════════════════ -->
     <section
       v-if="!isLoading && !hasError"
-      class="stats-dashboard"
+      class="stats-grid"
     >
-      <div class="stat-card stat-papers">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <article class="stat-card stat-papers">
+        <div class="stat-icon-wrap">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
             <polyline points="14 2 14 8 20 8" />
             <line x1="16" y1="13" x2="8" y2="13" />
             <line x1="16" y1="17" x2="8" y2="17" />
           </svg>
         </div>
-        <div class="stat-content">
-          <div class="stat-value">
-            {{ stats.papers }}
-          </div>
-          <div class="stat-label">
-            Papers
-          </div>
+        <div class="stat-body">
+          <span class="stat-number">{{ stats.papers }}</span>
+          <span class="stat-label">Papers</span>
         </div>
-      </div>
+      </article>
 
-      <div class="stat-card stat-categories">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <article class="stat-card stat-categories">
+        <div class="stat-icon-wrap">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
           </svg>
         </div>
-        <div class="stat-content">
-          <div class="stat-value">
-            {{ stats.categories }}
-          </div>
-          <div class="stat-label">
-            Categories
-          </div>
+        <div class="stat-body">
+          <span class="stat-number">{{ stats.categories }}</span>
+          <span class="stat-label">Categories</span>
         </div>
-      </div>
+      </article>
 
-      <div class="stat-card stat-sources-ok">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <article class="stat-card stat-healthy">
+        <div class="stat-icon-wrap">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <div class="stat-content">
-          <div class="stat-value">
-            {{ stats.sourcesOk }}
-          </div>
-          <div class="stat-label">
-            Sources OK
-          </div>
+        <div class="stat-body">
+          <span class="stat-number">{{ stats.sourcesOk }}</span>
+          <span class="stat-label">Sources OK</span>
         </div>
-      </div>
+      </article>
 
-      <div
+      <article
         class="stat-card"
-        :class="stats.sourcesFailed > 0 ? 'stat-sources-failed' : 'stat-muted'"
+        :class="stats.sourcesFailed > 0 ? 'stat-error' : 'stat-neutral'"
       >
-        <div class="stat-icon">
-          <svg v-if="stats.sourcesFailed > 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="stat-icon-wrap">
+          <svg v-if="stats.sourcesFailed > 0" class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
-          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12" />
+          <svg v-else class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="8" y1="12" x2="16" y2="12" />
           </svg>
         </div>
-        <div class="stat-content">
-          <div class="stat-value">
-            {{ stats.sourcesFailed }}
-          </div>
-          <div class="stat-label">
-            Failed
-          </div>
+        <div class="stat-body">
+          <span class="stat-number">{{ stats.sourcesFailed }}</span>
+          <span class="stat-label">Failed</span>
         </div>
-      </div>
+      </article>
 
-      <div class="stat-card stat-updated">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <article class="stat-card stat-time">
+        <div class="stat-icon-wrap">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="12" cy="12" r="10" />
             <polyline points="12 6 12 12 16 14" />
           </svg>
         </div>
-        <div class="stat-content">
-          <div class="stat-value stat-value-time">
-            {{ stats.lastUpdated || '—' }}
-          </div>
-          <div class="stat-label">
-            Updated
-          </div>
+        <div class="stat-body">
+          <span class="stat-number stat-number-time">{{ stats.lastUpdated || '—' }}</span>
+          <span class="stat-label">Updated</span>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- Stats Skeleton -->
     <section
       v-else-if="isLoading"
-      class="stats-dashboard"
+      class="stats-grid"
     >
       <div
         v-for="i in 5"
@@ -335,46 +316,32 @@ function getTabCount(tabId: TabView): number {
         class="stat-card stat-skeleton"
       >
         <div class="stat-icon-skeleton" />
-        <div class="stat-content">
-          <div class="stat-value-skeleton" />
+        <div class="stat-body">
+          <div class="stat-number-skeleton" />
           <div class="stat-label-skeleton" />
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         TAB NAVIGATION - Clear view selection
+         TAB NAVIGATION
          ═══════════════════════════════════════════════════════════════ -->
     <nav
       v-if="!isLoading && !hasError"
-      class="tabs-nav"
+      class="main-tabs"
     >
-      <div class="tabs-container">
+      <div class="tabs-track">
         <button
           v-for="tab in tabs"
           :key="tab.id"
-          class="tab-btn"
+          class="main-tab"
           :class="{ active: activeTab === tab.id }"
           @click="activeTab = tab.id"
         >
-          <span class="tab-icon">{{ tab.icon }}</span>
-          <span class="tab-label">{{ tab.label }}</span>
-          <span class="tab-count">{{ getTabCount(tab.id) }}</span>
+          <span class="tab-emoji">{{ tab.icon }}</span>
+          <span class="tab-text">{{ tab.label }}</span>
+          <span class="tab-badge">{{ getTabCount(tab.id) }}</span>
         </button>
-      </div>
-    </nav>
-
-    <!-- Tab Skeleton -->
-    <nav
-      v-else-if="isLoading"
-      class="tabs-nav"
-    >
-      <div class="tabs-container">
-        <div
-          v-for="i in 2"
-          :key="i"
-          class="tab-skeleton"
-        />
       </div>
     </nav>
 
@@ -385,50 +352,35 @@ function getTabCount(tabId: TabView): number {
     <!-- Loading State -->
     <div
       v-if="isLoading"
-      class="content-loading"
+      class="content-skeleton"
     >
       <div
         v-for="i in 5"
         :key="i"
         class="card-skeleton"
+        :style="{ '--delay': `${i * 50}ms` }"
       >
-        <div class="card-skeleton-header" />
-        <div class="card-skeleton-title" />
-        <div class="card-skeleton-meta" />
-        <div class="card-skeleton-body" />
+        <div class="skeleton-badge" />
+        <div class="skeleton-title" />
+        <div class="skeleton-meta" />
+        <div class="skeleton-body" />
       </div>
     </div>
 
     <!-- Error State -->
     <div
       v-else-if="hasError"
-      class="error-panel"
+      class="error-state"
     >
-      <div class="error-icon">
-        ⚠
-      </div>
-      <h3 class="error-title">
-        Failed to load digest
-      </h3>
-      <p class="error-message">
-        {{ errorMessage }}
-      </p>
+      <div class="error-icon">⚠️</div>
+      <h3 class="error-title">Unable to Load Data</h3>
+      <p class="error-desc">{{ errorMessage }}</p>
       <button
-        class="error-retry"
+        class="error-retry-btn"
         @click="digestStore.fetchDigest()"
       >
-        <svg
-          class="retry-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          />
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
         Retry
       </button>
@@ -437,44 +389,47 @@ function getTabCount(tabId: TabView): number {
     <!-- Main Content -->
     <main
       v-else
-      class="content-main"
+      class="content-area"
     >
-      <!-- BY CATEGORY VIEW with Sub-Tabs -->
+      <!-- BY CATEGORY VIEW -->
       <div
         v-show="activeTab === 'category'"
         class="content-panel"
       >
         <div
           v-if="categoriesWithPapers.length > 0"
-          class="subtab-layout"
+          class="panel-layout"
         >
-          <!-- Category Sub-Tabs -->
-          <nav class="subtab-nav">
+          <!-- Category Pills -->
+          <nav class="pill-nav">
             <button
-              v-for="cat in categoriesWithPapers"
+              v-for="(cat, idx) in categoriesWithPapers"
               :key="cat.category"
-              class="subtab-btn"
+              class="pill-btn"
               :class="{ active: activeCategory === cat.category }"
+              :style="{ '--idx': idx }"
               @click="activeCategory = cat.category"
             >
-              <span class="subtab-label">{{ cat.category }}</span>
-              <span class="subtab-count">{{ cat.count }}</span>
+              <span class="pill-label">{{ cat.category }}</span>
+              <span class="pill-count">{{ cat.count }}</span>
             </button>
           </nav>
 
           <!-- Category Content -->
           <div
             v-if="currentCategoryData"
-            class="subtab-content"
+            class="panel-content"
+            :key="currentCategoryData.category"
           >
             <!-- Top Pick -->
-            <div
+            <section
               v-if="currentCategoryData.topPick"
               class="top-pick-section"
             >
-              <div class="top-pick-label">
-                ⭐ Top Pick
-              </div>
+              <header class="section-header">
+                <span class="section-badge">⭐ Top Pick</span>
+                <span class="section-hint">Most relevant paper in this category</span>
+              </header>
               <StoryCard
                 :story="currentCategoryData.topPick"
                 :rank="1"
@@ -485,103 +440,135 @@ function getTabCount(tabId: TabView): number {
                 :show-source="true"
                 :show-authors="true"
                 :show-summary="true"
-                class="top-pick-card"
+                class="featured-card"
               />
-            </div>
+            </section>
 
             <!-- Other Papers -->
-            <div class="papers-grid">
-              <StoryCard
-                v-for="(story, idx) in currentCategoryData.papers.filter(s => s.story_id !== currentCategoryData?.topPick?.story_id)"
-                :key="story.story_id"
-                :story="story"
-                :show-entities="true"
-                :show-categories="false"
-                :show-source="true"
-                :show-authors="true"
-                :show-summary="true"
-                class="paper-item"
-                :style="{ '--index': idx }"
-              />
-            </div>
+            <section class="papers-section">
+              <header
+                v-if="currentCategoryData.papers.filter(s => s.story_id !== currentCategoryData?.topPick?.story_id).length > 0"
+                class="section-header"
+              >
+                <span class="section-badge section-badge-muted">📑 All Papers</span>
+              </header>
+              <div class="papers-list">
+                <StoryCard
+                  v-for="(story, idx) in currentCategoryData.papers.filter(s => s.story_id !== currentCategoryData?.topPick?.story_id)"
+                  :key="story.story_id"
+                  :story="story"
+                  :show-entities="true"
+                  :show-categories="false"
+                  :show-source="true"
+                  :show-authors="true"
+                  :show-summary="true"
+                  class="paper-card-item"
+                  :style="{ '--idx': idx }"
+                />
+              </div>
+            </section>
           </div>
         </div>
 
+        <!-- Empty State -->
         <div
           v-else
-          class="empty-panel"
+          class="empty-state"
         >
-          <div class="empty-icon">
-            📁
-          </div>
-          <h3 class="empty-title">
-            No categories found
-          </h3>
-          <p class="empty-desc">
-            No categorized papers for this time range.
-          </p>
+          <div class="empty-icon">📁</div>
+          <h3 class="empty-title">No Categories Found</h3>
+          <p class="empty-desc">No categorized papers available for this time range.</p>
         </div>
       </div>
 
-      <!-- BY SOURCE VIEW with Sub-Tabs -->
+      <!-- BY SOURCE VIEW -->
       <div
         v-show="activeTab === 'source'"
         class="content-panel"
       >
         <div
           v-if="sourceGroups.length > 0"
-          class="subtab-layout"
+          class="panel-layout"
         >
-          <!-- Source Sub-Tabs -->
-          <nav class="subtab-nav">
+          <!-- Source Pills -->
+          <nav class="pill-nav">
             <button
-              v-for="group in sourceGroups"
+              v-for="(group, idx) in sourceGroups"
               :key="group.sourceType"
-              class="subtab-btn"
+              class="pill-btn"
               :class="{ active: activeSource === group.sourceType }"
+              :style="{ '--idx': idx }"
               @click="activeSource = group.sourceType"
             >
-              <span class="subtab-emoji">{{ group.icon }}</span>
-              <span class="subtab-label">{{ group.label }}</span>
-              <span class="subtab-count">{{ group.count }}</span>
+              <span class="pill-emoji">{{ group.icon }}</span>
+              <span class="pill-label">{{ group.label }}</span>
+              <span class="pill-count">{{ group.count }}</span>
             </button>
           </nav>
 
           <!-- Source Content -->
           <div
             v-if="currentSourceData"
-            class="subtab-content"
+            class="panel-content"
+            :key="currentSourceData.sourceType"
           >
-            <div class="papers-grid">
+            <!-- Top Pick for this source -->
+            <section
+              v-if="currentSourceData.topPick"
+              class="top-pick-section"
+            >
+              <header class="section-header">
+                <span class="section-badge">⭐ Top Pick</span>
+                <span class="section-hint">Latest from {{ currentSourceData.label }}</span>
+              </header>
               <StoryCard
-                v-for="(story, idx) in currentSourceData.stories"
-                :key="story.story_id"
-                :story="story"
+                :story="currentSourceData.topPick"
+                :rank="1"
+                accent-type="highlight"
+                :featured="true"
                 :show-entities="true"
                 :show-categories="true"
                 :show-source="false"
                 :show-authors="true"
                 :show-summary="true"
-                class="paper-item"
-                :style="{ '--index': idx }"
+                class="featured-card"
               />
-            </div>
+            </section>
+
+            <!-- Other Papers -->
+            <section class="papers-section">
+              <header
+                v-if="currentSourceData.stories.filter(s => s.story_id !== currentSourceData?.topPick?.story_id).length > 0"
+                class="section-header"
+              >
+                <span class="section-badge section-badge-muted">📑 All from {{ currentSourceData.label }}</span>
+              </header>
+              <div class="papers-list">
+                <StoryCard
+                  v-for="(story, idx) in currentSourceData.stories.filter(s => s.story_id !== currentSourceData?.topPick?.story_id)"
+                  :key="story.story_id"
+                  :story="story"
+                  :show-entities="true"
+                  :show-categories="true"
+                  :show-source="false"
+                  :show-authors="true"
+                  :show-summary="true"
+                  class="paper-card-item"
+                  :style="{ '--idx': idx }"
+                />
+              </div>
+            </section>
           </div>
         </div>
 
+        <!-- Empty State -->
         <div
           v-else
-          class="empty-panel"
+          class="empty-state"
         >
-          <div class="empty-icon">
-            🔗
-          </div>
-          <h3 class="empty-title">
-            No sources found
-          </h3>
-          <p class="empty-desc">
-            No content from any source for this time range.
-          </p>
+          <div class="empty-icon">🔗</div>
+          <h3 class="empty-title">No Sources Found</h3>
+          <p class="empty-desc">No content from any source for this time range.</p>
         </div>
       </div>
     </main>
@@ -590,40 +577,44 @@ function getTabCount(tabId: TabView): number {
 
 <style scoped>
 /* ═══════════════════════════════════════════════════════════════════════════
-   RESEARCH TERMINAL DESIGN
-   A clean, data-focused dashboard for daily paper tracking
+   RESEARCH DASHBOARD - Premium, Data-Focused Design
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .dashboard {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  animation: dashboardFadeIn 0.4s ease-out;
+  animation: dashboardReveal 0.5s var(--ease-out) both;
 }
 
-@keyframes dashboardFadeIn {
+@keyframes dashboardReveal {
   from {
     opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HEADER - Compact title bar
+   HEADER
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-header {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (min-width: 640px) {
-  .dashboard-header {
+  .header-content {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -633,15 +624,22 @@ function getTabCount(tabId: TabView): number {
 .header-title-group {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.375rem;
 }
 
 .header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: -0.025em;
+}
+
+.title-icon {
+  font-size: 1.25rem;
 }
 
 @media (min-width: 640px) {
@@ -655,22 +653,23 @@ function getTabCount(tabId: TabView): number {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8125rem;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-muted);
 }
 
 .header-date {
   font-family: var(--font-mono);
   color: var(--color-text-secondary);
+  font-weight: 500;
 }
 
-.header-separator {
+.meta-dot {
   opacity: 0.4;
 }
 
 .header-link {
   color: var(--color-accent-primary);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
 .header-link:hover {
@@ -678,57 +677,66 @@ function getTabCount(tabId: TabView): number {
   text-decoration: underline;
 }
 
-.header-meta-skeleton {
-  height: 1rem;
-  width: 10rem;
-  background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
-}
-
-/* Time Filter */
-.time-filter {
-  display: flex;
+/* Time Toggle */
+.time-toggle {
+  position: relative;
+  display: inline-flex;
+  padding: 0.25rem;
   background: var(--color-surface-secondary);
   border: 1px solid var(--color-border-subtle);
-  border-radius: 0.5rem;
-  padding: 0.1875rem;
+  border-radius: var(--radius-lg);
 }
 
-.time-filter-btn {
-  padding: 0.4375rem 0.875rem;
-  font-size: 0.75rem;
+.time-toggle-btn {
+  position: relative;
+  z-index: 1;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-muted);
   background: transparent;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
-.time-filter-btn:hover:not(.active) {
+.time-toggle-btn:hover:not(.active) {
   color: var(--color-text-secondary);
-  background: var(--color-surface-overlay);
 }
 
-.time-filter-btn.active {
+.time-toggle-btn.active {
   color: #fff;
+}
+
+.time-toggle-indicator {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: calc(50% - 0.25rem);
+  height: calc(100% - 0.5rem);
   background: var(--color-accent-primary);
+  border-radius: var(--radius-md);
+  transition: transform var(--duration-slow) var(--ease-spring);
+  box-shadow: 0 2px 8px var(--color-accent-primary-glow);
+}
+
+.time-toggle-indicator.is-right {
+  transform: translateX(100%);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   STATS DASHBOARD - The main focus area
+   STATS GRID
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.stats-dashboard {
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
 }
 
 @media (min-width: 640px) {
-  .stats-dashboard {
+  .stats-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
@@ -737,61 +745,82 @@ function getTabCount(tabId: TabView): number {
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  padding: 1rem;
+  padding: 1rem 1.125rem;
   background: var(--color-surface-primary);
   border: 1px solid var(--color-border-subtle);
-  border-radius: 0.75rem;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
+  transition: all var(--duration-base) var(--ease-out);
+  animation: statReveal 0.4s var(--ease-out) both;
+  animation-delay: calc(var(--idx, 0) * 50ms);
 }
 
-.stat-card::after {
+.stat-card:nth-child(1) { --idx: 0; }
+.stat-card:nth-child(2) { --idx: 1; }
+.stat-card:nth-child(3) { --idx: 2; }
+.stat-card:nth-child(4) { --idx: 3; }
+.stat-card:nth-child(5) { --idx: 4; }
+
+@keyframes statReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stat-card::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: currentColor;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  inset: 0;
+  background: linear-gradient(135deg, currentColor 0%, transparent 60%);
+  opacity: 0.03;
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: currentColor;
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-default);
 }
 
-.stat-card:hover::after {
-  opacity: 0.5;
+.stat-card:hover::before {
+  opacity: 0.06;
 }
 
-.stat-icon {
+.stat-icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 0.625rem;
+  background: currentColor;
+  border-radius: var(--radius-lg);
   flex-shrink: 0;
-  background: linear-gradient(135deg, currentColor 0%, color-mix(in srgb, currentColor 70%, black) 100%);
+  transition: transform var(--duration-base) var(--ease-spring);
 }
 
-.stat-icon svg {
+.stat-card:hover .stat-icon-wrap {
+  transform: scale(1.05);
+}
+
+.stat-icon {
   width: 1.25rem;
   height: 1.25rem;
-  stroke: #fff;
+  color: var(--color-surface-base);
 }
 
-.stat-content {
+.stat-body {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.stat-value {
+.stat-number {
   font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 700;
@@ -799,8 +828,8 @@ function getTabCount(tabId: TabView): number {
   color: var(--color-text-primary);
 }
 
-.stat-value-time {
-  font-size: 1rem;
+.stat-number-time {
+  font-size: 1.125rem;
 }
 
 .stat-label {
@@ -808,94 +837,82 @@ function getTabCount(tabId: TabView): number {
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-top: 0.125rem;
 }
 
-/* Stat colors */
-.stat-papers {
-  color: #60a5fa;
-}
+/* Stat Colors */
+.stat-papers { color: #60a5fa; }
+.stat-categories { color: #a78bfa; }
+.stat-healthy { color: #34d399; }
+.stat-error { color: #f87171; }
+.stat-neutral { color: var(--color-text-muted); }
+.stat-time { color: #94a3b8; }
 
-.stat-categories {
-  color: #a78bfa;
-}
-
-.stat-sources-ok {
-  color: #4ade80;
-}
-
-.stat-sources-failed {
-  color: #f87171;
-}
-
-.stat-muted {
-  color: var(--color-text-muted);
-}
-
-.stat-updated {
-  color: #94a3b8;
-}
-
-/* Stat skeleton */
-.stat-skeleton {
-  color: var(--color-border-subtle);
-}
+/* Stat Skeleton */
+.stat-skeleton { color: var(--color-surface-elevated); }
 
 .stat-icon-skeleton {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   background: var(--color-surface-secondary);
-  border-radius: 0.5rem;
-  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-lg);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
 }
 
-.stat-value-skeleton {
+.stat-number-skeleton {
   height: 1.5rem;
   width: 2.5rem;
   background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
 }
 
 .stat-label-skeleton {
   height: 0.75rem;
-  width: 3.5rem;
+  width: 4rem;
   margin-top: 0.25rem;
   background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
+  animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TAB NAVIGATION - Clean underline style tabs
+   MAIN TABS
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.tabs-nav {
+.main-tabs {
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.tabs-container {
+.tabs-track {
   display: flex;
   gap: 0;
 }
 
-.tab-btn {
+.main-tab {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.25rem;
+  font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-muted);
   background: transparent;
   border: none;
   cursor: pointer;
   position: relative;
-  transition: color 0.15s ease;
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
-.tab-btn::after {
+.main-tab::after {
   content: '';
   position: absolute;
   bottom: -1px;
@@ -904,77 +921,69 @@ function getTabCount(tabId: TabView): number {
   height: 2px;
   background: var(--color-accent-primary);
   transform: scaleX(0);
-  transition: transform 0.2s ease;
+  transform-origin: center;
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
-.tab-btn:hover {
+.main-tab:hover:not(.active) {
   color: var(--color-text-secondary);
 }
 
-.tab-btn.active {
+.main-tab.active {
   color: var(--color-text-primary);
   font-weight: 600;
 }
 
-.tab-btn.active::after {
+.main-tab.active::after {
   transform: scaleX(1);
 }
 
-.tab-icon {
-  font-size: 1rem;
+.tab-emoji {
+  font-size: 1.125rem;
 }
 
-.tab-label {
+.tab-text {
   display: none;
 }
 
 @media (min-width: 480px) {
-  .tab-label {
+  .tab-text {
     display: inline;
   }
 }
 
-.tab-count {
+.tab-badge {
   padding: 0.125rem 0.5rem;
   font-size: 0.6875rem;
   font-weight: 700;
   font-family: var(--font-mono);
   background: var(--color-surface-secondary);
   color: var(--color-text-muted);
-  border-radius: 1rem;
-  transition: all 0.15s ease;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
-.tab-btn.active .tab-count {
+.main-tab.active .tab-badge {
   background: var(--color-accent-primary);
   color: #fff;
-}
-
-.tab-skeleton {
-  height: 2.5rem;
-  width: 6rem;
-  background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  margin: 0.5rem;
-  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    CONTENT AREA
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.content-main {
-  min-height: 300px;
+.content-area {
+  min-height: 400px;
 }
 
 .content-panel {
-  animation: panelFadeIn 0.3s ease-out;
+  animation: panelFade 0.3s var(--ease-out) both;
 }
 
-@keyframes panelFadeIn {
+@keyframes panelFade {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -982,70 +991,62 @@ function getTabCount(tabId: TabView): number {
   }
 }
 
-.papers-grid {
+.panel-layout {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 
-.paper-item {
-  animation: paperSlideIn 0.4s ease-out both;
-  animation-delay: calc(var(--index, 0) * 30ms);
-}
-
-@keyframes paperSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   SUB-TABS - Nested navigation under main tabs
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-.subtab-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.subtab-nav {
+/* Pill Navigation */
+.pill-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 0.75rem;
+  padding: 0.875rem;
   background: var(--color-surface-secondary);
   border: 1px solid var(--color-border-subtle);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
 }
 
-.subtab-btn {
+.pill-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.875rem;
+  font-family: var(--font-display);
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-text-tertiary);
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: all 0.15s ease;
-  white-space: nowrap;
+  transition: all var(--duration-fast) var(--ease-out);
+  animation: pillReveal 0.3s var(--ease-out) both;
+  animation-delay: calc(var(--idx, 0) * 30ms);
 }
 
-.subtab-btn:hover:not(.active) {
+@keyframes pillReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pill-btn:hover:not(.active) {
   color: var(--color-text-secondary);
   background: var(--color-surface-overlay);
 }
 
-.subtab-btn.active {
+.pill-btn:active:not(.active) {
+  transform: scale(0.97);
+}
+
+.pill-btn.active {
   color: var(--color-text-primary);
   background: var(--color-surface-primary);
   border-color: var(--color-border-default);
@@ -1053,34 +1054,39 @@ function getTabCount(tabId: TabView): number {
   font-weight: 600;
 }
 
-.subtab-emoji {
+.pill-emoji {
   font-size: 1rem;
 }
 
-.subtab-label {
-  font-family: var(--font-display);
+.pill-label {
+  white-space: nowrap;
 }
 
-.subtab-count {
-  padding: 0.125rem 0.5rem;
+.pill-count {
+  padding: 0.125rem 0.4375rem;
   font-size: 0.625rem;
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--color-text-muted);
   background: var(--color-surface-overlay);
-  border-radius: 1rem;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
-.subtab-btn.active .subtab-count {
+.pill-btn.active .pill-count {
   background: var(--color-accent-primary);
   color: #fff;
 }
 
-.subtab-content {
-  animation: subtabFadeIn 0.25s ease-out;
+/* Panel Content */
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: contentReveal 0.3s var(--ease-out) both;
 }
 
-@keyframes subtabFadeIn {
+@keyframes contentReveal {
   from {
     opacity: 0;
     transform: translateY(4px);
@@ -1091,29 +1097,88 @@ function getTabCount(tabId: TabView): number {
   }
 }
 
-/* Top Pick */
-.top-pick-section {
-  margin-bottom: 1rem;
+/* Section Headers */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
-.top-pick-label {
-  padding: 0.5rem 0;
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
   font-size: 0.6875rem;
   font-weight: 700;
   color: var(--color-accent-highlight);
+  background: rgb(251 191 36 / 0.12);
+  border: 1px solid rgb(251 191 36 / 0.25);
+  border-radius: var(--radius-full);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
-.top-pick-card {
-  border: 1px solid var(--color-accent-highlight) !important;
+.section-badge-muted {
+  color: var(--color-text-tertiary);
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border-subtle);
+}
+
+.section-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Featured Card */
+.featured-card {
+  animation: featuredReveal 0.4s var(--ease-out) both;
+}
+
+@keyframes featuredReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Papers List */
+.papers-section {
+  margin-top: 0.5rem;
+}
+
+.papers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.paper-card-item {
+  animation: paperReveal 0.35s var(--ease-out) both;
+  animation-delay: calc(var(--idx, 0) * 40ms);
+}
+
+@keyframes paperReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   LOADING SKELETONS
+   LOADING SKELETON
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.content-loading {
+.content-skeleton {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1122,70 +1187,87 @@ function getTabCount(tabId: TabView): number {
 .card-skeleton {
   background: var(--color-surface-primary);
   border: 1px solid var(--color-border-subtle);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  animation: skeletonReveal 0.4s var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
 }
 
-.card-skeleton-header {
+@keyframes skeletonReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.skeleton-badge {
   height: 1.25rem;
-  width: 35%;
+  width: 30%;
   background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
 }
 
-.card-skeleton-title {
+.skeleton-title {
   height: 1.5rem;
-  width: 75%;
+  width: 70%;
   background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
+  animation-delay: 0.1s;
 }
 
-.card-skeleton-meta {
+.skeleton-meta {
   height: 1rem;
-  width: 50%;
+  width: 45%;
   background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
+  animation-delay: 0.2s;
 }
 
-.card-skeleton-body {
+.skeleton-body {
   height: 4rem;
   width: 100%;
   background: var(--color-surface-secondary);
-  border-radius: 0.25rem;
-  animation: shimmer 1.5s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 0.8;
-  }
+  border-radius: var(--radius-md);
+  animation: pulse 1.5s var(--ease-in-out) infinite;
+  animation-delay: 0.3s;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ERROR STATE
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.error-panel {
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
   background: var(--color-surface-primary);
   border: 1px solid var(--color-accent-error);
-  border-radius: 0.75rem;
-  padding: 3rem 2rem;
-  text-align: center;
+  border-radius: var(--radius-xl);
+  animation: errorShake 0.5s var(--ease-out);
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
 }
 
 .error-icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
-  color: var(--color-accent-error);
 }
 
 .error-title {
@@ -1196,52 +1278,65 @@ function getTabCount(tabId: TabView): number {
   margin-bottom: 0.5rem;
 }
 
-.error-message {
+.error-desc {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   margin-bottom: 1.5rem;
+  max-width: 400px;
 }
 
-.error-retry {
+.error-retry-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
   color: #fff;
   background: var(--color-accent-primary);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
-.error-retry:hover {
+.error-retry-btn:hover {
   background: var(--color-accent-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-primary);
 }
 
-.retry-icon {
-  width: 1rem;
-  height: 1rem;
+.error-retry-btn:active {
+  transform: translateY(0);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    EMPTY STATE
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.empty-panel {
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
   background: var(--color-surface-secondary);
   border: 2px dashed var(--color-border-default);
-  border-radius: 0.75rem;
-  padding: 3rem 2rem;
-  text-align: center;
+  border-radius: var(--radius-xl);
 }
 
 .empty-icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   opacity: 0.5;
+  animation: float 3s var(--ease-in-out) infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .empty-title {
@@ -1249,11 +1344,11 @@ function getTabCount(tabId: TabView): number {
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.375rem;
 }
 
 .empty-desc {
   font-size: 0.875rem;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-muted);
 }
 </style>
