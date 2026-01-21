@@ -82,11 +82,28 @@ const stripHtml = (html: string): string => {
     .trim()
 }
 
+// Check if text looks like image alt text (not a real summary)
+const looksLikeImageAlt = (text: string): boolean => {
+  const altPatterns = [
+    /^illustration\s+of\s+/i,
+    /^image\s+of\s+/i,
+    /^photo\s+of\s+/i,
+    /^screenshot\s+of\s+/i,
+    /^diagram\s+(of|showing)\s+/i,
+    /^figure\s+\d+/i,
+    /^a\s+(photo|image|illustration)\s+/i,
+  ]
+  return altPatterns.some((pattern) => pattern.test(text.trim()))
+}
+
 // Truncate summary with smart word boundary
 const truncatedSummary = computed(() => {
   if (!props.story.summary) return null
   const cleanSummary = stripHtml(props.story.summary)
   if (!cleanSummary) return null
+
+  // Filter out summaries that look like image alt text
+  if (looksLikeImageAlt(cleanSummary)) return null
 
   const maxLength = props.compact ? 100 : 200
   if (cleanSummary.length <= maxLength) return cleanSummary
