@@ -5,6 +5,13 @@
 name: Daily Digest
 
 "on":
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/**'
+      - 'src/**'
+      - 'tests/fixtures/config/**'
   schedule:
     # Asia/Taipei 07:00 = UTC 23:00 (previous day)
     - cron: '0 23 * * *'
