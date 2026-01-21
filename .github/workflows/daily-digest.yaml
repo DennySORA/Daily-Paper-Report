@@ -11,7 +11,9 @@ name: Daily Digest
     paths:
       - 'public/**'
       - 'src/**'
+      - 'frontend/**'
       - 'tests/fixtures/config/**'
+      - '.github/workflows/daily-digest.yaml'
   schedule:
     # Asia/Taipei 07:00 = UTC 23:00 (previous day)
     - cron: '0 23 * * *'
