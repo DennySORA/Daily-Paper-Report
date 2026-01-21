@@ -103,61 +103,9 @@
 }
 
 /* ============================================================
-   LIGHT MODE - For users who prefer light theme
+   DARK MODE ONLY - Premium dark theme enforced
+   Light mode disabled for consistent dark aesthetic
    ============================================================ */
-@media (prefers-color-scheme: light) {
-  @theme {
-    /* Surfaces - Clean, bright */
-    --color-surface-base: #f8fafc;
-    --color-surface-primary: #ffffff;
-    --color-surface-secondary: #f1f5f9;
-    --color-surface-elevated: #ffffff;
-    --color-surface-overlay: #e2e8f0;
-    --color-surface-glass: rgb(255 255 255 / 0.9);
-
-    /* Text - High contrast */
-    --color-text-primary: #0f172a;
-    --color-text-secondary: #334155;
-    --color-text-tertiary: #475569;
-    --color-text-muted: #64748b;
-    --color-text-inverse: #f8fafc;
-
-    /* Borders */
-    --color-border-subtle: rgb(15 23 42 / 0.06);
-    --color-border-default: rgb(15 23 42 / 0.1);
-    --color-border-strong: rgb(15 23 42 / 0.15);
-    --color-border-focus: #6366f1;
-
-    /* Accents - Darker for light mode */
-    --color-accent-primary: #6366f1;
-    --color-accent-primary-hover: #4f46e5;
-    --color-accent-primary-glow: rgb(99 102 241 / 0.2);
-    --color-accent-highlight: #f59e0b;
-    --color-accent-highlight-hover: #d97706;
-    --color-accent-highlight-glow: rgb(245 158 11 / 0.25);
-    --color-accent-success: #22c55e;
-    --color-accent-success-glow: rgb(34 197 94 / 0.2);
-    --color-accent-error: #ef4444;
-    --color-accent-error-glow: rgb(239 68 68 / 0.2);
-
-    /* Section accents */
-    --color-section-top: #f59e0b;
-    --color-section-papers: #8b5cf6;
-    --color-section-models: #0ea5e9;
-    --color-section-sources: #3b82f6;
-    --color-section-radar: #f97316;
-
-    /* Shadows - Softer for light mode */
-    --shadow-xs: 0 1px 2px rgb(15 23 42 / 0.04);
-    --shadow-sm: 0 2px 4px rgb(15 23 42 / 0.06), 0 1px 2px rgb(15 23 42 / 0.04);
-    --shadow-md: 0 4px 8px rgb(15 23 42 / 0.08), 0 2px 4px rgb(15 23 42 / 0.04);
-    --shadow-lg: 0 8px 24px rgb(15 23 42 / 0.1), 0 4px 8px rgb(15 23 42 / 0.05);
-    --shadow-xl: 0 16px 48px rgb(15 23 42 / 0.12), 0 8px 16px rgb(15 23 42 / 0.06);
-    --shadow-glow-primary: 0 0 20px var(--color-accent-primary-glow);
-    --shadow-glow-highlight: 0 0 30px var(--color-accent-highlight-glow);
-    --shadow-inner: inset 0 2px 4px rgb(15 23 42 / 0.06);
-  }
-}
 
 /* ============================================================
    BASE STYLES
