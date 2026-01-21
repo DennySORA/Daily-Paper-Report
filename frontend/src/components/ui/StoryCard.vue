@@ -213,7 +213,8 @@ const truncatedSummary = computed(() => {
   // Filter out summaries that look like image alt text
   if (looksLikeImageAlt(cleanSummary)) return null
 
-  const maxLength = props.compact ? 120 : 220
+  // Longer summaries: 380 chars for normal view, 120 for compact
+  const maxLength = props.compact ? 120 : 380
   if (cleanSummary.length <= maxLength) return cleanSummary
 
   const truncated = cleanSummary.slice(0, maxLength)
@@ -507,35 +508,55 @@ const getAccentBadgeClass = computed(() => {
 </template>
 
 <style scoped>
+/* ═══════════════════════════════════════════════════════════════════════════
+   STORY CARD - Premium Paper Display Component
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 /* Rank badge */
 .rank-badge {
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   font-weight: 700;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   background: var(--color-surface-secondary);
   color: var(--color-text-tertiary);
   border: 1px solid var(--color-border-subtle);
-  transition: all var(--duration-fast) var(--ease-out);
+  transition: all var(--duration-base) var(--ease-out);
+  position: relative;
 }
 
 .rank-badge--top {
-  background: linear-gradient(135deg, rgb(251 191 36 / 0.15) 0%, rgb(245 158 11 / 0.1) 100%);
+  background: linear-gradient(135deg, rgb(251 191 36 / 0.2) 0%, rgb(245 158 11 / 0.12) 100%);
   color: var(--color-section-top);
-  border-color: rgb(251 191 36 / 0.3);
+  border-color: rgb(251 191 36 / 0.4);
+  box-shadow: 0 2px 8px rgb(251 191 36 / 0.15);
+}
+
+.rank-badge--top::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgb(251 191 36 / 0.3) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .group:hover .rank-badge {
-  transform: scale(1.05);
+  transform: scale(1.08) translateY(-2px);
 }
 
 .group:hover .rank-badge--top {
-  box-shadow: 0 0 12px rgb(251 191 36 / 0.25);
+  box-shadow: 0 4px 16px rgb(251 191 36 / 0.35);
+}
+
+.group:hover .rank-badge--top::before {
+  opacity: 1;
 }
 
 /* Compact variant */
@@ -548,19 +569,35 @@ const getAccentBadgeClass = computed(() => {
   margin-top: 0.5rem;
 }
 
-/* Title link */
+/* Title link - Enhanced hover effect */
 .paper-card-link {
   display: inline-flex;
   align-items: flex-start;
   gap: 0.5rem;
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: all var(--duration-fast) var(--ease-out);
   border-radius: var(--radius-sm);
+  position: relative;
+}
+
+.paper-card-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-primary-hover));
+  transition: width var(--duration-base) var(--ease-out);
 }
 
 .paper-card-link:hover {
   color: var(--color-accent-primary);
+}
+
+.paper-card-link:hover::after {
+  width: 100%;
 }
 
 .paper-card-link:focus-visible {
@@ -573,28 +610,31 @@ const getAccentBadgeClass = computed(() => {
   flex-shrink: 0;
   width: 0.875rem;
   height: 0.875rem;
-  margin-top: 0.125rem;
+  margin-top: 0.1875rem;
   opacity: 0;
-  transform: translateX(-4px) translateY(2px);
-  transition: all var(--duration-fast) var(--ease-out);
-  color: var(--color-text-muted);
+  transform: translateX(-6px) translateY(4px);
+  transition: all var(--duration-base) var(--ease-spring);
+  color: var(--color-accent-primary);
 }
 
 .paper-card-link:hover .paper-card-external-icon {
-  opacity: 0.7;
+  opacity: 0.8;
   transform: translateX(0) translateY(0);
 }
 
-/* Authors */
+/* Authors - Improved styling */
 .paper-card-authors {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
+  display: flex;
+  align-items: center;
 }
 
 /* Meta divider */
 .meta-divider {
-  color: var(--color-border-default);
+  color: var(--color-border-strong);
+  opacity: 0.5;
 }
 
 /* arXiv ID */
@@ -603,9 +643,15 @@ const getAccentBadgeClass = computed(() => {
   font-size: 0.6875rem;
   background: var(--color-surface-secondary);
   color: var(--color-text-tertiary);
-  padding: 0.1875rem 0.5rem;
+  padding: 0.25rem 0.625rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.group:hover .arxiv-id {
+  background: var(--color-surface-overlay);
+  border-color: var(--color-border-default);
 }
 
 /* Additional links section */
@@ -613,16 +659,16 @@ const getAccentBadgeClass = computed(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding-top: 0.75rem;
+  padding-top: 0.875rem;
   border-top: 1px solid var(--color-border-subtle);
-  margin-top: 0.25rem;
+  margin-top: 0.375rem;
 }
 
 .paper-card-link-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.375rem 0.625rem;
+  padding: 0.4375rem 0.75rem;
   font-size: 0.6875rem;
   font-weight: 600;
   color: var(--color-text-secondary);
@@ -631,13 +677,29 @@ const getAccentBadgeClass = computed(() => {
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-card-link-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-accent-primary-glow) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .paper-card-link-btn:hover {
-  background: var(--color-surface-overlay);
-  border-color: var(--color-border-default);
+  background: var(--color-surface-elevated);
+  border-color: var(--color-accent-primary);
   color: var(--color-accent-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.paper-card-link-btn:hover::before {
+  opacity: 0.5;
 }
 
 .paper-card-link-btn:active {
@@ -647,5 +709,14 @@ const getAccentBadgeClass = computed(() => {
 .paper-card-link-btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--color-surface-base), 0 0 0 4px var(--color-border-focus);
+}
+
+/* Icon styling for link buttons */
+.paper-card-link-btn svg {
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.paper-card-link-btn:hover svg {
+  transform: scale(1.1);
 }
 </style>

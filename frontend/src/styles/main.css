@@ -273,16 +273,20 @@ code, pre {
 .card-accent-sources { border-left-color: var(--color-section-sources); }
 .card-accent-radar { border-left-color: var(--color-section-radar); }
 
-/* Featured card - standout treatment with glow */
+/* Featured card - standout treatment with golden glow */
 .card-featured {
-  border: 1px solid rgb(251 191 36 / 0.4);
+  border: 1px solid rgb(251 191 36 / 0.45);
   background: linear-gradient(
-    135deg,
-    rgb(251 191 36 / 0.06) 0%,
-    var(--color-surface-primary) 40%
+    145deg,
+    rgb(251 191 36 / 0.08) 0%,
+    var(--color-surface-primary) 35%,
+    var(--color-surface-primary) 100%
   );
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 2px 12px rgb(251 191 36 / 0.08),
+    0 4px 24px rgb(0 0 0 / 0.15);
 }
 
 .card-featured::before {
@@ -291,9 +295,9 @@ code, pre {
   inset: 0;
   border-radius: inherit;
   background: linear-gradient(
-    135deg,
-    rgb(251 191 36 / 0.12) 0%,
-    transparent 50%
+    145deg,
+    rgb(251 191 36 / 0.15) 0%,
+    transparent 40%
   );
   opacity: 0;
   transition: opacity var(--duration-slow) var(--ease-out);
@@ -303,12 +307,12 @@ code, pre {
 .card-featured::after {
   content: '';
   position: absolute;
-  top: -1px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-section-top), transparent);
-  opacity: 0.6;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 5%, var(--color-section-top) 50%, transparent 95%);
+  opacity: 0.7;
 }
 
 .card-featured:hover::before {
@@ -316,8 +320,15 @@ code, pre {
 }
 
 .card-featured:hover {
-  border-color: rgb(251 191 36 / 0.6);
-  box-shadow: var(--shadow-glow-highlight), var(--shadow-lg);
+  border-color: rgb(251 191 36 / 0.7);
+  box-shadow:
+    0 0 35px rgb(251 191 36 / 0.2),
+    0 8px 32px rgb(0 0 0 / 0.25);
+  transform: translateY(-4px);
+}
+
+.card-featured:hover::after {
+  opacity: 1;
 }
 
 /* ============================================================
@@ -361,7 +372,7 @@ code, pre {
   line-height: 1.7;
   color: var(--color-text-secondary);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
