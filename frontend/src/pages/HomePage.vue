@@ -42,13 +42,14 @@ const totalStories = computed(() => digestStore.filteredTotalStories)
 // Total categories
 const totalCategories = computed(() => Object.keys(digestStore.papersByCategoryWithPicks).length)
 
-// Get source stats
+// Get source stats - "working" = fetched successfully (with or without updates)
 const sourceStats = computed(() => {
   const stats = digestStore.sourcesByStatus
+  // Working sources = those that fetched successfully (HAS_UPDATE + NO_CHANGE)
+  const working = stats.healthy.length + stats.noUpdate.length
   return {
-    healthy: stats.healthy.length,
+    working,
     failed: stats.failed.length,
-    noUpdate: stats.noUpdate.length,
     total: stats.healthy.length + stats.failed.length + stats.noUpdate.length,
   }
 })
@@ -279,7 +280,7 @@ watch(activeView, () => {
 
         <div class="stat-card stat-card--success">
           <div class="stat-value">
-            {{ sourceStats.healthy }}
+            {{ sourceStats.working }}
           </div>
           <div class="stat-label">
             Sources OK
