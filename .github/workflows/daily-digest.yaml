@@ -136,8 +136,7 @@ jobs:
 
       - name: Restore archive pages from GitHub Pages
         id: restore-archive
-        # TEMPORARY: Skip restore for Vue SPA migration (will be reverted)
-        if: ${{ false && github.event.inputs.reset_state != 'true' && github.event.inputs.skip_archive_restore != 'true' }}
+        if: ${{ github.event.inputs.reset_state != 'true' && github.event.inputs.skip_archive_restore != 'true' }}
         run: |
           RUN_ID="${{ steps.init.outputs.run_id }}"
           SITE_URL="https://paper.sorahane-kyoukai.org"
@@ -233,8 +232,7 @@ jobs:
 
       - name: Clear existing archives
         id: clear-archives
-        # TEMPORARY: Force clear for Vue SPA migration (will be reverted)
-        if: ${{ true || inputs.clear_archives == 'true' || github.event.client_payload.clear_archives == true }}
+        if: ${{ inputs.clear_archives == 'true' || github.event.client_payload.clear_archives == true }}
         env:
           STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
         run: |
