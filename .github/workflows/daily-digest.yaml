@@ -364,23 +364,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-          fetch-depth: 1
-
       - name: Download state artifact
         uses: actions/download-artifact@v4
         with:
           name: state-sqlite
-          path: .
+          path: artifacts/
 
       - name: Download day archives artifact
         uses: actions/download-artifact@v4
         with:
           name: day-archives
-          path: day/
+          path: artifacts/day/
         continue-on-error: true
 
       - name: Verify state file
@@ -388,9 +382,9 @@ jobs:
         run: |
           RUN_ID="${{ needs.digest.outputs.run_id }}"
 
-          if [ -f "${{ env.STATE_FILE }}" ]; then
-            STATE_SIZE=$(stat -c%s "${{ env.STATE_FILE }}" 2>/dev/null || stat -f%z "${{ env.STATE_FILE }}")
-            STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
+          if [ -f "artifacts/${{ env.STATE_FILE }}" ]; then
+            STATE_SIZE=$(stat -c%s "artifacts/${{ env.STATE_FILE }}" 2>/dev/null || stat -f%z "artifacts/${{ env.STATE_FILE }}")
+            STATE_CHECKSUM=$(sha256sum "artifacts/${{ env.STATE_FILE }}" | cut -d' ' -f1)
             echo "state_exists=true" >> "$GITHUB_OUTPUT"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"artifact_downloaded","size_bytes":'"${STATE_SIZE}"',"sha256":"'"${STATE_CHECKSUM}"'"}'
           else
@@ -400,75 +394,81 @@ jobs:
           fi
 
           # Count day archives
-          if [ -d "day" ]; then
-            ARCHIVE_COUNT=$(find day -name "*.html" | wc -l)
+          if [ -d "artifacts/day" ]; then
+            ARCHIVE_COUNT=$(find artifacts/day -name "*.html" | wc -l)
             echo "archive_count=${ARCHIVE_COUNT}" >> "$GITHUB_OUTPUT"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"archives_found","count":'"${ARCHIVE_COUNT}"'}'
           else
             echo "archive_count=0" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Checkout state branch
+        if: steps.verify.outputs.state_exists == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.STATE_BRANCH }}
+          path: state-repo
+          fetch-depth: 1
+        continue-on-error: true
+
+      - name: Initialize state branch if needed
+        if: steps.verify.outputs.state_exists == 'true'
+        id: init-branch
+        run: |
+          RUN_ID="${{ needs.digest.outputs.run_id }}"
+
+          if [ ! -d "state-repo/.git" ]; then
+            # State branch doesn't exist, create it
+            mkdir -p state-repo
+            cd state-repo
+            git init
+            git remote add origin "https://github.com/${{ github.repository }}.git"
+            git checkout --orphan "${{ env.STATE_BRANCH }}"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"created_orphan_branch"}'
+          else
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_branch_checked_out"}'
+          fi
+
       - name: Push state and archives to state branch
         if: steps.verify.outputs.state_exists == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RUN_ID="${{ needs.digest.outputs.run_id }}"
           START_TIME=$(date +%s%3N)
 
-          # Save state file and day archives to temp location before branch switch
-          TEMP_STATE="/tmp/${{ env.STATE_FILE }}"
-          TEMP_DAY_DIR="/tmp/day"
-          cp "${{ env.STATE_FILE }}" "${TEMP_STATE}"
-          STATE_CHECKSUM=$(sha256sum "${TEMP_STATE}" | cut -d' ' -f1)
-
-          # Copy day archives if they exist
-          ARCHIVE_COUNT=0
-          if [ -d "day" ] && [ "$(ls -A day 2>/dev/null)" ]; then
-            mkdir -p "${TEMP_DAY_DIR}"
-            cp -r day/* "${TEMP_DAY_DIR}/" 2>/dev/null || true
-            ARCHIVE_COUNT=$(find "${TEMP_DAY_DIR}" -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
-          fi
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"archives_copied","count":'"${ARCHIVE_COUNT}"'}'
+          cd state-repo
 
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Check if state branch exists on remote
-          if git ls-remote --heads origin "${{ env.STATE_BRANCH }}" | grep -q "${{ env.STATE_BRANCH }}"; then
-            # Fetch remote state branch
-            git fetch origin "${{ env.STATE_BRANCH }}"
-            # Create or reset local branch to match remote
-            git checkout -B "${{ env.STATE_BRANCH }}" "origin/${{ env.STATE_BRANCH }}"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_branch_checked_out"}'
-          else
-            # Create orphan branch
-            git checkout --orphan "${{ env.STATE_BRANCH }}"
-            git rm -rf . 2>/dev/null || true
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"created_orphan_branch"}'
-          fi
-
-          # Restore state file from temp location
-          cp "${TEMP_STATE}" "${{ env.STATE_FILE }}"
+          # Copy state file
+          cp "../artifacts/${{ env.STATE_FILE }}" "${{ env.STATE_FILE }}"
+          STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
           git add "${{ env.STATE_FILE }}"
 
-          # Restore day archives from temp location (merge with existing)
-          if [ -d "${TEMP_DAY_DIR}" ]; then
+          # Copy day archives if they exist
+          ARCHIVE_COUNT=0
+          if [ -d "../artifacts/day" ] && [ "$(ls -A ../artifacts/day 2>/dev/null)" ]; then
             mkdir -p day
-            cp -r "${TEMP_DAY_DIR}"/* day/ 2>/dev/null || true
+            cp -r ../artifacts/day/* day/ 2>/dev/null || true
+            ARCHIVE_COUNT=$(find day -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
             git add day/
           fi
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"files_staged","archive_count":'"${ARCHIVE_COUNT}"'}'
 
           # Only commit if there are changes
           if git diff --cached --quiet; then
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"no_changes"}'
           else
             git commit -m "chore(state): update state.sqlite and day archives [skip ci]"
-            # Use force-with-lease to handle concurrent updates safely
-            if ! git push --force-with-lease origin "${{ env.STATE_BRANCH }}"; then
-              echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"push_failed_retry"}'
-              # Retry with force push if force-with-lease fails (state branch is append-only)
-              git push --force origin "${{ env.STATE_BRANCH }}"
-            fi
+
+            # Configure remote with token for push
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+
+            # Push with force to handle any conflicts
+            git push --force origin "${{ env.STATE_BRANCH }}"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_pushed","sha256":"'"${STATE_CHECKSUM}"'","archive_count":'"${ARCHIVE_COUNT}"'}'
           fi
 
