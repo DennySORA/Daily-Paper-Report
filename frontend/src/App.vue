@@ -1,14 +1,7 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue'
-  import { useDigestStore } from '@/stores/digest'
   import TheHeader from '@/components/layout/TheHeader.vue'
   import TheFooter from '@/components/layout/TheFooter.vue'
-
-  const digestStore = useDigestStore()
-
-  onMounted(async () => {
-    await digestStore.fetchDigest()
-  })
+  // Data fetching is handled by individual page components based on route
 </script>
 
 <template>

@@ -1,10 +1,31 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useDigestStore } from '@/stores/digest'
 import StoryCard from '@/components/ui/StoryCard.vue'
 import type { Story } from '@/types/digest'
 
+const route = useRoute()
 const digestStore = useDigestStore()
+
+// Get target date from route params (for /day/:date routes)
+const targetDate = computed(() => {
+  const dateParam = route.params.date
+  if (typeof dateParam === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
+    return dateParam
+  }
+  return undefined
+})
+
+// Fetch data when component mounts or route changes
+async function loadData(): Promise<void> {
+  await digestStore.fetchDigest(targetDate.value)
+}
+
+onMounted(loadData)
+
+// Watch for route parameter changes to reload data
+watch(targetDate, loadData)
 
 // Core state
 const isLoading = computed(() => digestStore.isLoading)
@@ -190,16 +211,6 @@ function getTabCount(tabId: TabView): number {
   }
 }
 
-// Format timezone info
-const timezoneInfo = computed(() => {
-  if (!runInfo.value?.finished_at) return null
-  const date = new Date(runInfo.value.finished_at)
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-  return {
-    time: date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }),
-    timezone,
-  }
-})
 </script>
 
 <template>
@@ -231,7 +242,6 @@ const timezoneInfo = computed(() => {
             </RouterLink>
           </div>
         </div>
-
       </div>
     </header>
 
@@ -244,11 +254,27 @@ const timezoneInfo = computed(() => {
     >
       <article class="stat-card stat-papers">
         <div class="stat-icon-wrap">
-          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg
+            class="stat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
             <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
+            <line
+              x1="16"
+              y1="13"
+              x2="8"
+              y2="13"
+            />
+            <line
+              x1="16"
+              y1="17"
+              x2="8"
+              y2="17"
+            />
           </svg>
         </div>
         <div class="stat-body">
@@ -259,7 +285,13 @@ const timezoneInfo = computed(() => {
 
       <article class="stat-card stat-categories">
         <div class="stat-icon-wrap">
-          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg
+            class="stat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
           </svg>
         </div>
@@ -271,7 +303,13 @@ const timezoneInfo = computed(() => {
 
       <article class="stat-card stat-healthy">
         <div class="stat-icon-wrap">
-          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            class="stat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
@@ -286,13 +324,46 @@ const timezoneInfo = computed(() => {
         :class="stats.sourcesFailed > 0 ? 'stat-error' : 'stat-neutral'"
       >
         <div class="stat-icon-wrap">
-          <svg v-if="stats.sourcesFailed > 0" class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
+          <svg
+            v-if="stats.sourcesFailed > 0"
+            class="stat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line
+              x1="18"
+              y1="6"
+              x2="6"
+              y2="18"
+            />
+            <line
+              x1="6"
+              y1="6"
+              x2="18"
+              y2="18"
+            />
           </svg>
-          <svg v-else class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="8" y1="12" x2="16" y2="12" />
+          <svg
+            v-else
+            class="stat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+            />
+            <line
+              x1="8"
+              y1="12"
+              x2="16"
+              y2="12"
+            />
           </svg>
         </div>
         <div class="stat-body">
@@ -303,8 +374,18 @@ const timezoneInfo = computed(() => {
 
       <article class="stat-card stat-time">
         <div class="stat-icon-wrap">
-          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10" />
+          <svg
+            class="stat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+            />
             <polyline points="12 6 12 12 16 14" />
           </svg>
         </div>
@@ -351,7 +432,11 @@ const timezoneInfo = computed(() => {
           stroke="currentColor"
           stroke-width="2"
         >
-          <circle cx="11" cy="11" r="8" />
+          <circle
+            cx="11"
+            cy="11"
+            r="8"
+          />
           <path d="m21 21-4.35-4.35" />
         </svg>
         <input
@@ -366,12 +451,27 @@ const timezoneInfo = computed(() => {
           <button
             v-if="searchQuery.length > 0"
             class="search-clear-btn"
-            @click="clearSearch"
             title="Clear search"
+            @click="clearSearch"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line
+                x1="18"
+                y1="6"
+                x2="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                y1="6"
+                x2="18"
+                y2="18"
+              />
             </svg>
           </button>
         </Transition>
@@ -436,14 +536,26 @@ const timezoneInfo = computed(() => {
       v-else-if="hasError"
       class="error-state"
     >
-      <div class="error-icon">⚠️</div>
-      <h3 class="error-title">Unable to Load Data</h3>
-      <p class="error-desc">{{ errorMessage }}</p>
+      <div class="error-icon">
+        ⚠️
+      </div>
+      <h3 class="error-title">
+        Unable to Load Data
+      </h3>
+      <p class="error-desc">
+        {{ errorMessage }}
+      </p>
       <button
         class="error-retry-btn"
         @click="digestStore.fetchDigest()"
       >
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          class="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
         Retry
@@ -482,8 +594,8 @@ const timezoneInfo = computed(() => {
           <!-- Category Content -->
           <div
             v-if="currentCategoryData"
-            class="panel-content"
             :key="currentCategoryData.category"
+            class="panel-content"
           >
             <!-- Top Pick -->
             <section
@@ -539,9 +651,15 @@ const timezoneInfo = computed(() => {
           v-else
           class="empty-state"
         >
-          <div class="empty-icon">📁</div>
-          <h3 class="empty-title">No Categories Found</h3>
-          <p class="empty-desc">No categorized papers available for this time range.</p>
+          <div class="empty-icon">
+            📁
+          </div>
+          <h3 class="empty-title">
+            No Categories Found
+          </h3>
+          <p class="empty-desc">
+            No categorized papers available for this time range.
+          </p>
         </div>
       </div>
 
@@ -573,8 +691,8 @@ const timezoneInfo = computed(() => {
           <!-- Source Content -->
           <div
             v-if="currentSourceData"
-            class="panel-content"
             :key="currentSourceData.sourceType"
+            class="panel-content"
           >
             <!-- Top Pick for this source -->
             <section
@@ -630,9 +748,15 @@ const timezoneInfo = computed(() => {
           v-else
           class="empty-state"
         >
-          <div class="empty-icon">🔗</div>
-          <h3 class="empty-title">No Sources Found</h3>
-          <p class="empty-desc">No content from any source for this time range.</p>
+          <div class="empty-icon">
+            🔗
+          </div>
+          <h3 class="empty-title">
+            No Sources Found
+          </h3>
+          <p class="empty-desc">
+            No content from any source for this time range.
+          </p>
         </div>
       </div>
     </main>

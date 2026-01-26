@@ -1,9 +1,16 @@
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, ref, onMounted } from 'vue'
   import { useDigestStore } from '@/stores/digest'
 
   const digestStore = useDigestStore()
   const sources = computed(() => digestStore.sourcesStatus)
+
+  // Fetch data on mount if not already loaded
+  onMounted(async () => {
+    if (!digestStore.hasData) {
+      await digestStore.fetchDigest()
+    }
+  })
 
   // Filter state
   type StatusFilter = 'all' | 'has_update' | 'no_change' | 'failed'
@@ -117,16 +124,6 @@
     }
   }
 
-  const getTierLabel = (tier: number): string => {
-    switch (tier) {
-      case 0:
-        return 'Primary'
-      case 1:
-        return 'Secondary'
-      default:
-        return 'Tertiary'
-    }
-  }
 </script>
 
 <template>
@@ -212,7 +209,9 @@
           <!-- Source Info -->
           <div class="source-info">
             <div class="source-header">
-              <h3 class="source-name">{{ source.name }}</h3>
+              <h3 class="source-name">
+                {{ source.name }}
+              </h3>
               <span :class="getStatusColor(source.status, source.source_id)">
                 {{ getStatusLabel(source.status, source.source_id) }}
               </span>
@@ -249,7 +248,9 @@
       class="empty-filter-state"
     >
       <span class="empty-icon">🔍</span>
-      <p class="empty-text">No sources match this filter</p>
+      <p class="empty-text">
+        No sources match this filter
+      </p>
       <button
         class="reset-filter-btn"
         @click="activeFilter = 'all'"
@@ -267,8 +268,12 @@
         class="empty-state-icon"
         aria-hidden="true"
       >📡</span>
-      <p class="empty-state-title">No source data available</p>
-      <p class="empty-state-desc">Source status will appear here after the next data refresh.</p>
+      <p class="empty-state-title">
+        No source data available
+      </p>
+      <p class="empty-state-desc">
+        Source status will appear here after the next data refresh.
+      </p>
     </div>
   </div>
 </template>

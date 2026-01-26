@@ -47,15 +47,19 @@ class JsonRenderer:
         self._log = logger.bind(run_id=run_id, component="renderer")
         self._writer = AtomicWriter(output_dir, run_id)
 
-    def render(
+    def render(  # noqa: PLR0913
         self,
         ranker_output: RankerOutput,
         sources_status: list[SourceStatus],
         run_info: RunInfo,
         run_date: str,
         archive_dates: list[str] | None = None,
+        skip_daily_json: bool = False,
     ) -> GeneratedFile:
-        """Render api/daily.json.
+        """Render JSON API output.
+
+        Generates both per-date JSON (api/day/YYYY-MM-DD.json) and optionally
+        the main daily.json file.
 
         Args:
             ranker_output: Output from the ranker.
@@ -63,9 +67,11 @@ class JsonRenderer:
             run_info: Run information.
             run_date: Date string (YYYY-MM-DD).
             archive_dates: List of available archive dates.
+            skip_daily_json: If True, only writes per-date JSON, not daily.json.
+                            Useful for backfill operations.
 
         Returns:
-            GeneratedFile with path and checksum.
+            GeneratedFile with path and checksum of the per-date JSON file.
         """
         start_time = time.perf_counter()
 
@@ -100,13 +106,22 @@ class JsonRenderer:
             ensure_ascii=False,
         )
 
-        # Ensure api directory exists
+        # Ensure api directories exist
         api_dir = self._output_dir / "api"
         api_dir.mkdir(parents=True, exist_ok=True)
+        api_day_dir = api_dir / "day"
+        api_day_dir.mkdir(parents=True, exist_ok=True)
 
-        # Write with atomic semantics
-        output_path = api_dir / "daily.json"
-        file_info = self._writer.write(output_path, json_content)
+        # Write per-date JSON file for archive access
+        date_output_path = api_day_dir / f"{run_date}.json"
+        file_info = self._writer.write(date_output_path, json_content)
+        self._log.info("date_json_written", path=str(date_output_path))
+
+        # Write daily.json (skip during backfill to preserve current day's data)
+        if not skip_daily_json:
+            output_path = api_dir / "daily.json"
+            file_info = self._writer.write(output_path, json_content)
+            self._log.info("daily_json_written", path=str(output_path))
 
         duration_ms = (time.perf_counter() - start_time) * 1000
         self._metrics.record_json_duration(duration_ms)
