@@ -360,13 +360,33 @@ export const useDigestStore = defineStore('digest', () => {
   })
 
   // Actions
-  async function fetchDigest(): Promise<void> {
+  /**
+   * Fetch digest data.
+   * @param targetDate - Optional date (YYYY-MM-DD) to fetch specific archive data.
+   *                     If not provided, fetches latest daily.json.
+   */
+  async function fetchDigest(targetDate?: string): Promise<void> {
     isLoading.value = true
     error.value = null
 
     try {
-      const response = await fetch('/api/daily.json')
+      // Determine the endpoint based on targetDate
+      const endpoint = targetDate
+        ? `/api/day/${targetDate}.json`
+        : '/api/daily.json'
+
+      const response = await fetch(endpoint)
       if (!response.ok) {
+        // If specific date not found, fall back to daily.json
+        if (targetDate && response.status === 404) {
+          console.warn(`Archive for ${targetDate} not found, falling back to daily.json`)
+          const fallbackResponse = await fetch('/api/daily.json')
+          if (!fallbackResponse.ok) {
+            throw new Error(`Failed to fetch digest: ${fallbackResponse.status} ${fallbackResponse.statusText}`)
+          }
+          data.value = await fallbackResponse.json()
+          return
+        }
         throw new Error(`Failed to fetch digest: ${response.status} ${response.statusText}`)
       }
       data.value = await response.json()

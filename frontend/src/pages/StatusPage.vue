@@ -1,10 +1,17 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
   import { useDigestStore } from '@/stores/digest'
 
   const digestStore = useDigestStore()
   const runInfo = computed(() => digestStore.runInfo)
   const sourcesStatus = computed(() => digestStore.sourcesStatus)
+
+  // Fetch data on mount if not already loaded
+  onMounted(async () => {
+    if (!digestStore.hasData) {
+      await digestStore.fetchDigest()
+    }
+  })
 
   const formatDate = (dateStr: string | null): string => {
     if (!dateStr) return 'N/A'

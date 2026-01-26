@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useDigestStore } from '@/stores/digest'
 
 const digestStore = useDigestStore()
 
 const isLoading = computed(() => digestStore.isLoading)
 const archiveDates = computed(() => digestStore.archiveDates)
+
+// Fetch data on mount if not already loaded
+onMounted(async () => {
+  if (!digestStore.hasData) {
+    await digestStore.fetchDigest()
+  }
+})
 
 // Format date for display (YYYY-MM-DD -> more readable format)
 const formatDate = (dateStr: string): string => {
@@ -18,18 +25,9 @@ const formatDate = (dateStr: string): string => {
   })
 }
 
-// Check if a date is today
+// Check if a date is today (current run date)
 const isToday = (dateStr: string): boolean => {
   return dateStr === digestStore.runDate
-}
-
-// Get the link for a date - today goes to SPA route, historical dates go to static HTML
-const getDateLink = (dateStr: string): string => {
-  if (isToday(dateStr)) {
-    return `/day/${dateStr}`
-  }
-  // Historical dates should use static HTML files
-  return `/day/${dateStr}.html`
 }
 </script>
 
@@ -61,10 +59,10 @@ const getDateLink = (dateStr: string): string => {
       v-else-if="archiveDates.length > 0"
       class="space-y-2"
     >
-      <a
+      <RouterLink
         v-for="date in archiveDates"
         :key="date"
-        :href="getDateLink(date)"
+        :to="`/day/${date}`"
         class="archive-item group"
         :class="{ 'archive-item--today': isToday(date) }"
       >
@@ -96,7 +94,7 @@ const getDateLink = (dateStr: string): string => {
             d="M9 5l7 7-7 7"
           />
         </svg>
-      </a>
+      </RouterLink>
     </div>
 
     <!-- Empty State -->

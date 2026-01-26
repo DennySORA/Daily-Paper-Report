@@ -843,7 +843,7 @@ def clear_archives(
     is_flag=True,
     help="Enable verbose logging.",
 )
-def backfill(  # noqa: PLR0913
+def backfill(  # noqa: PLR0913, PLR0915
     config_path: Path,
     entities_path: Path,
     topics_path: Path,
@@ -938,6 +938,9 @@ def backfill(  # noqa: PLR0913
     ) as store:
         log.info("store_connected", db_path=str(state_path))
 
+        # Get source configs for status computation
+        source_configs_dict = {s.id: s for s in effective_config.sources.sources}
+
         # Generate archives for each date in target_dates
         generated_count = 0
 
@@ -945,11 +948,11 @@ def backfill(  # noqa: PLR0913
             # Parse the target date
             target_dt = datetime.strptime(target_date, "%Y-%m-%d").replace(tzinfo=UTC)
 
-            # Calculate the time window for this date (UTC midnight to midnight)
-            day_start = datetime(
-                target_dt.year, target_dt.month, target_dt.day, tzinfo=UTC
+            # Calculate the time window for this date (24h lookback from end of day)
+            day_end = datetime(
+                target_dt.year, target_dt.month, target_dt.day, 23, 59, 59, tzinfo=UTC
             )
-            day_end = day_start + timedelta(days=1)
+            day_start = day_end - timedelta(hours=24)
 
             # Get items published on this date
             items = store.get_items_published_in_range(day_start, day_end)
@@ -960,21 +963,102 @@ def backfill(  # noqa: PLR0913
                 items_count=len(items),
             )
 
-            # Create placeholder file for this date
-            # Note: We only create placeholder files here, not the full JSON.
-            # The main pipeline generates api/daily.json with correct run_date.
-            # The workflow will replace placeholders with Vue SPA index.html.
+            if not items:
+                log.info("no_items_for_date", target_date=target_date)
+                continue
+
+            # === Run linking ===
+            linker = StoryLinker(
+                run_id=run_id,
+                entities_config=effective_config.entities,
+                topics_config=effective_config.topics,
+            )
+            linker_result = linker.link_items(items)
+
+            # === Run ranking ===
+            ranker = StoryRanker(
+                run_id=run_id,
+                topics_config=effective_config.topics,
+                entities_config=effective_config.entities,
+            )
+            ranker_result = ranker.rank_stories(linker_result.stories)
+
+            log.info(
+                "backfill_processing",
+                target_date=target_date,
+                stories_count=len(linker_result.stories),
+                top5_count=len(ranker_result.output.top5),
+            )
+
+            # === Generate JSON for this date ===
+            from src.renderer.json_renderer import JsonRenderer
+            from src.renderer.metrics import RendererMetrics
+
+            # Compute source status (empty for backfill - no fresh fetch data)
+            status_computer = StatusComputer(
+                run_id=run_id,
+                source_configs=source_configs_dict,
+            )
+            # Create minimal runner result for status computation
+            from src.collectors.models import CollectorRunnerResult
+
+            empty_runner_result = CollectorRunnerResult(
+                total_items=len(items),
+                total_new=0,
+                sources_succeeded=0,
+                sources_failed=0,
+                results=[],
+            )
+            sources_status = status_computer.compute_all(empty_runner_result)
+
+            # Build run info for this date
+            run_info = RunInfo(
+                run_id=f"{run_id}-{target_date}",
+                started_at=day_start,
+                finished_at=day_end,
+                items_total=len(items),
+                stories_total=len(linker_result.stories),
+                success=True,
+            )
+
+            # Get archive dates (scan existing day/*.html files)
             day_dir = output_dir / "day"
             day_dir.mkdir(parents=True, exist_ok=True)
+            archive_dates = set()
+            date_str_len = len("YYYY-MM-DD")  # 10 characters
+            for html_file in day_dir.glob("*.html"):
+                date_str = html_file.stem
+                if len(date_str) == date_str_len:
+                    archive_dates.add(date_str)
+            archive_dates.add(target_date)
+            sorted_archive_dates = sorted(archive_dates, reverse=True)
+
+            # Render JSON for this specific date only (skip daily.json update)
+            json_renderer = JsonRenderer(
+                run_id=run_id,
+                output_dir=output_dir,
+                metrics=RendererMetrics.get_instance(),
+            )
+            json_renderer.render(
+                ranker_output=ranker_result.output,
+                sources_status=sources_status,
+                run_info=run_info,
+                run_date=target_date,
+                archive_dates=sorted_archive_dates,
+                skip_daily_json=True,  # Don't overwrite daily.json during backfill
+            )
+
+            # Create placeholder HTML file (will be replaced by Vue SPA)
             placeholder_path = day_dir / f"{target_date}.html"
             placeholder_content = f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
             placeholder_path.write_text(placeholder_content)
 
             generated_count += 1
             log.info(
-                "day_placeholder_created",
+                "day_archive_generated",
                 target_date=target_date,
                 items_count=len(items),
+                stories_count=len(linker_result.stories),
             )
 
         log.info(
