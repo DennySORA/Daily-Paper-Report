@@ -422,20 +422,24 @@ jobs:
 
           # Copy day archives if they exist
           ARCHIVE_COUNT=0
-          if [ -d "day" ]; then
-            cp -r day "${TEMP_DAY_DIR}"
-            ARCHIVE_COUNT=$(find "${TEMP_DAY_DIR}" -name "*.html" | wc -l)
+          if [ -d "day" ] && [ "$(ls -A day 2>/dev/null)" ]; then
+            mkdir -p "${TEMP_DAY_DIR}"
+            cp -r day/* "${TEMP_DAY_DIR}/" 2>/dev/null || true
+            ARCHIVE_COUNT=$(find "${TEMP_DAY_DIR}" -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
           fi
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"archives_copied","count":'"${ARCHIVE_COUNT}"'}'
 
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Check if state branch exists
+          # Check if state branch exists on remote
           if git ls-remote --heads origin "${{ env.STATE_BRANCH }}" | grep -q "${{ env.STATE_BRANCH }}"; then
-            # Checkout existing state branch
+            # Fetch remote state branch
             git fetch origin "${{ env.STATE_BRANCH }}"
-            git checkout "${{ env.STATE_BRANCH }}"
+            # Create or reset local branch to match remote
+            git checkout -B "${{ env.STATE_BRANCH }}" "origin/${{ env.STATE_BRANCH }}"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_branch_checked_out"}'
           else
             # Create orphan branch
             git checkout --orphan "${{ env.STATE_BRANCH }}"
