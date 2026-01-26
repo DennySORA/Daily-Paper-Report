@@ -587,6 +587,31 @@ class StateStore:
 
         return [self._row_to_item(row) for row in cursor.fetchall()]
 
+    def get_items_published_in_range(
+        self, published_start: datetime, published_end: datetime
+    ) -> list[Item]:
+        """Get items published within a specific time range.
+
+        Args:
+            published_start: Start of the time range (inclusive).
+            published_end: End of the time range (exclusive).
+
+        Returns:
+            List of items published in the range, ordered by published_at descending.
+        """
+        conn = self._ensure_connected()
+        cursor = conn.execute(
+            """
+            SELECT * FROM items
+            WHERE published_at IS NOT NULL
+              AND published_at >= ?
+              AND published_at < ?
+            ORDER BY published_at DESC
+            """,
+            (published_start.isoformat(), published_end.isoformat()),
+        )
+        return [self._row_to_item(row) for row in cursor.fetchall()]
+
     def get_items_by_source(self, source_id: str) -> list[Item]:
         """Get all items for a source.
 

@@ -711,5 +711,227 @@ def render(
         sys.exit(1)
 
 
+@cli.command()
+@click.option(
+    "--config",
+    "config_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to sources.yaml configuration file.",
+)
+@click.option(
+    "--entities",
+    "entities_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to entities.yaml configuration file.",
+)
+@click.option(
+    "--topics",
+    "topics_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to topics.yaml configuration file.",
+)
+@click.option(
+    "--state",
+    "state_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to SQLite state database.",
+)
+@click.option(
+    "--out",
+    "output_dir",
+    required=True,
+    type=click.Path(path_type=Path),
+    help="Output directory for generated files.",
+)
+@click.option(
+    "--tz",
+    "timezone",
+    required=True,
+    type=str,
+    help="Timezone for date handling (e.g., Asia/Taipei).",
+)
+@click.option(
+    "--days",
+    "days",
+    type=int,
+    default=7,
+    help="Number of days to backfill (default: 7).",
+)
+@click.option(
+    "--json-logs/--no-json-logs",
+    default=True,
+    help="Use JSON format for logs (default: true).",
+)
+@click.option(
+    "--verbose",
+    "-v",
+    is_flag=True,
+    help="Enable verbose logging.",
+)
+def backfill(  # noqa: PLR0913
+    config_path: Path,
+    entities_path: Path,
+    topics_path: Path,
+    state_path: Path,
+    output_dir: Path,
+    timezone: str,
+    days: int,
+    json_logs: bool,
+    verbose: bool,
+) -> None:
+    """Backfill historical day archives from existing database data.
+
+    Generates day/YYYY-MM-DD.html pages for the past N days using
+    items already stored in the state database. This is useful for
+    populating the archive page with historical data.
+
+    Note: This command does NOT fetch new data from sources. It only
+    re-renders from existing database content.
+    """
+    from datetime import timedelta
+
+    run_id = str(uuid.uuid4())
+
+    # Configure logging
+    log_level = logging.DEBUG if verbose else logging.INFO
+    configure_logging(level=log_level, json_format=json_logs)
+    bind_run_context(run_id)
+
+    log = logger.bind(
+        run_id=run_id,
+        component=COMPONENT_CLI,
+        command="backfill",
+    )
+
+    log.info(
+        "backfill_started",
+        days=days,
+        state_path=str(state_path),
+        output_dir=str(output_dir),
+    )
+
+    # Load and validate configuration
+    loader = ConfigLoader(run_id=run_id)
+
+    try:
+        effective_config = loader.load(
+            sources_path=config_path,
+            entities_path=entities_path,
+            topics_path=topics_path,
+        )
+    except Exception as e:
+        log.warning("config_load_failed", error=str(e))
+        click.echo("Configuration validation failed.", err=True)
+        sys.exit(1)
+
+    # Get strip params for store
+    strip_params = list(effective_config.topics.dedupe.canonical_url_strip_params)
+
+    # Open state store
+    with StateStore(
+        db_path=state_path,
+        strip_params=strip_params,
+        run_id=run_id,
+    ) as store:
+        log.info("store_connected", db_path=str(state_path))
+
+        # Generate archives for each day
+        now = datetime.now(UTC)
+        generated_count = 0
+
+        for day_offset in range(days):
+            # Calculate the target date
+            target_dt = now - timedelta(days=day_offset)
+            target_date = target_dt.strftime("%Y-%m-%d")
+
+            # Calculate the time window for this date (UTC midnight to midnight)
+            day_start = datetime(
+                target_dt.year, target_dt.month, target_dt.day, tzinfo=UTC
+            )
+            day_end = day_start + timedelta(days=1)
+
+            # Get items published on this date
+            items = store.get_items_published_in_range(day_start, day_end)
+
+            log.info(
+                "processing_date",
+                target_date=target_date,
+                items_count=len(items),
+            )
+
+            if not items:
+                log.info("no_items_for_date", target_date=target_date)
+                # Still generate an empty page for this date
+                items = []
+
+            # Link items
+            linker = StoryLinker(
+                run_id=run_id,
+                entities_config=effective_config.entities,
+                topics_config=effective_config.topics,
+            )
+            linker_result = linker.link_items(items)
+
+            # Rank stories
+            ranker = StoryRanker(
+                run_id=run_id,
+                topics_config=effective_config.topics,
+                entities_config=effective_config.entities,
+            )
+            ranker_result = ranker.rank_stories(linker_result.stories)
+
+            # Build run info for this date
+            run_info = RunInfo(
+                run_id=f"{run_id}-{target_date}",
+                started_at=day_start,
+                finished_at=day_end,
+                items_total=len(items),
+                stories_total=len(linker_result.stories),
+                success=True,
+            )
+
+            # Render for this specific date
+            renderer = StaticRenderer(
+                run_id=run_id,
+                output_dir=output_dir,
+                timezone=timezone,
+            )
+
+            render_result = renderer.render(
+                ranker_output=ranker_result.output,
+                sources_status=[],
+                run_info=run_info,
+                recent_runs=[run_info],
+                target_date=target_date,
+            )
+
+            if render_result.success:
+                generated_count += 1
+                log.info(
+                    "day_archive_generated",
+                    target_date=target_date,
+                    items=len(items),
+                    stories=len(linker_result.stories),
+                )
+            else:
+                log.error(
+                    "day_archive_failed",
+                    target_date=target_date,
+                    error=render_result.error_summary,
+                )
+
+        log.info(
+            "backfill_complete",
+            days_requested=days,
+            days_generated=generated_count,
+        )
+
+        click.echo(f"Backfill complete. Generated {generated_count} day archives.")
+
+
 if __name__ == "__main__":
     cli()
