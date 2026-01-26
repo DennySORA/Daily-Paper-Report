@@ -2,10 +2,13 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDigestStore } from '@/stores/digest'
+import IconGithub from '@/components/icons/IconGithub.vue'
 
 const digestStore = useDigestStore()
 const route = useRoute()
 const runDate = computed(() => digestStore.runDate)
+
+const githubRepoUrl = 'https://github.com/DennySORA/Daily-Paper-Report'
 
 const navLinks = [
   { to: '/', label: 'Today', testId: 'today' },
@@ -82,6 +85,17 @@ const isActiveRoute = (to: string) => {
           >
             {{ link.label }}
           </RouterLink>
+
+          <a
+            :href="githubRepoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ml-2 p-2 text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-sunken)] rounded-md transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-outline"
+            title="View source on GitHub"
+            data-testid="github-link"
+          >
+            <IconGithub :size="18" />
+          </a>
         </nav>
       </div>
     </div>
