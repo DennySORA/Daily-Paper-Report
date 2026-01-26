@@ -849,7 +849,7 @@ def backfill(  # noqa: PLR0913
     topics_path: Path,
     state_path: Path,
     output_dir: Path,
-    timezone: str,
+    timezone: str,  # noqa: ARG001 - kept for CLI API compatibility
     days: int,
     target_date_str: str | None,
     json_logs: bool,
@@ -960,66 +960,22 @@ def backfill(  # noqa: PLR0913
                 items_count=len(items),
             )
 
-            if not items:
-                log.info("no_items_for_date", target_date=target_date)
-                # Still generate an empty page for this date
-                items = []
+            # Create placeholder file for this date
+            # Note: We only create placeholder files here, not the full JSON.
+            # The main pipeline generates api/daily.json with correct run_date.
+            # The workflow will replace placeholders with Vue SPA index.html.
+            day_dir = output_dir / "day"
+            day_dir.mkdir(parents=True, exist_ok=True)
+            placeholder_path = day_dir / f"{target_date}.html"
+            placeholder_content = f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
+            placeholder_path.write_text(placeholder_content)
 
-            # Link items
-            linker = StoryLinker(
-                run_id=run_id,
-                entities_config=effective_config.entities,
-                topics_config=effective_config.topics,
-            )
-            linker_result = linker.link_items(items)
-
-            # Rank stories
-            ranker = StoryRanker(
-                run_id=run_id,
-                topics_config=effective_config.topics,
-                entities_config=effective_config.entities,
-            )
-            ranker_result = ranker.rank_stories(linker_result.stories)
-
-            # Build run info for this date
-            run_info = RunInfo(
-                run_id=f"{run_id}-{target_date}",
-                started_at=day_start,
-                finished_at=day_end,
-                items_total=len(items),
-                stories_total=len(linker_result.stories),
-                success=True,
-            )
-
-            # Render for this specific date
-            renderer = StaticRenderer(
-                run_id=run_id,
-                output_dir=output_dir,
-                timezone=timezone,
-            )
-
-            render_result = renderer.render(
-                ranker_output=ranker_result.output,
-                sources_status=[],
-                run_info=run_info,
-                recent_runs=[run_info],
+            generated_count += 1
+            log.info(
+                "day_placeholder_created",
                 target_date=target_date,
+                items_count=len(items),
             )
-
-            if render_result.success:
-                generated_count += 1
-                log.info(
-                    "day_archive_generated",
-                    target_date=target_date,
-                    items=len(items),
-                    stories=len(linker_result.stories),
-                )
-            else:
-                log.error(
-                    "day_archive_failed",
-                    target_date=target_date,
-                    error=render_result.error_summary,
-                )
 
         log.info(
             "backfill_complete",
