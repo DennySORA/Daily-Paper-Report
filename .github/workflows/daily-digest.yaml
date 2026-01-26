@@ -256,25 +256,27 @@ jobs:
           START_TIME=$(date +%s%3N)
           RUN_ID="${STEP_RUN_ID}"
 
-          # Build backfill command arguments
-          BACKFILL_ARGS="--config ${CONFIG_DIR}/sources.yaml"
-          BACKFILL_ARGS="${BACKFILL_ARGS} --entities ${CONFIG_DIR}/entities.yaml"
-          BACKFILL_ARGS="${BACKFILL_ARGS} --topics ${CONFIG_DIR}/topics.yaml"
-          BACKFILL_ARGS="${BACKFILL_ARGS} --state ${STATE_FILE}"
-          BACKFILL_ARGS="${BACKFILL_ARGS} --out ${OUTPUT_DIR}"
-          BACKFILL_ARGS="${BACKFILL_ARGS} --tz ${TIMEZONE}"
-          BACKFILL_ARGS="${BACKFILL_ARGS} --json-logs"
+          # Build backfill command arguments using array
+          BACKFILL_ARGS=(
+            "--config" "${CONFIG_DIR}/sources.yaml"
+            "--entities" "${CONFIG_DIR}/entities.yaml"
+            "--topics" "${CONFIG_DIR}/topics.yaml"
+            "--state" "${STATE_FILE}"
+            "--out" "${OUTPUT_DIR}"
+            "--tz" "${TIMEZONE}"
+            "--json-logs"
+          )
 
           if [ -n "${TARGET_DATE}" ]; then
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","target_date":"'"${TARGET_DATE}"'"}'
-            BACKFILL_ARGS="${BACKFILL_ARGS} --date ${TARGET_DATE}"
+            BACKFILL_ARGS+=("--date" "${TARGET_DATE}")
           else
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","days":'"${BACKFILL_DAYS}"'}'
-            BACKFILL_ARGS="${BACKFILL_ARGS} --days ${BACKFILL_DAYS}"
+            BACKFILL_ARGS+=("--days" "${BACKFILL_DAYS}")
           fi
 
           # Run the backfill command
-          uv run python main.py backfill ${BACKFILL_ARGS}
+          uv run python main.py backfill "${BACKFILL_ARGS[@]}"
 
           EXIT_CODE=$?
           END_TIME=$(date +%s%3N)
