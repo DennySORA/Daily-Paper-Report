@@ -75,6 +75,7 @@ class StaticRenderer:
         sources_status: list[SourceStatus],
         run_info: RunInfo,
         recent_runs: list[RunInfo],
+        target_date: str | None = None,
     ) -> RenderResult:
         """Render all static pages.
 
@@ -83,12 +84,16 @@ class StaticRenderer:
             sources_status: Per-source status list.
             run_info: Current run information.
             recent_runs: Recent run history for status page.
+            target_date: Optional target date (YYYY-MM-DD) for backfill rendering.
+                        If not provided, uses current UTC date.
 
         Returns:
             RenderResult indicating success/failure and manifest.
         """
         start_time = time.perf_counter()
-        run_date = datetime.now(UTC).strftime("%Y-%m-%d")
+        run_date = (
+            target_date if target_date else datetime.now(UTC).strftime("%Y-%m-%d")
+        )
         generated_at = datetime.now(UTC).isoformat()
 
         manifest = RenderManifest(

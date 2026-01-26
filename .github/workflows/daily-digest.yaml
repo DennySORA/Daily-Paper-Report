@@ -34,6 +34,11 @@ name: Daily Digest
         required: false
         default: 'false'
         type: boolean
+      backfill_days:
+        description: 'Number of days to backfill archives (0 to skip backfill)'
+        required: false
+        default: '0'
+        type: string
 
 # Least privilege permissions
 permissions:
@@ -210,6 +215,40 @@ jobs:
             echo "pipeline_success=true" >> "$GITHUB_OUTPUT"
           else
             echo "pipeline_success=false" >> "$GITHUB_OUTPUT"
+            exit ${EXIT_CODE}
+          fi
+
+      - name: Backfill historical archives
+        id: backfill
+        if: ${{ inputs.backfill_days != '' && inputs.backfill_days != '0' }}
+        env:
+          BACKFILL_DAYS: ${{ inputs.backfill_days }}
+          STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
+        run: |
+          START_TIME=$(date +%s%3N)
+          RUN_ID="${STEP_RUN_ID}"
+
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","days":'"${BACKFILL_DAYS}"'}'
+
+          # Run the backfill command
+          uv run python main.py backfill \
+            --config "${CONFIG_DIR}/sources.yaml" \
+            --entities "${CONFIG_DIR}/entities.yaml" \
+            --topics "${CONFIG_DIR}/topics.yaml" \
+            --state "${STATE_FILE}" \
+            --out "${OUTPUT_DIR}" \
+            --tz "${TIMEZONE}" \
+            --days "${BACKFILL_DAYS}" \
+            --json-logs
+
+          EXIT_CODE=$?
+          END_TIME=$(date +%s%3N)
+          DURATION=$((END_TIME - START_TIME))
+
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","duration_ms":'"${DURATION}"',"exit_code":'"${EXIT_CODE}"'}'
+
+          if [ ${EXIT_CODE} -ne 0 ]; then
+            echo "Backfill failed with exit code ${EXIT_CODE}"
             exit ${EXIT_CODE}
           fi
 
