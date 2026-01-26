@@ -103,24 +103,26 @@ jobs:
           # Create day directory
           mkdir -p "${OUTPUT_DIR}/day"
 
-          # Fetch archive dates from current deployed site
-          ARCHIVE_DATES=$(curl -sf "${SITE_URL}/api/daily.json" | jq -r '.archive_dates[]' 2>/dev/null || echo "")
+          # Fetch archive dates from current deployed site and save to temp file
+          DATES_FILE=$(mktemp)
+          curl -sf "${SITE_URL}/api/daily.json" | jq -r '.archive_dates[]' 2>/dev/null > "${DATES_FILE}" || true
 
-          if [ -n "${ARCHIVE_DATES}" ]; then
-            RESTORED=0
-            for DATE in ${ARCHIVE_DATES}; do
+          RESTORED=0
+          if [ -s "${DATES_FILE}" ]; then
+            while read -r DATE; do
               # Download each day's HTML page
               if curl -sf "${SITE_URL}/day/${DATE}.html" -o "${OUTPUT_DIR}/day/${DATE}.html" 2>/dev/null; then
                 RESTORED=$((RESTORED + 1))
                 echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"page_restored","date":"'"${DATE}"'"}'
               fi
-            done
+            done < "${DATES_FILE}"
             echo "archive_restored=${RESTORED}" >> "$GITHUB_OUTPUT"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"archive_restored","pages_count":'"${RESTORED}"'}'
           else
             echo "archive_restored=0" >> "$GITHUB_OUTPUT"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"no_archive_found"}'
           fi
+          rm -f "${DATES_FILE}"
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -207,9 +209,9 @@ jobs:
           pnpm run build-only
 
           # Copy built files to public directory
-          cp dist/index.html ../${OUTPUT_DIR}/
-          cp dist/index.html ../${OUTPUT_DIR}/404.html
-          cp -r dist/assets ../${OUTPUT_DIR}/
+          cp dist/index.html "../${OUTPUT_DIR}/"
+          cp dist/index.html "../${OUTPUT_DIR}/404.html"
+          cp -r dist/assets "../${OUTPUT_DIR}/"
 
           END_TIME=$(date +%s%3N)
           DURATION=$((END_TIME - START_TIME))
@@ -386,23 +388,23 @@ jobs:
           DEPLOY_STATUS="${{ needs.deploy-pages.result }}"
           PERSIST_STATUS="${{ needs.persist-state.result }}"
 
-          echo "## Daily Digest Run Report" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
-          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Run ID | ${RUN_ID} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Commit | ${{ github.sha }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Trigger | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Digest | ${DIGEST_STATUS} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Deploy | ${DEPLOY_STATUS} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Persist | ${PERSIST_STATUS} |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Checksums" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Artifact | SHA-256 |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|---------|" >> $GITHUB_STEP_SUMMARY
-          echo "| state.sqlite | ${{ needs.digest.outputs.state_checksum || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| public manifest | ${{ needs.digest.outputs.manifest_checksum || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "## Daily Digest Run Report" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Run ID | ${RUN_ID} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Commit | ${{ github.sha }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Trigger | ${{ github.event_name }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Digest | ${DIGEST_STATUS} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Deploy | ${DEPLOY_STATUS} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Persist | ${PERSIST_STATUS} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Checksums" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Artifact | SHA-256 |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|----------|---------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| state.sqlite | ${{ needs.digest.outputs.state_checksum || 'N/A' }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| public manifest | ${{ needs.digest.outputs.manifest_checksum || 'N/A' }} |" >> "$GITHUB_STEP_SUMMARY"
 
           # Log final metrics
           if [ "${DIGEST_STATUS}" = "success" ] && [ "${DEPLOY_STATUS}" = "success" ]; then
