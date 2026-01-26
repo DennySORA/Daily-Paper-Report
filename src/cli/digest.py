@@ -64,6 +64,7 @@ class RunOptions:
     verbose: bool
     dry_run: bool = False
     lookback_hours: int = 24
+    retention_days: int = 90
 
 
 def _execute_run(options: RunOptions) -> None:
@@ -295,6 +296,7 @@ def _execute_run(options: RunOptions) -> None:
                 run_id=run_id,
                 output_dir=options.output_dir,
                 timezone=options.timezone,
+                retention_days=options.retention_days,
             )
 
             render_result = renderer.render(
@@ -433,6 +435,13 @@ def cli() -> None:
     default=24,
     help="Lookback window in hours for filtering items by published_at (default: 24).",
 )
+@click.option(
+    "--retention-days",
+    "retention_days",
+    type=int,
+    default=90,
+    help="Number of days to retain archive pages (default: 90).",
+)
 def run(  # noqa: PLR0913
     config_path: Path,
     entities_path: Path,
@@ -444,6 +453,7 @@ def run(  # noqa: PLR0913
     verbose: bool,
     dry_run: bool,
     lookback_hours: int,
+    retention_days: int,
 ) -> None:
     """Run the digest pipeline.
 
@@ -464,6 +474,7 @@ def run(  # noqa: PLR0913
         verbose=verbose,
         dry_run=dry_run,
         lookback_hours=lookback_hours,
+        retention_days=retention_days,
     )
     _execute_run(options)
 
