@@ -124,7 +124,7 @@ const sourceGroups = computed(() => {
   }
 
   return Object.entries(groups)
-    .filter(([_, sourceList]) => sourceList.length > 0 && sourceList.some(s => s.stories.length > 0))
+    .filter(([_, sourceList]) => sourceList.some(s => s.stories.length > 0))
     .map(([sourceType, sourceList]) => {
       const allStories = sourceList.flatMap(source => source.stories)
       // Filter by search query

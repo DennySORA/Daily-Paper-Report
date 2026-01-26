@@ -28,7 +28,7 @@ from src.fetch.config import FetchConfig
 from src.linker import StoryLinker
 from src.observability.logging import bind_run_context, configure_logging
 from src.ranker import StoryRanker
-from src.renderer import RunInfo, StaticRenderer
+from src.renderer import RunInfo, SourceStatus, StaticRenderer
 from src.status import StatusComputer
 from src.store.store import StateStore
 
@@ -938,9 +938,6 @@ def backfill(  # noqa: PLR0913, PLR0915
     ) as store:
         log.info("store_connected", db_path=str(state_path))
 
-        # Get source configs for status computation
-        source_configs_dict = {s.id: s for s in effective_config.sources.sources}
-
         # Generate archives for each date in target_dates
         generated_count = 0
 
@@ -994,22 +991,9 @@ def backfill(  # noqa: PLR0913, PLR0915
             from src.renderer.json_renderer import JsonRenderer
             from src.renderer.metrics import RendererMetrics
 
-            # Compute source status (empty for backfill - no fresh fetch data)
-            status_computer = StatusComputer(
-                run_id=run_id,
-                source_configs=source_configs_dict,
-            )
-            # Create minimal runner result for status computation
-            from src.collectors.models import CollectorRunnerResult
-
-            empty_runner_result = CollectorRunnerResult(
-                total_items=len(items),
-                total_new=0,
-                sources_succeeded=0,
-                sources_failed=0,
-                results=[],
-            )
-            sources_status = status_computer.compute_all(empty_runner_result)
+            # For backfill, we don't have fresh fetch data, so sources_status is empty
+            # Historical archives focus on content, not source health
+            sources_status: list[SourceStatus] = []
 
             # Build run info for this date
             run_info = RunInfo(
