@@ -90,7 +90,7 @@ class HtmlRenderer:
             },
         )
 
-        # Render day/YYYY-MM-DD.html
+        # Render day/YYYY-MM-DD.html (archive page for this date)
         self._render_template(
             "day.html",
             day_dir / f"{context.run_date}.html",
@@ -105,41 +105,8 @@ class HtmlRenderer:
             },
         )
 
-        # Render archive.html
-        self._render_template(
-            "archive.html",
-            self._output_dir / "archive.html",
-            manifest,
-            {
-                **common_context,
-                "current_page": "archive",
-                "archive_dates": context.archive_dates,
-            },
-        )
-
-        # Render sources.html
-        self._render_template(
-            "sources.html",
-            self._output_dir / "sources.html",
-            manifest,
-            {
-                **common_context,
-                "current_page": "sources",
-                "sources_status": context.sources_status,
-            },
-        )
-
-        # Render status.html
-        self._render_template(
-            "status.html",
-            self._output_dir / "status.html",
-            manifest,
-            {
-                **common_context,
-                "current_page": "status",
-                "recent_runs": context.recent_runs,
-            },
-        )
+        # Note: archive.html, sources.html, status.html are now handled by Vue SPA
+        # Only day/*.html pages are rendered for SEO and direct access
 
         duration_ms = (time.perf_counter() - start_time) * 1000
         self._metrics.record_html_duration(duration_ms)
