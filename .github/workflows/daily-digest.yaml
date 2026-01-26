@@ -94,6 +94,34 @@ jobs:
           DURATION=$((END_TIME - START_TIME))
           echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","duration_ms":'"${DURATION}"'}'
 
+      - name: Restore archive pages from GitHub Pages
+        id: restore-archive
+        run: |
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+          SITE_URL="https://paper.sorahane-kyoukai.org"
+
+          # Create day directory
+          mkdir -p "${OUTPUT_DIR}/day"
+
+          # Fetch archive dates from current deployed site
+          ARCHIVE_DATES=$(curl -sf "${SITE_URL}/api/daily.json" | jq -r '.archive_dates[]' 2>/dev/null || echo "")
+
+          if [ -n "${ARCHIVE_DATES}" ]; then
+            RESTORED=0
+            for DATE in ${ARCHIVE_DATES}; do
+              # Download each day's HTML page
+              if curl -sf "${SITE_URL}/day/${DATE}.html" -o "${OUTPUT_DIR}/day/${DATE}.html" 2>/dev/null; then
+                RESTORED=$((RESTORED + 1))
+                echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"page_restored","date":"'"${DATE}"'"}'
+              fi
+            done
+            echo "archive_restored=${RESTORED}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"archive_restored","pages_count":'"${RESTORED}"'}'
+          else
+            echo "archive_restored=0" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"no_archive_found"}'
+          fi
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
