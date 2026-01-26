@@ -17,6 +17,8 @@ name: Daily Digest
   schedule:
     # Asia/Taipei 07:00 = UTC 23:00 (previous day)
     - cron: '0 23 * * *'
+  repository_dispatch:
+    types: [regenerate-archives]
   workflow_dispatch:
     inputs:
       debug_enabled:
@@ -230,7 +232,7 @@ jobs:
 
       - name: Clear existing archives
         id: clear-archives
-        if: ${{ inputs.clear_archives == 'true' }}
+        if: ${{ inputs.clear_archives == 'true' || github.event.client_payload.clear_archives == true }}
         env:
           STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
         run: |
@@ -246,9 +248,9 @@ jobs:
       - name: Backfill historical archives
         id: backfill
         env:
-          # Use workflow input if provided, otherwise default to 7 days
-          BACKFILL_DAYS: ${{ inputs.backfill_days || '7' }}
-          TARGET_DATE: ${{ inputs.target_date || '' }}
+          # Use workflow input, repository_dispatch payload, or default to 7 days
+          BACKFILL_DAYS: ${{ inputs.backfill_days || github.event.client_payload.backfill_days || '7' }}
+          TARGET_DATE: ${{ inputs.target_date || github.event.client_payload.target_date || '' }}
           STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
         run: |
           START_TIME=$(date +%s%3N)
