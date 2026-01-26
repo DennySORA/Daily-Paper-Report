@@ -317,6 +317,28 @@ jobs:
           DURATION=$((END_TIME - START_TIME))
           echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"build_frontend","duration_ms":'"${DURATION}"'}'
 
+      - name: Generate day archive HTML files
+        run: |
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"started"}'
+
+          # Create day directory
+          mkdir -p "${OUTPUT_DIR}/day"
+
+          # Extract archive_dates from api/daily.json and create HTML files
+          if [ -f "${OUTPUT_DIR}/api/daily.json" ]; then
+            DATES=$(jq -r '.archive_dates[]' "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true)
+            COUNT=0
+            for DATE in ${DATES}; do
+              # Copy Vue SPA index.html to day/YYYY-MM-DD.html
+              cp "${OUTPUT_DIR}/index.html" "${OUTPUT_DIR}/day/${DATE}.html"
+              COUNT=$((COUNT + 1))
+            done
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"complete","files_created":'"${COUNT}"'}'
+          else
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"skipped","reason":"no_daily_json"}'
+          fi
+
       - name: Generate checksums
         id: checksums
         if: success()

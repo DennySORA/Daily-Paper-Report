@@ -29,6 +29,11 @@ const router = createRouter({
       component: HomePage,
     },
     {
+      // Handle /day/:date.html routes (static file access)
+      path: '/day/:date.html',
+      redirect: (to) => ({ name: 'day', params: { date: to.params.date } }),
+    },
+    {
       path: '/archive',
       name: 'archive',
       component: ArchivePage,
