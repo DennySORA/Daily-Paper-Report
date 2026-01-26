@@ -35,9 +35,19 @@ name: Daily Digest
         default: 'false'
         type: boolean
       backfill_days:
-        description: 'Number of days to backfill archives (0 to skip backfill)'
+        description: 'Number of days to backfill archives (default: 7)'
         required: false
-        default: '0'
+        default: '7'
+        type: string
+      clear_archives:
+        description: 'Clear all existing day archives before regenerating'
+        required: false
+        default: 'false'
+        type: boolean
+      target_date:
+        description: 'Specific date to generate (YYYY-MM-DD). If set, only generates this date.'
+        required: false
+        default: ''
         type: string
 
 # Least privilege permissions
@@ -218,28 +228,51 @@ jobs:
             exit ${EXIT_CODE}
           fi
 
+      - name: Clear existing archives
+        id: clear-archives
+        if: ${{ inputs.clear_archives == 'true' }}
+        env:
+          STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
+        run: |
+          RUN_ID="${STEP_RUN_ID}"
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"clear_archives","event":"clearing_archives"}'
+
+          uv run python main.py clear-archives \
+            --out "${OUTPUT_DIR}" \
+            --json-logs
+
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"clear_archives","event":"archives_cleared"}'
+
       - name: Backfill historical archives
         id: backfill
         env:
           # Use workflow input if provided, otherwise default to 7 days
           BACKFILL_DAYS: ${{ inputs.backfill_days || '7' }}
+          TARGET_DATE: ${{ inputs.target_date || '' }}
           STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
         run: |
           START_TIME=$(date +%s%3N)
           RUN_ID="${STEP_RUN_ID}"
 
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","days":'"${BACKFILL_DAYS}"'}'
+          # Build backfill command arguments
+          BACKFILL_ARGS="--config ${CONFIG_DIR}/sources.yaml"
+          BACKFILL_ARGS="${BACKFILL_ARGS} --entities ${CONFIG_DIR}/entities.yaml"
+          BACKFILL_ARGS="${BACKFILL_ARGS} --topics ${CONFIG_DIR}/topics.yaml"
+          BACKFILL_ARGS="${BACKFILL_ARGS} --state ${STATE_FILE}"
+          BACKFILL_ARGS="${BACKFILL_ARGS} --out ${OUTPUT_DIR}"
+          BACKFILL_ARGS="${BACKFILL_ARGS} --tz ${TIMEZONE}"
+          BACKFILL_ARGS="${BACKFILL_ARGS} --json-logs"
 
-          # Run the backfill command to ensure 7 days of archives exist
-          uv run python main.py backfill \
-            --config "${CONFIG_DIR}/sources.yaml" \
-            --entities "${CONFIG_DIR}/entities.yaml" \
-            --topics "${CONFIG_DIR}/topics.yaml" \
-            --state "${STATE_FILE}" \
-            --out "${OUTPUT_DIR}" \
-            --tz "${TIMEZONE}" \
-            --days "${BACKFILL_DAYS}" \
-            --json-logs
+          if [ -n "${TARGET_DATE}" ]; then
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","target_date":"'"${TARGET_DATE}"'"}'
+            BACKFILL_ARGS="${BACKFILL_ARGS} --date ${TARGET_DATE}"
+          else
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","days":'"${BACKFILL_DAYS}"'}'
+            BACKFILL_ARGS="${BACKFILL_ARGS} --days ${BACKFILL_DAYS}"
+          fi
+
+          # Run the backfill command
+          uv run python main.py backfill ${BACKFILL_ARGS}
 
           EXIT_CODE=$?
           END_TIME=$(date +%s%3N)

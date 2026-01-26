@@ -711,6 +711,70 @@ def render(
         sys.exit(1)
 
 
+@cli.command("clear-archives")
+@click.option(
+    "--out",
+    "output_dir",
+    required=True,
+    type=click.Path(path_type=Path),
+    help="Output directory containing day archives.",
+)
+@click.option(
+    "--json-logs/--no-json-logs",
+    default=True,
+    help="Use JSON format for logs (default: true).",
+)
+@click.option(
+    "--verbose",
+    "-v",
+    is_flag=True,
+    help="Enable verbose logging.",
+)
+def clear_archives(
+    output_dir: Path,
+    json_logs: bool,
+    verbose: bool,
+) -> None:
+    """Clear all day archive HTML files.
+
+    This command removes all day/YYYY-MM-DD.html files from the output
+    directory. Useful when the frontend panel design changes and you
+    need to regenerate all archives with the new design.
+    """
+    run_id = str(uuid.uuid4())
+
+    # Configure logging
+    log_level = logging.DEBUG if verbose else logging.INFO
+    configure_logging(level=log_level, json_format=json_logs)
+    bind_run_context(run_id)
+
+    log = logger.bind(
+        run_id=run_id,
+        component=COMPONENT_CLI,
+        command="clear-archives",
+    )
+
+    day_dir = Path(output_dir) / "day"
+
+    if not day_dir.exists():
+        log.info("day_dir_not_found", path=str(day_dir))
+        click.echo(f"Day archive directory does not exist: {day_dir}")
+        return
+
+    # Find and delete all HTML files in day directory
+    deleted_count = 0
+    for html_file in day_dir.glob("*.html"):
+        try:
+            html_file.unlink()
+            deleted_count += 1
+            log.debug("file_deleted", path=str(html_file))
+        except OSError as e:
+            log.warning("file_delete_failed", path=str(html_file), error=str(e))
+
+    log.info("clear_archives_complete", deleted_count=deleted_count)
+    click.echo(f"Cleared {deleted_count} day archive files from {day_dir}")
+
+
 @cli.command()
 @click.option(
     "--config",
@@ -759,7 +823,14 @@ def render(
     "days",
     type=int,
     default=7,
-    help="Number of days to backfill (default: 7).",
+    help="Number of days to backfill (default: 7). Ignored if --date is specified.",
+)
+@click.option(
+    "--date",
+    "target_date_str",
+    type=str,
+    default=None,
+    help="Specific date to generate (YYYY-MM-DD format). If specified, only this date is generated.",
 )
 @click.option(
     "--json-logs/--no-json-logs",
@@ -780,6 +851,7 @@ def backfill(  # noqa: PLR0913
     output_dir: Path,
     timezone: str,
     days: int,
+    target_date_str: str | None,
     json_logs: bool,
     verbose: bool,
 ) -> None:
@@ -788,6 +860,9 @@ def backfill(  # noqa: PLR0913
     Generates day/YYYY-MM-DD.html pages for the past N days using
     items already stored in the state database. This is useful for
     populating the archive page with historical data.
+
+    Use --date to generate a specific date's report, or --days to
+    generate multiple days at once.
 
     Note: This command does NOT fetch new data from sources. It only
     re-renders from existing database content.
@@ -807,12 +882,36 @@ def backfill(  # noqa: PLR0913
         command="backfill",
     )
 
-    log.info(
-        "backfill_started",
-        days=days,
-        state_path=str(state_path),
-        output_dir=str(output_dir),
-    )
+    # Validate target_date_str if provided
+    target_dates: list[str] = []
+    if target_date_str:
+        try:
+            datetime.strptime(target_date_str, "%Y-%m-%d")
+            target_dates = [target_date_str]
+            log.info(
+                "backfill_started",
+                target_date=target_date_str,
+                state_path=str(state_path),
+                output_dir=str(output_dir),
+            )
+        except ValueError:
+            click.echo(
+                f"Error: Invalid date format '{target_date_str}'. Use YYYY-MM-DD.",
+                err=True,
+            )
+            sys.exit(1)
+    else:
+        # Generate list of dates for backfill
+        now = datetime.now(UTC)
+        for day_offset in range(days):
+            target_dt = now - timedelta(days=day_offset)
+            target_dates.append(target_dt.strftime("%Y-%m-%d"))
+        log.info(
+            "backfill_started",
+            days=days,
+            state_path=str(state_path),
+            output_dir=str(output_dir),
+        )
 
     # Load and validate configuration
     loader = ConfigLoader(run_id=run_id)
@@ -839,14 +938,12 @@ def backfill(  # noqa: PLR0913
     ) as store:
         log.info("store_connected", db_path=str(state_path))
 
-        # Generate archives for each day
-        now = datetime.now(UTC)
+        # Generate archives for each date in target_dates
         generated_count = 0
 
-        for day_offset in range(days):
-            # Calculate the target date
-            target_dt = now - timedelta(days=day_offset)
-            target_date = target_dt.strftime("%Y-%m-%d")
+        for target_date in target_dates:
+            # Parse the target date
+            target_dt = datetime.strptime(target_date, "%Y-%m-%d").replace(tzinfo=UTC)
 
             # Calculate the time window for this date (UTC midnight to midnight)
             day_start = datetime(
