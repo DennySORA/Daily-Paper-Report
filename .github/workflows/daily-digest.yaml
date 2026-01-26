@@ -15,8 +15,8 @@ name: Daily Digest
       - 'tests/fixtures/config/**'
       - '.github/workflows/daily-digest.yaml'
   schedule:
-    # Asia/Taipei 07:00 = UTC 23:00 (previous day)
-    - cron: '0 23 * * *'
+    # Asia/Taipei 14:00 (2:00 PM) = UTC 06:00
+    - cron: '0 6 * * *'
   repository_dispatch:
     types: [regenerate-archives]
   workflow_dispatch:
