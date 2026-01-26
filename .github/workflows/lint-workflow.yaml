@@ -74,9 +74,11 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "## Workflow Lint Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| actionlint | ${{ job.status }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| permissions | ${{ job.status }} |" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Workflow Lint Results"
+            echo ""
+            echo "| Check | Status |"
+            echo "|-------|--------|"
+            echo "| actionlint | ${{ job.status }} |"
+            echo "| permissions | ${{ job.status }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
