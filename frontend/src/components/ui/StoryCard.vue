@@ -197,8 +197,8 @@ const looksLikeImageAlt = (text: string): boolean => {
   return altPatterns.some((pattern) => pattern.test(text.trim()))
 }
 
-// Truncate summary with smart word boundary
-const truncatedSummary = computed(() => {
+// Clean and prepare summary (no truncation for scrollable display)
+const cleanedSummary = computed(() => {
   if (!props.story.summary) return null
   let cleanSummary = stripHtml(props.story.summary)
   if (!cleanSummary) return null
@@ -213,13 +213,31 @@ const truncatedSummary = computed(() => {
   // Filter out summaries that look like image alt text
   if (looksLikeImageAlt(cleanSummary)) return null
 
-  // Longer summaries: 380 chars for normal view, 120 for compact
-  const maxLength = props.compact ? 120 : 380
-  if (cleanSummary.length <= maxLength) return cleanSummary
+  return cleanSummary
+})
 
-  const truncated = cleanSummary.slice(0, maxLength)
-  const lastSpace = truncated.lastIndexOf(' ')
-  return (lastSpace > maxLength * 0.7 ? truncated.slice(0, lastSpace) : truncated).trim() + '...'
+// Truncate summary for compact mode only
+const truncatedSummary = computed(() => {
+  if (!cleanedSummary.value) return null
+
+  // Only truncate in compact mode
+  if (props.compact) {
+    const maxLength = 120
+    if (cleanedSummary.value.length <= maxLength) return cleanedSummary.value
+    const truncated = cleanedSummary.value.slice(0, maxLength)
+    const lastSpace = truncated.lastIndexOf(' ')
+    return (lastSpace > maxLength * 0.7 ? truncated.slice(0, lastSpace) : truncated).trim() + '...'
+  }
+
+  // For non-compact mode, return full cleaned summary (will be scrollable)
+  return cleanedSummary.value
+})
+
+// Check if summary is long enough to be scrollable (more than ~4 lines worth)
+const isScrollableSummary = computed(() => {
+  if (!cleanedSummary.value || props.compact) return false
+  // Approximate: ~80 chars per line, 4 lines = 320 chars threshold
+  return cleanedSummary.value.length > 320
 })
 
 // Display authors with smart truncation and LaTeX decoding
@@ -388,12 +406,15 @@ const getAccentBadgeClass = computed(() => {
         </p>
 
         <!-- Summary/Abstract -->
-        <p
+        <div
           v-if="showSummary && truncatedSummary"
-          class="paper-card-summary"
+          class="paper-card-summary-wrapper"
+          :class="{ 'paper-card-summary-scrollable': isScrollableSummary }"
         >
-          {{ truncatedSummary }}
-        </p>
+          <p class="paper-card-summary">
+            {{ truncatedSummary }}
+          </p>
+        </div>
 
         <!-- Meta info -->
         <div class="paper-card-meta">

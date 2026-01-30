@@ -315,14 +315,43 @@ code, pre {
   line-height: 1.5;
 }
 
+.paper-card-summary-wrapper {
+  position: relative;
+}
+
 .paper-card-summary {
   font-size: 0.8125rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  margin: 0;
+}
+
+/* Scrollable summary for long content (4-10 lines) */
+.paper-card-summary-scrollable {
+  max-height: 9.5rem; /* ~7 lines at line-height 1.7 */
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+  mask-image: linear-gradient(to bottom, black calc(100% - 1.5rem), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 1.5rem), transparent 100%);
+}
+
+.paper-card-summary-scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+
+.paper-card-summary-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.paper-card-summary-scrollable::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}
+
+.paper-card-summary-scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
 }
 
 .paper-card-meta {
