@@ -128,8 +128,40 @@ class Story(BaseModel):
         source_name = raw_data.get("source_name")
         return source_name if isinstance(source_name, str) else None
 
+    def _extract_hf_metadata(self, raw_data: dict[str, Any]) -> dict[str, Any] | None:
+        """Extract HuggingFace-specific metadata from raw_data.
+
+        Args:
+            raw_data: Parsed raw_json from an item.
+
+        Returns:
+            Dictionary with HuggingFace metadata or None if not a HuggingFace item.
+        """
+        if raw_data.get("platform") != "huggingface":
+            return None
+
+        hf_meta: dict[str, Any] = {}
+
+        pipeline_tag = raw_data.get("pipeline_tag")
+        if pipeline_tag and isinstance(pipeline_tag, str):
+            hf_meta["pipeline_tag"] = pipeline_tag
+
+        downloads = raw_data.get("downloads")
+        if downloads is not None and isinstance(downloads, int):
+            hf_meta["downloads"] = downloads
+
+        likes = raw_data.get("likes")
+        if likes is not None and isinstance(likes, int):
+            hf_meta["likes"] = likes
+
+        license_val = raw_data.get("license")
+        if license_val and isinstance(license_val, str):
+            hf_meta["license"] = license_val
+
+        return hf_meta if hf_meta else None
+
     def _extract_metadata_from_raw_items(self) -> dict[str, Any]:
-        """Extract metadata (authors, summary, categories) from raw_items.
+        """Extract metadata (authors, summary, categories, hf_metadata) from raw_items.
 
         Returns:
             Dictionary with extracted metadata.
@@ -139,14 +171,16 @@ class Story(BaseModel):
         categories: list[str] = []
         source_name: str | None = None
         first_seen_at: datetime | None = None
+        hf_metadata: dict[str, Any] | None = None
 
         for item in self.raw_items:
             raw_data = self._parse_raw_json(item)
 
             # Track earliest first_seen_at across all items
-            if item.first_seen_at:
-                if first_seen_at is None or item.first_seen_at < first_seen_at:
-                    first_seen_at = item.first_seen_at
+            if item.first_seen_at and (
+                first_seen_at is None or item.first_seen_at < first_seen_at
+            ):
+                first_seen_at = item.first_seen_at
 
             if not raw_data:
                 continue
@@ -159,6 +193,8 @@ class Story(BaseModel):
                 categories = self._extract_categories(raw_data)
             if not source_name:
                 source_name = self._extract_source_name(raw_data)
+            if hf_metadata is None:
+                hf_metadata = self._extract_hf_metadata(raw_data)
 
         return {
             "authors": authors,
@@ -166,6 +202,7 @@ class Story(BaseModel):
             "categories": categories,
             "source_name": source_name,
             "first_seen_at": first_seen_at,
+            "hf_metadata": hf_metadata,
         }
 
     def to_json_dict(self) -> dict[str, object]:
@@ -222,6 +259,8 @@ class Story(BaseModel):
                 if metadata["first_seen_at"]
                 else None
             ),
+            # HuggingFace-specific metadata (only present for HF items)
+            "hf_metadata": metadata["hf_metadata"],
         }
 
 
