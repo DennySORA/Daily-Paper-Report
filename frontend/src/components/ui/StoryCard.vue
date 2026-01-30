@@ -264,6 +264,34 @@ const sourceName = computed(() => {
   return props.story.source_name || formatSourceId(props.story.primary_link.source_id)
 })
 
+// Check if story has HuggingFace metadata
+const hasHfMetadata = computed(() => {
+  return props.story.hf_metadata && (
+    props.story.hf_metadata.pipeline_tag ||
+    props.story.hf_metadata.downloads !== undefined ||
+    props.story.hf_metadata.likes !== undefined
+  )
+})
+
+// Format large numbers with K/M suffix
+const formatNumber = (num: number): string => {
+  if (num >= 1_000_000) {
+    return `${(num / 1_000_000).toFixed(1)}M`
+  }
+  if (num >= 1_000) {
+    return `${(num / 1_000).toFixed(1)}K`
+  }
+  return num.toString()
+}
+
+// Format pipeline tag for display (e.g., "text-generation" -> "Text Generation")
+const formatPipelineTag = (tag: string): string => {
+  return tag
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
 // Format source ID to readable name
 const formatSourceId = (sourceId: string): string => {
   return sourceId
@@ -404,6 +432,86 @@ const getAccentBadgeClass = computed(() => {
           </svg>
           {{ displayAuthors }}
         </p>
+
+        <!-- HuggingFace Model Metadata -->
+        <div
+          v-if="hasHfMetadata && !compact"
+          class="hf-metadata"
+        >
+          <!-- Pipeline tag (task type) -->
+          <span
+            v-if="story.hf_metadata?.pipeline_tag"
+            class="hf-metadata-tag"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            {{ formatPipelineTag(story.hf_metadata.pipeline_tag) }}
+          </span>
+
+          <!-- Downloads -->
+          <span
+            v-if="story.hf_metadata?.downloads !== undefined"
+            class="hf-metadata-stat"
+            title="Downloads"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+            {{ formatNumber(story.hf_metadata.downloads) }}
+          </span>
+
+          <!-- Likes -->
+          <span
+            v-if="story.hf_metadata?.likes !== undefined"
+            class="hf-metadata-stat"
+            title="Likes"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
+            </svg>
+            {{ formatNumber(story.hf_metadata.likes) }}
+          </span>
+
+          <!-- License -->
+          <span
+            v-if="story.hf_metadata?.license"
+            class="hf-metadata-license"
+            title="License"
+          >
+            {{ story.hf_metadata.license }}
+          </span>
+        </div>
 
         <!-- Summary/Abstract -->
         <div
@@ -739,5 +847,76 @@ const getAccentBadgeClass = computed(() => {
 
 .paper-card-link-btn:hover svg {
   transform: scale(1.1);
+}
+
+/* HuggingFace Metadata Display */
+.hf-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+}
+
+.hf-metadata-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  background: linear-gradient(135deg, rgb(59 130 246 / 0.12) 0%, rgb(99 102 241 / 0.08) 100%);
+  color: rgb(96 165 250);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  border: 1px solid rgb(59 130 246 / 0.2);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.hf-metadata-tag:hover {
+  background: linear-gradient(135deg, rgb(59 130 246 / 0.18) 0%, rgb(99 102 241 / 0.12) 100%);
+  border-color: rgb(59 130 246 / 0.35);
+}
+
+.hf-metadata-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.hf-metadata-stat svg {
+  opacity: 0.6;
+}
+
+.hf-metadata-stat:hover {
+  color: var(--color-text-primary);
+}
+
+.hf-metadata-stat:hover svg {
+  opacity: 0.9;
+}
+
+.hf-metadata-license {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-tertiary);
+  border-radius: var(--radius-sm);
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  border: 1px solid var(--color-border-subtle);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.hf-metadata-license:hover {
+  background: var(--color-surface-overlay);
+  border-color: var(--color-border-default);
+  color: var(--color-text-secondary);
 }
 </style>

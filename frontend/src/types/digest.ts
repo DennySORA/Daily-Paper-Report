@@ -10,6 +10,13 @@ export interface StoryLink {
   url: string
 }
 
+export interface HfMetadata {
+  pipeline_tag?: string
+  downloads?: number
+  likes?: number
+  license?: string
+}
+
 export interface Story {
   story_id: string
   title: string
@@ -28,6 +35,8 @@ export interface Story {
   categories: string[]
   source_name: string | null
   first_seen_at: string | null // When item was first seen by crawler
+  // HuggingFace-specific metadata
+  hf_metadata?: HfMetadata | null
 }
 
 export interface SourceStatus {
