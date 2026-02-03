@@ -5,8 +5,8 @@ from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from src.fetch.constants import DEFAULT_MAX_RESPONSE_SIZE_BYTES
-from src.fetch.models import RetryPolicy
+from src.features.fetch.constants import DEFAULT_MAX_RESPONSE_SIZE_BYTES
+from src.features.fetch.models import RetryPolicy
 
 
 class DomainProfile(BaseModel):

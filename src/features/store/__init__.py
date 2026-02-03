@@ -6,16 +6,20 @@ This module provides persistent storage for:
 - HTTP cache headers for conditional requests
 """
 
-from src.store.errors import (
+from src.features.store.errors import (
     ConnectionError,
     ItemNotFoundError,
     MigrationError,
     RunNotFoundError,
     StateStoreError,
 )
-from src.store.hash import compute_content_hash
-from src.store.metrics import MetricsRecorder, NullMetricsRecorder, StoreMetrics
-from src.store.models import (
+from src.features.store.hash import compute_content_hash
+from src.features.store.metrics import (
+    MetricsRecorder,
+    NullMetricsRecorder,
+    StoreMetrics,
+)
+from src.features.store.models import (
     DateConfidence,
     HttpCacheEntry,
     Item,
@@ -23,9 +27,9 @@ from src.store.models import (
     Run,
     UpsertResult,
 )
-from src.store.state_machine import RunState, RunStateError, RunStateMachine
-from src.store.store import StateStore
-from src.store.url import canonicalize_url
+from src.features.store.state_machine import RunState, RunStateError, RunStateMachine
+from src.features.store.store import StateStore
+from src.features.store.url import canonicalize_url
 
 
 __all__ = [

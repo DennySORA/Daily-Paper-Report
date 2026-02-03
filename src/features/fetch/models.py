@@ -6,7 +6,7 @@ from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from src.fetch.constants import HTTP_STATUS_OK_MAX, HTTP_STATUS_OK_MIN
+from src.features.fetch.constants import HTTP_STATUS_OK_MAX, HTTP_STATUS_OK_MIN
 
 
 class FetchErrorClass(str, Enum):

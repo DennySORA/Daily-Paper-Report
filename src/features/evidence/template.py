@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from src.evidence.capture import ArtifactInfo
+    from src.features.evidence.capture import ArtifactInfo
 
 
 @dataclass

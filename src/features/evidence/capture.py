@@ -9,15 +9,19 @@ from typing import TYPE_CHECKING
 
 import structlog
 
-from src.evidence.metrics import EvidenceMetrics
-from src.evidence.state_machine import EvidenceState, EvidenceStateMachine
-from src.evidence.template import (
+from src.features.evidence.metrics import EvidenceMetrics
+from src.features.evidence.state_machine import EvidenceState, EvidenceStateMachine
+from src.features.evidence.template import (
     E2EReportTemplateData,
     StateTemplateData,
     render_e2e_report,
     render_state_md,
 )
-from src.evidence.writer import ArtifactInfo, EvidenceWriteError, EvidenceWriter
+from src.features.evidence.writer import (
+    ArtifactInfo,
+    EvidenceWriteError,
+    EvidenceWriter,
+)
 
 
 if TYPE_CHECKING:

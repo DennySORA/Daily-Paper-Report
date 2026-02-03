@@ -10,8 +10,8 @@ from pathlib import Path
 
 import structlog
 
-from src.evidence.metrics import EvidenceMetrics
-from src.evidence.redact import contains_secrets, redact_content
+from src.features.evidence.metrics import EvidenceMetrics
+from src.features.evidence.redact import contains_secrets, redact_content
 
 
 logger = structlog.get_logger()

@@ -8,9 +8,9 @@ from typing import Protocol
 
 import structlog
 
-from src.fetch.constants import HTTP_STATUS_NOT_MODIFIED
-from src.fetch.models import FetchResult
-from src.store.models import HttpCacheEntry
+from src.features.fetch.constants import HTTP_STATUS_NOT_MODIFIED
+from src.features.fetch.models import FetchResult
+from src.features.store.models import HttpCacheEntry
 
 
 logger = structlog.get_logger()

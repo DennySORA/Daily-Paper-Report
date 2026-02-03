@@ -10,13 +10,13 @@ from pathlib import Path
 
 import structlog
 
-from src.store.errors import (
+from src.features.store.errors import (
     ConnectionError as StoreConnectionError,
     RunNotFoundError,
 )
-from src.store.metrics import StoreMetrics, TransactionContext
-from src.store.migrations import CURRENT_VERSION, MigrationManager
-from src.store.models import (
+from src.features.store.metrics import StoreMetrics, TransactionContext
+from src.features.store.migrations import CURRENT_VERSION, MigrationManager
+from src.features.store.models import (
     DateConfidence,
     HttpCacheEntry,
     Item,
@@ -24,7 +24,7 @@ from src.store.models import (
     Run,
     UpsertResult,
 )
-from src.store.url import canonicalize_url
+from src.features.store.url import canonicalize_url
 
 
 logger = structlog.get_logger()
@@ -800,4 +800,4 @@ class StateStore:
 
 
 # Re-export compute_content_hash for backward compatibility
-from src.store.hash import compute_content_hash  # noqa: E402, F401
+from src.features.store.hash import compute_content_hash  # noqa: E402, F401

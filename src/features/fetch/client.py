@@ -9,9 +9,9 @@ from urllib.parse import urlparse
 import httpx
 import structlog
 
-from src.fetch.cache import CacheManager
-from src.fetch.config import FetchConfig
-from src.fetch.constants import (
+from src.features.fetch.cache import CacheManager
+from src.features.fetch.config import FetchConfig
+from src.features.fetch.constants import (
     DEFAULT_CHUNK_SIZE,
     HTTP_STATUS_BAD_REQUEST,
     HTTP_STATUS_NOT_MODIFIED,
@@ -22,15 +22,15 @@ from src.fetch.constants import (
     HTTP_STATUS_TOO_MANY_REQUESTS,
     MAX_RETRY_AFTER_SECONDS,
 )
-from src.fetch.metrics import FetchMetrics
-from src.fetch.models import (
+from src.features.fetch.metrics import FetchMetrics
+from src.features.fetch.models import (
     FetchError,
     FetchErrorClass,
     FetchResult,
     ResponseSizeExceededError,
 )
-from src.fetch.redact import redact_headers, redact_url_credentials
-from src.store.store import StateStore
+from src.features.fetch.redact import redact_headers, redact_url_credentials
+from src.features.store.store import StateStore
 
 
 logger = structlog.get_logger()

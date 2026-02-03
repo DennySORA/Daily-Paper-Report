@@ -12,29 +12,33 @@ Key components:
 - Metrics: Track evidence writing metrics
 """
 
-from src.evidence.capture import (
+from src.features.evidence.capture import (
     ArtifactManifest,
     EvidenceCapture,
 )
-from src.evidence.metrics import EvidenceMetrics
-from src.evidence.redact import (
+from src.features.evidence.metrics import EvidenceMetrics
+from src.features.evidence.redact import (
     contains_secrets,
     get_secret_patterns,
     redact_content,
     scan_for_secrets,
 )
-from src.evidence.state_machine import (
+from src.features.evidence.state_machine import (
     EvidenceState,
     EvidenceStateError,
     EvidenceStateMachine,
 )
-from src.evidence.template import (
+from src.features.evidence.template import (
     E2EReportTemplateData,
     StateTemplateData,
     render_e2e_report,
     render_state_md,
 )
-from src.evidence.writer import ArtifactInfo, EvidenceWriteError, EvidenceWriter
+from src.features.evidence.writer import (
+    ArtifactInfo,
+    EvidenceWriteError,
+    EvidenceWriter,
+)
 
 
 __all__ = [

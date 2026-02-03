@@ -1,17 +1,6 @@
-"""HTTP fetch layer with caching, retries, and failure isolation.
+"""Compatibility shims for fetch imports."""
 
-This module provides robust HTTP fetch operations with:
-- ETag/Last-Modified conditional requests for caching
-- Configurable retry policy with exponential backoff
-- Maximum response size enforcement
-- Header redaction for security
-- Metrics collection for observability
-"""
-
-from src.features.fetch.cache import CacheManager
-from src.features.fetch.client import HttpFetcher
-from src.features.fetch.config import DomainProfile, FetchConfig
-from src.features.fetch.constants import (
+from src.features.fetch import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_MAX_RESPONSE_SIZE_BYTES,
     HTTP_STATUS_NOT_MODIFIED,
@@ -19,16 +8,19 @@ from src.features.fetch.constants import (
     HTTP_STATUS_OK_MIN,
     HTTP_STATUS_TOO_MANY_REQUESTS,
     MAX_RETRY_AFTER_SECONDS,
-)
-from src.features.fetch.metrics import FetchMetrics
-from src.features.fetch.models import (
+    CacheManager,
+    DomainProfile,
+    FetchConfig,
     FetchError,
     FetchErrorClass,
+    FetchMetrics,
     FetchResult,
+    HttpFetcher,
     ResponseSizeExceededError,
     RetryPolicy,
+    redact_headers,
+    redact_url_credentials,
 )
-from src.features.fetch.redact import redact_headers, redact_url_credentials
 
 
 __all__ = [

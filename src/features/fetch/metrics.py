@@ -3,7 +3,7 @@
 from dataclasses import dataclass, field
 from typing import ClassVar
 
-from src.fetch.models import FetchErrorClass
+from src.features.fetch.models import FetchErrorClass
 
 
 @dataclass
