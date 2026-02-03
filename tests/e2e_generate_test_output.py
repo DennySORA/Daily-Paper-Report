@@ -1,7 +1,5 @@
 """Generate test output for E2E validation of sources status feature."""
 
-# ruff: noqa: E402
-
 import sys
 from datetime import UTC, datetime
 from pathlib import Path

@@ -111,6 +111,9 @@ ignore = [
     "T201",  # print allowed in E2E CLI validation script
     "S108",  # /tmp is acceptable for test artifacts
 ]
+"tests/e2e_generate_test_output.py" = [
+    "E402",  # allow sys.path bootstrap before imports in script
+]
 
 # Configure pydocstyle to use Google docstring convention
 [tool.ruff.lint.pydocstyle]
