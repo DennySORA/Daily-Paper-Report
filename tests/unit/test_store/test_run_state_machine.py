@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.store.state_machine import RunState, RunStateError, RunStateMachine
+from src.features.store.state_machine import RunState, RunStateError, RunStateMachine
 
 
 class TestRunState:

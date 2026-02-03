@@ -2,12 +2,12 @@
 
 from datetime import UTC, datetime
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.topics import QuotasConfig
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.topics import QuotasConfig
+from src.features.store.models import DateConfidence, Item
 from src.linker.models import Story, StoryLink, StorySection
 from src.ranker.models import ScoreComponents, ScoredStory
 from src.ranker.quota import QuotaFilter, apply_quotas_pure
-from src.store.models import DateConfidence, Item
 
 
 def _make_item(

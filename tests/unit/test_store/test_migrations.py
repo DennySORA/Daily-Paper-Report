@@ -5,7 +5,7 @@ from collections.abc import Generator
 
 import pytest
 
-from src.store.migrations import (
+from src.features.store.migrations import (
     CURRENT_VERSION,
     MIGRATIONS,
     MigrationManager,

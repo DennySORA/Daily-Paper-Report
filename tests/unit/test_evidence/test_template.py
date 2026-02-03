@@ -1,12 +1,12 @@
 """Tests for evidence template rendering."""
 
-from src.evidence.template import (
+from src.features.evidence.template import (
     E2EReportTemplateData,
     StateTemplateData,
     render_e2e_report,
     render_state_md,
 )
-from src.evidence.writer import ArtifactInfo
+from src.features.evidence.writer import ArtifactInfo
 
 
 class TestStateTemplateData:

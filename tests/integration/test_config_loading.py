@@ -5,8 +5,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from src.config.loader import ConfigLoader
-from src.config.state_machine import ConfigState
+from src.features.config.loader import ConfigLoader
+from src.features.config.state_machine import ConfigState
 
 
 FIXTURES_DIR = Path(__file__).parent.parent / "fixtures" / "config"
@@ -27,7 +27,7 @@ class TestConfigLoaderIntegration:
         )
 
         assert loader.state == ConfigState.READY
-        assert len(effective.sources.sources) == 31
+        assert len(effective.sources.sources) == 32
         assert len(effective.entities.entities) == 24
         assert len(effective.topics.topics) == 26
 
@@ -193,7 +193,7 @@ class TestEffectiveConfigIntegration:
         )
 
         summary = config.summary()
-        assert summary["sources_count"] == 31
+        assert summary["sources_count"] == 32
         assert summary["entities_count"] == 24
         assert summary["topics_count"] == 26
         assert "config_checksum" in summary
@@ -211,7 +211,7 @@ class TestEffectiveConfigIntegration:
 
         enabled = config.get_enabled_sources()
         # Enabled sources in fixture
-        assert len(enabled) == 24
+        assert len(enabled) == 25
 
     @pytest.mark.integration
     def test_get_entities_by_region_from_file(self) -> None:

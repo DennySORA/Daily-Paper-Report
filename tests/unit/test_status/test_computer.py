@@ -6,11 +6,11 @@ from src.collectors.base import CollectorResult
 from src.collectors.errors import CollectorErrorClass, ErrorRecord
 from src.collectors.runner import SourceRunResult
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.status.computer import StatusComputer
+from src.features.status.models import ReasonCode, SourceCategory
 from src.renderer.models import SourceStatusCode
-from src.status.computer import StatusComputer
-from src.status.models import ReasonCode, SourceCategory
 
 
 def make_source_config(

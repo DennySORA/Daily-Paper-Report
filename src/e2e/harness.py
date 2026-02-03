@@ -29,7 +29,7 @@ from src.e2e.validators import (
     JsonValidationResult,
     JsonValidator,
 )
-from src.evidence.capture import EvidenceCapture
+from src.features.evidence.capture import EvidenceCapture
 
 
 logger = structlog.get_logger()
@@ -401,7 +401,7 @@ class E2EHarness:
         (self._output_dir / "index.html").write_text(html_content)
 
         # Create database with schema
-        from src.store.store import StateStore
+        from src.features.store.store import StateStore
 
         with StateStore(
             db_path=self._db_path,

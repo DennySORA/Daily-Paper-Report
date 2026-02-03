@@ -7,7 +7,7 @@ regex patterns for efficient topic keyword matching across stories.
 import re
 from dataclasses import dataclass, field
 
-from src.config.schemas.topics import TopicConfig
+from src.features.config.schemas.topics import TopicConfig
 
 
 @dataclass(frozen=True)

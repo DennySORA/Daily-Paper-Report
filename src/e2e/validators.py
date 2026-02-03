@@ -21,7 +21,7 @@ from typing import TypeVar
 
 import structlog
 
-from src.store.migrations import CURRENT_VERSION as EXPECTED_SCHEMA_VERSION
+from src.features.store.migrations import CURRENT_VERSION as EXPECTED_SCHEMA_VERSION
 
 
 logger = structlog.get_logger()

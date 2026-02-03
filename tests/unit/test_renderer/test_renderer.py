@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pytest
 
-from src.config.schemas.base import LinkType
+from src.features.config.schemas.base import LinkType
 from src.linker.models import Story, StoryLink
 from src.ranker.models import RankerOutput
 from src.renderer.metrics import RendererMetrics

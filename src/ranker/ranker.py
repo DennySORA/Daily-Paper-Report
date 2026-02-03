@@ -7,8 +7,8 @@ from datetime import UTC, datetime
 
 import structlog
 
-from src.config.schemas.entities import EntitiesConfig
-from src.config.schemas.topics import TopicsConfig
+from src.features.config.schemas.entities import EntitiesConfig
+from src.features.config.schemas.topics import TopicsConfig
 from src.linker.models import Story, StorySection
 from src.ranker.metrics import RankerMetrics
 from src.ranker.models import DroppedEntry, RankerOutput, RankerResult, ScoredStory

@@ -12,7 +12,7 @@ from datetime import UTC, datetime
 import structlog
 
 from src.e2e.fixtures import FixtureInfo, FixtureLoader
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
 
 
 logger = structlog.get_logger()

@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from src.evidence import (
+from src.features.evidence import (
     ArtifactManifest,
     EvidenceCapture,
     EvidenceMetrics,

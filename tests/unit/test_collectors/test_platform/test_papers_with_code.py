@@ -7,9 +7,9 @@ from src.collectors.platform.papers_with_code import (
     PapersWithCodeCollector,
     extract_arxiv_id,
 )
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchResult
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchResult
 from tests.helpers.time import FIXED_NOW
 
 

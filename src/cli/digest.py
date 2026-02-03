@@ -16,30 +16,30 @@ import structlog
 
 if TYPE_CHECKING:
     from src.collectors.runner import RunnerResult
-    from src.config.effective import EffectiveConfig
+    from src.features.config.effective import EffectiveConfig
+    from src.features.store.models import Run
     from src.linker.models import LinkerResult
     from src.ranker.models import RankerResult
-    from src.store.models import Run
 
 from src.collectors.runner import CollectorRunner
-from src.config.constants import (
+from src.features.config.constants import (
     COMPONENT_CLI,
     FEATURE_KEY,
     STATUS_P1_DONE,
     VALIDATION_PASSED,
 )
-from src.config.error_hints import format_validation_error
-from src.config.loader import ConfigLoader
-from src.config.state_machine import ConfigState
-from src.evidence.capture import EvidenceCapture
-from src.fetch.client import HttpFetcher
-from src.fetch.config import FetchConfig
+from src.features.config.error_hints import format_validation_error
+from src.features.config.loader import ConfigLoader
+from src.features.config.state_machine import ConfigState
+from src.features.evidence.capture import EvidenceCapture
+from src.features.fetch.client import HttpFetcher
+from src.features.fetch.config import FetchConfig
+from src.features.status import StatusComputer
+from src.features.store.store import StateStore
 from src.linker import StoryLinker
 from src.observability.logging import bind_run_context, configure_logging
 from src.ranker import StoryRanker
 from src.renderer import RunInfo, SourceStatus, StaticRenderer
-from src.status import StatusComputer
-from src.store.store import StateStore
 
 
 logger = structlog.get_logger()
@@ -149,7 +149,7 @@ def _load_configuration(
     Returns:
         Validated effective configuration.
     """
-    from src.config.effective import EffectiveConfig
+    from src.features.config.effective import EffectiveConfig
 
     loader = ConfigLoader(run_id=run_id)
 
@@ -824,7 +824,7 @@ def render(
     """
     from datetime import UTC, datetime
 
-    from src.config.schemas.base import LinkType
+    from src.features.config.schemas.base import LinkType
     from src.linker.models import Story, StoryLink
     from src.ranker.models import RankerOutput
     from src.renderer import RenderResult, RunInfo, StaticRenderer

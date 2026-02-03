@@ -8,7 +8,7 @@ from src.collectors.platform.constants import (
     HTTP_STATUS_FORBIDDEN,
     HTTP_STATUS_UNAUTHORIZED,
 )
-from src.fetch.models import FetchErrorClass, FetchResult
+from src.features.fetch.models import FetchErrorClass, FetchResult
 from src.settings import get_settings
 
 

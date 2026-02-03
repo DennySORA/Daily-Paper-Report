@@ -35,10 +35,10 @@ from src.collectors.platform.rate_limiter import (
     get_platform_rate_limiter,
 )
 from src.collectors.state_machine import SourceState, SourceStateMachine
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.hash import compute_content_hash
-from src.store.models import DateConfidence, Item
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.hash import compute_content_hash
+from src.features.store.models import DateConfidence, Item
 
 
 logger = structlog.get_logger()

@@ -11,10 +11,10 @@ import structlog
 
 from src.collectors.errors import ErrorRecord
 from src.collectors.state_machine import SourceState
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.models import Item
-from src.store.url import canonicalize_url
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.models import Item
+from src.features.store.url import canonicalize_url
 
 
 # Maximum size for raw_json in bytes

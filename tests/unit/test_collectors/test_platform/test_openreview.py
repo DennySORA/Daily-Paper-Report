@@ -15,9 +15,9 @@ from src.collectors.platform.rate_limiter import (
     reset_platform_rate_limiters,
 )
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
 from tests.helpers.time import FIXED_NOW
 
 

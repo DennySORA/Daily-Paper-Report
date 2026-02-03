@@ -4,6 +4,7 @@ from datetime import UTC, datetime
 
 import pytest
 
+from src.features.store.models import DateConfidence, Item
 from src.linker.story_id import (
     ExtractedStableIds,
     extract_all_stable_ids,
@@ -16,7 +17,6 @@ from src.linker.story_id import (
     get_date_bucket,
     normalize_title,
 )
-from src.store.models import DateConfidence, Item
 
 
 class TestExtractArxivId:

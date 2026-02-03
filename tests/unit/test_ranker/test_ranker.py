@@ -2,18 +2,18 @@
 
 from datetime import UTC, datetime
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntitiesConfig, EntityConfig
-from src.config.schemas.topics import (
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntitiesConfig, EntityConfig
+from src.features.config.schemas.topics import (
     QuotasConfig,
     ScoringConfig,
     TopicConfig,
     TopicsConfig,
 )
+from src.features.store.models import DateConfidence, Item
 from src.linker.models import Story, StoryLink
 from src.ranker.ranker import StoryRanker, rank_stories_pure
 from src.ranker.state_machine import RankerState
-from src.store.models import DateConfidence, Item
 
 
 def _make_item(

@@ -8,7 +8,7 @@ import pytest
 from src.collectors.arxiv.deduper import ArxivDeduplicator
 from src.collectors.arxiv.metrics import ArxivMetrics
 from src.collectors.arxiv.rss import ArxivRssCollector
-from src.store.models import DateConfidence, Item
+from src.features.store.models import DateConfidence, Item
 from tests.helpers.time import FIXED_NOW
 
 
@@ -125,7 +125,11 @@ class TestCrossSourceDeduplication:
         self, reset_metrics: None
     ) -> None:
         """Test that same arXiv ID from multiple RSS feeds produces one item."""
-        from src.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
+        from src.features.config.schemas.sources import (
+            SourceConfig,
+            SourceKind,
+            SourceMethod,
+        )
 
         # Create collectors
         rss_collector = ArxivRssCollector(run_id="test")
@@ -268,7 +272,11 @@ class TestIdempotency:
 
     def test_repeated_ingestion_produces_same_items(self, reset_metrics: None) -> None:
         """Test that repeated ingestion produces identical items."""
-        from src.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
+        from src.features.config.schemas.sources import (
+            SourceConfig,
+            SourceKind,
+            SourceMethod,
+        )
 
         rss_collector = ArxivRssCollector(run_id="test")
 
@@ -308,7 +316,11 @@ class TestCanonicalUrlFormat:
 
     def test_all_urls_use_canonical_format(self, reset_metrics: None) -> None:
         """Test that all collected URLs use canonical abs format."""
-        from src.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
+        from src.features.config.schemas.sources import (
+            SourceConfig,
+            SourceKind,
+            SourceMethod,
+        )
 
         rss_collector = ArxivRssCollector(run_id="test")
 
@@ -340,7 +352,11 @@ class TestMetricsIntegration:
 
     def test_full_pipeline_records_metrics(self, reset_metrics: None) -> None:
         """Test that full pipeline records all expected metrics."""
-        from src.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
+        from src.features.config.schemas.sources import (
+            SourceConfig,
+            SourceKind,
+            SourceMethod,
+        )
 
         rss_collector = ArxivRssCollector(run_id="test")
 

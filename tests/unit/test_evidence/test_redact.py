@@ -1,6 +1,6 @@
 """Unit tests for evidence redaction utilities."""
 
-from src.evidence.redact import (
+from src.features.evidence.redact import (
     SecretMatch,
     contains_secrets,
     get_secret_patterns,

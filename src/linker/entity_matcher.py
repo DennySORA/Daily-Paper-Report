@@ -4,8 +4,8 @@ import json
 import re
 from dataclasses import dataclass, field
 
-from src.config.schemas.entities import EntityConfig
-from src.store.models import Item
+from src.features.config.schemas.entities import EntityConfig
+from src.features.store.models import Item
 
 
 @dataclass

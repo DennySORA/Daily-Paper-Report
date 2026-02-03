@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 
 import structlog
 
-from src.config.schemas.topics import ScoringConfig, TopicConfig
+from src.features.config.schemas.topics import ScoringConfig, TopicConfig
 from src.linker.models import Story
 from src.ranker.constants import (
     CROSS_SOURCE_SCORE_CAP,

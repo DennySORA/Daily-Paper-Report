@@ -22,8 +22,8 @@ from src.features.status.models import (
     StatusRulePath,
     StatusSummary,
 )
+from src.features.store.models import UpsertResult
 from src.renderer.models import SourceStatus, SourceStatusCode
-from src.store.models import UpsertResult
 
 
 logger = structlog.get_logger()

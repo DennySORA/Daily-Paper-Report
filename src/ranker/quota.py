@@ -4,7 +4,7 @@ from collections import defaultdict
 
 import structlog
 
-from src.config.schemas.topics import QuotasConfig
+from src.features.config.schemas.topics import QuotasConfig
 from src.linker.models import Story, StorySection
 from src.ranker.constants import ARXIV_CATEGORY_PATTERNS
 from src.ranker.models import DroppedEntry, ScoredStory

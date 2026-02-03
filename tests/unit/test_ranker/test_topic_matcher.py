@@ -1,6 +1,6 @@
 """Unit tests for TopicMatcher utility."""
 
-from src.config.schemas.topics import TopicConfig
+from src.features.config.schemas.topics import TopicConfig
 from src.ranker.topic_matcher import TopicMatcher
 
 

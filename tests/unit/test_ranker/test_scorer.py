@@ -5,11 +5,11 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.topics import ScoringConfig, TopicConfig
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.topics import ScoringConfig, TopicConfig
+from src.features.store.models import DateConfidence, Item
 from src.linker.models import Story, StoryLink
 from src.ranker.scorer import ScorerConfig, StoryScorer, score_stories_pure
-from src.store.models import DateConfidence, Item
 
 
 def _make_item(

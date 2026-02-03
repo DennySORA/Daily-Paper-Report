@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.evidence.state_machine import (
+from src.features.evidence.state_machine import (
     EvidenceState,
     EvidenceStateError,
     EvidenceStateMachine,

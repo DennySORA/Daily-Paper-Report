@@ -18,11 +18,11 @@ from src.collectors.platform.openreview import OpenReviewVenueCollector
 from src.collectors.platform.papers_with_code import PapersWithCodeCollector
 from src.collectors.rss_atom import RssAtomCollector
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceMethod
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.models import ItemEventType, UpsertResult
-from src.store.store import StateStore
+from src.features.config.schemas.base import SourceMethod
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.models import ItemEventType, UpsertResult
+from src.features.store.store import StateStore
 
 
 logger = structlog.get_logger()

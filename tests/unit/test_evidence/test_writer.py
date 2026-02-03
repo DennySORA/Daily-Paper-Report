@@ -4,8 +4,12 @@ from pathlib import Path
 
 import pytest
 
-from src.evidence.metrics import EvidenceMetrics
-from src.evidence.writer import ArtifactInfo, EvidenceWriteError, EvidenceWriter
+from src.features.evidence.metrics import EvidenceMetrics
+from src.features.evidence.writer import (
+    ArtifactInfo,
+    EvidenceWriteError,
+    EvidenceWriter,
+)
 
 
 class TestArtifactInfo:

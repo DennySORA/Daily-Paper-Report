@@ -25,7 +25,7 @@ from src.features.evidence.writer import (
 
 
 if TYPE_CHECKING:
-    from src.config.effective import EffectiveConfig
+    from src.features.config.effective import EffectiveConfig
 
 logger = structlog.get_logger()
 

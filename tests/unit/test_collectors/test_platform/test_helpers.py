@@ -9,7 +9,7 @@ from src.collectors.platform.helpers import (
     is_auth_error,
     truncate_text,
 )
-from src.fetch.models import FetchErrorClass
+from src.features.fetch.models import FetchErrorClass
 
 
 class TestIsAuthError:

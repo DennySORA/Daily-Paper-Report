@@ -11,7 +11,7 @@ from dateutil import parser as date_parser
 
 from src.collectors.html_profile.models import DateExtractionMethod, DateExtractionRule
 from src.collectors.html_profile.utils import RegexCache
-from src.store.models import DateConfidence
+from src.features.store.models import DateConfidence
 
 
 logger = structlog.get_logger()

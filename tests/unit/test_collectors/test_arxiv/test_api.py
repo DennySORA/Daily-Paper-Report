@@ -10,9 +10,9 @@ from src.collectors.arxiv.api import (
 )
 from src.collectors.arxiv.metrics import ArxivMetrics
 from src.collectors.state_machine import SourceState
-from src.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
-from src.fetch.client import HttpFetcher
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
+from src.features.fetch.client import HttpFetcher
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
 
 
 class MockRateLimiter:
@@ -327,6 +327,6 @@ class TestArxivApiCollector:
         result = collector.collect(source_config, mock_client, run_timestamp)
 
         assert result.items[0].published_at is not None
-        from src.store.models import DateConfidence
+        from src.features.store.models import DateConfidence
 
         assert result.items[0].date_confidence == DateConfidence.HIGH

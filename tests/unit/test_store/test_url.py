@@ -1,6 +1,6 @@
 """Unit tests for URL canonicalization."""
 
-from src.store.url import (
+from src.features.store.url import (
     DEFAULT_STRIP_PARAMS,
     canonicalize_url,
 )

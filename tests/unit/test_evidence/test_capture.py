@@ -7,14 +7,14 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from src.evidence.capture import (
+from src.features.evidence.capture import (
     ArtifactInfo,
     ArtifactManifest,
     EvidenceCapture,
     EvidenceWriteError,
 )
-from src.evidence.metrics import EvidenceMetrics
-from src.evidence.state_machine import EvidenceState
+from src.features.evidence.metrics import EvidenceMetrics
+from src.features.evidence.state_machine import EvidenceState
 
 
 class TestArtifactInfo:

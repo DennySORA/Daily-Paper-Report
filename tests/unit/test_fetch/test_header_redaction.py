@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.fetch.redact import (
+from src.features.fetch.redact import (
     REDACTED_VALUE,
     is_sensitive_header,
     redact_headers,

@@ -7,10 +7,15 @@ from pathlib import Path
 
 import pytest
 
-from src.store.hash import compute_content_hash
-from src.store.metrics import StoreMetrics
-from src.store.models import DateConfidence, HttpCacheEntry, Item, ItemEventType
-from src.store.store import StateStore
+from src.features.store.hash import compute_content_hash
+from src.features.store.metrics import StoreMetrics
+from src.features.store.models import (
+    DateConfidence,
+    HttpCacheEntry,
+    Item,
+    ItemEventType,
+)
+from src.features.store.store import StateStore
 
 
 @pytest.fixture

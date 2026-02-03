@@ -2,15 +2,15 @@
 
 import json
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntityConfig, EntityRegion, EntityType
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntityConfig, EntityRegion, EntityType
+from src.features.store.models import DateConfidence, Item
 from src.linker.entity_matcher import (
     _build_search_text,
     get_all_entity_ids,
     get_primary_entity,
     match_item_to_entities,
 )
-from src.store.models import DateConfidence, Item
 
 
 def create_test_item(

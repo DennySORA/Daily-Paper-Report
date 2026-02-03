@@ -61,7 +61,7 @@ class TestDatabaseValidator:
         """Validation fails for missing required tables."""
         db_path = tmp_path / "test.db"
 
-        from src.store.migrations import CURRENT_VERSION
+        from src.features.store.migrations import CURRENT_VERSION
 
         conn = sqlite3.connect(str(db_path))
         conn.execute("CREATE TABLE schema_version (version INTEGER)")

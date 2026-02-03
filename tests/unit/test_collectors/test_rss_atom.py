@@ -5,9 +5,9 @@ from unittest.mock import MagicMock
 
 from src.collectors.rss_atom import RssAtomCollector
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
 
 
 # Fixed timestamp for tests - sample data dates should be within 24h of this.

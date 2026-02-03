@@ -5,13 +5,17 @@ import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntitiesConfig, EntityConfig, EntityRegion
-from src.config.schemas.topics import TopicsConfig
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import (
+    EntitiesConfig,
+    EntityConfig,
+    EntityRegion,
+)
+from src.features.config.schemas.topics import TopicsConfig
+from src.features.store.models import DateConfidence, Item
 from src.linker.linker import StoryLinker
 from src.linker.persistence import LinkerPersistence, write_daily_json
 from src.linker.state_machine import LinkerState
-from src.store.models import DateConfidence, Item
 
 
 def create_arxiv_item(

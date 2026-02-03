@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.config.state_machine import (
+from src.features.config.state_machine import (
     ConfigState,
     ConfigStateError,
     ConfigStateMachine,

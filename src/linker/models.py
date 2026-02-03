@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING, Annotated, Any, NewType
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from src.config.schemas.base import LinkType
-from src.store.models import Item
+from src.features.config.schemas.base import LinkType
+from src.features.store.models import Item
 
 
 if TYPE_CHECKING:

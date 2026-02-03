@@ -4,9 +4,14 @@ from datetime import UTC, datetime
 
 import pytest
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntitiesConfig, EntityConfig, EntityRegion
-from src.config.schemas.topics import TopicsConfig
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import (
+    EntitiesConfig,
+    EntityConfig,
+    EntityRegion,
+)
+from src.features.config.schemas.topics import TopicsConfig
+from src.features.store.models import DateConfidence, Item
 from src.linker.linker import (
     StoryLinker,
     _create_story_link,
@@ -17,7 +22,6 @@ from src.linker.linker import (
 )
 from src.linker.models import StoryLink
 from src.linker.state_machine import LinkerState
-from src.store.models import DateConfidence, Item
 
 
 def create_test_item(  # noqa: PLR0913

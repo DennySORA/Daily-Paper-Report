@@ -11,8 +11,8 @@ from src.collectors.html_profile.date_extractor import (
 )
 from src.collectors.html_profile.metrics import HtmlProfileMetrics
 from src.collectors.html_profile.models import DomainProfile
-from src.fetch.client import HttpFetcher
-from src.store.models import DateConfidence, Item
+from src.features.fetch.client import HttpFetcher
+from src.features.store.models import DateConfidence, Item
 
 
 logger = structlog.get_logger()

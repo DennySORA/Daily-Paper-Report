@@ -5,7 +5,7 @@ from datetime import UTC, datetime, timedelta
 
 from src.collectors.arxiv.deduper import ArxivDeduplicator, DeduplicationResult
 from src.collectors.arxiv.metrics import ArxivMetrics
-from src.store.models import DateConfidence, Item
+from src.features.store.models import DateConfidence, Item
 
 
 def make_item(
