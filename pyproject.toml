@@ -174,5 +174,6 @@ skips = ["**/test_*.py", "**/tests/**"]
 
 [dependency-groups]
 dev = [
+    "mypy>=1.19.1",
     "types-defusedxml>=0.7.0.20250822",
 ]

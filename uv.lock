@@ -669,6 +669,7 @@ dev = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "mypy" },
     { name = "types-defusedxml" },
 ]
 
@@ -698,7 +699,10 @@ requires-dist = [
 provides-extras = ["dev"]
 
 [package.metadata.requires-dev]
-dev = [{ name = "types-defusedxml", specifier = ">=0.7.0.20250822" }]
+dev = [
+    { name = "mypy", specifier = ">=1.19.1" },
+    { name = "types-defusedxml", specifier = ">=0.7.0.20250822" },
+]
 
 [[package]]
 name = "rich"
