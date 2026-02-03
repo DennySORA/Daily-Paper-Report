@@ -1,7 +1,14 @@
 """Generate test output for E2E validation of sources status feature."""
 
+# ruff: noqa: E402
+
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.config.schemas.base import LinkType
 from src.linker.models import Story, StoryLink

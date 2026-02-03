@@ -1,7 +1,6 @@
 """Unit tests for HuggingFace Daily Papers collector."""
 
 import json
-from datetime import UTC, datetime
 from unittest.mock import MagicMock
 
 from src.collectors.arxiv.utils import extract_arxiv_id as extract_arxiv_id_from_url
@@ -9,6 +8,7 @@ from src.collectors.platform.hf_daily_papers import HuggingFaceDailyPapersCollec
 from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
 from src.config.schemas.sources import SourceConfig
 from src.fetch.models import FetchResult
+from tests.helpers.time import FIXED_NOW
 
 
 def _make_source_config() -> SourceConfig:
@@ -79,6 +79,7 @@ class TestHuggingFaceDailyPapersCollector:
                         "summary": "Another abstract.",
                     },
                     "upvotes": 10,
+                    "publishedAt": "2023-01-01T01:00:00Z",
                 },
             ]
         )
@@ -92,7 +93,7 @@ class TestHuggingFaceDailyPapersCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -115,7 +116,7 @@ class TestHuggingFaceDailyPapersCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -133,7 +134,7 @@ class TestHuggingFaceDailyPapersCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -151,6 +152,7 @@ class TestHuggingFaceDailyPapersCollector:
                         "summary": "Abstract text.",
                     },
                     "upvotes": 50,
+                    "publishedAt": "2023-01-01T00:00:00Z",
                 },
             ]
         )
@@ -164,7 +166,7 @@ class TestHuggingFaceDailyPapersCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -181,6 +183,7 @@ class TestHuggingFaceDailyPapersCollector:
             {
                 "paper": {"id": f"2301.0000{i}", "title": f"Paper {i}"},
                 "upvotes": i,
+                "publishedAt": "2023-01-01T00:00:00Z",
             }
             for i in range(20)
         ]
@@ -195,7 +198,7 @@ class TestHuggingFaceDailyPapersCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()  # max_items=10
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 

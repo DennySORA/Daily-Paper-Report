@@ -9,6 +9,7 @@ from src.collectors.arxiv.deduper import ArxivDeduplicator
 from src.collectors.arxiv.metrics import ArxivMetrics
 from src.collectors.arxiv.rss import ArxivRssCollector
 from src.store.models import DateConfidence, Item
+from tests.helpers.time import FIXED_NOW
 
 
 # Sample RSS feed for cs.AI
@@ -155,7 +156,7 @@ class TestCrossSourceDeduplication:
             kind=SourceKind.PAPER,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         ai_result = rss_collector.collect(cs_ai_config, mock_client, now)  # type: ignore[arg-type]
         lg_result = rss_collector.collect(cs_lg_config, mock_client, now)  # type: ignore[arg-type]
 
@@ -282,7 +283,7 @@ class TestIdempotency:
             kind=SourceKind.PAPER,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         # First ingestion
         result1 = rss_collector.collect(config, mock_client, now)  # type: ignore[arg-type]
@@ -322,7 +323,7 @@ class TestCanonicalUrlFormat:
             kind=SourceKind.PAPER,
         )
 
-        result = rss_collector.collect(config, mock_client, datetime.now(UTC))  # type: ignore[arg-type]
+        result = rss_collector.collect(config, mock_client, FIXED_NOW)  # type: ignore[arg-type]
 
         for item in result.items:
             # Must start with canonical prefix
@@ -370,7 +371,7 @@ class TestMetricsIntegration:
         ]
 
         all_items = []
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         for config in configs:
             result = rss_collector.collect(config, mock_client, now)  # type: ignore[arg-type]

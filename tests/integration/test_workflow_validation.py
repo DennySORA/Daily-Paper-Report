@@ -39,7 +39,7 @@ class TestDailyDigestWorkflow:
         assert workflow["name"] == "Daily Digest"
 
     def test_schedule_trigger(self, workflow: dict[str, Any]) -> None:
-        """Verify workflow has schedule trigger for UTC 23:00."""
+        """Verify workflow has schedule trigger for UTC 06:00."""
         assert "on" in workflow
         triggers = workflow["on"]
         assert "schedule" in triggers
@@ -47,9 +47,9 @@ class TestDailyDigestWorkflow:
         schedules = triggers["schedule"]
         assert len(schedules) >= 1
 
-        # Check cron expression: 0 23 * * * (UTC 23:00)
+        # Check cron expression: 0 6 * * * (UTC 06:00)
         cron = schedules[0]["cron"]
-        assert cron == "0 23 * * *", f"Expected '0 23 * * *', got '{cron}'"
+        assert cron == "0 6 * * *", f"Expected '0 6 * * *', got '{cron}'"
 
     def test_workflow_dispatch_trigger(self, workflow: dict[str, Any]) -> None:
         """Verify workflow supports manual triggering."""
@@ -352,6 +352,6 @@ class TestTemplateFiles:
             assert 'from "_macros.html" import' in content, (
                 f"{template_name} should import macros"
             )
-            assert "story_item" in content, (
-                f"{template_name} should use story_item macro"
+            assert "story_card" in content, (
+                f"{template_name} should use story_card macro"
             )

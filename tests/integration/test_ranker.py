@@ -36,6 +36,8 @@ def _make_item(
         date_confidence=DateConfidence.HIGH if published_at else DateConfidence.LOW,
         content_hash="test-hash",
         raw_json=raw_json,
+        first_seen_at=published_at or datetime(2024, 1, 1, tzinfo=UTC),
+        last_seen_at=published_at or datetime(2024, 1, 1, tzinfo=UTC),
     )
 
 

@@ -1,7 +1,6 @@
 """Unit tests for Papers With Code collector."""
 
 import json
-from datetime import UTC, datetime
 from unittest.mock import MagicMock
 
 from src.collectors.platform.papers_with_code import (
@@ -11,6 +10,7 @@ from src.collectors.platform.papers_with_code import (
 from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
 from src.config.schemas.sources import SourceConfig
 from src.fetch.models import FetchResult
+from tests.helpers.time import FIXED_NOW
 
 
 def _make_source_config() -> SourceConfig:
@@ -102,7 +102,7 @@ class TestPapersWithCodeCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -125,7 +125,7 @@ class TestPapersWithCodeCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -143,7 +143,7 @@ class TestPapersWithCodeCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
@@ -160,6 +160,7 @@ class TestPapersWithCodeCollector:
                         "title": "Test Paper",
                         "url_abs": "https://arxiv.org/abs/2301.00001",
                         "repository_url": "https://github.com/test/repo",
+                        "published": "2017-06-12T00:00:00Z",
                     },
                 ]
             }
@@ -174,7 +175,7 @@ class TestPapersWithCodeCollector:
             rate_limiter=rate_limiter,
         )
         source_config = _make_source_config()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, http_client, now)
 
