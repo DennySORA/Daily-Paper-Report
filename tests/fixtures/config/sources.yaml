@@ -81,6 +81,20 @@ sources:
     max_items: 20
 
   # ============================================================
+  # TIER 0 - Individual AI Researcher Blogs
+  # ============================================================
+
+  - id: sebastian-raschka-blog
+    name: Sebastian Raschka Blog
+    url: https://sebastianraschka.com/rss_feed.xml
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: UTC
+    max_items: 20
+    enabled: true
+
+  # ============================================================
   # TIER 1 - arXiv Paper Categories
   # ============================================================
 

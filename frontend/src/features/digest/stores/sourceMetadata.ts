@@ -36,6 +36,7 @@ export const SOURCE_DISPLAY_NAMES: Record<string, SourceInfo> = {
   'aws-ml-blog': { name: 'AWS ML', category: 'blog' },
   'microsoft-research-blog': { name: 'Microsoft Research', category: 'blog' },
   'nvidia-ai-blog': { name: 'NVIDIA AI', category: 'blog' },
+  'sebastian-raschka-blog': { name: 'Sebastian Raschka', category: 'blog' },
   'papers-with-code': { name: 'Papers With Code', category: 'other' },
 }
 
