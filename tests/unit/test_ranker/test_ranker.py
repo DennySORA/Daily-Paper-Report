@@ -23,6 +23,7 @@ def _make_item(
     kind: str = "blog",
     title: str = "Test Item",
     published_at: datetime | None = None,
+    first_seen_at: datetime | None = None,
 ) -> Item:
     """Create a test Item."""
     return Item(
@@ -35,6 +36,7 @@ def _make_item(
         date_confidence=DateConfidence.HIGH if published_at else DateConfidence.LOW,
         content_hash="test-hash",
         raw_json="{}",
+        first_seen_at=first_seen_at or datetime(2024, 1, 1, 0, 0, tzinfo=UTC),
     )
 
 
