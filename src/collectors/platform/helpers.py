@@ -4,14 +4,12 @@ This module provides utility functions used across platform collectors
 to reduce code duplication and improve maintainability.
 """
 
-import os
-
 from src.collectors.platform.constants import (
-    AUTH_TOKEN_ENV_VARS,
     HTTP_STATUS_FORBIDDEN,
     HTTP_STATUS_UNAUTHORIZED,
 )
 from src.fetch.models import FetchErrorClass, FetchResult
+from src.settings import get_settings
 
 
 def is_auth_error(result: FetchResult) -> bool:
@@ -41,10 +39,7 @@ def get_auth_token(platform: str) -> str | None:
     Returns:
         Token value or None if not set.
     """
-    env_var = AUTH_TOKEN_ENV_VARS.get(platform)
-    if env_var:
-        return os.environ.get(env_var)
-    return None
+    return get_settings().auth_token_for_platform(platform)
 
 
 def extract_nested_value(field: str | dict[str, str] | None) -> str | None:

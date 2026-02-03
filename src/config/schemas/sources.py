@@ -2,9 +2,10 @@
 
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import Field, field_validator, model_validator
 
 from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.data_model import StrictBaseModel
 
 
 __all__ = [
@@ -16,7 +17,7 @@ __all__ = [
 ]
 
 
-class SourceConfig(BaseModel):
+class SourceConfig(StrictBaseModel):
     """Configuration for a single source.
 
     Attributes:
@@ -32,8 +33,6 @@ class SourceConfig(BaseModel):
         headers: Optional custom headers for requests.
         query: Optional query string (for API sources).
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     id: Annotated[str, Field(min_length=1, max_length=100, pattern=r"^[a-z0-9_-]+$")]
     name: Annotated[str, Field(min_length=1, max_length=200)]
@@ -68,7 +67,7 @@ class SourceConfig(BaseModel):
         return v
 
 
-class SourcesConfig(BaseModel):
+class SourcesConfig(StrictBaseModel):
     """Root configuration for sources.yaml.
 
     Attributes:
@@ -76,8 +75,6 @@ class SourcesConfig(BaseModel):
         defaults: Default values for sources.
         sources: List of source configurations.
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     version: Annotated[str, Field(pattern=r"^\d+\.\d+$")] = "1.0"
     defaults: dict[str, str | int | bool] = Field(default_factory=dict)

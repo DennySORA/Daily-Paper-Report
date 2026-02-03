@@ -2,24 +2,23 @@
 
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import Field, model_validator
 
 from src.config.schemas.base import LinkType
+from src.data_model import StrictBaseModel
 
 
-class DedupeConfig(BaseModel):
+class DedupeConfig(StrictBaseModel):
     """Deduplication configuration.
 
     Attributes:
         canonical_url_strip_params: URL parameters to strip for canonicalization.
     """
 
-    model_config = ConfigDict(frozen=True, extra="forbid")
-
     canonical_url_strip_params: list[str] = Field(default_factory=list)
 
 
-class ScoringConfig(BaseModel):
+class ScoringConfig(StrictBaseModel):
     """Scoring weights configuration.
 
     Attributes:
@@ -34,8 +33,6 @@ class ScoringConfig(BaseModel):
         cross_source_weight: Weight per quality signal source matched.
     """
 
-    model_config = ConfigDict(frozen=True, extra="forbid")
-
     tier_0_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 3.0
     tier_1_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 2.0
     tier_2_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 1.0
@@ -47,7 +44,7 @@ class ScoringConfig(BaseModel):
     cross_source_weight: Annotated[float, Field(ge=0.0, le=5.0)] = 1.0
 
 
-class TopicConfig(BaseModel):
+class TopicConfig(StrictBaseModel):
     """Configuration for a single topic.
 
     Attributes:
@@ -55,8 +52,6 @@ class TopicConfig(BaseModel):
         keywords: Keywords for matching (at least 1).
         boost_weight: Additional score boost for this topic.
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     name: Annotated[str, Field(min_length=1, max_length=100)]
     keywords: Annotated[list[str], Field(min_length=1)]
@@ -72,7 +67,7 @@ class TopicConfig(BaseModel):
         return self
 
 
-class QuotasConfig(BaseModel):
+class QuotasConfig(StrictBaseModel):
     """Output quotas configuration.
 
     Attributes:
@@ -83,8 +78,6 @@ class QuotasConfig(BaseModel):
         papers_max: Maximum items in Papers section.
     """
 
-    model_config = ConfigDict(frozen=True, extra="forbid")
-
     top5_max: Annotated[int, Field(ge=0)] = 5
     radar_max: Annotated[int, Field(ge=0)] = 10
     per_source_max: Annotated[int, Field(ge=0)] = 10
@@ -92,7 +85,7 @@ class QuotasConfig(BaseModel):
     papers_max: Annotated[int, Field(ge=0)] = 20
 
 
-class TopicsConfig(BaseModel):
+class TopicsConfig(StrictBaseModel):
     """Root configuration for topics.yaml.
 
     Attributes:
@@ -103,8 +96,6 @@ class TopicsConfig(BaseModel):
         topics: List of topic configurations.
         prefer_primary_link_order: Preferred link types for primary link selection.
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     version: Annotated[str, Field(pattern=r"^\d+\.\d+$")] = "1.0"
     dedupe: DedupeConfig = Field(default_factory=DedupeConfig)

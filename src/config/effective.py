@@ -4,14 +4,15 @@ import hashlib
 import json
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import Field
 
 from src.config.schemas.entities import EntitiesConfig, EntityConfig
 from src.config.schemas.sources import SourceConfig, SourcesConfig
 from src.config.schemas.topics import TopicsConfig
+from src.data_model import StrictBaseModel
 
 
-class EffectiveConfig(BaseModel):
+class EffectiveConfig(StrictBaseModel):
     """Combined effective configuration for a run.
 
     This represents the immutable, normalized configuration that is
@@ -24,8 +25,6 @@ class EffectiveConfig(BaseModel):
         file_checksums: SHA-256 checksums of source files.
         run_id: Unique identifier for the run.
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     sources: SourcesConfig
     entities: EntitiesConfig

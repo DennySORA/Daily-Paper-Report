@@ -3,9 +3,10 @@
 from enum import Enum
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import Field, model_validator
 
 from src.config.schemas.base import LinkType
+from src.data_model import StrictBaseModel
 
 
 class EntityRegion(str, Enum):
@@ -27,7 +28,7 @@ class EntityType(str, Enum):
     INSTITUTION = "institution"
 
 
-class EntityConfig(BaseModel):
+class EntityConfig(StrictBaseModel):
     """Configuration for a single entity.
 
     Attributes:
@@ -39,8 +40,6 @@ class EntityConfig(BaseModel):
         prefer_links: Preferred link types for primary link selection.
         aliases: Alternative names for the entity.
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     id: Annotated[str, Field(min_length=1, max_length=100, pattern=r"^[a-z0-9_-]+$")]
     name: Annotated[str, Field(min_length=1, max_length=200)]
@@ -60,15 +59,13 @@ class EntityConfig(BaseModel):
         return self
 
 
-class EntitiesConfig(BaseModel):
+class EntitiesConfig(StrictBaseModel):
     """Root configuration for entities.yaml.
 
     Attributes:
         version: Schema version.
         entities: List of entity configurations.
     """
-
-    model_config = ConfigDict(frozen=True, extra="forbid")
 
     version: Annotated[str, Field(pattern=r"^\d+\.\d+$")] = "1.0"
     entities: list[EntityConfig]
