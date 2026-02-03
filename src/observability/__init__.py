@@ -1,11 +1,6 @@
-"""Observability module for logging and metrics."""
+"""Compatibility shims for observability imports."""
 
-from src.observability.logging import configure_logging, get_logger
-from src.observability.metrics import ConfigMetrics
+from src.features.observability import ConfigMetrics, configure_logging, get_logger
 
 
-__all__ = [
-    "ConfigMetrics",
-    "configure_logging",
-    "get_logger",
-]
+__all__ = ["ConfigMetrics", "configure_logging", "get_logger"]

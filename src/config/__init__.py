@@ -1,8 +1,11 @@
-"""Configuration loading and validation module."""
+"""Compatibility shims for configuration imports."""
 
-from src.config.effective import EffectiveConfig
-from src.config.loader import ConfigLoader
-from src.config.state_machine import ConfigState, ConfigStateError
+from src.features.config import (
+    ConfigLoader,
+    ConfigState,
+    ConfigStateError,
+    EffectiveConfig,
+)
 
 
 __all__ = [

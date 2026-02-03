@@ -1,16 +1,16 @@
-"""Compatibility shim for configuration schemas."""
+"""Configuration schema definitions."""
 
-from src.features.config.schemas import (
-    DedupeConfig,
-    EntitiesConfig,
-    EntityConfig,
+from src.features.config.schemas.base import (
     LinkType,
-    ScoringConfig,
-    SourceConfig,
     SourceKind,
     SourceMethod,
-    SourcesConfig,
     SourceTier,
+)
+from src.features.config.schemas.entities import EntitiesConfig, EntityConfig
+from src.features.config.schemas.sources import SourceConfig, SourcesConfig
+from src.features.config.schemas.topics import (
+    DedupeConfig,
+    ScoringConfig,
     TopicConfig,
     TopicsConfig,
 )

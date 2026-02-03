@@ -1,27 +1,36 @@
-"""Constants for the configuration module."""
+"""Compatibility shim for configuration constants."""
 
-# Feature key used for evidence and state tracking
-FEATURE_KEY = "add-yaml-config-contracts"
+from src.features.config.constants import (
+    COMPONENT_CLI,
+    COMPONENT_CONFIG,
+    COMPONENT_EVIDENCE,
+    FEATURE_KEY,
+    FILE_TYPE_ENTITIES,
+    FILE_TYPE_SOURCES,
+    FILE_TYPE_TOPICS,
+    STATUS_P1_DONE,
+    STATUS_P2_E2E_PASSED,
+    STATUS_P3_REFACTORED,
+    STATUS_READY,
+    VALID_URL_SCHEMES,
+    VALIDATION_FAILED,
+    VALIDATION_PASSED,
+)
 
-# Default status values
-STATUS_P1_DONE = "P1_DONE_DEPLOYED"
-STATUS_P2_E2E_PASSED = "P2_E2E_PASSED"
-STATUS_P3_REFACTORED = "P3_REFACTORED_DEPLOYED"
-STATUS_READY = "READY"
 
-# Validation result values
-VALIDATION_PASSED = "PASSED"
-VALIDATION_FAILED = "FAILED"
-
-# Log component names
-COMPONENT_CONFIG = "config"
-COMPONENT_CLI = "cli"
-COMPONENT_EVIDENCE = "evidence"
-
-# Supported URL schemes
-VALID_URL_SCHEMES = ("http://", "https://")
-
-# File type identifiers
-FILE_TYPE_SOURCES = "sources"
-FILE_TYPE_ENTITIES = "entities"
-FILE_TYPE_TOPICS = "topics"
+__all__ = [
+    "FEATURE_KEY",
+    "STATUS_P1_DONE",
+    "STATUS_P2_E2E_PASSED",
+    "STATUS_P3_REFACTORED",
+    "STATUS_READY",
+    "VALIDATION_PASSED",
+    "VALIDATION_FAILED",
+    "COMPONENT_CONFIG",
+    "COMPONENT_CLI",
+    "COMPONENT_EVIDENCE",
+    "VALID_URL_SCHEMES",
+    "FILE_TYPE_SOURCES",
+    "FILE_TYPE_ENTITIES",
+    "FILE_TYPE_TOPICS",
+]
