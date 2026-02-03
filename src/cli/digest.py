@@ -8,9 +8,18 @@ import zoneinfo
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import click
 import structlog
+
+
+if TYPE_CHECKING:
+    from src.collectors.runner import RunnerResult
+    from src.config.effective import EffectiveConfig
+    from src.linker.models import LinkerResult
+    from src.ranker.models import RankerResult
+    from src.store.models import Run
 
 from src.collectors.runner import CollectorRunner
 from src.config.constants import (
@@ -34,6 +43,13 @@ from src.store.store import StateStore
 
 
 logger = structlog.get_logger()
+
+
+# Type aliases for phase results
+CollectionPhaseResult = tuple[
+    "CollectorRunner",  # runner
+    object,  # runner_result (RunnerResult)
+]
 
 
 def get_git_commit() -> str:
@@ -67,12 +83,18 @@ class RunOptions:
     retention_days: int = 90
 
 
-def _execute_run(options: RunOptions) -> None:
-    """Execute the run command with given options."""
-    # Generate run ID
-    run_id = str(uuid.uuid4())
+def _setup_logging_and_context(
+    options: RunOptions, run_id: str
+) -> structlog.typing.FilteringBoundLogger:
+    """Set up logging and return bound logger.
 
-    # Configure logging
+    Args:
+        options: Run options.
+        run_id: Unique run identifier.
+
+    Returns:
+        Bound logger with run context.
+    """
     log_level = logging.DEBUG if options.verbose else logging.INFO
     configure_logging(level=log_level, json_format=options.json_logs)
     bind_run_context(run_id)
@@ -94,19 +116,45 @@ def _execute_run(options: RunOptions) -> None:
         timezone=options.timezone,
     )
 
-    # Validate timezone format
+    return log  # type: ignore[no-any-return]
+
+
+def _validate_timezone(
+    timezone: str, log: structlog.typing.FilteringBoundLogger
+) -> None:
+    """Validate timezone format, exit on failure.
+
+    Args:
+        timezone: Timezone string to validate.
+        log: Logger for error reporting.
+    """
     try:
-        zoneinfo.ZoneInfo(options.timezone)
+        zoneinfo.ZoneInfo(timezone)
     except (KeyError, zoneinfo.ZoneInfoNotFoundError):
-        log.warning("invalid_timezone", timezone=options.timezone)
-        click.echo(f"Error: Invalid timezone '{options.timezone}'", err=True)
+        log.warning("invalid_timezone", timezone=timezone)
+        click.echo(f"Error: Invalid timezone '{timezone}'", err=True)
         sys.exit(1)
 
-    # Load and validate configuration
+
+def _load_configuration(
+    options: RunOptions, run_id: str, log: structlog.typing.FilteringBoundLogger
+) -> "EffectiveConfig":
+    """Load and validate configuration.
+
+    Args:
+        options: Run options with paths.
+        run_id: Run identifier.
+        log: Logger instance.
+
+    Returns:
+        Validated effective configuration.
+    """
+    from src.config.effective import EffectiveConfig
+
     loader = ConfigLoader(run_id=run_id)
 
     try:
-        effective_config = loader.load(
+        effective_config: EffectiveConfig = loader.load(
             sources_path=options.config_path,
             entities_path=options.entities_path,
             topics_path=options.topics_path,
@@ -118,7 +166,6 @@ def _execute_run(options: RunOptions) -> None:
             validation_errors=loader.validation_errors,
         )
 
-        # Print validation summary to stderr with hints
         click.echo("Configuration validation failed:", err=True)
         for error in loader.validation_errors:
             formatted = format_validation_error(
@@ -131,7 +178,6 @@ def _execute_run(options: RunOptions) -> None:
 
         sys.exit(1)
 
-    # Configuration is now validated and ready
     if loader.state != ConfigState.READY:
         log.error("unexpected_state", state=loader.state.name)
         sys.exit(1)
@@ -144,9 +190,267 @@ def _execute_run(options: RunOptions) -> None:
         config_checksum=effective_config.compute_checksum(),
     )
 
-    # Initialize state store (skip in dry-run mode)
+    return effective_config
+
+
+def _run_collection_phase(
+    store: StateStore,
+    effective_config: "EffectiveConfig",
+    strip_params: list[str],
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> "RunnerResult":
+    """Execute the collection phase.
+
+    Args:
+        store: State store instance.
+        effective_config: Validated configuration.
+        strip_params: URL parameters to strip.
+        run_id: Run identifier.
+        log: Logger instance.
+
+    Returns:
+        CollectorRunner result.
+    """
+    log.info("phase_started", phase="collection")
+
+    fetch_config = FetchConfig()
+    http_client = HttpFetcher(
+        config=fetch_config,
+        store=store,
+        run_id=run_id,
+    )
+
+    collector_runner = CollectorRunner(
+        store=store,
+        http_client=http_client,
+        run_id=run_id,
+        max_workers=1,
+        strip_params=strip_params,
+    )
+
+    runner_result = collector_runner.run(
+        sources=effective_config.sources.sources,
+        now=datetime.now(UTC),
+    )
+
+    log.info(
+        "collection_complete",
+        total_items=runner_result.total_items,
+        total_new=runner_result.total_new,
+        sources_succeeded=runner_result.sources_succeeded,
+        sources_failed=runner_result.sources_failed,
+    )
+
+    return runner_result
+
+
+def _run_linking_phase(  # noqa: PLR0913
+    store: StateStore,
+    effective_config: "EffectiveConfig",
+    run_record: "Run",
+    lookback_hours: int,
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> "LinkerResult":
+    """Execute the linking phase.
+
+    Args:
+        store: State store instance.
+        effective_config: Validated configuration.
+        run_record: Current run record.
+        lookback_hours: Hours to look back for items.
+        run_id: Run identifier.
+        log: Logger instance.
+
+    Returns:
+        Linker result with stories.
+    """
+    from src.linker.models import LinkerResult
+
+    log.info("phase_started", phase="linking")
+
+    published_cutoff = datetime.fromtimestamp(
+        run_record.started_at.timestamp() - (lookback_hours * 60 * 60),
+        tz=UTC,
+    )
+
+    all_items = store.get_items_published_since(
+        published_since=published_cutoff,
+        first_seen_since=None,
+    )
+
+    log.info(
+        "items_filtered_by_published_at",
+        lookback_hours=lookback_hours,
+        published_cutoff=published_cutoff.isoformat(),
+        items_after_filter=len(all_items),
+    )
+
+    linker = StoryLinker(
+        run_id=run_id,
+        entities_config=effective_config.entities,
+        topics_config=effective_config.topics,
+    )
+
+    linker_result: LinkerResult = linker.link_items(all_items)
+
+    log.info(
+        "linking_complete",
+        stories_count=len(linker_result.stories),
+        items_in=linker_result.items_in,
+    )
+
+    return linker_result
+
+
+def _run_ranking_phase(
+    linker_result: "LinkerResult",
+    effective_config: "EffectiveConfig",
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> "RankerResult":
+    """Execute the ranking phase.
+
+    Args:
+        linker_result: Result from linking phase.
+        effective_config: Validated configuration.
+        run_id: Run identifier.
+        log: Logger instance.
+
+    Returns:
+        Ranker result with scored stories.
+    """
+    from src.ranker.models import RankerResult
+
+    log.info("phase_started", phase="ranking")
+
+    ranker = StoryRanker(
+        run_id=run_id,
+        topics_config=effective_config.topics,
+        entities_config=effective_config.entities,
+    )
+
+    ranker_result: RankerResult = ranker.rank_stories(linker_result.stories)
+
+    log.info(
+        "ranking_complete",
+        top5_count=len(ranker_result.output.top5),
+        papers_count=len(ranker_result.output.papers),
+        radar_count=len(ranker_result.output.radar),
+    )
+
+    return ranker_result
+
+
+def _run_rendering_phase(  # noqa: PLR0913
+    ranker_result: "RankerResult",
+    runner_result: "RunnerResult",
+    effective_config: "EffectiveConfig",
+    linker_result: "LinkerResult",
+    run_record: "Run",
+    options: RunOptions,
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> None:
+    """Execute the rendering phase.
+
+    Args:
+        ranker_result: Result from ranking phase.
+        runner_result: Result from collection phase.
+        effective_config: Validated configuration.
+        linker_result: Result from linking phase.
+        run_record: Current run record.
+        options: Run options.
+        run_id: Run identifier.
+        log: Logger instance.
+    """
+    log.info("phase_started", phase="rendering")
+
+    source_configs_dict = {s.id: s for s in effective_config.sources.sources}
+    status_computer = StatusComputer(
+        run_id=run_id,
+        source_configs=source_configs_dict,
+    )
+    sources_status = status_computer.compute_all(runner_result)
+
+    run_info = RunInfo(
+        run_id=run_id,
+        started_at=run_record.started_at,
+        finished_at=datetime.now(UTC),
+        items_total=runner_result.total_items,
+        stories_total=len(linker_result.stories),
+        success=True,
+    )
+
+    renderer = StaticRenderer(
+        run_id=run_id,
+        output_dir=options.output_dir,
+        timezone=options.timezone,
+        retention_days=options.retention_days,
+    )
+
+    render_result = renderer.render(
+        ranker_output=ranker_result.output,
+        sources_status=sources_status,
+        run_info=run_info,
+        recent_runs=[run_info],
+    )
+
+    if render_result.success:
+        log.info(
+            "rendering_complete",
+            files_count=len(render_result.manifest.files),
+            total_bytes=render_result.manifest.total_bytes,
+        )
+    else:
+        log.error("rendering_failed", error=render_result.error_summary)
+
+
+def _write_evidence_capture(
+    effective_config: "EffectiveConfig",
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> None:
+    """Write evidence capture file.
+
+    Args:
+        effective_config: Validated configuration.
+        run_id: Run identifier.
+        log: Logger instance (unused but kept for consistency).
+    """
+    _ = log  # Unused but kept for API consistency
+    git_commit = get_git_commit()
+    evidence = EvidenceCapture(
+        feature_key=FEATURE_KEY,
+        run_id=run_id,
+        git_commit=git_commit,
+    )
+
+    evidence.write_state_md(
+        config=effective_config,
+        status=STATUS_P1_DONE,
+        validation_result=VALIDATION_PASSED,
+    )
+
+
+def _execute_run(options: RunOptions) -> None:
+    """Execute the run command with given options.
+
+    Orchestrates the digest pipeline through phases:
+    1. Setup and validation
+    2. Collection
+    3. Linking
+    4. Ranking
+    5. Rendering
+    6. Evidence capture
+    """
+    run_id = str(uuid.uuid4())
+    log = _setup_logging_and_context(options, run_id)
+    _validate_timezone(options.timezone, log)
+    effective_config = _load_configuration(options, run_id, log)
+
     if not options.dry_run:
-        # Get strip params from topics config for URL canonicalization
         strip_params = list(effective_config.topics.dedupe.canonical_url_strip_params)
 
         with StateStore(
@@ -154,201 +458,11 @@ def _execute_run(options: RunOptions) -> None:
             strip_params=strip_params,
             run_id=run_id,
         ) as store:
-            log.info(
-                "store_connected",
-                db_path=str(options.state_path),
-                schema_version=store.get_schema_version(),
+            _execute_pipeline_phases(
+                store, effective_config, strip_params, options, run_id, log
             )
 
-            # Begin run tracking
-            run_record = store.begin_run(run_id)
-            log.info(
-                "run_started_in_store",
-                run_id=run_record.run_id,
-                started_at=run_record.started_at.isoformat(),
-            )
-
-            # Get last successful run for delta detection
-            last_success = store.get_last_successful_run_finished_at()
-            if last_success:
-                log.info(
-                    "last_successful_run",
-                    finished_at=last_success.isoformat(),
-                )
-            else:
-                log.info("no_previous_successful_run")
-
-            # === PHASE 1: COLLECTION ===
-            log.info("phase_started", phase="collection")
-
-            # Initialize HTTP client
-            fetch_config = FetchConfig()
-            http_client = HttpFetcher(
-                config=fetch_config,
-                store=store,
-                run_id=run_id,
-            )
-
-            # Run collectors (sequential to avoid SQLite thread issues)
-            collector_runner = CollectorRunner(
-                store=store,
-                http_client=http_client,
-                run_id=run_id,
-                max_workers=1,  # Sequential execution
-                strip_params=strip_params,
-            )
-
-            runner_result = collector_runner.run(
-                sources=effective_config.sources.sources,
-                now=datetime.now(UTC),
-            )
-
-            log.info(
-                "collection_complete",
-                total_items=runner_result.total_items,
-                total_new=runner_result.total_new,
-                sources_succeeded=runner_result.sources_succeeded,
-                sources_failed=runner_result.sources_failed,
-            )
-
-            # === PHASE 2: LINKING ===
-            log.info("phase_started", phase="linking")
-
-            # Calculate lookback from run start time
-            # Only include items PUBLISHED within the lookback window
-            lookback_hours = options.lookback_hours
-            published_cutoff = datetime.fromtimestamp(
-                run_record.started_at.timestamp() - (lookback_hours * 60 * 60),
-                tz=UTC,
-            )
-
-            # Get items published within the last 24 hours
-            # This filters by published_at (original publication time), not first_seen_at
-            # This ensures we only show content published recently, regardless of
-            # when it was first discovered by the crawler
-            all_items = store.get_items_published_since(
-                published_since=published_cutoff,
-                first_seen_since=None,  # Don't filter by first_seen_at
-            )
-
-            log.info(
-                "items_filtered_by_published_at",
-                lookback_hours=lookback_hours,
-                published_cutoff=published_cutoff.isoformat(),
-                items_after_filter=len(all_items),
-            )
-
-            linker = StoryLinker(
-                run_id=run_id,
-                entities_config=effective_config.entities,
-                topics_config=effective_config.topics,
-            )
-
-            linker_result = linker.link_items(all_items)
-
-            log.info(
-                "linking_complete",
-                stories_count=len(linker_result.stories),
-                items_in=linker_result.items_in,
-            )
-
-            # === PHASE 3: RANKING ===
-            log.info("phase_started", phase="ranking")
-
-            ranker = StoryRanker(
-                run_id=run_id,
-                topics_config=effective_config.topics,
-                entities_config=effective_config.entities,
-            )
-
-            ranker_result = ranker.rank_stories(linker_result.stories)
-
-            log.info(
-                "ranking_complete",
-                top5_count=len(ranker_result.output.top5),
-                papers_count=len(ranker_result.output.papers),
-                radar_count=len(ranker_result.output.radar),
-            )
-
-            # === PHASE 4: RENDERING ===
-            log.info("phase_started", phase="rendering")
-
-            # Compute source health status
-            source_configs_dict = {s.id: s for s in effective_config.sources.sources}
-            status_computer = StatusComputer(
-                run_id=run_id,
-                source_configs=source_configs_dict,
-            )
-            sources_status = status_computer.compute_all(runner_result)
-
-            # Build run info
-            run_info = RunInfo(
-                run_id=run_id,
-                started_at=run_record.started_at,
-                finished_at=datetime.now(UTC),
-                items_total=runner_result.total_items,
-                stories_total=len(linker_result.stories),
-                success=True,
-            )
-
-            # Render static site
-            renderer = StaticRenderer(
-                run_id=run_id,
-                output_dir=options.output_dir,
-                timezone=options.timezone,
-                retention_days=options.retention_days,
-            )
-
-            render_result = renderer.render(
-                ranker_output=ranker_result.output,
-                sources_status=sources_status,
-                run_info=run_info,
-                recent_runs=[run_info],
-            )
-
-            if render_result.success:
-                log.info(
-                    "rendering_complete",
-                    files_count=len(render_result.manifest.files),
-                    total_bytes=render_result.manifest.total_bytes,
-                )
-            else:
-                log.error("rendering_failed", error=render_result.error_summary)
-
-            # End run successfully
-            run_record = store.end_run(run_id, success=True)
-            log.info(
-                "run_finished_in_store",
-                run_id=run_record.run_id,
-                success=run_record.success,
-                finished_at=run_record.finished_at.isoformat()
-                if run_record.finished_at
-                else None,
-            )
-
-            # Get stats for logging
-            stats = store.get_stats()
-            log.info(
-                "store_stats",
-                runs=stats["runs"],
-                items=stats["items"],
-                http_cache=stats["http_cache"],
-            )
-
-    # Write evidence (skip in dry-run mode)
-    if not options.dry_run:
-        git_commit = get_git_commit()
-        evidence = EvidenceCapture(
-            feature_key=FEATURE_KEY,
-            run_id=run_id,
-            git_commit=git_commit,
-        )
-
-        evidence.write_state_md(
-            config=effective_config,
-            status=STATUS_P1_DONE,
-            validation_result=VALIDATION_PASSED,
-        )
+        _write_evidence_capture(effective_config, run_id, log)
     else:
         log.info(
             "dry_run_skip_evidence", message="Skipping evidence capture in dry-run mode"
@@ -361,6 +475,88 @@ def _execute_run(options: RunOptions) -> None:
     )
 
     click.echo(f"Configuration validated successfully. Run ID: {run_id}")
+
+
+def _execute_pipeline_phases(  # noqa: PLR0913
+    store: StateStore,
+    effective_config: "EffectiveConfig",
+    strip_params: list[str],
+    options: RunOptions,
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> None:
+    """Execute all pipeline phases within store context.
+
+    Args:
+        store: State store instance.
+        effective_config: Validated configuration.
+        strip_params: URL parameters to strip.
+        options: Run options.
+        run_id: Run identifier.
+        log: Logger instance.
+    """
+    log.info(
+        "store_connected",
+        db_path=str(options.state_path),
+        schema_version=store.get_schema_version(),
+    )
+
+    run_record = store.begin_run(run_id)
+    log.info(
+        "run_started_in_store",
+        run_id=run_record.run_id,
+        started_at=run_record.started_at.isoformat(),
+    )
+
+    last_success = store.get_last_successful_run_finished_at()
+    if last_success:
+        log.info("last_successful_run", finished_at=last_success.isoformat())
+    else:
+        log.info("no_previous_successful_run")
+
+    # Phase 1: Collection
+    runner_result = _run_collection_phase(
+        store, effective_config, strip_params, run_id, log
+    )
+
+    # Phase 2: Linking
+    linker_result = _run_linking_phase(
+        store, effective_config, run_record, options.lookback_hours, run_id, log
+    )
+
+    # Phase 3: Ranking
+    ranker_result = _run_ranking_phase(linker_result, effective_config, run_id, log)
+
+    # Phase 4: Rendering
+    _run_rendering_phase(
+        ranker_result,
+        runner_result,
+        effective_config,
+        linker_result,
+        run_record,
+        options,
+        run_id,
+        log,
+    )
+
+    # Finalize run
+    run_record = store.end_run(run_id, success=True)
+    log.info(
+        "run_finished_in_store",
+        run_id=run_record.run_id,
+        success=run_record.success,
+        finished_at=run_record.finished_at.isoformat()
+        if run_record.finished_at
+        else None,
+    )
+
+    stats = store.get_stats()
+    log.info(
+        "store_stats",
+        runs=stats["runs"],
+        items=stats["items"],
+        http_cache=stats["http_cache"],
+    )
 
 
 @click.group()

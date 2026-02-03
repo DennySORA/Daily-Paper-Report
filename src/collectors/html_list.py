@@ -194,35 +194,14 @@ class HtmlListCollector(BaseCollector):
             )
 
             # Item page date recovery phase
-            items_needing_recovery = sum(
-                1
-                for item in items
-                if item.date_confidence == DateConfidence.LOW
-                and item.published_at is None
+            items = self._recover_item_dates(
+                items=items,
+                profile=profile,
+                http_client=http_client,
+                source_config=source_config,
+                state_machine=state_machine,
+                log=log,
             )
-
-            if items_needing_recovery > 0 and profile.enable_item_page_recovery:
-                # Transition to item page parsing
-                state_machine.to_parsing_item_pages()
-
-                # Recover dates from item pages
-                item_fetcher = ItemPageFetcher(
-                    http_client=http_client,
-                    profile=profile,
-                    run_id=self._run_id,
-                )
-
-                items, recovery_report = item_fetcher.recover_dates_for_items(
-                    items=items,
-                    source_id=source_config.id,
-                )
-
-                log.info(
-                    "item_page_recovery_complete",
-                    stage="item",
-                    item_pages_fetched=recovery_report.pages_fetched,
-                    date_recovered_count=recovery_report.dates_recovered,
-                )
 
             # Filter by time: only keep items published in the last 24 hours
             items = self.filter_items_by_time(
@@ -279,6 +258,57 @@ class HtmlListCollector(BaseCollector):
                 parse_warnings=parse_warnings,
                 state=SourceState.SOURCE_FAILED,
             )
+
+    def _recover_item_dates(  # noqa: PLR0913
+        self,
+        items: list[Item],
+        profile: DomainProfile,
+        http_client: HttpFetcher,
+        source_config: SourceConfig,
+        state_machine: SourceStateMachine,
+        log: structlog.typing.FilteringBoundLogger,
+    ) -> list[Item]:
+        """Recover dates from item pages for items with low date confidence.
+
+        Args:
+            items: Items to potentially recover dates for.
+            profile: Domain profile with recovery settings.
+            http_client: HTTP client for fetching.
+            source_config: Source configuration.
+            state_machine: State machine for tracking.
+            log: Logger instance.
+
+        Returns:
+            Items with potentially recovered dates.
+        """
+        items_needing_recovery = sum(
+            1
+            for item in items
+            if item.date_confidence == DateConfidence.LOW and item.published_at is None
+        )
+
+        if items_needing_recovery > 0 and profile.enable_item_page_recovery:
+            state_machine.to_parsing_item_pages()
+
+            item_fetcher = ItemPageFetcher(
+                http_client=http_client,
+                profile=profile,
+                run_id=self._run_id,
+            )
+
+            items, recovery_report = item_fetcher.recover_dates_for_items(
+                items=items,
+                source_id=source_config.id,
+            )
+
+            log.info(
+                "item_page_recovery_complete",
+                stage="item",
+                item_pages_fetched=recovery_report.pages_fetched,
+                date_recovered_count=recovery_report.dates_recovered,
+            )
+
+        return items
 
     def _parse_list_items(  # noqa: PLR0912, PLR0915, C901
         self,
