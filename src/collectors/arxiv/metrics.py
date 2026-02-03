@@ -173,9 +173,19 @@ class ArxivMetrics:
             MetricsSnapshot containing all metrics with type-safe access.
         """
         with self._data_lock:
+            # Copy data while holding lock to avoid race conditions.
+            # Compute latency stats inline to avoid re-acquiring lock.
+            samples = sorted(self._data.api_latency_samples)
+            count = len(samples)
+            api_latency = LatencyStats(
+                p50=samples[int(count * 0.5)] if count > 0 else 0.0,
+                p90=samples[int(count * 0.9)] if count > 0 else 0.0,
+                p99=samples[int(count * 0.99)] if count > 0 else 0.0,
+                count=float(count),
+            )
             return MetricsSnapshot(
                 items_by_mode_category=dict(self._data.items_by_mode_category),
                 deduped_total=self._data.deduped_total,
-                api_latency=self.get_api_latency_stats(),
+                api_latency=api_latency,
                 errors_by_type=dict(self._data.errors_by_type),
             )

@@ -17,12 +17,14 @@ class TestSourceState:
         assert SourceState.SOURCE_PENDING == "SOURCE_PENDING"
         assert SourceState.SOURCE_FETCHING == "SOURCE_FETCHING"
         assert SourceState.SOURCE_PARSING == "SOURCE_PARSING"
+        assert SourceState.SOURCE_PARSING_LIST == "SOURCE_PARSING_LIST"
+        assert SourceState.SOURCE_PARSING_ITEM_PAGES == "SOURCE_PARSING_ITEM_PAGES"
         assert SourceState.SOURCE_DONE == "SOURCE_DONE"
         assert SourceState.SOURCE_FAILED == "SOURCE_FAILED"
 
     def test_state_count(self) -> None:
-        """Verify exactly 5 states exist."""
-        assert len(SourceState) == 5
+        """Verify exactly 7 states exist."""
+        assert len(SourceState) == 7
 
 
 class TestSourceStateMachine:

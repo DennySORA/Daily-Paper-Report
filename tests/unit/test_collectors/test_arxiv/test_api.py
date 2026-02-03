@@ -23,6 +23,8 @@ class MockRateLimiter:
 
 
 # Sample arXiv API Atom response
+# Note: Published dates are set within a few hours of each other so both
+# items pass the 24-hour lookback filter when using the matching run_timestamp.
 SAMPLE_API_RESPONSE = b"""<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:arxiv="http://arxiv.org/schemas/atom">
@@ -34,8 +36,8 @@ SAMPLE_API_RESPONSE = b"""<?xml version="1.0" encoding="UTF-8"?>
     <title>DeepSeek: A Large Language Model</title>
     <summary>This paper presents DeepSeek, a large language model...</summary>
     <author><name>Test Author</name></author>
-    <published>2024-01-15T00:00:00Z</published>
-    <updated>2024-01-16T12:00:00Z</updated>
+    <published>2024-01-15T10:00:00Z</published>
+    <updated>2024-01-15T12:00:00Z</updated>
     <arxiv:primary_category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
     <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
     <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
@@ -47,8 +49,8 @@ SAMPLE_API_RESPONSE = b"""<?xml version="1.0" encoding="UTF-8"?>
     <title>DeepSeek-Coder: A Code Model</title>
     <summary>This paper presents DeepSeek-Coder...</summary>
     <author><name>Another Author</name></author>
-    <published>2024-01-14T00:00:00Z</published>
-    <updated>2024-01-15T12:00:00Z</updated>
+    <published>2024-01-15T08:00:00Z</published>
+    <updated>2024-01-15T10:00:00Z</updated>
     <arxiv:primary_category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
     <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
     <link href="http://arxiv.org/abs/2401.12346v2" rel="alternate" type="text/html"/>
@@ -155,7 +157,10 @@ class TestArxivApiCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        # Use a timestamp close to the sample data dates (2024-01-15/16)
+        # so items aren't filtered out by the 24-hour lookback window
+        run_timestamp = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
+        result = collector.collect(source_config, mock_client, run_timestamp)
 
         assert result.success
         assert result.state == SourceState.SOURCE_DONE
@@ -176,7 +181,9 @@ class TestArxivApiCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        # Use a timestamp close to the sample data dates
+        run_timestamp = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
+        result = collector.collect(source_config, mock_client, run_timestamp)
 
         for item in result.items:
             assert item.url.startswith("https://arxiv.org/abs/")
@@ -266,7 +273,9 @@ class TestArxivApiCollector:
             error=None,
         )
 
-        collector.collect(source_config, mock_client, datetime.now(UTC))
+        # Use a timestamp close to the sample data dates
+        run_timestamp = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
+        collector.collect(source_config, mock_client, run_timestamp)
 
         metrics = ArxivMetrics.get_instance()
         assert metrics.get_items_total("api") == 2
@@ -287,7 +296,9 @@ class TestArxivApiCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        # Use a timestamp close to the sample data dates
+        run_timestamp = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
+        result = collector.collect(source_config, mock_client, run_timestamp)
 
         import json
 
@@ -311,7 +322,9 @@ class TestArxivApiCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        # Use a timestamp close to the sample data dates
+        run_timestamp = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
+        result = collector.collect(source_config, mock_client, run_timestamp)
 
         assert result.items[0].published_at is not None
         from src.store.models import DateConfidence
