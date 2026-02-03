@@ -28,6 +28,7 @@ const isActiveRoute = (to: string) => {
 <template>
   <header
     class="sticky top-0 z-50 bg-[var(--color-surface-raised)]/95 backdrop-blur-lg border-b border-[var(--color-border-subtle)]"
+    role="banner"
   >
     <div class="container-app">
       <div class="flex items-center justify-between h-14">
@@ -35,6 +36,7 @@ const isActiveRoute = (to: string) => {
           to="/"
           class="flex items-center gap-2.5 group focus-ring rounded-lg"
           data-testid="logo-link"
+          aria-label="Daily Paper Report - Home"
         >
           <span
             class="w-8 h-8 flex items-center justify-center rounded-lg bg-[oklch(0.55_0.20_264/0.1)] text-[oklch(0.55_0.20_264)] group-hover:bg-[oklch(0.55_0.20_264/0.15)] transition-colors duration-[var(--duration-fast)]"
@@ -70,7 +72,10 @@ const isActiveRoute = (to: string) => {
           </div>
         </RouterLink>
 
-        <nav class="flex items-center gap-0.5">
+        <nav
+          class="flex items-center gap-0.5"
+          aria-label="Main navigation"
+        >
           <RouterLink
             v-for="link in navLinks"
             :key="link.to"
@@ -82,6 +87,7 @@ const isActiveRoute = (to: string) => {
                 : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-sunken)]',
             ]"
             :data-testid="`nav-${link.testId}`"
+            :aria-current="isActiveRoute(link.to) ? 'page' : undefined"
           >
             {{ link.label }}
           </RouterLink>
@@ -92,6 +98,7 @@ const isActiveRoute = (to: string) => {
             rel="noopener noreferrer"
             class="ml-2 p-2 text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-sunken)] rounded-md transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] focus-outline"
             title="View source on GitHub"
+            aria-label="View source on GitHub (opens in new tab)"
             data-testid="github-link"
           >
             <IconGithub :size="18" />

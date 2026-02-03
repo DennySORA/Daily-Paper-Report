@@ -406,6 +406,7 @@ function getTabCount(tabId: TabView): number {
     >
       <div
         class="search-box"
+        role="search"
         :class="{ 'search-box--focused': isSearchFocused, 'search-box--has-query': searchQuery.length > 0 }"
       >
         <svg
@@ -414,6 +415,7 @@ function getTabCount(tabId: TabView): number {
           fill="none"
           stroke="currentColor"
           stroke-width="2"
+          aria-hidden="true"
         >
           <circle
             cx="11"
@@ -424,17 +426,20 @@ function getTabCount(tabId: TabView): number {
         </svg>
         <input
           v-model="searchQuery"
-          type="text"
+          type="search"
           class="search-input"
           placeholder="Search papers by title, author, or content..."
+          aria-label="Search papers"
           @focus="setFocus(true)"
           @blur="setFocus(false)"
         >
         <Transition name="fade">
           <button
             v-if="searchQuery.length > 0"
+            type="button"
             class="search-clear-btn"
             title="Clear search"
+            aria-label="Clear search"
             @click="clearSearch"
           >
             <svg

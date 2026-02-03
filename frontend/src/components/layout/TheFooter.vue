@@ -12,7 +12,10 @@ const formatDate = (dateStr: string | null): string => {
 </script>
 
 <template>
-  <footer class="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface-sunken)] py-4">
+  <footer
+    class="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface-sunken)] py-4"
+    role="contentinfo"
+  >
     <div class="container-app">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <div
