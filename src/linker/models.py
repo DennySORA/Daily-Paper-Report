@@ -111,6 +111,12 @@ class Story(BaseModel):
 
     def _extract_summary(self, raw_data: dict[str, Any]) -> str | None:
         """Extract summary/abstract from raw_data."""
+        # Check for readme_summary first (HuggingFace models)
+        readme_summary = raw_data.get("readme_summary")
+        if isinstance(readme_summary, str) and readme_summary:
+            return readme_summary
+
+        # Fallback to existing summary fields
         summary = raw_data.get("abstract_snippet") or raw_data.get("summary")
         return summary if isinstance(summary, str) else None
 

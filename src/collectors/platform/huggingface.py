@@ -23,10 +23,12 @@ from src.collectors.platform.constants import (
     FIELD_MODEL_ID,
     FIELD_PIPELINE_TAG,
     FIELD_PLATFORM,
+    FIELD_README_SUMMARY,
     HF_API_BASE_URL,
     HF_API_MODELS_PATH,
     HF_DEFAULT_MAX_QPS,
     PLATFORM_HUGGINGFACE,
+    README_SUMMARY_MAX_LENGTH,
 )
 from src.collectors.platform.helpers import get_auth_token, is_auth_error
 from src.collectors.platform.metrics import PlatformMetrics
@@ -236,6 +238,15 @@ class HuggingFaceOrgCollector(BaseCollector):
 
             items = self.sort_items_deterministically(items)
             items = self.enforce_max_items(items, source_config.max_items)
+
+            # Fetch README summaries for each model
+            items = self._enrich_with_readme_summaries(
+                items=items,
+                http_client=http_client,
+                source_id=source_config.id,
+                parse_warnings=parse_warnings,
+                log=log,
+            )
 
             self._metrics.record_items(PLATFORM_HUGGINGFACE, len(items))
 
@@ -486,3 +497,152 @@ class HuggingFaceOrgCollector(BaseCollector):
             url=canonical_url,
             extra=extra if extra else None,
         )
+
+    def _fetch_readme_summary(
+        self,
+        model_id: str,
+        http_client: HttpFetcher,
+        source_id: str,
+    ) -> str | None:
+        """Fetch and extract summary from model's README.md.
+
+        Args:
+            model_id: HuggingFace model ID (e.g., 'openai/whisper-large-v3').
+            http_client: HTTP client for fetching.
+            source_id: Source ID for logging.
+
+        Returns:
+            Summary string extracted from README or None if unavailable.
+        """
+        readme_url = f"https://huggingface.co/{model_id}/raw/main/README.md"
+
+        # Rate limit
+        self._rate_limiter.acquire()
+
+        result = http_client.fetch(
+            source_id=source_id,
+            url=readme_url,
+            extra_headers=self._build_headers(),
+        )
+
+        if result.error or not result.body_bytes:
+            return None
+
+        try:
+            readme_text = result.body_bytes.decode("utf-8", errors="ignore")
+        except Exception:  # noqa: BLE001
+            return None
+
+        return self._extract_readme_summary(readme_text)
+
+    def _extract_readme_summary(self, readme_text: str) -> str | None:
+        """Extract summary from README markdown content.
+
+        Removes YAML frontmatter, markdown headers, and badges to find
+        the first meaningful paragraph of text.
+
+        Args:
+            readme_text: Raw README.md content.
+
+        Returns:
+            Extracted summary or None if no meaningful content found.
+        """
+        # Remove YAML frontmatter (---...---)
+        readme_text = re.sub(r"^---\n.*?\n---\n", "", readme_text, flags=re.DOTALL)
+
+        # Split into lines and filter
+        lines = readme_text.split("\n")
+        content_lines: list[str] = []
+
+        for line in lines:
+            stripped = line.strip()
+            # Skip headers, badges, links-only lines, and empty lines
+            if not stripped:
+                continue
+            if stripped.startswith("#"):
+                continue
+            if stripped.startswith(("![", "[!")):
+                continue
+            # Skip lines that are only links
+            if stripped.startswith("[") and stripped.endswith(")"):
+                continue
+            # Skip HTML comments
+            if stripped.startswith("<!--"):
+                continue
+            content_lines.append(stripped)
+
+        # Join first 10 non-empty lines
+        summary = " ".join(content_lines[:10])
+
+        if not summary:
+            return None
+
+        # Truncate to max length, breaking at word boundary
+        if len(summary) > README_SUMMARY_MAX_LENGTH:
+            summary = summary[:README_SUMMARY_MAX_LENGTH].rsplit(" ", 1)[0] + "..."
+
+        return summary
+
+    def _enrich_with_readme_summaries(
+        self,
+        items: list[Item],
+        http_client: HttpFetcher,
+        source_id: str,
+        parse_warnings: list[str],
+        log: structlog.stdlib.BoundLogger,
+    ) -> list[Item]:
+        """Enrich items with README summaries.
+
+        Fetches README.md for each model and extracts a summary to store
+        in the raw_json field.
+
+        Args:
+            items: List of items to enrich.
+            http_client: HTTP client for fetching.
+            source_id: Source ID for logging.
+            parse_warnings: List to append warnings to.
+            log: Logger instance.
+
+        Returns:
+            List of enriched items.
+        """
+        enriched_items: list[Item] = []
+
+        for item in items:
+            try:
+                raw_data = json.loads(item.raw_json) if item.raw_json else {}
+                model_id = raw_data.get(FIELD_MODEL_ID)
+
+                if model_id:
+                    log.debug("fetching_readme", model_id=model_id)
+                    readme_summary = self._fetch_readme_summary(
+                        model_id=model_id,
+                        http_client=http_client,
+                        source_id=source_id,
+                    )
+
+                    if readme_summary:
+                        raw_data[FIELD_README_SUMMARY] = readme_summary
+                        new_raw_json, _ = self.truncate_raw_json(raw_data)
+                        # Create new Item with updated raw_json
+                        enriched_item = Item(
+                            url=item.url,
+                            source_id=item.source_id,
+                            tier=item.tier,
+                            kind=item.kind,
+                            title=item.title,
+                            published_at=item.published_at,
+                            date_confidence=item.date_confidence,
+                            content_hash=item.content_hash,
+                            raw_json=new_raw_json,
+                            first_seen_at=item.first_seen_at,
+                        )
+                        enriched_items.append(enriched_item)
+                        continue
+
+                enriched_items.append(item)
+            except Exception as e:  # noqa: BLE001
+                parse_warnings.append(f"Failed to fetch README for item: {e}")
+                enriched_items.append(item)
+
+        return enriched_items

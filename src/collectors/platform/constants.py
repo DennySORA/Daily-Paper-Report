@@ -37,6 +37,7 @@ MODEL_CARD_MAX_SIZE = 200 * 1024  # 200 KB
 
 # Truncation limits for raw_json fields
 RELEASE_BODY_MAX_LENGTH = 1000  # Max chars for release notes body
+README_SUMMARY_MAX_LENGTH = 800  # Max chars for HuggingFace README summary
 
 # Platform identifiers
 PLATFORM_GITHUB = "github"
@@ -48,6 +49,7 @@ PLATFORM_HF_DAILY_PAPERS = "hf_daily_papers"
 
 # Field names for raw_json
 FIELD_PLATFORM = "platform"
+FIELD_README_SUMMARY = "readme_summary"
 FIELD_RELEASE_ID = "release_id"
 FIELD_TAG_NAME = "tag_name"
 FIELD_PRERELEASE = "prerelease"
