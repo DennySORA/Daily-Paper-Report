@@ -2,11 +2,12 @@
 import { computed, ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDigestStore } from '@/stores/digest'
+import { useSearch, matchesSearch } from '@/shared/composables/useSearch'
 import StoryCard from '@/components/ui/StoryCard.vue'
-import type { Story } from '@/types/digest'
 
 const route = useRoute()
 const digestStore = useDigestStore()
+const { searchQuery, isSearchFocused, clearSearch, setFocus } = useSearch()
 
 // Get target date from route params (for /day/:date routes)
 const targetDate = computed(() => {
@@ -33,9 +34,6 @@ const hasError = computed(() => digestStore.error !== null)
 const errorMessage = computed(() => digestStore.error)
 const runDate = computed(() => digestStore.runDate)
 const runInfo = computed(() => digestStore.runInfo)
-// Search state
-const searchQuery = ref('')
-const isSearchFocused = ref(false)
 
 // Tab state
 type TabView = 'category' | 'source'
@@ -65,16 +63,6 @@ const stats = computed(() => {
       : null,
   }
 })
-
-// Search filter function
-const matchesSearch = (story: Story, query: string): boolean => {
-  if (!query.trim()) return true
-  const lowerQuery = query.toLowerCase()
-  const titleMatch = story.title.toLowerCase().includes(lowerQuery)
-  const authorMatch = story.authors?.some(a => a.toLowerCase().includes(lowerQuery)) ?? false
-  const summaryMatch = story.summary?.toLowerCase().includes(lowerQuery) ?? false
-  return titleMatch || authorMatch || summaryMatch
-}
 
 // Papers by category with top pick
 const categoriesWithPapers = computed(() => {
@@ -155,11 +143,6 @@ const totalSearchResults = computed(() => {
   if (!searchQuery.value.trim()) return null
   return categoriesWithPapers.value.reduce((sum, cat) => sum + cat.count, 0)
 })
-
-// Clear search
-const clearSearch = () => {
-  searchQuery.value = ''
-}
 
 // Auto-select first category/source on mount
 onMounted(() => {
@@ -444,8 +427,8 @@ function getTabCount(tabId: TabView): number {
           type="text"
           class="search-input"
           placeholder="Search papers by title, author, or content..."
-          @focus="isSearchFocused = true"
-          @blur="isSearchFocused = false"
+          @focus="setFocus(true)"
+          @blur="setFocus(false)"
         >
         <Transition name="fade">
           <button

@@ -1,6 +1,22 @@
 <script setup lang="ts">
 import type { Story } from '@/types/digest'
 import { computed } from 'vue'
+import {
+  formatDate,
+  formatRelativeTime,
+} from '@/shared/composables/useTimeFormat'
+import {
+  decodeLatex,
+  stripHtml,
+  cleanArxivPrefix,
+  cleanLatexEmphasis,
+  looksLikeImageAlt,
+} from '@/shared/composables/useLatexDecoder'
+import {
+  formatNumber,
+  formatPipelineTag,
+  formatSourceId,
+} from '@/shared/composables/useNumberFormat'
 
 interface Props {
   story: Story
@@ -29,37 +45,6 @@ const props = withDefaults(defineProps<Props>(), {
   compact: false,
 })
 
-// Format date as absolute date
-const formatDate = (dateStr: string | null): string => {
-  if (!dateStr) return 'Date unknown'
-  const date = new Date(dateStr)
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
-
-// Format as relative time
-const formatRelativeTime = (dateStr: string | null): string => {
-  if (!dateStr) return ''
-  const date = new Date(dateStr)
-  const now = new Date()
-  const diffMs = now.getTime() - date.getTime()
-  const diffMins = Math.floor(diffMs / (1000 * 60))
-  const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
-
-  if (diffMins < 60) return `${diffMins}m ago`
-  if (diffHours < 24) return `${diffHours}h ago`
-  const diffDays = Math.floor(diffHours / 24)
-  if (diffDays === 1) return 'Yesterday'
-  if (diffDays < 7) return `${diffDays}d ago`
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`
-  return formatDate(dateStr)
-}
-
 // Get link type label
 const getLinkTypeLabel = (linkType: string): string => {
   const labels: Record<string, string> = {
@@ -72,129 +57,6 @@ const getLinkTypeLabel = (linkType: string): string => {
     official: 'Official',
   }
   return labels[linkType] ?? linkType
-}
-
-// Decode LaTeX escape sequences commonly found in arXiv data
-const decodeLatex = (text: string): string => {
-  if (!text) return text
-
-  // First handle math mode superscripts and subscripts (e.g., $^3$, $_{10}$)
-  const result = text
-    // Superscripts in math mode: $^{...}$ or $^X$
-    .replace(/\$\^{([^}]+)}\$/g, (_, content) => toSuperscript(content))
-    .replace(/\$\^([0-9a-zA-Z])\$/g, (_, char) => toSuperscript(char))
-    // Subscripts in math mode: $_{...}$ or $_X$
-    .replace(/\$_{([^}]+)}\$/g, (_, content) => toSubscript(content))
-    .replace(/\$_([0-9a-zA-Z])\$/g, (_, char) => toSubscript(char))
-    // Remove remaining empty math delimiters
-    .replace(/\$\$/g, '')
-
-  return result
-    // Accented characters
-    .replace(/\\'e/g, 'é')
-    .replace(/\\'a/g, 'á')
-    .replace(/\\'i/g, 'í')
-    .replace(/\\'o/g, 'ó')
-    .replace(/\\'u/g, 'ú')
-    .replace(/\\"e/g, 'ë')
-    .replace(/\\"a/g, 'ä')
-    .replace(/\\"i/g, 'ï')
-    .replace(/\\"o/g, 'ö')
-    .replace(/\\"u/g, 'ü')
-    .replace(/\\`e/g, 'è')
-    .replace(/\\`a/g, 'à')
-    .replace(/\\`i/g, 'ì')
-    .replace(/\\`o/g, 'ò')
-    .replace(/\\`u/g, 'ù')
-    .replace(/\\~n/g, 'ñ')
-    .replace(/\\c\{c\}/g, 'ç')
-    .replace(/\\c c/g, 'ç')
-    .replace(/\\\^e/g, 'ê')
-    .replace(/\\\^a/g, 'â')
-    .replace(/\\\^i/g, 'î')
-    .replace(/\\\^o/g, 'ô')
-    .replace(/\\\^u/g, 'û')
-    // Common LaTeX symbols
-    .replace(/\\&/g, '&')
-    .replace(/\\\$/g, '$')
-    .replace(/\\%/g, '%')
-    .replace(/\\_/g, '_')
-    .replace(/\\#/g, '#')
-    .replace(/\\{/g, '{')
-    .replace(/\\}/g, '}')
-    // Handle remaining backslash escapes
-    .replace(/\\\\/g, '')
-}
-
-// Convert digits/letters to Unicode superscript
-const toSuperscript = (str: string): string => {
-  const superscriptMap: Record<string, string> = {
-    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
-    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
-    '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾',
-    'n': 'ⁿ', 'i': 'ⁱ',
-  }
-  return str.split('').map(c => superscriptMap[c] || c).join('')
-}
-
-// Convert digits/letters to Unicode subscript
-const toSubscript = (str: string): string => {
-  const subscriptMap: Record<string, string> = {
-    '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
-    '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
-    '+': '₊', '-': '₋', '=': '₌', '(': '₍', ')': '₎',
-    'a': 'ₐ', 'e': 'ₑ', 'o': 'ₒ', 'x': 'ₓ',
-  }
-  return str.split('').map(c => subscriptMap[c] || c).join('')
-}
-
-// Strip HTML tags from text
-const stripHtml = (html: string): string => {
-  return html
-    .replace(/<[^>]*>/g, '')
-    .replace(/&[a-zA-Z0-9#]+;/g, ' ')
-    .trim()
-}
-
-// Clean arXiv metadata prefix from summary
-const cleanArxivPrefix = (text: string): string => {
-  // Remove patterns like "arXiv:2507.23541v4 Announce Type: replace Abstract: "
-  // or "arXiv:2507.23541 Announce Type: new Abstract: "
-  // or "arXiv:2410.01553v2 Announce Type: replace-cross Abstract: "
-  return text
-    .replace(/^arXiv:\d+\.\d+(?:v\d+)?\s+Announce Type:\s*[\w-]+\s*Abstract:\s*/i, '')
-    .trim()
-}
-
-// Clean LaTeX emphasis and formatting commands from text
-const cleanLatexEmphasis = (text: string): string => {
-  return text
-    // Handle {\em text} -> text
-    .replace(/\{\\em\s+([^}]+)\}/g, '$1')
-    // Handle \emph{text} -> text
-    .replace(/\\emph\{([^}]+)\}/g, '$1')
-    // Handle {\it text} -> text
-    .replace(/\{\\it\s+([^}]+)\}/g, '$1')
-    // Handle {\bf text} -> text
-    .replace(/\{\\bf\s+([^}]+)\}/g, '$1')
-    // Handle \textit{text} -> text
-    .replace(/\\textit\{([^}]+)\}/g, '$1')
-    // Handle \textbf{text} -> text
-    .replace(/\\textbf\{([^}]+)\}/g, '$1')
-}
-
-// Check if text looks like image alt text (not a real summary)
-const looksLikeImageAlt = (text: string): boolean => {
-  const altPatterns = [
-    /^illustration\s+of\s+/i,
-    /^image\s+of\s+/i,
-    /^photo\s+of\s+/i,
-    /^screenshot\s+of\s+/i,
-    /^diagram\s+(of|showing)\s+/i,
-    /^figure\s+\d+/i,
-    /^a\s+(photo|image|illustration)\s+/i,
-  ]
-  return altPatterns.some((pattern) => pattern.test(text.trim()))
 }
 
 // Clean and prepare summary (no truncation for scrollable display)
@@ -272,33 +134,6 @@ const hasHfMetadata = computed(() => {
     props.story.hf_metadata.likes !== undefined
   )
 })
-
-// Format large numbers with K/M suffix
-const formatNumber = (num: number): string => {
-  if (num >= 1_000_000) {
-    return `${(num / 1_000_000).toFixed(1)}M`
-  }
-  if (num >= 1_000) {
-    return `${(num / 1_000).toFixed(1)}K`
-  }
-  return num.toString()
-}
-
-// Format pipeline tag for display (e.g., "text-generation" -> "Text Generation")
-const formatPipelineTag = (tag: string): string => {
-  return tag
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
-
-// Format source ID to readable name
-const formatSourceId = (sourceId: string): string => {
-  return sourceId
-    .replace(/^hf-/, '')
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase())
-}
 
 // Card classes based on props
 const cardClasses = computed(() => {
