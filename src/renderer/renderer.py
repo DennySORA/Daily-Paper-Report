@@ -192,19 +192,22 @@ class StaticRenderer:
     def _get_archive_dates(self, current_date: str) -> list[str]:
         """Get list of existing archive dates.
 
+        Scans api/day/*.json files to find dates that have actual data.
+        Only includes dates where JSON data exists.
+
         Args:
             current_date: Current run date (will be included).
 
         Returns:
             List of date strings in descending order.
         """
-        day_dir = self._output_dir / "day"
+        api_day_dir = self._output_dir / "api" / "day"
         dates: set[str] = {current_date}
 
-        if day_dir.exists():
-            for html_file in day_dir.glob("*.html"):
-                # Extract date from filename (YYYY-MM-DD.html)
-                date_str = html_file.stem
+        if api_day_dir.exists():
+            for json_file in api_day_dir.glob("*.json"):
+                # Extract date from filename (YYYY-MM-DD.json)
+                date_str = json_file.stem
                 if self._is_valid_date(date_str):
                     dates.add(date_str)
 

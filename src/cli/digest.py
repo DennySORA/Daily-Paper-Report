@@ -1005,13 +1005,17 @@ def backfill(  # noqa: PLR0913, PLR0915
                 success=True,
             )
 
-            # Get archive dates (scan existing day/*.html files)
+            # Ensure day directories exist (for HTML routing and JSON data)
             day_dir = output_dir / "day"
             day_dir.mkdir(parents=True, exist_ok=True)
+            api_day_dir = output_dir / "api" / "day"
+            api_day_dir.mkdir(parents=True, exist_ok=True)
+
+            # Get archive dates (scan existing api/day/*.json files)
             archive_dates = set()
             date_str_len = len("YYYY-MM-DD")  # 10 characters
-            for html_file in day_dir.glob("*.html"):
-                date_str = html_file.stem
+            for json_file in api_day_dir.glob("*.json"):
+                date_str = json_file.stem
                 if len(date_str) == date_str_len:
                     archive_dates.add(date_str)
             archive_dates.add(target_date)
@@ -1034,7 +1038,9 @@ def backfill(  # noqa: PLR0913, PLR0915
 
             # Create placeholder HTML file (will be replaced by Vue SPA)
             placeholder_path = day_dir / f"{target_date}.html"
-            placeholder_content = f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
+            placeholder_content = (
+                f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
+            )
             placeholder_path.write_text(placeholder_content)
 
             generated_count += 1
