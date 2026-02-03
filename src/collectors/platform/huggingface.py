@@ -28,6 +28,7 @@ from src.collectors.platform.constants import (
     HF_API_MODELS_PATH,
     HF_DEFAULT_MAX_QPS,
     PLATFORM_HUGGINGFACE,
+    README_MIN_LINE_LENGTH,
     README_SUMMARY_MAX_LENGTH,
 )
 from src.collectors.platform.helpers import get_auth_token, is_auth_error
@@ -538,7 +539,7 @@ class HuggingFaceOrgCollector(BaseCollector):
     def _extract_readme_summary(self, readme_text: str) -> str | None:
         """Extract summary from README markdown content.
 
-        Removes YAML frontmatter, markdown headers, and badges to find
+        Removes YAML frontmatter, markdown headers, HTML tags, and badges to find
         the first meaningful paragraph of text.
 
         Args:
@@ -550,29 +551,46 @@ class HuggingFaceOrgCollector(BaseCollector):
         # Remove YAML frontmatter (---...---)
         readme_text = re.sub(r"^---\n.*?\n---\n", "", readme_text, flags=re.DOTALL)
 
+        # Remove HTML tags entirely
+        readme_text = re.sub(r"<[^>]+>", "", readme_text)
+
+        # Remove markdown links but keep text: [text](url) -> text
+        readme_text = re.sub(r"\[([^\]]*)\]\([^)]+\)", r"\1", readme_text)
+
+        # Remove markdown images: ![alt](url)
+        readme_text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", readme_text)
+
         # Split into lines and filter
         lines = readme_text.split("\n")
         content_lines: list[str] = []
 
         for line in lines:
             stripped = line.strip()
-            # Skip headers, badges, links-only lines, and empty lines
+            # Skip empty lines
             if not stripped:
                 continue
+            # Skip markdown headers
             if stripped.startswith("#"):
                 continue
-            if stripped.startswith(("![", "[!")):
-                continue
-            # Skip lines that are only links
-            if stripped.startswith("[") and stripped.endswith(")"):
+            # Skip badge-style markdown: [!badge]
+            if stripped.startswith("[!"):
                 continue
             # Skip HTML comments
             if stripped.startswith("<!--"):
+                continue
+            # Skip horizontal rules
+            if stripped in ("---", "***", "___"):
+                continue
+            # Skip lines that are too short (likely just whitespace/separators)
+            if len(stripped) < README_MIN_LINE_LENGTH:
                 continue
             content_lines.append(stripped)
 
         # Join first 10 non-empty lines
         summary = " ".join(content_lines[:10])
+
+        # Clean up extra whitespace
+        summary = re.sub(r"\s+", " ", summary).strip()
 
         if not summary:
             return None

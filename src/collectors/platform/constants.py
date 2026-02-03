@@ -38,6 +38,7 @@ MODEL_CARD_MAX_SIZE = 200 * 1024  # 200 KB
 # Truncation limits for raw_json fields
 RELEASE_BODY_MAX_LENGTH = 1000  # Max chars for release notes body
 README_SUMMARY_MAX_LENGTH = 800  # Max chars for HuggingFace README summary
+README_MIN_LINE_LENGTH = 10  # Min chars for a line to be considered content
 
 # Platform identifiers
 PLATFORM_GITHUB = "github"
