@@ -179,7 +179,7 @@ class RankerResult(BaseModel):
         scored_stories: All scored stories (for audit).
     """
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(frozen=True, extra="forbid")
 
     output: Annotated[RankerOutput, Field(description="Ordered output sections")]
     stories_in: Annotated[int, Field(ge=0, description="Input story count")]

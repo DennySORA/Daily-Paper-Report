@@ -111,7 +111,7 @@ class DailyDigest(BaseModel):
         archive_dates: Available archive dates (YYYY-MM-DD, descending order).
     """
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(frozen=True, extra="forbid")
 
     run_id: Annotated[str, Field(min_length=1)]
     run_date: Annotated[str, Field(pattern=r"^\d{4}-\d{2}-\d{2}$")]
