@@ -60,7 +60,9 @@ class HtmlRenderer:
 
         # Create placeholder file for this date
         placeholder_path = day_dir / f"{context.run_date}.html"
-        placeholder_content = f"<!-- Placeholder for {context.run_date} - replaced by Vue SPA -->\n"
+        placeholder_content = (
+            f"<!-- Placeholder for {context.run_date} - replaced by Vue SPA -->\n"
+        )
         placeholder_path.write_text(placeholder_content)
 
         self._log.info(
