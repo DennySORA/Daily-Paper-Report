@@ -369,6 +369,12 @@ export const useDigestStore = defineStore('digest', () => {
     isLoading.value = true
     error.value = null
 
+    // For archive pages (specific date), use 'all' filter since backfill data
+    // has first_seen_at set to current time, making 24h filter ineffective
+    if (targetDate) {
+      timeFilter.value = 'all'
+    }
+
     try {
       // Determine the endpoint based on targetDate
       const endpoint = targetDate
