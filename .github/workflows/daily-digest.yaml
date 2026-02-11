@@ -116,17 +116,29 @@ jobs:
 
             # Extract day archive HTML files from state branch
             mkdir -p "${OUTPUT_DIR}/day"
-            ARCHIVE_COUNT=0
+            HTML_COUNT=0
             for FILE in $(git ls-tree --name-only "${{ env.STATE_BRANCH }}" day/ 2>/dev/null || true); do
               if git show "${{ env.STATE_BRANCH }}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null; then
-                ARCHIVE_COUNT=$((ARCHIVE_COUNT + 1))
+                HTML_COUNT=$((HTML_COUNT + 1))
               fi
             done
-            echo "archive_count=${ARCHIVE_COUNT}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"archives_restored","count":'"${ARCHIVE_COUNT}"'}'
+            echo "html_archive_count=${HTML_COUNT}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"html_archives_restored","count":'"${HTML_COUNT}"'}'
+
+            # Extract day archive JSON files from state branch (critical for archive data)
+            mkdir -p "${OUTPUT_DIR}/api/day"
+            JSON_COUNT=0
+            for FILE in $(git ls-tree --name-only "${{ env.STATE_BRANCH }}" api/day/ 2>/dev/null || true); do
+              if git show "${{ env.STATE_BRANCH }}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null; then
+                JSON_COUNT=$((JSON_COUNT + 1))
+              fi
+            done
+            echo "json_archive_count=${JSON_COUNT}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"json_archives_restored","count":'"${JSON_COUNT}"'}'
           else
             echo "state_restored=false" >> "$GITHUB_OUTPUT"
-            echo "archive_count=0" >> "$GITHUB_OUTPUT"
+            echo "html_archive_count=0" >> "$GITHUB_OUTPUT"
+            echo "json_archive_count=0" >> "$GITHUB_OUTPUT"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_branch_not_found","message":"Starting fresh"}'
           fi
 
@@ -141,26 +153,35 @@ jobs:
           RUN_ID="${{ steps.init.outputs.run_id }}"
           SITE_URL="https://paper.sorahane-kyoukai.org"
 
-          # Create day directory
+          # Create directories
           mkdir -p "${OUTPUT_DIR}/day"
+          mkdir -p "${OUTPUT_DIR}/api/day"
 
           # Fetch archive dates from current deployed site and save to temp file
           DATES_FILE=$(mktemp)
           curl -sf "${SITE_URL}/api/daily.json" | jq -r '.archive_dates[]' 2>/dev/null > "${DATES_FILE}" || true
 
-          RESTORED=0
+          HTML_RESTORED=0
+          JSON_RESTORED=0
           if [ -s "${DATES_FILE}" ]; then
             while read -r DATE; do
               # Download each day's HTML page
               if curl -sf "${SITE_URL}/day/${DATE}.html" -o "${OUTPUT_DIR}/day/${DATE}.html" 2>/dev/null; then
-                RESTORED=$((RESTORED + 1))
-                echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"page_restored","date":"'"${DATE}"'"}'
+                HTML_RESTORED=$((HTML_RESTORED + 1))
+                echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"html_restored","date":"'"${DATE}"'"}'
+              fi
+              # Download each day's JSON data file (critical for archive functionality)
+              if curl -sf "${SITE_URL}/api/day/${DATE}.json" -o "${OUTPUT_DIR}/api/day/${DATE}.json" 2>/dev/null; then
+                JSON_RESTORED=$((JSON_RESTORED + 1))
+                echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"json_restored","date":"'"${DATE}"'"}'
               fi
             done < "${DATES_FILE}"
-            echo "archive_restored=${RESTORED}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"archive_restored","pages_count":'"${RESTORED}"'}'
+            echo "html_restored=${HTML_RESTORED}" >> "$GITHUB_OUTPUT"
+            echo "json_restored=${JSON_RESTORED}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"archive_restored","html_count":'"${HTML_RESTORED}"',"json_count":'"${JSON_RESTORED}"'}'
           else
-            echo "archive_restored=0" >> "$GITHUB_OUTPUT"
+            echo "html_restored=0" >> "$GITHUB_OUTPUT"
+            echo "json_restored=0" >> "$GITHUB_OUTPUT"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"no_archive_found"}'
           fi
           rm -f "${DATES_FILE}"
@@ -374,12 +395,21 @@ jobs:
           retention-days: 1
           if-no-files-found: warn
 
-      - name: Upload day archives artifact
+      - name: Upload day archives artifact (HTML)
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: day-archives
+          name: day-archives-html
           path: ${{ env.OUTPUT_DIR }}/day/
+          retention-days: 1
+          if-no-files-found: ignore
+
+      - name: Upload day archives artifact (JSON)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: day-archives-json
+          path: ${{ env.OUTPUT_DIR }}/api/day/
           retention-days: 1
           if-no-files-found: ignore
 
@@ -429,11 +459,18 @@ jobs:
           name: state-sqlite
           path: artifacts/
 
-      - name: Download day archives artifact
+      - name: Download day archives artifact (HTML)
         uses: actions/download-artifact@v4
         with:
-          name: day-archives
+          name: day-archives-html
           path: artifacts/day/
+        continue-on-error: true
+
+      - name: Download day archives artifact (JSON)
+        uses: actions/download-artifact@v4
+        with:
+          name: day-archives-json
+          path: artifacts/api/day/
         continue-on-error: true
 
       - name: Verify state file
@@ -452,13 +489,22 @@ jobs:
             exit 1
           fi
 
-          # Count day archives
+          # Count day HTML archives
           if [ -d "artifacts/day" ]; then
-            ARCHIVE_COUNT=$(find artifacts/day -name "*.html" | wc -l)
-            echo "archive_count=${ARCHIVE_COUNT}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"archives_found","count":'"${ARCHIVE_COUNT}"'}'
+            HTML_COUNT=$(find artifacts/day -name "*.html" | wc -l)
+            echo "html_archive_count=${HTML_COUNT}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"html_archives_found","count":'"${HTML_COUNT}"'}'
           else
-            echo "archive_count=0" >> "$GITHUB_OUTPUT"
+            echo "html_archive_count=0" >> "$GITHUB_OUTPUT"
+          fi
+
+          # Count day JSON archives
+          if [ -d "artifacts/api/day" ]; then
+            JSON_COUNT=$(find artifacts/api/day -name "*.json" | wc -l)
+            echo "json_archive_count=${JSON_COUNT}" >> "$GITHUB_OUTPUT"
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"json_archives_found","count":'"${JSON_COUNT}"'}'
+          else
+            echo "json_archive_count=0" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Checkout state branch
@@ -507,15 +553,24 @@ jobs:
           STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
           git add "${{ env.STATE_FILE }}"
 
-          # Copy day archives if they exist
-          ARCHIVE_COUNT=0
+          # Copy day HTML archives if they exist
+          HTML_COUNT=0
           if [ -d "../artifacts/day" ] && [ "$(ls -A ../artifacts/day 2>/dev/null)" ]; then
             mkdir -p day
             cp -r ../artifacts/day/* day/ 2>/dev/null || true
-            ARCHIVE_COUNT=$(find day -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
+            HTML_COUNT=$(find day -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
             git add day/
           fi
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"files_staged","archive_count":'"${ARCHIVE_COUNT}"'}'
+
+          # Copy day JSON archives if they exist (critical for archive data persistence)
+          JSON_COUNT=0
+          if [ -d "../artifacts/api/day" ] && [ "$(ls -A ../artifacts/api/day 2>/dev/null)" ]; then
+            mkdir -p api/day
+            cp -r ../artifacts/api/day/* api/day/ 2>/dev/null || true
+            JSON_COUNT=$(find api/day -name "*.json" 2>/dev/null | wc -l | tr -d ' ')
+            git add api/
+          fi
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"files_staged","html_count":'"${HTML_COUNT}"',"json_count":'"${JSON_COUNT}"'}'
 
           # Only commit if there are changes
           if git diff --cached --quiet; then
