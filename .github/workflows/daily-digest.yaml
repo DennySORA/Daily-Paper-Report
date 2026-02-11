@@ -338,6 +338,29 @@ jobs:
           DURATION=$((END_TIME - START_TIME))
           echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"build_frontend","duration_ms":'"${DURATION}"'}'
 
+      - name: Update daily.json with all archive dates
+        run: |
+          RUN_ID="${{ steps.init.outputs.run_id }}"
+          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"update_daily_json","event":"started"}'
+
+          # Scan all JSON files in api/day/ to build complete archive_dates list
+          if [ -d "${OUTPUT_DIR}/api/day" ] && [ -f "${OUTPUT_DIR}/api/daily.json" ]; then
+            # Get all date JSON files and extract dates
+            DATES=$(ls "${OUTPUT_DIR}/api/day/"*.json 2>/dev/null | xargs -I {} basename {} .json | sort -r)
+
+            # Build JSON array of dates
+            DATES_JSON=$(echo "$DATES" | jq -R -s 'split("\n") | map(select(length > 0))')
+
+            # Update daily.json with complete archive_dates
+            jq --argjson dates "$DATES_JSON" '.archive_dates = $dates' "${OUTPUT_DIR}/api/daily.json" > "${OUTPUT_DIR}/api/daily.json.tmp"
+            mv "${OUTPUT_DIR}/api/daily.json.tmp" "${OUTPUT_DIR}/api/daily.json"
+
+            DATE_COUNT=$(echo "$DATES" | wc -l | tr -d ' ')
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"update_daily_json","event":"complete","archive_count":'"${DATE_COUNT}"'}'
+          else
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"update_daily_json","event":"skipped","reason":"no_api_day_dir"}'
+          fi
+
       - name: Generate day archive HTML files
         run: |
           RUN_ID="${{ steps.init.outputs.run_id }}"
@@ -346,18 +369,20 @@ jobs:
           # Create day directory
           mkdir -p "${OUTPUT_DIR}/day"
 
-          # Extract archive_dates from api/daily.json and create HTML files
-          if [ -f "${OUTPUT_DIR}/api/daily.json" ]; then
-            DATES=$(jq -r '.archive_dates[]' "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true)
+          # Generate HTML files for all JSON files in api/day/
+          if [ -d "${OUTPUT_DIR}/api/day" ]; then
             COUNT=0
-            for DATE in ${DATES}; do
-              # Copy Vue SPA index.html to day/YYYY-MM-DD.html
-              cp "${OUTPUT_DIR}/index.html" "${OUTPUT_DIR}/day/${DATE}.html"
-              COUNT=$((COUNT + 1))
+            for JSON_FILE in "${OUTPUT_DIR}/api/day/"*.json; do
+              if [ -f "$JSON_FILE" ]; then
+                DATE=$(basename "$JSON_FILE" .json)
+                # Copy Vue SPA index.html to day/YYYY-MM-DD.html
+                cp "${OUTPUT_DIR}/index.html" "${OUTPUT_DIR}/day/${DATE}.html"
+                COUNT=$((COUNT + 1))
+              fi
             done
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"complete","files_created":'"${COUNT}"'}'
           else
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"skipped","reason":"no_daily_json"}'
+            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"skipped","reason":"no_api_day_dir"}'
           fi
 
       - name: Generate checksums
