@@ -1,0 +1,613 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-03"
+  ],
+  "generated_at": "2026-02-11T07:10:08.381974+00:00",
+  "model_releases_by_entity": {},
+  "papers": [
+    {
+      "arxiv_id": "2508.02016",
+      "authors": [
+        "Jeiyoon Park, Yongshin Han, Minseop Kim, Kisu Yang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.504699+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Dynamic Context Adaptation for Consistent Role-Playing Agents with Retrieval-Augmented Generations",
+          "url": "https://arxiv.org/abs/2508.02016"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Dynamic Context Adaptation for Consistent Role-Playing Agents with Retrieval-Augmented Generations",
+        "url": "https://arxiv.org/abs/2508.02016"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2508.02016",
+      "summary": "arXiv:2508.02016v4 Announce Type: replace \nAbstract: Building role-playing agents (RPAs) that faithfully emulate specific characters remains challenging because collecting character-specific utterances and continually updating model parameters are resource-intensive, making retrieval-augmented generation (RAG) a practical necessity. However, despite the importance of RAG, there has been little research on RAG-based RPAs. For example, we empirically find that when a persona lacks knowledge relevant to a given query, RAG-based RPAs are prone to hallucination, making it challenging to generate accurate responses. In this paper, we propose Amadeus, a training-free framework that can significantly enhance persona consistency even when responding to questions that lie beyond a character's knowledge. In addition, to underpin the development and rigorous evaluation of RAG-based RPAs, we manually construct CharacterRAG, a role-playing dataset that consists of persona documents for 15 distinct f",
+      "title": "Dynamic Context Adaptation for Consistent Role-Playing Agents with Retrieval-Augmented Generations"
+    },
+    {
+      "arxiv_id": "2510.08667",
+      "authors": [
+        "Mohammad Baqar"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.510002+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "RAG4Tickets: AI-Powered Ticket Resolution via Retrieval-Augmented Generation on JIRA and GitHub Data",
+          "url": "https://arxiv.org/abs/2510.08667"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "RAG4Tickets: AI-Powered Ticket Resolution via Retrieval-Augmented Generation on JIRA and GitHub Data",
+        "url": "https://arxiv.org/abs/2510.08667"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.08667",
+      "summary": "arXiv:2510.08667v2 Announce Type: replace-cross \nAbstract: Modern software teams frequently encounter delays in resolving recurring or related issues due to fragmented knowledge scattered across JIRA tickets, developer discussions, and GitHub pull requests (PRs). To address this challenge, we propose a Retrieval-Augmented Generation (RAG) framework that integrates Sentence-Transformers for semantic embeddings with FAISS-based vector search to deliver context-aware ticket resolution recommendations. The approach embeds historical JIRA tickets, user comments, and linked PR metadata to retrieve semantically similar past cases, which are then synthesized by a Large Language Model (LLM) into grounded and explainable resolution suggestions. The framework contributes a unified pipeline linking JIRA and GitHub data, an embedding and FAISS indexing strategy for heterogeneous software artifacts, and a resolution generation module guided by retrieved evidence. Experimental evaluation using precis",
+      "title": "RAG4Tickets: AI-Powered Ticket Resolution via Retrieval-Augmented Generation on JIRA and GitHub Data"
+    },
+    {
+      "arxiv_id": "2510.08859",
+      "authors": [
+        "Ragib Amin Nihal, Rui Wen, Kazuhiro Nakadai, Jun Sakuma"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CR"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.510242+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Pattern Enhanced Multi-Turn Jailbreaking: Exploiting Structural Vulnerabilities in Large Language Models",
+          "url": "https://arxiv.org/abs/2510.08859"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Pattern Enhanced Multi-Turn Jailbreaking: Exploiting Structural Vulnerabilities in Large Language Models",
+        "url": "https://arxiv.org/abs/2510.08859"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.08859",
+      "summary": "arXiv:2510.08859v2 Announce Type: replace-cross \nAbstract: Large language models (LLMs) remain vulnerable to multi-turn jailbreaking attacks that exploit conversational context to bypass safety constraints gradually. These attacks target different harm categories through distinct conversational approaches. Existing multi-turn methods often rely on heuristic or ad hoc exploration strategies, providing limited insight into underlying model weaknesses. The relationship between conversation patterns and model vulnerabilities across harm categories remains poorly understood. We propose Pattern Enhanced Chain of Attack (PE-CoA), a framework of five conversation patterns to construct multi-turn jailbreaks through natural dialogue. Evaluating PE-CoA on twelve LLMs spanning ten harm categories, we achieve state-of-the-art performance, uncovering pattern-specific vulnerabilities and LLM behavioral characteristics: models exhibit distinct weakness profiles, defense to one pattern does not general",
+      "title": "Pattern Enhanced Multi-Turn Jailbreaking: Exploiting Structural Vulnerabilities in Large Language Models"
+    },
+    {
+      "arxiv_id": "2503.06749",
+      "authors": [
+        "Wenxuan Huang, Bohan Jia, Zijie Zhai, Shaosheng Cao, Zheyu Ye, Fei Zhao, Zhe Xu, Yao Hu, Shaohui Lin"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.499312+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Vision-R1: Incentivizing Reasoning Capability in Multimodal Large Language Models",
+          "url": "https://arxiv.org/abs/2503.06749"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Vision-R1: Incentivizing Reasoning Capability in Multimodal Large Language Models",
+        "url": "https://arxiv.org/abs/2503.06749"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2503.06749",
+      "summary": "arXiv:2503.06749v3 Announce Type: replace-cross \nAbstract: DeepSeek-R1-Zero has successfully demonstrated the emergence of reasoning capabilities in LLMs purely through Reinforcement Learning (RL). Inspired by this breakthrough, we explore how RL can be utilized to enhance the reasoning capability of MLLMs. However, direct training with RL struggles to activate complex reasoning capabilities such as questioning and reflection in MLLMs, due to the absence of substantial high-quality multimodal reasoning data. To address this issue, we propose the reasoning MLLM, Vision-R1, to improve multimodal reasoning capability. Specifically, we first construct a high-quality multimodal CoT dataset without human annotations by leveraging an existing MLLM and DeepSeek-R1 through modality bridging and data filtering to obtain a 200K multimodal CoT dataset, Vision-R1-cold dataset. It serves as cold-start initialization data for Vision-R1. To mitigate the optimization challenges caused by overthinking a",
+      "title": "Vision-R1: Incentivizing Reasoning Capability in Multimodal Large Language Models"
+    },
+    {
+      "arxiv_id": "2506.17208",
+      "authors": [
+        "Matias Martinez, Xavier Franch"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.502743+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Dissecting the SWE-Bench Leaderboards: Profiling Submitters and Architectures of LLM- and Agent-Based Repair Systems",
+          "url": "https://arxiv.org/abs/2506.17208"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Dissecting the SWE-Bench Leaderboards: Profiling Submitters and Architectures of LLM- and Agent-Based Repair Systems",
+        "url": "https://arxiv.org/abs/2506.17208"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.17208",
+      "summary": "arXiv:2506.17208v3 Announce Type: replace-cross \nAbstract: The rapid progress in Automated Program Repair (APR) has been driven by advances in AI, particularly large language models (LLMs) and agent-based systems. SWE-Bench is a recent benchmark designed to evaluate LLM-based repair systems using real issues and pull requests mined from 12 popular open-source Python repositories. Its public leaderboards -- SWE-Bench Lite and SWE-Bench Verified -- have become central platforms for tracking progress and comparing solutions. However, because the submission process does not require detailed documentation, the architectural design and origin of many solutions remain unclear. In this paper, we present the first comprehensive study of all submissions to the SWE-Bench Lite (79 entries) and Verified (99 entries) leaderboards, analyzing 80 unique approaches across dimensions such as submitter type, product availability, LLM usage, and system architecture. Our findings reveal the dominance of pro",
+      "title": "Dissecting the SWE-Bench Leaderboards: Profiling Submitters and Architectures of LLM- and Agent-Based Repair Systems"
+    },
+    {
+      "arxiv_id": "2510.02345",
+      "authors": [
+        "Peijun Zhu, Ning Yang, Baoliang Tian, Jiayu Wei, Weihao Zhang, Haijun Zhang, Pin Lv"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.DC",
+        "cs.LG",
+        "cs.NE"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-05T06:27:46.223534+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Breaking the MoE LLM Trilemma: Dynamic Expert Clustering with Structured Compression",
+          "url": "https://arxiv.org/abs/2510.02345"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Breaking the MoE LLM Trilemma: Dynamic Expert Clustering with Structured Compression",
+        "url": "https://arxiv.org/abs/2510.02345"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.02345",
+      "summary": "arXiv:2510.02345v3 Announce Type: replace-cross \nAbstract: Mixture-of-Experts (MoE) Large Language Models (LLMs) face a trilemma of load imbalance, parameter redundancy, and communication overhead. We introduce a unified framework based on dynamic expert clustering and structured compression to address these issues cohesively. Our method employs an online clustering procedure that periodically regroups experts using a fused metric of parameter and activation similarity, which stabilizes expert utilization. To our knowledge, this is one of the first frameworks to leverage the semantic embedding capability of the router to dynamically reconfigure the model's architecture during training for substantial efficiency gains. Within each cluster, we decompose expert weights into a shared base matrix and extremely low-rank residual adapters, achieving up to fivefold parameter reduction per group while preserving specialization. This structure enables a two-stage hierarchical routing strategy: t",
+      "title": "Breaking the MoE LLM Trilemma: Dynamic Expert Clustering with Structured Compression"
+    },
+    {
+      "arxiv_id": "2511.11007",
+      "authors": [
+        "Xinlei Yu, Chengming Xu, Guibin Zhang, Zhangquan Chen, Yudong Zhang, Yongbo He, Peng-Tao Jiang, Jiangning Zhang, Xiaobin Hu, Shuicheng Yan"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.512752+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "VisMem: Latent Vision Memory Unlocks Potential of Vision-Language Models",
+          "url": "https://arxiv.org/abs/2511.11007"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "VisMem: Latent Vision Memory Unlocks Potential of Vision-Language Models",
+        "url": "https://arxiv.org/abs/2511.11007"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2511.11007",
+      "summary": "arXiv:2511.11007v2 Announce Type: replace-cross \nAbstract: Despite the remarkable success of Vision-Language Models (VLMs), their performance on a range of complex visual tasks is often hindered by a \"visual processing bottleneck\": a propensity to lose grounding in visual evidence and exhibit a deficit in contextualized visual experience during prolonged generation. Drawing inspiration from human cognitive memory theory, which distinguishes short-term visually-dominant memory and long-term semantically-dominant memory, we propose VisMem, a cognitively-aligned framework that equips VLMs with dynamic latent vision memories, a short-term module for fine-grained perceptual retention and a long-term module for abstract semantic consolidation. These memories are seamlessly invoked during inference, allowing VLMs to maintain both perceptual fidelity and semantic consistency across thinking and generation. Extensive experiments across diverse visual benchmarks for understanding, reasoning, and",
+      "title": "VisMem: Latent Vision Memory Unlocks Potential of Vision-Language Models"
+    },
+    {
+      "arxiv_id": "2601.22129",
+      "authors": [
+        "Yifeng Ding, Lingming Zhang"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.517404+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "SWE-Replay: Efficient Test-Time Scaling for Software Engineering Agents",
+          "url": "https://arxiv.org/abs/2601.22129"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "SWE-Replay: Efficient Test-Time Scaling for Software Engineering Agents",
+        "url": "https://arxiv.org/abs/2601.22129"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.22129",
+      "summary": "arXiv:2601.22129v2 Announce Type: replace-cross \nAbstract: Test-time scaling has been widely adopted to enhance the capabilities of Large Language Model (LLM) agents in software engineering (SWE) tasks. However, the standard approach of repeatedly sampling trajectories from scratch is computationally expensive. While recent methods have attempted to mitigate costs using specialized value agents, they can suffer from model miscalibration and fail to generalize to modern agents that synthesize custom bash scripts as tools. In this paper, we introduce SWE-Replay, the first efficient and generalizable test-time scaling technique for modern agents without reliance on potentially noisy value estimates. SWE-Replay optimizes the scaling process by recycling trajectories from prior trials, dynamically choosing to either explore from scratch or exploit archived experience by branching at critical intermediate steps. This selection of intermediate steps is driven by the potential and reasoning si",
+      "title": "SWE-Replay: Efficient Test-Time Scaling for Software Engineering Agents"
+    },
+    {
+      "arxiv_id": "2510.21618",
+      "authors": [
+        "Xiaoxi Li, Wenxiang Jiao, Jiarui Jin, Guanting Dong, Jiajie Jin, Yinuo Wang, Hao Wang, Yutao Zhu, Ji-Rong Wen, Yuan Lu, Zhicheng Dou"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.IR",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-05T06:27:46.225659+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "DeepAgent: A General Reasoning Agent with Scalable Toolsets",
+          "url": "https://arxiv.org/abs/2510.21618"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "DeepAgent: A General Reasoning Agent with Scalable Toolsets",
+        "url": "https://arxiv.org/abs/2510.21618"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.21618",
+      "summary": "arXiv:2510.21618v3 Announce Type: replace \nAbstract: Large reasoning models have demonstrated strong problem-solving abilities, yet real-world tasks often require external tools and long-horizon interactions. Existing agent frameworks typically follow predefined workflows, which limit autonomous and global task completion. In this paper, we introduce DeepAgent, an end-to-end deep reasoning agent that performs autonomous thinking, tool discovery, and action execution within a single, coherent reasoning process. To manage long-horizon interactions, we introduce an autonomous memory folding mechanism that compresses past interactions into structured episodic, working, and tool memories, reducing error accumulation while preserving critical information. To teach general-purpose tool use efficiently and stably, we develop an end-to-end reinforcement learning strategy, namely ToolPO, that leverages LLM-simulated APIs and applies tool-call advantage attribution to assign fine-grained credit t",
+      "title": "DeepAgent: A General Reasoning Agent with Scalable Toolsets"
+    },
+    {
+      "arxiv_id": "2412.19755",
+      "authors": [
+        "Pritam Sil, Pushpak Bhattacharyya, Pawan Goyal, Ganesh Ramakrishnan"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.497728+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Can MLLMs generate human-like feedback in grading multimodal short answers?",
+          "url": "https://arxiv.org/abs/2412.19755"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Can MLLMs generate human-like feedback in grading multimodal short answers?",
+        "url": "https://arxiv.org/abs/2412.19755"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2412.19755",
+      "summary": "arXiv:2412.19755v4 Announce Type: replace \nAbstract: In education, the traditional Automatic Short Answer Grading (ASAG) with feedback problem has focused primarily on evaluating text-only responses. However, real-world assessments often include multimodal responses containing both diagrams and text. To address this limitation, we introduce the Multimodal Short Answer Grading with Feedback (MMSAF) problem, which requires jointly evaluating textual and diagrammatic content while also providing explanatory feedback. Collecting data representative of such multimodal responses is challenging due to both scale and logistical constraints. To mitigate this, we develop an automated data generation framework that leverages LLM hallucinations to mimic common student errors, thereby constructing a dataset of 2,197 instances. We evaluate 4 Multimodal Large Language Models (MLLMs) across 3 STEM subjects, showing that MLLMs achieve accuracies of up to 62.5% in predicting answer correctness (correct/",
+      "title": "Can MLLMs generate human-like feedback in grading multimodal short answers?"
+    }
+  ],
+  "radar": [],
+  "run_date": "2026-02-07",
+  "run_id": "3c878646-ae41-43a9-ba3e-258ade305a2c",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-02-07T23:59:59+00:00",
+    "items_total": 95,
+    "run_id": "3c878646-ae41-43a9-ba3e-258ade305a2c-2026-02-07",
+    "started_at": "2026-02-06T23:59:59+00:00",
+    "stories_total": 95,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2510.00031",
+      "authors": [
+        "Shun-ichiro Hayashi, Koki Morita, Daichi Mukunoki, Tetsuya Hoshino, Takahiro Katagiri"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.DC"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.508428+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "VibeCodeHPC: An Agent-Based Iterative Prompting Auto-Tuner for HPC Code Generation Using LLMs",
+          "url": "https://arxiv.org/abs/2510.00031"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "VibeCodeHPC: An Agent-Based Iterative Prompting Auto-Tuner for HPC Code Generation Using LLMs",
+        "url": "https://arxiv.org/abs/2510.00031"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.00031",
+      "summary": "arXiv:2510.00031v2 Announce Type: replace-cross \nAbstract: We propose VibeCodeHPC, an automatic tuning system for HPC programs based on multi-agent LLMs for code generation. VibeCodeHPC tunes programs through multi-agent role allocation and iterative prompt refinement. We describe the system configuration with four roles: Project Manager (PM), System Engineer (SE), Programmer (PG), and Continuous Delivery (CD). We introduce dynamic agent deployment and activity monitoring functions to facilitate effective multi-agent collaboration. In our case study, we convert and optimize CPU-based matrix-matrix multiplication code written in C to GPU code using CUDA. The multi-agent configuration of VibeCodeHPC achieved higher-quality code generation per unit time compared to a solo-agent configuration. Additionally, the dynamic agent deployment and activity monitoring capabilities facilitated more effective identification of requirement violations and other issues.",
+      "title": "VibeCodeHPC: An Agent-Based Iterative Prompting Auto-Tuner for HPC Code Generation Using LLMs"
+    },
+    {
+      "arxiv_id": "2601.15397",
+      "authors": [
+        "Peidong Wang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.SD"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-23T23:01:38.918094+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Beyond Prompting: Efficient and Robust Contextual Biasing for Speech LLMs via Logit-Space Integration (LOGIC)",
+          "url": "https://arxiv.org/abs/2601.15397"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Beyond Prompting: Efficient and Robust Contextual Biasing for Speech LLMs via Logit-Space Integration (LOGIC)",
+        "url": "https://arxiv.org/abs/2601.15397"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.15397",
+      "summary": "arXiv:2601.15397v2 Announce Type: replace \nAbstract: The rapid emergence of new entities -- driven by cultural shifts, evolving trends, and personalized user data -- poses a significant challenge for existing Speech Large Language Models (Speech LLMs). While these models excel at general conversational tasks, their static training knowledge limits their ability to recognize domain-specific terms such as contact names, playlists, or technical jargon. Existing solutions primarily rely on prompting, which suffers from poor scalability: as the entity list grows, prompting encounters context window limitations, increased inference latency, and the \"lost-in-the-middle\" phenomenon. An alternative approach, Generative Error Correction (GEC), attempts to rewrite transcripts via post-processing but frequently suffers from \"over-correction\", introducing hallucinations of entities that were never spoken.\n  In this work, we introduce LOGIC (Logit-Space Integration for Contextual Biasing), an effici",
+      "title": "Beyond Prompting: Efficient and Robust Contextual Biasing for Speech LLMs via Logit-Space Integration (LOGIC)"
+    },
+    {
+      "arxiv_id": "2601.15678",
+      "authors": [
+        "Mengyu Yao, Ziqi Zhang, Ning Luo, Shaofei Li, Yifeng Cai, Xiangqun Chen, Yao Guo, Ding Li"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.IR",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.515942+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Connect the Dots: Knowledge Graph-Guided Crawler Attack on Retrieval-Augmented Generation Systems",
+          "url": "https://arxiv.org/abs/2601.15678"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Connect the Dots: Knowledge Graph-Guided Crawler Attack on Retrieval-Augmented Generation Systems",
+        "url": "https://arxiv.org/abs/2601.15678"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.15678",
+      "summary": "arXiv:2601.15678v2 Announce Type: replace-cross \nAbstract: Stealing attacks pose a persistent threat to the intellectual property of deployed machine-learning systems. Retrieval-augmented generation (RAG) intensifies this risk by extending the attack surface beyond model weights to knowledge base that often contains IP-bearing assets such as proprietary runbooks, curated domain collections, or licensed documents. Recent work shows that multi-turn questioning can gradually steal corpus content from RAG systems, yet existing attacks are largely heuristic and often plateau early. We address this gap by formulating RAG knowledge-base stealing as an adaptive stochastic coverage problem (ASCP), where each query is a stochastic action and the goal is to maximize the conditional expected marginal gain (CMG) in corpus coverage under a query budget. Bridging ASCP to real-world black-box RAG knowledge-base stealing raises three challenges: CMG is unobservable, the natural-language action space is",
+      "title": "Connect the Dots: Knowledge Graph-Guided Crawler Attack on Retrieval-Augmented Generation Systems"
+    },
+    {
+      "arxiv_id": "2505.17406",
+      "authors": [
+        "Enyi Jiang, Changming Xu, Nischay Singh, Tian Qiu, Gagandeep Singh"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-06T06:25:19.500945+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Robust Answers, Fragile Logic: Probing the Decoupling Hypothesis in LLM Reasoning",
+          "url": "https://arxiv.org/abs/2505.17406"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Robust Answers, Fragile Logic: Probing the Decoupling Hypothesis in LLM Reasoning",
+        "url": "https://arxiv.org/abs/2505.17406"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2505.17406",
+      "summary": "arXiv:2505.17406v2 Announce Type: replace \nAbstract: While Chain-of-Thought (CoT) prompting has become a cornerstone for complex reasoning in Large Language Models (LLMs), the faithfulness of the generated reasoning remains an open question. We investigate the Decoupling Hypothesis: that correct answers often mask fragile, post-hoc rationalizations that are not causally tied to the model's prediction. To systematically verify this, we introduce MATCHA, a novel Answer-Conditioned Probing framework. Unlike standard evaluations that focus on final output accuracy, MATCHA isolates the reasoning phase by conditioning generation on the model's predicted answer, allowing us to stress-test the stability of the rationale itself. Our experiments reveal a critical vulnerability: under imperceptible input perturbations, LLMs frequently maintain the correct answer while generating inconsistent or nonsensical reasoning - effectively being ``Right for the Wrong Reasons''. Using LLM judges to quantify",
+      "title": "Robust Answers, Fragile Logic: Probing the Decoupling Hypothesis in LLM Reasoning"
+    },
+    {
+      "arxiv_id": "2601.22401",
+      "authors": [
+        "Tony Feng, Trieu Trinh, Garrett Bingham, Jiwon Kang, Shengtong Zhang, Sang-hyun Kim, Kevin Barreto, Carl Schildkraut, Junehyuk Jung, Jaehyeon Seo, Carlo Pagano, Yuri Chervonyi, Dawsen Hwang, Kaiying Hou, Sergei Gukov, Cheng-Chiang Tsai, Hyunwoo Choi, Youngbeom Jin, Wei-Yuan Li, Hao-An Wu, Ruey-An Shiu, Yu-Sheng Shih, Quoc V. Le, Thang Luong"
+      ],
+      "categories": [
+        "cs.AI",
+        "math.CO",
+        "math.NT"
+      ],
+      "entities": [
+        "deepmind"
+      ],
+      "first_seen_at": "2026-02-06T06:25:19.517625+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erd\\H{o}s Problems",
+          "url": "https://arxiv.org/abs/2601.22401"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erd\\H{o}s Problems",
+        "url": "https://arxiv.org/abs/2601.22401"
+      },
+      "published_at": "2026-02-07T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.22401",
+      "summary": "arXiv:2601.22401v3 Announce Type: replace \nAbstract: We present a case study in semi-autonomous mathematics discovery, using Gemini to systematically evaluate 700 conjectures labeled 'Open' in Bloom's Erd\\H{o}s Problems database. We employ a hybrid methodology: AI-driven natural language verification to narrow the search space, followed by human expert evaluation to gauge correctness and novelty. We address 13 problems that were marked 'Open' in the database: 5 through seemingly novel autonomous solutions, and 8 through identification of previous solutions in the existing literature. Our findings suggest that the 'Open' status of the problems was through obscurity rather than difficulty. We also identify and discuss issues arising in applying AI to math conjectures at scale, highlighting the difficulty of literature identification and the risk of ''subconscious plagiarism'' by AI. We reflect on the takeaways from AI-assisted efforts on the Erd\\H{o}s Problems.",
+      "title": "Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erd\\H{o}s Problems"
+    }
+  ]
+}

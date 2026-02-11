@@ -1,0 +1,1824 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-03"
+  ],
+  "generated_at": "2026-02-11T07:10:07.242018+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-04T06:24:00.771945+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 36,
+          "likes": 1
+        },
+        "hf_model_id": "microsoft/phi-4-mini-reasoning-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Phi-4-mini-reasoning-onnx",
+            "url": "https://huggingface.co/microsoft/Phi-4-mini-reasoning-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Phi-4-mini-reasoning-onnx",
+          "url": "https://huggingface.co/microsoft/Phi-4-mini-reasoning-onnx"
+        },
+        "published_at": "2026-02-11T00:11:11+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/phi-4-mini-reasoning-onnx",
+        "summary": "This repository hosts the optimized versions of the Phi-4 mini reasoning models to accelerate inference with ONNX Runtime. Optimized models are published here in ONNX format to run with ONNX Runtime on CPU and GPU across devices, including server platforms, Windows, Linux and Mac desktops, and mobile CPUs, with the precision best suited to each of these targets. Here are some of the optimized configurations we have added: 1. ONNX model for int4 CPU: ONNX model for CPU and mobile using int4 quantization via RTN. 2. ONNX model for int4 GPU: ONNX model for GPU using int4 quantization via RTN. You can see how to run examples with ORT GenAI here huggingface-cli download microsoft/Phi-4-mini-reasoning-onnx --include cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4/* --local-dir . pip install...",
+        "title": "microsoft/Phi-4-mini-reasoning-onnx"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-04T06:24:00.771748+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 38,
+          "likes": 1
+        },
+        "hf_model_id": "microsoft/phi-4-reasoning-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Phi-4-reasoning-onnx",
+            "url": "https://huggingface.co/microsoft/Phi-4-reasoning-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Phi-4-reasoning-onnx",
+          "url": "https://huggingface.co/microsoft/Phi-4-reasoning-onnx"
+        },
+        "published_at": "2026-02-11T00:10:53+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/phi-4-reasoning-onnx",
+        "summary": "This repository hosts the optimized versions of the Phi-4 reasoning models to accelerate inference with ONNX Runtime. Optimized models are published here in ONNX format to run with ONNX Runtime on CPU and GPU across devices, including server platforms, Windows, Linux and Mac desktops, and mobile CPUs, with the precision best suited to each of these targets. Here are some of the optimized configurations we have added: 1. ONNX model for int4 CPU: ONNX model for CPU and mobile using int4 quantization via RTN. 2. ONNX model for int4 GPU: ONNX model for GPU using int4 quantization via RTN. You can see how to run examples with ORT GenAI here huggingface-cli download microsoft/Phi-4-reasoning-onnx --include cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4/* --local-dir . pip install --pre...",
+        "title": "microsoft/Phi-4-reasoning-onnx"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-04T06:24:00.771546+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 38,
+          "likes": 1
+        },
+        "hf_model_id": "microsoft/phi-4-reasoning-plus-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Phi-4-reasoning-plus-onnx",
+            "url": "https://huggingface.co/microsoft/Phi-4-reasoning-plus-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Phi-4-reasoning-plus-onnx",
+          "url": "https://huggingface.co/microsoft/Phi-4-reasoning-plus-onnx"
+        },
+        "published_at": "2026-02-11T00:10:36+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/phi-4-reasoning-plus-onnx",
+        "summary": "This repository hosts the optimized versions of the Phi-4 reasoning plus models to accelerate inference with ONNX Runtime. Optimized models are published here in ONNX format to run with ONNX Runtime on CPU and GPU across devices, including server platforms, Windows, Linux and Mac desktops, and mobile CPUs, with the precision best suited to each of these targets. Here are some of the optimized configurations we have added: 1. ONNX model for int4 CPU: ONNX model for CPU and mobile using int4 quantization via RTN. 2. ONNX model for int4 GPU: ONNX model for GPU using int4 quantization via RTN. You can see how to run examples with ORT GenAI here huggingface-cli download microsoft/Phi-4-reasoning-plus-onnx --include cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4/* --local-dir . pip install...",
+        "title": "microsoft/Phi-4-reasoning-plus-onnx"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-04T06:24:00.771305+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 108,
+          "likes": 87,
+          "pipeline_tag": "automatic-speech-recognition"
+        },
+        "hf_model_id": "microsoft/phi-4-multimodal-instruct-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Phi-4-multimodal-instruct-onnx",
+            "url": "https://huggingface.co/microsoft/Phi-4-multimodal-instruct-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Phi-4-multimodal-instruct-onnx",
+          "url": "https://huggingface.co/microsoft/Phi-4-multimodal-instruct-onnx"
+        },
+        "published_at": "2026-02-11T00:10:08+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/phi-4-multimodal-instruct-onnx",
+        "summary": "This is an ONNX version of the Phi-4 multimodal model that is quantized to int4 precision to accelerate inference with ONNX Runtime. For CPU: stay tuned or follow this tutorial to generate your own ONNX models for CPU! huggingface-cli download microsoft/Phi-4-multimodal-instruct-onnx --include gpu/* --local-dir . pip install --pre onnxruntime-genai-cuda curl https://raw.githubusercontent.com/microsoft/onnxruntime-genai/main/examples/python/common.py -o common.py curl https://raw.githubusercontent.com/microsoft/onnxruntime-genai/main/examples/python/model-mm.py -o model-mm.py python model-mm.py -m gpu/gpu-int4-rtn-block-32 -e cuda For DirectML: huggingface-cli download microsoft/Phi-4-multimodal-instruct-onnx --include gpu/* --local-dir . pip install --pre onnxruntime-genai-directml",
+        "title": "microsoft/Phi-4-multimodal-instruct-onnx"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-05T06:27:48.280395+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 3197,
+          "likes": 456,
+          "pipeline_tag": "automatic-speech-recognition"
+        },
+        "hf_model_id": "mistralai/voxtral-mini-4b-realtime-2602",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-mistralai",
+            "tier": 1,
+            "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+            "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-mistralai",
+          "tier": 1,
+          "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+          "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+        },
+        "published_at": "2026-02-11T00:37:49+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:mistralai/voxtral-mini-4b-realtime-2602",
+        "summary": "Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **= 3600 / 0.8 = 45000`. In theory you should be able to record with no limit; in practice pre-allocations of RoPE parameters among other things limits --max-model-len. For the best user experience, we recommend to simple instantiate vLLM with the default parameters which will automatically set a maximum model length of 131072 (~ca. 3h). - We strongly recommend using websockets to set up audio streaming sessions. For more info on how to do so, check Usage. - We recommend using a delay of 480ms as we found it to be the sweet spot of performance and low latency. If, however, you want to adapt the...",
+        "title": "mistralai/Voxtral-Mini-4B-Realtime-2602"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-04T06:24:00.771068+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 208,
+          "likes": 45
+        },
+        "hf_model_id": "microsoft/phi-4-mini-instruct-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Phi-4-mini-instruct-onnx",
+            "url": "https://huggingface.co/microsoft/Phi-4-mini-instruct-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Phi-4-mini-instruct-onnx",
+          "url": "https://huggingface.co/microsoft/Phi-4-mini-instruct-onnx"
+        },
+        "published_at": "2026-02-11T00:09:48+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/phi-4-mini-instruct-onnx",
+        "summary": "This repository hosts the optimized versions of the Phi-4 mini models to accelerate inference with ONNX Runtime. Optimized models are published here in ONNX format to run with ONNX Runtime on CPU and GPU across devices, including server platforms, Windows, Linux and Mac desktops, and mobile CPUs, with the precision best suited to each of these targets. Here are some of the optimized configurations we have added: 1. ONNX model for int4 CPU: ONNX model for CPU and mobile using int4 quantization via RTN. 2. ONNX model for int4 GPU: ONNX model for GPU using int4 quantization via RTN. You can see how to run examples with ORT GenAI here huggingface-cli download microsoft/Phi-4-mini-instruct-onnx --include cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4/* --local-dir . pip install --pre...",
+        "title": "microsoft/Phi-4-mini-instruct-onnx"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-04T06:24:00.770856+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 46,
+          "likes": 18
+        },
+        "hf_model_id": "microsoft/phi-4-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/phi-4-onnx",
+            "url": "https://huggingface.co/microsoft/phi-4-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/phi-4-onnx",
+          "url": "https://huggingface.co/microsoft/phi-4-onnx"
+        },
+        "published_at": "2026-02-11T00:09:27+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/phi-4-onnx",
+        "summary": "This repository hosts the optimized versions of the Phi-4 models to accelerate inference with ONNX Runtime. Optimized models are published here in ONNX format to run with ONNX Runtime on CPU and GPU across devices, including server platforms, Windows, Linux and Mac desktops, and mobile CPUs, with the precision best suited to each of these targets. Here are some of the optimized configurations we have added: 1. ONNX model for int4 CPU: ONNX model for CPU and mobile using int4 quantization via RTN. 2. ONNX model for int4 GPU: ONNX model for GPU using int4 quantization via RTN. You can see how to run examples with ORT GenAI here huggingface-cli download microsoft/phi-4-onnx --include cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4/* --local-dir . pip install --pre onnxruntime-genai curl...",
+        "title": "microsoft/phi-4-onnx"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-07T06:19:22.963259+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 33,
+          "likes": 1,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "microsoft/fara-7b-onnx",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Fara-7B-onnx",
+            "url": "https://huggingface.co/microsoft/Fara-7B-onnx"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Fara-7B-onnx",
+          "url": "https://huggingface.co/microsoft/Fara-7B-onnx"
+        },
+        "published_at": "2026-02-11T00:00:57+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/fara-7b-onnx",
+        "summary": "This repository hosts the optimized versions of the Fara-7B models to accelerate inference with ONNX Runtime. Optimized models are published here in ONNX format to run with ONNX Runtime on NPU. Here are some of the optimized configurations we have added: 1. ONNX model for int4 NPU: ONNX model for Qualcomm NPU using int4 quantization. You can see how to run this model with ORT GenAI here. hf download microsoft/Fara-7B-onnx --include npu/qnn-int4/* --local-dir . pip install --pre onnxruntime-genai curl https://raw.githubusercontent.com/microsoft/onnxruntime-genai/main/examples/python/common.py -o common.py curl https://raw.githubusercontent.com/microsoft/onnxruntime-genai/main/examples/python/model-mm.py -o model-mm.py python model-mm.py -m npu/qnn-int4 --max_length 4096 --use_winml",
+        "title": "microsoft/Fara-7B-onnx"
+      }
+    ]
+  },
+  "papers": [
+    {
+      "arxiv_id": "2510.01304",
+      "authors": [
+        "Yu Zeng, Wenxuan Huang, Shiting Huang, Xikun Bao, Yukun Qi, Yiming Zhao, Qiuchen Wang, Lin Chen, Zehui Chen, Huaian Chen, Wanli Ouyang, Feng Zhao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.361117+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Agentic Jigsaw Interaction Learning for Enhancing Visual Perception and Reasoning in Vision-Language Models",
+          "url": "https://arxiv.org/abs/2510.01304"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Agentic Jigsaw Interaction Learning for Enhancing Visual Perception and Reasoning in Vision-Language Models",
+        "url": "https://arxiv.org/abs/2510.01304"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2510.01304",
+      "summary": "arXiv:2510.01304v2 Announce Type: replace-cross \nAbstract: Although current large Vision-Language Models (VLMs) have advanced in multimodal understanding and reasoning, their fundamental perceptual and reasoning abilities remain limited. Specifically, even on simple jigsaw tasks, existing VLMs perform near randomly, revealing deficiencies in core perception and reasoning capabilities. While high-quality vision-language data can enhance these capabilities, its scarcity and limited scalability impose significant constraints. To address this, we propose AGILE, an Agentic jiGsaw Interaction Learning for Enhancing visual perception and reasoning in VLMs. AGILE formulates jigsaw solving as an interactive process, enabling the model to progressively engage with the environment. At each step, the model generates executable code to perform an action based on the current state, while the environment provides fine-grained visual feedback to guide task completion. Through this iterative cycle of o",
+      "title": "Agentic Jigsaw Interaction Learning for Enhancing Visual Perception and Reasoning in Vision-Language Models"
+    },
+    {
+      "arxiv_id": "2602.08735",
+      "authors": [
+        "Masanari Oi, Koki Maeda, Ryuto Koike, Daisuke Oba, Nakamasa Inoue, Naoaki Okazaki"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.976904+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "From Correspondence to Actions: Human-Like Multi-Image Spatial Reasoning in Multi-modal Large Language Models",
+          "url": "https://arxiv.org/abs/2602.08735"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "From Correspondence to Actions: Human-Like Multi-Image Spatial Reasoning in Multi-modal Large Language Models",
+        "url": "https://arxiv.org/abs/2602.08735"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.08735",
+      "summary": "arXiv:2602.08735v2 Announce Type: replace \nAbstract: While multimodal large language models (MLLMs) have made substantial progress in single-image spatial reasoning, multi-image spatial reasoning, which requires integration of information from multiple viewpoints, remains challenging. Cognitive studies suggest that humans address such tasks through two mechanisms: cross-view correspondence, which identifies regions across different views that correspond to the same physical locations, and stepwise viewpoint transformation, which composes relative viewpoint changes sequentially. However, existing studies incorporate these mechanisms only partially and often implicitly, without explicit supervision for both. We propose Human-Aware Training for Cross-view correspondence and viewpoint cHange (HATCH), a training framework with two complementary objectives: (1) Patch-Level Spatial Alignment, which encourages patch representations to align across views for spatially corresponding regions, and",
+      "title": "From Correspondence to Actions: Human-Like Multi-Image Spatial Reasoning in Multi-modal Large Language Models"
+    },
+    {
+      "arxiv_id": "2602.01047",
+      "authors": [
+        "Xinrong Chen, Xu Chu, Yingmin Qiu, Hengyuan Zhang, Jing Xiong, Shiyu Tang, Shuai Liu, Shaokang Yang, Cheng Yang, Hayden Kwok-Hay So, Ngai Wong"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.371816+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Residual Decoding: Mitigating Hallucinations in Large Vision-Language Models via History-Aware Residual Guidance",
+          "url": "https://arxiv.org/abs/2602.01047"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Residual Decoding: Mitigating Hallucinations in Large Vision-Language Models via History-Aware Residual Guidance",
+        "url": "https://arxiv.org/abs/2602.01047"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.01047",
+      "summary": "arXiv:2602.01047v2 Announce Type: replace \nAbstract: Large Vision-Language Models (LVLMs) can reason effectively from image-text inputs and perform well in various multimodal tasks. Despite this success, they are affected by language priors and often produce hallucinations. Hallucinations denote generated content that is grammatically and syntactically coherent, yet bears no match or direct relevance to actual visual input. To address this problem, we propose Residual Decoding (ResDec). It is a novel training-free method that uses historical information to aid decoding. The method relies on the internal implicit reasoning mechanism and token logits evolution mechanism of LVLMs to correct biases. Extensive experiments demonstrate that ResDec effectively suppresses hallucinations induced by language priors, significantly improves visual grounding, and reduces object hallucinations. In addition to mitigating hallucinations, ResDec also performs exceptionally well on comprehensive LVLM ben",
+      "title": "Residual Decoding: Mitigating Hallucinations in Large Vision-Language Models via History-Aware Residual Guidance"
+    },
+    {
+      "arxiv_id": "2602.06566",
+      "authors": [
+        "Niccolo Avogaro, Nayanika Debnath, Li Mi, Thomas Frick, Junling Wang, Zexue He, Hang Hua, Konrad Schindler, Mattia Rigotti"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.798267+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "SPARC: Separating Perception And Reasoning Circuits for Test-time Scaling of VLMs",
+          "url": "https://arxiv.org/abs/2602.06566"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "SPARC: Separating Perception And Reasoning Circuits for Test-time Scaling of VLMs",
+        "url": "https://arxiv.org/abs/2602.06566"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.06566",
+      "summary": "arXiv:2602.06566v2 Announce Type: replace \nAbstract: Despite recent successes, test-time scaling - i.e., dynamically expanding the token budget during inference as needed - remains brittle for vision-language models (VLMs): unstructured chains-of-thought about images entangle perception and reasoning, leading to long, disorganized contexts where small perceptual mistakes may cascade into completely wrong answers. Moreover, expensive reinforcement learning with hand-crafted rewards is required to achieve good performance. Here, we introduce SPARC (Separating Perception And Reasoning Circuits), a modular framework that explicitly decouples visual perception from reasoning. Inspired by sequential sensory-to-cognitive processing in the brain, SPARC implements a two-stage pipeline where the model first performs explicit visual search to localize question-relevant regions, then conditions its reasoning on those regions to produce the final answer. This separation enables independent test-tim",
+      "title": "SPARC: Separating Perception And Reasoning Circuits for Test-time Scaling of VLMs"
+    },
+    {
+      "arxiv_id": "2511.02424",
+      "authors": [
+        "Jae-Woo Choi, Hyungmin Kim, Hyobin Ong, Youngwoo Yoon, Minsu Jang, Dohyung Kim, Jaehong Kim"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.365093+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "ReAcTree: Hierarchical LLM Agent Trees with Control Flow for Long-Horizon Task Planning",
+          "url": "https://arxiv.org/abs/2511.02424"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "ReAcTree: Hierarchical LLM Agent Trees with Control Flow for Long-Horizon Task Planning",
+        "url": "https://arxiv.org/abs/2511.02424"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2511.02424",
+      "summary": "arXiv:2511.02424v2 Announce Type: replace \nAbstract: Recent advancements in large language models (LLMs) have enabled significant progress in decision-making and task planning for embodied autonomous agents. However, most existing methods struggle with complex, long-horizon tasks because they rely on a monolithic trajectory that entangles all past decisions and observations to solve the entire task in a single unified process. To address this limitation, we propose ReAcTree, a hierarchical task-planning method that decomposes a complex goal into manageable subgoals within a dynamically constructed agent tree. Each subgoal is handled by an LLM agent node capable of reasoning, acting, and further expanding the tree, while control flow nodes coordinate the execution strategies of agent nodes. In addition, we integrate two complementary memory systems: each agent node retrieves goal-specific, subgoal-level examples from episodic memory and shares environment-specific observations through w",
+      "title": "ReAcTree: Hierarchical LLM Agent Trees with Control Flow for Long-Horizon Task Planning"
+    },
+    {
+      "arxiv_id": "2602.09379",
+      "authors": [
+        "Shihao Xu, Tiancheng Zhou, Jiatong Ma, Yanli Ding, Yiming Yan, Ming Xiao, Guoyi Li, Haiyang Geng, Yunyun Han, Jianhua Chen, Yafeng Deng"
+      ],
+      "categories": [
+        "cs.MA",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.803218+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "LingxiDiagBench: A Multi-Agent Framework for Benchmarking LLMs in Chinese Psychiatric Consultation and Diagnosis",
+          "url": "https://arxiv.org/abs/2602.09379"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "LingxiDiagBench: A Multi-Agent Framework for Benchmarking LLMs in Chinese Psychiatric Consultation and Diagnosis",
+        "url": "https://arxiv.org/abs/2602.09379"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09379",
+      "summary": "arXiv:2602.09379v1 Announce Type: cross \nAbstract: Mental disorders are highly prevalent worldwide, but the shortage of psychiatrists and the inherent subjectivity of interview-based diagnosis create substantial barriers to timely and consistent mental-health assessment. Progress in AI-assisted psychiatric diagnosis is constrained by the absence of benchmarks that simultaneously provide realistic patient simulation, clinician-verified diagnostic labels, and support for dynamic multi-turn consultation. We present LingxiDiagBench, a large-scale multi-agent benchmark that evaluates LLMs on both static diagnostic inference and dynamic multi-turn psychiatric consultation in Chinese. At its core is LingxiDiag-16K, a dataset of 16,000 EMR-aligned synthetic consultation dialogues designed to reproduce real clinical demographic and diagnostic distributions across 12 ICD-10 psychiatric categories. Through extensive experiments across state-of-the-art LLMs, we establish key findings: (1) although",
+      "title": "LingxiDiagBench: A Multi-Agent Framework for Benchmarking LLMs in Chinese Psychiatric Consultation and Diagnosis"
+    },
+    {
+      "arxiv_id": "2509.13666",
+      "authors": [
+        "Zhenqi Wu, Abhinav Modi, Angelos Mavrogiannis, Kaustubh Joshi, Nikhil Chopra, Yiannis Aloimonos, Nare Karapetyan, Ioannis Rekleitis, Xiaomin Lin"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.359034+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "DREAM: Domain-aware Reasoning for Efficient Autonomous Underwater Monitoring",
+          "url": "https://arxiv.org/abs/2509.13666"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "DREAM: Domain-aware Reasoning for Efficient Autonomous Underwater Monitoring",
+        "url": "https://arxiv.org/abs/2509.13666"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.13666",
+      "summary": "arXiv:2509.13666v2 Announce Type: replace-cross \nAbstract: The ocean is warming and acidifying, increasing the risk of mass mortality events for temperature-sensitive shellfish such as oysters. This motivates the development of long-term monitoring systems. However, human labor is costly and long-duration underwater work is highly hazardous, thus favoring robotic solutions as a safer and more efficient option. To enable underwater robots to make real-time, environment-aware decisions without human intervention, we must equip them with an intelligent \"brain.\" This highlights the need for persistent,wide-area, and low-cost benthic monitoring. To this end, we present DREAM, a Vision Language Model (VLM)-guided autonomy framework for long-term underwater exploration and habitat monitoring. The results show that our framework is highly efficient in finding and exploring target objects (e.g., oysters, shipwrecks) without prior location information. In the oyster-monitoring task, our framewor",
+      "title": "DREAM: Domain-aware Reasoning for Efficient Autonomous Underwater Monitoring"
+    },
+    {
+      "arxiv_id": "2510.16596",
+      "authors": [
+        "Yiyang Huang, Liang Shi, Yitian Zhang, Yi Xu, Yun Fu"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.363877+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "SHIELD: Suppressing Hallucinations In LVLM Encoders via Bias and Vulnerability Defense",
+          "url": "https://arxiv.org/abs/2510.16596"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "SHIELD: Suppressing Hallucinations In LVLM Encoders via Bias and Vulnerability Defense",
+        "url": "https://arxiv.org/abs/2510.16596"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2510.16596",
+      "summary": "arXiv:2510.16596v2 Announce Type: replace \nAbstract: Large Vision-Language Models (LVLMs) excel in diverse cross-modal tasks. However, object hallucination, where models produce plausible but inaccurate object descriptions, remains a significant challenge. In contrast to previous work focusing on LLM components, this paper is the first to trace LVLM hallucinations to visual encoders and identifies three key issues: statistical bias, inherent bias, and vulnerability. To address these challenges, we propose SHIELD, a training-free framework that mitigates hallucinations through three strategies: re-weighting visual tokens to reduce statistical bias, introducing noise-derived tokens to counter inherent bias, and applying adversarial attacks with contrastive decoding to address vulnerability. Experiments demonstrate that SHIELD effectively mitigates object hallucinations across diverse benchmarks and LVLM families. Moreover, SHIELD achieves strong performance on the general LVLM benchmark,",
+      "title": "SHIELD: Suppressing Hallucinations In LVLM Encoders via Bias and Vulnerability Defense"
+    },
+    {
+      "arxiv_id": "2602.08355",
+      "authors": [
+        "Xianjie Liu, Yiman Hu, Liang Wu, Ping Hu, Yixiong Zou, Jian Xu, Bo Zheng"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.976198+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "E-VAds: An E-commerce Short Videos Understanding Benchmark for MLLMs",
+          "url": "https://arxiv.org/abs/2602.08355"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "E-VAds: An E-commerce Short Videos Understanding Benchmark for MLLMs",
+        "url": "https://arxiv.org/abs/2602.08355"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.08355",
+      "summary": "arXiv:2602.08355v2 Announce Type: replace \nAbstract: E-commerce short videos represent a high-revenue segment of the online video industry characterized by a goal-driven format and dense multi-modal signals. Current models often struggle with these videos because existing benchmarks focus primarily on general-purpose tasks and neglect the reasoning of commercial intent. In this work, we first propose a multi-modal information density assessment framework to quantify the complexity of this domain. Our evaluation reveals that e-commerce content exhibits substantially higher density across visual, audio, and textual modalities compared to mainstream datasets, establishing a more challenging frontier for video understanding. To address this gap, we introduce E-commerce Video Ads Benchmark (E-VAds), which is the first benchmark specifically designed for e-commerce short video understanding. We curated 3,961 high-quality videos from Taobao covering a wide range of product categories and used",
+      "title": "E-VAds: An E-commerce Short Videos Understanding Benchmark for MLLMs"
+    },
+    {
+      "arxiv_id": "2602.09590",
+      "authors": [
+        "Shweta Parihar, Liu Guangliang, Natalie Parde, Lu Cheng"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.807509+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Context-Aware Counterfactual Data Augmentation for Gender Bias Mitigation in Language Models",
+          "url": "https://arxiv.org/abs/2602.09590"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Context-Aware Counterfactual Data Augmentation for Gender Bias Mitigation in Language Models",
+        "url": "https://arxiv.org/abs/2602.09590"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09590",
+      "summary": "arXiv:2602.09590v1 Announce Type: new \nAbstract: A challenge in mitigating social bias in fine-tuned language models (LMs) is the potential reduction in language modeling capability, which can harm downstream performance. Counterfactual data augmentation (CDA), a widely used method for fine-tuning, highlights this issue by generating synthetic data that may align poorly with real-world distributions or creating overly simplistic counterfactuals that ignore the social context of altered sensitive attributes (e.g., gender) in the pretraining corpus. To address these limitations, we propose a simple yet effective context-augmented CDA method, Context-CDA, which uses large LMs to enhance the diversity and contextual relevance of the debiasing corpus. By minimizing discrepancies between the debiasing corpus and pretraining data through augmented context, this approach ensures better alignment, enhancing language modeling capability. We then employ uncertainty-based filtering to exclude gene",
+      "title": "Context-Aware Counterfactual Data Augmentation for Gender Bias Mitigation in Language Models"
+    },
+    {
+      "arxiv_id": "2506.10357",
+      "authors": [
+        "Zaijing Li, Yuquan Xie, Rui Shao, Gongwei Chen, Weili Guan, Dongmei Jiang, Yaowei Wang, Liqiang Nie"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.356100+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Optimus-3: Dual-Router Aligned Mixture-of-Experts Agent with Dual-Granularity Reasoning-Aware Policy Optimization",
+          "url": "https://arxiv.org/abs/2506.10357"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Optimus-3: Dual-Router Aligned Mixture-of-Experts Agent with Dual-Granularity Reasoning-Aware Policy Optimization",
+        "url": "https://arxiv.org/abs/2506.10357"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.10357",
+      "summary": "arXiv:2506.10357v2 Announce Type: replace \nAbstract: Developing generalist agents capable of solving open-ended tasks in visually rich, dynamic environments remains a core pursuit of embodied AI. While Minecraft has emerged as a compelling benchmark, existing agents often suffer from fragmented cognitive abilities, lacking the synergy between reflexive execution (System 1) and deliberative reasoning (System 2). In this paper, we introduce Optimus-3, a generalist agent that organically integrates these dual capabilities within a unified framework. To achieve this, we address three fundamental challenges. First, to overcome the scarcity of reasoning data, we propose a Knowledge-Enhanced Automated Data Generation Pipeline. It synthesizes high-quality System 2 reasoning traces from raw System 1 interaction trajectories, effectively mitigating hallucinations via injection of domain knowledge. We release the resulting dataset, \\textbf{OptimusM$^{4}$}, to the community. Second, to reconcile t",
+      "title": "Optimus-3: Dual-Router Aligned Mixture-of-Experts Agent with Dual-Granularity Reasoning-Aware Policy Optimization"
+    },
+    {
+      "arxiv_id": "2509.22576",
+      "authors": [
+        "Wujiang Xu, Wentian Zhao, Zhenting Wang, Yu-Jhe Li, Can Jin, Mingyu Jin, Kai Mei, Kun Wan, Dimitris N. Metaxas"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.649196+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "EPO: Entropy-regularized Policy Optimization for LLM Agents Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2509.22576"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "EPO: Entropy-regularized Policy Optimization for LLM Agents Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2509.22576"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2509.22576",
+      "summary": "arXiv:2509.22576v2 Announce Type: replace-cross \nAbstract: Training LLM agents in multi-turn environments with sparse rewards, where completing a single task requires 30+ turns of interaction within an episode, presents a fundamental challenge for reinforcement learning. We identify a critical failure mode unique to this setting: the exploration-exploitation cascade failure. This cascade begins with early-stage policy premature convergence, where sparse feedback causes agents to commit to flawed, low-entropy strategies. Subsequently, agents enter late-stage policy collapse, where conventional entropy regularization becomes counterproductive, promoting chaotic exploration that destabilizes training. We propose Entropy-regularized Policy Optimization (EPO), a general framework that breaks this failure cycle through three synergistic mechanisms: (1) adopting entropy regularization in multi-turn settings to enhance exploration, (2) an entropy smoothing regularizer that bounds policy entrop",
+      "title": "EPO: Entropy-regularized Policy Optimization for LLM Agents Reinforcement Learning"
+    },
+    {
+      "arxiv_id": "2602.09598",
+      "authors": [
+        "Qiao Liang, Yuke Zhu, Chao Ge, Lei Yang, Ying Shen, Bo Zheng, Sheng Guo"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.807882+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Learning from the Irrecoverable: Error-Localized Policy Optimization for Tool-Integrated LLM Reasoning",
+          "url": "https://arxiv.org/abs/2602.09598"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Learning from the Irrecoverable: Error-Localized Policy Optimization for Tool-Integrated LLM Reasoning",
+        "url": "https://arxiv.org/abs/2602.09598"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09598",
+      "summary": "arXiv:2602.09598v1 Announce Type: new \nAbstract: Tool-integrated reasoning (TIR) enables LLM agents to solve tasks through planning, tool use, and iterative revision, but outcome-only reinforcement learning in this setting suffers from sparse, delayed rewards and weak step-level credit assignment. In long-horizon TIR trajectories, an early irrecoverable mistake can determine success or failure, making it crucial to localize the first irrecoverable step and leverage it for fine-grained credit assignment. We propose Error-Localized Policy Optimization (ELPO), which localizes the first irrecoverable step via binary-search rollout trees under a fixed rollout budget, converts the resulting tree into stable learning signals through hierarchical advantage attribution, and applies error-localized adaptive clipping to strengthen corrective updates on the critical step and its suffix. Across TIR benchmarks in math, science QA, and code execution, ELPO consistently outperforms strong Agentic RL b",
+      "title": "Learning from the Irrecoverable: Error-Localized Policy Optimization for Tool-Integrated LLM Reasoning"
+    },
+    {
+      "arxiv_id": "2509.22761",
+      "authors": [
+        "Yapeng Mi, Yanpeng Zhao, Hengli Li, Chenxi Li, Huimin Wu, Xiaojian Ma, Song-Chun Zhu, Ying Nian Wu, Qing Li"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.360387+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "MILR: Improving Multimodal Image Generation via Test-Time Latent Reasoning",
+          "url": "https://arxiv.org/abs/2509.22761"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "MILR: Improving Multimodal Image Generation via Test-Time Latent Reasoning",
+        "url": "https://arxiv.org/abs/2509.22761"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.22761",
+      "summary": "arXiv:2509.22761v3 Announce Type: replace \nAbstract: Reasoning-augmented machine learning systems have shown improved performance in various domains, including image generation. However, existing reasoning-based methods for image generation either restrict reasoning to a single modality (image or text) or rely on high-quality reasoning data for fine-tuning. To tackle these limitations, we propose MILR, a test-time method that jointly reasons over image and text in a unified latent vector space. Reasoning in MILR is performed by searching through vector representations of discrete image and text tokens. Practically, this is implemented via the policy gradient method, guided by an image quality critic. We instantiate MILR within the unified multimodal understanding and generation (MUG) framework that natively supports language reasoning before image synthesis and thus facilitates cross-modal reasoning. The intermediate model outputs, which are to be optimized, serve as the unified latent",
+      "title": "MILR: Improving Multimodal Image Generation via Test-Time Latent Reasoning"
+    },
+    {
+      "arxiv_id": "2602.08321",
+      "authors": [
+        "Zijie Chen, Zhenghao Lin, Xiao Liu, Zhenzhong Lan, Yeyun Gong, Peng Cheng"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.799375+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Improving Data and Reward Design for Scientific Reasoning in Large Language Models",
+          "url": "https://arxiv.org/abs/2602.08321"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Improving Data and Reward Design for Scientific Reasoning in Large Language Models",
+        "url": "https://arxiv.org/abs/2602.08321"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.08321",
+      "summary": "arXiv:2602.08321v2 Announce Type: replace \nAbstract: Solving open-ended science questions remains challenging for large language models, particularly due to inherently unreliable supervision and evaluation. The bottleneck lies in the data construction and reward design for scientific post-training. We develop a large-scale, systematic data processing pipeline that transforms heterogeneous open-source science data into Dr. SCI dataset, which comprises of 1M questions across eight STEM subjects, with explicit verifiable/open-ended splits, scalable difficulty annotation, and fine-grained rubrics that operationalize evaluation for open-ended answers. Building on this dataset, we propose the Dr. SCI post-training pipeline, which redesigns the standard SFT -> RL workflow through three components: (i) Exploration-Expanding SFT, which broadens the model's reasoning pattern coverage prior to RL; (ii) Dynamic Difficulty Curriculum, which adapts training data to the model's evolving scientific ca",
+      "title": "Improving Data and Reward Design for Scientific Reasoning in Large Language Models"
+    },
+    {
+      "arxiv_id": "2602.09113",
+      "authors": [
+        "Rohit Dutta, Paramita Koley, Soham Poddar, Janardan Misra, Sanjay Podder, Naveen Balani, Saptarshi Ghosh, Niloy Ganguly"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.799941+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Benchmarking the Energy Savings with Speculative Decoding Strategies",
+          "url": "https://arxiv.org/abs/2602.09113"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Benchmarking the Energy Savings with Speculative Decoding Strategies",
+        "url": "https://arxiv.org/abs/2602.09113"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09113",
+      "summary": "arXiv:2602.09113v1 Announce Type: cross \nAbstract: Speculative decoding has emerged as an effective method to reduce latency and inference cost of LLM inferences. However, there has been inadequate attention towards the energy requirements of these models. To address this gap, this paper presents a comprehensive survey of energy requirements of speculative decoding strategies, with detailed analysis on how various factors -- model size and family, speculative decoding strategies, and dataset characteristics -- influence the energy optimizations.",
+      "title": "Benchmarking the Energy Savings with Speculative Decoding Strategies"
+    },
+    {
+      "arxiv_id": "2509.17458",
+      "authors": [
+        "Seyed Amir Kasaei, Ali Aghayari, Arash Marioriyad, Niki Sepasian, Shayan Baghayi Nejad, MohammadAmin Fazli, Mahdieh Soleymani Baghshah, Mohammad Hossein Rohban"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.787805+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "CARINOX: Inference-time Scaling with Category-Aware Reward-based Initial Noise Optimization and Exploration",
+          "url": "https://arxiv.org/abs/2509.17458"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "CARINOX: Inference-time Scaling with Category-Aware Reward-based Initial Noise Optimization and Exploration",
+        "url": "https://arxiv.org/abs/2509.17458"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.17458",
+      "summary": "arXiv:2509.17458v2 Announce Type: replace \nAbstract: Text-to-image diffusion models, such as Stable Diffusion, can produce high-quality and diverse images but often fail to achieve compositional alignment, particularly when prompts describe complex object relationships, attributes, or spatial arrangements. Recent inference-time approaches address this by optimizing or exploring the initial noise under the guidance of reward functions that score text-image alignment without requiring model fine-tuning. While promising, each strategy has intrinsic limitations when used alone: optimization can stall due to poor initialization or unfavorable search trajectories, whereas exploration may require a prohibitively large number of samples to locate a satisfactory output. Our analysis further shows that neither single reward metrics nor ad-hoc combinations reliably capture all aspects of compositionality, leading to weak or inconsistent guidance. To overcome these challenges, we present Category-",
+      "title": "CARINOX: Inference-time Scaling with Category-Aware Reward-based Initial Noise Optimization and Exploration"
+    },
+    {
+      "arxiv_id": "2602.09284",
+      "authors": [
+        "Pranav Kulkarni, Junfeng Guo, Heng Huang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.987298+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "X-Mark: Saliency-Guided Robust Dataset Ownership Verification for Medical Imaging",
+          "url": "https://arxiv.org/abs/2602.09284"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "X-Mark: Saliency-Guided Robust Dataset Ownership Verification for Medical Imaging",
+        "url": "https://arxiv.org/abs/2602.09284"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.09284",
+      "summary": "arXiv:2602.09284v1 Announce Type: new \nAbstract: High-quality medical imaging datasets are essential for training deep learning models, but their unauthorized use raises serious copyright and ethical concerns. Medical imaging presents a unique challenge for existing dataset ownership verification methods designed for natural images, as static watermark patterns generated in fixed-scale images scale poorly dynamic and high-resolution scans with limited visual diversity and subtle anatomical structures, while preserving diagnostic quality. In this paper, we propose X-Mark, a sample-specific clean-label watermarking method for chest x-ray copyright protection. Specifically, X-Mark uses a conditional U-Net to generate unique perturbations within salient regions of each sample. We design a multi-component training objective to ensure watermark efficacy, robustness against dynamic scaling processes while preserving diagnostic quality and visual-distinguishability. We incorporate Laplacian re",
+      "title": "X-Mark: Saliency-Guided Robust Dataset Ownership Verification for Medical Imaging"
+    },
+    {
+      "arxiv_id": "2602.03213",
+      "authors": [
+        "Zhuoran Yang, Yanyong Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-09T06:32:57.045680+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "ConsisDrive: Identity-Preserving Driving World Models for Video Generation by Instance Mask",
+          "url": "https://arxiv.org/abs/2602.03213"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "ConsisDrive: Identity-Preserving Driving World Models for Video Generation by Instance Mask",
+        "url": "https://arxiv.org/abs/2602.03213"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.03213",
+      "summary": "arXiv:2602.03213v3 Announce Type: replace \nAbstract: Autonomous driving relies on robust models trained on large-scale, high-quality multi-view driving videos. Although world models provide a cost-effective solution for generating realistic driving data, they often suffer from identity drift, where the same object changes its appearance or category across frames due to the absence of instance-level temporal constraints. We introduce ConsisDrive, an identity-preserving driving world model designed to enforce temporal consistency at the instance level. Our framework incorporates two key components: (1) Instance-Masked Attention, which applies instance identity masks and trajectory masks within attention blocks to ensure that visual tokens interact only with their corresponding instance features across spatial and temporal dimensions, thereby preserving object identity consistency; and (2) Instance-Masked Loss, which adaptively emphasizes foreground regions with probabilistic instance mas",
+      "title": "ConsisDrive: Identity-Preserving Driving World Models for Video Generation by Instance Mask"
+    },
+    {
+      "arxiv_id": "2504.16612",
+      "authors": [
+        "Max Kirchner, Alexander C. Jenke, Sebastian Bodenstedt, Fiona R. Kolbinger, Oliver L. Saldanha, Jakob N. Kather, Martin Wagner, Stefanie Speidel"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-02-11T06:31:57.641545+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Federated EndoViT: Pretraining Vision Transformers via Federated Learning on Endoscopic Image Collections",
+          "url": "https://arxiv.org/abs/2504.16612"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Federated EndoViT: Pretraining Vision Transformers via Federated Learning on Endoscopic Image Collections",
+        "url": "https://arxiv.org/abs/2504.16612"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2504.16612",
+      "summary": "arXiv:2504.16612v3 Announce Type: replace \nAbstract: Purpose: Data privacy regulations hinder the creation of generalizable foundation models (FMs) for surgery by preventing multi-institutional data aggregation. This study investigates federated learning (FL) as a privacy-preserving solution to collaboratively train robust surgical FMs. Methods: We introduce Federated EndoViT (FL-EndoViT), a federated framework that validates the Masked Autoencoder (MAE) pretraining strategy in a decentralized surgical setting. To ensure convergence under severe data heterogeneity, the architecture integrates adaptive Sharpness-Aware Minimization (FedSAM). Pretrained on the large-scale Endo700k dataset, FL-EndoViT is evaluated against a centralized baseline on different tasks including scene segmentation, action recognition, and phase recognition. Results: FedSAM is critical for successful pretraining, overcoming the convergence failures of standard federated methods. The resulting FL-EndoViT performs ",
+      "title": "Federated EndoViT: Pretraining Vision Transformers via Federated Learning on Endoscopic Image Collections"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": "2505.17653",
+      "authors": [
+        "Shixian Luo, Zezhou Zhu, Yu Yuan, Yuncheng Yang, Lianlei Shan, Yong Wu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.355395+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
+          "url": "https://arxiv.org/abs/2505.17653"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
+        "url": "https://arxiv.org/abs/2505.17653"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2505.17653",
+      "summary": "arXiv:2505.17653v2 Announce Type: replace \nAbstract: Geometric spatial reasoning forms the foundation of many applications in artificial intelligence, yet the ability of large language models (LLMs) to operate over geometric spatial information expressed in procedural code remains underexplored. In this paper, we address this gap by formalizing the Program-to-Geometry task, which challenges models to translate programmatic drawing code into accurate and abstract geometric reasoning. To evaluate this capability, we present GeoGramBench, a benchmark of 500 carefully refined problems organized by a tailored three-level taxonomy that considers geometric complexity rather than traditional mathematical reasoning complexity. Our comprehensive evaluation of 17 frontier LLMs reveals consistent and pronounced deficiencies: even the most advanced models achieve less than 50% accuracy at the highest abstraction level. These results highlight the unique challenges posed by program-driven spatial re",
+      "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs"
+    },
+    {
+      "arxiv_id": "2511.15831",
+      "authors": [
+        "Wei Zhang, Yeying Jin, Xin Li, Yan Zhang, Xiaofeng Cong, Cong Wang, Fengcai Qiao, zhichao Lian"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.971312+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "UniFit: Towards Universal Virtual Try-on with MLLM-Guided Semantic Alignment",
+          "url": "https://arxiv.org/abs/2511.15831"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "UniFit: Towards Universal Virtual Try-on with MLLM-Guided Semantic Alignment",
+        "url": "https://arxiv.org/abs/2511.15831"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2511.15831",
+      "summary": "arXiv:2511.15831v2 Announce Type: replace \nAbstract: Image-based virtual try-on (VTON) aims to synthesize photorealistic images of a person wearing specified garments. Despite significant progress, building a universal VTON framework that can flexibly handle diverse and complex tasks remains a major challenge. Recent methods explore multi-task VTON frameworks guided by textual instructions, yet they still face two key limitations: (1) semantic gap between text instructions and reference images, and (2) data scarcity in complex scenarios. To address these challenges, we propose UniFit, a universal VTON framework driven by a Multimodal Large Language Model (MLLM). Specifically, we introduce an MLLM-Guided Semantic Alignment Module (MGSA), which integrates multimodal inputs using an MLLM and a set of learnable queries. By imposing a semantic alignment loss, MGSA captures cross-modal semantic relationships and provides coherent and explicit semantic guidance for the generative process, the",
+      "title": "UniFit: Towards Universal Virtual Try-on with MLLM-Guided Semantic Alignment"
+    },
+    {
+      "arxiv_id": "2602.08682",
+      "authors": [
+        "Ying Guo, Qijun Gan, Yifu Zhang, Jinlai Liu, Yifei Hu, Pan Xie, Dongjun Qian, Yu Zhang, Ruiqi Li, Yuqi Zhang, Ruibiao Lu, Xiaofeng Mei, Bo Han, Xiang Yin, Bingyue Peng, Zehuan Yuan"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.976729+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "ALIVE: Animate Your World with Lifelike Audio-Video Generation",
+          "url": "https://arxiv.org/abs/2602.08682"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "ALIVE: Animate Your World with Lifelike Audio-Video Generation",
+        "url": "https://arxiv.org/abs/2602.08682"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.08682",
+      "summary": "arXiv:2602.08682v2 Announce Type: replace \nAbstract: Video generation is rapidly evolving towards unified audio-video generation. In this paper, we present ALIVE, a generation model that adapts a pretrained Text-to-Video (T2V) model to Sora-style audio-video generation and animation. In particular, the model unlocks the Text-to-Video&amp;Audio (T2VA) and Reference-to-Video&amp;Audio (animation) capabilities compared to the T2V foundation models. To support the audio-visual synchronization and reference animation, we augment the popular MMDiT architecture with a joint audio-video branch which includes TA-CrossAttn for temporally-aligned cross-modal fusion and UniTemp-RoPE for precise audio-visual alignment. Meanwhile, a comprehensive data pipeline consisting of audio-video captioning, quality control, etc., is carefully designed to collect high-quality finetuning data. Additionally, we introduce a new benchmark to perform a comprehensive model test and comparison. After continue pretrai",
+      "title": "ALIVE: Animate Your World with Lifelike Audio-Video Generation"
+    },
+    {
+      "arxiv_id": "2602.02676",
+      "authors": [
+        "Xintong Zhang, Xiaowen Zhang, Jongrong Wu, Zhi Gao, Shilin Yan, Zhenxin Diao, Kunpeng Gao, Xuanyan Chen, Yuwei Wu, Yunde Jia, Qing Li"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-04T06:23:59.767734+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "AdaptMMBench: Benchmarking Adaptive Multimodal Reasoning for Mode Selection and Reasoning Process",
+          "url": "https://arxiv.org/abs/2602.02676"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "AdaptMMBench: Benchmarking Adaptive Multimodal Reasoning for Mode Selection and Reasoning Process",
+        "url": "https://arxiv.org/abs/2602.02676"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.02676",
+      "summary": "arXiv:2602.02676v2 Announce Type: replace \nAbstract: Adaptive multimodal reasoning has emerged as a promising frontier in Vision-Language Models (VLMs), aiming to dynamically modulate between tool-augmented visual reasoning and text reasoning to enhance both effectiveness and efficiency. However, existing evaluations rely on static difficulty labels and simplistic metrics, which fail to capture the dynamic nature of difficulty relative to varying model capacities. Consequently, they obscure the distinction between adaptive mode selection and general performance while neglecting fine-grained process analyses. In this paper, we propose AdaptMMBench, a comprehensive benchmark for adaptive multimodal reasoning across five domains: real-world, OCR, GUI, knowledge, and math, encompassing both direct perception and complex reasoning tasks. AdaptMMBench utilizes a Matthews Correlation Coefficient (MCC) metric to evaluate the selection rationality of different reasoning modes, isolating this me",
+      "title": "AdaptMMBench: Benchmarking Adaptive Multimodal Reasoning for Mode Selection and Reasoning Process"
+    },
+    {
+      "arxiv_id": "2602.09214",
+      "authors": [
+        "Chenyu Wang, Tianle Chen, H. M. Sabbir Ahmad, Kayhan Batmanghelich, Wenchao Li"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.986469+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "VLM-UQBench: A Benchmark for Modality-Specific and Cross-Modality Uncertainties in Vision Language Models",
+          "url": "https://arxiv.org/abs/2602.09214"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "VLM-UQBench: A Benchmark for Modality-Specific and Cross-Modality Uncertainties in Vision Language Models",
+        "url": "https://arxiv.org/abs/2602.09214"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.09214",
+      "summary": "arXiv:2602.09214v1 Announce Type: new \nAbstract: Uncertainty quantification (UQ) is vital for ensuring that vision-language models (VLMs) behave safely and reliably. A central challenge is to localize uncertainty to its source, determining whether it arises from the image, the text, or misalignment between the two. We introduce VLM-UQBench, a benchmark for modality-specific and cross-modal data uncertainty in VLMs, It consists of 600 real-world samples drawn from the VizWiz dataset, curated into clean, image-, text-, and cross-modal uncertainty subsets, and a scalable perturbation pipeline with 8 visual, 5 textual, and 3 cross-modal perturbations. We further propose two simple metrics that quantify the sensitivity of UQ scores to these perturbations and their correlation with hallucinations, and use them to evaluate a range of UQ methods across four VLMs and three datasets. Empirically, we find that: (i) existing UQ methods exhibit strong modality-specific specialization and substantia",
+      "title": "VLM-UQBench: A Benchmark for Modality-Specific and Cross-Modality Uncertainties in Vision Language Models"
+    },
+    {
+      "arxiv_id": "2507.11097",
+      "authors": [
+        "Zichen Wen, Jiashu Qu, Zhaorun Chen, Xiaoya Lu, Dongrui Liu, Zhiyuan Liu, Ruixi Wu, Yicun Yang, Xiangqi Jin, Haoyun Xu, Xuyang Liu, Weijia Li, Chaochao Lu, Jing Shao, Conghui He, Linfeng Zhang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.786118+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "The Devil behind the mask: An emergent safety vulnerability of Diffusion LLMs",
+          "url": "https://arxiv.org/abs/2507.11097"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "The Devil behind the mask: An emergent safety vulnerability of Diffusion LLMs",
+        "url": "https://arxiv.org/abs/2507.11097"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2507.11097",
+      "summary": "arXiv:2507.11097v2 Announce Type: replace \nAbstract: Diffusion-based large language models (dLLMs) have recently emerged as a powerful alternative to autoregressive LLMs, offering faster inference and greater interactivity via parallel decoding and bidirectional modeling. However, despite strong performance in code generation and text infilling, we identify a fundamental safety concern: existing alignment mechanisms fail to safeguard dLLMs against context-aware, masked-input adversarial prompts, exposing novel vulnerabilities. To this end, we present DIJA, the first systematic study and jailbreak attack framework that exploits unique safety weaknesses of dLLMs. Specifically, our proposed DIJA constructs adversarial interleaved mask-text prompts that exploit the text generation mechanisms of dLLMs, i.e., bidirectional modeling and parallel decoding. Bidirectional modeling drives the model to produce contextually consistent outputs for masked spans, even when harmful, while parallel deco",
+      "title": "The Devil behind the mask: An emergent safety vulnerability of Diffusion LLMs"
+    },
+    {
+      "arxiv_id": "2511.20820",
+      "authors": [
+        "Jiaojiao Han, Wujiang Xu, Mingyu Jin, Mengnan Du"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.791083+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "SAGE: An Agentic Explainer Framework for Interpreting SAE Features in Language Models",
+          "url": "https://arxiv.org/abs/2511.20820"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "SAGE: An Agentic Explainer Framework for Interpreting SAE Features in Language Models",
+        "url": "https://arxiv.org/abs/2511.20820"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2511.20820",
+      "summary": "arXiv:2511.20820v2 Announce Type: replace \nAbstract: Large language models (LLMs) have achieved remarkable progress, yet their internal mechanisms remain largely opaque, posing a significant challenge to their safe and reliable deployment. Sparse autoencoders (SAEs) have emerged as a promising tool for decomposing LLM representations into more interpretable features, but explaining the features captured by SAEs remains a challenging task. In this work, we propose SAGE (SAE AGentic Explainer), an agent-based framework that recasts feature interpretation from a passive, single-pass generation task into an active, explanation-driven process. SAGE implements a rigorous methodology by systematically formulating multiple explanations for each feature, designing targeted experiments to test them, and iteratively refining explanations based on empirical activation feedback. Experiments on features from SAEs of diverse language models demonstrate that SAGE produces explanations with significant",
+      "title": "SAGE: An Agentic Explainer Framework for Interpreting SAE Features in Language Models"
+    },
+    {
+      "arxiv_id": "2601.19186",
+      "authors": [
+        "Zeyu Bian, Lan Wang, Chengchun Shi, Zhengling Qi"
+      ],
+      "categories": [
+        "stat.ML",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:18.081396+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-stat-ml",
+          "tier": 1,
+          "title": "Double Fairness Policy Learning: Integrating Action Fairness and Outcome Fairness in Decision-making",
+          "url": "https://arxiv.org/abs/2601.19186"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-stat-ml",
+        "tier": 1,
+        "title": "Double Fairness Policy Learning: Integrating Action Fairness and Outcome Fairness in Decision-making",
+        "url": "https://arxiv.org/abs/2601.19186"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv stat.ML",
+      "story_id": "arxiv:2601.19186",
+      "summary": "arXiv:2601.19186v2 Announce Type: replace \nAbstract: Fairness is a central pillar of trustworthy machine learning, especially in domains where accuracy- or profit-driven optimization is insufficient. While most fairness research focuses on supervised learning, fairness in policy learning remains less explored. Because policy learning is interventional, it induces two distinct fairness targets: action fairness (equitable action assignments) and outcome fairness (equitable downstream consequences). Crucially, equalizing actions does not generally equalize outcomes when groups face different constraints or respond differently to the same action. We propose a novel double fairness learning (DFL) framework that explicitly manages the trade-off among three objectives: action fairness, outcome fairness, and value maximization. We integrate fairness directly into a multi-objective optimization problem for policy learning and employ a lexicographic weighted Tchebyshev method that recovers Paret",
+      "title": "Double Fairness Policy Learning: Integrating Action Fairness and Outcome Fairness in Decision-making"
+    },
+    {
+      "arxiv_id": "2602.08658",
+      "authors": [
+        "Mingzi Cao, Xingwei Tan, Mahmud Elahi Akhter, Marco Valentino, Maria Liakata, Xi Wang, Nikolaos Aletras"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.799558+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Fundamental Reasoning Paradigms Induce Out-of-Domain Generalization in Language Models",
+          "url": "https://arxiv.org/abs/2602.08658"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Fundamental Reasoning Paradigms Induce Out-of-Domain Generalization in Language Models",
+        "url": "https://arxiv.org/abs/2602.08658"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.08658",
+      "summary": "arXiv:2602.08658v2 Announce Type: replace \nAbstract: Deduction, induction, and abduction are fundamental reasoning paradigms, core for human logical thinking. Although improving Large Language Model (LLM) reasoning has attracted significant research efforts, the extent to which the fundamental paradigms induce generalization has yet to be systematically explored. In this study, we shed light on how the interplay between these core paradigms influences LLMs' reasoning behavior. To this end, we first collect a new dataset of reasoning trajectories from symbolic tasks, each targeting one of the three fundamental paradigms, to abstract from concrete world knowledge. Then, we investigate effective ways for inducing these skills into LLMs. We experiment with a battery of methods including simple fine-tuning, and more complex approaches to increase model depth, or transform a dense model to a mixture-of-experts. We comprehensively evaluate induced models on realistic out-of-domain tasks, that",
+      "title": "Fundamental Reasoning Paradigms Induce Out-of-Domain Generalization in Language Models"
+    },
+    {
+      "arxiv_id": "2602.09621",
+      "authors": [
+        "R E Zera Marveen Lyngkhoi, Chirag Chawla, Pratinav Seth, Utsav Avaiya, Soham Bhattacharjee, Mykola Khandoga, Rui Yuan, Vinay Kumar Sankarapu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.808103+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models",
+          "url": "https://arxiv.org/abs/2602.09621"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models",
+        "url": "https://arxiv.org/abs/2602.09621"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09621",
+      "summary": "arXiv:2602.09621v1 Announce Type: new \nAbstract: Post-training alignment is central to deploying large language models (LLMs), yet practical workflows remain split across backend-specific tools and ad-hoc glue code, making experiments hard to reproduce. We identify backend interference, reward fragmentation, and irreproducible pipelines as key obstacles in alignment research. We introduce AlignTune, a modular toolkit exposing a unified interface for supervised fine-tuning (SFT) and RLHF-style optimization with interchangeable TRL and Unsloth backends. AlignTune standardizes configuration, provides an extensible reward layer (rule-based and learned), and integrates evaluation over standard benchmarks and custom tasks. By isolating backend-specific logic behind a single factory boundary, AlignTune enables controlled comparisons and reproducible alignment experiments.",
+      "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models"
+    },
+    {
+      "arxiv_id": "2602.08224",
+      "authors": [
+        "Jing Zhang, Zhikai Li, Xuewen Liu, Qingyi Gu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.976017+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Efficient-SAM2: Accelerating SAM2 with Object-Aware Visual Encoding and Memory Retrieval",
+          "url": "https://arxiv.org/abs/2602.08224"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Efficient-SAM2: Accelerating SAM2 with Object-Aware Visual Encoding and Memory Retrieval",
+        "url": "https://arxiv.org/abs/2602.08224"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.08224",
+      "summary": "arXiv:2602.08224v2 Announce Type: replace \nAbstract: Segment Anything Model 2 (SAM2) shows excellent performance in video object segmentation tasks; however, the heavy computational burden hinders its application in real-time video processing. Although there have been efforts to improve the efficiency of SAM2, most of them focus on retraining a lightweight backbone, with little exploration into post-training acceleration. In this paper, we observe that SAM2 exhibits sparse perception pattern as biological vision, which provides opportunities for eliminating redundant computation and acceleration: i) In mask decoder, the attention primarily focuses on the foreground objects, whereas the image encoder in the earlier stage exhibits a broad attention span, which results in unnecessary computation to background regions. ii) In memory bank, only a small subset of tokens in each frame contribute significantly to memory attention, and the salient regions exhibit temporal consistency, making fu",
+      "title": "Efficient-SAM2: Accelerating SAM2 with Object-Aware Visual Encoding and Memory Retrieval"
+    },
+    {
+      "arxiv_id": "2503.22516",
+      "authors": [
+        "Samira Alkaee Taleghan, Morteza Karimzadeh, Andrew P. Barrett, Walter N. Meier, Farnoush Banaei-Kashani"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.640695+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Ice-FMBench: A Foundation Model Benchmark for Sea Ice Type Segmentation",
+          "url": "https://arxiv.org/abs/2503.22516"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Ice-FMBench: A Foundation Model Benchmark for Sea Ice Type Segmentation",
+        "url": "https://arxiv.org/abs/2503.22516"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2503.22516",
+      "summary": "arXiv:2503.22516v2 Announce Type: replace-cross \nAbstract: Accurate segmentation and mapping of sea ice types is crucial for safe polar navigation, offshore operations, and climate monitoring. While deep learning has demonstrated strong potential for automating sea ice type segmentation, its success often relies on access to extensive expert labeled datasets, which is both resource intensive and time consuming to create. However, foundation models (FMs), recently developed through self-supervised training on large-scale datasets, have demonstrated impressive performance. Nevertheless, their applicability to sea ice type segmentation based on Synthetic Aperture Radar (SAR) imagery remains uncertain due to the unique challenges posed by sea ice such as intricate geophysical patterns, pronounced seasonal variability, and SAR-specific artifacts like banding, scalloping, and heterogeneous backscatter as well as the fact that SAR data in polar regions are often acquired using specialized sen",
+      "title": "Ice-FMBench: A Foundation Model Benchmark for Sea Ice Type Segmentation"
+    },
+    {
+      "arxiv_id": "2505.11876",
+      "authors": [
+        "Yanbo Dai, Zhenlan Ji, Zongjie Li, Shuai Wang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.784877+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "EAMET: Robust Massive Model Editing via Embedding Alignment Optimization",
+          "url": "https://arxiv.org/abs/2505.11876"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "EAMET: Robust Massive Model Editing via Embedding Alignment Optimization",
+        "url": "https://arxiv.org/abs/2505.11876"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2505.11876",
+      "summary": "arXiv:2505.11876v3 Announce Type: replace \nAbstract: Model editing techniques are essential for efficiently updating knowledge in large language models (LLMs). However, the effectiveness of existing approaches degrades in massive editing scenarios, particularly when evaluated with practical metrics. Their robustness is also limited in context-rich settings or when editing multiple facts of the same subject simultaneously. We attribute these failures to the embedding misalignment among knowledge items, which undermines editing reliability at scale. To address this, we propose EAMET (Embedding Alignment Model Editing in Transformers), which addresses this issue by aligning the space of key and residual embeddings. Extensive experiments across six LLMs and three datasets demonstrate that EAMET consistently outperforms existing methods, achieving about 90\\% editing efficacy when editing 10k facts. Codes and datasets are publicly available at https://ybdai7.github.io/eamet-page/.",
+      "title": "EAMET: Robust Massive Model Editing via Embedding Alignment Optimization"
+    },
+    {
+      "arxiv_id": "2508.16419",
+      "authors": [
+        "Akshay Mhatre, Noujoud Nader, Patrick Diehl, Deepti Gupta"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.647421+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Can LLMs Find Bugs in Code? An Evaluation from Beginner Errors to Security Vulnerabilities in Python and C++",
+          "url": "https://arxiv.org/abs/2508.16419"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Can LLMs Find Bugs in Code? An Evaluation from Beginner Errors to Security Vulnerabilities in Python and C++",
+        "url": "https://arxiv.org/abs/2508.16419"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2508.16419",
+      "summary": "arXiv:2508.16419v2 Announce Type: replace-cross \nAbstract: Large Language Models (LLMs) such as ChatGPT-4, Claude 3, and LLaMA 4 are increasingly embedded in software/application development, supporting tasks from code generation to debugging. Yet, their real-world effectiveness in detecting diverse software bugs, particularly complex, security-relevant vulnerabilities, remains underexplored. This study presents a systematic, empirical evaluation of these three leading LLMs using a benchmark of foundational programming errors, classic security flaws, and advanced, production-grade bugs in C++ and Python. The dataset integrates real code from SEED Labs, OpenSSL (via the Suresoft GLaDOS database), and PyBugHive, validated through local compilation and testing pipelines. A novel multi-stage, context-aware prompting protocol simulates realistic debugging scenarios, while a graded rubric measures detection accuracy, reasoning depth, and remediation quality. Our results show that all models ",
+      "title": "Can LLMs Find Bugs in Code? An Evaluation from Beginner Errors to Security Vulnerabilities in Python and C++"
+    },
+    {
+      "arxiv_id": "2602.09372",
+      "authors": [
+        "Zexu Sun, Bokai Ji, Hengyi Cai, Shuaiqiang Wang, Lei Wang, Guangxia Li, Xu Chen"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.802844+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "AgentSkiller: Scaling Generalist Agent Intelligence through Semantically Integrated Cross-Domain Data Synthesis",
+          "url": "https://arxiv.org/abs/2602.09372"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "AgentSkiller: Scaling Generalist Agent Intelligence through Semantically Integrated Cross-Domain Data Synthesis",
+        "url": "https://arxiv.org/abs/2602.09372"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09372",
+      "summary": "arXiv:2602.09372v1 Announce Type: new \nAbstract: Large Language Model agents demonstrate potential in solving real-world problems via tools, yet generalist intelligence is bottlenecked by scarce high-quality, long-horizon data. Existing methods collect privacy-constrained API logs or generate scripted interactions lacking diversity, which struggle to produce data requisite for scaling capabilities. We propose AgentSkiller, a fully automated framework synthesizing multi-turn interaction data across realistic, semantically linked domains. It employs a DAG-based architecture with explicit state transitions to ensure determinism and recoverability. The pipeline builds a domain ontology and Person-Centric Entity Graph, defines tool interfaces via Service Blueprints for Model Context Protocol servers, and populates environments with consistent databases and strict Domain Policies. A cross-domain fusion mechanism links services to simulate complex tasks. Finally, the pipeline creates user tas",
+      "title": "AgentSkiller: Scaling Generalist Agent Intelligence through Semantically Integrated Cross-Domain Data Synthesis"
+    }
+  ],
+  "run_date": "2026-02-11",
+  "run_id": "3c878646-ae41-43a9-ba3e-258ade305a2c",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-02-11T23:59:59+00:00",
+    "items_total": 353,
+    "run_id": "3c878646-ae41-43a9-ba3e-258ade305a2c-2026-02-11",
+    "started_at": "2026-02-10T23:59:59+00:00",
+    "stories_total": 353,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2511.16449",
+      "authors": [
+        "Ziyan Liu, Yeqiu Chen, Hongyi Cai, Tao Lin, Shuo Yang, Zheng Liu, Bo Zhao"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.366093+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "VLA-Pruner: Temporal-Aware Dual-Level Visual Token Pruning for Efficient Vision-Language-Action Inference",
+          "url": "https://arxiv.org/abs/2511.16449"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "VLA-Pruner: Temporal-Aware Dual-Level Visual Token Pruning for Efficient Vision-Language-Action Inference",
+        "url": "https://arxiv.org/abs/2511.16449"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2511.16449",
+      "summary": "arXiv:2511.16449v3 Announce Type: replace \nAbstract: Vision-Language-Action (VLA) models have shown great promise for embodied AI, yet the heavy computational cost of processing continuous visual streams severely limits their real-time deployment. Token pruning (keeping salient visual tokens and dropping redundant ones) has emerged as an effective approach for accelerating Vision-Language Models (VLMs), offering a solution for efficient VLA. However, these VLM-specific token pruning methods select tokens based solely on semantic salience metrics (e.g., prefill attention), while overlooking the VLA's intrinsic dual-system nature of high-level semantic understanding and low-level action execution. Consequently, these methods bias token retention toward semantic cues, discard critical information for action generation, and significantly degrade VLA performance. To bridge this gap, we propose VLA-Pruner, a versatile plug-and-play VLA-specific token prune method that aligns with the dual-sy",
+      "title": "VLA-Pruner: Temporal-Aware Dual-Level Visual Token Pruning for Efficient Vision-Language-Action Inference"
+    },
+    {
+      "arxiv_id": "2510.12985",
+      "authors": [
+        "Simon Sinong Zhan, Yao Liu, Philip Wang, Zinan Wang, Qineng Wang, Yiyan Peng, Zhian Ruan, Xiangyu Shi, Xinyu Cao, Frank Yang, Kangrui Wang, Huajie Shao, Manling Li, Qi Zhu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.363207+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents",
+          "url": "https://arxiv.org/abs/2510.12985"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents",
+        "url": "https://arxiv.org/abs/2510.12985"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.12985",
+      "summary": "arXiv:2510.12985v2 Announce Type: replace \nAbstract: We present SENTINEL, a framework for formally evaluating the physical safety of foundation model (FM)-based embodied agents. SENTINEL is the first to provide multi-level safety evaluation across semantic interpretation, plan generation, and physical execution within a unified formal framework. Unlike prior methods that rely on heuristic rules or subjective FM judgments, SENTINEL grounds practical safety requirements in formal temporal logic (TL) semantics that can precisely specify state invariants, temporal dependencies, and timing constraints. It employs a multi-level verification pipeline where (i) at the semantic level, intuitive natural language safety requirements are formalized into TL formulas and the agent's understanding of these requirements is probed for alignment with the TL formulas; (ii) at the plan level, high-level action plans and subgoals generated by the agent are verified against the TL formulas to detect unsafe ",
+      "title": "SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents"
+    },
+    {
+      "arxiv_id": "2511.03475",
+      "authors": [
+        "Yinsicheng Jiang, Yeqi Huang, Liang Cheng, Cheng Deng, Xuan Sun, Luo Mai"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.653718+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "RAGBoost: Efficient Retrieval-Augmented Generation with Accuracy-Preserving Context Reuse",
+          "url": "https://arxiv.org/abs/2511.03475"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "RAGBoost: Efficient Retrieval-Augmented Generation with Accuracy-Preserving Context Reuse",
+        "url": "https://arxiv.org/abs/2511.03475"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2511.03475",
+      "summary": "arXiv:2511.03475v2 Announce Type: replace \nAbstract: Retrieval-augmented generation (RAG) enhances large language models (LLMs) with retrieved context but often suffers from downgraded prefill performance as modern applications demand longer and more complex inputs. Existing caching techniques either preserve accuracy with low cache reuse or improve reuse at the cost of degraded reasoning quality. We present RAGBoost, an efficient RAG system that achieves high cache reuse without sacrificing accuracy through accuracy-preserving context reuse. RAGBoost detects overlapping retrieved items across concurrent sessions and multi-turn interactions, using efficient context indexing, ordering, and de-duplication to maximize reuse, while lightweight contextual hints maintain reasoning fidelity. It integrates seamlessly with existing LLM inference engines and improves their prefill performance by 1.5-3X over state-of-the-art methods, while preserving or even enhancing reasoning accuracy across di",
+      "title": "RAGBoost: Efficient Retrieval-Augmented Generation with Accuracy-Preserving Context Reuse"
+    },
+    {
+      "arxiv_id": "2602.09007",
+      "authors": [
+        "Haodong Li, Jingwei Wu, Quan Sun, Guopeng Li, Juanxi Tian, Huanyu Zhang, Yanlin Lai, Ruichuan An, Hongbo Peng, Yuhong Dai, Chenxi Li, Chunmei Qing, Jia Wang, Ziyang Meng, Zheng Ge, Xiangyu Zhang, Daxin Jiang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.984367+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "GEBench: Benchmarking Image Generation Models as GUI Environments",
+          "url": "https://arxiv.org/abs/2602.09007"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "GEBench: Benchmarking Image Generation Models as GUI Environments",
+        "url": "https://arxiv.org/abs/2602.09007"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.09007",
+      "summary": "arXiv:2602.09007v2 Announce Type: replace-cross \nAbstract: Recent advancements in image generation models have enabled the prediction of future Graphical User Interface (GUI) states based on user instructions. However, existing benchmarks primarily focus on general domain visual fidelity, leaving the evaluation of state transitions and temporal coherence in GUI-specific contexts underexplored. To address this gap, we introduce GEBench, a comprehensive benchmark for evaluating dynamic interaction and temporal coherence in GUI generation. GEBench comprises 700 carefully curated samples spanning five task categories, covering both single-step interactions and multi-step trajectories across real-world and fictional scenarios, as well as grounding point localization. To support systematic evaluation, we propose GE-Score, a novel five-dimensional metric that assesses Goal Achievement, Interaction Logic, Content Consistency, UI Plausibility, and Visual Quality. Extensive evaluations on curren",
+      "title": "GEBench: Benchmarking Image Generation Models as GUI Environments"
+    },
+    {
+      "arxiv_id": "2602.01273",
+      "authors": [
+        "Xun Zhang, Kaicheng Yang, Hongliang Lu, Haotong Qin, Yong Guo, Yulun Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T06:31:57.973448+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Q-DiT4SR: Exploration of Detail-Preserving Diffusion Transformer Quantization for Real-World Image Super-Resolution",
+          "url": "https://arxiv.org/abs/2602.01273"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Q-DiT4SR: Exploration of Detail-Preserving Diffusion Transformer Quantization for Real-World Image Super-Resolution",
+        "url": "https://arxiv.org/abs/2602.01273"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.01273",
+      "summary": "arXiv:2602.01273v2 Announce Type: replace \nAbstract: Recently, Diffusion Transformers (DiTs) have emerged in Real-World Image Super-Resolution (Real-ISR) to generate high-quality textures, yet their heavy inference burden hinders real-world deployment. While Post-Training Quantization (PTQ) is a promising solution for acceleration, existing methods in super-resolution mostly focus on U-Net architectures, whereas generic DiT quantization is typically designed for text-to-image tasks. Directly applying these methods to DiT-based super-resolution models leads to severe degradation of local textures. Therefore, we propose Q-DiT4SR, the first PTQ framework specifically tailored for DiT-based Real-ISR. We propose H-SVD, a hierarchical SVD that integrates a global low-rank branch with a local block-wise rank-1 branch under a matched parameter budget. We further propose Variance-aware Spatio-Temporal Mixed Precision: VaSMP allocates cross-layer weight bit-widths in a data-free manner based on ",
+      "title": "Q-DiT4SR: Exploration of Detail-Preserving Diffusion Transformer Quantization for Real-World Image Super-Resolution"
+    }
+  ]
+}
