@@ -16,9 +16,15 @@
     "2026-01-26",
     "2026-01-24",
     "2026-01-23",
-    "2026-01-22"
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18",
+    "2026-01-16",
+    "2026-01-15"
   ],
-  "generated_at": "2026-02-11T07:30:27.468970+00:00",
+  "generated_at": "2026-02-11T07:34:56.002066+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -1441,12 +1447,12 @@
     }
   ],
   "run_date": "2026-01-22",
-  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_id": "ed2d8b06-f0f2-452f-b3bf-f6ebcdca90d7",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-01-22T23:59:59+00:00",
     "items_total": 289,
-    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-22",
+    "run_id": "ed2d8b06-f0f2-452f-b3bf-f6ebcdca90d7-2026-01-22",
     "started_at": "2026-01-21T23:59:59+00:00",
     "stories_total": 289,
     "success": true

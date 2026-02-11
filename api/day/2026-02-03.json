@@ -7,9 +7,24 @@
     "2026-02-06",
     "2026-02-05",
     "2026-02-04",
-    "2026-02-03"
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18",
+    "2026-01-16",
+    "2026-01-15"
   ],
-  "generated_at": "2026-02-11T07:30:23.888016+00:00",
+  "generated_at": "2026-02-11T07:34:52.971808+00:00",
   "model_releases_by_entity": {
     "deepseek": [
       {
@@ -513,6 +528,43 @@
       "title": "SWE-Master: Unleashing the Potential of Software Engineering Agents via Post-Training"
     },
     {
+      "arxiv_id": "2505.23654",
+      "authors": [
+        "Mohamed Elaraby, Diane Litman"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-03T06:24:24.184101+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "ARC: Argument Representation and Coverage Analysis for Zero-Shot Long Document Summarization with Instruction Following LLMs",
+          "url": "https://arxiv.org/abs/2505.23654"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "ARC: Argument Representation and Coverage Analysis for Zero-Shot Long Document Summarization with Instruction Following LLMs",
+        "url": "https://arxiv.org/abs/2505.23654"
+      },
+      "published_at": "2026-02-03T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2505.23654",
+      "summary": "arXiv:2505.23654v2 Announce Type: replace \nAbstract: We introduce Argument Representation Coverage (ARC), a bottom-up evaluation framework that assesses how well summaries preserve salient arguments, a crucial issue in summarizing high-stakes domains such as law. ARC provides an interpretable lens by distinguishing between different information types to be covered and by separating omissions from factual errors. Using ARC, we evaluate summaries from eight open-weight large language models in two domains where argument roles are central: long legal opinions and scientific articles. Our results show that while these models capture some salient roles, they frequently omit critical information, particularly when arguments are sparsely distributed across the input. Moreover, ARC uncovers systematic patterns, showing how context window positional bias and role-specific preferences shape argument coverage, and provides actionable guidance for developing more complete and reliable summarizatio",
+      "title": "ARC: Argument Representation and Coverage Analysis for Zero-Shot Long Document Summarization with Instruction Following LLMs"
+    },
+    {
       "arxiv_id": "2509.15206",
       "authors": [
         "Irina Proskurina, Guillaume Metzler, Julien Velcin"
@@ -550,43 +602,6 @@
       "story_id": "arxiv:2509.15206",
       "summary": "arXiv:2509.15206v2 Announce Type: replace \nAbstract: High memory demands of generative language models have drawn attention to quantization, which reduces computational cost, memory usage, and latency by mapping model weights to lower-precision integers. Approaches such as GPTQ effectively minimize input-weight product errors during quantization; however, recent empirical studies show that they can increase biased outputs and degrade performance on fairness benchmarks, and it remains unclear which specific weights cause this issue. In this work, we draw new links between quantization and model fairness by adding explicit group-fairness constraints to the quantization objective and introduce Fair-GPTQ, the first quantization method explicitly designed to reduce unfairness in large language models. The added constraints guide the learning of the rounding operation toward less-biased text generation for protected groups. Specifically, we focus on stereotype generation involving occupation",
       "title": "Fair-GPTQ: Bias-Aware Quantization for Large Language Models"
-    },
-    {
-      "arxiv_id": "2505.23654",
-      "authors": [
-        "Mohamed Elaraby, Diane Litman"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-03T06:24:24.184101+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "ARC: Argument Representation and Coverage Analysis for Zero-Shot Long Document Summarization with Instruction Following LLMs",
-          "url": "https://arxiv.org/abs/2505.23654"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "ARC: Argument Representation and Coverage Analysis for Zero-Shot Long Document Summarization with Instruction Following LLMs",
-        "url": "https://arxiv.org/abs/2505.23654"
-      },
-      "published_at": "2026-02-03T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2505.23654",
-      "summary": "arXiv:2505.23654v2 Announce Type: replace \nAbstract: We introduce Argument Representation Coverage (ARC), a bottom-up evaluation framework that assesses how well summaries preserve salient arguments, a crucial issue in summarizing high-stakes domains such as law. ARC provides an interpretable lens by distinguishing between different information types to be covered and by separating omissions from factual errors. Using ARC, we evaluate summaries from eight open-weight large language models in two domains where argument roles are central: long legal opinions and scientific articles. Our results show that while these models capture some salient roles, they frequently omit critical information, particularly when arguments are sparsely distributed across the input. Moreover, ARC uncovers systematic patterns, showing how context window positional bias and role-specific preferences shape argument coverage, and provides actionable guidance for developing more complete and reliable summarizatio",
-      "title": "ARC: Argument Representation and Coverage Analysis for Zero-Shot Long Document Summarization with Instruction Following LLMs"
     },
     {
       "arxiv_id": "2509.18473",
@@ -1531,12 +1546,12 @@
     }
   ],
   "run_date": "2026-02-03",
-  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_id": "ed2d8b06-f0f2-452f-b3bf-f6ebcdca90d7",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-03T23:59:59+00:00",
     "items_total": 297,
-    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-02-03",
+    "run_id": "ed2d8b06-f0f2-452f-b3bf-f6ebcdca90d7-2026-02-03",
     "started_at": "2026-02-02T23:59:59+00:00",
     "stories_total": 297,
     "success": true
