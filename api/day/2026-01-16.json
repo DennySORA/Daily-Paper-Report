@@ -1,0 +1,147 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18",
+    "2026-01-16"
+  ],
+  "generated_at": "2026-02-11T07:30:28.150206+00:00",
+  "model_releases_by_entity": {},
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-01-16",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-16T23:59:59+00:00",
+    "items_total": 3,
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-16",
+    "started_at": "2026-01-15T23:59:59+00:00",
+    "stories_total": 3,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai"
+      ],
+      "first_seen_at": "2026-01-19T10:31:25.169269+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Introducing ChatGPT Go, now available worldwide",
+          "url": "https://openai.com/index/introducing-chatgpt-go"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Introducing ChatGPT Go, now available worldwide",
+        "url": "https://openai.com/index/introducing-chatgpt-go"
+      },
+      "published_at": "2026-01-16T00:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:3fb8d2d532cf4391",
+      "summary": "ChatGPT Go is now available worldwide, offering expanded access to GPT-5.2 Instant, higher usage limits, and longer memory—making advanced AI more affordable globally.",
+      "title": "Introducing ChatGPT Go, now available worldwide"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai"
+      ],
+      "first_seen_at": "2026-01-19T10:31:25.169530+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Our approach to advertising and expanding access to ChatGPT",
+          "url": "https://openai.com/index/our-approach-to-advertising-and-expanding-access"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Our approach to advertising and expanding access to ChatGPT",
+        "url": "https://openai.com/index/our-approach-to-advertising-and-expanding-access"
+      },
+      "published_at": "2026-01-16T00:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:ff91b17e196b6e46",
+      "summary": "OpenAI plans to test advertising in the U.S. for ChatGPT’s free and Go tiers to expand affordable access to AI worldwide, while protecting privacy, trust, and answer quality.",
+      "title": "Our approach to advertising and expanding access to ChatGPT"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-19T10:31:25.168990+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "The truth left out from Elon Musk’s recent court filing",
+          "url": "https://openai.com/index/the-truth-elon-left-out"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "The truth left out from Elon Musk’s recent court filing",
+        "url": "https://openai.com/index/the-truth-elon-left-out"
+      },
+      "published_at": "2026-01-16T12:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:477b25158347e517",
+      "summary": "The truth left out from Elon Musk’s recent court filing.",
+      "title": "The truth left out from Elon Musk’s recent court filing"
+    }
+  ]
+}

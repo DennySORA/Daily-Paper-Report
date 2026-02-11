@@ -1,0 +1,111 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18",
+    "2026-01-16",
+    "2026-01-15"
+  ],
+  "generated_at": "2026-02-11T07:30:28.160816+00:00",
+  "model_releases_by_entity": {},
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-01-15",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-15T23:59:59+00:00",
+    "items_total": 2,
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-15",
+    "started_at": "2026-01-14T23:59:59+00:00",
+    "stories_total": 2,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-19T10:31:25.169788+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Investing in Merge Labs",
+          "url": "https://openai.com/index/investing-in-merge-labs"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Investing in Merge Labs",
+        "url": "https://openai.com/index/investing-in-merge-labs"
+      },
+      "published_at": "2026-01-15T07:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:8cae8600f1b740be",
+      "summary": "OpenAI is investing in Merge Labs to support new brain computer interfaces that bridge biological and artificial intelligence to maximize human ability, agency, and experience.",
+      "title": "Investing in Merge Labs"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-19T10:31:25.170034+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Strengthening the U.S. AI supply chain through domestic manufacturing",
+          "url": "https://openai.com/index/strengthening-the-us-ai-supply-chain"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Strengthening the U.S. AI supply chain through domestic manufacturing",
+        "url": "https://openai.com/index/strengthening-the-us-ai-supply-chain"
+      },
+      "published_at": "2026-01-15T00:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:d1dfc4463f5e85c6",
+      "summary": "OpenAI launches a new RFP to strengthen the U.S. AI supply chain by accelerating domestic manufacturing, creating jobs, and scaling AI infrastructure.",
+      "title": "Strengthening the U.S. AI supply chain through domestic manufacturing"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18"
+  ],
+  "generated_at": "2026-02-11T07:30:28.134985+00:00",
+  "model_releases_by_entity": {},
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-01-18",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-18T23:59:59+00:00",
+    "items_total": 3,
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-18",
+    "started_at": "2026-01-17T23:59:59+00:00",
+    "stories_total": 2,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-19T10:31:25.168193+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 2,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "AI for self empowerment",
+          "url": "https://openai.com/index/ai-for-human-agency"
+        },
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "AI for self empowerment",
+          "url": "https://openai.com/index/ai-for-self-empowerment"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "AI for self empowerment",
+        "url": "https://openai.com/index/ai-for-human-agency"
+      },
+      "published_at": "2026-01-18T12:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:f5cb9c5657574d23",
+      "summary": "How AI can expand human agency by closing the capability overhang—helping people, businesses, and countries unlock real productivity, growth, and opportunity.",
+      "title": "AI for self empowerment"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-19T10:31:25.168700+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "A business that scales with the value of intelligence",
+          "url": "https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "A business that scales with the value of intelligence",
+        "url": "https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence"
+      },
+      "published_at": "2026-01-18T10:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:882229c347cde9f3",
+      "summary": "OpenAI’s business model scales with intelligence—spanning subscriptions, API, ads, commerce, and compute—driven by deepening ChatGPT adoption.",
+      "title": "A business that scales with the value of intelligence"
+    }
+  ]
+}

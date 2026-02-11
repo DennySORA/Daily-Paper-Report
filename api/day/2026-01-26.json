@@ -1,0 +1,2345 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26"
+  ],
+  "generated_at": "2026-02-11T07:30:26.697331+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.223378+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 12315,
+          "likes": 267,
+          "pipeline_tag": "automatic-speech-recognition"
+        },
+        "hf_model_id": "google/medasr",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/medasr",
+            "url": "https://huggingface.co/google/medasr"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/medasr",
+          "url": "https://huggingface.co/google/medasr"
+        },
+        "published_at": "2026-01-26T19:37:01+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/medasr",
+        "summary": null,
+        "title": "google/medasr"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.076315+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 16,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-gr-hm-41000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-GR-HM-41000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-41000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-GR-HM-41000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-41000"
+        },
+        "published_at": "2026-01-26T17:20:03+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-gr-hm-41000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-GR-HM-41000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.076572+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 16,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-gr-hm-31000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-GR-HM-31000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-31000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-GR-HM-31000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-31000"
+        },
+        "published_at": "2026-01-26T17:18:12+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-gr-hm-31000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-GR-HM-31000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.076785+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 14,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-gr-hm-21000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-GR-HM-21000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-21000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-GR-HM-21000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-21000"
+        },
+        "published_at": "2026-01-26T17:18:08+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-gr-hm-21000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-GR-HM-21000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.077000+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 16,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-gr-hm-11000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-GR-HM-11000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-11000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-GR-HM-11000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-11000"
+        },
+        "published_at": "2026-01-26T17:17:58+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-gr-hm-11000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-GR-HM-11000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.075201+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 103,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-gr-61000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-GR-61000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-61000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GR-61000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-61000"
+        },
+        "published_at": "2026-01-26T17:17:56+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-gr-61000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-GR-61000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.075606+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 108,
+          "likes": 1,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-gr-46000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-GR-46000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-46000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GR-46000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-46000"
+        },
+        "published_at": "2026-01-26T17:17:46+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-gr-46000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-GR-46000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.075845+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 106,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-gr-31000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-GR-31000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-31000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GR-31000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-31000"
+        },
+        "published_at": "2026-01-26T17:17:45+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-gr-31000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-GR-31000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.076066+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 107,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-gr-16000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-GR-16000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-16000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GR-16000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GR-16000"
+        },
+        "published_at": "2026-01-26T17:17:42+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-gr-16000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-GR-16000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.077215+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 18,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur90-61000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-UR90-61000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-61000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-UR90-61000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-61000"
+        },
+        "published_at": "2026-01-26T17:17:41+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur90-61000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-UR90-61000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.077481+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 18,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur90-46000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-UR90-46000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-46000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-UR90-46000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-46000"
+        },
+        "published_at": "2026-01-26T17:17:40+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur90-46000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-UR90-46000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.077699+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 21,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur90-31000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-UR90-31000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-31000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-UR90-31000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-31000"
+        },
+        "published_at": "2026-01-26T17:17:38+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur90-31000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-UR90-31000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-24T23:01:49.077914+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 26,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur90-16000",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170M-UR90-16000",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-16000"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-UR90-16000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-UR90-16000"
+        },
+        "published_at": "2026-01-26T17:17:31+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur90-16000",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170M-UR90-16000"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.299481+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 474,
+          "likes": 4,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-gr-hm-c",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-GR-HM-c",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-c"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-GR-HM-c",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM-c"
+        },
+        "published_at": "2026-01-26T17:17:18+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-gr-hm-c",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-GR-HM-c"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.299647+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 108,
+          "likes": 1,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-gr-hm",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-GR-HM",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-GR-HM",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-GR-HM"
+        },
+        "published_at": "2026-01-26T17:17:14+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-gr-hm",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-GR-HM"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.299799+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 100,
+          "likes": 1,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-3b-ur90",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-3b-UR90",
+            "url": "https://huggingface.co/microsoft/Dayhoff-3b-UR90"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-3b-UR90",
+          "url": "https://huggingface.co/microsoft/Dayhoff-3b-UR90"
+        },
+        "published_at": "2026-01-26T17:17:10+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-3b-ur90",
+        "summary": null,
+        "title": "microsoft/Dayhoff-3b-UR90"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.299935+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 65,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur50-brn",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170m-UR50-BRn",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR50-BRn"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170m-UR50-BRn",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR50-BRn"
+        },
+        "published_at": "2026-01-26T17:17:09+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur50-brn",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170m-UR50-BRn"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.300083+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 255,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur50-brq",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170m-UR50-BRq",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR50-BRq"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170m-UR50-BRq",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR50-BRq"
+        },
+        "published_at": "2026-01-26T17:17:04+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur50-brq",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170m-UR50-BRq"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.300247+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 78,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur50-bru",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170m-UR50-BRu",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR50-BRu"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170m-UR50-BRu",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR50-BRu"
+        },
+        "published_at": "2026-01-26T17:16:56+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur50-bru",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170m-UR50-BRu"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.300392+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 221,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-gr",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170m-GR",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170m-GR"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170m-GR",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170m-GR"
+        },
+        "published_at": "2026-01-26T17:16:52+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-gr",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170m-GR"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-26T23:01:45.300532+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 88,
+          "likes": 0,
+          "pipeline_tag": "text-generation"
+        },
+        "hf_model_id": "microsoft/dayhoff-170m-ur90",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-microsoft",
+            "tier": 1,
+            "title": "microsoft/Dayhoff-170m-UR90",
+            "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR90"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170m-UR90",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170m-UR90"
+        },
+        "published_at": "2026-01-26T17:16:50+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:microsoft/dayhoff-170m-ur90",
+        "summary": null,
+        "title": "microsoft/Dayhoff-170m-UR90"
+      }
+    ]
+  },
+  "papers": [
+    {
+      "arxiv_id": "2601.16230",
+      "authors": [
+        "Aditya Kamlesh Parikh, Cristian Tejedor-Garcia, Catia Cucchiarini, Helmer Strik"
+      ],
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.CL",
+        "cs.SD"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.769025+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Zero-Shot Speech LLMs for Multi-Aspect Evaluation of L2 Speech: Challenges and Opportunities",
+          "url": "https://arxiv.org/abs/2601.16230"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Zero-Shot Speech LLMs for Multi-Aspect Evaluation of L2 Speech: Challenges and Opportunities",
+        "url": "https://arxiv.org/abs/2601.16230"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.16230",
+      "summary": "arXiv:2601.16230v1 Announce Type: cross \nAbstract: An accurate assessment of L2 English pronunciation is crucial for language learning, as it provides personalized feedback and ensures a fair evaluation of individual progress. However, automated scoring remains challenging due to the complexity of sentence-level fluency, prosody, and completeness. This paper evaluates the zero-shot performance of Qwen2-Audio-7B-Instruct, an instruction-tuned speech-LLM, on 5,000 Speechocean762 utterances. The model generates rubric-aligned scores for accuracy, fluency, prosody, and completeness, showing strong agreement with human ratings within +-2 tolerance, especially for high-quality speech. However, it tends to overpredict low-quality speech scores and lacks precision in error detection. These findings demonstrate the strong potential of speech LLMs in scalable pronunciation assessment and suggest future improvements through enhanced prompting, calibration, and phonetic integration to advance Comp",
+      "title": "Zero-Shot Speech LLMs for Multi-Aspect Evaluation of L2 Speech: Challenges and Opportunities"
+    },
+    {
+      "arxiv_id": "2601.16397",
+      "authors": [
+        "Qianqi Yan, Huy Nguyen, Sumana Srivatsa, Hari Bandi, Xin Eric Wang, Krishnaram Kenthapadi"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.148917+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Cite-While-You-Generate: Training-Free Evidence Attribution for Multimodal Clinical Summarization",
+          "url": "https://arxiv.org/abs/2601.16397"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Cite-While-You-Generate: Training-Free Evidence Attribution for Multimodal Clinical Summarization",
+        "url": "https://arxiv.org/abs/2601.16397"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16397",
+      "summary": "arXiv:2601.16397v1 Announce Type: new \nAbstract: Trustworthy clinical summarization requires not only fluent generation but also transparency about where each statement comes from. We propose a training-free framework for generation-time source attribution that leverages decoder attentions to directly cite supporting text spans or images, overcoming the limitations of post-hoc or retraining-based methods. We introduce two strategies for multimodal attribution: a raw image mode, which directly uses image patch attentions, and a caption-as-span mode, which substitutes images with generated captions to enable purely text-based alignment. Evaluations on two representative domains: clinician-patient dialogues (CliConSummation) and radiology reports (MIMIC-CXR), show that our approach consistently outperforms embedding-based and self-attribution baselines, improving both text-level and multimodal attribution accuracy (e.g., +15% F1 over embedding baselines). Caption-based attribution achieve",
+      "title": "Cite-While-You-Generate: Training-Free Evidence Attribution for Multimodal Clinical Summarization"
+    },
+    {
+      "arxiv_id": "2509.04744",
+      "authors": [
+        "Gagan Mundada, Yash Vishe, Amit Namburi, Xin Xu, Zachary Novack, Julian McAuley, Junda Wu"
+      ],
+      "categories": [
+        "cs.SD",
+        "cs.CL",
+        "eess.AS"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.069783+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "WildScore: Benchmarking MLLMs in-the-Wild Symbolic Music Reasoning",
+          "url": "https://arxiv.org/abs/2509.04744"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "WildScore: Benchmarking MLLMs in-the-Wild Symbolic Music Reasoning",
+        "url": "https://arxiv.org/abs/2509.04744"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2509.04744",
+      "summary": "arXiv:2509.04744v2 Announce Type: replace-cross \nAbstract: Recent advances in Multimodal Large Language Models (MLLMs) have demonstrated impressive capabilities across various vision-language tasks. However, their reasoning abilities in the multimodal symbolic music domain remain largely unexplored. We introduce WildScore, the first in-the-wild multimodal symbolic music reasoning and analysis benchmark, designed to evaluate MLLMs' capacity to interpret real-world music scores and answer complex musicological queries. Each instance in WildScore is sourced from genuine musical compositions and accompanied by authentic user-generated questions and discussions, capturing the intricacies of practical music analysis. To facilitate systematic evaluation, we propose a systematic taxonomy, comprising both high-level and fine-grained musicological ontologies. Furthermore, we frame complex music reasoning as multiple-choice question answering, enabling controlled and scalable assessment of MLLMs'",
+      "title": "WildScore: Benchmarking MLLMs in-the-Wild Symbolic Music Reasoning"
+    },
+    {
+      "arxiv_id": "2509.19592",
+      "authors": [
+        "Roy Fejgin, Paarth Neekhara, Xuesong Yang, Edresson Casanova, Ryan Langman, Jaehyeon Kim, Subhankar Ghosh, Shehzeen Hussain, Jason Li"
+      ],
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.CL",
+        "cs.SD"
+      ],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-01-26T06:03:52.757398+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Frame-Stacked Local Transformers For Efficient Multi-Codebook Speech Generation",
+          "url": "https://arxiv.org/abs/2509.19592"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Frame-Stacked Local Transformers For Efficient Multi-Codebook Speech Generation",
+        "url": "https://arxiv.org/abs/2509.19592"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.19592",
+      "summary": "arXiv:2509.19592v2 Announce Type: replace-cross \nAbstract: Speech generation models based on large language models (LLMs) typically operate on discrete acoustic codes, which differ fundamentally from text tokens due to their multicodebook structure. At each timestep, models must predict N codebook entries jointly, introducing dependencies that challenge simple parallel prediction approaches. Parallel prediction assumes independence among codebooks, yielding efficient decoding but often at the cost of reduced fidelity. To address this, hierarchical strategies employ a local transformer (LT) to refine predictions and capture intra-timestep dependencies. In this work, we systematically investigate two LT architectures: an autoregressive transformer that generates codebooks sequentially, and a MaskGIT-based transformer that performs iterative masked prediction. Both designs further enable frame stacking, where the primary transformer predicts multiple frames jointly, and the LT decodes the",
+      "title": "Frame-Stacked Local Transformers For Efficient Multi-Codebook Speech Generation"
+    },
+    {
+      "arxiv_id": "2601.16621",
+      "authors": [
+        "Xueyang Feng, Weinan Gan, Xu Chen, Quanyu Dai, Yong Liu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.154283+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "How Does Personalized Memory Shape LLM Behavior? Benchmarking Rational Preference Utilization in Personalized Assistants",
+          "url": "https://arxiv.org/abs/2601.16621"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "How Does Personalized Memory Shape LLM Behavior? Benchmarking Rational Preference Utilization in Personalized Assistants",
+        "url": "https://arxiv.org/abs/2601.16621"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16621",
+      "summary": "arXiv:2601.16621v1 Announce Type: new \nAbstract: Large language model (LLM)-powered assistants have recently integrated memory mechanisms that record user preferences, leading to more personalized and user-aligned responses. However, irrelevant personalized memories are often introduced into the context, interfering with the LLM's intent understanding. To comprehensively investigate the dual effects of personalization, we develop RPEval, a benchmark comprising a personalized intent reasoning dataset and a multi-granularity evaluation protocol. RPEval reveals the widespread phenomenon of irrational personalization in existing LLMs and, through error pattern analysis, illustrates its negative impact on user experience. Finally, we introduce RP-Reasoner, which treats memory utilization as a pragmatic reasoning process, enabling the selective integration of personalized information. Experimental results demonstrate that our method significantly outperforms carefully designed baselines on R",
+      "title": "How Does Personalized Memory Shape LLM Behavior? Benchmarking Rational Preference Utilization in Personalized Assistants"
+    },
+    {
+      "arxiv_id": "2601.16690",
+      "authors": [
+        "Xinze Li, Ziyue Zhu, Siyuan Liu, Yubo Ma, Yuhang Zang, Yixin Cao, Aixin Sun"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.155493+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "EMemBench: Interactive Benchmarking of Episodic Memory for VLM Agents",
+          "url": "https://arxiv.org/abs/2601.16690"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "EMemBench: Interactive Benchmarking of Episodic Memory for VLM Agents",
+        "url": "https://arxiv.org/abs/2601.16690"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16690",
+      "summary": "arXiv:2601.16690v1 Announce Type: cross \nAbstract: We introduce EMemBench, a programmatic benchmark for evaluating long-term memory of agents through interactive games. Rather than using a fixed set of questions, EMemBench generates questions from each agent's own trajectory, covering both text and visual game environments. Each template computes verifiable ground truth from underlying game signals, with controlled answerability and balanced coverage over memory skills: single/multi-hop recall, induction, temporal, spatial, logical, and adversarial. We evaluate memory agents with strong LMs/VLMs as backbones, using in-context prompting as baselines. Across 15 text games and multiple visual seeds, results are far from saturated: induction and spatial reasoning are persistent bottlenecks, especially in visual setting. Persistent memory yields clear gains for open backbones on text games, but improvements are less consistent for VLM agents, suggesting that visually grounded episodic memor",
+      "title": "EMemBench: Interactive Benchmarking of Episodic Memory for VLM Agents"
+    },
+    {
+      "arxiv_id": "2601.16503",
+      "authors": [
+        "Wei Zhu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.151746+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "MRAG: Benchmarking Retrieval-Augmented Generation for Bio-medicine",
+          "url": "https://arxiv.org/abs/2601.16503"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "MRAG: Benchmarking Retrieval-Augmented Generation for Bio-medicine",
+        "url": "https://arxiv.org/abs/2601.16503"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16503",
+      "summary": "arXiv:2601.16503v1 Announce Type: new \nAbstract: While Retrieval-Augmented Generation (RAG) has been swiftly adopted in scientific and clinical QA systems, a comprehensive evaluation benchmark in the medical domain is lacking. To address this gap, we introduce the Medical Retrieval-Augmented Generation (MRAG) benchmark, covering various tasks in English and Chinese languages, and building a corpus with Wikipedia and Pubmed. Additionally, we develop the MRAG-Toolkit, facilitating systematic exploration of different RAG components. Our experiments reveal that: (a) RAG enhances LLM reliability across MRAG tasks. (b) the performance of RAG systems is influenced by retrieval approaches, model sizes, and prompting strategies. (c) While RAG improves usefulness and reasoning quality, LLM responses may become slightly less readable for long-form questions. We will release the MRAG-Bench's dataset and toolkit with CCBY-4.0 license upon acceptance, to facilitate applications from both academia an",
+      "title": "MRAG: Benchmarking Retrieval-Augmented Generation for Bio-medicine"
+    },
+    {
+      "arxiv_id": "2601.12723",
+      "authors": [
+        "Yuhiro Ono, Tomohiro Harada, Yukiya Miura"
+      ],
+      "categories": [
+        "cs.NE",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.765764+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "An Evolutionary Framework for Automatic Optimization Benchmark Generation via Large Language Models",
+          "url": "https://arxiv.org/abs/2601.12723"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "An Evolutionary Framework for Automatic Optimization Benchmark Generation via Large Language Models",
+        "url": "https://arxiv.org/abs/2601.12723"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2601.12723",
+      "summary": "arXiv:2601.12723v2 Announce Type: replace-cross \nAbstract: Optimization benchmarks play a fundamental role in assessing algorithm performance; however, existing artificial benchmarks often fail to capture the diversity and irregularity of real-world problem structures, while benchmarks derived from real-world problems are costly and difficult to construct. To address these challenges, we propose an evolutionary automatic benchmark generation framework that leverages a large language model (LLM) as a generative operator, termed the LLM-driven evolutionary benchmark generator (LLM-EBG). In this framework, the LLM serves as an evolutionary operator that generates and evolves benchmark problems within a flexible, expressive representation space. As a case study, we generate unconstrained single-objective continuous minimization problems represented as mathematical expressions designed to induce significant performance differences between a genetic algorithm (GA) and differential evolution ",
+      "title": "An Evolutionary Framework for Automatic Optimization Benchmark Generation via Large Language Models"
+    },
+    {
+      "arxiv_id": "2601.16400",
+      "authors": [
+        "Zongwan Cao, Bingbing Wen, Lucy Lu Wang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.149350+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Clarify or Answer: Reinforcement Learning for Agentic VQA with Context Under-specification",
+          "url": "https://arxiv.org/abs/2601.16400"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Clarify or Answer: Reinforcement Learning for Agentic VQA with Context Under-specification",
+        "url": "https://arxiv.org/abs/2601.16400"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16400",
+      "summary": "arXiv:2601.16400v1 Announce Type: new \nAbstract: Real-world visual question answering (VQA) is often context-dependent: an image-question pair may be under-specified, such that the correct answer depends on external information that is not observable in the image. In such cases, directly answering can lead to confident but incorrect predictions. We propose CoA(Clarify-or-Answer), an ask-or-answer agent that separately models the decision to ask or answer, and what to ask if needed. CoA first determines whether clarification is necessary; if so, it asks a single focused question and then incorporates the response to produce the final answer. We introduce CONTEXTCLARIFY with a set of ambiguous VQA questions and the contrast set that is non-ambiguous. We further introduce GRPO-CR (Clarification Reasoning), a reinforcement learning approach that optimizes clarification question generation with multiple reward signals encouraging well-formed, focused, non-trivial questions that resolve ambi",
+      "title": "Clarify or Answer: Reinforcement Learning for Agentic VQA with Context Under-specification"
+    },
+    {
+      "arxiv_id": "2601.16711",
+      "authors": [
+        "Shanshan Liu, Noriki Nishida, Fei Cheng, Narumi Tokunaga, Rumana Ferdous Munne, Yuki Yamagata, Kouji Kozaki, Takehito Utsuro, Yuji Matsumoto"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.IR"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.155711+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Better Generalizing to Unseen Concepts: An Evaluation Framework and An LLM-Based Auto-Labeled Pipeline for Biomedical Concept Recognition",
+          "url": "https://arxiv.org/abs/2601.16711"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Better Generalizing to Unseen Concepts: An Evaluation Framework and An LLM-Based Auto-Labeled Pipeline for Biomedical Concept Recognition",
+        "url": "https://arxiv.org/abs/2601.16711"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16711",
+      "summary": "arXiv:2601.16711v1 Announce Type: new \nAbstract: Generalization to unseen concepts is a central challenge due to the scarcity of human annotations in Mention-agnostic Biomedical Concept Recognition (MA-BCR). This work makes two key contributions to systematically address this issue. First, we propose an evaluation framework built on hierarchical concept indices and novel metrics to measure generalization. Second, we explore LLM-based Auto-Labeled Data (ALD) as a scalable resource, creating a task-specific pipeline for its generation. Our research unequivocally shows that while LLM-generated ALD cannot fully substitute for manual annotations, it is a valuable resource for improving generalization, successfully providing models with the broader coverage and structural knowledge needed to approach recognizing unseen concepts. Code and datasets are available at https://github.com/bio-ie-tool/hi-ald.",
+      "title": "Better Generalizing to Unseen Concepts: An Evaluation Framework and An LLM-Based Auto-Labeled Pipeline for Biomedical Concept Recognition"
+    },
+    {
+      "arxiv_id": "2512.23851",
+      "authors": [
+        "Lvmin Zhang, Shengqu Cai, Muyang Li, Chong Zeng, Beijia Lu, Anyi Rao, Song Han, Gordon Wetzstein, Maneesh Agrawala"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.275624+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Pretraining Frame Preservation in Autoregressive Video Memory Compression",
+          "url": "https://arxiv.org/abs/2512.23851"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Pretraining Frame Preservation in Autoregressive Video Memory Compression",
+        "url": "https://arxiv.org/abs/2512.23851"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2512.23851",
+      "summary": "arXiv:2512.23851v3 Announce Type: replace \nAbstract: We present PFP, a neural network structure to compress long videos into short contexts, with an explicit pretraining objective to preserve the high-frequency details of single frames at arbitrary temporal positions. The baseline model can compress a 20-second video into a context at about 5k length, where random frames can be retrieved with perceptually preserved appearances. Such pretrained models can be directly fine-tuned as memory encoders for autoregressive video models, enabling long history memory with low context cost and relatively low fidelity loss. We evaluate the framework with ablative settings and discuss the trade-offs of possible neural architecture designs.",
+      "title": "Pretraining Frame Preservation in Autoregressive Video Memory Compression"
+    },
+    {
+      "arxiv_id": "2601.16489",
+      "authors": [
+        "Xinshuai Guo, Jiayi Kuang, Linyue Pan, Yinghui Li, Yangning Li, Hai-Tao Zheng, Ying Shen, Di Yin, Xing Sun"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.151535+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "EvoConfig: Self-Evolving Multi-Agent Systems for Efficient Autonomous Environment Configuration",
+          "url": "https://arxiv.org/abs/2601.16489"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "EvoConfig: Self-Evolving Multi-Agent Systems for Efficient Autonomous Environment Configuration",
+        "url": "https://arxiv.org/abs/2601.16489"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16489",
+      "summary": "arXiv:2601.16489v1 Announce Type: cross \nAbstract: A reliable executable environment is the foundation for ensuring that large language models solve software engineering tasks. Due to the complex and tedious construction process, large-scale configuration is relatively inefficient. However, most methods always overlook fine-grained analysis of the actions performed by the agent, making it difficult to handle complex errors and resulting in configuration failures. To address this bottleneck, we propose EvoConfig, an efficient environment configuration framework that optimizes multi-agent collaboration to build correct runtime environments. EvoConfig features an expert diagnosis module for fine-grained post-execution analysis, and a self-evolving mechanism that lets expert agents self-feedback and dynamically adjust error-fixing priorities in real time. Empirically, EvoConfig matches the previous state-of-the-art Repo2Run on Repo2Run's 420 repositories, while delivering clear gains on ha",
+      "title": "EvoConfig: Self-Evolving Multi-Agent Systems for Efficient Autonomous Environment Configuration"
+    },
+    {
+      "arxiv_id": "2505.22928",
+      "authors": [
+        "Massimiliano Pronesti, Michela Lorandi, Paul Flanagan, Oisin Redmond, Anya Belz, Yufang Hou"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.753775+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Enhancing Study-Level Inference from Clinical Trial Papers via Reinforcement Learning-Based Numeric Reasoning",
+          "url": "https://arxiv.org/abs/2505.22928"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Enhancing Study-Level Inference from Clinical Trial Papers via Reinforcement Learning-Based Numeric Reasoning",
+        "url": "https://arxiv.org/abs/2505.22928"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2505.22928",
+      "summary": "arXiv:2505.22928v3 Announce Type: replace-cross \nAbstract: Systematic reviews in medicine play a critical role in evidence-based decision-making by aggregating findings from multiple studies. A central bottleneck in automating this process is extracting numeric evidence and determining study-level conclusions for specific outcomes and comparisons. Prior work has framed this problem as a textual inference task by retrieving relevant content fragments and inferring conclusions from them. However, such approaches often rely on shallow textual cues and fail to capture the underlying numeric reasoning behind expert assessments.\n  In this work, we conceptualise the problem as one of quantitative reasoning. Rather than inferring conclusions from surface text, we extract structured numerical evidence (e.g., event counts or standard deviations) and apply domain knowledge informed logic to derive outcome-specific conclusions. We develop a numeric reasoning system composed of a numeric data extra",
+      "title": "Enhancing Study-Level Inference from Clinical Trial Papers via Reinforcement Learning-Based Numeric Reasoning"
+    },
+    {
+      "arxiv_id": "2509.10250",
+      "authors": [
+        "Haozhen Yan, Yan Hong, Suning Lang, Jiahui Zhan, Yikun Ji, Yujie Gao, Huijia Zhu, Jun Lan, Jianfu Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.272062+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "GAMMA: Generalizable Alignment via Multi-task and Manipulation-Augmented Training for AI-Generated Image Detection",
+          "url": "https://arxiv.org/abs/2509.10250"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "GAMMA: Generalizable Alignment via Multi-task and Manipulation-Augmented Training for AI-Generated Image Detection",
+        "url": "https://arxiv.org/abs/2509.10250"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.10250",
+      "summary": "arXiv:2509.10250v2 Announce Type: replace \nAbstract: With generative models becoming increasingly sophisticated and diverse, detecting AI-generated images has become increasingly challenging. While existing AI-genereted Image detectors achieve promising performance on in-distribution generated images, their generalization to unseen generative models remains limited. This limitation is largely attributed to their reliance on generation-specific artifacts, such as stylistic priors and compression patterns. To address these limitations, we propose GAMMA, a novel training framework designed to reduce domain bias and enhance semantic alignment. GAMMA introduces diverse manipulation strategies, such as inpainting-based manipulation and semantics-preserving perturbations, to ensure consistency between manipulated and authentic content. We employ multi-task supervision with dual segmentation heads and a classification head, enabling pixel-level source attribution across diverse generative doma",
+      "title": "GAMMA: Generalizable Alignment via Multi-task and Manipulation-Augmented Training for AI-Generated Image Detection"
+    },
+    {
+      "arxiv_id": "2601.15297",
+      "authors": [
+        "Edward Ajayi"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-23T23:01:38.913957+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "AfriEconQA: A Benchmark Dataset for African Economic Analysis based on World Bank Reports",
+          "url": "https://arxiv.org/abs/2601.15297"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "AfriEconQA: A Benchmark Dataset for African Economic Analysis based on World Bank Reports",
+        "url": "https://arxiv.org/abs/2601.15297"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.15297",
+      "summary": "arXiv:2601.15297v2 Announce Type: replace \nAbstract: We introduce AfriEconQA, a specialized benchmark dataset for African economic analysis grounded in a comprehensive corpus of 236 World Bank reports. The task of AfriEconQA is to answer complex economic queries that require high-precision numerical reasoning and temporal disambiguation from specialized institutional documents. The dataset consists of 8,937 curated QA instances, rigorously filtered from a pool of 10018 synthetic questions to ensure high-quality evidence-answer alignment. Each instance is composed of: (1) a question requiring reasoning over economic indicators, (2) the corresponding evidence retrieved from the corpus, (3) a verified ground-truth answer, and (4) source metadata (e.g., URL and publication date) to ensure temporal provenance. AfriEconQA is the first benchmark focused specifically on African economic analysis, providing a unique challenge for Information Retrieval (IR) systems, as the data is largely absent",
+      "title": "AfriEconQA: A Benchmark Dataset for African Economic Analysis based on World Bank Reports"
+    },
+    {
+      "arxiv_id": "2601.16359",
+      "authors": [
+        "Ayan Banerjee, Komandoor Srivathsan, Sandeep K. S. Gupta"
+      ],
+      "categories": [
+        "eess.IV",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.278782+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Experience with Single Domain Generalization in Real World Medical Imaging Deployments",
+          "url": "https://arxiv.org/abs/2601.16359"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Experience with Single Domain Generalization in Real World Medical Imaging Deployments",
+        "url": "https://arxiv.org/abs/2601.16359"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16359",
+      "summary": "arXiv:2601.16359v1 Announce Type: cross \nAbstract: A desirable property of any deployed artificial intelligence is generalization across domains, i.e. data generation distribution under a specific acquisition condition. In medical imagining applications the most coveted property for effective deployment is Single Domain Generalization (SDG), which addresses the challenge of training a model on a single domain to ensure it generalizes well to unseen target domains. In multi-center studies, differences in scanners and imaging protocols introduce domain shifts that exacerbate variability in rare class characteristics. This paper presents our experience on SDG in real life deployment for two exemplary medical imaging case studies on seizure onset zone detection using fMRI data, and stress electrocardiogram based coronary artery detection. Utilizing the commonly used application of diabetic retinopathy, we first demonstrate that state-of-the-art SDG techniques fail to achieve generalized pe",
+      "title": "Experience with Single Domain Generalization in Real World Medical Imaging Deployments"
+    },
+    {
+      "arxiv_id": "2601.16444",
+      "authors": [
+        "Ayako Sato, Hwichan Kim, Zhousi Chen, Masato Mita, Mamoru Komachi"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.150164+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Exploring the Effects of Alignment on Numerical Bias in Large Language Models",
+          "url": "https://arxiv.org/abs/2601.16444"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Exploring the Effects of Alignment on Numerical Bias in Large Language Models",
+        "url": "https://arxiv.org/abs/2601.16444"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16444",
+      "summary": "arXiv:2601.16444v1 Announce Type: new \nAbstract: ``LLM-as-a-judge,'' which utilizes large language models (LLMs) as evaluators, has proven effective in many evaluation tasks. However, evaluator LLMs exhibit numerical bias, a phenomenon where certain evaluation scores are generated disproportionately often, leading reduced evaluation performance. This study investigates the cause of this bias. Given that most evaluator LLMs are aligned through instruction tuning and preference tuning, and that prior research suggests alignment reduces output diversity, we hypothesize that numerical bias arises from alignment. To test this, we compare outputs from pre- and post-alignment LLMs, and observe that alignment indeed increases numerical bias. We also explore mitigation strategies for post-alignment LLMs, including temperature scaling, distribution calibration, and score range adjustment. Among these, score range adjustment is most effective in reducing bias and improving performance, though sti",
+      "title": "Exploring the Effects of Alignment on Numerical Bias in Large Language Models"
+    },
+    {
+      "arxiv_id": "2506.11003",
+      "authors": [
+        "Ruiyang Xu, Jialun Cao, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.754185+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "EmbedAgent: Benchmarking Large Language Models in Embedded System Development",
+          "url": "https://arxiv.org/abs/2506.11003"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "EmbedAgent: Benchmarking Large Language Models in Embedded System Development",
+        "url": "https://arxiv.org/abs/2506.11003"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.11003",
+      "summary": "arXiv:2506.11003v3 Announce Type: replace-cross \nAbstract: Large Language Models (LLMs) have shown promise in various tasks, yet few benchmarks assess their capabilities in embedded system development. In this paper, we introduce EmbedAgent, a paradigm designed to simulate real-world roles in embedded system development, such as Embedded System Programmer, Architect, and Integrator. This paradigm enables LLMs to be tested in tasks that bridge the gap between digital and physical systems, allowing for a more comprehensive assessment of their capabilities. To evaluate LLMs on these tasks, we propose Embedbench, the first comprehensive benchmark for embedded system programming, circuit design, and cross-platform migration. Embedbench consists of 126 cases, covering 9 electronic components across 3 hardware platforms. Through extensive experiments on 10 mainstream LLMs, we uncover several key findings. Surprisingly, despite the simplicity of the cases, DeepSeek-R1 achieves only a 55.6% pas",
+      "title": "EmbedAgent: Benchmarking Large Language Models in Embedded System Development"
+    },
+    {
+      "arxiv_id": "2601.16218",
+      "authors": [
+        "Aleix Torres-Camps, Nathaniel Mitrani Hadida, V\\'ictor Conchello Vendrell, \\`Alex Batlle Casellas, Arnau Padr\\'es Masdemont, Jordi Ros-Giralt"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.768356+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "M3Kang: Evaluating Multilingual Multimodal Mathematical Reasoning in Vision-Language Models",
+          "url": "https://arxiv.org/abs/2601.16218"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "M3Kang: Evaluating Multilingual Multimodal Mathematical Reasoning in Vision-Language Models",
+        "url": "https://arxiv.org/abs/2601.16218"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16218",
+      "summary": "arXiv:2601.16218v1 Announce Type: new \nAbstract: Despite state-of-the-art vision-language models (VLMs) have demonstrated strong reasoning capabilities, their performance in multilingual mathematical reasoning remains underexplored, particularly when compared to human performance. To bridge this gap, we introduce M3Kang, the first massively multilingual, multimodal mathematical reasoning dataset for VLMs. It is derived from the Kangaroo Math Competition, the world's largest mathematics contest, which annually engages over six million participants under the age of 18 across more than 90 countries. M3Kang includes 1,747 unique multiple-choice problems organized by grade-level difficulty, with translations into 108 culturally diverse languages, some of them including diagrams essential for solving them. Using this dataset, we conduct extensive benchmarking on both closed- and open-source SOTA models. We observe that, despite recent advances, models still struggle with basic math and diagr",
+      "title": "M3Kang: Evaluating Multilingual Multimodal Mathematical Reasoning in Vision-Language Models"
+    },
+    {
+      "arxiv_id": "2601.16520",
+      "authors": [
+        "Daixian Liu, Jiayi Kuang, Yinghui Li, Yangning Li, Di Yin, Haoyu Cao, Xing Sun, Ying Shen, Hai-Tao Zheng, Liang Lin, Philip S. Yu"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.152623+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "TangramPuzzle: Evaluating Multimodal Large Language Models with Compositional Spatial Reasoning",
+          "url": "https://arxiv.org/abs/2601.16520"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "TangramPuzzle: Evaluating Multimodal Large Language Models with Compositional Spatial Reasoning",
+        "url": "https://arxiv.org/abs/2601.16520"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16520",
+      "summary": "arXiv:2601.16520v1 Announce Type: new \nAbstract: Multimodal Large Language Models (MLLMs) have achieved remarkable progress in visual recognition and semantic understanding. Nevertheless, their ability to perform precise compositional spatial reasoning remains largely unexplored. Existing benchmarks often involve relatively simple tasks and rely on semantic approximations or coarse relative positioning, while their evaluation metrics are typically limited and lack rigorous mathematical formulations. To bridge this gap, we introduce TangramPuzzle, a geometry-grounded benchmark designed to evaluate compositional spatial reasoning through the lens of the classic Tangram game. We propose the Tangram Construction Expression (TCE), a symbolic geometric framework that grounds tangram assemblies in exact, machine-verifiable coordinate specifications, to mitigate the ambiguity of visual approximation. We design two complementary tasks: Outline Prediction, which demands inferring global shapes f",
+      "title": "TangramPuzzle: Evaluating Multimodal Large Language Models with Compositional Spatial Reasoning"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": "2601.16419",
+      "authors": [
+        "Qinglong Cao, Yuntian Chen, Chao Ma, Xiaokang Yang"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.149774+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Learning Domain Knowledge in Multimodal Large Language Models through Reinforcement Fine-Tuning",
+          "url": "https://arxiv.org/abs/2601.16419"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Learning Domain Knowledge in Multimodal Large Language Models through Reinforcement Fine-Tuning",
+        "url": "https://arxiv.org/abs/2601.16419"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16419",
+      "summary": "arXiv:2601.16419v1 Announce Type: cross \nAbstract: Multimodal large language models (MLLMs) have shown remarkable capabilities in multimodal perception and understanding tasks. However, their effectiveness in specialized domains, such as remote sensing and medical imaging, remains limited. A natural approach to domain adaptation is to inject domain knowledge through textual instructions, prompts, or auxiliary captions. Surprisingly, we find that such input-level domain knowledge injection yields little to no improvement on scientific multimodal tasks, even when the domain knowledge is explicitly provided. This observation suggests that current MLLMs fail to internalize domain-specific priors through language alone, and that domain knowledge must be integrated at the optimization level. Motivated by this insight, we propose a reinforcement fine-tuning framework that incorporates domain knowledge directly into the learning objective. Instead of treating domain knowledge as descriptive in",
+      "title": "Learning Domain Knowledge in Multimodal Large Language Models through Reinforcement Fine-Tuning"
+    },
+    {
+      "arxiv_id": "2601.16466",
+      "authors": [
+        "Jivnesh Sandhan, Fei Cheng, Tushar Sandhan, Yugo Murawaki"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.150758+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Persona Jailbreaking in Large Language Models",
+          "url": "https://arxiv.org/abs/2601.16466"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Persona Jailbreaking in Large Language Models",
+        "url": "https://arxiv.org/abs/2601.16466"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16466",
+      "summary": "arXiv:2601.16466v1 Announce Type: new \nAbstract: Large Language Models (LLMs) are increasingly deployed in domains such as education, mental health and customer support, where stable and consistent personas are critical for reliability. Yet, existing studies focus on narrative or role-playing tasks and overlook how adversarial conversational history alone can reshape induced personas. Black-box persona manipulation remains unexplored, raising concerns for robustness in realistic interactions. In response, we introduce the task of persona editing, which adversarially steers LLM traits through user-side inputs under a black-box, inference-only setting. To this end, we propose PHISH (Persona Hijacking via Implicit Steering in History), the first framework to expose a new vulnerability in LLM safety that embeds semantically loaded cues into user queries to gradually induce reverse personas. We also define a metric to quantify attack success. Across 3 benchmarks and 8 LLMs, PHISH predictabl",
+      "title": "Persona Jailbreaking in Large Language Models"
+    },
+    {
+      "arxiv_id": "2601.16508",
+      "authors": [
+        "Karl Neergaard, Le Qiu, Emmanuele Chersoni"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.152154+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Is Length Really A Liability? An Evaluation of Multi-turn LLM Conversations using BoolQ",
+          "url": "https://arxiv.org/abs/2601.16508"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Is Length Really A Liability? An Evaluation of Multi-turn LLM Conversations using BoolQ",
+        "url": "https://arxiv.org/abs/2601.16508"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16508",
+      "summary": "arXiv:2601.16508v1 Announce Type: new \nAbstract: Single-prompt evaluations dominate current LLM benchmarking, yet they fail to capture the conversational dynamics where real-world harm occurs. In this study, we examined whether conversation length affects response veracity by evaluating LLM performance on the BoolQ dataset under varying length and scaffolding conditions. Our results across three distinct LLMs revealed model-specific vulnerabilities that are invisible under single-turn testing. The length-dependent and scaffold-specific effects we observed demonstrate a fundamental limitation of static evaluations, as deployment-relevant vulnerabilities could only be spotted in a multi-turn conversational setting.",
+      "title": "Is Length Really A Liability? An Evaluation of Multi-turn LLM Conversations using BoolQ"
+    },
+    {
+      "arxiv_id": "2502.14122",
+      "authors": [
+        "Yueqing Liang, Liangwei Yang, Chen Wang, Congying Xia, Rui Meng, Xiongxiao Xu, Haoran Wang, Ali Payani, Kai Shu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CY",
+        "cs.ET"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.067511+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Benchmarking LLMs for Political Science: A United Nations Perspective",
+          "url": "https://arxiv.org/abs/2502.14122"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Benchmarking LLMs for Political Science: A United Nations Perspective",
+        "url": "https://arxiv.org/abs/2502.14122"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2502.14122",
+      "summary": "arXiv:2502.14122v2 Announce Type: replace \nAbstract: Large Language Models (LLMs) have achieved significant advances in natural language processing, yet their potential for high-stake political decision-making remains largely unexplored. This paper addresses the gap by focusing on the application of LLMs to the United Nations (UN) decision-making process, where the stakes are particularly high and political decisions can have far-reaching consequences. We introduce a novel dataset comprising publicly available UN Security Council (UNSC) records from 1994 to 2024, including draft resolutions, voting records, and diplomatic speeches. Using this dataset, we propose the United Nations Benchmark (UNBench), the first comprehensive benchmark designed to evaluate LLMs across four interconnected political science tasks: co-penholder judgment, representative voting simulation, draft adoption prediction, and representative statement generation. These tasks span the three stages of the UN decision",
+      "title": "Benchmarking LLMs for Political Science: A United Nations Perspective"
+    },
+    {
+      "arxiv_id": "2601.13976",
+      "authors": [
+        "Jing Zuo, Lingzhou Mu, Fan Jiang, Chengcheng Ma, Mu Xu, Yonggang Qi"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.277117+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "FantasyVLN: Unified Multimodal Chain-of-Thought Reasoning for Vision-Language Navigation",
+          "url": "https://arxiv.org/abs/2601.13976"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "FantasyVLN: Unified Multimodal Chain-of-Thought Reasoning for Vision-Language Navigation",
+        "url": "https://arxiv.org/abs/2601.13976"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.13976",
+      "summary": "arXiv:2601.13976v2 Announce Type: replace \nAbstract: Achieving human-level performance in Vision-and-Language Navigation (VLN) requires an embodied agent to jointly understand multimodal instructions and visual-spatial context while reasoning over long action sequences. Recent works, such as NavCoT and NavGPT-2, demonstrate the potential of Chain-of-Thought (CoT) reasoning for improving interpretability and long-horizon planning. Moreover, multimodal extensions like OctoNav-R1 and CoT-VLA further validate CoT as a promising pathway toward human-like navigation reasoning. However, existing approaches face critical drawbacks: purely textual CoTs lack spatial grounding and easily overfit to sparse annotated reasoning steps, while multimodal CoTs incur severe token inflation by generating imagined visual observations, making real-time navigation impractical. In this work, we propose FantasyVLN, a unified implicit reasoning framework that preserves the benefits of CoT reasoning without expl",
+      "title": "FantasyVLN: Unified Multimodal Chain-of-Thought Reasoning for Vision-Language Navigation"
+    },
+    {
+      "arxiv_id": "2601.16515",
+      "authors": [
+        "Tongcheng Fang, Hanling Zhang, Ruiqi Xie, Zhuo Han, Xin Tao, Tianchen Zhao, Pengfei Wan, Wenbo Ding, Wanli Ouyang, Xuefei Ning, Yu Wang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.282247+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "SALAD: Achieve High-Sparsity Attention via Efficient Linear Attention Tuning for Video Diffusion Transformer",
+          "url": "https://arxiv.org/abs/2601.16515"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "SALAD: Achieve High-Sparsity Attention via Efficient Linear Attention Tuning for Video Diffusion Transformer",
+        "url": "https://arxiv.org/abs/2601.16515"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16515",
+      "summary": "arXiv:2601.16515v1 Announce Type: new \nAbstract: Diffusion Transformers have recently demonstrated remarkable performance in video generation. However, the long input sequences result in high computational latency due to the quadratic complexity of full attention. Various sparse attention mechanisms have been proposed. Training-free sparse attention is constrained by limited sparsity and thus offers modest acceleration, whereas training-based methods can reach much higher sparsity but demand substantial data and computation for training. In this work, we propose SALAD, introducing a lightweight linear attention branch in parallel with the sparse attention. By incorporating an input-dependent gating mechanism to finely balance the two branches, our method attains 90% sparsity and 1.72x inference speedup, while maintaining generation quality comparable to the full attention baseline. Moreover, our finetuning process is highly efficient, requiring only 2,000 video samples and 1,600 traini",
+      "title": "SALAD: Achieve High-Sparsity Attention via Efficient Linear Attention Tuning for Video Diffusion Transformer"
+    },
+    {
+      "arxiv_id": "2601.16383",
+      "authors": [
+        "Soumitri Chattopadhyay, Basar Demir, Marc Niethammer"
+      ],
+      "categories": [
+        "eess.IV",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.279363+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "On The Robustness of Foundational 3D Medical Image Segmentation Models Against Imprecise Visual Prompts",
+          "url": "https://arxiv.org/abs/2601.16383"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "On The Robustness of Foundational 3D Medical Image Segmentation Models Against Imprecise Visual Prompts",
+        "url": "https://arxiv.org/abs/2601.16383"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16383",
+      "summary": "arXiv:2601.16383v1 Announce Type: cross \nAbstract: While 3D foundational models have shown promise for promptable segmentation of medical volumes, their robustness to imprecise prompts remains under-explored. In this work, we aim to address this gap by systematically studying the effect of various controlled perturbations of dense visual prompts, that closely mimic real-world imprecision. By conducting experiments with two recent foundational models on a multi-organ abdominal segmentation task, we reveal several facets of promptable medical segmentation, especially pertaining to reliance on visual shape and spatial cues, and the extent of resilience of models towards certain perturbations. Codes are available at: https://github.com/ucsdbiag/Prompt-Robustness-MedSegFMs",
+      "title": "On The Robustness of Foundational 3D Medical Image Segmentation Models Against Imprecise Visual Prompts"
+    },
+    {
+      "arxiv_id": "2601.16451",
+      "authors": [
+        "Peixian Liang, Songhao Li, Shunsuke Koga, Yutong Li, Zahra Alipour, Yucheng Tang, Daguang Xu, Zhi Huang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.281219+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "VISTA-PATH: An interactive foundation model for pathology image segmentation and quantitative analysis in computational pathology",
+          "url": "https://arxiv.org/abs/2601.16451"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "VISTA-PATH: An interactive foundation model for pathology image segmentation and quantitative analysis in computational pathology",
+        "url": "https://arxiv.org/abs/2601.16451"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16451",
+      "summary": "arXiv:2601.16451v1 Announce Type: new \nAbstract: Accurate semantic segmentation for histopathology image is crucial for quantitative tissue analysis and downstream clinical modeling. Recent segmentation foundation models have improved generalization through large-scale pretraining, yet remain poorly aligned with pathology because they treat segmentation as a static visual prediction task. Here we present VISTA-PATH, an interactive, class-aware pathology segmentation foundation model designed to resolve heterogeneous structures, incorporate expert feedback, and produce pixel-level segmentation that are directly meaningful for clinical interpretation. VISTA-PATH jointly conditions segmentation on visual context, semantic tissue descriptions, and optional expert-provided spatial prompts, enabling precise multi-class segmentation across heterogeneous pathology images. To support this paradigm, we curate VISTA-PATH Data, a large-scale pathology segmentation corpus comprising over 1.6 millio",
+      "title": "VISTA-PATH: An interactive foundation model for pathology image segmentation and quantitative analysis in computational pathology"
+    },
+    {
+      "arxiv_id": "2601.16532",
+      "authors": [
+        "Runmao Yao, Junsheng Zhou, Zhen Dong, Yu-Shen Liu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.282855+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "AnchoredDream: Zero-Shot 360{\\deg} Indoor Scene Generation from a Single View via Geometric Grounding",
+          "url": "https://arxiv.org/abs/2601.16532"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "AnchoredDream: Zero-Shot 360{\\deg} Indoor Scene Generation from a Single View via Geometric Grounding",
+        "url": "https://arxiv.org/abs/2601.16532"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16532",
+      "summary": "arXiv:2601.16532v1 Announce Type: new \nAbstract: Single-view indoor scene generation plays a crucial role in a range of real-world applications. However, generating a complete 360{\\deg} scene from a single image remains a highly ill-posed and challenging problem. Recent approaches have made progress by leveraging diffusion models and depth estimation networks, yet they still struggle to maintain appearance consistency and geometric plausibility under large viewpoint changes, limiting their effectiveness in full-scene generation. To address this, we propose AnchoredDream, a novel zero-shot pipeline that anchors 360{\\deg} scene generation on high-fidelity geometry via an appearance-geometry mutual boosting mechanism. Given a single-view image, our method first performs appearance-guided geometry generation to construct a reliable 3D scene layout. Then, we progressively generate the complete scene through a series of modules: warp-and-inpaint, warp-and-refine, post-optimization, and a nov",
+      "title": "AnchoredDream: Zero-Shot 360{\\deg} Indoor Scene Generation from a Single View via Geometric Grounding"
+    },
+    {
+      "arxiv_id": "2601.16652",
+      "authors": [
+        "Aurora Pia Ghiardelli, Guangzhi Tang, Tao Sun"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.NE"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.285188+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Reliable Brain Tumor Segmentation Based on Spiking Neural Networks with Efficient Training",
+          "url": "https://arxiv.org/abs/2601.16652"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Reliable Brain Tumor Segmentation Based on Spiking Neural Networks with Efficient Training",
+        "url": "https://arxiv.org/abs/2601.16652"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16652",
+      "summary": "arXiv:2601.16652v1 Announce Type: new \nAbstract: We propose a reliable and energy-efficient framework for 3D brain tumor segmentation using spiking neural networks (SNNs). A multi-view ensemble of sagittal, coronal, and axial SNN models provides voxel-wise uncertainty estimation and enhances segmentation robustness. To address the high computational cost in training SNN models for semantic image segmentation, we employ Forward Propagation Through Time (FPTT), which maintains temporal learning efficiency with significantly reduced computational cost. Experiments on the Multimodal Brain Tumor Segmentation Challenges (BraTS 2017 and BraTS 2023) demonstrate competitive accuracy, well-calibrated uncertainty, and an 87% reduction in FLOPs, underscoring the potential of SNNs for reliable, low-power medical IoT and Point-of-Care systems.",
+      "title": "Reliable Brain Tumor Segmentation Based on Spiking Neural Networks with Efficient Training"
+    },
+    {
+      "arxiv_id": "2509.23927",
+      "authors": [
+        "Yi Yang, Xiaokun Zhang, Qingchen Fang, Jing Liu, Ziqi Ye, Rui Li, Li Liu, Haipeng Wang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.272494+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "FUSAR-KLIP: Towards Multimodal Foundation Models for Remote Sensing",
+          "url": "https://arxiv.org/abs/2509.23927"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "FUSAR-KLIP: Towards Multimodal Foundation Models for Remote Sensing",
+        "url": "https://arxiv.org/abs/2509.23927"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.23927",
+      "summary": "arXiv:2509.23927v4 Announce Type: replace \nAbstract: Cross-modal artificial intelligence, represented by visual language models, has achieved significant success in general image understanding. However, a fundamental cognitive inconsistency exists between general visual representation and remote sensing image interpretation: remote sensing images couple topography, terrain, and spatial structure, thereby inherently requiring models to possess deep geoscientific understanding. This cognitive difference is further amplified in synthetic aperture radar (SAR) imagery: while SAR possesses irreplaceable all-weather, all-day observation capabilities, it is constrained by coherent imaging mechanisms, exhibiting significant modal heterogeneity with general images. To address this inconsistency, we propose FUSAR-KLIP, the first knowledge-guided general multimodal foundational model for SAR, along with reusable data and evaluation baselines. Specifically: (1) FUSAR-GEOVL-1M (the first large-scale",
+      "title": "FUSAR-KLIP: Towards Multimodal Foundation Models for Remote Sensing"
+    },
+    {
+      "arxiv_id": "2601.09954",
+      "authors": [
+        "Nahid Alam, Leema Krishna Murali, Siddhant Bharadwaj, Patrick Liu, Timothy Chung, Drishti Sharma, Akshata A, Kranthi Kiran, Wesley Tam, Bala Krishna S Vegesna"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.276480+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "The Spatial Blindspot of Vision-Language Models",
+          "url": "https://arxiv.org/abs/2601.09954"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "The Spatial Blindspot of Vision-Language Models",
+        "url": "https://arxiv.org/abs/2601.09954"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.09954",
+      "summary": "arXiv:2601.09954v2 Announce Type: replace \nAbstract: Vision-language models (VLMs) have advanced rapidly, but their ability to capture spatial relationships remains a blindspot. Current VLMs are typically built with contrastive language-image pretraining (CLIP) style image encoders. The training recipe often flattens images into 1D patch sequences, discarding the 2D structure necessary for spatial reasoning. We argue that this lack of spatial awareness is a missing dimension in VLM design and a bottleneck for applications requiring spatial grounding, such as robotics and embodied AI. To address this, we investigate (i) image encoders trained with alternative objectives and (ii) 2D positional encodings. Our experiments show that these architectural choices can lead to improved spatial reasoning on several benchmarks.",
+      "title": "The Spatial Blindspot of Vision-Language Models"
+    },
+    {
+      "arxiv_id": "2601.16538",
+      "authors": [
+        "Zixian Liu, Zhaoxi Chen, Liang Pan, Ziwei Liu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.283051+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "OnlineSI: Taming Large Language Model for Online 3D Understanding and Grounding",
+          "url": "https://arxiv.org/abs/2601.16538"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "OnlineSI: Taming Large Language Model for Online 3D Understanding and Grounding",
+        "url": "https://arxiv.org/abs/2601.16538"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16538",
+      "summary": "arXiv:2601.16538v1 Announce Type: new \nAbstract: In recent years, researchers have increasingly been interested in how to enable Multimodal Large Language Models (MLLM) to possess spatial understanding and reasoning capabilities. However, most existing methods overlook the importance of the ability to continuously work in an ever-changing world, and lack the possibility of deployment on embodied systems in real-world environments. In this work, we introduce OnlineSI, a framework that can continuously improve its spatial understanding of its surroundings given a video stream. Our core idea is to maintain a finite spatial memory to retain past observations, ensuring the computation required for each inference does not increase as the input accumulates. We further integrate 3D point cloud information with semantic information, helping MLLM to better locate and identify objects in the scene. To evaluate our method, we introduce the Fuzzy $F_1$-Score to mitigate ambiguity, and test our meth",
+      "title": "OnlineSI: Taming Large Language Model for Online 3D Understanding and Grounding"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Archie Cowan"
+      ],
+      "categories": [
+        "Amazon CloudWatch",
+        "Amazon Cognito",
+        "Amazon Data Firehose",
+        "Amazon DynamoDB",
+        "Artificial Intelligence",
+        "AWS AppSync",
+        "AWS Glue",
+        "Technical How-to",
+        "Generative AI"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-01-26T23:01:44.763400+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Build a serverless AI Gateway architecture with AWS AppSync Events",
+          "url": "https://aws.amazon.com/blogs/machine-learning/build-a-serverless-ai-gateway-architecture-with-aws-appsync-events"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Build a serverless AI Gateway architecture with AWS AppSync Events",
+        "url": "https://aws.amazon.com/blogs/machine-learning/build-a-serverless-ai-gateway-architecture-with-aws-appsync-events"
+      },
+      "published_at": "2026-01-26T17:20:27+00:00",
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:0b5bc8d3edd40d43",
+      "summary": "In this post, we discuss how to use AppSync Events as the foundation of a capable, serverless, AI gateway architecture. We explore how it integrates with AWS services for comprehensive coverage of the capabilities offered in AI gateway architectures. Finally, we get you started on your journey with sample code you can launch in your account and begin building.",
+      "title": "Build a serverless AI Gateway architecture with AWS AppSync Events"
+    },
+    {
+      "arxiv_id": "2502.14600",
+      "authors": [
+        "Lorenzo Mauri, Niccol\\`o Anceschi, David B. Dunson"
+      ],
+      "categories": [
+        "stat.ME",
+        "stat.CO",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-23T23:01:39.181299+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-stat-ml",
+          "tier": 1,
+          "title": "Spectral decomposition-assisted multi-study factor analysis",
+          "url": "https://arxiv.org/abs/2502.14600"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-stat-ml",
+        "tier": 1,
+        "title": "Spectral decomposition-assisted multi-study factor analysis",
+        "url": "https://arxiv.org/abs/2502.14600"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv stat.ML",
+      "story_id": "arxiv:2502.14600",
+      "summary": "arXiv:2502.14600v3 Announce Type: replace-cross \nAbstract: This article focuses on covariance estimation for multi-study data. Popular approaches employ factor-analytic terms with shared and study-specific loadings that decompose the variance into (i) a shared low-rank component, (ii) study-specific low-rank components, and (iii) a diagonal term capturing idiosyncratic variability. Our proposed methodology estimates the latent factors via spectral decompositions, with a novel approach for separating shared and specific factors, and infers the factor loadings and residual variances via surrogate Bayesian regressions. The resulting posterior has a simple product form across outcomes, bypassing the need for Markov chain Monte Carlo sampling and facilitating parallelization. The proposed methodology has major advantages over current Bayesian competitors in terms of computational speed, scalability and stability while also having strong frequentist guarantees. The theory and methods also ad",
+      "title": "Spectral decomposition-assisted multi-study factor analysis"
+    }
+  ],
+  "run_date": "2026-01-26",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-26T23:59:59+00:00",
+    "items_total": 236,
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-26",
+    "started_at": "2026-01-25T23:59:59+00:00",
+    "stories_total": 236,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2601.03054",
+      "authors": [
+        "Yankai Jiang, Qiaoru Li, Binlu Xu, Haoran Sun, Chao Ding, Junting Dong, Yuxiang Cai, Xuhong Zhang, Jianwei Yin"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.764504+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation",
+          "url": "https://arxiv.org/abs/2601.03054"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation",
+        "url": "https://arxiv.org/abs/2601.03054"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.03054",
+      "summary": "arXiv:2601.03054v2 Announce Type: replace \nAbstract: Recent research on medical MLLMs has gradually shifted its focus from image-level understanding to fine-grained, pixel-level comprehension. Although segmentation serves as the foundation for pixel-level understanding, existing approaches face two major challenges. First, they introduce implicit segmentation tokens and require simultaneous fine-tuning of both the MLLM and external pixel decoders, which increases the risk of catastrophic forgetting and limits generalization to out-of-domain scenarios. Second, most methods rely on single-pass reasoning and lack the capability to iteratively refine segmentation results, leading to suboptimal performance. To overcome these limitations, we propose a novel agentic MLLM, named IBISAgent, that reformulates segmentation as a vision-centric, multi-step decision-making process. IBISAgent enables MLLMs to generate interleaved reasoning and text-based click actions, invoke segmentation tools, and ",
+      "title": "IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation"
+    },
+    {
+      "arxiv_id": "2510.03093",
+      "authors": [
+        "Oriol Pareras, Gerard I. G\\'allego, Federico Costa, Cristina Espa\\~na-Bonet, Javier Hernando"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.SD"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.070359+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Revisiting Direct Speech-to-Text Translation with Speech LLMs: Better Scaling than CoT Prompting?",
+          "url": "https://arxiv.org/abs/2510.03093"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Revisiting Direct Speech-to-Text Translation with Speech LLMs: Better Scaling than CoT Prompting?",
+        "url": "https://arxiv.org/abs/2510.03093"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2510.03093",
+      "summary": "arXiv:2510.03093v2 Announce Type: replace \nAbstract: Recent work on Speech-to-Text Translation (S2TT) has focused on LLM-based models, introducing the increasingly adopted Chain-of-Thought (CoT) prompting, where the model is guided to first transcribe the speech and then translate it. CoT typically outperforms direct prompting primarily because it can exploit abundant Automatic Speech Recognition (ASR) and Text-to-Text Translation (T2TT) datasets to explicitly model its steps. In this paper, we systematically compare CoT and Direct prompting under increasing amounts of S2TT data. To this end, we pseudo-label an ASR corpus by translating its transcriptions into six European languages, and train LLM-based S2TT systems with both prompting strategies at different data scales. Our results show that Direct improves more consistently as the amount of data increases, suggesting that it may become a more effective approach as larger S2TT resources are created.",
+      "title": "Revisiting Direct Speech-to-Text Translation with Speech LLMs: Better Scaling than CoT Prompting?"
+    },
+    {
+      "arxiv_id": "2509.01238",
+      "authors": [
+        "Jiasheng Xu, Mingda Li, Yongqiang Tang, Peijie Wang, Wensheng Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.756501+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Towards Open-World Retrieval-Augmented Generation on Knowledge Graph: A Multi-Agent Collaboration Framework",
+          "url": "https://arxiv.org/abs/2509.01238"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Towards Open-World Retrieval-Augmented Generation on Knowledge Graph: A Multi-Agent Collaboration Framework",
+        "url": "https://arxiv.org/abs/2509.01238"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.01238",
+      "summary": "arXiv:2509.01238v2 Announce Type: replace \nAbstract: Large Language Models (LLMs) have demonstrated strong capabilities in web search and reasoning. However, their dependence on static training corpora makes them prone to factual errors and knowledge gaps. Retrieval-Augmented Generation (RAG) addresses this limitation by incorporating external knowledge sources, especially structured Knowledge Graphs (KGs), which provide explicit semantics and efficient retrieval. Existing KG-based RAG approaches, however, generally assume that anchor entities are accessible to initiate graph traversal, which limits their robustness in open-world settings where accurate linking between the user query and the KG entity is unreliable. To overcome this limitation, we propose AnchorRAG, a novel multi-agent collaboration framework for open-world RAG without the predefined anchor entities. Specifically, a predictor agent dynamically identifies candidate anchor entities by aligning user query terms with KG no",
+      "title": "Towards Open-World Retrieval-Augmented Generation on Knowledge Graph: A Multi-Agent Collaboration Framework"
+    },
+    {
+      "arxiv_id": "2601.16394",
+      "authors": [
+        "Yihao Wang, Jusheng Zhang, Ziyi Tang, Keze Wang, Meng Yang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.279558+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "ResAgent: Entropy-based Prior Point Discovery and Visual Reasoning for Referring Expression Segmentation",
+          "url": "https://arxiv.org/abs/2601.16394"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "ResAgent: Entropy-based Prior Point Discovery and Visual Reasoning for Referring Expression Segmentation",
+        "url": "https://arxiv.org/abs/2601.16394"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.16394",
+      "summary": "arXiv:2601.16394v1 Announce Type: new \nAbstract: Referring Expression Segmentation (RES) is a core vision-language segmentation task that enables pixel-level understanding of targets via free-form linguistic expressions, supporting critical applications such as human-robot interaction and augmented reality. Despite the progress of Multimodal Large Language Model (MLLM)-based approaches, existing RES methods still suffer from two key limitations: first, the coarse bounding boxes from MLLMs lead to redundant or non-discriminative point prompts; second, the prevalent reliance on textual coordinate reasoning is unreliable, as it fails to distinguish targets from visually similar distractors. To address these issues, we propose \\textbf{\\model}, a novel RES framework integrating \\textbf{E}ntropy-\\textbf{B}ased Point \\textbf{D}iscovery (\\textbf{EBD}) and \\textbf{V}ision-\\textbf{B}ased \\textbf{R}easoning (\\textbf{VBR}). Specifically, EBD identifies high-information candidate points by modeling",
+      "title": "ResAgent: Entropy-based Prior Point Discovery and Visual Reasoning for Referring Expression Segmentation"
+    },
+    {
+      "arxiv_id": "2601.16478",
+      "authors": [
+        "Haotian Chen, Qingqing Long, Siyu Pu, Xiao Luo, Wei Ju, Meng Xiao, Yuanchun Zhou, Jianghua Zhao, Xuezhi Wang"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.150951+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "DeepEra: A Deep Evidence Reranking Agent for Scientific Retrieval-Augmented Generated Question Answering",
+          "url": "https://arxiv.org/abs/2601.16478"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "DeepEra: A Deep Evidence Reranking Agent for Scientific Retrieval-Augmented Generated Question Answering",
+        "url": "https://arxiv.org/abs/2601.16478"
+      },
+      "published_at": "2026-01-26T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16478",
+      "summary": "arXiv:2601.16478v1 Announce Type: new \nAbstract: With the rapid growth of scientific literature, scientific question answering (SciQA) has become increasingly critical for exploring and utilizing scientific knowledge. Retrieval-Augmented Generation (RAG) enhances LLMs by incorporating knowledge from external sources, thereby providing credible evidence for scientific question answering. But existing retrieval and reranking methods remain vulnerable to passages that are semantically similar but logically irrelevant, often reducing factual reliability and amplifying hallucinations.To address this challenge, we propose a Deep Evidence Reranking Agent (DeepEra) that integrates step-by-step reasoning, enabling more precise evaluation of candidate passages beyond surface-level semantics. To support systematic evaluation, we construct SciRAG-SSLI (Scientific RAG - Semantically Similar but Logically Irrelevant), a large-scale dataset comprising about 300K SciQA instances across 10 subjects, co",
+      "title": "DeepEra: A Deep Evidence Reranking Agent for Scientific Retrieval-Augmented Generated Question Answering"
+    }
+  ]
+}

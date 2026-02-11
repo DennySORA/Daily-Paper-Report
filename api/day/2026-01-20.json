@@ -1,0 +1,464 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20"
+  ],
+  "generated_at": "2026-02-11T07:30:27.987604+00:00",
+  "model_releases_by_entity": {},
+  "papers": [
+    {
+      "arxiv_id": "2601.14046",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-21T05:51:42.664759+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "PRiSM: Benchmarking Phone Realization in Speech Models",
+          "url": "https://arxiv.org/abs/2601.14046"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "PRiSM: Benchmarking Phone Realization in Speech Models",
+        "url": "https://arxiv.org/abs/2601.14046"
+      },
+      "published_at": "2026-01-20T15:00:36+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2601.14046",
+      "summary": "Phone recognition (PR) serves as the atomic interface for language-agnostic modeling for cross-lingual speech processing and phonetic analysis. Despite prolonged efforts in developing PR systems, current evaluations only measure surface-level transcription accuracy. We introduce PRiSM, the first open-source benchmark designed to expose blind spots in phonetic perception through intrinsic and extrinsic evaluation of PR systems. PRiSM standardizes transcription-based evaluation and assesses downstream utility in clinical, educational, and multilingual settings with transcription and representation probes. We find that diverse language exposure during training is key to PR performance, encoder-CTC models are the most stable, and specialized PR models still outperform Large Audio Language Models. PRiSM releases code, recipes, and datasets to move the field toward multilingual speech models with robust phonetic ability: https://github.com/changelinglab/prism.",
+      "title": "PRiSM: Benchmarking Phone Realization in Speech Models"
+    },
+    {
+      "arxiv_id": "2601.14250",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-21T05:51:42.665027+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "OmniTransfer: All-in-one Framework for Spatio-temporal Video Transfer",
+          "url": "https://arxiv.org/abs/2601.14250"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "OmniTransfer: All-in-one Framework for Spatio-temporal Video Transfer",
+        "url": "https://arxiv.org/abs/2601.14250"
+      },
+      "published_at": "2026-01-20T18:58:11+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2601.14250",
+      "summary": "Videos convey richer information than images or text, capturing both spatial and temporal dynamics. However, most existing video customization methods rely on reference images or task-specific temporal priors, failing to fully exploit the rich spatio-temporal information inherent in videos, thereby limiting flexibility and generalization in video generation. To address these limitations, we propose OmniTransfer, a unified framework for spatio-temporal video transfer. It leverages multi-view information across frames to enhance appearance consistency and exploits temporal cues to enable fine-grained temporal control. To unify various video transfer tasks, OmniTransfer incorporates three key designs: Task-aware Positional Bias that adaptively leverages reference video information to improve temporal alignment or appearance consistency; Reference-decoupled Causal Learning separating reference and target branches to enable precise reference transfer while improving efficiency; and Task-adaptive Multimodal Alignment using multimodal semantic guidance to dynamically distinguish and tackle different tasks. Extensive experiments show that OmniTransfer outperforms existing methods in appearance (ID and style) and temporal transfer (camera movement and video effects), while matching pose-guided methods in motion transfer without using pose, establishing a new paradigm for flexible, high-fidelity video generation.",
+      "title": "OmniTransfer: All-in-one Framework for Spatio-temporal Video Transfer"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai"
+      ],
+      "first_seen_at": "2026-01-20T23:01:33.795096+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "ServiceNow powers actionable enterprise AI with OpenAI",
+          "url": "https://openai.com/index/servicenow-powers-actionable-enterprise-ai-with-openai"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "ServiceNow powers actionable enterprise AI with OpenAI",
+        "url": "https://openai.com/index/servicenow-powers-actionable-enterprise-ai-with-openai"
+      },
+      "published_at": "2026-01-20T05:45:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:ebbdd00297d09f1b",
+      "summary": "ServiceNow expands access to OpenAI frontier models to power AI-driven enterprise workflows, summarization, search, and voice across the ServiceNow Platform.",
+      "title": "ServiceNow powers actionable enterprise AI with OpenAI"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-21T05:51:37.750723+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Horizon 1000: Advancing AI for primary healthcare",
+          "url": "https://openai.com/index/horizon-1000"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Horizon 1000: Advancing AI for primary healthcare",
+        "url": "https://openai.com/index/horizon-1000"
+      },
+      "published_at": "2026-01-20T21:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:49e9ce0334c79818",
+      "summary": "OpenAI and the Gates Foundation launch Horizon 1000, a $50M pilot advancing AI capabilities for healthcare in Africa. The initiative aims to reach 1,000 clinics by 2028.",
+      "title": "Horizon 1000: Advancing AI for primary healthcare"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Mira Lane"
+      ],
+      "categories": [
+        "Google.org",
+        "AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-20T23:01:34.402184+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "google-ai-blog",
+          "tier": 0,
+          "title": "Building a community-led future for AI in film with Sundance Institute",
+          "url": "https://blog.google/company-news/outreach-and-initiatives/google-org/sundance-institute-ai-education"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "google-ai-blog",
+        "tier": 0,
+        "title": "Building a community-led future for AI in film with Sundance Institute",
+        "url": "https://blog.google/company-news/outreach-and-initiatives/google-org/sundance-institute-ai-education"
+      },
+      "published_at": "2026-01-20T20:30:00+00:00",
+      "section": null,
+      "source_name": "Google AI Blog",
+      "story_id": "fallback:7a8a4940afd5efe6",
+      "summary": "Illustration of a cinematographer filming with a professional video camera mounted on a tripod, positioned next to a studio light and a film clapboard.",
+      "title": "Building a community-led future for AI in film with Sundance Institute"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-21T03:13:53.049071+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Stargate Community",
+          "url": "https://openai.com/index/stargate-community"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Stargate Community",
+        "url": "https://openai.com/index/stargate-community"
+      },
+      "published_at": "2026-01-20T19:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:2942b8dc89a76726",
+      "summary": "Stargate Community plans detail a community-first approach to AI infrastructure, using locally tailored plans shaped by community input, energy needs, and workforce priorities.",
+      "title": "Stargate Community"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-20T23:01:33.795406+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Our approach to age prediction",
+          "url": "https://openai.com/index/our-approach-to-age-prediction"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Our approach to age prediction",
+        "url": "https://openai.com/index/our-approach-to-age-prediction"
+      },
+      "published_at": "2026-01-20T00:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:9dfb2ccdb630f5a2",
+      "summary": "ChatGPT is rolling out age prediction to estimate if accounts are under or over 18, applying safeguards for teens and refining accuracy over time.",
+      "title": "Our approach to age prediction"
+    }
+  ],
+  "run_date": "2026-01-20",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-20T23:59:59+00:00",
+    "items_total": 12,
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-20",
+    "started_at": "2026-01-19T23:59:59+00:00",
+    "stories_total": 12,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2601.14192",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-01-21T05:51:42.665249+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Toward Efficient Agents: Memory, Tool learning, and Planning",
+          "url": "https://arxiv.org/abs/2601.14192"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Toward Efficient Agents: Memory, Tool learning, and Planning",
+        "url": "https://arxiv.org/abs/2601.14192"
+      },
+      "published_at": "2026-01-20T17:51:56+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2601.14192",
+      "summary": "Recent years have witnessed increasing interest in extending large language models into agentic systems. While the effectiveness of agents has continued to improve, efficiency, which is crucial for real-world deployment, has often been overlooked. This paper therefore investigates efficiency from three core components of agents: memory, tool learning, and planning, considering costs such as latency, tokens, steps, etc. Aimed at conducting comprehensive research addressing the efficiency of the agentic system itself, we review a broad range of recent approaches that differ in implementation yet frequently converge on shared high-level principles including but not limited to bounding context via compression and management, designing reinforcement learning rewards to minimize tool invocation, and employing controlled search mechanisms to enhance efficiency, which we discuss in detail. Accordingly, we characterize efficiency in two complementary ways: comparing effectiveness under a fixed cost budget, and comparing cost at a comparable level of effectiveness. This trade-off can also be viewed through the Pareto frontier between effectiveness and cost. From this perspective, we also examine efficiency oriented benchmarks by summarizing evaluation protocols for these components and consolidating commonly reported efficiency metrics from both benchmark and methodological studies. Moreover, we discuss the key challenges and future directions, with the goal of providing promising insights.",
+      "title": "Toward Efficient Agents: Memory, Tool learning, and Planning"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Dani Mitchell"
+      ],
+      "categories": [
+        "Amazon Bedrock",
+        "Amazon Bedrock Knowledge Bases",
+        "Announcements",
+        "Artificial Intelligence"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-01-20T23:01:36.124160+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Introducing multimodal retrieval for Amazon Bedrock Knowledge Bases",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-multimodal-retrieval-for-amazon-bedrock-knowledge-bases"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Introducing multimodal retrieval for Amazon Bedrock Knowledge Bases",
+        "url": "https://aws.amazon.com/blogs/machine-learning/introducing-multimodal-retrieval-for-amazon-bedrock-knowledge-bases"
+      },
+      "published_at": "2026-01-20T18:22:25+00:00",
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:8f52417cea95c079",
+      "summary": "In this post, we'll guide you through building multimodal RAG applications. You'll learn how multimodal knowledge bases work, how to choose the right processing strategy based on your content type, and how to configure and implement multimodal retrieval using both the console and code examples.",
+      "title": "Introducing multimodal retrieval for Amazon Bedrock Knowledge Bases"
+    },
+    {
+      "arxiv_id": "2601.13836",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "huggingface",
+        "deepmind"
+      ],
+      "first_seen_at": "2026-01-21T07:29:44.497775+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "FutureOmni: Evaluating Future Forecasting from Omni-Modal Context for Multimodal LLMs",
+          "url": "https://arxiv.org/abs/2601.13836"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "FutureOmni: Evaluating Future Forecasting from Omni-Modal Context for Multimodal LLMs",
+        "url": "https://arxiv.org/abs/2601.13836"
+      },
+      "published_at": "2026-01-20T10:47:20+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2601.13836",
+      "summary": "Although Multimodal Large Language Models (MLLMs) demonstrate strong omni-modal perception, their ability to forecast future events from audio-visual cues remains largely unexplored, as existing benchmarks focus mainly on retrospective understanding. To bridge this gap, we introduce FutureOmni, the first benchmark designed to evaluate omni-modal future forecasting from audio-visual environments. The evaluated models are required to perform cross-modal causal and temporal reasoning, as well as effectively leverage internal knowledge to predict future events. FutureOmni is constructed via a scalable LLM-assisted, human-in-the-loop pipeline and contains 919 videos and 1,034 multiple-choice QA pairs across 8 primary domains. Evaluations on 13 omni-modal and 7 video-only models show that current systems struggle with audio-visual future prediction, particularly in speech-heavy scenarios, with the best accuracy of 64.8% achieved by Gemini 3 Flash. To mitigate this limitation, we curate a 7K-sample instruction-tuning dataset and propose an Omni-Modal Future Forecasting (OFF) training strategy. Evaluations on FutureOmni and popular audio-visual and video-only benchmarks demonstrate that OFF enhances future forecasting and generalization. We publicly release all code (https://github.com/OpenMOSS/FutureOmni) and datasets (https://huggingface.co/datasets/OpenMOSS-Team/FutureOmni).",
+      "title": "FutureOmni: Evaluating Future Forecasting from Omni-Modal Context for Multimodal LLMs"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Reuben Tan, Baolin Peng, Zhengyuan Yang, Oier Mees, Jianfeng Gao"
+      ],
+      "categories": [
+        "Research Blog"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-20T23:01:35.516587+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "microsoft-research-blog",
+          "tier": 0,
+          "title": "Multimodal reinforcement learning with agentic verifier for AI agents",
+          "url": "https://www.microsoft.com/en-us/research/blog/multimodal-reinforcement-learning-with-agentic-verifier-for-ai-agents"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "microsoft-research-blog",
+        "tier": 0,
+        "title": "Multimodal reinforcement learning with agentic verifier for AI agents",
+        "url": "https://www.microsoft.com/en-us/research/blog/multimodal-reinforcement-learning-with-agentic-verifier-for-ai-agents"
+      },
+      "published_at": "2026-01-20T17:00:00+00:00",
+      "section": null,
+      "source_name": "Microsoft Research Blog",
+      "story_id": "fallback:f01e6e11881d0159",
+      "summary": "<p>Argos improves multimodal RL by evaluating whether an agent’s reasoning aligns with what it observes over time. The approach reduces visual hallucinations and produces more reliable, data-efficient agents for real-world applications.</p>\n<p>The post <a href=\"https://www.microsoft.com/en-us/research/blog/multimodal-reinforcement-learning-with-agentic-verifier-for-ai-agents/\">Multimodal reinforcement learning with agentic verifier for AI agents</a> appeared first on <a href=\"https://www.microsoft.com/en-us/research\">Microsoft Research</a>.</p>",
+      "title": "Multimodal reinforcement learning with agentic verifier for AI agents"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai"
+      ],
+      "first_seen_at": "2026-01-20T23:01:33.794618+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "openai-blog",
+          "tier": 0,
+          "title": "Cisco and OpenAI redefine enterprise engineering with AI agents",
+          "url": "https://openai.com/index/cisco"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "openai-blog",
+        "tier": 0,
+        "title": "Cisco and OpenAI redefine enterprise engineering with AI agents",
+        "url": "https://openai.com/index/cisco"
+      },
+      "published_at": "2026-01-20T11:00:00+00:00",
+      "section": null,
+      "source_name": "OpenAI Blog",
+      "story_id": "fallback:e803cb06a37a339c",
+      "summary": "Cisco and OpenAI redefine enterprise engineering with Codex, an AI software agent embedded in workflows to speed builds, automate defect fixes, and enable AI-native development.",
+      "title": "Cisco and OpenAI redefine enterprise engineering with AI agents"
+    }
+  ]
+}

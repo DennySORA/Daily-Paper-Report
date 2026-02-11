@@ -2,9 +2,13 @@
   "archive_dates": [
     "2026-02-11",
     "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
     "2026-02-03"
   ],
-  "generated_at": "2026-02-11T07:16:33.985996+00:00",
+  "generated_at": "2026-02-11T07:30:22.877957+00:00",
   "model_releases_by_entity": {},
   "papers": [
     {
@@ -348,12 +352,12 @@
     }
   ],
   "run_date": "2026-02-10",
-  "run_id": "c1bfa8cd-ce00-426f-818b-a24de6205d52",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-10T23:59:59+00:00",
     "items_total": 14,
-    "run_id": "c1bfa8cd-ce00-426f-818b-a24de6205d52-2026-02-10",
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-02-10",
     "started_at": "2026-02-09T23:59:59+00:00",
     "stories_total": 14,
     "success": true

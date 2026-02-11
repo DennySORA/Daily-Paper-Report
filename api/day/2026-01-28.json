@@ -1,0 +1,1671 @@
+{
+  "archive_dates": [
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28"
+  ],
+  "generated_at": "2026-02-11T07:30:25.883465+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-28T23:04:18.749274+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 73872,
+          "likes": 562,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "google/translategemma-4b-it",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/translategemma-4b-it",
+            "url": "https://huggingface.co/google/translategemma-4b-it"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/translategemma-4b-it",
+          "url": "https://huggingface.co/google/translategemma-4b-it"
+        },
+        "published_at": "2026-01-28T17:28:43+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/translategemma-4b-it",
+        "summary": null,
+        "title": "google/translategemma-4b-it"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-28T23:04:18.749508+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 54731,
+          "likes": 230,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "google/translategemma-12b-it",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/translategemma-12b-it",
+            "url": "https://huggingface.co/google/translategemma-12b-it"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/translategemma-12b-it",
+          "url": "https://huggingface.co/google/translategemma-12b-it"
+        },
+        "published_at": "2026-01-28T17:27:49+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/translategemma-12b-it",
+        "summary": null,
+        "title": "google/translategemma-12b-it"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-01-28T23:04:18.749701+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 31833,
+          "likes": 275,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "google/translategemma-27b-it",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/translategemma-27b-it",
+            "url": "https://huggingface.co/google/translategemma-27b-it"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/translategemma-27b-it",
+          "url": "https://huggingface.co/google/translategemma-27b-it"
+        },
+        "published_at": "2026-01-28T17:26:56+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/translategemma-27b-it",
+        "summary": null,
+        "title": "google/translategemma-27b-it"
+      }
+    ]
+  },
+  "papers": [
+    {
+      "arxiv_id": "2510.11027",
+      "authors": [
+        "Ganlin Yang, Tianyi Zhang, Haoran Hao, Weiyun Wang, Yibin Liu, Dehui Wang, Guanzhou Chen, Zijian Cai, Junting Chen, Weijie Su, Wengang Zhou, Yu Qiao, Jifeng Dai, Jiangmiao Pang, Gen Luo, Wenhai Wang, Yao Mu, Zhi Hou"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.908860+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Vlaser: Vision-Language-Action Model with Synergistic Embodied Reasoning",
+          "url": "https://arxiv.org/abs/2510.11027"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Vlaser: Vision-Language-Action Model with Synergistic Embodied Reasoning",
+        "url": "https://arxiv.org/abs/2510.11027"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2510.11027",
+      "summary": "arXiv:2510.11027v2 Announce Type: replace \nAbstract: While significant research has focused on developing embodied reasoning capabilities using Vision-Language Models (VLMs) or integrating advanced VLMs into Vision-Language-Action (VLA) models for end-to-end robot control, few studies directly address the critical gap between upstream VLM-based reasoning and downstream VLA policy learning. In this work, we take an initial step toward bridging embodied reasoning with VLA policy learning by introducing Vlaser - a Vision-Language-Action Model with synergistic embodied reasoning capability, which is a foundational vision-language model designed to integrate high-level reasoning with low-level control for embodied agents. Built upon the high-quality Vlaser-6M dataset, Vlaser achieves state-of-the-art performance across a range of embodied reasoning benchmarks - including spatial reasoning, embodied grounding, embodied QA, and task planning. Furthermore, we systematically examine how differe",
+      "title": "Vlaser: Vision-Language-Action Model with Synergistic Embodied Reasoning"
+    },
+    {
+      "arxiv_id": "2601.10246",
+      "authors": [
+        "Prottay Kumar Adhikary, Reena Rawat, Tanmoy Chakraborty"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.646780+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "coTherapist: A Behavior-Aligned Small Language Model to Support Mental Healthcare Experts",
+          "url": "https://arxiv.org/abs/2601.10246"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "coTherapist: A Behavior-Aligned Small Language Model to Support Mental Healthcare Experts",
+        "url": "https://arxiv.org/abs/2601.10246"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.10246",
+      "summary": "arXiv:2601.10246v2 Announce Type: replace \nAbstract: Access to mental healthcare is increasingly strained by workforce shortages and rising demand, motivating the development of intelligent systems that can support mental healthcare experts. We introduce coTherapist, a unified framework utilizing a small language model to emulate core therapeutic competencies through domain-specific fine-tuning, retrieval augmentation, and agentic reasoning. Evaluation on clinical queries demonstrates that coTherapist generates more relevant and clinically grounded responses than contemporary baselines. Using our novel T-BARS rubric and psychometric profiling, we confirm coTherapist exhibits high empathy and therapist-consistent personality traits. Furthermore, human evaluation by domain experts validates that coTherapist delivers accurate, trustworthy, and safe responses. coTherapist was deployed and tested by clinical experts. Collectively, these findings demonstrate that small models can be engineer",
+      "title": "coTherapist: A Behavior-Aligned Small Language Model to Support Mental Healthcare Experts"
+    },
+    {
+      "arxiv_id": "2509.21028",
+      "authors": [
+        "Miao Li, Alexander Gurung, Irina Saparina, Mirella Lapata"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.004832+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Who Gets Cited Most? Benchmarking Long-Context Reasoning on Scientific Articles",
+          "url": "https://arxiv.org/abs/2509.21028"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Who Gets Cited Most? Benchmarking Long-Context Reasoning on Scientific Articles",
+        "url": "https://arxiv.org/abs/2509.21028"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.21028",
+      "summary": "arXiv:2509.21028v2 Announce Type: replace \nAbstract: We introduce SciTrek, a novel question-answering benchmark designed to evaluate long-context reasoning capabilities of large language models (LLMs) using scientific articles. Current long-context benchmarks often focus on simple information retrieval tasks, or employ artificial contexts. SciTrek addresses these limitations by creating benchmark questions that require information aggregation and synthesis across multiple full-text scientific articles. The questions and their ground-truth answers are automatically generated by formulating them as SQL queries over a database constructed from article metadata (i.e., titles, authors, and references). These SQL queries provide explicit, verifiable reasoning processes that enable fine-grained error analysis on model answers, and the data construction scales to contexts of up to 1M tokens with minimal supervision. Experiments on open-weight and proprietary LLMs show that SciTrek poses signif",
+      "title": "Who Gets Cited Most? Benchmarking Long-Context Reasoning on Scientific Articles"
+    },
+    {
+      "arxiv_id": "2509.26383",
+      "authors": [
+        "Jinyeop Song, Song Wang, Julian Shun, Yada Zhu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.006440+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Efficient and Transferable Agentic Knowledge Graph RAG via Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2509.26383"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Efficient and Transferable Agentic Knowledge Graph RAG via Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2509.26383"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2509.26383",
+      "summary": "arXiv:2509.26383v4 Announce Type: replace \nAbstract: Knowledge-graph retrieval-augmented generation (KG-RAG) couples large language models (LLMs) with structured, verifiable knowledge graphs (KGs) to reduce hallucinations and expose reasoning traces. However, many KG-RAG systems compose multiple LLM modules (e.g planning, reasoning, and responding), inflating inference cost and binding behavior to a specific target KG. To address this, we introduce KG-R1, an agentic KG retrieval-augmented generation (KG-RAG) framework through reinforcement learning (RL). KG-R1 utilizes a single agent that interacts with KGs as its environment, learning to retrieve at each step and incorporating the retrieved information into its reasoning and generation. The process is optimized through end-to-end RL. In controlled experiments across Knowledge-Graph Question Answering (KGQA) benchmarks, our method demonstrates both efficiency and transferability: Using Qwen-2.5-3B, KG-R1 improves answer accuracy with f",
+      "title": "Efficient and Transferable Agentic Knowledge Graph RAG via Reinforcement Learning"
+    },
+    {
+      "arxiv_id": "2510.11358",
+      "authors": [
+        "Hengran Zhang, Keping Bi, Jiafeng Guo, Jiaming Zhang, Shuaiqiang Wang, Dawei Yin, Xueqi Cheng"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.009563+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "LLM-Specific Utility: A New Perspective for Retrieval-Augmented Generation",
+          "url": "https://arxiv.org/abs/2510.11358"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "LLM-Specific Utility: A New Perspective for Retrieval-Augmented Generation",
+        "url": "https://arxiv.org/abs/2510.11358"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2510.11358",
+      "summary": "arXiv:2510.11358v2 Announce Type: replace \nAbstract: Retrieval-augmented generation (RAG) is typically optimized for topical relevance, yet its success ultimately depends on whether retrieved passages are useful for a large language model (LLM) to generate correct and complete answers. We argue that such utility is often LLM-specific rather than universal, due to differences in models' knowledge, reasoning, and ability to leverage evidence. We formalize LLM-specific utility as the performance improvement of a target LLM when a passage is provided, compared to answering without evidence. To systematically study LLM-specific utility, we construct a benchmark of LLM-specific gold utilitarian passages for four LLMs (Qwen3-8B/14B/32B and Llama3.1-8B) on three QA datasets (Natural Questions, TriviaQA, and MS MARCO-FQA). Our analysis shows that utilitarian passages are model-dependent and non-transferable: each LLM performs best with its own utilitarian evidence, while evidence optimized for ",
+      "title": "LLM-Specific Utility: A New Perspective for Retrieval-Augmented Generation"
+    },
+    {
+      "arxiv_id": "2505.14140",
+      "authors": [
+        "Qianyue Hao, Sibo Li, Jian Yuan, Yong Li"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.995061+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "RL of Thoughts: Navigating LLM Reasoning with Inference-time Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2505.14140"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "RL of Thoughts: Navigating LLM Reasoning with Inference-time Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2505.14140"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2505.14140",
+      "summary": "arXiv:2505.14140v3 Announce Type: replace \nAbstract: Despite rapid advancements in large language models (LLMs), the token-level autoregressive nature constrains their complex reasoning capabilities. To enhance LLM reasoning, inference-time techniques, including Chain/Tree/Graph-of-Thought(s), successfully improve the performance, as they are fairly cost-effective by guiding reasoning through sophisticated logical structures without modifying LLMs' parameters. However, these manually predefined, task-agnostic frameworks are applied uniformly across diverse tasks, lacking adaptability. To improve this, we propose RL-of-Thoughts (RLoT), where we train a lightweight navigator model with reinforcement learning (RL) to adaptively enhance LLM reasoning at inference time. Specifically, we design five basic logic blocks from the perspective of human cognition. During the reasoning process, the trained RL navigator dynamically selects the suitable logic blocks and combines them into task-specif",
+      "title": "RL of Thoughts: Navigating LLM Reasoning with Inference-time Reinforcement Learning"
+    },
+    {
+      "arxiv_id": "2512.12576",
+      "authors": [
+        "Xueru Wen, Jie Lou, Yanjiang Liu, Hongyu Lin, Ben He, Xianpei Han, Le Sun, Yaojie Lu, Debing Zhang"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.642625+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Coupled Variational Reinforcement Learning for Language Model General Reasoning",
+          "url": "https://arxiv.org/abs/2512.12576"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Coupled Variational Reinforcement Learning for Language Model General Reasoning",
+        "url": "https://arxiv.org/abs/2512.12576"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2512.12576",
+      "summary": "arXiv:2512.12576v2 Announce Type: replace \nAbstract: While reinforcement learning has achieved impressive progress in language model reasoning, it is constrained by the requirement for verifiable rewards. Recent verifier-free RL methods address this limitation by utilizing the probabilities that LLMs generate reference answers as reward signals. However, these approaches typically sample reasoning traces conditioned only on the question. This design decouples reasoning-trace sampling from answer information, leading to inefficient exploration and incoherence between traces and final answers. In this paper, we propose \\textit{\\b{Co}upled \\b{V}ariational \\b{R}einforcement \\b{L}earning} (CoVRL), which bridges variational inference and reinforcement learning by coupling prior and posterior distributions through a hybrid sampling strategy. By constructing and optimizing a composite distribution that integrates these two distributions, CoVRL enables efficient exploration while preserving str",
+      "title": "Coupled Variational Reinforcement Learning for Language Model General Reasoning"
+    },
+    {
+      "arxiv_id": "2503.01098",
+      "authors": [
+        "Zaoyu Chen, Haoran Qin, Nuo Chen, Xiangyu Zhao, Lei Xue, Xiapu Luo, Xiao-Ming Wu"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.993693+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Towards Automated Smart Contract Generation: Evaluation, Benchmarking, and Retrieval-Augmented Repair",
+          "url": "https://arxiv.org/abs/2503.01098"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Towards Automated Smart Contract Generation: Evaluation, Benchmarking, and Retrieval-Augmented Repair",
+        "url": "https://arxiv.org/abs/2503.01098"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2503.01098",
+      "summary": "arXiv:2503.01098v2 Announce Type: replace-cross \nAbstract: Smart contracts, predominantly written in Solidity and deployed on blockchains such as Ethereum, are immutable after deployment, making functional correctness critical. However, existing evaluations of Solidity code generation rely largely on surface-level metrics (e.g., BLEU, CrystalBLEU) or manual inspection, which correlate poorly with functional correctness. In contrast to Python, Solidity lacks large-scale, execution-based benchmarks, limiting systematic evaluation of large language models for smart contract development.\n  We introduce SolBench, a comprehensive benchmark and automated testing pipeline for Solidity that emphasizes functional correctness via differential fuzzing. SolBench consists of 28825 functions extracted from 7604 real-world smart contracts collected from Etherscan (genesis-2024), spanning ten application domains. We benchmark 14 diverse LLMs, covering open and closed models, 1.3B-671B parameters, and b",
+      "title": "Towards Automated Smart Contract Generation: Evaluation, Benchmarking, and Retrieval-Augmented Repair"
+    },
+    {
+      "arxiv_id": "2510.21850",
+      "authors": [
+        "Gyubeum Lim, Yemo Koo, Vijay Krishna Madisetti"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.641596+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "SCoPE VLM: Selective Context Processing for Efficient Document Navigation in Vision-Language Models",
+          "url": "https://arxiv.org/abs/2510.21850"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "SCoPE VLM: Selective Context Processing for Efficient Document Navigation in Vision-Language Models",
+        "url": "https://arxiv.org/abs/2510.21850"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2510.21850",
+      "summary": "arXiv:2510.21850v2 Announce Type: replace \nAbstract: Understanding long-context visual information remains a fundamental challenge for vision-language models, particularly in agentic tasks such as GUI control and web navigation. While web pages and GUI environments are inherently structured documents, current VLMs typically neglect decision-oriented document understanding in their training objectives. Existing approaches primarily extend visual embeddings to process long, high-resolution inputs, but these methods are memory-intensive and impractical for locally deployable solutions. To address these issues, we propose SCoPE VLM, a document navigation expert that leverages a novel Chain of Scroll mechanism to selectively and recursively navigate documents, focusing exclusively on relevant segments. We introduce a dedicated data generation pipeline to construct informative Chain of Scroll trajectories and Episodic Group Relative Policy Optimization, a tailored reinforcement learning meth",
+      "title": "SCoPE VLM: Selective Context Processing for Efficient Document Navigation in Vision-Language Models"
+    },
+    {
+      "arxiv_id": "2601.18886",
+      "authors": [
+        "Youssef Mohamed, Mohamed Elhoseiny, Thibault Formal, Nadezhda Chirkova"
+      ],
+      "categories": [
+        "cs.IR",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.649775+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "XProvence: Zero-Cost Multilingual Context Pruning for Retrieval-Augmented Generation",
+          "url": "https://arxiv.org/abs/2601.18886"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "XProvence: Zero-Cost Multilingual Context Pruning for Retrieval-Augmented Generation",
+        "url": "https://arxiv.org/abs/2601.18886"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.18886",
+      "summary": "arXiv:2601.18886v1 Announce Type: cross \nAbstract: This paper introduces XProvence, a multilingual zero-cost context pruning model for retrieval-augmented generation (RAG), trained on 16 languages and supporting 100+ languages through effective cross-lingual transfer. Motivated by the growing use of RAG systems across diverse languages, we explore several strategies to generalize the Provence framework-which first integrated efficient zero-cost context pruning directly into the re-ranking model-beyond English. Across four multilingual question answering benchmarks, we show how XProvence can prune RAG contexts with minimal-to-no performance degradation and outperforms strong baselines. Our model is available at https://huggingface.co/naver/xprovence-reranker-bgem3-v2.",
+      "title": "XProvence: Zero-Cost Multilingual Context Pruning for Retrieval-Augmented Generation"
+    },
+    {
+      "arxiv_id": "2408.05861",
+      "authors": [
+        "Taewoon Kim, Vincent Fran\\c{c}ois-Lavet, Michael Cochez"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.989973+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Temporal Knowledge-Graph Memory in a Partially Observable Environment",
+          "url": "https://arxiv.org/abs/2408.05861"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Temporal Knowledge-Graph Memory in a Partially Observable Environment",
+        "url": "https://arxiv.org/abs/2408.05861"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2408.05861",
+      "summary": "arXiv:2408.05861v3 Announce Type: replace-cross \nAbstract: Agents in partially observable environments require persistent memory to integrate observations over time. While KGs (knowledge graphs) provide a natural representation for such evolving state, existing benchmarks rarely expose agents to environments where both the world dynamics and the agent's memory are explicitly graph-shaped. We introduce the Room Environment v3, a configurable environment whose hidden state is an RDF KG and whose observations are RDF triples. The agent may extend these observations into a temporal KG when storing them in long-term memory. The environment is easily adjustable in terms of grid size, number of rooms, inner walls, and moving objects.\n  We define a lightweight temporal KG memory for agents, based on RDF-star-style qualifiers (time_added, last_accessed, num_recalled), and evaluate several symbolic baselines that maintain and query this memory under different capacity constraints. Two neural seq",
+      "title": "Temporal Knowledge-Graph Memory in a Partially Observable Environment"
+    },
+    {
+      "arxiv_id": "2412.13126",
+      "authors": [
+        "Xiao Zhou, Luoyi Sun, Dexuan He, Wenbin Guan, Ge Wang, Ruifen Wang, Lifeng Wang, Xiaojun Yuan, Xin Sun, Ya Zhang, Kun Sun, Yanfeng Wang, Weidi Xie"
+      ],
+      "categories": [
+        "eess.IV",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.902186+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Knowledge-enhanced Pretraining for Vision-language Pathology Foundation Model on Cancer Diagnosis",
+          "url": "https://arxiv.org/abs/2412.13126"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Knowledge-enhanced Pretraining for Vision-language Pathology Foundation Model on Cancer Diagnosis",
+        "url": "https://arxiv.org/abs/2412.13126"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2412.13126",
+      "summary": "arXiv:2412.13126v2 Announce Type: replace-cross \nAbstract: Vision-language foundation models have shown great promise in computational pathology but remain primarily data-driven, lacking explicit integration of medical knowledge. We introduce KEEP (KnowledgE-Enhanced Pathology), a foundation model that systematically incorporates disease knowledge into pretraining for cancer diagnosis. KEEP leverages a comprehensive disease knowledge graph encompassing 11,454 diseases and 139,143 attributes to reorganize millions of pathology image-text pairs into 143,000 semantically structured groups aligned with disease ontology hierarchies. This knowledge-enhanced pretraining aligns visual and textual representations within hierarchical semantic spaces, enabling deeper understanding of disease relationships and morphological patterns. Across 18 public benchmarks (over 14,000 whole-slide images) and 4 institutional rare cancer datasets (926 cases), KEEP consistently outperformed existing foundation ",
+      "title": "Knowledge-enhanced Pretraining for Vision-language Pathology Foundation Model on Cancer Diagnosis"
+    },
+    {
+      "arxiv_id": "2509.21044",
+      "authors": [
+        "Honglin Zhang, Qianyue Hao, Fengli Xu, Yong Li"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.005067+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Reinforcement Learning Fine-Tuning Enhances Activation Intensity and Diversity in the Internal Circuitry of LLMs",
+          "url": "https://arxiv.org/abs/2509.21044"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Reinforcement Learning Fine-Tuning Enhances Activation Intensity and Diversity in the Internal Circuitry of LLMs",
+        "url": "https://arxiv.org/abs/2509.21044"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2509.21044",
+      "summary": "arXiv:2509.21044v2 Announce Type: replace \nAbstract: Large language models (LLMs) acquire extensive prior knowledge through large-scale pretraining and can be further enhanced via supervised fine-tuning (SFT) or reinforcement learning (RL)-based post-training. A growing body of evidence has shown that RL fine-tuning improves the capability of LLMs beyond what SFT alone achieves. However, the underlying mechanisms why RL fine-tuning is able to enhance the capability of various LLMs with distinct intrinsic characteristics remain underexplored. In this study, we draw inspiration from prior work on edge attribution patching (EAP) to investigate the internal differences of LLMs before and after RL fine-tuning. Our analysis across multiple model families and mathematical datasets shows two robust effects of online RL post-training: (i) an overall increase in average activation intensity, indicating that more internal pathways are engaged and their signals become stronger, and (ii) greater di",
+      "title": "Reinforcement Learning Fine-Tuning Enhances Activation Intensity and Diversity in the Internal Circuitry of LLMs"
+    },
+    {
+      "arxiv_id": "2512.21507",
+      "authors": [
+        "Wenshuo Peng, Gongxuan Wang, Tianmeng Yang, Chuanhao Li, Xiaojie Xu, Hui He, Kaipeng Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.911769+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "SVBench: Evaluation of Video Generation Models on Social Reasoning",
+          "url": "https://arxiv.org/abs/2512.21507"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "SVBench: Evaluation of Video Generation Models on Social Reasoning",
+        "url": "https://arxiv.org/abs/2512.21507"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2512.21507",
+      "summary": "arXiv:2512.21507v2 Announce Type: replace \nAbstract: Recent text-to-video generation models exhibit remarkable progress in visual realism, motion fidelity, and text-video alignment, yet they remain fundamentally limited in their ability to generate socially coherent behavior. Unlike humans, who effortlessly infer intentions, beliefs, emotions, and social norms from brief visual cues, current models tend to render literal scenes without capturing the underlying causal or psychological logic. To systematically evaluate this gap, we introduce the first benchmark for social reasoning in video generation. Grounded in findings from developmental and social psychology, our benchmark organizes thirty classic social cognition paradigms into seven core dimensions, including mental-state inference, goal-directed action, joint attention, social coordination, prosocial behavior, social norms, and multi-agent strategy. To operationalize these paradigms, we develop a fully training-free agent-based p",
+      "title": "SVBench: Evaluation of Video Generation Models on Social Reasoning"
+    },
+    {
+      "arxiv_id": "2507.23581",
+      "authors": [
+        "Chuanyue Yu, Kuo Zhao, Yuhan Li, Heng Chang, Mingjian Feng, Xiangzhe Jiang, Yufei Sun, Jia Li, Yuzhi Zhang, Jianxin Li, Ziwei Zhang"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.386897+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "GraphRAG-R1: Graph Retrieval-Augmented Generation with Process-Constrained Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2507.23581"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "GraphRAG-R1: Graph Retrieval-Augmented Generation with Process-Constrained Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2507.23581"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2507.23581",
+      "summary": "arXiv:2507.23581v2 Announce Type: replace \nAbstract: Graph Retrieval-Augmented Generation (GraphRAG) has shown great effectiveness in enhancing the reasoning abilities of LLMs by leveraging graph structures for knowledge representation and modeling complex real-world relationships. However, existing GraphRAG methods still face significant bottlenecks when handling complex problems that require multi-hop reasoning, as their query and retrieval phases are largely based on pre-defined heuristics and do not fully utilize the reasoning potentials of LLMs. To address this problem, we propose GraphRAG-R1, an adaptive GraphRAG framework by training LLMs with process-constrained outcome-based reinforcement learning (RL) to enhance the multi-hop reasoning ability. Our method can decompose complex problems, autonomously invoke retrieval tools to acquire necessary information, and perform effective reasoning. Specifically, we utilize a modified version of Group Relative Policy Optimization (GRPO) ",
+      "title": "GraphRAG-R1: Graph Retrieval-Augmented Generation with Process-Constrained Reinforcement Learning"
+    },
+    {
+      "arxiv_id": "2510.15303",
+      "authors": [
+        "Ting Qiao, Xing Liu, Wenke Huang, Jianbin Li, Zhaoxin Fan, Yiming Li"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.CY"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:52.758649+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "DSSmoothing: Toward Certified Dataset Ownership Verification for Pre-trained Language Models via Dual-Space Smoothing",
+          "url": "https://arxiv.org/abs/2510.15303"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "DSSmoothing: Toward Certified Dataset Ownership Verification for Pre-trained Language Models via Dual-Space Smoothing",
+        "url": "https://arxiv.org/abs/2510.15303"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.15303",
+      "summary": "arXiv:2510.15303v4 Announce Type: replace-cross \nAbstract: Large web-scale datasets have driven the rapid advancement of pre-trained language models (PLMs), but unauthorized data usage has raised serious copyright concerns. Existing dataset ownership verification (DOV) methods typically assume that watermarks remain stable during inference; however, this assumption often fails under natural noise and adversary-crafted perturbations. We propose the first certified dataset ownership verification method for PLMs under a gray-box setting (i.e., the defender can only query the suspicious model but is aware of its input representation module), based on dual-space smoothing (i.e., DSSmoothing). To address the challenges of text discreteness and semantic sensitivity, DSSmoothing introduces continuous perturbations in the embedding space to capture semantic robustness and applies controlled token reordering in the permutation space to capture sequential robustness. DSSmoothing consists of two s",
+      "title": "DSSmoothing: Toward Certified Dataset Ownership Verification for Pre-trained Language Models via Dual-Space Smoothing"
+    },
+    {
+      "arxiv_id": "2510.20691",
+      "authors": [
+        "Yanlin Song, Ben Liu, V\\'ictor Guti\\'errez-Basulto, Zhiwei Hu, Qianqian Xie, Min Peng, Sophia Ananiadou, Jeff Z. Pan"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.011044+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Plan Then Retrieve: Reinforcement Learning-Guided Complex Reasoning over Knowledge Graphs",
+          "url": "https://arxiv.org/abs/2510.20691"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Plan Then Retrieve: Reinforcement Learning-Guided Complex Reasoning over Knowledge Graphs",
+        "url": "https://arxiv.org/abs/2510.20691"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.20691",
+      "summary": "arXiv:2510.20691v3 Announce Type: replace \nAbstract: Knowledge Graph Question Answering aims to answer natural language questions by reasoning over structured knowledge graphs. While large language models have advanced KGQA through their strong reasoning capabilities, existing methods continue to struggle to fully exploit both the rich knowledge encoded in KGs and the reasoning capabilities of LLMs, particularly in complex scenarios. They often assume complete KG coverage and lack mechanisms to judge when external information is needed, and their reasoning remains locally myopic, failing to maintain coherent multi-step planning, leading to reasoning failures even when relevant knowledge exists. We propose Graph-RFT, a novel two-stage reinforcement fine-tuning KGQA framework with a 'plan-KGsearch-and-Websearch-during-think' paradigm, that enables LLMs to perform autonomous planning and adaptive retrieval scheduling across KG and web sources under incomplete knowledge conditions. Graph-R",
+      "title": "Plan Then Retrieve: Reinforcement Learning-Guided Complex Reasoning over Knowledge Graphs"
+    },
+    {
+      "arxiv_id": "2511.11236",
+      "authors": [
+        "Cong Cao, Yujie Xu, Xiaodong Xu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.910417+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Parameter-Efficient MoE LoRA for Few-Shot Multi-Style Editing",
+          "url": "https://arxiv.org/abs/2511.11236"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Parameter-Efficient MoE LoRA for Few-Shot Multi-Style Editing",
+        "url": "https://arxiv.org/abs/2511.11236"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2511.11236",
+      "summary": "arXiv:2511.11236v3 Announce Type: replace \nAbstract: In recent years, image editing has garnered growing attention. However, general image editing models often fail to produce satisfactory results when confronted with new styles. The challenge lies in how to effectively fine-tune general image editing models to new styles using only a limited amount of paired data. To address this issue, this paper proposes a novel few-shot style editing framework. For this task, we construct a benchmark dataset that encompasses five distinct styles. Correspondingly, we propose a parameter-efficient multi-style Mixture-of-Experts Low-Rank Adaptation (MoE LoRA) with style-specific and style-shared routing mechanisms for jointly fine-tuning multiple styles. The style-specific routing ensures that different styles do not interfere with one another, while the style-shared routing adaptively allocates shared MoE LoRAs to learn common patterns. Our MoE LoRA can automatically determine the optimal ranks for e",
+      "title": "Parameter-Efficient MoE LoRA for Few-Shot Multi-Style Editing"
+    },
+    {
+      "arxiv_id": "2508.07295",
+      "authors": [
+        "Yexing Du, Kaiyuan Liu, Youcheng Pan, Zheng Chu, Bo Yang, Xiaocheng Feng, Ming Liu, Yang Xiang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.637717+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "CCFQA: A Benchmark for Cross-Lingual and Cross-Modal Speech and Text Factuality Evaluation",
+          "url": "https://arxiv.org/abs/2508.07295"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "CCFQA: A Benchmark for Cross-Lingual and Cross-Modal Speech and Text Factuality Evaluation",
+        "url": "https://arxiv.org/abs/2508.07295"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2508.07295",
+      "summary": "arXiv:2508.07295v3 Announce Type: replace \nAbstract: As Large Language Models (LLMs) are increasingly popularized in the multilingual world, ensuring hallucination-free factuality becomes markedly crucial. However, existing benchmarks for evaluating the reliability of Multimodal Large Language Models (MLLMs) predominantly focus on textual or visual modalities with a primary emphasis on English, which creates a gap in evaluation when processing multilingual input, especially in speech. To bridge this gap, we propose a novel Cross-lingual and Cross-modal Factuality benchmark (CCFQA). Specifically, the CCFQA benchmark contains parallel speech-text factual questions across 8 languages, designed to systematically evaluate MLLMs' cross-lingual and cross-modal factuality capabilities. Our experimental results demonstrate that current MLLMs still face substantial challenges on the CCFQA benchmark. Furthermore, we propose a few-shot transfer learning strategy that effectively transfers the Ques",
+      "title": "CCFQA: A Benchmark for Cross-Lingual and Cross-Modal Speech and Text Factuality Evaluation"
+    },
+    {
+      "arxiv_id": "2601.18849",
+      "authors": [
+        "Yuhui Zhang, Hui Yu, Wei Liang, Sunjie Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.916205+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Audio-Driven Talking Face Generation with Blink Embedding and Hash Grid Landmarks Encoding",
+          "url": "https://arxiv.org/abs/2601.18849"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Audio-Driven Talking Face Generation with Blink Embedding and Hash Grid Landmarks Encoding",
+        "url": "https://arxiv.org/abs/2601.18849"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.18849",
+      "summary": "arXiv:2601.18849v1 Announce Type: new \nAbstract: Dynamic Neural Radiance Fields (NeRF) have demonstrated considerable success in generating high-fidelity 3D models of talking portraits. Despite significant advancements in the rendering speed and generation quality, challenges persist in accurately and efficiently capturing mouth movements in talking portraits. To tackle this challenge, we propose an automatic method based on blink embedding and hash grid landmarks encoding in this study, which can substantially enhance the fidelity of talking faces. Specifically, we leverage facial features encoded as conditional features and integrate audio features as residual terms into our model through a Dynamic Landmark Transformer. Furthermore, we employ neural radiance fields to model the entire face, resulting in a lifelike face representation. Experimental evaluations have validated the superiority of our approach to existing methods.",
+      "title": "Audio-Driven Talking Face Generation with Blink Embedding and Hash Grid Landmarks Encoding"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": "2601.19208",
+      "authors": [
+        "Shawn Im, Changdae Oh, Zhen Fang, Sharon Li"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-01-28T23:04:17.654079+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "How Do Transformers Learn to Associate Tokens: Gradient Leading Terms Bring Mechanistic Interpretability",
+          "url": "https://arxiv.org/abs/2601.19208"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "How Do Transformers Learn to Associate Tokens: Gradient Leading Terms Bring Mechanistic Interpretability",
+        "url": "https://arxiv.org/abs/2601.19208"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.19208",
+      "summary": "arXiv:2601.19208v1 Announce Type: new \nAbstract: Semantic associations such as the link between \"bird\" and \"flew\" are foundational for language modeling as they enable models to go beyond memorization and instead generalize and generate coherent text. Understanding how these associations are learned and represented in language models is essential for connecting deep learning with linguistic theory and developing a mechanistic foundation for large language models. In this work, we analyze how these associations emerge from natural language data in attention-based language models through the lens of training dynamics. By leveraging a leading-term approximation of the gradients, we develop closed-form expressions for the weights at early stages of training that explain how semantic associations first take shape. Through our analysis, we reveal that each set of weights of the transformer has closed-form expressions as simple compositions of three basis functions (bigram, token-interchangea",
+      "title": "How Do Transformers Learn to Associate Tokens: Gradient Leading Terms Bring Mechanistic Interpretability"
+    },
+    {
+      "arxiv_id": "2502.16435",
+      "authors": [
+        "Jen-Tse Huang, Dasen Dai, Jen-Yuan Huang, Youliang Yuan, Xiaoyuan Liu, Wenxuan Wang, Wenxiang Jiao, Pinjia He, Zhaopeng Tu, Haodong Duan"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.632483+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Human Cognitive Benchmarks Reveal Foundational Visual Gaps in MLLMs",
+          "url": "https://arxiv.org/abs/2502.16435"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Human Cognitive Benchmarks Reveal Foundational Visual Gaps in MLLMs",
+        "url": "https://arxiv.org/abs/2502.16435"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2502.16435",
+      "summary": "arXiv:2502.16435v3 Announce Type: replace \nAbstract: Humans develop perception through a bottom-up hierarchy: from basic primitives and Gestalt principles to high-level semantics. In contrast, current Multimodal Large Language Models (MLLMs) are trained directly on complex downstream tasks, often bypassing these foundational visual capabilities. To systematically investigate this gap, we introduce VisFactor, a benchmark that digitizes 20 vision-centric subtests from FRCT, a well-established cognitive psychology assessment spanning four domains of human visual cognition. Furthermore, we design algorithms to automatically construct and validate unlimited test cases with controllable difficulty. Using VisFactor, we evaluate 23 frontier MLLMs, including both proprietary (e.g., GPT, Gemini) and open-source (e.g., LLaMA, Qwen) models. The best model achieves a score of only 30.17%. Models consistently fail on tasks such as mental rotation, spatial relation inference, and figure-ground discri",
+      "title": "Human Cognitive Benchmarks Reveal Foundational Visual Gaps in MLLMs"
+    },
+    {
+      "arxiv_id": "2509.25787",
+      "authors": [
+        "Wen Wen, Tianwu Zhi, Kanglong Fan, Yang Li, Xinge Peng, Yabin Zhang, Yiting Liao, Junlin Li, Li Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.907604+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Self-Evolving Vision-Language Models for Image Quality Assessment via Voting and Ranking",
+          "url": "https://arxiv.org/abs/2509.25787"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Self-Evolving Vision-Language Models for Image Quality Assessment via Voting and Ranking",
+        "url": "https://arxiv.org/abs/2509.25787"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.25787",
+      "summary": "arXiv:2509.25787v4 Announce Type: replace \nAbstract: Improving vision-language models (VLMs) in the post-training stage typically relies on supervised fine-tuning or reinforcement learning, methods that necessitate costly, human-annotated data. While self-supervised techniques have proven effective for enhancing reasoning capabilities, their application to perceptual domains such as image quality assessment (IQA) remains largely unexplored. In this work, we introduce EvoQuality, a novel framework that enables a VLM to autonomously refine its quality perception capabilities without any ground-truth labels. EvoQuality adapts the principle of self-consistency to the ranking-based nature of IQA. It generates pseudo-labels by performing pairwise majority voting on the VLM's own outputs to establish a consensus on relative quality. These pseudo-rankings are then formulated into a fidelity reward that guides the model's iterative evolution through group relative policy optimization (GRPO). By",
+      "title": "Self-Evolving Vision-Language Models for Image Quality Assessment via Voting and Ranking"
+    },
+    {
+      "arxiv_id": "2601.18984",
+      "authors": [
+        "Haolin Liu, Dian Yu, Sidi Lu, Yujun Zhou, Rui Liu, Zhenwen Liang, Haitao Mi, Chen-Yu Wei, Dong Yu"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.651350+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Save the Good Prefix: Precise Error Penalization via Process-Supervised RL to Enhance LLM Reasoning",
+          "url": "https://arxiv.org/abs/2601.18984"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Save the Good Prefix: Precise Error Penalization via Process-Supervised RL to Enhance LLM Reasoning",
+        "url": "https://arxiv.org/abs/2601.18984"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.18984",
+      "summary": "arXiv:2601.18984v1 Announce Type: cross \nAbstract: Reinforcement learning (RL) has emerged as a powerful framework for improving the reasoning capabilities of large language models (LLMs). However, most existing RL approaches rely on sparse outcome rewards, which fail to credit correct intermediate steps in partially successful solutions. Process reward models (PRMs) offer fine-grained step-level supervision, but their scores are often noisy and difficult to evaluate. As a result, recent PRM benchmarks focus on a more objective capability: detecting the first incorrect step in a reasoning path. However, this evaluation target is misaligned with how PRMs are typically used in RL, where their step-wise scores are treated as raw rewards to maximize. To bridge this gap, we propose Verifiable Prefix Policy Optimization (VPPO), which uses PRMs only to localize the first error during RL. Given an incorrect rollout, VPPO partitions the trajectory into a verified correct prefix and an erroneous",
+      "title": "Save the Good Prefix: Precise Error Penalization via Process-Supervised RL to Enhance LLM Reasoning"
+    },
+    {
+      "arxiv_id": "2509.05895",
+      "authors": [
+        "Yujie Li, Wenjia Xu, Yuanben Zhang, Zhiwei Wei, Mugen Peng"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.906689+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "BTCChat: Advancing Remote Sensing Bi-temporal Change Captioning with Multimodal Large Language Model",
+          "url": "https://arxiv.org/abs/2509.05895"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "BTCChat: Advancing Remote Sensing Bi-temporal Change Captioning with Multimodal Large Language Model",
+        "url": "https://arxiv.org/abs/2509.05895"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.05895",
+      "summary": "arXiv:2509.05895v2 Announce Type: replace \nAbstract: Bi-temporal satellite imagery supports critical applications such as urbanization monitoring and disaster assessment. Although powerful multimodal large language models~(MLLMs) have been applied in bi-temporal change analysis, previous methods process image pairs through direct concatenation, inadequately modeling temporal correlations and spatial semantic changes. This deficiency hampers visual-semantic alignment in change understanding, thereby constraining the overall effectiveness of current approaches. To address this gap, we propose BTCChat, a multi-temporal MLLM with advanced bi-temporal change understanding capability. BTCChat supports bi-temporal change captioning and retains single-image interpretation capability. To better capture temporal features and spatial semantic changes in image pairs, we design a Change Extraction module. Moreover, to enhance the model's attention to spatial details, we introduce a Prompt Augmentat",
+      "title": "BTCChat: Advancing Remote Sensing Bi-temporal Change Captioning with Multimodal Large Language Model"
+    },
+    {
+      "arxiv_id": "2509.17428",
+      "authors": [
+        "Hyesung Jeon, Seojune Lee, Beomseok Kang, Yulhwa Kim, Jae-Joon Kim"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.639157+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "QWHA: Quantization-Aware Walsh-Hadamard Adaptation for Parameter-Efficient Fine-Tuning on Large Language Models",
+          "url": "https://arxiv.org/abs/2509.17428"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "QWHA: Quantization-Aware Walsh-Hadamard Adaptation for Parameter-Efficient Fine-Tuning on Large Language Models",
+        "url": "https://arxiv.org/abs/2509.17428"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2509.17428",
+      "summary": "arXiv:2509.17428v4 Announce Type: replace \nAbstract: The demand for efficient deployment of large language models (LLMs) has driven interest in quantization, which reduces inference cost, and parameter-efficient fine-tuning (PEFT), which lowers training overhead. This motivated the development of quantization-aware PEFT to produce accurate yet efficient quantized models. In this setting, reducing quantization error prior to fine-tuning is crucial for achieving high model accuracy. However, existing methods that rely on low-rank adaptation suffer from limited representational capacity. Recent Fourier-related transform (FT)-based adapters offer greater representational power than low-rank adapters, but their direct integration into quantized models often results in ineffective error reduction and increased computational overhead. To overcome these limitations, we propose QWHA, a method that integrates FT-based adapters into quantized models by employing the Walsh-Hadamard Transform (WHT)",
+      "title": "QWHA: Quantization-Aware Walsh-Hadamard Adaptation for Parameter-Efficient Fine-Tuning on Large Language Models"
+    },
+    {
+      "arxiv_id": "2601.16443",
+      "authors": [
+        "Kanishk Gandhi, Shivam Garg, Noah D. Goodman, Dimitris Papailiopoulos"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-26T06:03:53.149970+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Endless Terminals: Scaling RL Environments for Terminal Agents",
+          "url": "https://arxiv.org/abs/2601.16443"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Endless Terminals: Scaling RL Environments for Terminal Agents",
+        "url": "https://arxiv.org/abs/2601.16443"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.16443",
+      "summary": "arXiv:2601.16443v2 Announce Type: replace-cross \nAbstract: Environments are the bottleneck for self-improving agents. Current terminal benchmarks were built for evaluation, not training; reinforcement learning requires a scalable pipeline, not just a dataset. We introduce Endless Terminals, a fully autonomous pipeline that procedurally generates terminal-use tasks without human annotation. The pipeline has four stages: generating diverse task descriptions, building and validating containerized environments, producing completion tests, and filtering for solvability. From this pipeline we obtain 3255 tasks spanning file operations, log management, data processing, scripting, and database operations. We train agents using vanilla PPO with binary episode level rewards and a minimal interaction loop: no retrieval, multi-agent coordination, or specialized tools. Despite this simplicity, models trained on Endless Terminals show substantial gains: on our held-out dev set, Llama-3.2-3B improves",
+      "title": "Endless Terminals: Scaling RL Environments for Terminal Agents"
+    },
+    {
+      "arxiv_id": "2601.18192",
+      "authors": [
+        "Tian-Yi Zhou, Xuan-Hao Liu, Bao-Liang Lu, Wei-Long Zheng"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.HC",
+        "cs.MM"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.915181+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "MindCine: Multimodal EEG-to-Video Reconstruction with Large-Scale Pretrained Models",
+          "url": "https://arxiv.org/abs/2601.18192"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "MindCine: Multimodal EEG-to-Video Reconstruction with Large-Scale Pretrained Models",
+        "url": "https://arxiv.org/abs/2601.18192"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.18192",
+      "summary": "arXiv:2601.18192v2 Announce Type: replace \nAbstract: Reconstructing human dynamic visual perception from electroencephalography (EEG) signals is of great research significance since EEG's non-invasiveness and high temporal resolution. However, EEG-to-video reconstruction remains challenging due to: 1) Single Modality: existing studies solely align EEG signals with the text modality, which ignores other modalities and are prone to suffer from overfitting problems; 2) Data Scarcity: current methods often have difficulty training to converge with limited EEG-video data. To solve the above problems, we propose a novel framework MindCine to achieve high-fidelity video reconstructions on limited data. We employ a multimodal joint learning strategy to incorporate beyond-text modalities in the training stage and leverage a pre-trained large EEG model to relieve the data scarcity issue for decoding semantic information, while a Seq2Seq model with causal attention is specifically designed for de",
+      "title": "MindCine: Multimodal EEG-to-Video Reconstruction with Large-Scale Pretrained Models"
+    },
+    {
+      "arxiv_id": "2601.18974",
+      "authors": [
+        "Sudipta Acharya, Burak Kantarci"
+      ],
+      "categories": [
+        "cs.NI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.651152+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Intent2QoS: Language Model-Driven Automation of Traffic Shaping Configurations",
+          "url": "https://arxiv.org/abs/2601.18974"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Intent2QoS: Language Model-Driven Automation of Traffic Shaping Configurations",
+        "url": "https://arxiv.org/abs/2601.18974"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.18974",
+      "summary": "arXiv:2601.18974v1 Announce Type: cross \nAbstract: Traffic shaping and Quality of Service (QoS) enforcement are critical for managing bandwidth, latency, and fairness in networks. These tasks often rely on low-level traffic control settings, which require manual setup and technical expertise. This paper presents an automated framework that converts high-level traffic shaping intents in natural or declarative language into valid and correct traffic control rules. To the best of our knowledge, we present the first end-to-end pipeline that ties intent translation in a queuing-theoretic semantic model and, with a rule-based critic, yields deployable Linux traffic control configuration sets. The framework has three steps: (1) a queuing simulation with priority scheduling and Active Queue Management (AQM) builds a semantic model; (2) a language model, using this semantic model and a traffic profile, generates sub-intents and configuration rules; and (3) a rule-based critic checks and adjusts",
+      "title": "Intent2QoS: Language Model-Driven Automation of Traffic Shaping Configurations"
+    },
+    {
+      "arxiv_id": "2601.19026",
+      "authors": [
+        "Andrea Fasoli, Monodeep Kar, Chi-Chun Liu, Swagath Venkataramani, Viji Srinivasan, Leland Chang, Naigang Wang"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AR",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.652214+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Is Finer Better? The Limits of Microscaling Formats in Large Language Models",
+          "url": "https://arxiv.org/abs/2601.19026"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Is Finer Better? The Limits of Microscaling Formats in Large Language Models",
+        "url": "https://arxiv.org/abs/2601.19026"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.19026",
+      "summary": "arXiv:2601.19026v1 Announce Type: cross \nAbstract: Microscaling data formats leverage per-block tensor quantization to enable aggressive model compression with limited loss in accuracy. Unlocking their potential for efficient training and inference necessitates hardware-friendly implementations that handle matrix multiplications in a native format and adopt efficient error-mitigation strategies. Herein, we report the emergence of a surprising behavior associated with microscaling quantization, whereas the output of a quantized model degrades as block size is decreased below a given threshold. This behavior clashes with the expectation that a smaller block size should allow for a better representation of the tensor elements. We investigate this phenomenon both experimentally and theoretically, decoupling the sources of quantization error behind it. Experimentally, we analyze the distributions of several Large Language Models and identify the conditions driving the anomalous behavior. Th",
+      "title": "Is Finer Better? The Limits of Microscaling Formats in Large Language Models"
+    },
+    {
+      "arxiv_id": "2502.18771",
+      "authors": [
+        "Yuxiang Wang, Xinnan Dai, Wenqi Fan, Yao Ma"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.SI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.380341+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Exploring Graph Learning Tasks with Pure LLMs: A Comprehensive Benchmark and Investigation",
+          "url": "https://arxiv.org/abs/2502.18771"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Exploring Graph Learning Tasks with Pure LLMs: A Comprehensive Benchmark and Investigation",
+        "url": "https://arxiv.org/abs/2502.18771"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2502.18771",
+      "summary": "arXiv:2502.18771v2 Announce Type: replace \nAbstract: In recent years, large language models (LLMs) have emerged as promising candidates for graph tasks. Many studies leverage natural language to describe graphs and apply LLMs for reasoning, yet most focus narrowly on performance benchmarks without fully comparing LLMs to graph learning models or exploring their broader potential. In this work, we present a comprehensive study of LLMs on graph learning tasks, evaluating both off-the-shelf and instruction-tuned models across a variety of scenarios. Beyond accuracy, we discuss data leakage concerns and computational overhead, and assess their performance under few-shot/zero-shot settings, domain transfer, structural understanding, and robustness. Our findings show that LLMs, particularly those with instruction tuning, greatly outperform traditional graph learning models in few-shot settings, exhibit strong domain transferability, and demonstrate excellent generalization and robustness. Ou",
+      "title": "Exploring Graph Learning Tasks with Pure LLMs: A Comprehensive Benchmark and Investigation"
+    },
+    {
+      "arxiv_id": "2510.22603",
+      "authors": [
+        "Anand, Umberto Cappellazzo, Stavros Petridis, Maja Pantic"
+      ],
+      "categories": [
+        "eess.AS",
+        "cs.CV",
+        "cs.SD"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.909643+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Mitigating Attention Sinks and Massive Activations in Audio-Visual Speech Recognition with LLMs",
+          "url": "https://arxiv.org/abs/2510.22603"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Mitigating Attention Sinks and Massive Activations in Audio-Visual Speech Recognition with LLMs",
+        "url": "https://arxiv.org/abs/2510.22603"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2510.22603",
+      "summary": "arXiv:2510.22603v3 Announce Type: replace-cross \nAbstract: Large language models (LLMs) have recently advanced auditory speech recognition (ASR), visual speech recognition (VSR), and audio-visual speech recognition (AVSR). However, understanding of their internal dynamics under fine-tuning remains limited. In natural language processing, recent work has revealed attention sinks, tokens that attract disproportionately high attention, and associated massive activations in which some features of sink tokens exhibit huge activation in LLMs. In this work, we are the first to study these phenomena in multimodal speech recognition. Through a detailed analysis of audio-visual LLMs, we identify attention sinks and massive activations not only at the BOS token but also at intermediate low-semantic tokens across ASR, VSR, and AVSR. We show that massive activations originate in the MLP layers and correspond to fixed feature indices across all sink tokens. We further show that intermediate sink tok",
+      "title": "Mitigating Attention Sinks and Massive Activations in Audio-Visual Speech Recognition with LLMs"
+    },
+    {
+      "arxiv_id": "2511.07253",
+      "authors": [
+        "Umberto Cappellazzo, Xubo Liu, Pingchuan Ma, Stavros Petridis, Maja Pantic"
+      ],
+      "categories": [
+        "eess.AS",
+        "cs.CV",
+        "cs.SD"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-22T23:01:48.495698+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Omni-AVSR: Towards Unified Multimodal Speech Recognition with Large Language Models",
+          "url": "https://arxiv.org/abs/2511.07253"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Omni-AVSR: Towards Unified Multimodal Speech Recognition with Large Language Models",
+        "url": "https://arxiv.org/abs/2511.07253"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2511.07253",
+      "summary": "arXiv:2511.07253v3 Announce Type: replace-cross \nAbstract: Large language models (LLMs) have recently achieved impressive results in speech recognition across multiple modalities, including Auditory Speech Recognition (ASR), Visual Speech Recognition (VSR), and Audio-Visual Speech Recognition (AVSR). Despite this progress, current LLM-based approaches typically address each task independently, training separate models that raise computational and deployment resource use while missing potential cross-task synergies. They also rely on fixed-rate token compression, which restricts flexibility in balancing accuracy with efficiency. These limitations highlight the need for a unified framework that can support ASR, VSR, and AVSR while enabling elastic inference. To this end, we present Omni-AVSR, a unified audio-visual LLM that combines efficient multi-granularity training with parameter-efficient adaptation. Specifically, we adapt the matryoshka representation learning paradigm to efficient",
+      "title": "Omni-AVSR: Towards Unified Multimodal Speech Recognition with Large Language Models"
+    },
+    {
+      "arxiv_id": "2601.03660",
+      "authors": [
+        "Jiangyuan Liu, Yuhao Zhao, Hongxuan Ma, Zhe Liu, Jian Wang, Wei Zou"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.912014+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "MGPC: Multimodal Network for Generalizable Point Cloud Completion With Modality Dropout and Progressive Decoding",
+          "url": "https://arxiv.org/abs/2601.03660"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "MGPC: Multimodal Network for Generalizable Point Cloud Completion With Modality Dropout and Progressive Decoding",
+        "url": "https://arxiv.org/abs/2601.03660"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2601.03660",
+      "summary": "arXiv:2601.03660v2 Announce Type: replace \nAbstract: Point cloud completion aims to recover complete 3D geometry from partial observations caused by limited viewpoints and occlusions. Existing learning-based works, including 3D Convolutional Neural Network (CNN)-based, point-based, and Transformer-based methods, have achieved strong performance on synthetic benchmarks. However, due to the limitations of modality, scalability, and generative capacity, their generalization to novel objects and real-world scenarios remains challenging. In this paper, we propose MGPC, a generalizable multimodal point cloud completion framework that integrates point clouds, RGB images, and text within a unified architecture. MGPC introduces an innovative modality dropout strategy, a Transformer-based fusion module, and a novel progressive generator to improve robustness, scalability, and geometric modeling capability. We further develop an automatic data generation pipeline and construct MGPC-1M, a large-sc",
+      "title": "MGPC: Multimodal Network for Generalizable Point Cloud Completion With Modality Dropout and Progressive Decoding"
+    },
+    {
+      "arxiv_id": "2601.18952",
+      "authors": [
+        "Mehrdad Mohammadi, Qi Zheng, Ruoqing Zhu"
+      ],
+      "categories": [
+        "cs.LG",
+        "stat.ME",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:18.080153+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-stat-ml",
+          "tier": 1,
+          "title": "Vector-Valued Distributional Reinforcement Learning Policy Evaluation: A Hilbert Space Embedding Approach",
+          "url": "https://arxiv.org/abs/2601.18952"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-stat-ml",
+        "tier": 1,
+        "title": "Vector-Valued Distributional Reinforcement Learning Policy Evaluation: A Hilbert Space Embedding Approach",
+        "url": "https://arxiv.org/abs/2601.18952"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv stat.ML",
+      "story_id": "arxiv:2601.18952",
+      "summary": "arXiv:2601.18952v1 Announce Type: cross \nAbstract: We propose an (offline) multi-dimensional distributional reinforcement learning framework (KE-DRL) that leverages Hilbert space mappings to estimate the kernel mean embedding of the multi-dimensional value distribution under a proposed target policy. In our setting, the state-action variables are multi-dimensional and continuous. By mapping probability measures into a reproducing kernel Hilbert space via kernel mean embeddings, our method replaces Wasserstein metrics with an integral probability metric. This enables efficient estimation in multi-dimensional state-action spaces and reward settings, where direct computation of Wasserstein distances is computationally challenging. Theoretically, we establish contraction properties of the distributional Bellman operator under our proposed metric involving the Matern family of kernels and provide uniform convergence guarantees. Simulations and empirical results demonstrate robust off-policy",
+      "title": "Vector-Valued Distributional Reinforcement Learning Policy Evaluation: A Hilbert Space Embedding Approach"
+    }
+  ],
+  "run_date": "2026-01-28",
+  "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-01-28T23:59:59+00:00",
+    "items_total": 305,
+    "run_id": "22c5de6d-c5fd-4020-aacc-cbea7adb85de-2026-01-28",
+    "started_at": "2026-01-27T23:59:59+00:00",
+    "stories_total": 305,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2411.07559",
+      "authors": [
+        "Tiejin Chen, Kaishen Wang, Hua Wei"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.991127+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Zer0-Jack: A Memory-efficient Gradient-based Jailbreaking Method for Black-box Multi-modal Large Language Models",
+          "url": "https://arxiv.org/abs/2411.07559"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Zer0-Jack: A Memory-efficient Gradient-based Jailbreaking Method for Black-box Multi-modal Large Language Models",
+        "url": "https://arxiv.org/abs/2411.07559"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2411.07559",
+      "summary": "arXiv:2411.07559v2 Announce Type: replace \nAbstract: Jailbreaking methods, which induce Multi-modal Large Language Models (MLLMs) to output harmful responses, raise significant safety concerns. Among these methods, gradient-based approaches, which use gradients to generate malicious prompts, have been widely studied due to their high success rates in white-box settings, where full access to the model is available. However, these methods have notable limitations: they require white-box access, which is not always feasible, and involve high memory usage. To address scenarios where white-box access is unavailable, attackers often resort to transfer attacks. In transfer attacks, malicious inputs generated using white-box models are applied to black-box models, but this typically results in reduced attack performance. To overcome these challenges, we propose Zer0-Jack, a method that bypasses the need for white-box access by leveraging zeroth-order optimization. We propose patch coordinate d",
+      "title": "Zer0-Jack: A Memory-efficient Gradient-based Jailbreaking Method for Black-box Multi-modal Large Language Models"
+    },
+    {
+      "arxiv_id": "2506.08512",
+      "authors": [
+        "Zhiyi Zhu, Xiaoyu Wu, Zihao Liu, Linlin Yang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.997184+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "MLVTG: Mamba-Based Feature Alignment and LLM-Driven Purification for Multi-Modal Video Temporal Grounding",
+          "url": "https://arxiv.org/abs/2506.08512"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "MLVTG: Mamba-Based Feature Alignment and LLM-Driven Purification for Multi-Modal Video Temporal Grounding",
+        "url": "https://arxiv.org/abs/2506.08512"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2506.08512",
+      "summary": "arXiv:2506.08512v2 Announce Type: replace \nAbstract: Video Temporal Grounding (VTG), which aims to localize video clips corresponding to natural language queries, is a fundamental yet challenging task in video understanding. Existing Transformer-based methods often suffer from redundant attention and suboptimal multi-modal alignment. To address these limitations, we propose MLVTG, a novel framework that integrates two key modules: MambaAligner and LLMRefiner. MambaAligner uses stacked Vision Mamba blocks as a backbone instead of Transformers to model temporal dependencies and extract robust video representations for multi-modal alignment. LLMRefiner leverages the specific frozen layer of a pre-trained Large Language Model (LLM) to implicitly transfer semantic priors, enhancing multi-modal alignment without fine-tuning. This dual alignment strategy, temporal modeling via structured state-space dynamics and semantic purification via textual priors, enables more precise localization. Exte",
+      "title": "MLVTG: Mamba-Based Feature Alignment and LLM-Driven Purification for Multi-Modal Video Temporal Grounding"
+    },
+    {
+      "arxiv_id": "2506.11062",
+      "authors": [
+        "Xingyu Liu, Yubin Li, Guozhang Chen"
+      ],
+      "categories": [
+        "q-bio.NC",
+        "cs.AI",
+        "cs.NE"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.997640+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Decoding Cortical Microcircuits: A Generative Model for Latent Space Exploration and Controlled Synthesis",
+          "url": "https://arxiv.org/abs/2506.11062"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Decoding Cortical Microcircuits: A Generative Model for Latent Space Exploration and Controlled Synthesis",
+        "url": "https://arxiv.org/abs/2506.11062"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.11062",
+      "summary": "arXiv:2506.11062v2 Announce Type: replace-cross \nAbstract: A central idea in understanding brains and building artificial intelligence is that structure determines function. Yet, how the brain's complex structure arises from a limited set of genetic instructions remains a key question. The ultra high-dimensional detail of neural connections vastly exceeds the information storage capacity of genes, suggesting a compact, low-dimensional blueprint must guide brain development. Our motivation is to uncover this blueprint. We introduce a generative model, to learn this underlying representation from detailed connectivity maps of mouse cortical microcircuits. Our model successfully captures the essential structural information of these circuits in a compressed latent space. We found that specific, interpretable directions within this space directly relate to understandable network properties. Building on this, we demonstrate a novel method to controllably generate new, synthetic microcircuit",
+      "title": "Decoding Cortical Microcircuits: A Generative Model for Latent Space Exploration and Controlled Synthesis"
+    },
+    {
+      "arxiv_id": "2506.14852",
+      "authors": [
+        "Qizheng Zhang, Michael Wornow, Gerry Wan, Kunle Olukotun"
+      ],
+      "categories": [
+        "cs.DC",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG",
+        "cs.PF"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:16.998359+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Agentic Plan Caching: Test-Time Memory for Fast and Cost-Efficient LLM Agents",
+          "url": "https://arxiv.org/abs/2506.14852"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Agentic Plan Caching: Test-Time Memory for Fast and Cost-Efficient LLM Agents",
+        "url": "https://arxiv.org/abs/2506.14852"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.14852",
+      "summary": "arXiv:2506.14852v2 Announce Type: replace-cross \nAbstract: LLM-based agent applications have shown increasingly remarkable capabilities in complex workflows but incur substantial costs and latency due to extensive planning and reasoning requirements. Existing LLM caching techniques (like context caching and semantic caching), primarily designed for serving chatbots, are insufficient for agent applications where outputs depend on external data and environmental contexts. We propose Agentic Plan Caching (APC), a novel test-time memory that extracts, stores, adapts, and reuses structured plan templates from planning stages of agent applications across semantically similar tasks to reduce the cost and latency of serving. Unlike traditional semantic caching, our system extracts plan templates from completed agent executions at test-time, employs keyword extraction to match new requests against cached plans, and utilizes lightweight models to adapt these templates to task-specific plans with",
+      "title": "Agentic Plan Caching: Test-Time Memory for Fast and Cost-Efficient LLM Agents"
+    },
+    {
+      "arxiv_id": "2508.09201",
+      "authors": [
+        "Shuang Liang, Zhihao Xu, Jiaqi Weng, Jialing Tao, Hui Xue, Xiting Wang"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-28T23:04:17.001748+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Learning to Detect Unseen Jailbreak Attacks in Large Vision-Language Models",
+          "url": "https://arxiv.org/abs/2508.09201"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Learning to Detect Unseen Jailbreak Attacks in Large Vision-Language Models",
+        "url": "https://arxiv.org/abs/2508.09201"
+      },
+      "published_at": "2026-01-28T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2508.09201",
+      "summary": "arXiv:2508.09201v4 Announce Type: replace-cross \nAbstract: Despite extensive alignment efforts, Large Vision-Language Models (LVLMs) remain vulnerable to jailbreak attacks. To mitigate these risks, existing detection methods are essential, yet they face two major challenges: generalization and accuracy. While learning-based methods trained on specific attacks fail to generalize to unseen attacks, learning-free methods based on hand-crafted heuristics suffer from limited accuracy and reduced efficiency. To address these limitations, we propose Learning to Detect (LoD), a learnable framework that eliminates the need for any attack data or hand-crafted heuristics. LoD operates by first extracting layer-wise safety representations directly from the model's internal activations using Multi-modal Safety Concept Activation Vectors classifiers, and then converting the high-dimensional representations into a one-dimensional anomaly score for detection via a Safety Pattern Auto-Encoder. Extensiv",
+      "title": "Learning to Detect Unseen Jailbreak Attacks in Large Vision-Language Models"
+    }
+  ]
+}
