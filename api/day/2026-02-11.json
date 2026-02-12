@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-12",
     "2026-02-11",
     "2026-02-10",
     "2026-02-09",
@@ -24,7 +25,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-11T08:51:20.708064+00:00",
+  "generated_at": "2026-02-12T06:31:48.237313+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -322,44 +323,6 @@
   },
   "papers": [
     {
-      "arxiv_id": "2510.01304",
-      "authors": [
-        "Yu Zeng, Wenxuan Huang, Shiting Huang, Xikun Bao, Yukun Qi, Yiming Zhao, Qiuchen Wang, Lin Chen, Zehui Chen, Huaian Chen, Wanli Ouyang, Feng Zhao"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:29.922095+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Agentic Jigsaw Interaction Learning for Enhancing Visual Perception and Reasoning in Vision-Language Models",
-          "url": "https://arxiv.org/abs/2510.01304"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Agentic Jigsaw Interaction Learning for Enhancing Visual Perception and Reasoning in Vision-Language Models",
-        "url": "https://arxiv.org/abs/2510.01304"
-      },
-      "published_at": "2026-02-11T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2510.01304",
-      "summary": "arXiv:2510.01304v2 Announce Type: replace-cross \nAbstract: Although current large Vision-Language Models (VLMs) have advanced in multimodal understanding and reasoning, their fundamental perceptual and reasoning abilities remain limited. Specifically, even on simple jigsaw tasks, existing VLMs perform near randomly, revealing deficiencies in core perception and reasoning capabilities. While high-quality vision-language data can enhance these capabilities, its scarcity and limited scalability impose significant constraints. To address this, we propose AGILE, an Agentic jiGsaw Interaction Learning for Enhancing visual perception and reasoning in VLMs. AGILE formulates jigsaw solving as an interactive process, enabling the model to progressively engage with the environment. At each step, the model generates executable code to perform an action based on the current state, while the environment provides fine-grained visual feedback to guide task completion. Through this iterative cycle of o",
-      "title": "Agentic Jigsaw Interaction Learning for Enhancing Visual Perception and Reasoning in Vision-Language Models"
-    },
-    {
       "arxiv_id": "2602.08735",
       "authors": [
         "Masanari Oi, Koki Maeda, Ryuto Koike, Daisuke Oba, Nakamasa Inoue, Naoaki Okazaki"
@@ -511,16 +474,13 @@
       "title": "ReAcTree: Hierarchical LLM Agent Trees with Control Flow for Long-Horizon Task Planning"
     },
     {
-      "arxiv_id": "2602.09379",
-      "authors": [
-        "Shihao Xu, Tiancheng Zhou, Jiatong Ma, Yanli Ding, Yiming Yan, Ming Xiao, Guoyi Li, Haiyang Geng, Yunyun Han, Jianhua Chen, Yafeng Deng"
+      "arxiv_id": "2602.10975",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "anthropic"
       ],
-      "categories": [
-        "cs.MA",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:30.406469+00:00",
+      "first_seen_at": "2026-02-12T06:31:45.573027+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -528,25 +488,25 @@
       "links": [
         {
           "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
+          "source_id": "hf-daily-papers",
           "tier": 1,
-          "title": "LingxiDiagBench: A Multi-Agent Framework for Benchmarking LLMs in Chinese Psychiatric Consultation and Diagnosis",
-          "url": "https://arxiv.org/abs/2602.09379"
+          "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
+          "url": "https://arxiv.org/abs/2602.10975"
         }
       ],
       "primary_link": {
         "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
+        "source_id": "hf-daily-papers",
         "tier": 1,
-        "title": "LingxiDiagBench: A Multi-Agent Framework for Benchmarking LLMs in Chinese Psychiatric Consultation and Diagnosis",
-        "url": "https://arxiv.org/abs/2602.09379"
+        "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
+        "url": "https://arxiv.org/abs/2602.10975"
       },
-      "published_at": "2026-02-11T05:00:00+00:00",
+      "published_at": "2026-02-11T16:06:32+00:00",
       "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2602.09379",
-      "summary": "arXiv:2602.09379v1 Announce Type: cross \nAbstract: Mental disorders are highly prevalent worldwide, but the shortage of psychiatrists and the inherent subjectivity of interview-based diagnosis create substantial barriers to timely and consistent mental-health assessment. Progress in AI-assisted psychiatric diagnosis is constrained by the absence of benchmarks that simultaneously provide realistic patient simulation, clinician-verified diagnostic labels, and support for dynamic multi-turn consultation. We present LingxiDiagBench, a large-scale multi-agent benchmark that evaluates LLMs on both static diagnostic inference and dynamic multi-turn psychiatric consultation in Chinese. At its core is LingxiDiag-16K, a dataset of 16,000 EMR-aligned synthetic consultation dialogues designed to reproduce real clinical demographic and diagnostic distributions across 12 ICD-10 psychiatric categories. Through extensive experiments across state-of-the-art LLMs, we establish key findings: (1) although",
-      "title": "LingxiDiagBench: A Multi-Agent Framework for Benchmarking LLMs in Chinese Psychiatric Consultation and Diagnosis"
+      "source_name": null,
+      "story_id": "arxiv:2602.10975",
+      "summary": "Agents powered by large language models (LLMs) are increasingly adopted in the software industry, contributing code as collaborators or even autonomous developers. As their presence grows, it becomes important to assess the current boundaries of their coding abilities. Existing agentic coding benchmarks, however, cover a limited task scope, e.g., bug fixing within a single pull request (PR), and often rely on non-executable evaluations or lack an automated approach for continually updating the evaluation coverage. To address such issues, we propose FeatureBench, a benchmark designed to evaluate agentic coding performance in end-to-end, feature-oriented software development. FeatureBench incorporates an execution-based evaluation protocol and a scalable test-driven method that automatically derives tasks from code repositories with minimal human effort. By tracing from unit tests along a dependency graph, our approach can identify feature-level coding tasks spanning multiple commits and PRs scattered across the development timeline, while ensuring the proper functioning of other features after the separation. Using this framework, we curated 200 challenging evaluation tasks and 3825 executable environments from 24 open-source repositories in the first version of our benchmark. Empirical evaluation reveals that the state-of-the-art agentic model, such as Claude 4.5 Opus, which achieves a 74.4% resolved rate on SWE-bench, succeeds on only 11.0% of tasks, opening new opportunities for advancing agentic coding. Moreover, benefiting from our automated task collection toolkit, FeatureBench can be easily scaled and updated over time to mitigate data leakage. The inherent verifiability of constructed environments also makes our method potentially valuable for agent training.",
+      "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development"
     },
     {
       "arxiv_id": "2509.13666",
@@ -926,6 +886,76 @@
       "title": "Benchmarking the Energy Savings with Speculative Decoding Strategies"
     },
     {
+      "arxiv_id": "2602.10999",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "cohere"
+      ],
+      "first_seen_at": "2026-02-12T06:31:45.574331+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "CLI-Gym: Scalable CLI Task Generation via Agentic Environment Inversion",
+          "url": "https://arxiv.org/abs/2602.10999"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "CLI-Gym: Scalable CLI Task Generation via Agentic Environment Inversion",
+        "url": "https://arxiv.org/abs/2602.10999"
+      },
+      "published_at": "2026-02-11T16:22:18+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.10999",
+      "summary": "Agentic coding requires agents to effectively interact with runtime environments, e.g., command line interfaces (CLI), so as to complete tasks like resolving dependency issues, fixing system problems, etc. But it remains underexplored how such environment-intensive tasks can be obtained at scale to enhance agents' capabilities. To address this, based on an analogy between the Dockerfile and the agentic task, we propose to employ agents to simulate and explore environment histories, guided by execution feedback. By tracing histories of a healthy environment, its state can be inverted to an earlier one with runtime failures, from which a task can be derived by packing the buggy state and the corresponding error messages. With our method, named CLI-Gym, a total of 1,655 environment-intensive tasks are derived, being the largest collection of its kind. Moreover, with curated successful trajectories, our fine-tuned model, named LiberCoder, achieves substantial absolute improvements of +21.1% (to 46.1%) on Terminal-Bench, outperforming various strong baselines. To our knowledge, this is the first public pipeline for scalable derivation of environment-intensive tasks.",
+      "title": "CLI-Gym: Scalable CLI Task Generation via Agentic Environment Inversion"
+    },
+    {
+      "arxiv_id": "2602.11008",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "qwen"
+      ],
+      "first_seen_at": "2026-02-12T06:31:45.572287+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "ROCKET: Rapid Optimization via Calibration-guided Knapsack Enhanced Truncation for Efficient Model Compression",
+          "url": "https://arxiv.org/abs/2602.11008"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "ROCKET: Rapid Optimization via Calibration-guided Knapsack Enhanced Truncation for Efficient Model Compression",
+        "url": "https://arxiv.org/abs/2602.11008"
+      },
+      "published_at": "2026-02-11T16:34:52+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.11008",
+      "summary": "We present ROCKET, a training-free model compression method that achieves state-of-the-art performance in comparison with factorization, structured-sparsification and dynamic compression baselines. Operating under a global compression budget, ROCKET comprises two key innovations: First, it formulates layer-wise compression allocation as a multi-choice knapsack problem, selecting the optimal compression level for each layer to minimize total reconstruction error while adhering to a target model size. Second, it introduces a single-step sparse matrix factorization inspired by dictionary learning: using only a small calibration set, it sparsifies weight coefficients based on activation-weights sensitivity and then updates the dictionary in closed form via least squares bypassing iterative optimization, sparse coding, or backpropagation entirely. ROCKET consistently outperforms existing compression approaches across different model architectures at 20-50\\% compression rates. Notably, it retains over 90\\% of the original model's performance at 30\\% compression without any fine-tuning. Moreover, when applying a light fine-tuning phase, recovery is substantially enhanced: for instance, compressing Qwen3-14B to an 8B-parameter model and healing it with just 30 million tokens yields performance nearly on par with the original Qwen3-8B. The code for ROCKET is at github.com/mts-ai/ROCKET/tree/main.",
+      "title": "ROCKET: Rapid Optimization via Calibration-guided Knapsack Enhanced Truncation for Efficient Model Compression"
+    },
+    {
       "arxiv_id": "2509.17458",
       "authors": [
         "Seyed Amir Kasaei, Ali Aghayari, Arash Marioriyad, Niki Sepasian, Shayan Baghayi Nejad, MohammadAmin Fazli, Mahdieh Soleymani Baghshah, Mohammad Hossein Rohban"
@@ -1038,6 +1068,41 @@
       "story_id": "arxiv:2602.03213",
       "summary": "arXiv:2602.03213v3 Announce Type: replace \nAbstract: Autonomous driving relies on robust models trained on large-scale, high-quality multi-view driving videos. Although world models provide a cost-effective solution for generating realistic driving data, they often suffer from identity drift, where the same object changes its appearance or category across frames due to the absence of instance-level temporal constraints. We introduce ConsisDrive, an identity-preserving driving world model designed to enforce temporal consistency at the instance level. Our framework incorporates two key components: (1) Instance-Masked Attention, which applies instance identity masks and trajectory masks within attention blocks to ensure that visual tokens interact only with their corresponding instance features across spatial and temporal dimensions, thereby preserving object identity consistency; and (2) Instance-Masked Loss, which adaptively emphasizes foreground regions with probabilistic instance mas",
       "title": "ConsisDrive: Identity-Preserving Driving World Models for Video Generation by Instance Mask"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": "2602.10652",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-12T06:31:45.573453+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "UMEM: Unified Memory Extraction and Management Framework for Generalizable Memory",
+          "url": "https://arxiv.org/abs/2602.10652"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "UMEM: Unified Memory Extraction and Management Framework for Generalizable Memory",
+        "url": "https://arxiv.org/abs/2602.10652"
+      },
+      "published_at": "2026-02-11T08:58:41+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.10652",
+      "summary": "Self-evolving memory serves as the trainable parameters for Large Language Models (LLMs)-based agents, where extraction (distilling insights from experience) and management (updating the memory bank) must be tightly coordinated. Existing methods predominately optimize memory management while treating memory extraction as a static process, resulting in poor generalization, where agents accumulate instance-specific noise rather than robust memories. To address this, we propose Unified Memory Extraction and Management (UMEM), a self-evolving agent framework that jointly optimizes a Large Language Model to simultaneous extract and manage memories. To mitigate overfitting to specific instances, we introduce Semantic Neighborhood Modeling and optimize the model with a neighborhood-level marginal utility reward via GRPO. This approach ensures memory generalizability by evaluating memory utility across clusters of semantically related queries. Extensive experiments across five benchmarks demonstrate that UMEM significantly outperforms highly competitive baselines, achieving up to a 10.67% improvement in multi-turn interactive tasks. Futhermore, UMEM maintains a monotonic growth curve during continuous evolution. Codes and models will be publicly released.",
+      "title": "UMEM: Unified Memory Extraction and Management Framework for Generalizable Memory"
     },
     {
       "arxiv_id": "2504.16612",
@@ -1078,9 +1143,7 @@
       "story_id": "arxiv:2504.16612",
       "summary": "arXiv:2504.16612v3 Announce Type: replace \nAbstract: Purpose: Data privacy regulations hinder the creation of generalizable foundation models (FMs) for surgery by preventing multi-institutional data aggregation. This study investigates federated learning (FL) as a privacy-preserving solution to collaboratively train robust surgical FMs. Methods: We introduce Federated EndoViT (FL-EndoViT), a federated framework that validates the Masked Autoencoder (MAE) pretraining strategy in a decentralized surgical setting. To ensure convergence under severe data heterogeneity, the architecture integrates adaptive Sharpness-Aware Minimization (FedSAM). Pretrained on the large-scale Endo700k dataset, FL-EndoViT is evaluated against a centralized baseline on different tasks including scene segmentation, action recognition, and phase recognition. Results: FedSAM is critical for successful pretraining, overcoming the convergence failures of standard federated methods. The resulting FL-EndoViT performs ",
       "title": "Federated EndoViT: Pretraining Vision Transformers via Federated Learning on Endoscopic Image Collections"
-    }
-  ],
-  "radar": [
+    },
     {
       "arxiv_id": "2505.17653",
       "authors": [
@@ -1154,6 +1217,44 @@
       "story_id": "arxiv:2511.15831",
       "summary": "arXiv:2511.15831v2 Announce Type: replace \nAbstract: Image-based virtual try-on (VTON) aims to synthesize photorealistic images of a person wearing specified garments. Despite significant progress, building a universal VTON framework that can flexibly handle diverse and complex tasks remains a major challenge. Recent methods explore multi-task VTON frameworks guided by textual instructions, yet they still face two key limitations: (1) semantic gap between text instructions and reference images, and (2) data scarcity in complex scenarios. To address these challenges, we propose UniFit, a universal VTON framework driven by a Multimodal Large Language Model (MLLM). Specifically, we introduce an MLLM-Guided Semantic Alignment Module (MGSA), which integrates multimodal inputs using an MLLM and a set of learnable queries. By imposing a semantic alignment loss, MGSA captures cross-modal semantic relationships and provides coherent and explicit semantic guidance for the generative process, the",
       "title": "UniFit: Towards Universal Virtual Try-on with MLLM-Guided Semantic Alignment"
+    },
+    {
+      "arxiv_id": "2602.07605",
+      "authors": [
+        "Hulingxiao He, Zijun Geng, Yuxin Peng"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T07:16:30.611438+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Fine-R1: Make Multi-modal LLMs Excel in Fine-Grained Visual Recognition by Chain-of-Thought Reasoning",
+          "url": "https://arxiv.org/abs/2602.07605"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Fine-R1: Make Multi-modal LLMs Excel in Fine-Grained Visual Recognition by Chain-of-Thought Reasoning",
+        "url": "https://arxiv.org/abs/2602.07605"
+      },
+      "published_at": "2026-02-11T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.07605",
+      "summary": "arXiv:2602.07605v2 Announce Type: replace \nAbstract: Any entity in the visual world can be hierarchically grouped based on shared characteristics and mapped to fine-grained sub-categories. While Multi-modal Large Language Models (MLLMs) achieve strong performance on coarse-grained visual tasks, they often struggle with Fine-Grained Visual Recognition (FGVR). Adapting general-purpose MLLMs to FGVR typically requires large amounts of annotated data, which is costly to obtain, leaving a substantial performance gap compared to contrastive CLIP models dedicated for discriminative tasks. Moreover, MLLMs tend to overfit to seen sub-categories and generalize poorly to unseen ones. To address these challenges, we propose Fine-R1, an MLLM tailored for FGVR through an R1-style training framework: (1) Chain-of-Thought Supervised Fine-tuning, where we construct a high-quality FGVR CoT dataset with rationales of \"visual analysis, candidate sub-categories, comparison, and prediction\", transition the ",
+      "title": "Fine-R1: Make Multi-modal LLMs Excel in Fine-Grained Visual Recognition by Chain-of-Thought Reasoning"
     },
     {
       "arxiv_id": "2602.08682",
@@ -1416,44 +1517,6 @@
       "title": "Fundamental Reasoning Paradigms Induce Out-of-Domain Generalization in Language Models"
     },
     {
-      "arxiv_id": "2602.09621",
-      "authors": [
-        "R E Zera Marveen Lyngkhoi, Chirag Chawla, Pratinav Seth, Utsav Avaiya, Soham Bhattacharjee, Mykola Khandoga, Rui Yuan, Vinay Kumar Sankarapu"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.LG"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:30.416104+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models",
-          "url": "https://arxiv.org/abs/2602.09621"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models",
-        "url": "https://arxiv.org/abs/2602.09621"
-      },
-      "published_at": "2026-02-11T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2602.09621",
-      "summary": "arXiv:2602.09621v1 Announce Type: new \nAbstract: Post-training alignment is central to deploying large language models (LLMs), yet practical workflows remain split across backend-specific tools and ad-hoc glue code, making experiments hard to reproduce. We identify backend interference, reward fragmentation, and irreproducible pipelines as key obstacles in alignment research. We introduce AlignTune, a modular toolkit exposing a unified interface for supervised fine-tuning (SFT) and RLHF-style optimization with interchangeable TRL and Unsloth backends. AlignTune standardizes configuration, provides an extensible reward layer (rule-based and learned), and integrates evaluation over standard benchmarks and custom tasks. By isolating backend-specific logic behind a single factory boundary, AlignTune enables controlled comparisons and reproducible alignment experiments.",
-      "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models"
-    },
-    {
       "arxiv_id": "2602.08224",
       "authors": [
         "Jing Zhang, Zhikai Li, Xuewen Liu, Qingyi Gu"
@@ -1564,92 +1627,17 @@
       "story_id": "arxiv:2505.11876",
       "summary": "arXiv:2505.11876v3 Announce Type: replace \nAbstract: Model editing techniques are essential for efficiently updating knowledge in large language models (LLMs). However, the effectiveness of existing approaches degrades in massive editing scenarios, particularly when evaluated with practical metrics. Their robustness is also limited in context-rich settings or when editing multiple facts of the same subject simultaneously. We attribute these failures to the embedding misalignment among knowledge items, which undermines editing reliability at scale. To address this, we propose EAMET (Embedding Alignment Model Editing in Transformers), which addresses this issue by aligning the space of key and residual embeddings. Extensive experiments across six LLMs and three datasets demonstrate that EAMET consistently outperforms existing methods, achieving about 90\\% editing efficacy when editing 10k facts. Codes and datasets are publicly available at https://ybdai7.github.io/eamet-page/.",
       "title": "EAMET: Robust Massive Model Editing via Embedding Alignment Optimization"
-    },
-    {
-      "arxiv_id": "2508.16419",
-      "authors": [
-        "Akshay Mhatre, Noujoud Nader, Patrick Diehl, Deepti Gupta"
-      ],
-      "categories": [
-        "cs.SE",
-        "cs.LG"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:30.223546+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-lg",
-          "tier": 1,
-          "title": "Can LLMs Find Bugs in Code? An Evaluation from Beginner Errors to Security Vulnerabilities in Python and C++",
-          "url": "https://arxiv.org/abs/2508.16419"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-lg",
-        "tier": 1,
-        "title": "Can LLMs Find Bugs in Code? An Evaluation from Beginner Errors to Security Vulnerabilities in Python and C++",
-        "url": "https://arxiv.org/abs/2508.16419"
-      },
-      "published_at": "2026-02-11T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.LG",
-      "story_id": "arxiv:2508.16419",
-      "summary": "arXiv:2508.16419v2 Announce Type: replace-cross \nAbstract: Large Language Models (LLMs) such as ChatGPT-4, Claude 3, and LLaMA 4 are increasingly embedded in software/application development, supporting tasks from code generation to debugging. Yet, their real-world effectiveness in detecting diverse software bugs, particularly complex, security-relevant vulnerabilities, remains underexplored. This study presents a systematic, empirical evaluation of these three leading LLMs using a benchmark of foundational programming errors, classic security flaws, and advanced, production-grade bugs in C++ and Python. The dataset integrates real code from SEED Labs, OpenSSL (via the Suresoft GLaDOS database), and PyBugHive, validated through local compilation and testing pipelines. A novel multi-stage, context-aware prompting protocol simulates realistic debugging scenarios, while a graded rubric measures detection accuracy, reasoning depth, and remediation quality. Our results show that all models ",
-      "title": "Can LLMs Find Bugs in Code? An Evaluation from Beginner Errors to Security Vulnerabilities in Python and C++"
-    },
-    {
-      "arxiv_id": "2602.09372",
-      "authors": [
-        "Zexu Sun, Bokai Ji, Hengyi Cai, Shuaiqiang Wang, Lei Wang, Guangxia Li, Xu Chen"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:30.405994+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "AgentSkiller: Scaling Generalist Agent Intelligence through Semantically Integrated Cross-Domain Data Synthesis",
-          "url": "https://arxiv.org/abs/2602.09372"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "AgentSkiller: Scaling Generalist Agent Intelligence through Semantically Integrated Cross-Domain Data Synthesis",
-        "url": "https://arxiv.org/abs/2602.09372"
-      },
-      "published_at": "2026-02-11T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2602.09372",
-      "summary": "arXiv:2602.09372v1 Announce Type: new \nAbstract: Large Language Model agents demonstrate potential in solving real-world problems via tools, yet generalist intelligence is bottlenecked by scarce high-quality, long-horizon data. Existing methods collect privacy-constrained API logs or generate scripted interactions lacking diversity, which struggle to produce data requisite for scaling capabilities. We propose AgentSkiller, a fully automated framework synthesizing multi-turn interaction data across realistic, semantically linked domains. It employs a DAG-based architecture with explicit state transitions to ensure determinism and recoverability. The pipeline builds a domain ontology and Person-Centric Entity Graph, defines tool interfaces via Service Blueprints for Model Context Protocol servers, and populates environments with consistent databases and strict Domain Policies. A cross-domain fusion mechanism links services to simulate complex tasks. Finally, the pipeline creates user tas",
-      "title": "AgentSkiller: Scaling Generalist Agent Intelligence through Semantically Integrated Cross-Domain Data Synthesis"
     }
   ],
   "run_date": "2026-02-11",
-  "run_id": "9effa6c7-236f-4290-8898-ef558bce36aa",
+  "run_id": "2a672fdf-1190-448f-98a7-05ea4ce9e376",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-11T23:59:59+00:00",
-    "items_total": 353,
-    "run_id": "9effa6c7-236f-4290-8898-ef558bce36aa-2026-02-11",
+    "items_total": 359,
+    "run_id": "2a672fdf-1190-448f-98a7-05ea4ce9e376-2026-02-11",
     "started_at": "2026-02-10T23:59:59+00:00",
-    "stories_total": 353,
+    "stories_total": 359,
     "success": true
   },
   "sources_status": [],

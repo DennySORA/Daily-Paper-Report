@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-12",
     "2026-02-11",
     "2026-02-10",
     "2026-02-09",
@@ -24,7 +25,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-11T08:51:20.785185+00:00",
+  "generated_at": "2026-02-12T06:31:48.307439+00:00",
   "model_releases_by_entity": {},
   "papers": [
     {
@@ -95,39 +96,6 @@
       "story_id": "arxiv:2602.10063",
       "summary": "Human problem-solving is never the repetition of a single mindset, by which we mean a distinct mode of cognitive processing. When tackling a specific task, we do not rely on a single mindset; instead, we integrate multiple mindsets within the single solution process. However, existing LLM reasoning methods fall into a common trap: they apply the same fixed mindset across all steps, overlooking that different stages of solving the same problem require fundamentally different mindsets. This single-minded assumption prevents models from reaching the next level of intelligence. To address this limitation, we propose Chain of Mindset (CoM), a training-free agentic framework that enables step-level adaptive mindset orchestration. CoM decomposes reasoning into four functionally heterogeneous mindsets: Spatial, Convergent, Divergent, and Algorithmic. A Meta-Agent dynamically selects the optimal mindset based on the evolving reasoning state, while a bidirectional Context Gate filters cross-module information flow to maintain effectiveness and efficiency. Experiments across six challenging benchmarks spanning mathematics, code generation, scientific QA, and spatial reasoning demonstrate that CoM achieves state-of-the-art performance, outperforming the strongest baseline by 4.96\\% and 4.72\\% in overall accuracy on Qwen3-VL-32B-Instruct and Gemini-2.0-Flash, while balancing reasoning efficiency. Our code is publicly available at https://github.com/QuantaAlpha/chain-of-mindset{https://github.com/QuantaAlpha/chain-of-mindset}.",
       "title": "Chain of Mindset: Reasoning with Adaptive Cognitive Modes"
-    },
-    {
-      "arxiv_id": "2602.10090",
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:32.012048+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "hf-daily-papers",
-          "tier": 1,
-          "title": "Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning",
-          "url": "https://arxiv.org/abs/2602.10090"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "hf-daily-papers",
-        "tier": 1,
-        "title": "Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2602.10090"
-      },
-      "published_at": "2026-02-10T18:55:41+00:00",
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.10090",
-      "summary": "Recent advances in large language model (LLM) have empowered autonomous agents to perform complex tasks that require multi-turn interactions with tools and environments. However, scaling such agent training is limited by the lack of diverse and reliable environments. In this paper, we propose Agent World Model (AWM), a fully synthetic environment generation pipeline. Using this pipeline, we scale to 1,000 environments covering everyday scenarios, in which agents can interact with rich toolsets (35 tools per environment on average) and obtain high-quality observations. Notably, these environments are code-driven and backed by databases, providing more reliable and consistent state transitions than environments simulated by LLMs. Moreover, they enable more efficient agent interaction compared with collecting trajectories from realistic environments. To demonstrate the effectiveness of this resource, we perform large-scale reinforcement learning for multi-turn tool-use agents. Thanks to the fully executable environments and accessible database states, we can also design reliable reward functions. Experiments on three benchmarks show that training exclusively in synthetic environments, rather than benchmark-specific ones, yields strong out-of-distribution generalization. The code is available at https://github.com/Snowflake-Labs/agent-world-model.",
-      "title": "Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning"
     },
     {
       "arxiv_id": "2602.10102",
@@ -368,14 +336,14 @@
     }
   ],
   "run_date": "2026-02-10",
-  "run_id": "9effa6c7-236f-4290-8898-ef558bce36aa",
+  "run_id": "2a672fdf-1190-448f-98a7-05ea4ce9e376",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-10T23:59:59+00:00",
-    "items_total": 14,
-    "run_id": "9effa6c7-236f-4290-8898-ef558bce36aa-2026-02-10",
+    "items_total": 13,
+    "run_id": "2a672fdf-1190-448f-98a7-05ea4ce9e376-2026-02-10",
     "started_at": "2026-02-09T23:59:59+00:00",
-    "stories_total": 14,
+    "stories_total": 13,
     "success": true
   },
   "sources_status": [],
