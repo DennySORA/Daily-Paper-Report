@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-13",
     "2026-02-12",
     "2026-02-11",
     "2026-02-10",
@@ -25,9 +26,86 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-12T06:31:47.681227+00:00",
-  "model_releases_by_entity": {},
+  "generated_at": "2026-02-13T06:29:13.262613+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-13T06:29:10.087949+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 46052,
+          "likes": 287
+        },
+        "hf_model_id": "mistralai/devstral-2-123b-instruct-2512",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-mistralai",
+            "tier": 1,
+            "title": "mistralai/Devstral-2-123B-Instruct-2512",
+            "url": "https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-mistralai",
+          "tier": 1,
+          "title": "mistralai/Devstral-2-123B-Instruct-2512",
+          "url": "https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512"
+        },
+        "published_at": "2026-02-12T13:31:02+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:mistralai/devstral-2-123b-instruct-2512",
+        "summary": "Devstral is an agentic LLM for software engineering tasks. **Devstral 2** excels at using tools to explore codebases, editing multiple files and power software engineering agents. The model achieves remarkable performance on SWE-bench. This model is an Instruct model in **FP8**, fine-tuned to follow instructions, making it ideal for chat, agentic and instruction based tasks for SWE use cases. For enterprises requiring specialized capabilities (increased context, domain-specific knowledge, etc.), we invite companies to reach out to us. The Devstral 2 Instruct model offers the following capabilities: - **Agentic Coding**: Devstral is designed to excel at agentic coding tasks, making it a great choice for software engineering agents. - **Improved Performance**: Devstral 2 is a step-up...",
+        "title": "mistralai/Devstral-2-123B-Instruct-2512"
+      }
+    ]
+  },
   "papers": [
+    {
+      "arxiv_id": "2602.10159",
+      "authors": [
+        "Tao Yu, Yujia Yang, Haopeng Jin, Junhao Gong, Xinlong Chen, Yuxuan Zhou, Shanbin Zhang, Jiabing Yang, Xinming Wang, Hongzhu Yi, Ping Nie, Kai Zou, Zhang Zhang, Yan Huang, Liang Wang,  Yeshani, Ruiwen Tao, Jin Ma, Haijin Liang, Jinwen Luo"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-12T06:31:44.237611+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Beyond Closed-Pool Video Retrieval: A Benchmark and Agent Framework for Real-World Video Search and Moment Localization",
+          "url": "https://arxiv.org/abs/2602.10159"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Beyond Closed-Pool Video Retrieval: A Benchmark and Agent Framework for Real-World Video Search and Moment Localization",
+        "url": "https://arxiv.org/abs/2602.10159"
+      },
+      "published_at": "2026-02-12T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.10159",
+      "summary": "arXiv:2602.10159v1 Announce Type: new \nAbstract: Traditional video retrieval benchmarks focus on matching precise descriptions to closed video pools, failing to reflect real-world searches characterized by fuzzy, multi-dimensional memories on the open web. We present \\textbf{RVMS-Bench}, a comprehensive system for evaluating real-world video memory search. It consists of \\textbf{1,440 samples} spanning \\textbf{20 diverse categories} and \\textbf{four duration groups}, sourced from \\textbf{real-world open-web videos}. RVMS-Bench utilizes a hierarchical description framework encompassing \\textbf{Global Impression, Key Moment, Temporal Context, and Auditory Memory} to mimic realistic multi-dimensional search cues, with all samples strictly verified via a human-in-the-loop protocol. We further propose \\textbf{RACLO}, an agentic framework that employs abductive reasoning to simulate the human ``Recall-Search-Verify'' cognitive process, effectively addressing the challenge of searching for vi",
+      "title": "Beyond Closed-Pool Video Retrieval: A Benchmark and Agent Framework for Real-World Video Search and Moment Localization"
+    },
     {
       "arxiv_id": "2602.08025",
       "authors": [
@@ -297,16 +375,14 @@
       "title": "SnapGen++: Unleashing Diffusion Transformers for Efficient High-Fidelity Image Generation on Edge Devices"
     },
     {
-      "arxiv_id": "2508.20866",
-      "authors": [
-        "Amine Lbath, Massih-Reza Amini, Aurelien Delaitre, Vadim Okun"
+      "arxiv_id": "2602.12205",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "qwen",
+        "01-ai"
       ],
-      "categories": [
-        "cs.CR",
-        "cs.AI"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:43.645742+00:00",
+      "first_seen_at": "2026-02-13T06:29:10.554385+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -314,25 +390,25 @@
       "links": [
         {
           "link_type": "arxiv",
-          "source_id": "arxiv-cs-ai",
+          "source_id": "hf-daily-papers",
           "tier": 1,
-          "title": "AI Agentic Vulnerability Injection And Transformation with Optimized Reasoning",
-          "url": "https://arxiv.org/abs/2508.20866"
+          "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing",
+          "url": "https://arxiv.org/abs/2602.12205"
         }
       ],
       "primary_link": {
         "link_type": "arxiv",
-        "source_id": "arxiv-cs-ai",
+        "source_id": "hf-daily-papers",
         "tier": 1,
-        "title": "AI Agentic Vulnerability Injection And Transformation with Optimized Reasoning",
-        "url": "https://arxiv.org/abs/2508.20866"
+        "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing",
+        "url": "https://arxiv.org/abs/2602.12205"
       },
-      "published_at": "2026-02-12T05:00:00+00:00",
+      "published_at": "2026-02-12T17:44:24+00:00",
       "section": null,
-      "source_name": "arXiv cs.AI",
-      "story_id": "arxiv:2508.20866",
-      "summary": "arXiv:2508.20866v4 Announce Type: replace-cross \nAbstract: The increasing complexity of software systems and the sophistication of cyber-attacks have underscored the need for reliable automated software vulnerability detection. Data-driven approaches using deep learning models show promise but critically depend on the availability of large, accurately labeled datasets. Yet existing datasets either suffer from noisy labels, limited vulnerability coverage, or fail to reflect vulnerabilities as they occur in real-world software. This also limits large-scale benchmarking of such solutions. Automated vulnerability injection provides a way to address these limitations, but existing techniques remain limited in coverage, contextual fidelity, or injection success. In this paper, we present AVIATOR, the first AI-agentic vulnerability injection framework. AVIATOR decomposes vulnerability injection into a coordinated workflow of specialized AI agents, tool-based analysis, and iterative self-corre",
-      "title": "AI Agentic Vulnerability Injection And Transformation with Optimized Reasoning"
+      "source_name": null,
+      "story_id": "arxiv:2602.12205",
+      "summary": "Current unified multimodal models for image generation and editing typically rely on massive parameter scales (e.g., >10B), entailing prohibitive training costs and deployment footprints. In this work, we present DeepGen 1.0, a lightweight 5B unified model that achieves comprehensive capabilities competitive with or surpassing much larger counterparts. To overcome the limitations of compact models in semantic understanding and fine-grained control, we introduce Stacked Channel Bridging (SCB), a deep alignment framework that extracts hierarchical features from multiple VLM layers and fuses them with learnable 'think tokens' to provide the generative backbone with structured, reasoning-rich guidance. We further design a data-centric training strategy spanning three progressive stages: (1) Alignment Pre-training on large-scale image-text pairs and editing triplets to synchronize VLM and DiT representations, (2) Joint Supervised Fine-tuning on a high-quality mixture of generation, editing, and reasoning tasks to foster omni-capabilities, and (3) Reinforcement Learning with MR-GRPO, which leverages a mixture of reward functions and supervision signals, resulting in substantial gains in generation quality and alignment with human preferences, while maintaining stable training progress and avoiding visual artifacts. Despite being trained on only ~50M samples, DeepGen 1.0 achieves leading performance across diverse benchmarks, surpassing the 80B HunyuanImage by 28% on WISE and the 27B Qwen-Image-Edit by 37% on UniREditBench. By open-sourcing our training code, weights, and datasets, we provide an efficient, high-performance alternative to democratize unified multimodal research.",
+      "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing"
     },
     {
       "arxiv_id": "2503.00038",
@@ -487,6 +563,39 @@
       "title": "On Emergent Social World Models -- Evidence for Functional Integration of Theory of Mind and Pragmatic Reasoning in Language Models"
     },
     {
+      "arxiv_id": "2602.11636",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:09.524483+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "ScalSelect: Scalable Training-Free Multimodal Data Selection for Efficient Visual Instruction Tuning",
+          "url": "https://arxiv.org/abs/2602.11636"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "ScalSelect: Scalable Training-Free Multimodal Data Selection for Efficient Visual Instruction Tuning",
+        "url": "https://arxiv.org/abs/2602.11636"
+      },
+      "published_at": "2026-02-12T06:38:49+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.11636",
+      "summary": "Large-scale Visual Instruction Tuning (VIT) has become a key paradigm for advancing the performance of vision-language models (VLMs) across various multimodal tasks. However, training on the large-scale datasets is computationally expensive and inefficient due to redundancy in the data, which motivates the need for multimodal data selection to improve training efficiency. Existing data selection methods for VIT either require costly training or gradient computation. Training-free alternatives often depend on proxy models or datasets, instruction-agnostic representations, and pairwise similarity with quadratic complexity, limiting scalability and representation fidelity. In this work, we propose ScalSelect, a scalable training-free multimodal data selection method with linear-time complexity with respect to the number of samples, eliminating the need for external models or auxiliary datasets. ScalSelect first constructs sample representations by extracting visual features most attended by instruction tokens in the target VLM, capturing instruction-relevant information. It then identifies samples whose representations best approximate the dominant subspace of the full dataset representations, enabling scalable importance scoring without pairwise comparisons. Extensive experiments across multiple VLMs, datasets, and selection budgets demonstrate that ScalSelect achieves over 97.5% of the performance of training on the full dataset using only 16% of the data, and even outperforms full-data training in some settings. The code is available at https://github.com/ChangtiWu/ScalSelect{ScalSelect}.",
+      "title": "ScalSelect: Scalable Training-Free Multimodal Data Selection for Efficient Visual Instruction Tuning"
+    },
+    {
       "arxiv_id": "2508.05612",
       "authors": [
         "Linghao Zhu, Yiran Guan, Dingkang Liang, Jianzhong Ju, Zhenbo Luo, Bin Qin, Jian Luan, Yuliang Liu, Xiang Bai"
@@ -601,6 +710,41 @@
       "title": "Improving Reasoning for Diffusion Language Models via Group Diffusion Policy Optimization"
     },
     {
+      "arxiv_id": "2602.11761",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "nvidia"
+      ],
+      "first_seen_at": "2026-02-13T06:29:10.556524+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling",
+          "url": "https://arxiv.org/abs/2602.11761"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling",
+        "url": "https://arxiv.org/abs/2602.11761"
+      },
+      "published_at": "2026-02-12T09:37:05+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.11761",
+      "summary": "The evolution of large language models (LLMs) towards applications with ultra-long contexts faces challenges posed by the high computational and memory costs of the Transformer architecture. While existing sparse and linear attention mechanisms attempt to mitigate these issues, they typically involve a trade-off between memory efficiency and model performance. This paper introduces MiniCPM-SALA, a 9B-parameter hybrid architecture that integrates the high-fidelity long-context modeling of sparse attention (InfLLM-V2) with the global efficiency of linear attention (Lightning Attention). By employing a layer selection algorithm to integrate these mechanisms in a 1:3 ratio and utilizing a hybrid positional encoding (HyPE), the model maintains efficiency and performance for long-context tasks. Furthermore, we introduce a cost-effective continual training framework that transforms pre-trained Transformer-based models into hybrid models, which reduces training costs by approximately 75% compared to training from scratch. Extensive experiments show that MiniCPM-SALA maintains general capabilities comparable to full-attention models while offering improved efficiency. On a single NVIDIA A6000D GPU, the model achieves up to 3.5x the inference speed of the full-attention model at the sequence length of 256K tokens and supports context lengths of up to 1M tokens, a scale where traditional full-attention 8B models fail because of memory constraints.",
+      "title": "MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling"
+    },
+    {
       "arxiv_id": "2506.04518",
       "authors": [
         "Haibin Wu, Yuxuan Hu, Ruchao Fan, Xiaofei Wang, Kenichi Kumatani, Bo Ren, Jianwei Yu, Heng Lu, Lijuan Wang, Yao Qian, Jinyu Li"
@@ -674,7 +818,9 @@
       "story_id": "arxiv:2506.17667",
       "summary": "arXiv:2506.17667v4 Announce Type: replace \nAbstract: Physics problem-solving is a challenging domain for AI models, requiring integration of conceptual understanding, mathematical reasoning, and interpretation of physical diagrams. Existing evaluations fail to capture the full breadth and complexity of undergraduate physics, whereas this level provides a rigorous yet standardized testbed for pedagogical assessment of multi-step physical reasoning. To this end, we present PhysUniBench, a large-scale multimodal benchmark designed to evaluate and improve the reasoning capabilities of multimodal large language models (MLLMs) specifically on undergraduate-level physics problems. PhysUniBench consists of 3,304 physics questions spanning 8 major sub-disciplines of physics, each accompanied by one visual diagram. The benchmark includes both open-ended and multiple-choice questions, systematically curated and difficulty-rated through an iterative process. The benchmark's construction involved a",
       "title": "PhysUniBench: A Multi-Modal Physics Reasoning Benchmark at Undergraduate Level"
-    },
+    }
+  ],
+  "radar": [
     {
       "arxiv_id": "2511.11847",
       "authors": [
@@ -752,46 +898,6 @@
       "summary": "arXiv:2601.16503v2 Announce Type: replace \nAbstract: While Retrieval-Augmented Generation (RAG) has been swiftly adopted in scientific and clinical QA systems, a comprehensive evaluation benchmark in the medical domain is lacking. To address this gap, we introduce the Medical Retrieval-Augmented Generation (MRAG) benchmark, covering various tasks in English and Chinese languages, and building a corpus with Wikipedia and Pubmed. Additionally, we develop the MRAG-Toolkit, facilitating systematic exploration of different RAG components. Our experiments reveal that: (a) RAG enhances LLM reliability across MRAG tasks. (b) the performance of RAG systems is influenced by retrieval approaches, model sizes, and prompting strategies. (c) While RAG improves usefulness and reasoning quality, LLM responses may become slightly less readable for long-form questions. We will release the MRAG-Bench's dataset and toolkit with CCBY-4.0 license upon acceptance, to facilitate applications from both academi",
       "title": "MRAG: Benchmarking Retrieval-Augmented Generation for Bio-medicine"
     },
-    {
-      "arxiv_id": "2602.10271",
-      "authors": [
-        "Yongyue Zhang, Yaxiong Wu"
-      ],
-      "categories": [
-        "cs.IR",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.088827+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "MLDocRAG: Multimodal Long-Context Document Retrieval Augmented Generation",
-          "url": "https://arxiv.org/abs/2602.10271"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "MLDocRAG: Multimodal Long-Context Document Retrieval Augmented Generation",
-        "url": "https://arxiv.org/abs/2602.10271"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2602.10271",
-      "summary": "arXiv:2602.10271v1 Announce Type: cross \nAbstract: Understanding multimodal long-context documents that comprise multimodal chunks such as paragraphs, figures, and tables is challenging due to (1) cross-modal heterogeneity to localize relevant information across modalities, (2) cross-page reasoning to aggregate dispersed evidence across pages. To address these challenges, we are motivated to adopt a query-centric formulation that projects cross-modal and cross-page information into a unified query representation space, with queries acting as abstract semantic surrogates for heterogeneous multimodal content. In this paper, we propose a Multimodal Long-Context Document Retrieval Augmented Generation (MLDocRAG) framework that leverages a Multimodal Chunk-Query Graph (MCQG) to organize multimodal document content around semantically rich, answerable queries. MCQG is constructed via a multimodal document expansion process that generates fine-grained queries from heterogeneous document chunk",
-      "title": "MLDocRAG: Multimodal Long-Context Document Retrieval Augmented Generation"
-    }
-  ],
-  "radar": [
     {
       "arxiv_id": "2602.09740",
       "authors": [
@@ -903,6 +1009,43 @@
       "story_id": "arxiv:2504.00437",
       "summary": "arXiv:2504.00437v2 Announce Type: replace \nAbstract: We present a novel approach, termed ADGaussian, for generalizable street scene reconstruction. The proposed method enables high-quality rendering from merely single-view input. Unlike prior Gaussian Splatting methods that primarily focus on geometry refinement, we emphasize the importance of joint optimization of image and depth features for accurate Gaussian prediction. To this end, we first incorporate sparse LiDAR depth as an additional input modality, formulating the Gaussian prediction process as a joint learning framework of visual information and geometric clue. Furthermore, we propose a Multi-modal Feature Matching strategy coupled with a Multi-scale Gaussian Decoding model to enhance the joint refinement of multi-modal features, thereby enabling efficient multi-modal Gaussian learning. Extensive experiments on Waymo and KITTI demonstrate that our ADGaussian achieves state-of-the-art performance and exhibits superior zero-sho",
       "title": "ADGaussian: Generalizable Gaussian Splatting for Autonomous Driving via Multi-modal Joint Learning"
+    },
+    {
+      "arxiv_id": "2510.11462",
+      "authors": [
+        "Yisen Gao, Jiaxin Bai, Yi Huang, Xingcheng Fu, Qingyun Sun, Yangqiu Song"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-12T06:31:43.650654+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Unifying Deductive and Abductive Reasoning in Knowledge Graphs with Masked Diffusion Model",
+          "url": "https://arxiv.org/abs/2510.11462"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Unifying Deductive and Abductive Reasoning in Knowledge Graphs with Masked Diffusion Model",
+        "url": "https://arxiv.org/abs/2510.11462"
+      },
+      "published_at": "2026-02-12T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.11462",
+      "summary": "arXiv:2510.11462v2 Announce Type: replace \nAbstract: Deductive and abductive reasoning are two critical paradigms for analyzing knowledge graphs, enabling applications from financial query answering to scientific discovery. Deductive reasoning on knowledge graphs usually involves retrieving entities that satisfy a complex logical query, while abductive reasoning generates plausible logical hypotheses from observations. Despite their clear synergistic potential, where deduction can validate hypotheses and abduction can uncover deeper logical patterns, existing methods address them in isolation. To bridge this gap, we propose DARK, a unified framework for Deductive and Abductive Reasoning in Knowledge graphs. As a masked diffusion model capable of capturing the bidirectional relationship between queries and conclusions, DARK has two key innovations. First, to better leverage deduction for hypothesis refinement during abductive reasoning, we introduce a self-reflective denoising process t",
+      "title": "Unifying Deductive and Abductive Reasoning in Knowledge Graphs with Masked Diffusion Model"
     },
     {
       "arxiv_id": "2602.10356",
@@ -1055,6 +1198,72 @@
       "title": "VeriSciQA: An Auto-Verified Dataset for Scientific Visual Question Answering"
     },
     {
+      "arxiv_id": "2602.12262",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:10.554657+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "T3D: Few-Step Diffusion Language Models via Trajectory Self-Distillation with Direct Discriminative Optimization",
+          "url": "https://arxiv.org/abs/2602.12262"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "T3D: Few-Step Diffusion Language Models via Trajectory Self-Distillation with Direct Discriminative Optimization",
+        "url": "https://arxiv.org/abs/2602.12262"
+      },
+      "published_at": "2026-02-12T18:52:35+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.12262",
+      "summary": "Diffusion large language models (DLLMs) have the potential to enable fast text generation by decoding multiple tokens in parallel. However, in practice, their inference efficiency is constrained by the need for many refinement steps, while aggressively reducing the number of steps leads to a substantial degradation in generation quality. To alleviate this, we propose a trajectory self-distillation framework that improves few-step decoding by distilling the model's own generative trajectories. We incorporate Direct Discriminative Optimization (DDO), a reverse-KL objective that promotes mode-seeking distillation and encourages the student to concentrate on high-probability teacher modes. Across benchmarks, our approach consistently outperforms strong few-step baselines and standard training under tight step budgets. Although full-step decoding remains superior, we substantially narrow the gap, establishing a strong foundation towards practical few-step DLLMs. The source code is available at https://github.com/Tyrion58/T3D.",
+      "title": "T3D: Few-Step Diffusion Language Models via Trajectory Self-Distillation with Direct Discriminative Optimization"
+    },
+    {
+      "arxiv_id": "2602.12164",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:10.555122+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Sci-CoE: Co-evolving Scientific Reasoning LLMs via Geometric Consensus with Sparse Supervision",
+          "url": "https://arxiv.org/abs/2602.12164"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Sci-CoE: Co-evolving Scientific Reasoning LLMs via Geometric Consensus with Sparse Supervision",
+        "url": "https://arxiv.org/abs/2602.12164"
+      },
+      "published_at": "2026-02-12T16:46:00+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.12164",
+      "summary": "Large language models (LLMs) have demonstrated exceptional reasoning capabilities, and co-evolving paradigms have shown promising results in domains such as code and math. However, in scientific reasoning tasks, these models remain fragile due to unreliable solution evaluation and limited diversity in verification strategies. In this work, we propose Sci-CoE, a two-stage scientific co-evolving framework that enables models to self-evolve as both solver and verifier through a transition from sparse supervision to unsupervised learning. In the first stage, the model uses a small set of annotated data to establish fundamental correctness judgment anchors for the Verifier. In the second stage, we introduce a geometric reward mechanism that jointly considers consensus, reliability, and diversity, driving large-scale self-iteration on unlabeled data. Experiments on several general scientific benchmarks demonstrate that Sci-CoE enhances complex reasoning capabilities and exhibits strong scalability, facilitating the construction of more robust and diverse evaluation systems. Codes are available at https://github.com/InternScience/Sci-CoE.",
+      "title": "Sci-CoE: Co-evolving Scientific Reasoning LLMs via Geometric Consensus with Sparse Supervision"
+    },
+    {
       "arxiv_id": "2505.13444",
       "authors": [
         "Liyan Tang, Grace Kim, Xinyu Zhao, Thom Lake, Wenxuan Ding, Fangcong Yin, Prasann Singhal, Manya Wadhwa, Zeyu Leo Liu, Zayne Sprague, Ramya Namuduri, Bodun Hu, Juan Diego Rodriguez, Puyuan Peng, Greg Durrett"
@@ -1167,204 +1376,17 @@
       "story_id": "arxiv:2512.20677",
       "summary": "arXiv:2512.20677v2 Announce Type: replace-cross \nAbstract: The increasing deployment of large language models (LLMs) in safety-critical applications raises fundamental challenges in systematically evaluating robustness against adversarial behaviors. Existing red-teaming practices are largely manual and expert-driven, which limits scalability, reproducibility, and coverage in high-dimensional prompt spaces. We formulate automated LLM red-teaming as a structured adversarial search problem and propose a learning-driven framework for scalable vulnerability discovery. The approach combines meta-prompt-guided adversarial prompt generation with a hierarchical execution and detection pipeline, enabling standardized evaluation across six representative threat categories, including reward hacking, deceptive alignment, data exfiltration, sandbagging, inappropriate tool use, and chain-of-thought manipulation. Extensive experiments on GPT-OSS-20B identify 47 vulnerabilities, including 21 high-sever",
       "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models"
-    },
-    {
-      "arxiv_id": "2602.07815",
-      "authors": [
-        "Simiao Ren (Manlin), Xingyu Shen (Manlin), Ankit Raj (Manlin), Albert Dai (Manlin),  Caroline (Manlin),  Zhang, Yuan Xu, Zexi Chen, Siqi Wu, Chen Gong, Yuxin Zhang"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.234535+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures",
-          "url": "https://arxiv.org/abs/2602.07815"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures",
-        "url": "https://arxiv.org/abs/2602.07815"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2602.07815",
-      "summary": "arXiv:2602.07815v2 Announce Type: replace \nAbstract: Facial age estimation plays a critical role in content moderation, age verification, and deepfake detection. However, no prior benchmark has systematically compared modern vision-language models (VLMs) with specialized age estimation architectures. We present the first large-scale cross-paradigm benchmark, evaluating 34 models - 22 specialized architectures with publicly available pretrained weights and 12 general-purpose VLMs - across eight standard datasets (UTKFace, IMDB-WIKI, MORPH, AFAD, CACD, FG-NET, APPA-REAL, and AgeDB), totaling 1,100 test images per model. Our key finding is striking: zero-shot VLMs significantly outperform most specialized models, achieving an average mean absolute error (MAE) of 5.65 years compared to 9.88 years for non-LLM models. The best-performing VLM (Gemini 3 Flash Preview, MAE 4.32) surpasses the strongest non-LLM model (MiVOLO, MAE 5.10) by 15%. MiVOLO - unique in combining face and body features ",
-      "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures"
-    },
-    {
-      "arxiv_id": "2512.00891",
-      "authors": [
-        "Yiyu Wang, Xuyang Liu, Xiyan Gui, Xinying Lin, Boxue Yang, Chenfei Liao, Tailai Chen, Linfeng Zhang"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.229848+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "Accelerating Streaming Video Large Language Models via Hierarchical Token Compression",
-          "url": "https://arxiv.org/abs/2512.00891"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "Accelerating Streaming Video Large Language Models via Hierarchical Token Compression",
-        "url": "https://arxiv.org/abs/2512.00891"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2512.00891",
-      "summary": "arXiv:2512.00891v2 Announce Type: replace \nAbstract: Streaming Video Large Language Models (VideoLLMs) have demonstrated impressive performance across various video understanding tasks, but they face significant challenges in real-time deployment due to the high computational cost of processing dense visual tokens from continuous video streams. In streaming video scenarios, the primary bottleneck lies in the Vision Transformer (ViT) encoding stage, where redundant processing of temporally similar frames leads to inefficiency. Additionally, inflated token sequences during LLM pre-filling further exacerbate latency and memory overhead. To address these challenges, we propose \\textbf{S}treaming \\textbf{T}oken \\textbf{C}ompression (\\textbf{STC}), a plug-and-play hierarchical framework that seamlessly integrates into existing streaming VideoLLMs, optimizing both ViT encoding and LLM pre-filling stages to accelerate processing. STC introduces two token-level accelerators: \\textbf{STC-Cacher}",
-      "title": "Accelerating Streaming Video Large Language Models via Hierarchical Token Compression"
-    },
-    {
-      "arxiv_id": "2602.10538",
-      "authors": [
-        "Sho Sonoda, Shunta Akiyama, Yuya Uezato"
-      ],
-      "categories": [
-        "stat.ML",
-        "cs.LG"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.334701+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-stat-ml",
-          "tier": 1,
-          "title": "Why Agentic Theorem Prover Works: A Statistical Provability Theory of Mathematical Reasoning Models",
-          "url": "https://arxiv.org/abs/2602.10538"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-stat-ml",
-        "tier": 1,
-        "title": "Why Agentic Theorem Prover Works: A Statistical Provability Theory of Mathematical Reasoning Models",
-        "url": "https://arxiv.org/abs/2602.10538"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv stat.ML",
-      "story_id": "arxiv:2602.10538",
-      "summary": "arXiv:2602.10538v1 Announce Type: new \nAbstract: Agentic theorem provers -- pipelines that couple a mathematical reasoning model with library retrieval, subgoal-decomposition/search planner, and a proof assistant verifier -- have recently achieved striking empirical success, yet it remains unclear which components drive performance and why such systems work at all despite classical hardness of proof search. We propose a distributional viewpoint and introduce **statistical provability**, defined as the finite-horizon success probability of reaching a verified proof, averaged over an instance distribution, and formalize modern theorem-proving pipelines as time-bounded MDPs. Exploiting Bellman structure, we prove existence of optimal policies under mild regularity, derive provability certificates via sub-/super-solution inequalities, and bound the performance gap of score-guided planning (greedy/top-\\(k\\)/beam/rollouts) in terms of approximation error, sequential statistical complexity, r",
-      "title": "Why Agentic Theorem Prover Works: A Statistical Provability Theory of Mathematical Reasoning Models"
-    },
-    {
-      "arxiv_id": "2602.10971",
-      "authors": [
-        "Sanghwa Kim, Junghyun Lee, Se-Young Yun"
-      ],
-      "categories": [
-        "cs.LG",
-        "stat.ML"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.338919+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-stat-ml",
-          "tier": 1,
-          "title": "A Jointly Efficient and Optimal Algorithm for Heteroskedastic Generalized Linear Bandits with Adversarial Corruptions",
-          "url": "https://arxiv.org/abs/2602.10971"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-stat-ml",
-        "tier": 1,
-        "title": "A Jointly Efficient and Optimal Algorithm for Heteroskedastic Generalized Linear Bandits with Adversarial Corruptions",
-        "url": "https://arxiv.org/abs/2602.10971"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv stat.ML",
-      "story_id": "arxiv:2602.10971",
-      "summary": "arXiv:2602.10971v1 Announce Type: cross \nAbstract: We consider the problem of heteroskedastic generalized linear bandits (GLBs) with adversarial corruptions, which subsumes various stochastic contextual bandit settings, including heteroskedastic linear bandits and logistic/Poisson bandits. We propose HCW-GLB-OMD, which consists of two components: an online mirror descent (OMD)-based estimator and Hessian-based confidence weights to achieve corruption robustness. This is computationally efficient in that it only requires ${O}(1)$ space and time complexity per iteration. Under the self-concordance assumption on the link function, we show a regret bound of $\\tilde{{O}}\\left( d \\sqrt{\\sum_t g(\\tau_t) \\dot{\\mu}_{t,\\star}} + d^2 g_{\\max} \\kappa + d \\kappa C \\right)$, where $\\dot{\\mu}_{t,\\star}$ is the slope of $\\mu$ around the optimal arm at time $t$, $g(\\tau_t)$'s are potentially exogenously time-varying dispersions (e.g., $g(\\tau_t) = \\sigma_t^2$ for heteroskedastic linear bandits, $g(\\tau",
-      "title": "A Jointly Efficient and Optimal Algorithm for Heteroskedastic Generalized Linear Bandits with Adversarial Corruptions"
-    },
-    {
-      "arxiv_id": "2512.15933",
-      "authors": [
-        "Dwip Dalal, Utkarsh Mishra, Narendra Ahuja, Nebojsa Jojic"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-01-30T06:56:09.048415+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "City Navigation in the Wild: Exploring Emergent Navigation from Web-Scale Knowledge in MLLMs",
-          "url": "https://arxiv.org/abs/2512.15933"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "City Navigation in the Wild: Exploring Emergent Navigation from Web-Scale Knowledge in MLLMs",
-        "url": "https://arxiv.org/abs/2512.15933"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2512.15933",
-      "summary": "arXiv:2512.15933v3 Announce Type: replace \nAbstract: Leveraging multimodal large language models (MLLMs) to develop embodied agents offers significant promise for addressing complex real-world tasks. However, current evaluation benchmarks remain predominantly language-centric or heavily reliant on simulated environments, rarely probing the nuanced, knowledge-intensive reasoning essential for practical, real-world scenarios. To bridge this critical gap, we introduce the task of Sparsely Grounded Visual Navigation, explicitly designed to evaluate the sequential decision-making abilities of MLLMs in challenging, knowledge-intensive real-world environment. We operationalize this task with CityNav, a comprehensive benchmark encompassing four diverse global cities, specifically constructed to assess raw MLLM-driven agents in city navigation. Agents are required to rely solely on visual inputs and internal multimodal reasoning to sequentially navigate 50+ decision points without additional en",
-      "title": "City Navigation in the Wild: Exploring Emergent Navigation from Web-Scale Knowledge in MLLMs"
     }
   ],
   "run_date": "2026-02-12",
-  "run_id": "2a672fdf-1190-448f-98a7-05ea4ce9e376",
+  "run_id": "3c981a96-f684-4579-bb43-9c3b55dc4b50",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-12T23:59:59+00:00",
-    "items_total": 346,
-    "run_id": "2a672fdf-1190-448f-98a7-05ea4ce9e376-2026-02-12",
+    "items_total": 358,
+    "run_id": "3c981a96-f684-4579-bb43-9c3b55dc4b50-2026-02-12",
     "started_at": "2026-02-11T23:59:59+00:00",
-    "stories_total": 346,
+    "stories_total": 357,
     "success": true
   },
   "sources_status": [],
@@ -1483,6 +1505,42 @@
       "title": "WaymoQA: A Multi-View Visual Question Answering Dataset for Safety-Critical Reasoning in Autonomous Driving"
     },
     {
+      "arxiv_id": "2602.11964",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai",
+        "anthropic"
+      ],
+      "first_seen_at": "2026-02-13T06:29:10.556292+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Gaia2: Benchmarking LLM Agents on Dynamic and Asynchronous Environments",
+          "url": "https://arxiv.org/abs/2602.11964"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Gaia2: Benchmarking LLM Agents on Dynamic and Asynchronous Environments",
+        "url": "https://arxiv.org/abs/2602.11964"
+      },
+      "published_at": "2026-02-12T13:58:27+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.11964",
+      "summary": "We introduce Gaia2, a benchmark for evaluating large language model agents in realistic, asynchronous environments. Unlike prior static or synchronous evaluations, Gaia2 introduces scenarios where environments evolve independently of agent actions, requiring agents to operate under temporal constraints, adapt to noisy and dynamic events, resolve ambiguity, and collaborate with other agents. Each scenario is paired with a write-action verifier, enabling fine-grained, action-level evaluation and making Gaia2 directly usable for reinforcement learning from verifiable rewards. Our evaluation of state-of-the-art proprietary and open-source models shows that no model dominates across capabilities: GPT-5 (high) reaches the strongest overall score of 42% pass@1 but fails on time-sensitive tasks, Claude-4 Sonnet trades accuracy and speed for cost, Kimi-K2 leads among open-source models with 21% pass@1. These results highlight fundamental trade-offs between reasoning, efficiency, robustness, and expose challenges in closing the \"sim2real\" gap. Gaia2 is built on a consumer environment with the open-source Agents Research Environments platform and designed to be easy to extend. By releasing Gaia2 alongside the foundational ARE framework, we aim to provide the community with a flexible infrastructure for developing, benchmarking, and training the next generation of practical agent systems.",
+      "title": "Gaia2: Benchmarking LLM Agents on Dynamic and Asynchronous Environments"
+    },
+    {
       "arxiv_id": "2503.16858",
       "authors": [
         "Jialin Chen, Aosong Feng, Ziyu Zhao, Juan Garza, Gaukhar Nurbek, Cheng Qin, Ali Maatouk, Leandros Tassiulas, Yifeng Gao, Rex Ying"
@@ -1519,44 +1577,6 @@
       "story_id": "arxiv:2503.16858",
       "summary": "arXiv:2503.16858v2 Announce Type: replace \nAbstract: Understanding the relationship between textual news and time-series evolution is a critical yet under-explored challenge in applied data science. While multimodal learning has gained traction, existing multimodal time-series datasets fall short in evaluating cross-modal reasoning and complex question answering, which are essential for capturing complex interactions between narrative information and temporal patterns. To bridge this gap, we introduce Multimodal Time Series Benchmark (MTBench), a large-scale benchmark designed to evaluate large language models (LLMs) on time series and text understanding across financial and weather domains. MTbench comprises paired time series and textual data, including financial news with corresponding stock price movements and weather reports aligned with historical temperature records. Unlike existing benchmarks that focus on isolated modalities, MTbench provides a comprehensive testbed for models",
       "title": "MTBench: A Multimodal Time Series Benchmark for Temporal Reasoning and Question Answering"
-    },
-    {
-      "arxiv_id": "2602.10159",
-      "authors": [
-        "Tao Yu, Yujia Yang, Haopeng Jin, Junhao Gong, Xinlong Chen, Yuxuan Zhou, Shanbin Zhang, Jiabing Yang, Xinming Wang, Hongzhu Yi, Ping Nie, Kai Zou, Zhang Zhang, Yan Huang, Liang Wang,  Yeshani, Ruiwen Tao, Jin Ma, Haijin Liang, Jinwen Luo"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.LG"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.237611+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "Beyond Closed-Pool Video Retrieval: A Benchmark and Agent Framework for Real-World Video Search and Moment Localization",
-          "url": "https://arxiv.org/abs/2602.10159"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "Beyond Closed-Pool Video Retrieval: A Benchmark and Agent Framework for Real-World Video Search and Moment Localization",
-        "url": "https://arxiv.org/abs/2602.10159"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2602.10159",
-      "summary": "arXiv:2602.10159v1 Announce Type: new \nAbstract: Traditional video retrieval benchmarks focus on matching precise descriptions to closed video pools, failing to reflect real-world searches characterized by fuzzy, multi-dimensional memories on the open web. We present \\textbf{RVMS-Bench}, a comprehensive system for evaluating real-world video memory search. It consists of \\textbf{1,440 samples} spanning \\textbf{20 diverse categories} and \\textbf{four duration groups}, sourced from \\textbf{real-world open-web videos}. RVMS-Bench utilizes a hierarchical description framework encompassing \\textbf{Global Impression, Key Moment, Temporal Context, and Auditory Memory} to mimic realistic multi-dimensional search cues, with all samples strictly verified via a human-in-the-loop protocol. We further propose \\textbf{RACLO}, an agentic framework that employs abductive reasoning to simulate the human ``Recall-Search-Verify'' cognitive process, effectively addressing the challenge of searching for vi",
-      "title": "Beyond Closed-Pool Video Retrieval: A Benchmark and Agent Framework for Real-World Video Search and Moment Localization"
     }
   ]
 }
