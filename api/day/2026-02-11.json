@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-14",
     "2026-02-13",
     "2026-02-12",
     "2026-02-11",
@@ -26,7 +27,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-13T06:29:13.790778+00:00",
+  "generated_at": "2026-02-14T06:20:21.621387+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -173,43 +174,6 @@
         "story_id": "hf:microsoft/phi-4-multimodal-instruct-onnx",
         "summary": "This is an ONNX version of the Phi-4 multimodal model that is quantized to int4 precision to accelerate inference with ONNX Runtime. For CPU: stay tuned or follow this tutorial to generate your own ONNX models for CPU! huggingface-cli download microsoft/Phi-4-multimodal-instruct-onnx --include gpu/* --local-dir . pip install --pre onnxruntime-genai-cuda curl https://raw.githubusercontent.com/microsoft/onnxruntime-genai/main/examples/python/common.py -o common.py curl https://raw.githubusercontent.com/microsoft/onnxruntime-genai/main/examples/python/model-mm.py -o model-mm.py python model-mm.py -m gpu/gpu-int4-rtn-block-32 -e cuda For DirectML: huggingface-cli download microsoft/Phi-4-multimodal-instruct-onnx --include gpu/* --local-dir . pip install --pre onnxruntime-genai-directml",
         "title": "microsoft/Phi-4-multimodal-instruct-onnx"
-      },
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [],
-        "first_seen_at": "2026-02-11T07:16:31.593502+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 3197,
-          "likes": 457,
-          "pipeline_tag": "automatic-speech-recognition"
-        },
-        "hf_model_id": "mistralai/voxtral-mini-4b-realtime-2602",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-mistralai",
-            "tier": 1,
-            "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
-            "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-mistralai",
-          "tier": 1,
-          "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
-          "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
-        },
-        "published_at": "2026-02-11T00:37:49+00:00",
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:mistralai/voxtral-mini-4b-realtime-2602",
-        "summary": "Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **= 3600 / 0.8 = 45000`. In theory you should be able to record with no limit; in practice pre-allocations of RoPE parameters among other things limits --max-model-len. For the best user experience, we recommend to simple instantiate vLLM with the default parameters which will automatically set a maximum model length of 131072 (~ca. 3h). - We strongly recommend using websockets to set up audio streaming sessions. For more info on how to do so, check Usage. - We recommend using a delay of 480ms as we found it to be the sweet spot of performance and low latency. If, however, you want to adapt the...",
-        "title": "mistralai/Voxtral-Mini-4B-Realtime-2602"
       },
       {
         "arxiv_id": null,
@@ -1631,14 +1595,14 @@
     }
   ],
   "run_date": "2026-02-11",
-  "run_id": "3c981a96-f684-4579-bb43-9c3b55dc4b50",
+  "run_id": "4260a454-ed87-4b11-bb4e-2c32f1588528",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-11T23:59:59+00:00",
-    "items_total": 358,
-    "run_id": "3c981a96-f684-4579-bb43-9c3b55dc4b50-2026-02-11",
+    "items_total": 357,
+    "run_id": "4260a454-ed87-4b11-bb4e-2c32f1588528-2026-02-11",
     "started_at": "2026-02-10T23:59:59+00:00",
-    "stories_total": 358,
+    "stories_total": 357,
     "success": true
   },
   "sources_status": [],
