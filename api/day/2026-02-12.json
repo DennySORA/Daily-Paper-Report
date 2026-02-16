@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-16",
     "2026-02-15",
     "2026-02-14",
     "2026-02-13",
@@ -28,7 +29,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-15T06:24:29.973649+00:00",
+  "generated_at": "2026-02-16T06:32:38.123654+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -375,42 +376,6 @@
       "story_id": "arxiv:2601.08303",
       "summary": "arXiv:2601.08303v2 Announce Type: replace \nAbstract: Recent advances in diffusion transformers (DiTs) have set new standards in image generation, yet remain impractical for on-device deployment due to their high computational and memory costs. In this work, we present an efficient DiT framework tailored for mobile and edge devices that achieves transformer-level generation quality under strict resource constraints. Our design combines three key components. First, we propose a compact DiT architecture with an adaptive global-local sparse attention mechanism that balances global context modeling and local detail preservation. Second, we propose an elastic training framework that jointly optimizes sub-DiTs of varying capacities within a unified supernetwork, allowing a single model to dynamically adjust for efficient inference across different hardware. Finally, we develop Knowledge-Guided Distribution Matching Distillation, a step-distillation pipeline that integrates the DMD objective w",
       "title": "SnapGen++: Unleashing Diffusion Transformers for Efficient High-Fidelity Image Generation on Edge Devices"
-    },
-    {
-      "arxiv_id": "2602.12205",
-      "authors": [],
-      "categories": [],
-      "entities": [
-        "qwen",
-        "01-ai"
-      ],
-      "first_seen_at": "2026-02-13T06:29:10.554385+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "hf-daily-papers",
-          "tier": 1,
-          "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing",
-          "url": "https://arxiv.org/abs/2602.12205"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "hf-daily-papers",
-        "tier": 1,
-        "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing",
-        "url": "https://arxiv.org/abs/2602.12205"
-      },
-      "published_at": "2026-02-12T17:44:24+00:00",
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.12205",
-      "summary": "Current unified multimodal models for image generation and editing typically rely on massive parameter scales (e.g., >10B), entailing prohibitive training costs and deployment footprints. In this work, we present DeepGen 1.0, a lightweight 5B unified model that achieves comprehensive capabilities competitive with or surpassing much larger counterparts. To overcome the limitations of compact models in semantic understanding and fine-grained control, we introduce Stacked Channel Bridging (SCB), a deep alignment framework that extracts hierarchical features from multiple VLM layers and fuses them with learnable 'think tokens' to provide the generative backbone with structured, reasoning-rich guidance. We further design a data-centric training strategy spanning three progressive stages: (1) Alignment Pre-training on large-scale image-text pairs and editing triplets to synchronize VLM and DiT representations, (2) Joint Supervised Fine-tuning on a high-quality mixture of generation, editing, and reasoning tasks to foster omni-capabilities, and (3) Reinforcement Learning with MR-GRPO, which leverages a mixture of reward functions and supervision signals, resulting in substantial gains in generation quality and alignment with human preferences, while maintaining stable training progress and avoiding visual artifacts. Despite being trained on only ~50M samples, DeepGen 1.0 achieves leading performance across diverse benchmarks, surpassing the 80B HunyuanImage by 28% on WISE and the 27B Qwen-Image-Edit by 37% on UniREditBench. By open-sourcing our training code, weights, and datasets, we provide an efficient, high-performance alternative to democratize unified multimodal research.",
-      "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing"
     },
     {
       "arxiv_id": "2503.00038",
@@ -820,9 +785,7 @@
       "story_id": "arxiv:2506.17667",
       "summary": "arXiv:2506.17667v4 Announce Type: replace \nAbstract: Physics problem-solving is a challenging domain for AI models, requiring integration of conceptual understanding, mathematical reasoning, and interpretation of physical diagrams. Existing evaluations fail to capture the full breadth and complexity of undergraduate physics, whereas this level provides a rigorous yet standardized testbed for pedagogical assessment of multi-step physical reasoning. To this end, we present PhysUniBench, a large-scale multimodal benchmark designed to evaluate and improve the reasoning capabilities of multimodal large language models (MLLMs) specifically on undergraduate-level physics problems. PhysUniBench consists of 3,304 physics questions spanning 8 major sub-disciplines of physics, each accompanied by one visual diagram. The benchmark includes both open-ended and multiple-choice questions, systematically curated and difficulty-rated through an iterative process. The benchmark's construction involved a",
       "title": "PhysUniBench: A Multi-Modal Physics Reasoning Benchmark at Undergraduate Level"
-    }
-  ],
-  "radar": [
+    },
     {
       "arxiv_id": "2511.11847",
       "authors": [
@@ -861,7 +824,9 @@
       "story_id": "arxiv:2511.11847",
       "summary": "arXiv:2511.11847v2 Announce Type: replace-cross \nAbstract: Ensuring worker safety remains a critical challenge in modern manufacturing environments. Industry 5.0 reorients the prevailing manufacturing paradigm toward more human-centric operations. Using a design science research methodology, we identify three essential requirements for next-generation safety training systems: high accuracy, low latency, and low cost. We introduce a multimodal chatbot powered by large language models that meets these design requirements. The chatbot uses retrieval-augmented generation to ground its responses in curated regulatory and technical documentation. To evaluate our solution, we developed a domain-specific benchmark of expert-validated question and answer pairs for three representative machines: a Bridgeport manual mill, a Haas TL-1 CNC lathe, and a Universal Robots UR5e collaborative robot. We tested 24 RAG configurations using a full-factorial design and assessed them with automated evaluation",
       "title": "A Multimodal Manufacturing Safety Chatbot: Knowledge Base Design, Benchmark Development, and Evaluation of Multiple RAG Approaches"
-    },
+    }
+  ],
+  "radar": [
     {
       "arxiv_id": "2601.16503",
       "authors": [
@@ -1200,39 +1165,6 @@
       "title": "VeriSciQA: An Auto-Verified Dataset for Scientific Visual Question Answering"
     },
     {
-      "arxiv_id": "2602.12262",
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-02-13T06:29:10.554657+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "hf-daily-papers",
-          "tier": 1,
-          "title": "T3D: Few-Step Diffusion Language Models via Trajectory Self-Distillation with Direct Discriminative Optimization",
-          "url": "https://arxiv.org/abs/2602.12262"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "hf-daily-papers",
-        "tier": 1,
-        "title": "T3D: Few-Step Diffusion Language Models via Trajectory Self-Distillation with Direct Discriminative Optimization",
-        "url": "https://arxiv.org/abs/2602.12262"
-      },
-      "published_at": "2026-02-12T18:52:35+00:00",
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.12262",
-      "summary": "Diffusion large language models (DLLMs) have the potential to enable fast text generation by decoding multiple tokens in parallel. However, in practice, their inference efficiency is constrained by the need for many refinement steps, while aggressively reducing the number of steps leads to a substantial degradation in generation quality. To alleviate this, we propose a trajectory self-distillation framework that improves few-step decoding by distilling the model's own generative trajectories. We incorporate Direct Discriminative Optimization (DDO), a reverse-KL objective that promotes mode-seeking distillation and encourages the student to concentrate on high-probability teacher modes. Across benchmarks, our approach consistently outperforms strong few-step baselines and standard training under tight step budgets. Although full-step decoding remains superior, we substantially narrow the gap, establishing a strong foundation towards practical few-step DLLMs. The source code is available at https://github.com/Tyrion58/T3D.",
-      "title": "T3D: Few-Step Diffusion Language Models via Trajectory Self-Distillation with Direct Discriminative Optimization"
-    },
-    {
       "arxiv_id": "2602.12164",
       "authors": [],
       "categories": [],
@@ -1378,17 +1310,87 @@
       "story_id": "arxiv:2512.20677",
       "summary": "arXiv:2512.20677v2 Announce Type: replace-cross \nAbstract: The increasing deployment of large language models (LLMs) in safety-critical applications raises fundamental challenges in systematically evaluating robustness against adversarial behaviors. Existing red-teaming practices are largely manual and expert-driven, which limits scalability, reproducibility, and coverage in high-dimensional prompt spaces. We formulate automated LLM red-teaming as a structured adversarial search problem and propose a learning-driven framework for scalable vulnerability discovery. The approach combines meta-prompt-guided adversarial prompt generation with a hierarchical execution and detection pipeline, enabling standardized evaluation across six representative threat categories, including reward hacking, deceptive alignment, data exfiltration, sandbagging, inappropriate tool use, and chain-of-thought manipulation. Extensive experiments on GPT-OSS-20B identify 47 vulnerabilities, including 21 high-sever",
       "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models"
+    },
+    {
+      "arxiv_id": "2602.07815",
+      "authors": [
+        "Simiao Ren (Manlin), Xingyu Shen (Manlin), Ankit Raj (Manlin), Albert Dai (Manlin),  Caroline (Manlin),  Zhang, Yuan Xu, Zexi Chen, Siqi Wu, Chen Gong, Yuxin Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-12T06:31:44.234535+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures",
+          "url": "https://arxiv.org/abs/2602.07815"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures",
+        "url": "https://arxiv.org/abs/2602.07815"
+      },
+      "published_at": "2026-02-12T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.07815",
+      "summary": "arXiv:2602.07815v2 Announce Type: replace \nAbstract: Facial age estimation plays a critical role in content moderation, age verification, and deepfake detection. However, no prior benchmark has systematically compared modern vision-language models (VLMs) with specialized age estimation architectures. We present the first large-scale cross-paradigm benchmark, evaluating 34 models - 22 specialized architectures with publicly available pretrained weights and 12 general-purpose VLMs - across eight standard datasets (UTKFace, IMDB-WIKI, MORPH, AFAD, CACD, FG-NET, APPA-REAL, and AgeDB), totaling 1,100 test images per model. Our key finding is striking: zero-shot VLMs significantly outperform most specialized models, achieving an average mean absolute error (MAE) of 5.65 years compared to 9.88 years for non-LLM models. The best-performing VLM (Gemini 3 Flash Preview, MAE 4.32) surpasses the strongest non-LLM model (MiVOLO, MAE 5.10) by 15%. MiVOLO - unique in combining face and body features ",
+      "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures"
+    },
+    {
+      "arxiv_id": "2602.12125",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:10.557001+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation",
+          "url": "https://arxiv.org/abs/2602.12125"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation",
+        "url": "https://arxiv.org/abs/2602.12125"
+      },
+      "published_at": "2026-02-12T16:14:29+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.12125",
+      "summary": "On-policy distillation (OPD), which aligns the student with the teacher's logit distribution on student-generated trajectories, has demonstrated strong empirical gains in improving student performance and often outperforms off-policy distillation and reinforcement learning (RL) paradigms. In this work, we first theoretically show that OPD is a special case of dense KL-constrained RL where the reward function and the KL regularization are always weighted equally and the reference model can by any model. Then, we propose the Generalized On-Policy Distillation (G-OPD) framework, which extends the standard OPD objective by introducing a flexible reference model and a reward scaling factor that controls the relative weight of the reward term against the KL regularization. Through comprehensive experiments on math reasoning and code generation tasks, we derive two novel insights: (1) Setting the reward scaling factor to be greater than 1 (i.e., reward extrapolation), which we term ExOPD, consistently improves over standard OPD across a range of teacher-student size pairings. In particular, in the setting where we merge the knowledge from different domain experts, obtained by applying domain-specific RL to the same student model, back into the original student, ExOPD enables the student to even surpass the teacher's performance boundary and outperform the domain teachers. (2) Building on ExOPD, we further find that in the strong-to-weak distillation setting (i.e., distilling a smaller student from a larger teacher), performing reward correction by choosing the reference model as the teacher's base model before RL yields a more accurate reward signal and further improves distillation performance. However, this choice assumes access to the teacher's pre-RL variant and incurs more computational overhead. We hope our work offers new insights for future research on OPD.",
+      "title": "Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation"
     }
   ],
   "run_date": "2026-02-12",
-  "run_id": "68aaab21-8c0d-4b67-bfe8-43f32c725bf8",
+  "run_id": "cc157644-8f58-493a-9763-384fbcac7476",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-12T23:59:59+00:00",
-    "items_total": 358,
-    "run_id": "68aaab21-8c0d-4b67-bfe8-43f32c725bf8-2026-02-12",
+    "items_total": 348,
+    "run_id": "cc157644-8f58-493a-9763-384fbcac7476-2026-02-12",
     "started_at": "2026-02-11T23:59:59+00:00",
-    "stories_total": 357,
+    "stories_total": 347,
     "success": true
   },
   "sources_status": [],

@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-16",
     "2026-02-15",
     "2026-02-14",
     "2026-02-13",
@@ -28,7 +29,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-15T06:24:29.503140+00:00",
+  "generated_at": "2026-02-16T06:32:37.614464+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -488,44 +489,6 @@
       "title": "Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training"
     },
     {
-      "arxiv_id": "2602.10271",
-      "authors": [
-        "Yongyue Zhang, Yaxiong Wu"
-      ],
-      "categories": [
-        "cs.IR",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.088827+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "MLDocRAG: Multimodal Long-Context Document Retrieval Augmented Generation",
-          "url": "https://arxiv.org/abs/2602.10271"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "MLDocRAG: Multimodal Long-Context Document Retrieval Augmented Generation",
-        "url": "https://arxiv.org/abs/2602.10271"
-      },
-      "published_at": "2026-02-13T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2602.10271",
-      "summary": "arXiv:2602.10271v2 Announce Type: replace-cross \nAbstract: Understanding multimodal long-context documents that comprise multimodal chunks such as paragraphs, figures, and tables is challenging due to (1) cross-modal heterogeneity to localize relevant information across modalities, (2) cross-page reasoning to aggregate dispersed evidence across pages. To address these challenges, we are motivated to adopt a query-centric formulation that projects cross-modal and cross-page information into a unified query representation space, with queries acting as abstract semantic surrogates for heterogeneous multimodal content. In this paper, we propose a Multimodal Long-Context Document Retrieval Augmented Generation (MLDocRAG) framework that leverages a Multimodal Chunk-Query Graph (MCQG) to organize multimodal document content around semantically rich, answerable queries. MCQG is constructed via a multimodal document expansion process that generates fine-grained queries from heterogeneous docume",
-      "title": "MLDocRAG: Multimodal Long-Context Document Retrieval Augmented Generation"
-    },
-    {
       "arxiv_id": "2508.16390",
       "authors": [
         "Ana-Cristina Rogoz, Radu Tudor Ionescu, Alexandra-Valentina Anghel, Ionut-Lucian Antone-Iordache, Simona Coniac, Andreea Iuliana Ionescu"
@@ -828,9 +791,7 @@
       "story_id": "arxiv:2602.11575",
       "summary": "arXiv:2602.11575v1 Announce Type: cross \nAbstract: Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim navigation simulation using 3D Gaussian Splatting (GS) can mitigate this gap, prior works have assumed only static scenes or unrealistic dynamic obstacles, despite the importance of safe navigation in dynamic environments. To address these issues, we propose ReaDy-Go, a novel real-to-sim simulation pipeline that synthesizes photorealistic dynamic scenarios for target environments. ReaDy-Go generates photorealistic navigation datasets for dynamic environments by combining a reconstructed static GS scene with dynamic human GS obstacles, and trains policies robust to both the sim-to-real gap and moving obstacles. The pipeline consists of three components: (1) a dynami",
       "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles"
-    }
-  ],
-  "radar": [
+    },
     {
       "arxiv_id": "2510.04860",
       "authors": [
@@ -868,7 +829,9 @@
       "story_id": "arxiv:2510.04860",
       "summary": "arXiv:2510.04860v2 Announce Type: replace \nAbstract: As Large Language Model (LLM) agents increasingly gain self-evolutionary capabilities to adapt and refine their strategies through real-world interaction, their long-term reliability becomes a critical concern. We identify the Alignment Tipping Process (ATP), a critical post-deployment risk unique to self-evolving LLM agents. Unlike training-time failures, ATP arises when continual interaction drives agents to abandon alignment constraints established during training in favor of reinforced, self-interested strategies. We formalize and analyze ATP through two complementary paradigms: Self-Interested Exploration, where repeated high-reward deviations induce individual behavioral drift, and Imitative Strategy Diffusion, where deviant behaviors spread across multi-agent systems. Building on these paradigms, we construct controllable testbeds and benchmark both open and closed-source LLMs. Our experiments show that alignment benefits erod",
       "title": "Alignment Tipping Process: How Self-Evolution Pushes LLM Agents Off the Rails"
-    },
+    }
+  ],
+  "radar": [
     {
       "arxiv_id": "2510.15414",
       "authors": [
@@ -1170,6 +1133,44 @@
       "title": "OpenTSLM: Time-Series Language Models for Reasoning over Multivariate Medical Text- and Time-Series Data"
     },
     {
+      "arxiv_id": "2602.10718",
+      "authors": [
+        "Yifan Zhang, Zunhai Su, Shuhao Hu, Rui Yang, Wei Wu, Yulei Qian, Yuchen Xie, Xunliang Cai"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:09.355331+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "SnapMLA: Efficient Long-Context MLA Decoding via Hardware-Aware FP8 Quantized Pipelining",
+          "url": "https://arxiv.org/abs/2602.10718"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "SnapMLA: Efficient Long-Context MLA Decoding via Hardware-Aware FP8 Quantized Pipelining",
+        "url": "https://arxiv.org/abs/2602.10718"
+      },
+      "published_at": "2026-02-13T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.10718",
+      "summary": "arXiv:2602.10718v2 Announce Type: replace-cross \nAbstract: While FP8 attention has shown substantial promise in innovations like FlashAttention-3, its integration into the decoding phase of the DeepSeek Multi-head Latent Attention (MLA) architecture presents notable challenges. These challenges include numerical heterogeneity arising from the decoupling of positional embeddings, misalignment of quantization scales in FP8 PV GEMM, and the need for optimized system-level support. In this paper, we introduce SnapMLA, an FP8 MLA decoding framework optimized to improve long-context efficiency through the following hardware-aware algorithm-kernel co-optimization techniques: (i) RoPE-Aware Per-Token KV Quantization, where the RoPE part is maintained in high precision, motivated by our comprehensive analysis of the heterogeneous quantization sensitivity inherent to the MLA KV cache. Furthermore, per-token granularity is employed to align with the autoregressive decoding process and maintain qu",
+      "title": "SnapMLA: Efficient Long-Context MLA Decoding via Hardware-Aware FP8 Quantized Pipelining"
+    },
+    {
       "arxiv_id": "2602.11673",
       "authors": [
         "Khanh Nguyen, Dasith de Silva Edirimuni, Ghulam Mubashar Hassan, Ajmal Mian"
@@ -1396,14 +1397,14 @@
     }
   ],
   "run_date": "2026-02-13",
-  "run_id": "68aaab21-8c0d-4b67-bfe8-43f32c725bf8",
+  "run_id": "cc157644-8f58-493a-9763-384fbcac7476",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-13T23:59:59+00:00",
-    "items_total": 339,
-    "run_id": "68aaab21-8c0d-4b67-bfe8-43f32c725bf8-2026-02-13",
+    "items_total": 336,
+    "run_id": "cc157644-8f58-493a-9763-384fbcac7476-2026-02-13",
     "started_at": "2026-02-12T23:59:59+00:00",
-    "stories_total": 339,
+    "stories_total": 336,
     "success": true
   },
   "sources_status": [],
