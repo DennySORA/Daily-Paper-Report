@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-17",
     "2026-02-16",
     "2026-02-15",
     "2026-02-14",
@@ -29,7 +30,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-16T06:32:38.123654+00:00",
+  "generated_at": "2026-02-17T06:28:29.629796+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -1274,44 +1275,6 @@
       "title": "Advances in LLMs with Focus on Reasoning, Adaptability, Efficiency and Ethics"
     },
     {
-      "arxiv_id": "2512.20677",
-      "authors": [
-        "Zhang Wei, Peilu Hu, Zhenyuan Wei, Chenwei Liang, Jing Luo, Ziyi Ni, Hao Yan, Li Mei, Shengning Lang, Kuan Lu, Ziqian Bi, Xi Xiao, Zhimo Han, Yangfan He, Yijin Wang, Yichao Zhang, Chen Yang, Junfeng Hao, Zhenyu Yu, Jiayi Gu, Riyang Bao, Mu-Jiang-Shan Wang"
-      ],
-      "categories": [
-        "cs.CR",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-12T06:31:44.076413+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models",
-          "url": "https://arxiv.org/abs/2512.20677"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models",
-        "url": "https://arxiv.org/abs/2512.20677"
-      },
-      "published_at": "2026-02-12T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CL",
-      "story_id": "arxiv:2512.20677",
-      "summary": "arXiv:2512.20677v2 Announce Type: replace-cross \nAbstract: The increasing deployment of large language models (LLMs) in safety-critical applications raises fundamental challenges in systematically evaluating robustness against adversarial behaviors. Existing red-teaming practices are largely manual and expert-driven, which limits scalability, reproducibility, and coverage in high-dimensional prompt spaces. We formulate automated LLM red-teaming as a structured adversarial search problem and propose a learning-driven framework for scalable vulnerability discovery. The approach combines meta-prompt-guided adversarial prompt generation with a hierarchical execution and detection pipeline, enabling standardized evaluation across six representative threat categories, including reward hacking, deceptive alignment, data exfiltration, sandbagging, inappropriate tool use, and chain-of-thought manipulation. Extensive experiments on GPT-OSS-20B identify 47 vulnerabilities, including 21 high-sever",
-      "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models"
-    },
-    {
       "arxiv_id": "2602.07815",
       "authors": [
         "Simiao Ren (Manlin), Xingyu Shen (Manlin), Ankit Raj (Manlin), Albert Dai (Manlin),  Caroline (Manlin),  Zhang, Yuan Xu, Zexi Chen, Siqi Wu, Chen Gong, Yuxin Zhang"
@@ -1349,6 +1312,44 @@
       "title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures"
     },
     {
+      "arxiv_id": "2602.09621",
+      "authors": [
+        "R E Zera Marveen Lyngkhoi, Chirag Chawla, Pratinav Seth, Utsav Avaiya, Soham Bhattacharjee, Mykola Khandoga, Rui Yuan, Vinay Kumar Sankarapu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T07:16:30.416104+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models",
+          "url": "https://arxiv.org/abs/2602.09621"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models",
+        "url": "https://arxiv.org/abs/2602.09621"
+      },
+      "published_at": "2026-02-12T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.09621",
+      "summary": "arXiv:2602.09621v2 Announce Type: replace \nAbstract: Post-training alignment is central to deploying large language models (LLMs), yet practical workflows remain split across backend-specific tools and ad-hoc glue code, making experiments hard to reproduce. We identify backend interference, reward fragmentation, and irreproducible pipelines as key obstacles in alignment research. We introduce AlignTune, a modular toolkit exposing a unified interface for supervised fine-tuning (SFT) and RLHF-style optimization with interchangeable TRL and Unsloth backends. AlignTune standardizes configuration, provides an extensible reward layer (rule-based and learned), and integrates evaluation over standard benchmarks and custom tasks. By isolating backend-specific logic behind a single factory boundary, AlignTune enables controlled comparisons and reproducible alignment experiments.",
+      "title": "AlignTune: Modular Toolkit for Post-Training Alignment of Large Language Models"
+    },
+    {
       "arxiv_id": "2602.12125",
       "authors": [],
       "categories": [],
@@ -1383,14 +1384,14 @@
     }
   ],
   "run_date": "2026-02-12",
-  "run_id": "cc157644-8f58-493a-9763-384fbcac7476",
+  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-12T23:59:59+00:00",
-    "items_total": 348,
-    "run_id": "cc157644-8f58-493a-9763-384fbcac7476-2026-02-12",
+    "items_total": 344,
+    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-12",
     "started_at": "2026-02-11T23:59:59+00:00",
-    "stories_total": 347,
+    "stories_total": 343,
     "success": true
   },
   "sources_status": [],

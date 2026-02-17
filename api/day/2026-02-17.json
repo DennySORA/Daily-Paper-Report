@@ -1,0 +1,1577 @@
+{
+  "archive_dates": [
+    "2026-02-17",
+    "2026-02-16",
+    "2026-02-15",
+    "2026-02-14",
+    "2026-02-13",
+    "2026-02-12",
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18",
+    "2026-01-16",
+    "2026-01-15"
+  ],
+  "generated_at": "2026-02-17T06:28:28.218188+00:00",
+  "model_releases_by_entity": {},
+  "papers": [
+    {
+      "arxiv_id": "2505.07671",
+      "authors": [
+        "Xianrui Zhong, Bowen Jin, Siru Ouyang, Yanzhen Shen, Qiao Jin, Yin Fang, Zhiyong Lu, Jiawei Han"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.873087+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Benchmarking Retrieval-Augmented Generation for Chemistry",
+          "url": "https://arxiv.org/abs/2505.07671"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Benchmarking Retrieval-Augmented Generation for Chemistry",
+        "url": "https://arxiv.org/abs/2505.07671"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2505.07671",
+      "summary": "arXiv:2505.07671v2 Announce Type: replace \nAbstract: Retrieval-augmented generation (RAG) has emerged as a powerful framework for enhancing large language models (LLMs) with external knowledge, particularly in scientific domains that demand specialized and dynamic information. Despite its promise, the application of RAG in the chemistry domain remains underexplored, primarily due to the lack of high-quality, domain-specific corpora and well-curated evaluation benchmarks. In this work, we introduce ChemRAG-Bench, a comprehensive benchmark designed to systematically assess the effectiveness of RAG across a diverse set of chemistry-related tasks. The accompanying chemistry corpus integrates heterogeneous knowledge sources, including scientific literature, the PubChem database, PubMed abstracts, textbooks, and Wikipedia entries. In addition, we present ChemRAG-Toolkit, a modular and extensible RAG toolkit that supports five retrieval algorithms and eight LLMs. Using ChemRAG-Toolkit, we dem",
+      "title": "Benchmarking Retrieval-Augmented Generation for Chemistry"
+    },
+    {
+      "arxiv_id": "2602.14869",
+      "authors": [
+        "Matthew Kowal, Goncalo Paulo, Louis Jaburi, Tom Tseng, Lev E McKinney, Stefan Heimersheim, Aaron David Tucker, Adam Gleave, Kellin Pelrine"
+      ],
+      "categories": [
+        "cs.AI",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.237028+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-stat-ml",
+          "tier": 1,
+          "title": "Concept Influence: Leveraging Interpretability to Improve Performance and Efficiency in Training Data Attribution",
+          "url": "https://arxiv.org/abs/2602.14869"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-stat-ml",
+        "tier": 1,
+        "title": "Concept Influence: Leveraging Interpretability to Improve Performance and Efficiency in Training Data Attribution",
+        "url": "https://arxiv.org/abs/2602.14869"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv stat.ML",
+      "story_id": "arxiv:2602.14869",
+      "summary": "arXiv:2602.14869v1 Announce Type: cross \nAbstract: As large language models are increasingly trained and fine-tuned, practitioners need methods to identify which training data drive specific behaviors, particularly unintended ones. Training Data Attribution (TDA) methods address this by estimating datapoint influence. Existing approaches like influence functions are both computationally expensive and attribute based on single test examples, which can bias results toward syntactic rather than semantic similarity. To address these issues of scalability and influence to abstract behavior, we leverage interpretable structures within the model during the attribution. First, we introduce Concept Influence which attribute model behavior to semantic directions (such as linear probes or sparse autoencoder features) rather than individual test examples. Second, we show that simple probe-based attribution methods are first-order approximations of Concept Influence that achieve comparable performa",
+      "title": "Concept Influence: Leveraging Interpretability to Improve Performance and Efficiency in Training Data Attribution"
+    },
+    {
+      "arxiv_id": "2505.12185",
+      "authors": [
+        "Sen Fang, Weiyuan Ding, Mengshi Zhang, Zihao Chen, Bowen Xu"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.395756+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "EVALOOOP: A Self-Consistency-Centered Framework for Assessing Large Language Model Robustness in Programming",
+          "url": "https://arxiv.org/abs/2505.12185"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "EVALOOOP: A Self-Consistency-Centered Framework for Assessing Large Language Model Robustness in Programming",
+        "url": "https://arxiv.org/abs/2505.12185"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2505.12185",
+      "summary": "arXiv:2505.12185v5 Announce Type: replace-cross \nAbstract: Evaluating the programming robustness of large language models (LLMs) is paramount for ensuring their reliability in AI-based software development. However, adversarial attacks exhibit fundamental limitations that compromise fair robustness assessment: they demonstrate contradictory evaluation outcomes where different attack strategies tend to favor different models, and more critically, they operate solely through external perturbations, failing to capture the intrinsic stability essential for autonomous coding agents where subsequent inputs are endogenously generated by the model itself. We introduce EVALOOOP, a novel assessment framework that evaluates robustness from a self-consistency perspective, leveraging the natural duality inherent in software engineering tasks (e.g., code generation and code summarization). EVALOOOP establishes a self-contained feedback loop where an LLM iteratively transforms between code and natura",
+      "title": "EVALOOOP: A Self-Consistency-Centered Framework for Assessing Large Language Model Robustness in Programming"
+    },
+    {
+      "arxiv_id": "2601.02744",
+      "authors": [
+        "Hanqi Jiang, Junhao Chen, Yi Pan, Ling Chen, Weihang You, Yifan Zhou, Ruidong Zhang, Andrea Sikora, Lin Zhao, Yohannes Abate, Tianming Liu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-22T23:01:48.353050+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "SYNAPSE: Empowering LLM Agents with Episodic-Semantic Memory via Spreading Activation",
+          "url": "https://arxiv.org/abs/2601.02744"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "SYNAPSE: Empowering LLM Agents with Episodic-Semantic Memory via Spreading Activation",
+        "url": "https://arxiv.org/abs/2601.02744"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2601.02744",
+      "summary": "arXiv:2601.02744v3 Announce Type: replace \nAbstract: While Large Language Models (LLMs) excel at generalized reasoning, standard retrieval-augmented approaches fail to address the disconnected nature of long-term agentic memory. To bridge this gap, we introduce Synapse (Synergistic Associative Processing Semantic Encoding), a unified memory architecture that transcends static vector similarity. Drawing from cognitive science, Synapse models memory as a dynamic graph where relevance emerges from spreading activation rather than pre-computed links. By integrating lateral inhibition and temporal decay, the system dynamically highlights relevant sub-graphs while filtering interference. We implement a Triple Hybrid Retrieval strategy that fuses geometric embeddings with activation-based graph traversal. Comprehensive evaluations on the LoCoMo benchmark show that Synapse significantly outperforms state-of-the-art methods in complex temporal and multi-hop reasoning tasks, offering a robust so",
+      "title": "SYNAPSE: Empowering LLM Agents with Episodic-Semantic Memory via Spreading Activation"
+    },
+    {
+      "arxiv_id": "2507.14902",
+      "authors": [
+        "Xiaojie Li, Chu Li, Shi-Zhe Chen, Xi Chen"
+      ],
+      "categories": [
+        "cs.IR",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.027927+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "U-MARVEL: Unveiling Key Factors for Universal Multimodal Retrieval via Embedding Learning with MLLMs",
+          "url": "https://arxiv.org/abs/2507.14902"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "U-MARVEL: Unveiling Key Factors for Universal Multimodal Retrieval via Embedding Learning with MLLMs",
+        "url": "https://arxiv.org/abs/2507.14902"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2507.14902",
+      "summary": "arXiv:2507.14902v2 Announce Type: replace-cross \nAbstract: Universal multimodal retrieval (UMR), which aims to address complex retrieval tasks where both queries and candidates span diverse modalities, has been significantly advanced by the emergence of MLLMs. While state-of-the-art MLLM-based methods in the literature predominantly adopt contrastive learning principles, they often differ in their specific training recipes. Despite their success, the mechanisms underlying their retrieval capabilities remain largely unexplored, potentially resulting in suboptimal performance and limited generalization ability. To address these issues, we present a comprehensive study aimed at uncovering the key factors that drive effective embedding learning for UMR using MLLMs. We begin by implementing a general MLLM-based embedding learning pipeline, and systematically analyze the primary contributors to high-performing universal retrieval systems. Based on this, we explore various aspects of the deta",
+      "title": "U-MARVEL: Unveiling Key Factors for Universal Multimodal Retrieval via Embedding Learning with MLLMs"
+    },
+    {
+      "arxiv_id": "2602.10551",
+      "authors": [
+        "Guanting Ye, Qiyan Zhao, Wenhao Yu, Xiaofeng Zhang, Jianmin Ji, Yanyong Zhang, Ka-Veng Yuen"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.047408+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "C^2ROPE: Causal Continuous Rotary Positional Encoding for 3D Large Multimodal-Models Reasoning",
+          "url": "https://arxiv.org/abs/2602.10551"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "C^2ROPE: Causal Continuous Rotary Positional Encoding for 3D Large Multimodal-Models Reasoning",
+        "url": "https://arxiv.org/abs/2602.10551"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.10551",
+      "summary": "arXiv:2602.10551v2 Announce Type: replace \nAbstract: Recent advances in 3D Large Multimodal Models (LMMs) built on Large Language Models (LLMs) have established the alignment of 3D visual features with LLM representations as the dominant paradigm. However, the inherited Rotary Position Embedding (RoPE) introduces limitations for multimodal processing. Specifically, applying 1D temporal positional indices disrupts the continuity of visual features along the column dimension, resulting in spatial locality loss. Moreover, RoPE follows the prior that temporally closer image tokens are more causally related, leading to long-term decay in attention allocation and causing the model to progressively neglect earlier visual tokens as the sequence length increases. To address these issues, we propose C^2RoPE, an improved RoPE that explicitly models local spatial Continuity and spatial Causal relationships for visual processing. C^2RoPE introduces a spatio-temporal continuous positional embedding ",
+      "title": "C^2ROPE: Causal Continuous Rotary Positional Encoding for 3D Large Multimodal-Models Reasoning"
+    },
+    {
+      "arxiv_id": "2504.18880",
+      "authors": [
+        "Zuhong Lin, Daoyuan Ren, Kai Ran, Jing Sun, Songlin Yu, Xuefeng Bai, Xiaotian Huang, Haiyang He, Pengxu Pan, Ying Fang, Zhanglin Li, Haipu Li, Jingjing Yao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cond-mat.mtrl-sci",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.687217+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Reshaping MOFs text mining with a dynamic multi-agents framework of large language model",
+          "url": "https://arxiv.org/abs/2504.18880"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Reshaping MOFs text mining with a dynamic multi-agents framework of large language model",
+        "url": "https://arxiv.org/abs/2504.18880"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2504.18880",
+      "summary": "arXiv:2504.18880v3 Announce Type: cross \nAbstract: Accurately identifying the synthesis conditions of metal-organic frameworks (MOFs) is essential for guiding experimental design, yet remains challenging because relevant information in the literature is often scattered, inconsistent, and difficult to interpret. We present MOFh6, a large language model driven system that reads raw articles or crystal codes and converts them into standardized synthesis tables. It links related descriptions across paragraphs, unifies ligand abbreviations with full names, and outputs structured parameters ready for use. MOFh6 achieved 99% extraction accuracy, resolved 94.1% of abbreviation cases across five major publishers, and maintained a precision of 0.93 +/- 0.01. Processing a full text takes 9.6 s, locating synthesis descriptions 36 s, with 100 papers processed for USD 4.24. By replacing static database lookups with real-time extraction, MOFh6 reshapes MOF synthesis research, accelerating the convers",
+      "title": "Reshaping MOFs text mining with a dynamic multi-agents framework of large language model"
+    },
+    {
+      "arxiv_id": "2511.10645",
+      "authors": [
+        "Yesheng Liang, Haisheng Chen, Zihan Zhang, Song Han, Zhijian Liu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.695033+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "ParoQuant: Pairwise Rotation Quantization for Efficient Reasoning LLM Inference",
+          "url": "https://arxiv.org/abs/2511.10645"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "ParoQuant: Pairwise Rotation Quantization for Efficient Reasoning LLM Inference",
+        "url": "https://arxiv.org/abs/2511.10645"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2511.10645",
+      "summary": "arXiv:2511.10645v2 Announce Type: replace \nAbstract: Post-training quantization (PTQ) compresses the weights and activations of large language models (LLMs) into low-precision representations to reduce memory footprint and accelerate inference. However, the presence of outliers in weights and activations often leads to large quantization errors and severe accuracy degradation, especially in recent reasoning LLMs where errors accumulate across long chains of thought. Existing PTQ methods either fail to sufficiently suppress outliers or introduce significant overhead during inference. In this paper, we propose Pairwise Rotation Quantization (ParoQuant), a PTQ method that combines hardware-efficient and optimizable independent Givens rotations with channel-wise scaling to even out the magnitudes across channels and narrow the dynamic range within each quantization group, effectively addressing the outlier issue. We further co-design the inference kernel to fully exploit GPU parallelism an",
+      "title": "ParoQuant: Pairwise Rotation Quantization for Efficient Reasoning LLM Inference"
+    },
+    {
+      "arxiv_id": "2505.14462",
+      "authors": [
+        "Jiaang Li, Yifei Yuan, Wenyan Li, Mohammad Aliannejadi, Daniel Hershcovich, Anders S{\\o}gaard, Ivan Vuli\\'c, Wenxuan Zhang, Paul Pu Liang, Yang Deng, Serge Belongie"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.688286+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "RAVENEA: A Benchmark for Multimodal Retrieval-Augmented Visual Culture Understanding",
+          "url": "https://arxiv.org/abs/2505.14462"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "RAVENEA: A Benchmark for Multimodal Retrieval-Augmented Visual Culture Understanding",
+        "url": "https://arxiv.org/abs/2505.14462"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2505.14462",
+      "summary": "arXiv:2505.14462v2 Announce Type: replace \nAbstract: As vision-language models (VLMs) become increasingly integrated into daily life, the need for accurate visual culture understanding is becoming critical. Yet, these models frequently fall short in interpreting cultural nuances effectively. Prior work has demonstrated the effectiveness of retrieval-augmented generation (RAG) in enhancing cultural understanding in text-only settings, while its application in multimodal scenarios remains underexplored. To bridge this gap, we introduce RAVENEA (Retrieval-Augmented Visual culturE uNdErstAnding), a new benchmark designed to advance visual culture understanding through retrieval, focusing on two tasks: culture-focused visual question answering (cVQA) and culture-informed image captioning (cIC). RAVENEA extends existing datasets by integrating over 11,396 unique Wikipedia documents curated and ranked by human annotators. Through the extensive evaluation on seven multimodal retrievers and fif",
+      "title": "RAVENEA: A Benchmark for Multimodal Retrieval-Augmented Visual Culture Understanding"
+    },
+    {
+      "arxiv_id": "2504.21205",
+      "authors": [
+        "Chihao Shen, Connor Dilgren, Purva Chiniya, Luke Griffith, Yu Ding, Yizheng Chen"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.872648+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "SecRepoBench: Benchmarking Code Agents for Secure Code Completion in Real-World Repositories",
+          "url": "https://arxiv.org/abs/2504.21205"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "SecRepoBench: Benchmarking Code Agents for Secure Code Completion in Real-World Repositories",
+        "url": "https://arxiv.org/abs/2504.21205"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2504.21205",
+      "summary": "arXiv:2504.21205v3 Announce Type: replace-cross \nAbstract: This paper introduces SecRepoBench, a benchmark to evaluate code agents on secure code completion in real-world repositories. SecRepoBench has 318 code completion tasks in 27 C/C++ repositories, covering 15 CWEs. We evaluate 29 standalone LLMs and 15 code agents across 3 state-of-the-art agent frameworks using our benchmark. We find that state-of-the-art LLMs struggle with generating correct and secure code completions. However, code agents significantly outperform standalone LLMs. We show that SecRepoBench is more difficult than the prior state-of-the-art benchmark. Finally, our comprehensive analysis provides insights into potential directions for enhancing the ability of code agents to write correct and secure code in real-world repositories.",
+      "title": "SecRepoBench: Benchmarking Code Agents for Secure Code Completion in Real-World Repositories"
+    },
+    {
+      "arxiv_id": "2508.01055",
+      "authors": [
+        "Xuan Liu, Siru Ouyang, Xianrui Zhong, Jiawei Han, Huimin Zhao"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "q-bio.BM",
+        "q-bio.QM"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.880025+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "FGBench: A Dataset and Benchmark for Molecular Property Reasoning at Functional Group-Level in Large Language Models",
+          "url": "https://arxiv.org/abs/2508.01055"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "FGBench: A Dataset and Benchmark for Molecular Property Reasoning at Functional Group-Level in Large Language Models",
+        "url": "https://arxiv.org/abs/2508.01055"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2508.01055",
+      "summary": "arXiv:2508.01055v4 Announce Type: replace \nAbstract: Large language models (LLMs) have gained significant attention in chemistry. However, most existing datasets center on molecular-level property prediction and overlook the role of fine-grained functional group (FG) information. Incorporating FG-level data can provide valuable prior knowledge that links molecular structures with textual descriptions, which can be used to build more interpretable, structure-aware LLMs for reasoning on molecule-related tasks. Moreover, LLMs can learn from such fine-grained information to uncover hidden relationships between specific functional groups and molecular properties, thereby advancing molecular design and drug discovery. Here, we introduce FGBench, a dataset comprising 625K molecular property reasoning problems with functional group information. Functional groups are precisely annotated and localized within the molecule, which ensures the dataset's interoperability thereby facilitating further ",
+      "title": "FGBench: A Dataset and Benchmark for Molecular Property Reasoning at Functional Group-Level in Large Language Models"
+    },
+    {
+      "arxiv_id": "2507.08838",
+      "authors": [
+        "Xiaohang Tang, Rares Dolga, Sangwoong Yoon, Ilija Bogunovic"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.878924+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-stat-ml",
+          "tier": 1,
+          "title": "wd1: Weighted Policy Optimization for Reasoning in Diffusion Language Models",
+          "url": "https://arxiv.org/abs/2507.08838"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-stat-ml",
+        "tier": 1,
+        "title": "wd1: Weighted Policy Optimization for Reasoning in Diffusion Language Models",
+        "url": "https://arxiv.org/abs/2507.08838"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv stat.ML",
+      "story_id": "arxiv:2507.08838",
+      "summary": "arXiv:2507.08838v2 Announce Type: replace-cross \nAbstract: Improving the reasoning capabilities of diffusion-based large language models (dLLMs) through reinforcement learning (RL) remains an open problem. The intractability of dLLMs likelihood function necessitates approximating the current, old, and reference policy likelihoods at each policy optimization step. This reliance introduces additional computational overhead, and can lead to large variance and estimation error in RL objective -- particularly in computing the policy ratio for importance sampling. To mitigate these issues, we introduce wd1, a novel ratio-free policy optimization approach that reformulates the RL objective as a weighted log-likelihood, requiring only a single approximation for the current parametrized policy likelihood. We formally show that our proposed method can be interpreted as energy-guided discrete diffusion training combined with negative sample unlearning, thereby confirming its theoretical soundness",
+      "title": "wd1: Weighted Policy Optimization for Reasoning in Diffusion Language Models"
+    },
+    {
+      "arxiv_id": "2512.05430",
+      "authors": [
+        "Daeyong Kwon, SeungHeon Doh, Juhan Nam"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.IR",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.695641+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "ArtistMus: A Globally Diverse, Artist-Centric Benchmark for Retrieval-Augmented Music Question Answering",
+          "url": "https://arxiv.org/abs/2512.05430"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "ArtistMus: A Globally Diverse, Artist-Centric Benchmark for Retrieval-Augmented Music Question Answering",
+        "url": "https://arxiv.org/abs/2512.05430"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2512.05430",
+      "summary": "arXiv:2512.05430v2 Announce Type: replace \nAbstract: Recent advances in large language models (LLMs) have transformed open-domain question answering, yet their effectiveness in music-related reasoning remains limited due to sparse music knowledge in pretraining data. While music information retrieval and computational musicology have explored structured and multimodal understanding, few resources support factual and contextual music question answering (MQA) grounded in artist metadata or historical context. We introduce MusWikiDB, a vector database of 3.2M passages from 144K music-related Wikipedia pages, and ArtistMus, a benchmark of 1,000 questions on 500 diverse artists with metadata such as genre, debut year, and topic. These resources enable systematic evaluation of retrieval-augmented generation (RAG) for MQA. Experiments show that RAG markedly improves factual accuracy; open-source models gain up to +56.8 percentage points (for example, Qwen3 8B improves from 35.0 to 91.8), appr",
+      "title": "ArtistMus: A Globally Diverse, Artist-Centric Benchmark for Retrieval-Augmented Music Question Answering"
+    },
+    {
+      "arxiv_id": "2503.00187",
+      "authors": [
+        "Hanjiang Hu, Alexander Robey, Changliu Liu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.391903+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Steering Dialogue Dynamics for Robustness against Multi-turn Jailbreaking Attacks",
+          "url": "https://arxiv.org/abs/2503.00187"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Steering Dialogue Dynamics for Robustness against Multi-turn Jailbreaking Attacks",
+        "url": "https://arxiv.org/abs/2503.00187"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2503.00187",
+      "summary": "arXiv:2503.00187v3 Announce Type: replace \nAbstract: Large language models (LLMs) are shown to be vulnerable to jailbreaking attacks where adversarial prompts are designed to elicit harmful responses. While existing defenses effectively mitigate single-turn attacks by detecting and filtering unsafe inputs, they fail against multi-turn jailbreaks that exploit contextual drift over multiple interactions, gradually leading LLMs away from safe behavior. To address this challenge, we propose a safety steering framework grounded in safe control theory, ensuring invariant safety in multi-turn dialogues. Our approach models the dialogue with LLMs using state-space representations and introduces a novel neural barrier function (NBF) to detect and filter harmful queries emerging from evolving contexts proactively. Our method achieves invariant safety at each turn of dialogue by learning a safety predictor that accounts for adversarial queries, preventing potential context drift toward jailbreaks",
+      "title": "Steering Dialogue Dynamics for Robustness against Multi-turn Jailbreaking Attacks"
+    },
+    {
+      "arxiv_id": "2506.11526",
+      "authors": [
+        "Yuan Gao, Mattia Piccinini, Yuchen Zhang, Dingrui Wang, Korbinian Moller, Roberto Brusnicki, Baha Zarrouki, Alessio Gambi, Jan Frederik Totz, Kai Storms, Steven Peters, Andrea Stocco, Bassam Alrifaee, Marco Pavone, Johannes Betz"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-27T23:01:38.699295+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Foundation Models in Autonomous Driving: A Survey on Scenario Generation and Scenario Analysis",
+          "url": "https://arxiv.org/abs/2506.11526"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Foundation Models in Autonomous Driving: A Survey on Scenario Generation and Scenario Analysis",
+        "url": "https://arxiv.org/abs/2506.11526"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2506.11526",
+      "summary": "arXiv:2506.11526v4 Announce Type: replace-cross \nAbstract: For autonomous vehicles, safe navigation in complex environments depends on handling a broad range of diverse and rare driving scenarios. Simulation- and scenario-based testing have emerged as key approaches to development and validation of autonomous driving systems. Traditional scenario generation relies on rule-based systems, knowledge-driven models, and data-driven synthesis, often producing limited diversity and unrealistic safety-critical cases. With the emergence of foundation models, which represent a new generation of pre-trained, general-purpose AI models, developers can process heterogeneous inputs (e.g., natural language, sensor data, HD maps, and control actions), enabling the synthesis and interpretation of complex driving scenarios. In this paper, we conduct a survey about the application of foundation models for scenario generation and scenario analysis in autonomous driving (as of May 2025). Our survey presents",
+      "title": "Foundation Models in Autonomous Driving: A Survey on Scenario Generation and Scenario Analysis"
+    },
+    {
+      "arxiv_id": "2509.05311",
+      "authors": [
+        "Konur Tholl, Fran\\c{c}ois Rivest, Mariam El Mezouar, Adrian Taylor, Ranwa Al Mallah"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.883615+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Large Language Model Integration with Reinforcement Learning to Augment Decision-Making in Autonomous Cyber Operations",
+          "url": "https://arxiv.org/abs/2509.05311"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Large Language Model Integration with Reinforcement Learning to Augment Decision-Making in Autonomous Cyber Operations",
+        "url": "https://arxiv.org/abs/2509.05311"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.05311",
+      "summary": "arXiv:2509.05311v2 Announce Type: replace-cross \nAbstract: Reinforcement Learning (RL) has shown great potential for autonomous decision-making in the cybersecurity domain, enabling agents to learn through direct environment interaction. However, RL agents in Autonomous Cyber Operations (ACO) typically learn from scratch, requiring them to execute undesirable actions to learn their consequences. In this study, we integrate external knowledge in the form of a Large Language Model (LLM) pretrained on cybersecurity data that our RL agent can directly leverage to make informed decisions. By guiding initial training with an LLM, we improve baseline performance and reduce the need for exploratory actions with obviously negative outcomes. We evaluate our LLM-integrated approach in a simulated cybersecurity environment, and demonstrate that our guided agent achieves over 2x higher rewards during early training and converges to a favorable policy approximately 4,500 episodes faster than the bas",
+      "title": "Large Language Model Integration with Reinforcement Learning to Augment Decision-Making in Autonomous Cyber Operations"
+    },
+    {
+      "arxiv_id": "2509.24102",
+      "authors": [
+        "Guangliang Liu, Xi Chen, Bocheng Chen, Xitong Zhang, Kristen Johnson"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.692638+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Pragmatic Inference for Moral Reasoning Acquisition: Generalization via Metapragmatic Links",
+          "url": "https://arxiv.org/abs/2509.24102"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Pragmatic Inference for Moral Reasoning Acquisition: Generalization via Metapragmatic Links",
+        "url": "https://arxiv.org/abs/2509.24102"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2509.24102",
+      "summary": "arXiv:2509.24102v4 Announce Type: replace \nAbstract: While moral reasoning has emerged as a promising research direction for large language models (LLMs), achieving robust generalization remains a critical challenge. This challenge arises from the gap between what is said and what is morally implied. In this paper, we build on metapragmatic links and the moral foundations theory to close the gap. Specifically, we develop a pragmatic-inference approach that facilitates LLMs, for a given moral situation, to acquire the metapragmantic links between moral reasoning objectives and the social variables that affect them. This approach is adapted to three different moral reasoning tasks to demonstrate its adaptability and generalizability. Experimental results demonstrate that our approach significantly enhances LLMs' generalization in moral reasoning, paving the road for future research to utilize pragmatic inference in various moral reasoning tasks.",
+      "title": "Pragmatic Inference for Moral Reasoning Acquisition: Generalization via Metapragmatic Links"
+    },
+    {
+      "arxiv_id": "2406.04955",
+      "authors": [
+        "Luca Castri, Gloria Beraldo, Sariah Mghames, Marc Hanheide, Nicola Bellotto"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.866994+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Experimental Evaluation of ROS-Causal in Real-World Human-Robot Spatial Interaction Scenarios",
+          "url": "https://arxiv.org/abs/2406.04955"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Experimental Evaluation of ROS-Causal in Real-World Human-Robot Spatial Interaction Scenarios",
+        "url": "https://arxiv.org/abs/2406.04955"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2406.04955",
+      "summary": "arXiv:2406.04955v2 Announce Type: replace-cross \nAbstract: Deploying robots in human-shared environments requires a deep understanding of how nearby agents and objects interact. Employing causal inference to model cause-and-effect relationships facilitates the prediction of human behaviours and enables the anticipation of robot interventions. However, a significant challenge arises due to the absence of implementation of existing causal discovery methods within the ROS ecosystem, the standard de-facto framework in robotics, hindering effective utilisation on real robots. To bridge this gap, in our previous work we proposed ROS-Causal, a ROS-based framework designed for onboard data collection and causal discovery in human-robot spatial interactions. In this work, we present an experimental evaluation of ROS-Causal both in simulation and on a new dataset of human-robot spatial interactions in a lab scenario, to assess its performance and effectiveness. Our analysis demonstrates the effi",
+      "title": "Experimental Evaluation of ROS-Causal in Real-World Human-Robot Spatial Interaction Scenarios"
+    },
+    {
+      "arxiv_id": "2602.05847",
+      "authors": [
+        "Zhangquan Chen, Jiale Tao, Ruihuang Li, Yihao Hu, Ruitao Chen, Zhantao Yang, Xinlei Yu, Haodong Jing, Manyuan Zhang, Shuai Shao, Biao Wang, Qinglin Lu, Ruqi Huang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.039552+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention",
+          "url": "https://arxiv.org/abs/2602.05847"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention",
+        "url": "https://arxiv.org/abs/2602.05847"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.05847",
+      "summary": "arXiv:2602.05847v2 Announce Type: replace-cross \nAbstract: While humans perceive the world through diverse modalities that operate synergistically to support a holistic understanding of their surroundings, existing omnivideo models still face substantial challenges on audio-visual understanding tasks. In this paper, we propose OmniVideo-R1, a novel reinforced framework that improves mixed-modality reasoning. OmniVideo-R1 empowers models to \"think with omnimodal cues\" by two key strategies: (1) query-intensive grounding based on self-supervised learning paradigms; and (2) modality-attentive fusion built upon contrastive learning paradigms. Extensive experiments on multiple benchmarks demonstrate that OmniVideo-R1 consistently outperforms strong baselines, highlighting its effectiveness and robust generalization capabilities.",
+      "title": "OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention"
+    },
+    {
+      "arxiv_id": "2511.11884",
+      "authors": [
+        "Eric Hua Qing Zhang, Julia Ive"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.695250+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Context-Emotion Aware Therapeutic Dialogue Generation: A Multi-component Reinforcement Learning Approach to Language Models for Mental Health Support",
+          "url": "https://arxiv.org/abs/2511.11884"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Context-Emotion Aware Therapeutic Dialogue Generation: A Multi-component Reinforcement Learning Approach to Language Models for Mental Health Support",
+        "url": "https://arxiv.org/abs/2511.11884"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2511.11884",
+      "summary": "arXiv:2511.11884v2 Announce Type: replace \nAbstract: Mental health disorders impose a substantial global socioeconomic burden. While large language models (LLMs) offer 24/7, non-judgmental interactions to address this gap, pretrained models lack contextual coherence and emotional alignment for appropriate therapeutic dialogue. Existing methods suffer from three critical methodological gaps: 1) Supervised Fine-Tuning (SFT) produces repetitive, context-insensitive outputs that fail to balance clinical accuracy with genuine empathy; 2) Reinforcement Learning (RL)-based therapeutic systems rely on generic reward functions (e.g., BLEU, ROUGE) that prioritise lexical similarity over clinical-specific emotional appropriateness and contextual relevance; 3) LLMs are resource-intensive and pose data privacy risks, making local deployment in clinical settings infeasible. To address these gaps, this study investigates the application of SFT and RL techniques to enhance GPT-2's capacity for therape",
+      "title": "Context-Emotion Aware Therapeutic Dialogue Generation: A Multi-component Reinforcement Learning Approach to Language Models for Mental Health Support"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": "2506.19474",
+      "authors": [
+        "Xin Zhang, Liangxiu Han, Yue Shi, Yanlin Zheng, Uazman Alam, Maryam Ferdousi, Rayaz Malik"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.026891+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "HMSViT: A Hierarchical Masked Self-Supervised Vision Transformer for Corneal Nerve Segmentation and Diabetic Neuropathy Diagnosis",
+          "url": "https://arxiv.org/abs/2506.19474"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "HMSViT: A Hierarchical Masked Self-Supervised Vision Transformer for Corneal Nerve Segmentation and Diabetic Neuropathy Diagnosis",
+        "url": "https://arxiv.org/abs/2506.19474"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2506.19474",
+      "summary": "arXiv:2506.19474v3 Announce Type: replace \nAbstract: Diabetic Peripheral Neuropathy (DPN) affects nearly half of diabetes patients, requiring early detection. Corneal Confocal Microscopy (CCM) enables non-invasive diagnosis, but automated methods suffer from inefficient feature extraction, reliance on handcrafted priors, and data limitations. We propose HMSViT, a novel Hierarchical Masked Self-Supervised Vision Transformer (HMSViT) designed for corneal nerve segmentation and DPN diagnosis. Unlike existing methods, HMSViT employs pooling-based hierarchical and dual attention mechanisms with absolute positional encoding, enabling efficient multi-scale feature extraction by capturing fine-grained local details in early layers and integrating global context in deeper layers, all at a lower computational cost. A block-masked self supervised learning framework is designed for the HMSViT that reduces reliance on labelled data, enhancing feature robustness, while a multi-scale decoder is used ",
+      "title": "HMSViT: A Hierarchical Masked Self-Supervised Vision Transformer for Corneal Nerve Segmentation and Diabetic Neuropathy Diagnosis"
+    },
+    {
+      "arxiv_id": "2404.10652",
+      "authors": [
+        "Quan Van Nguyen, Dan Quang Tran, Huy Quang Pham, Thang Kien-Bao Nguyen, Nghia Hieu Nguyen, Kiet Van Nguyen, Ngan Luu-Thuy Nguyen"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.685870+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "ViTextVQA: A Large-Scale Visual Question Answering Dataset for Evaluating Vietnamese Text Comprehension in Images",
+          "url": "https://arxiv.org/abs/2404.10652"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "ViTextVQA: A Large-Scale Visual Question Answering Dataset for Evaluating Vietnamese Text Comprehension in Images",
+        "url": "https://arxiv.org/abs/2404.10652"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2404.10652",
+      "summary": "arXiv:2404.10652v4 Announce Type: replace \nAbstract: Visual Question Answerinng (VQA) is a complicated task that requires the capability of simultaneously processing natural language and images. This task was initially researched with a focus on developing methods to help machines understand objects and scene contexts in images. However, some scene text that carries explicit information about the full content of the image is not mentioned. Along with the continuous development of the AI era, there have been many studies on the reading comprehension ability of VQA models in the world. Therefore, we introduce the first large-scale dataset in Vietnamese specializing in the ability to understand scene text, we call it ViTextVQA (\\textbf{Vi}etnamese \\textbf{Text}-based \\textbf{V}isual \\textbf{Q}uestion \\textbf{A}nswering dataset) which contains \\textbf{over 16,000} images and \\textbf{over 50,000} questions with answers. To tackle this task efficiently, we propose ViTextBLIP-2, an novel mult",
+      "title": "ViTextVQA: A Large-Scale Visual Question Answering Dataset for Evaluating Vietnamese Text Comprehension in Images"
+    },
+    {
+      "arxiv_id": "2506.22447",
+      "authors": [
+        "Fabio Merizzi, Harilaos Loukos"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "eess.IV"
+      ],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-02-17T06:28:22.878221+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Vision Transformers for Multi-Variable Climate Downscaling: Emulating Regional Climate Models with a Shared Encoder and Multi-Decoder Architecture",
+          "url": "https://arxiv.org/abs/2506.22447"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Vision Transformers for Multi-Variable Climate Downscaling: Emulating Regional Climate Models with a Shared Encoder and Multi-Decoder Architecture",
+        "url": "https://arxiv.org/abs/2506.22447"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2506.22447",
+      "summary": "arXiv:2506.22447v2 Announce Type: replace \nAbstract: Global Climate Models (GCMs) are critical for simulating large-scale climate dynamics, but their coarse spatial resolution limits their applicability in regional studies. Regional Climate Models (RCMs) address this limitation through dynamical downscaling, albeit at considerable computational cost and with limited flexibility. Deep learning has emerged as an efficient data-driven alternative; however, most existing approaches focus on single-variable models that downscale one variable at a time. This paradigm can lead to redundant computation, limited contextual awareness, and weak cross-variable interactions.To address these limitations, we propose a multi-variable Vision Transformer (ViT) architecture with a shared encoder and variable-specific decoders (1EMD). The proposed model jointly predicts six key climate variables: surface temperature, wind speed, 500 hPa geopotential height, total precipitation, surface downwelling shortwa",
+      "title": "Vision Transformers for Multi-Variable Climate Downscaling: Emulating Regional Climate Models with a Shared Encoder and Multi-Decoder Architecture"
+    },
+    {
+      "arxiv_id": "2602.11575",
+      "authors": [
+        "Seungyeon Yoo, Youngseok Jang, Dabin Kim, Youngsoo Han, Seungwoo Jung, H. Jin Kim"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:09.523355+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
+          "url": "https://arxiv.org/abs/2602.11575"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
+        "url": "https://arxiv.org/abs/2602.11575"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.11575",
+      "summary": "arXiv:2602.11575v2 Announce Type: replace-cross \nAbstract: Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim navigation simulation using 3D Gaussian Splatting (GS) can mitigate these challenges, prior GS-based works have considered only static scenes or non-photorealistic human obstacles built from simulator assets, despite the importance of safe navigation in dynamic environments. To address these issues, we propose ReaDy-Go, a novel real-to-sim simulation pipeline that synthesizes photorealistic dynamic scenarios in target environments by augmenting a reconstructed static GS scene with dynamic human GS obstacles, and trains navigation policies using the generated datasets. The pipeline provides three key contributions: (1) a dynamic GS simulator that integrates ",
+      "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles"
+    },
+    {
+      "arxiv_id": "2512.20677",
+      "authors": [
+        "Zhang Wei, Peilu Hu, Zhenyuan Wei, Chenwei Liang, Jing Luo, Ziyi Ni, Hao Yan, Li Mei, Shengning Lang, Kuan Lu, Xi Xiao, Zhimo Han, Yijin Wang, Yichao Zhang, Chen Yang, Junfeng Hao, Jiayi Gu, Riyang Bao, Mu-Jiang-Shan Wang"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-12T06:31:44.076413+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models",
+          "url": "https://arxiv.org/abs/2512.20677"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models",
+        "url": "https://arxiv.org/abs/2512.20677"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2512.20677",
+      "summary": "arXiv:2512.20677v3 Announce Type: replace-cross \nAbstract: The increasing deployment of large language models (LLMs) in safety-critical applications raises fundamental challenges in systematically evaluating robustness against adversarial behaviors. Existing red-teaming practices are largely manual and expert-driven, which limits scalability, reproducibility, and coverage in high-dimensional prompt spaces. We formulate automated LLM red-teaming as a structured adversarial search problem and propose a learning-driven framework for scalable vulnerability discovery. The approach combines meta-prompt-guided adversarial prompt generation with a hierarchical execution and detection pipeline, enabling standardized evaluation across six representative threat categories, including reward hacking, deceptive alignment, data exfiltration, sandbagging, inappropriate tool use, and chain-of-thought manipulation. Extensive experiments on GPT-OSS-20B identify 47 vulnerabilities, including 21 high-sever",
+      "title": "Learning-Based Automated Adversarial Red-Teaming for Robustness Evaluation of Large Language Models"
+    },
+    {
+      "arxiv_id": "2505.23522",
+      "authors": [
+        "Fengxiang Wang, Mingshuo Chen, Xuming He, Yi-Fan Zhang, Yueying Li, Feng Liu, Zijie Guo, Zhenghao Hu, Jiong Wang, Jingyi Xu, Zhangrui Li, Junchao Gong, Di Wang, Fenghua Ling, Ben Fei, Weijia Li, Long Lan, Wenjing Yang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.397363+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "OmniEarth-Bench: Towards Holistic Evaluation of Earth's Six Spheres and Cross-Spheres Interactions with Multimodal Observational Earth Data",
+          "url": "https://arxiv.org/abs/2505.23522"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "OmniEarth-Bench: Towards Holistic Evaluation of Earth's Six Spheres and Cross-Spheres Interactions with Multimodal Observational Earth Data",
+        "url": "https://arxiv.org/abs/2505.23522"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2505.23522",
+      "summary": "arXiv:2505.23522v3 Announce Type: replace \nAbstract: Existing benchmarks for multimodal learning in Earth science offer limited, siloed coverage of Earth's spheres and their cross-sphere interactions, typically restricting evaluation to the human-activity sphere of atmosphere and to at most 16 tasks. These limitations: narrow-source heterogeneity (single/few data sources), constrained scientific granularity, and limited-sphere extensibility. Therefore, we introduce OmniEarth-Bench, the first multimodal benchmark that systematically spans all six spheres: atmosphere, lithosphere, oceanosphere, cryosphere, biosphere, and human-activity sphere, and cross-spheres. Built with a scalable, modular-topology data inference framework and native multi-observation sources and expert-in-the-loop curation, OmniEarth-Bench produces 29,855 standardized, expert-curated annotations. All annotations are organized into a four-level hierarchy (Sphere, Scenario, Ability, Task), encompassing 109 expert-curat",
+      "title": "OmniEarth-Bench: Towards Holistic Evaluation of Earth's Six Spheres and Cross-Spheres Interactions with Multimodal Observational Earth Data"
+    },
+    {
+      "arxiv_id": "2510.03574",
+      "authors": [
+        "Mehmet Onurcan Kaya, Desmond Elliott, Dim P. Papadopoulos"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.031376+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Efficient Test-Time Scaling for Small Vision-Language Models",
+          "url": "https://arxiv.org/abs/2510.03574"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Efficient Test-Time Scaling for Small Vision-Language Models",
+        "url": "https://arxiv.org/abs/2510.03574"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2510.03574",
+      "summary": "arXiv:2510.03574v2 Announce Type: replace-cross \nAbstract: Small Vision-Language Models (VLMs) provide a computationally efficient alternative to larger models, at the cost of weaker generalization abilities and downstream task performance. These shortcomings could be addressed by test-time scaling techniques, but existing methods are typically computationally demanding, contradicting the resource-efficient design goals of small models. To address these limitations, we propose two novel and efficient test-time scaling strategies that leverage the model-internal features rather than external supervision: (i) Test-Time Augmentation (TTAug), which generates multiple augmented inputs and aggregates outputs at the token level without parameter updates, and (ii) Test-Time Adaptation (TTAdapt), which adapts model parameters during inference using consensus-based pseudolabels from TTAug. Through extensive experiments across nine benchmarks, we demonstrate consistent performance improvements wh",
+      "title": "Efficient Test-Time Scaling for Small Vision-Language Models"
+    },
+    {
+      "arxiv_id": "2602.03983",
+      "authors": [
+        "Weikang Qiu, Tinglin Huang, Rex Ying"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.039323+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Efficient Long-Horizon Vision-Language-Action Models via Static-Dynamic Disentanglement",
+          "url": "https://arxiv.org/abs/2602.03983"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Efficient Long-Horizon Vision-Language-Action Models via Static-Dynamic Disentanglement",
+        "url": "https://arxiv.org/abs/2602.03983"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.03983",
+      "summary": "arXiv:2602.03983v2 Announce Type: replace-cross \nAbstract: Vision-Language-Action (VLA) models have recently emerged as a promising paradigm for generalist robotic control. Built upon vision-language model (VLM) architectures, VLAs predict actions conditioned on visual observations and language instructions, achieving strong performance and generalization across tasks. However, VLAs face two major challenges: limited long-horizon context and inefficient inference due to the quadratic attention complexity and large parameter counts. Our work is motivated by the observation that much of the visual information in a trajectory remains static across timesteps (e.g., the background). Leveraging this property, we propose SD-VLA, a framework that disentangles visual inputs into multi-level static and dynamic tokens, which enables (1) retaining a single copy of static tokens across frames to significantly reduce context length, and (2) reusing the key-value (KV) cache of static tokens through a",
+      "title": "Efficient Long-Horizon Vision-Language-Action Models via Static-Dynamic Disentanglement"
+    },
+    {
+      "arxiv_id": "2602.13475",
+      "authors": [
+        "Xiang Meng, Lu Tian, Kenneth Kehl, Hajime Uno"
+      ],
+      "categories": [
+        "stat.ME",
+        "stat.AP",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.231113+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-stat-ml",
+          "tier": 1,
+          "title": "Efficient and Debiased Learning of Average Hazard Under Non-Proportional Hazards",
+          "url": "https://arxiv.org/abs/2602.13475"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-stat-ml",
+        "tier": 1,
+        "title": "Efficient and Debiased Learning of Average Hazard Under Non-Proportional Hazards",
+        "url": "https://arxiv.org/abs/2602.13475"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv stat.ML",
+      "story_id": "arxiv:2602.13475",
+      "summary": "arXiv:2602.13475v1 Announce Type: cross \nAbstract: The hazard ratio from the Cox proportional hazards model is a ubiquitous summary of treatment effect. However, when hazards are non-proportional, the hazard ratio can lose a stable causal interpretation and become study-dependent because it effectively averages time-varying effects with weights determined by follow-up and censoring. We consider the average hazard (AH) as an alternative causal estimand: a population-level person-time event rate that remains well-defined and interpretable without assuming proportional hazards. Although AH can be estimated nonparametrically and regression-style adjustments have been proposed, existing approaches do not provide a general framework for flexible, high-dimensional nuisance estimation with valid sqrt{n} inference. We address this gap by developing a semiparametric, doubly robust framework for covariate-adjusted AH. We establish pathwise differentiability of AH in the nonparametric model, deriv",
+      "title": "Efficient and Debiased Learning of Average Hazard Under Non-Proportional Hazards"
+    },
+    {
+      "arxiv_id": "2505.21936",
+      "authors": [
+        "Zeyi Liao, Jaylen Jones, Linxi Jiang, Yuting Ning, Eric Fosler-Lussier, Yu Su, Zhiqiang Lin, Huan Sun"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.688491+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents in Hybrid Web-OS Environments",
+          "url": "https://arxiv.org/abs/2505.21936"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents in Hybrid Web-OS Environments",
+        "url": "https://arxiv.org/abs/2505.21936"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2505.21936",
+      "summary": "arXiv:2505.21936v4 Announce Type: replace \nAbstract: Computer-use agents (CUAs) promise to automate complex tasks across operating systems (OS) and the web, but remain vulnerable to indirect prompt injection. Current evaluations of this threat either lack support realistic but controlled environments or ignore hybrid web-OS attack scenarios involving both interfaces. To address this, we propose RedTeamCUA, an adversarial testing framework featuring a novel hybrid sandbox that integrates a VM-based OS environment with Docker-based web platforms. Our sandbox supports key features tailored for red teaming, such as flexible adversarial scenario configuration, and a setting that decouples adversarial evaluation from navigational limitations of CUAs by initializing tests directly at the point of an adversarial injection. Using RedTeamCUA, we develop RTC-Bench, a comprehensive benchmark with 864 examples that investigate realistic, hybrid web-OS attack scenarios and fundamental security vulne",
+      "title": "RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents in Hybrid Web-OS Environments"
+    },
+    {
+      "arxiv_id": "2602.04856",
+      "authors": [
+        "Zhao Tong, Chunlin Gong, Yiping Zhang, Haichao Shi, Qiang Liu, Xingcheng Xu, Shu Wu, Xiao-Yu Zhang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.705047+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "CoT is Not the Chain of Truth: An Empirical Internal Analysis of Reasoning LLMs for Fake News Generation",
+          "url": "https://arxiv.org/abs/2602.04856"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "CoT is Not the Chain of Truth: An Empirical Internal Analysis of Reasoning LLMs for Fake News Generation",
+        "url": "https://arxiv.org/abs/2602.04856"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2602.04856",
+      "summary": "arXiv:2602.04856v3 Announce Type: replace \nAbstract: From generating headlines to fabricating news, the Large Language Models (LLMs) are typically assessed by their final outputs, under the safety assumption that a refusal response signifies safe reasoning throughout the entire process. Challenging this assumption, our study reveals that during fake news generation, even when a model rejects a harmful request, its Chain-of-Thought (CoT) reasoning may still internally contain and propagate unsafe narratives. To analyze this phenomenon, we introduce a unified safety-analysis framework that systematically deconstructs CoT generation across model layers and evaluates the role of individual attention heads through Jacobian-based spectral metrics. Within this framework, we introduce three interpretable measures: stability, geometry, and energy to quantify how specific attention heads respond or embed deceptive reasoning patterns. Extensive experiments on multiple reasoning-oriented LLMs show",
+      "title": "CoT is Not the Chain of Truth: An Empirical Internal Analysis of Reasoning LLMs for Fake News Generation"
+    },
+    {
+      "arxiv_id": "2502.05376",
+      "authors": [
+        "Reena Elangovan, Charbel Sakr, Anand Raghunathan, Brucek Khailany"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.391001+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "LO-BCQ: Block Clustered Quantization for 4-bit (W4A4) LLM Inference",
+          "url": "https://arxiv.org/abs/2502.05376"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "LO-BCQ: Block Clustered Quantization for 4-bit (W4A4) LLM Inference",
+        "url": "https://arxiv.org/abs/2502.05376"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2502.05376",
+      "summary": "arXiv:2502.05376v2 Announce Type: replace \nAbstract: Post-training quantization (PTQ) is a promising approach to reducing the storage and computational requirements of large language models (LLMs) without additional training cost. Recent PTQ studies have primarily focused on quantizing only weights to sub-8-bits while maintaining activations at 8-bits or higher. Accurate sub-8-bit quantization for both weights and activations without relying on quantization-aware training remains a significant challenge. We propose a novel quantization method called block clustered quantization (BCQ) wherein each operand tensor is decomposed into blocks (a block is a group of contiguous scalars), blocks are clustered based on their statistics, and a dedicated optimal quantization codebook is designed for each cluster. As a specific embodiment of this approach, we propose a PTQ algorithm called Locally-Optimal BCQ (LO-BCQ) that iterates between the steps of block clustering and codebook design to greedi",
+      "title": "LO-BCQ: Block Clustered Quantization for 4-bit (W4A4) LLM Inference"
+    },
+    {
+      "arxiv_id": "2509.21719",
+      "authors": [
+        "Shuning Sun, Jialang Lu, Xiang Chen, Jichao Wang, Dianjie Lu, Guijuan Zhang, Guangwei Gao, Zhuoran Zheng"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.030662+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "DeLiVR: Differential Spatiotemporal Lie Bias for Efficient Video Deraining",
+          "url": "https://arxiv.org/abs/2509.21719"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "DeLiVR: Differential Spatiotemporal Lie Bias for Efficient Video Deraining",
+        "url": "https://arxiv.org/abs/2509.21719"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2509.21719",
+      "summary": "arXiv:2509.21719v2 Announce Type: replace \nAbstract: Videos captured in the wild often suffer from rain streaks, blur, and noise. In addition, even slight changes in camera pose can amplify cross-frame mismatches and temporal artifacts. Existing methods rely on optical flow or heuristic alignment, which are computationally expensive and less robust. To address these challenges, Lie groups provide a principled way to represent continuous geometric transformations, making them well-suited for enforcing spatial and temporal consistency in video modeling. Building on this insight, we propose DeLiVR, an efficient video deraining method that injects spatiotemporal Lie-group differential biases directly into attention scores of the network. Specifically, the method introduces two complementary components. First, a rotation-bounded Lie relative bias predicts the in-plane angle of each frame using a compact prediction module, where normalized coordinates are rotated and compared with base coord",
+      "title": "DeLiVR: Differential Spatiotemporal Lie Bias for Efficient Video Deraining"
+    },
+    {
+      "arxiv_id": "2602.10098",
+      "authors": [
+        "Jingwen Sun, Wenyao Zhang, Zekun Qi, Shaojie Ren, Zezhi Liu, Hanxin Zhu, Guangzhong Sun, Xin Jin, Zhibo Chen"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-11T07:16:32.012918+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model",
+          "url": "https://arxiv.org/abs/2602.10098"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model",
+        "url": "https://arxiv.org/abs/2602.10098"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2602.10098",
+      "summary": "arXiv:2602.10098v2 Announce Type: replace-cross \nAbstract: Pretraining Vision-Language-Action (VLA) policies on internet-scale video is appealing, yet current latent-action objectives often learn the wrong thing: they remain anchored to pixel variation rather than action-relevant state transitions, making them vulnerable to appearance bias, nuisance motion, and information leakage. We introduce VLA-JEPA, a JEPA-style pretraining framework that sidesteps these pitfalls by design. The key idea is leakage-free state prediction: a target encoder produces latent representations from future frames, while the student pathway sees only the current observation -- future information is used solely as supervision targets, never as input. By predicting in latent space rather than pixel space, VLA-JEPA learns dynamics abstractions that are robust to camera motion and irrelevant background changes. This yields a simple two-stage recipe -- JEPA pretraining followed by action-head fine-tuning -- witho",
+      "title": "VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model"
+    },
+    {
+      "arxiv_id": "2411.08982",
+      "authors": [
+        "Vima Gupta, Jae Hyung Ju, Kartik Sinha, Ada Gavrilovska, Anand Padmanabha Iyer"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.DC"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.388213+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Lynx: Enabling Efficient MoE Inference through Dynamic Batch-Aware Expert Selection",
+          "url": "https://arxiv.org/abs/2411.08982"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Lynx: Enabling Efficient MoE Inference through Dynamic Batch-Aware Expert Selection",
+        "url": "https://arxiv.org/abs/2411.08982"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2411.08982",
+      "summary": "arXiv:2411.08982v2 Announce Type: replace \nAbstract: Selective parameter activation provided by Mixture-of-Expert (MoE) models have made them a popular choice in modern foundational models. However, MoEs face a fundamental tension when employed for serving. Batching, critical for performance in serving, forces the activation of all experts, thereby negating MoEs' benefits and exacerbating memory bandwidth bottlenecks. Existing work on efficient MoE inference are unable to resolve this tension even with extensive workload-specific tuning. We present LYNX, a system that enables efficient MoE inference in a workload-agnostic fashion. Exploiting several key observations that we uncover in this work, LYNX provides a light-weight run-time dynamic expert remapping technique that depends only on information already available in the models. Our evaluation of LYNX on four state-of-the-art model families across nine benchmarks shows that it achieves up to 1.23x improvement in throughput while sim",
+      "title": "Lynx: Enabling Efficient MoE Inference through Dynamic Batch-Aware Expert Selection"
+    }
+  ],
+  "run_date": "2026-02-17",
+  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-02-17T23:59:59+00:00",
+    "items_total": 374,
+    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-17",
+    "started_at": "2026-02-16T23:59:59+00:00",
+    "stories_total": 374,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2510.13614",
+      "authors": [
+        "Xingyu Tan, Xiaoyang Wang, Qing Liu, Xiwei Xu, Xin Yuan, Liming Zhu, Wenjie Zhang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.694652+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "MemoTime: Memory-Augmented Temporal Knowledge Graph Enhanced Large Language Model Reasoning",
+          "url": "https://arxiv.org/abs/2510.13614"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "MemoTime: Memory-Augmented Temporal Knowledge Graph Enhanced Large Language Model Reasoning",
+        "url": "https://arxiv.org/abs/2510.13614"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2510.13614",
+      "summary": "arXiv:2510.13614v2 Announce Type: replace \nAbstract: Large Language Models (LLMs) have achieved impressive reasoning abilities, but struggle with temporal understanding, especially when questions involve multiple entities, compound operators, and evolving event sequences. Temporal Knowledge Graphs (TKGs), which capture vast amounts of temporal facts in a structured format, offer a reliable source for temporal reasoning. However, existing TKG-based LLM reasoning methods still struggle with four major challenges: maintaining temporal faithfulness in multi-hop reasoning, achieving multi-entity temporal synchronization, adapting retrieval to diverse temporal operators, and reusing prior reasoning experience for stability and efficiency. To address these issues, we propose MemoTime, a memory-augmented temporal knowledge graph framework that enhances LLM reasoning through structured grounding, recursive reasoning, and continual experience learning. MemoTime decomposes complex temporal questi",
+      "title": "MemoTime: Memory-Augmented Temporal Knowledge Graph Enhanced Large Language Model Reasoning"
+    },
+    {
+      "arxiv_id": "2506.17001",
+      "authors": [
+        "Mikhail Menschikov, Dmitry Evseev, Victoria Dochkina, Ruslan Kostoev, Ilia Perepechkin, Petr Anokhin, Evgeny Burnaev, Nikita Semenov"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.IR"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-01-21T05:51:41.605963+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cl",
+          "tier": 1,
+          "title": "PersonalAI: A Systematic Comparison of Knowledge Graph Storage and Retrieval Approaches for Personalized LLM agents",
+          "url": "https://arxiv.org/abs/2506.17001"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cl",
+        "tier": 1,
+        "title": "PersonalAI: A Systematic Comparison of Knowledge Graph Storage and Retrieval Approaches for Personalized LLM agents",
+        "url": "https://arxiv.org/abs/2506.17001"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CL",
+      "story_id": "arxiv:2506.17001",
+      "summary": "arXiv:2506.17001v4 Announce Type: replace \nAbstract: Personalizing language models that effectively incorporating user interaction history remains a central challenge in development of adaptive AI systems. While large language models (LLMs), combined with Retrieval-Augmented Generation (RAG), have improved factual accuracy, they often lack structured memory and fail to scale in complex, long-term interactions. To address this, we propose a flexible external memory framework based on knowledge graph, which construct and update memory model automatically by LLM itself. Building upon the AriGraph architecture, we introduce a novel hybrid graph design that supports both standard edges and two types of hyper-edges, enabling rich and dynamic semantic and temporal representations. Our framework also supports diverse retrieval mechanisms, including A*, water-circle traversal, beam search and hybrid methods, making it adaptable to different datasets and LLM capacities. We evaluate our system on",
+      "title": "PersonalAI: A Systematic Comparison of Knowledge Graph Storage and Retrieval Approaches for Personalized LLM agents"
+    },
+    {
+      "arxiv_id": "2502.09980",
+      "authors": [
+        "Hsu-kuang Chiu, Ryo Hachiuma, Chien-Yi Wang, Stephen F. Smith, Yu-Chiang Frank Wang, Min-Hung Chen"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:24.022884+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "V2V-LLM: Vehicle-to-Vehicle Cooperative Autonomous Driving with Multimodal Large Language Models",
+          "url": "https://arxiv.org/abs/2502.09980"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "V2V-LLM: Vehicle-to-Vehicle Cooperative Autonomous Driving with Multimodal Large Language Models",
+        "url": "https://arxiv.org/abs/2502.09980"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2502.09980",
+      "summary": "arXiv:2502.09980v4 Announce Type: replace \nAbstract: Current autonomous driving vehicles rely mainly on their individual sensors to understand surrounding scenes and plan for future trajectories, which can be unreliable when the sensors are malfunctioning or occluded. To address this problem, cooperative perception methods via vehicle-to-vehicle (V2V) communication have been proposed, but they have tended to focus on perception tasks like detection or tracking. How those approaches contribute to overall cooperative planning performance is still under-explored. Inspired by recent progress using Large Language Models (LLMs) to build autonomous driving systems, we propose a novel problem setting that integrates a Multimodal LLM into cooperative autonomous driving, with the proposed Vehicle-to-Vehicle Question-Answering (V2V-QA) dataset and benchmark. We also propose our baseline method Vehicle-to-Vehicle Multimodal Large Language Model (V2V-LLM), which uses an LLM to fuse perception infor",
+      "title": "V2V-LLM: Vehicle-to-Vehicle Cooperative Autonomous Driving with Multimodal Large Language Models"
+    },
+    {
+      "arxiv_id": "2507.07139",
+      "authors": [
+        "Renyang Liu, Guanlin Li, Tianwei Zhang, See-Kiong Ng"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:23.400574+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Image Can Bring Your Memory Back: A Novel Multi-Modal Guided Attack against Image Generation Model Unlearning",
+          "url": "https://arxiv.org/abs/2507.07139"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Image Can Bring Your Memory Back: A Novel Multi-Modal Guided Attack against Image Generation Model Unlearning",
+        "url": "https://arxiv.org/abs/2507.07139"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2507.07139",
+      "summary": "arXiv:2507.07139v2 Announce Type: replace \nAbstract: Recent advances in image generation models (IGMs), particularly diffusion-based architectures such as Stable Diffusion (SD), have markedly enhanced the quality and diversity of AI-generated visual content. However, their generative capability has also raised significant ethical, legal, and societal concerns, including the potential to produce harmful, misleading, or copyright-infringing content. To mitigate these concerns, machine unlearning (MU) emerges as a promising solution by selectively removing undesirable concepts from pretrained models. Nevertheless, the robustness and effectiveness of existing unlearning techniques remain largely unexplored, particularly in the presence of multi-modal adversarial inputs.\n  To bridge this gap, we propose Recall, a novel adversarial framework explicitly designed to compromise the robustness of unlearned IGMs. Unlike existing approaches that predominantly rely on adversarial text prompts, Reca",
+      "title": "Image Can Bring Your Memory Back: A Novel Multi-Modal Guided Attack against Image Generation Model Unlearning"
+    },
+    {
+      "arxiv_id": "2510.10689",
+      "authors": [
+        "Caorui Li, Yu Chen, Yiyan Ji, Jin Xu, Zhenyu Cui, Shihao Li, Yuanxing Zhang, Wentao Wang, Zhenghao Song, Dingling Zhang, Ying He, Haoxiang Liu, Yuxuan Wang, Qiufeng Wang, Jiafu Tang, Zhenhe Wu, Jiehui Luo, Zhiyu Pan, Weihao Xie, Chenchen Zhang, Zhaohui Wang, Jiayi Tian, Yanghai Wang, Zhe Cao, Minxin Dai, Ke Wang, Runzhe Wen, Yinghao Ma, Yaning Pan, Sungkyun Chang, Termeh Taheri, Haiwen Xia, Christos Plachouras, Emmanouil Benetos, Yizhi Li, Ge Zhang, Jian Yang, Tianhao Peng, Zili Wang, Minghao Liu, Junran Peng, Zhaoxiang Zhang, Jiaheng Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:22.890455+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "OmniVideoBench: Towards Audio-Visual Understanding Evaluation for Omni MLLMs",
+          "url": "https://arxiv.org/abs/2510.10689"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "OmniVideoBench: Towards Audio-Visual Understanding Evaluation for Omni MLLMs",
+        "url": "https://arxiv.org/abs/2510.10689"
+      },
+      "published_at": "2026-02-17T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2510.10689",
+      "summary": "arXiv:2510.10689v2 Announce Type: replace \nAbstract: Recent advances in multimodal large language models (MLLMs) have demonstrated substantial potential in video understanding. However, existing benchmarks fail to comprehensively evaluate synergistic reasoning capabilities across audio and visual modalities, often neglecting either one of the modalities or integrating them in a logically inconsistent manner. To bridge this gap, we introduce OmniVideoBench, a large-scale and rigorously designed benchmark dedicated to assessing synergistic audio-visual understanding, with a strong emphasis on modality complementarity and logical consistency. Specifically, OmniVideoBench comprises 1000 high-quality question-answer(QA) pairs, each annotated with step-by-step reasoning traces, derived from 628 diverse videos ranging from several seconds to 30 minutes, and manually verified to guarantee complete correctness and uniqueness. Moreover, OmniVideoBench encompasses 13 carefully designed question t",
+      "title": "OmniVideoBench: Towards Audio-Visual Understanding Evaluation for Omni MLLMs"
+    }
+  ]
+}

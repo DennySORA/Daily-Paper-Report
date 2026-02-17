@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-17",
     "2026-02-16",
     "2026-02-15",
     "2026-02-14",
@@ -29,9 +30,127 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-16T06:32:37.167771+00:00",
-  "model_releases_by_entity": {},
+  "generated_at": "2026-02-17T06:28:28.686739+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-11T07:16:31.593502+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 6242,
+          "likes": 539,
+          "pipeline_tag": "automatic-speech-recognition"
+        },
+        "hf_model_id": "mistralai/voxtral-mini-4b-realtime-2602",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-mistralai",
+            "tier": 1,
+            "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+            "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-mistralai",
+          "tier": 1,
+          "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+          "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+        },
+        "published_at": "2026-02-16T18:47:56+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:mistralai/voxtral-mini-4b-realtime-2602",
+        "summary": "Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **= 3600 / 0.8 = 45000`. In theory, you should be able to record with no limit; in practice, pre-allocations of RoPE parameters among other things limits `--max-model-len`. For the best user experience, we recommend to simply instantiate vLLM with the default parameters which will automatically set a maximum model length of 131072 (~ca. 3h). - We strongly recommend using websockets to set up audio streaming sessions. For more info on how to do so, check Usage. - We recommend using a delay of 480ms as we found it to be the sweet spot of performance and low latency. If, however, you want to adapt...",
+        "title": "mistralai/Voxtral-Mini-4B-Realtime-2602"
+      }
+    ],
+    "qwen": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "qwen"
+        ],
+        "first_seen_at": "2026-02-17T06:28:25.382290+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 0,
+          "likes": 490,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "qwen/qwen3.5-397b-a17b",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-qwen",
+            "tier": 1,
+            "title": "Qwen/Qwen3.5-397B-A17B",
+            "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3.5-397B-A17B",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
+        },
+        "published_at": "2026-02-16T10:47:58+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:qwen/qwen3.5-397b-a17b",
+        "summary": "> This repository contains model weights and configuration files for the post-trained model in the Hugging Face Transformers format. > These artifacts are compatible with Hugging Face Transformers, vLLM, SGLang, etc. > For users seeking managed, scalable inference without infrastructure maintenance, the official Qwen API service is provided by Alibaba Cloud Model Studio. > In particular, **Qwen3.5-Plus** is the hosted version corresponding to Qwen3.5-397B-A17B with more production features, e.g., 1M context length by default, official built-in tools, and adaptive tool use. > For more information, please refer to the User Guide. Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a...",
+        "title": "Qwen/Qwen3.5-397B-A17B"
+      }
+    ]
+  },
   "papers": [
+    {
+      "arxiv_id": "2503.03704",
+      "authors": [
+        "Shen Dong, Shaochen Xu, Pengfei He, Yige Li, Jiliang Tang, Tianming Liu, Hui Liu, Zhen Xiang"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-16T06:32:32.977383+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Memory Injection Attacks on LLM Agents via Query-Only Interaction",
+          "url": "https://arxiv.org/abs/2503.03704"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Memory Injection Attacks on LLM Agents via Query-Only Interaction",
+        "url": "https://arxiv.org/abs/2503.03704"
+      },
+      "published_at": "2026-02-16T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.LG",
+      "story_id": "arxiv:2503.03704",
+      "summary": "arXiv:2503.03704v5 Announce Type: replace \nAbstract: Agents powered by large language models (LLMs) have demonstrated strong capabilities in a wide range of complex, real-world applications. However, LLM agents with a compromised memory bank may easily produce harmful outputs when the past records retrieved for demonstration are malicious. In this paper, we propose a novel Memory INJection Attack, MINJA, without assuming that the attacker can directly modify the memory bank of the agent. The attacker injects malicious records into the memory bank by only interacting with the agent via queries and output observations. These malicious records are designed to elicit a sequence of malicious reasoning steps corresponding to a different target query during the agent's execution of the victim user's query. Specifically, we introduce a sequence of bridging steps to link victim queries to the malicious reasoning steps. During the memory injection, we propose an indication prompt that guides the",
+      "title": "Memory Injection Attacks on LLM Agents via Query-Only Interaction"
+    },
     {
       "arxiv_id": "2512.09654",
       "authors": [
@@ -747,7 +866,9 @@
       "story_id": "arxiv:2602.12911",
       "summary": "arXiv:2602.12911v1 Announce Type: new \nAbstract: Code-switching (CS), which is when Vietnamese speech uses English words like drug names or procedures, is a common phenomenon in Vietnamese medical communication. This creates challenges for Automatic Speech Recognition (ASR) systems, especially in low-resource languages like Vietnamese. Current most ASR systems struggle to recognize correctly English medical terms within Vietnamese sentences, and no benchmark addresses this challenge. In this paper, we construct a 34-hour \\textbf{Vi}etnamese \\textbf{Med}ical \\textbf{C}ode-\\textbf{S}witching \\textbf{S}peech dataset (ViMedCSS) containing 16,576 utterances. Each utterance includes at least one English medical term drawn from a curated bilingual lexicon covering five medical topics. Using this dataset, we evaluate several state-of-the-art ASR models and examine different specific fine-tuning strategies for improving medical term recognition to investigate the best approach to solve in the d",
       "title": "ViMedCSS: A Vietnamese Medical Code-Switching Speech Dataset & Benchmark"
-    },
+    }
+  ],
+  "radar": [
     {
       "arxiv_id": "2510.23883",
       "authors": [
@@ -784,9 +905,7 @@
       "story_id": "arxiv:2510.23883",
       "summary": "arXiv:2510.23883v2 Announce Type: replace \nAbstract: Agentic AI systems powered by large language models (LLMs) and endowed with planning, tool use, memory, and autonomy, are emerging as powerful, flexible platforms for automation. Their ability to autonomously execute tasks across web, software, and physical environments creates new and amplified security risks, distinct from both traditional AI safety and conventional software security. This survey outlines a taxonomy of threats specific to agentic AI, reviews recent benchmarks and evaluation methodologies, and discusses defense strategies from both technical and governance perspectives. We synthesize current research and highlight open challenges, aiming to support the development of secure-by-design agent systems.",
       "title": "Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges"
-    }
-  ],
-  "radar": [
+    },
     {
       "arxiv_id": "2602.10661",
       "authors": [
@@ -1129,6 +1248,39 @@
       "title": "Human-Aligned MLLM Judges for Fine-Grained Image Editing Evaluation: A Benchmark, Framework, and Analysis"
     },
     {
+      "arxiv_id": "2602.14534",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-17T06:28:26.109325+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "MoRL: Reinforced Reasoning for Unified Motion Understanding and Generation",
+          "url": "https://arxiv.org/abs/2602.14534"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "MoRL: Reinforced Reasoning for Unified Motion Understanding and Generation",
+        "url": "https://arxiv.org/abs/2602.14534"
+      },
+      "published_at": "2026-02-16T07:42:45+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14534",
+      "summary": "Human motion understanding and generation are crucial for vision and robotics but remain limited in reasoning capability and test-time planning. We propose MoRL, a unified multimodal motion model trained with supervised fine-tuning and reinforcement learning with verifiable rewards. Our task-specific reward design combines semantic alignment and reasoning coherence for understanding with physical plausibility and text-motion consistency for generation, improving both logical reasoning and perceptual realism. To further enhance inference, we introduce Chain-of-Motion (CoM), a test-time reasoning method that enables step-by-step planning and reflection. We also construct two large-scale CoT datasets, MoUnd-CoT-140K and MoGen-CoT-140K, to align motion sequences with reasoning traces and action descriptions. Experiments on HumanML3D and KIT-ML show that MoRL achieves significant gains over state-of-the-art baselines. Code: https://github.com/AIGeeksGroup/MoRL. Website: https://aigeeksgroup.github.io/MoRL.",
+      "title": "MoRL: Reinforced Reasoning for Unified Motion Understanding and Generation"
+    },
+    {
       "arxiv_id": "2506.05325",
       "authors": [
         "Yingshuai Ji, Haomin Zhuang, Matthew Toole, James McKenzie, Xiaolong Liu, Xiangliang Zhang"
@@ -1279,92 +1431,17 @@
       "story_id": "arxiv:2506.22890",
       "summary": "arXiv:2506.22890v3 Announce Type: replace \nAbstract: Collaborative Perception (CP) has been shown to be a promising technique for multi-agent autonomous driving and multi-agent robotic systems, where multiple agents share their perception information to enhance the overall perception performance and expand the perception range. However, in CP, an ego agent needs to receive messages from its collaborators, which makes it vulnerable to attacks from malicious agents. To address this critical issue, we propose a unified, probability-agnostic, and adaptive framework, namely, CP-uniGuard, which is a tailored defense mechanism for CP deployed by each agent to accurately detect and eliminate malicious agents in its collaboration network. Our key idea is to enable CP to reach a consensus rather than a conflict against an ego agent's perception results. Based on this idea, we first develop a probability-agnostic sample consensus (PASAC) method to effectively sample a subset of the collaborators ",
       "title": "CP-uniGuard: A Unified, Probability-Agnostic, and Adaptive Framework for Malicious Agent Detection and Defense in Multi-Agent Embodied Perception Systems"
-    },
-    {
-      "arxiv_id": "2509.25889",
-      "authors": [
-        "Arvind Murari Vepa, Yannan Yu, Jingru Gan, Anthony Cuturrufo, Michael F. Romano, Weikai Li, Fabien Scalzo, Wei Wang, Yizhou Sun"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-16T06:32:33.163758+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "Multimodal LLM With Hierarchical Mixture-of-Experts for VQA on 3D Brain MRI",
-          "url": "https://arxiv.org/abs/2509.25889"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "Multimodal LLM With Hierarchical Mixture-of-Experts for VQA on 3D Brain MRI",
-        "url": "https://arxiv.org/abs/2509.25889"
-      },
-      "published_at": "2026-02-16T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2509.25889",
-      "summary": "arXiv:2509.25889v3 Announce Type: replace \nAbstract: Multiparametric 3D brain MRI (mpMRI) is central to neuroradiology, but producing tumor location, appearance, size, and involvement of critical structures for neurosurgical planning remains challenging. We introduce mpLLM, a multimodal LLM for visual question answering (VQA) on mpMRI that produces clinically interpretable tumor descriptors (e.g., volume, morphology, extent, and coarse localization) as an adjunct to clinical expertise for referring neurosurgeons. mpLLM uses a prompt-conditioned hierarchical mixture-of-experts (MoE) to fuse multiple 3D sequences via routing over modality- and token-level projection experts, enabling data-efficient end-to-end training without large-scale image-report pretraining. To address limited paired image-text supervision, we propose a synthetic VQA protocol that derives clinically grounded questions and answers from expert segmentation annotations and is validated with radiologist collaboration. A",
-      "title": "Multimodal LLM With Hierarchical Mixture-of-Experts for VQA on 3D Brain MRI"
-    },
-    {
-      "arxiv_id": "2601.07692",
-      "authors": [
-        "Nicolas Sereyjol-Garros, Ellington Kirby, Victor Besnier, Nermin Samet"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-16T06:32:33.375732+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "R3DPA: Leveraging 3D Representation Alignment and RGB Pretrained Priors for LiDAR Scene Generation",
-          "url": "https://arxiv.org/abs/2601.07692"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "R3DPA: Leveraging 3D Representation Alignment and RGB Pretrained Priors for LiDAR Scene Generation",
-        "url": "https://arxiv.org/abs/2601.07692"
-      },
-      "published_at": "2026-02-16T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2601.07692",
-      "summary": "arXiv:2601.07692v2 Announce Type: replace \nAbstract: LiDAR scene synthesis is an emerging solution to scarcity in 3D data for robotic tasks such as autonomous driving. Recent approaches employ diffusion or flow matching models to generate realistic scenes, but 3D data remains limited compared to RGB datasets with millions of samples. We introduce R3DPA, the first LiDAR scene generation method to unlock image-pretrained priors for LiDAR point clouds, and leverage self-supervised 3D representations for state-of-the-art results. Specifically, we (i) align intermediate features of our generative model with self-supervised 3D features, which substantially improves generation quality; (ii) transfer knowledge from large-scale image-pretrained generative models to LiDAR generation, mitigating limited LiDAR datasets; and (iii) enable point cloud control at inference for object inpainting and scene mixing with solely an unconditional model. On the KITTI-360 benchmark R3DPA achieves state of the ",
-      "title": "R3DPA: Leveraging 3D Representation Alignment and RGB Pretrained Priors for LiDAR Scene Generation"
     }
   ],
   "run_date": "2026-02-16",
-  "run_id": "cc157644-8f58-493a-9763-384fbcac7476",
+  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-16T23:59:59+00:00",
-    "items_total": 344,
-    "run_id": "cc157644-8f58-493a-9763-384fbcac7476-2026-02-16",
+    "items_total": 349,
+    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-16",
     "started_at": "2026-02-15T23:59:59+00:00",
-    "stories_total": 344,
+    "stories_total": 349,
     "success": true
   },
   "sources_status": [],
@@ -1483,6 +1560,43 @@
       "title": "BaziQA-Benchmark: Evaluating Symbolic and Temporally Compositional Reasoning in Large Language Models"
     },
     {
+      "arxiv_id": "2602.14721",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai",
+        "deepmind",
+        "qwen"
+      ],
+      "first_seen_at": "2026-02-17T06:28:26.109598+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "WebWorld: A Large-Scale World Model for Web Agent Training",
+          "url": "https://arxiv.org/abs/2602.14721"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "WebWorld: A Large-Scale World Model for Web Agent Training",
+        "url": "https://arxiv.org/abs/2602.14721"
+      },
+      "published_at": "2026-02-16T13:06:49+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14721",
+      "summary": "Web agents require massive trajectories to generalize, yet real-world training is constrained by network latency, rate limits, and safety risks. We introduce WebWorld series, the first open-web simulator trained at scale. While existing simulators are restricted to closed environments with thousands of trajectories, WebWorld leverages a scalable data pipeline to train on 1M+ open-web interactions, supporting reasoning, multi-format data, and long-horizon simulations of 30+ steps. For intrinsic evaluation, we introduce WebWorld-Bench with dual metrics spanning nine dimensions, where WebWorld achieves simulation performance comparable to Gemini-3-Pro. For extrinsic evaluation, Qwen3-14B trained on WebWorld-synthesized trajectories improves by +9.2\\% on WebArena, reaching performance comparable to GPT-4o. WebWorld enables effective inference-time search, outperforming GPT-5 as a world model. Beyond web simulation, WebWorld exhibits cross-domain generalization to code, GUI, and game environments, providing a replicable recipe for world model construction.",
+      "title": "WebWorld: A Large-Scale World Model for Web Agent Training"
+    },
+    {
       "arxiv_id": "2602.12287",
       "authors": [
         "Junjie An, Jingguang Tian, Tianyi Wang, Yu Gao, Xiaofeng Mou, Yi Xu"
@@ -1520,43 +1634,6 @@
       "story_id": "arxiv:2602.12287",
       "summary": "arXiv:2602.12287v1 Announce Type: new \nAbstract: End-to-end automatic speech recognition (ASR) systems frequently misrecognize domain-specific phrases like named entities, which can cause catastrophic failures in downstream tasks. A new family of named entity correction methods based on large language models (LLMs) has recently emerged. However, these approaches have yet to fully exploit the sophisticated reasoning capabilities inherent to LLMs. To bridge this gap, we propose a novel retrieval-augmented generation framework for correcting named entity errors in ASR. Our approach consists of two key components: (1) a rephrasing language model (RLM) for named entity recognition, followed by candidate retrieval using a phonetic-level edit distance; and (2) a novel self-taught reasoning model with adaptive chain-of-thought (A-STAR) that dynamically adjusts the depth of its reasoning based on task difficulty. Experiments on the AISHELL-1 and Homophone datasets demonstrate the effectiveness ",
       "title": "Retrieval-Augmented Self-Taught Reasoning Model with Adaptive Chain-of-Thought for ASR Named Entity Correction"
-    },
-    {
-      "arxiv_id": "2503.03704",
-      "authors": [
-        "Shen Dong, Shaochen Xu, Pengfei He, Yige Li, Jiliang Tang, Tianming Liu, Hui Liu, Zhen Xiang"
-      ],
-      "categories": [
-        "cs.LG"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-16T06:32:32.977383+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-lg",
-          "tier": 1,
-          "title": "Memory Injection Attacks on LLM Agents via Query-Only Interaction",
-          "url": "https://arxiv.org/abs/2503.03704"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-lg",
-        "tier": 1,
-        "title": "Memory Injection Attacks on LLM Agents via Query-Only Interaction",
-        "url": "https://arxiv.org/abs/2503.03704"
-      },
-      "published_at": "2026-02-16T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.LG",
-      "story_id": "arxiv:2503.03704",
-      "summary": "arXiv:2503.03704v5 Announce Type: replace \nAbstract: Agents powered by large language models (LLMs) have demonstrated strong capabilities in a wide range of complex, real-world applications. However, LLM agents with a compromised memory bank may easily produce harmful outputs when the past records retrieved for demonstration are malicious. In this paper, we propose a novel Memory INJection Attack, MINJA, without assuming that the attacker can directly modify the memory bank of the agent. The attacker injects malicious records into the memory bank by only interacting with the agent via queries and output observations. These malicious records are designed to elicit a sequence of malicious reasoning steps corresponding to a different target query during the agent's execution of the victim user's query. Specifically, we introduce a sequence of bridging steps to link victim queries to the malicious reasoning steps. During the memory injection, we propose an indication prompt that guides the",
-      "title": "Memory Injection Attacks on LLM Agents via Query-Only Interaction"
     }
   ]
 }

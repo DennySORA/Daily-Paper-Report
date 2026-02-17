@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-17",
     "2026-02-16",
     "2026-02-15",
     "2026-02-14",
@@ -29,48 +30,8 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-16T06:32:37.614464+00:00",
-  "model_releases_by_entity": {
-    "other": [
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [],
-        "first_seen_at": "2026-02-11T07:16:31.593502+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 5209,
-          "likes": 516,
-          "pipeline_tag": "automatic-speech-recognition"
-        },
-        "hf_model_id": "mistralai/voxtral-mini-4b-realtime-2602",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-mistralai",
-            "tier": 1,
-            "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
-            "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-mistralai",
-          "tier": 1,
-          "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
-          "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
-        },
-        "published_at": "2026-02-13T15:31:05+00:00",
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:mistralai/voxtral-mini-4b-realtime-2602",
-        "summary": "Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **= 3600 / 0.8 = 45000`. In theory, you should be able to record with no limit; in practice, pre-allocations of RoPE parameters among other things limits `--max-model-len`. For the best user experience, we recommend to simply instantiate vLLM with the default parameters which will automatically set a maximum model length of 131072 (~ca. 3h). - We strongly recommend using websockets to set up audio streaming sessions. For more info on how to do so, check Usage. - We recommend using a delay of 480ms as we found it to be the sweet spot of performance and low latency. If, however, you want to adapt...",
-        "title": "mistralai/Voxtral-Mini-4B-Realtime-2602"
-      }
-    ]
-  },
+  "generated_at": "2026-02-17T06:28:29.127717+00:00",
+  "model_releases_by_entity": {},
   "papers": [
     {
       "arxiv_id": "2511.13853",
@@ -754,45 +715,6 @@
       "title": "Leveraging Unlabeled Scans for NCCT Image Segmentation in Early Stroke Diagnosis: A Semi-Supervised GAN Approach"
     },
     {
-      "arxiv_id": "2602.11575",
-      "authors": [
-        "Seungyeon Yoo, Youngseok Jang, Dabin Kim, Youngsoo Han, Seungwoo Jung, H. Jin Kim"
-      ],
-      "categories": [
-        "cs.RO",
-        "cs.AI",
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-13T06:29:09.523355+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
-          "url": "https://arxiv.org/abs/2602.11575"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
-        "url": "https://arxiv.org/abs/2602.11575"
-      },
-      "published_at": "2026-02-13T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2602.11575",
-      "summary": "arXiv:2602.11575v1 Announce Type: cross \nAbstract: Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim navigation simulation using 3D Gaussian Splatting (GS) can mitigate this gap, prior works have assumed only static scenes or unrealistic dynamic obstacles, despite the importance of safe navigation in dynamic environments. To address these issues, we propose ReaDy-Go, a novel real-to-sim simulation pipeline that synthesizes photorealistic dynamic scenarios for target environments. ReaDy-Go generates photorealistic navigation datasets for dynamic environments by combining a reconstructed static GS scene with dynamic human GS obstacles, and trains policies robust to both the sim-to-real gap and moving obstacles. The pipeline consists of three components: (1) a dynami",
-      "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles"
-    },
-    {
       "arxiv_id": "2510.04860",
       "authors": [
         "Siwei Han, Kaiwen Xiong, Jiaqi Liu, Xinyu Ye, Yaofeng Su, Wenbo Duan, Xinyuan Liu, Cihang Xie, Mohit Bansal, Mingyu Ding, Linjun Zhang, Huaxiu Yao"
@@ -829,9 +751,7 @@
       "story_id": "arxiv:2510.04860",
       "summary": "arXiv:2510.04860v2 Announce Type: replace \nAbstract: As Large Language Model (LLM) agents increasingly gain self-evolutionary capabilities to adapt and refine their strategies through real-world interaction, their long-term reliability becomes a critical concern. We identify the Alignment Tipping Process (ATP), a critical post-deployment risk unique to self-evolving LLM agents. Unlike training-time failures, ATP arises when continual interaction drives agents to abandon alignment constraints established during training in favor of reinforced, self-interested strategies. We formalize and analyze ATP through two complementary paradigms: Self-Interested Exploration, where repeated high-reward deviations induce individual behavioral drift, and Imitative Strategy Diffusion, where deviant behaviors spread across multi-agent systems. Building on these paradigms, we construct controllable testbeds and benchmark both open and closed-source LLMs. Our experiments show that alignment benefits erod",
       "title": "Alignment Tipping Process: How Self-Evolution Pushes LLM Agents Off the Rails"
-    }
-  ],
-  "radar": [
+    },
     {
       "arxiv_id": "2510.15414",
       "authors": [
@@ -868,6 +788,47 @@
       "story_id": "arxiv:2510.15414",
       "summary": "arXiv:2510.15414v3 Announce Type: replace \nAbstract: Developing Large Language Models (LLMs) to cooperate and compete effectively within multi-agent systems (MASs) is a critical step towards more advanced intelligence. While reinforcement learning (RL) has proven effective for enhancing reasoning in single-agent tasks, its extension to multi-turn, multi-agent scenarios remains underexplored due to the challenges of long-horizon credit assignment and agent-specific advantage estimation. To address these challenges, we introduce MARSHAL, an end-to-end RL framework that incentivizes Multi-Agent Reasoning through Self-play witH strAtegic LLMs in both cooperative and competitive games. MARSHAL features a turn-level advantage estimator that aligns learning signals with each interaction for credit assignment, and an agent-specific advantage normalization to stabilize multi-agent training. By learning with self-play across cooperative and competitive games, MARSHAL agents trained from Qwen3-4B",
       "title": "MARSHAL: Incentivizing Multi-Agent Reasoning via Self-Play with Strategic LLMs"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": "2506.06006",
+      "authors": [
+        "Yifu Qiu, Yftah Ziser, Anna Korhonen, Shay B. Cohen, Edoardo M. Ponti"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-13T06:29:08.889878+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Bootstrapping Action-Grounded Visual Dynamics in Unified Vision-Language Models",
+          "url": "https://arxiv.org/abs/2506.06006"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Bootstrapping Action-Grounded Visual Dynamics in Unified Vision-Language Models",
+        "url": "https://arxiv.org/abs/2506.06006"
+      },
+      "published_at": "2026-02-13T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.CV",
+      "story_id": "arxiv:2506.06006",
+      "summary": "arXiv:2506.06006v2 Announce Type: replace \nAbstract: Can unified vision-language models (VLMs) perform forward dynamics prediction (FDP), i.e., predicting the future state (in image form) given the previous observation and an action (in language form)? We find that VLMs struggle to generate physically plausible transitions between frames from instructions. Nevertheless, we identify a crucial asymmetry in multimodal grounding: fine-tuning a VLM to learn inverse dynamics prediction (IDP), effectively captioning the action between frames, is significantly easier than learning FDP. In turn, IDP can be used to bootstrap FDP through two main strategies: 1) weakly supervised learning from synthetic data and 2) inference time verification. Firstly, IDP can annotate actions for unlabelled pairs of video frame observations to expand the training data scale for FDP. Secondly, IDP can assign rewards to multiple samples of FDP to score them, effectively guiding search at inference time. We evaluate",
+      "title": "Bootstrapping Action-Grounded Visual Dynamics in Unified Vision-Language Models"
     },
     {
       "arxiv_id": "2602.11180",
@@ -1397,14 +1358,14 @@
     }
   ],
   "run_date": "2026-02-13",
-  "run_id": "cc157644-8f58-493a-9763-384fbcac7476",
+  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-13T23:59:59+00:00",
-    "items_total": 336,
-    "run_id": "cc157644-8f58-493a-9763-384fbcac7476-2026-02-13",
+    "items_total": 331,
+    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-13",
     "started_at": "2026-02-12T23:59:59+00:00",
-    "stories_total": 336,
+    "stories_total": 331,
     "success": true
   },
   "sources_status": [],
