@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-18",
     "2026-02-17",
     "2026-02-16",
     "2026-02-15",
@@ -30,47 +31,8 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-17T06:28:28.686739+00:00",
+  "generated_at": "2026-02-18T06:30:36.544646+00:00",
   "model_releases_by_entity": {
-    "other": [
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [],
-        "first_seen_at": "2026-02-11T07:16:31.593502+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 6242,
-          "likes": 539,
-          "pipeline_tag": "automatic-speech-recognition"
-        },
-        "hf_model_id": "mistralai/voxtral-mini-4b-realtime-2602",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-mistralai",
-            "tier": 1,
-            "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
-            "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-mistralai",
-          "tier": 1,
-          "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
-          "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
-        },
-        "published_at": "2026-02-16T18:47:56+00:00",
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:mistralai/voxtral-mini-4b-realtime-2602",
-        "summary": "Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **= 3600 / 0.8 = 45000`. In theory, you should be able to record with no limit; in practice, pre-allocations of RoPE parameters among other things limits `--max-model-len`. For the best user experience, we recommend to simply instantiate vLLM with the default parameters which will automatically set a maximum model length of 131072 (~ca. 3h). - We strongly recommend using websockets to set up audio streaming sessions. For more info on how to do so, check Usage. - We recommend using a delay of 480ms as we found it to be the sweet spot of performance and low latency. If, however, you want to adapt...",
-        "title": "mistralai/Voxtral-Mini-4B-Realtime-2602"
-      }
-    ],
     "qwen": [
       {
         "arxiv_id": null,
@@ -1434,14 +1396,14 @@
     }
   ],
   "run_date": "2026-02-16",
-  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
+  "run_id": "b893ee70-7292-4ac7-8f7a-f36c19b0ecc4",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-16T23:59:59+00:00",
-    "items_total": 349,
-    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-16",
+    "items_total": 345,
+    "run_id": "b893ee70-7292-4ac7-8f7a-f36c19b0ecc4-2026-02-16",
     "started_at": "2026-02-15T23:59:59+00:00",
-    "stories_total": 349,
+    "stories_total": 345,
     "success": true
   },
   "sources_status": [],

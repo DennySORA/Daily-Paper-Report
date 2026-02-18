@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-18",
     "2026-02-17",
     "2026-02-16",
     "2026-02-15",
@@ -30,8 +31,48 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-17T06:28:28.218188+00:00",
-  "model_releases_by_entity": {},
+  "generated_at": "2026-02-18T06:30:36.088199+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-02-11T07:16:31.593502+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 8104,
+          "likes": 553,
+          "pipeline_tag": "automatic-speech-recognition"
+        },
+        "hf_model_id": "mistralai/voxtral-mini-4b-realtime-2602",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-mistralai",
+            "tier": 1,
+            "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+            "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-mistralai",
+          "tier": 1,
+          "title": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+          "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+        },
+        "published_at": "2026-02-17T16:07:28+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:mistralai/voxtral-mini-4b-realtime-2602",
+        "summary": "Voxtral Mini 4B Realtime 2602 is a **multilingual, realtime speech-transcription model** and among the first open-source solutions to achieve accuracy comparable to offline systems with a delay of **= 3600 / 0.8 = 45000`. In theory, you should be able to record with no limit; in practice, pre-allocations of RoPE parameters among other things limits `--max-model-len`. For the best user experience, we recommend to simply instantiate vLLM with the default parameters which will automatically set a maximum model length of 131072 (~ca. 3h). - We strongly recommend using websockets to set up audio streaming sessions. For more info on how to do so, check Usage. - We recommend using a delay of 480ms as we found it to be the sweet spot of performance and low latency. If, however, you want to adapt...",
+        "title": "mistralai/Voxtral-Mini-4B-Realtime-2602"
+      }
+    ]
+  },
   "papers": [
     {
       "arxiv_id": "2505.07671",
@@ -1221,6 +1262,74 @@
       "title": "CoT is Not the Chain of Truth: An Empirical Internal Analysis of Reasoning LLMs for Fake News Generation"
     },
     {
+      "arxiv_id": "2602.15772",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-18T06:30:29.631433+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Understanding vs. Generation: Navigating Optimization Dilemma in Multimodal Models",
+          "url": "https://arxiv.org/abs/2602.15772"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Understanding vs. Generation: Navigating Optimization Dilemma in Multimodal Models",
+        "url": "https://arxiv.org/abs/2602.15772"
+      },
+      "published_at": "2026-02-17T18:04:13+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.15772",
+      "summary": "Current research in multimodal models faces a key challenge where enhancing generative capabilities often comes at the expense of understanding, and vice versa. We analyzed this trade-off and identify the primary cause might be the potential conflict between generation and understanding, which creates a competitive dynamic within the model. To address this, we propose the Reason-Reflect-Refine (R3) framework. This innovative algorithm re-frames the single-step generation task into a multi-step process of \"generate-understand-regenerate\". By explicitly leveraging the model's understanding capability during generation, we successfully mitigate the optimization dilemma, achieved stronger generation results and improved understanding ability which are related to the generation process. This offers valuable insights for designing next-generation unified multimodal models. Code is available at https://github.com/sen-ye/R3.",
+      "title": "Understanding vs. Generation: Navigating Optimization Dilemma in Multimodal Models"
+    },
+    {
+      "arxiv_id": "2602.15763",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "01-ai"
+      ],
+      "first_seen_at": "2026-02-18T06:30:29.498314+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "GLM-5: from Vibe Coding to Agentic Engineering",
+          "url": "https://arxiv.org/abs/2602.15763"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "GLM-5: from Vibe Coding to Agentic Engineering",
+        "url": "https://arxiv.org/abs/2602.15763"
+      },
+      "published_at": "2026-02-17T17:50:56+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.15763",
+      "summary": "We present GLM-5, a next-generation foundation model designed to transition the paradigm of vibe coding to agentic engineering. Building upon the agentic, reasoning, and coding (ARC) capabilities of its predecessor, GLM-5 adopts DSA to significantly reduce training and inference costs while maintaining long-context fidelity. To advance model alignment and autonomy, we implement a new asynchronous reinforcement learning infrastructure that drastically improves post-training efficiency by decoupling generation from training. Furthermore, we propose novel asynchronous agent RL algorithms that further improve RL quality, enabling the model to learn from complex, long-horizon interactions more effectively. Through these innovations, GLM-5 achieves state-of-the-art performance on major open benchmarks. Most critically, GLM-5 demonstrates unprecedented capability in real-world coding tasks, surpassing previous baselines in handling end-to-end software engineering challenges. Code, models, and more information are available at https://github.com/zai-org/GLM-5.",
+      "title": "GLM-5: from Vibe Coding to Agentic Engineering"
+    },
+    {
       "arxiv_id": "2502.05376",
       "authors": [
         "Reena Elangovan, Charbel Sakr, Anand Raghunathan, Brucek Khailany"
@@ -1293,93 +1402,17 @@
       "story_id": "arxiv:2509.21719",
       "summary": "arXiv:2509.21719v2 Announce Type: replace \nAbstract: Videos captured in the wild often suffer from rain streaks, blur, and noise. In addition, even slight changes in camera pose can amplify cross-frame mismatches and temporal artifacts. Existing methods rely on optical flow or heuristic alignment, which are computationally expensive and less robust. To address these challenges, Lie groups provide a principled way to represent continuous geometric transformations, making them well-suited for enforcing spatial and temporal consistency in video modeling. Building on this insight, we propose DeLiVR, an efficient video deraining method that injects spatiotemporal Lie-group differential biases directly into attention scores of the network. Specifically, the method introduces two complementary components. First, a rotation-bounded Lie relative bias predicts the in-plane angle of each frame using a compact prediction module, where normalized coordinates are rotated and compared with base coord",
       "title": "DeLiVR: Differential Spatiotemporal Lie Bias for Efficient Video Deraining"
-    },
-    {
-      "arxiv_id": "2602.10098",
-      "authors": [
-        "Jingwen Sun, Wenyao Zhang, Zekun Qi, Shaojie Ren, Zezhi Liu, Hanxin Zhu, Guangzhong Sun, Xin Jin, Zhibo Chen"
-      ],
-      "categories": [
-        "cs.RO",
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-11T07:16:32.012918+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model",
-          "url": "https://arxiv.org/abs/2602.10098"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model",
-        "url": "https://arxiv.org/abs/2602.10098"
-      },
-      "published_at": "2026-02-17T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2602.10098",
-      "summary": "arXiv:2602.10098v2 Announce Type: replace-cross \nAbstract: Pretraining Vision-Language-Action (VLA) policies on internet-scale video is appealing, yet current latent-action objectives often learn the wrong thing: they remain anchored to pixel variation rather than action-relevant state transitions, making them vulnerable to appearance bias, nuisance motion, and information leakage. We introduce VLA-JEPA, a JEPA-style pretraining framework that sidesteps these pitfalls by design. The key idea is leakage-free state prediction: a target encoder produces latent representations from future frames, while the student pathway sees only the current observation -- future information is used solely as supervision targets, never as input. By predicting in latent space rather than pixel space, VLA-JEPA learns dynamics abstractions that are robust to camera motion and irrelevant background changes. This yields a simple two-stage recipe -- JEPA pretraining followed by action-head fine-tuning -- witho",
-      "title": "VLA-JEPA: Enhancing Vision-Language-Action Model with Latent World Model"
-    },
-    {
-      "arxiv_id": "2411.08982",
-      "authors": [
-        "Vima Gupta, Jae Hyung Ju, Kartik Sinha, Ada Gavrilovska, Anand Padmanabha Iyer"
-      ],
-      "categories": [
-        "cs.LG",
-        "cs.DC"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-17T06:28:23.388213+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-lg",
-          "tier": 1,
-          "title": "Lynx: Enabling Efficient MoE Inference through Dynamic Batch-Aware Expert Selection",
-          "url": "https://arxiv.org/abs/2411.08982"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-lg",
-        "tier": 1,
-        "title": "Lynx: Enabling Efficient MoE Inference through Dynamic Batch-Aware Expert Selection",
-        "url": "https://arxiv.org/abs/2411.08982"
-      },
-      "published_at": "2026-02-17T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.LG",
-      "story_id": "arxiv:2411.08982",
-      "summary": "arXiv:2411.08982v2 Announce Type: replace \nAbstract: Selective parameter activation provided by Mixture-of-Expert (MoE) models have made them a popular choice in modern foundational models. However, MoEs face a fundamental tension when employed for serving. Batching, critical for performance in serving, forces the activation of all experts, thereby negating MoEs' benefits and exacerbating memory bandwidth bottlenecks. Existing work on efficient MoE inference are unable to resolve this tension even with extensive workload-specific tuning. We present LYNX, a system that enables efficient MoE inference in a workload-agnostic fashion. Exploiting several key observations that we uncover in this work, LYNX provides a light-weight run-time dynamic expert remapping technique that depends only on information already available in the models. Our evaluation of LYNX on four state-of-the-art model families across nine benchmarks shows that it achieves up to 1.23x improvement in throughput while sim",
-      "title": "Lynx: Enabling Efficient MoE Inference through Dynamic Batch-Aware Expert Selection"
     }
   ],
   "run_date": "2026-02-17",
-  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
+  "run_id": "b893ee70-7292-4ac7-8f7a-f36c19b0ecc4",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-17T23:59:59+00:00",
-    "items_total": 374,
-    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-17",
+    "items_total": 376,
+    "run_id": "b893ee70-7292-4ac7-8f7a-f36c19b0ecc4-2026-02-17",
     "started_at": "2026-02-16T23:59:59+00:00",
-    "stories_total": 374,
+    "stories_total": 376,
     "success": true
   },
   "sources_status": [],

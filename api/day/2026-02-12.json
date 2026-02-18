@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-18",
     "2026-02-17",
     "2026-02-16",
     "2026-02-15",
@@ -30,7 +31,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-17T06:28:29.629796+00:00",
+  "generated_at": "2026-02-18T06:30:37.479985+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -1384,14 +1385,14 @@
     }
   ],
   "run_date": "2026-02-12",
-  "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86",
+  "run_id": "b893ee70-7292-4ac7-8f7a-f36c19b0ecc4",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-12T23:59:59+00:00",
-    "items_total": 344,
-    "run_id": "132930cc-8b8f-4cf4-a466-b2c86411cb86-2026-02-12",
+    "items_total": 343,
+    "run_id": "b893ee70-7292-4ac7-8f7a-f36c19b0ecc4-2026-02-12",
     "started_at": "2026-02-11T23:59:59+00:00",
-    "stories_total": 343,
+    "stories_total": 342,
     "success": true
   },
   "sources_status": [],
