@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-20",
     "2026-02-19",
     "2026-02-18",
     "2026-02-17",
@@ -32,8 +33,48 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-19T06:29:38.400937+00:00",
+  "generated_at": "2026-02-20T06:26:09.929973+00:00",
   "model_releases_by_entity": {
+    "huggingface": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "huggingface"
+        ],
+        "first_seen_at": "2026-02-20T06:26:06.549933+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 0,
+          "likes": 1
+        },
+        "hf_model_id": "google/timesfm-2.5-200m-transformers",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/timesfm-2.5-200m-transformers",
+            "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/timesfm-2.5-200m-transformers",
+          "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
+        },
+        "published_at": "2026-02-19T22:09:20+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/timesfm-2.5-200m-transformers",
+        "summary": "license: apache-2.0",
+        "title": "google/timesfm-2.5-200m-transformers"
+      }
+    ],
     "other": [
       {
         "arxiv_id": null,
@@ -877,6 +918,39 @@
       "title": "Functional Decomposition and Shapley Interactions for Interpreting Survival Models"
     },
     {
+      "arxiv_id": "2602.17259",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-20T06:26:07.519362+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "FRAPPE: Infusing World Modeling into Generalist Policies via Multiple Future Representation Alignment",
+          "url": "https://arxiv.org/abs/2602.17259"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "FRAPPE: Infusing World Modeling into Generalist Policies via Multiple Future Representation Alignment",
+        "url": "https://arxiv.org/abs/2602.17259"
+      },
+      "published_at": "2026-02-19T11:00:46+00:00",
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.17259",
+      "summary": "Enabling VLA models to predict environmental dynamics, known as world modeling, has been recognized as essential for improving robotic reasoning and generalization. However, current approaches face two main issues: 1. The training objective forces models to over-emphasize pixel-level reconstruction, which constrains semantic learning and generalization 2. Reliance on predicted future observations during inference often leads to error accumulation. To address these challenges, we introduce Future Representation Alignment via Parallel Progressive Expansion (FRAPPE). Our method adopts a two-stage fine-tuning strategy: In the mid-training phase, the model learns to predict the latent representations of future observations; In the post-training phase, we expand the computational workload in parallel and align the representation simultaneously with multiple different visual foundation models. By significantly improving fine-tuning efficiency and reducing dependence on action-annotated data, FRAPPE provides a scalable and data-efficient pathway to enhance world-awareness in generalist robotic policies. Experiments on the RoboTwin benchmark and real-world tasks demonstrate that FRAPPE outperforms state-of-the-art approaches and shows strong generalization in long-horizon and unseen scenarios.",
+      "title": "FRAPPE: Infusing World Modeling into Generalist Policies via Multiple Future Representation Alignment"
+    },
+    {
       "arxiv_id": "2507.04033",
       "authors": [
         "Andrii Kliachkin, Jana Lep\\v{s}ov\\'a, Gilles Bareilles, Jakub Mare\\v{c}ek"
@@ -1371,55 +1445,17 @@
       "story_id": "arxiv:2510.19753",
       "summary": "arXiv:2510.19753v2 Announce Type: replace \nAbstract: Transformers often fail to learn generalizable algorithms, instead relying on brittle heuristics. Using graph connectivity as a testbed, we explain this phenomenon both theoretically and empirically. We consider a simplified Transformer architecture, the Disentangled Transformer, and prove that an $L$-layer model can compute connectivity in graphs with diameters up to $3^L$, implementing an algorithm equivalent to computing powers of the adjacency matrix. By analyzing training dynamics, we prove that whether the model learns this strategy hinges on whether most training instances are within this model capacity. Within-capacity graphs (diameter $\\leq 3^L$) drive the learning of the algorithmic solution while beyond-capacity graphs drive the learning of a simple heuristic based on node degrees. Finally, we empirically show that restricting training data to stay within a model's capacity makes both standard and Disentangled Transformers",
       "title": "Transformers Provably Learn Algorithmic Solutions for Graph Connectivity, But Only with the Right Data"
-    },
-    {
-      "arxiv_id": "2602.15916",
-      "authors": [
-        "Jianle Sun, Kun Zhang"
-      ],
-      "categories": [
-        "stat.ME",
-        "stat.ML"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-19T06:29:34.860695+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-stat-ml",
-          "tier": 1,
-          "title": "Nonparametric Identification and Inference for Counterfactual Distributions with Confounding",
-          "url": "https://arxiv.org/abs/2602.15916"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-stat-ml",
-        "tier": 1,
-        "title": "Nonparametric Identification and Inference for Counterfactual Distributions with Confounding",
-        "url": "https://arxiv.org/abs/2602.15916"
-      },
-      "published_at": "2026-02-19T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv stat.ML",
-      "story_id": "arxiv:2602.15916",
-      "summary": "arXiv:2602.15916v1 Announce Type: cross \nAbstract: We propose nonparametric identification and semiparametric estimation of joint potential outcome distributions in the presence of confounding. First, in settings with observed confounding, we derive tighter, covariate-informed bounds on the joint distribution by leveraging conditional copulas. To overcome the non-differentiability of bounding min/max operators, we establish the asymptotic properties for both a direct estimator with polynomial margin condition and a smooth approximation with log-sum-exp operator, facilitating valid inference for individual-level effects under the canonical rank-preserving assumption. Second, we tackle the challenge of unmeasured confounding by introducing a causal representation learning framework. By utilizing instrumental variables, we prove the nonparametric identifiability of the latent confounding subspace under injectivity and completeness conditions. We develop a ``triple machine learning\" estima",
-      "title": "Nonparametric Identification and Inference for Counterfactual Distributions with Confounding"
     }
   ],
   "run_date": "2026-02-19",
-  "run_id": "1aa410a1-737a-48be-a9dd-3f61b16ee39e",
+  "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-19T23:59:59+00:00",
-    "items_total": 338,
-    "run_id": "1aa410a1-737a-48be-a9dd-3f61b16ee39e-2026-02-19",
+    "items_total": 339,
+    "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026-2026-02-19",
     "started_at": "2026-02-18T23:59:59+00:00",
-    "stories_total": 338,
+    "stories_total": 339,
     "success": true
   },
   "sources_status": [],

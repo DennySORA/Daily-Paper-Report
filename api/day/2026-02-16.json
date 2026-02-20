@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-20",
     "2026-02-19",
     "2026-02-18",
     "2026-02-17",
@@ -32,50 +33,8 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-19T06:29:39.772375+00:00",
-  "model_releases_by_entity": {
-    "qwen": [
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [
-          "qwen"
-        ],
-        "first_seen_at": "2026-02-17T06:28:25.382290+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 0,
-          "likes": 490,
-          "pipeline_tag": "image-text-to-text"
-        },
-        "hf_model_id": "qwen/qwen3.5-397b-a17b",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-qwen",
-            "tier": 1,
-            "title": "Qwen/Qwen3.5-397B-A17B",
-            "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-qwen",
-          "tier": 1,
-          "title": "Qwen/Qwen3.5-397B-A17B",
-          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
-        },
-        "published_at": "2026-02-16T10:47:58+00:00",
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:qwen/qwen3.5-397b-a17b",
-        "summary": "> This repository contains model weights and configuration files for the post-trained model in the Hugging Face Transformers format. > These artifacts are compatible with Hugging Face Transformers, vLLM, SGLang, etc. > For users seeking managed, scalable inference without infrastructure maintenance, the official Qwen API service is provided by Alibaba Cloud Model Studio. > In particular, **Qwen3.5-Plus** is the hosted version corresponding to Qwen3.5-397B-A17B with more production features, e.g., 1M context length by default, official built-in tools, and adaptive tool use. > For more information, please refer to the User Guide. Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a...",
-        "title": "Qwen/Qwen3.5-397B-A17B"
-      }
-    ]
-  },
+  "generated_at": "2026-02-20T06:26:11.354740+00:00",
+  "model_releases_by_entity": {},
   "papers": [
     {
       "arxiv_id": "2503.03704",
@@ -1396,14 +1355,14 @@
     }
   ],
   "run_date": "2026-02-16",
-  "run_id": "1aa410a1-737a-48be-a9dd-3f61b16ee39e",
+  "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-16T23:59:59+00:00",
-    "items_total": 343,
-    "run_id": "1aa410a1-737a-48be-a9dd-3f61b16ee39e-2026-02-16",
+    "items_total": 340,
+    "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026-2026-02-16",
     "started_at": "2026-02-15T23:59:59+00:00",
-    "stories_total": 343,
+    "stories_total": 340,
     "success": true
   },
   "sources_status": [],

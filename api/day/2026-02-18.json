@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-20",
     "2026-02-19",
     "2026-02-18",
     "2026-02-17",
@@ -32,7 +33,7 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-19T06:29:38.826492+00:00",
+  "generated_at": "2026-02-20T06:26:10.371516+00:00",
   "model_releases_by_entity": {
     "qwen": [
       {
@@ -763,45 +764,6 @@
       "title": "Learning Pseudorandom Numbers with Transformers: Permuted Congruential Generators, Curricula, and Interpretability"
     },
     {
-      "arxiv_id": "2602.15277",
-      "authors": [
-        "Muhammad J. Alahmadi (DK), Peng Gao (DK), Feiyi Wang (DK),  Dongkuan (DK),  Xu"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.AI",
-        "cs.LG"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-18T06:30:29.623729+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "Accelerating Large-Scale Dataset Distillation via Exploration-Exploitation Optimization",
-          "url": "https://arxiv.org/abs/2602.15277"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "Accelerating Large-Scale Dataset Distillation via Exploration-Exploitation Optimization",
-        "url": "https://arxiv.org/abs/2602.15277"
-      },
-      "published_at": "2026-02-18T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv cs.CV",
-      "story_id": "arxiv:2602.15277",
-      "summary": "arXiv:2602.15277v1 Announce Type: new \nAbstract: Dataset distillation compresses the original data into compact synthetic datasets, reducing training time and storage while retaining model performance, enabling deployment under limited resources. Although recent decoupling-based distillation methods enable dataset distillation at large-scale, they continue to face an efficiency gap: optimization-based decoupling methods achieve higher accuracy but demand intensive computation, whereas optimization-free decoupling methods are efficient but sacrifice accuracy. To overcome this trade-off, we propose Exploration-Exploitation Distillation (E^2D), a simple, practical method that minimizes redundant computation through an efficient pipeline that begins with full-image initialization to preserve semantic integrity and feature diversity. It then uses a two-phase optimization strategy: an exploration phase that performs uniform updates and identifies high-loss regions, and an exploitation phase ",
-      "title": "Accelerating Large-Scale Dataset Distillation via Exploration-Exploitation Optimization"
-    },
-    {
       "arxiv_id": "2602.15675",
       "authors": [
         "Ahmed Khaled Khamis, Hesham Ali"
@@ -837,9 +799,7 @@
       "story_id": "arxiv:2602.15675",
       "summary": "arXiv:2602.15675v1 Announce Type: new \nAbstract: Despite the advances in neural text to speech (TTS), many Arabic dialectal varieties remain marginally addressed, with most resources concentrated on Modern Spoken Arabic (MSA) and Gulf dialects, leaving Egyptian Arabic -- the most widely understood Arabic dialect -- severely under-resourced. We address this gap by introducing NileTTS: 38 hours of transcribed speech from two speakers across diverse domains including medical, sales, and general conversations. We construct this dataset using a novel synthetic pipeline: large language models (LLM) generate Egyptian Arabic content, which is then converted to natural speech using audio synthesis tools, followed by automatic transcription and speaker diarization with manual quality verification. We fine-tune XTTS v2, a state-of-the-art multilingual TTS model, on our dataset and evaluate against the baseline model trained on other Arabic dialects. Our contributions include: (1) the first public",
       "title": "LLM-to-Speech: A Synthetic Data Pipeline for Training Dialectal Text-to-Speech Models"
-    }
-  ],
-  "radar": [
+    },
     {
       "arxiv_id": "2602.14027",
       "authors": [
@@ -876,7 +836,9 @@
       "story_id": "arxiv:2602.14027",
       "summary": "arXiv:2602.14027v2 Announce Type: replace \nAbstract: Autoregressive video diffusion models have emerged as a scalable paradigm for long video generation. However, they often suffer from severe extrapolation failure, where rapid error accumulation leads to significant temporal degradation when extending beyond training horizons. We identify that this failure primarily stems from the spectral bias of 3D positional embeddings and the lack of dynamic priors in noise sampling. To address these issues, we propose FLEX (Frequency-aware Length EXtension), a training-free inference-time framework that bridges the gap between short-term training and long-term inference. FLEX introduces Frequency-aware RoPE Modulation to adaptively interpolate under-trained low-frequency components while extrapolating high-frequency ones to preserve multi-scale temporal discriminability. This is integrated with Antiphase Noise Sampling (ANS) to inject high-frequency dynamic priors and Inference-only Attention Sin",
       "title": "Train Short, Inference Long: Training-free Horizon Extension for Autoregressive Video Generation"
-    },
+    }
+  ],
+  "radar": [
     {
       "arxiv_id": "2502.19412",
       "authors": [
@@ -1255,6 +1217,43 @@
       "title": "OpenAIs HealthBench in Action: Evaluating an LLM-Based Medical Assistant on Realistic Clinical Queries"
     },
     {
+      "arxiv_id": "2509.21199",
+      "authors": [
+        "Kaiyang Wan, Lang Gao, Honglin Mu, Preslav Nakov, Yuxia Wang, Xiuying Chen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-18T06:30:29.156817+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "A Fano-Style Accuracy Upper Bound for LLM Single-Pass Reasoning in Multi-Hop QA",
+          "url": "https://arxiv.org/abs/2509.21199"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "A Fano-Style Accuracy Upper Bound for LLM Single-Pass Reasoning in Multi-Hop QA",
+        "url": "https://arxiv.org/abs/2509.21199"
+      },
+      "published_at": "2026-02-18T05:00:00+00:00",
+      "section": null,
+      "source_name": "arXiv cs.AI",
+      "story_id": "arxiv:2509.21199",
+      "summary": "arXiv:2509.21199v2 Announce Type: replace \nAbstract: Multi-Hop Question Answering (MHQA) requires integrating dispersed, interdependent evidence through sequential reasoning under noise. This task is challenging for LLMs as they have a finite per-pass output capacity, beyond which the integration of task-relevant evidence proves unreliable. Consequently, the single-pass reasoning paradigm is inherently vulnerable to this capacity overflow. To formalize this bottleneck, our analysis establishes a Fano-style accuracy upper bound, defining a theoretical performance ceiling for single-pass LLMs. This bound reveals that accuracy inevitably collapses once task complexity exceeds model capacity, providing general principles for capacity-aware representation and structuring of MHQA in LLMs. Building on these principles, we introduce a proof-of-concept multi-call framework for MHQA, InfoQA. It ensures high per-step accuracy by combining capacity-aware task decomposition with active pruning of p",
+      "title": "A Fano-Style Accuracy Upper Bound for LLM Single-Pass Reasoning in Multi-Hop QA"
+    },
+    {
       "arxiv_id": "2602.15456",
       "authors": [
         "Mohammad Aflah Khan, Mahsa Amani, Soumi Das, Bishwamittra Ghosh, Qinyuan Wu, Krishna P. Gummadi, Manish Gupta, Abhilasha Ravichander"
@@ -1404,14 +1403,14 @@
     }
   ],
   "run_date": "2026-02-18",
-  "run_id": "1aa410a1-737a-48be-a9dd-3f61b16ee39e",
+  "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-18T23:59:59+00:00",
-    "items_total": 317,
-    "run_id": "1aa410a1-737a-48be-a9dd-3f61b16ee39e-2026-02-18",
+    "items_total": 314,
+    "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026-2026-02-18",
     "started_at": "2026-02-17T23:59:59+00:00",
-    "stories_total": 316,
+    "stories_total": 313,
     "success": true
   },
   "sources_status": [],
