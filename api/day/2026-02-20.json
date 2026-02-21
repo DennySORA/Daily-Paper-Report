@@ -2,37 +2,7 @@
   "archive_dates": [
     "2026-02-21",
     "2026-02-20",
-    "2026-02-19",
-    "2026-02-18",
-    "2026-02-17",
-    "2026-02-16",
-    "2026-02-15",
-    "2026-02-14",
-    "2026-02-13",
-    "2026-02-12",
-    "2026-02-11",
-    "2026-02-10",
-    "2026-02-09",
-    "2026-02-07",
-    "2026-02-06",
-    "2026-02-05",
-    "2026-02-04",
-    "2026-02-03",
-    "2026-02-02",
-    "2026-01-30",
-    "2026-01-29",
-    "2026-01-28",
-    "2026-01-27",
-    "2026-01-26",
-    "2026-01-24",
-    "2026-01-23",
-    "2026-01-22",
-    "2026-01-21",
-    "2026-01-20",
-    "2026-01-19",
-    "2026-01-18",
-    "2026-01-16",
-    "2026-01-15"
+    "2026-02-03"
   ],
   "entity_catalog": {
     "01-ai": {
@@ -132,17 +102,17 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T13:02:35.731129+00:00",
+  "generated_at": "2026-02-21T13:04:04.399340+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
   "run_date": "2026-02-20",
-  "run_id": "21a26e67-accf-40fd-868b-0eb6bb35baf7",
+  "run_id": "80cd780d-8ec0-4f71-b14c-f4f5e1c5b55a",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-20T23:59:59+00:00",
     "items_total": 5,
-    "run_id": "21a26e67-accf-40fd-868b-0eb6bb35baf7-2026-02-20",
+    "run_id": "80cd780d-8ec0-4f71-b14c-f4f5e1c5b55a-2026-02-20",
     "started_at": "2026-02-19T23:59:59+00:00",
     "stories_total": 5,
     "success": true
@@ -162,7 +132,7 @@
       "entities": [
         "aws"
       ],
-      "first_seen_at": "2026-02-21T11:03:38.828630+00:00",
+      "first_seen_at": "2026-02-21T13:03:22.793943+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -191,11 +161,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9331833346250384,
+        "recency_score": 0.9330875663700686,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.433183334625038
+        "total_score": 11.43308756637007
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -216,7 +186,7 @@
       "entities": [
         "aws"
       ],
-      "first_seen_at": "2026-02-21T11:03:38.828999+00:00",
+      "first_seen_at": "2026-02-21T13:03:22.794310+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -245,11 +215,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9331649735595072,
+        "recency_score": 0.9330692071888479,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.433164973559506
+        "total_score": 11.433069207188847
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -264,7 +234,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:44.958145+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.762852+00:00",
       "github_release_url": null,
       "hf_metadata": {
         "downloads": 182,
@@ -297,11 +267,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9157929839568335,
+        "recency_score": 0.915699000392476,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.715792983956833
+        "total_score": 10.715699000392476
       },
       "section": null,
       "source_name": null,
@@ -316,11 +286,11 @@
       "entities": [
         "qwen"
       ],
-      "first_seen_at": "2026-02-21T11:03:45.936632+00:00",
+      "first_seen_at": "2026-02-21T13:03:29.538104+00:00",
       "github_release_url": null,
       "hf_metadata": {
         "downloads": 133264,
-        "likes": 793,
+        "likes": 802,
         "pipeline_tag": "image-text-to-text"
       },
       "hf_model_id": "qwen/qwen3.5-397b-a17b",
@@ -349,11 +319,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8766912889977251,
+        "recency_score": 0.8766013182580222,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.676691288997725
+        "total_score": 10.676601318258022
       },
       "section": null,
       "source_name": null,
@@ -373,7 +343,7 @@
         "Technical How-to"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:38.829250+00:00",
+      "first_seen_at": "2026-02-21T13:03:22.794606+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -402,11 +372,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9177315534485078,
+        "recency_score": 0.9176373709378012,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 3.75,
-        "total_score": 9.167731553448508
+        "total_score": 9.1676373709378
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",

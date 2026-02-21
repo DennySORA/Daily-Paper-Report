@@ -3,36 +3,7 @@
     "2026-02-21",
     "2026-02-20",
     "2026-02-19",
-    "2026-02-18",
-    "2026-02-17",
-    "2026-02-16",
-    "2026-02-15",
-    "2026-02-14",
-    "2026-02-13",
-    "2026-02-12",
-    "2026-02-11",
-    "2026-02-10",
-    "2026-02-09",
-    "2026-02-07",
-    "2026-02-06",
-    "2026-02-05",
-    "2026-02-04",
-    "2026-02-03",
-    "2026-02-02",
-    "2026-01-30",
-    "2026-01-29",
-    "2026-01-28",
-    "2026-01-27",
-    "2026-01-26",
-    "2026-01-24",
-    "2026-01-23",
-    "2026-01-22",
-    "2026-01-21",
-    "2026-01-20",
-    "2026-01-19",
-    "2026-01-18",
-    "2026-01-16",
-    "2026-01-15"
+    "2026-02-03"
   ],
   "entity_catalog": {
     "01-ai": {
@@ -132,7 +103,7 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T13:02:36.237163+00:00",
+  "generated_at": "2026-02-21T13:04:04.769432+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -140,7 +111,7 @@
         "authors": [],
         "categories": [],
         "entities": [],
-        "first_seen_at": "2026-02-21T11:03:45.484834+00:00",
+        "first_seen_at": "2026-02-21T13:03:29.184475+00:00",
         "github_release_url": null,
         "hf_metadata": {
           "downloads": 101316,
@@ -173,11 +144,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.7769597656101972,
+          "recency_score": 0.7768800402551327,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.576959765610198
+          "total_score": 8.576880040255132
         },
         "section": null,
         "source_name": null,
@@ -195,7 +166,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:46.699359+00:00",
+      "first_seen_at": "2026-02-21T13:03:30.222867+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -224,11 +195,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8144721117072823,
+        "recency_score": 0.8143885371373109,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.014472111707283
+        "total_score": 11.014388537137311
       },
       "section": null,
       "source_name": null,
@@ -243,7 +214,7 @@
       "entities": [
         "stability-ai"
       ],
-      "first_seen_at": "2026-02-21T11:03:46.701652+00:00",
+      "first_seen_at": "2026-02-21T13:03:30.224768+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -272,11 +243,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8128165720550454,
+        "recency_score": 0.8127331673632228,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.012816572055046
+        "total_score": 11.012733167363223
       },
       "section": null,
       "source_name": null,
@@ -291,7 +262,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:43.394229+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.188322+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -320,11 +291,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8118331325969986,
+        "recency_score": 0.8117498288178144,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.011833132597
+        "total_score": 11.011749828817814
       },
       "section": null,
       "source_name": null,
@@ -345,7 +316,7 @@
       "entities": [
         "01-ai"
       ],
-      "first_seen_at": "2026-02-21T11:03:41.377367+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.162748+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -374,11 +345,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8090959413112195,
+        "recency_score": 0.8090129184005652,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.00909594131122
+        "total_score": 11.009012918400565
       },
       "section": null,
       "source_name": null,
@@ -393,7 +364,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:46.701846+00:00",
+      "first_seen_at": "2026-02-21T13:03:30.225017+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -422,11 +393,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7818481640359437,
+        "recency_score": 0.7817679370727941,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.981848164035945
+        "total_score": 10.981767937072794
       },
       "section": null,
       "source_name": null,
@@ -441,7 +412,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:46.701421+00:00",
+      "first_seen_at": "2026-02-21T13:03:30.224518+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -470,11 +441,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7762487772585787,
+        "recency_score": 0.776169124859414,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.97624877725858
+        "total_score": 10.976169124859414
       },
       "section": null,
       "source_name": null,
@@ -501,7 +472,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.374838+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.159565+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -530,11 +501,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8392997938468257,
+        "recency_score": 0.8392136716600258,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.039299793846826
+        "total_score": 9.039213671660026
       },
       "section": null,
       "source_name": null,
@@ -553,7 +524,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.392620+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.186298+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -582,11 +553,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8391055339717882,
+        "recency_score": 0.8390194317183725,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.039105533971789
+        "total_score": 9.039019431718373
       },
       "section": null,
       "source_name": null,
@@ -611,7 +582,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.392874+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.186615+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -640,11 +611,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8387346225543391,
+        "recency_score": 0.8386485583608664,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.038734622554339
+        "total_score": 9.038648558360867
       },
       "section": null,
       "source_name": null,
@@ -665,7 +636,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.447446+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.220936+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -694,11 +665,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8386142572414121,
+        "recency_score": 0.8385282053988586,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.038614257241413
+        "total_score": 9.038528205398858
       },
       "section": null,
       "source_name": null,
@@ -720,7 +691,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.447958+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.221529+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -749,11 +720,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.838190204270313,
+        "recency_score": 0.838104195940661,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.038190204270313
+        "total_score": 9.038104195940662
       },
       "section": null,
       "source_name": null,
@@ -774,7 +745,7 @@
         "math.NA"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.375333+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.160200+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -803,11 +774,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8376674685895397,
+        "recency_score": 0.8375815138988141,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.03766746858954
+        "total_score": 9.037581513898814
       },
       "section": null,
       "source_name": null,
@@ -832,7 +803,7 @@
         "cs.SD"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.393099+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.186941+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -861,11 +832,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8372080409439336,
+        "recency_score": 0.8371221333959737,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.037208040943934
+        "total_score": 9.037122133395973
       },
       "section": null,
       "source_name": null,
@@ -884,7 +855,7 @@
         "eess.AS"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.448166+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.221813+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -913,11 +884,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8371314941712589,
+        "recency_score": 0.8370455944779125,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.037131494171259
+        "total_score": 9.037045594477913
       },
       "section": null,
       "source_name": null,
@@ -930,7 +901,7 @@
       "authors": [],
       "categories": [],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.375572+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.160476+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -959,11 +930,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8364816131882759,
+        "recency_score": 0.836395780180483,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.036481613188275
+        "total_score": 9.036395780180483
       },
       "section": null,
       "source_name": null,
@@ -990,7 +961,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.448365+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.222097+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1019,11 +990,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8331346554293865,
+        "recency_score": 0.8330491658594492,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.033134655429386
+        "total_score": 9.033049165859449
       },
       "section": null,
       "source_name": null,
@@ -1046,7 +1017,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.375803+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.160756+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1075,11 +1046,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8330334125781564,
+        "recency_score": 0.8329479333969454,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.033033412578156
+        "total_score": 9.032947933396946
       },
       "section": null,
       "source_name": null,
@@ -1106,7 +1077,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.448588+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.222379+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1135,11 +1106,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8326488019347658,
+        "recency_score": 0.8325633622192019,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.032648801934766
+        "total_score": 9.032563362219202
       },
       "section": null,
       "source_name": null,
@@ -1161,7 +1132,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.448790+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.222638+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1190,11 +1161,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8324059814472439,
+        "recency_score": 0.8323205666479634,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.032405981447244
+        "total_score": 9.032320566647964
       },
       "section": null,
       "source_name": null,
@@ -1215,7 +1186,7 @@
         "cs.IR"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:42.379785+00:00",
+      "first_seen_at": "2026-02-21T13:03:26.141033+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1244,11 +1215,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.832293267435773,
+        "recency_score": 0.8322078642022968,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.032293267435772
+        "total_score": 9.032207864202297
       },
       "section": null,
       "source_name": null,
@@ -1269,7 +1240,7 @@
         "cs.CY"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.448986+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.222919+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1298,11 +1269,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.832257626010398,
+        "recency_score": 0.8321722264341578,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.032257626010399
+        "total_score": 9.032172226434158
       },
       "section": null,
       "source_name": null,
@@ -1324,7 +1295,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.369292+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.171829+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1353,11 +1324,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8315104709430102,
+        "recency_score": 0.831425148033807,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.03151047094301
+        "total_score": 9.031425148033808
       },
       "section": null,
       "source_name": null,
@@ -1375,7 +1346,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.449195+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.223189+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1404,11 +1375,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8313699729428774,
+        "recency_score": 0.8312846644504476,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.031369972942878
+        "total_score": 9.031284664450448
       },
       "section": null,
       "source_name": null,
@@ -1431,7 +1402,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.449391+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.223450+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1460,11 +1431,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.831201599086332,
+        "recency_score": 0.8311163078710716,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.031201599086332
+        "total_score": 9.031116307871072
       },
       "section": null,
       "source_name": null,
@@ -1484,7 +1455,7 @@
         "cs.AR"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.449600+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.223709+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1513,11 +1484,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.830825526982627,
+        "recency_score": 0.8307402743568578,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.030825526982627
+        "total_score": 9.030740274356859
       },
       "section": null,
       "source_name": null,
@@ -1538,7 +1509,7 @@
         "cs.IR"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.376232+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.161310+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1567,11 +1538,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8307562944067758,
+        "recency_score": 0.8306710488850961,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.030756294406777
+        "total_score": 9.030671048885097
       },
       "section": null,
       "source_name": null,
@@ -1594,7 +1565,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.449813+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.224003+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1623,11 +1594,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8296551189433921,
+        "recency_score": 0.8295699864154716,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.029655118943392
+        "total_score": 9.029569986415472
       },
       "section": null,
       "source_name": null,
@@ -1648,7 +1619,7 @@
         "cs.CY"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.450011+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.224263+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1677,11 +1648,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8285045789210093,
+        "recency_score": 0.8284195644522419,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.028504578921009
+        "total_score": 9.028419564452243
       },
       "section": null,
       "source_name": null,
@@ -1701,7 +1672,7 @@
         "cs.HC"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.450203+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.224518+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1730,11 +1701,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8283348679365948,
+        "recency_score": 0.8282498708822021,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.028334867936595
+        "total_score": 9.028249870882203
       },
       "section": null,
       "source_name": null,
@@ -1754,7 +1725,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.450406+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.224801+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1783,11 +1754,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.827658287437381,
+        "recency_score": 0.8275733598082312,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.027658287437381
+        "total_score": 9.027573359808232
       },
       "section": null,
       "source_name": null,
@@ -1810,7 +1781,7 @@
         "cs.MA"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.376444+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.161572+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1839,11 +1810,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8257350703365215,
+        "recency_score": 0.825650340052425,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.025735070336522
+        "total_score": 9.025650340052426
       },
       "section": null,
       "source_name": null,
@@ -1867,7 +1838,7 @@
         "cs.CY"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.450612+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.225064+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1896,11 +1867,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8257293360851103,
+        "recency_score": 0.8256446063894165,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.02572933608511
+        "total_score": 9.025644606389417
       },
       "section": null,
       "source_name": null,
@@ -1919,7 +1890,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.450814+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.225320+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -1948,11 +1919,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8249154765559394,
+        "recency_score": 0.8248308303719574,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.02491547655594
+        "total_score": 9.024830830371958
       },
       "section": null,
       "source_name": null,
@@ -1971,7 +1942,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.451213+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.225861+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2000,11 +1971,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.824505030489163,
+        "recency_score": 0.8244204264218513,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.024505030489163
+        "total_score": 9.024420426421852
       },
       "section": null,
       "source_name": null,
@@ -2029,7 +2000,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.451407+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.226124+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2058,11 +2029,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8241567888484751,
+        "recency_score": 0.8240722205149165,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.024156788848476
+        "total_score": 9.024072220514917
       },
       "section": null,
       "source_name": null,
@@ -2083,7 +2054,7 @@
         "cs.IR"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.369744+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.172334+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2112,11 +2083,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8206919505638643,
+        "recency_score": 0.8206077377641116,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.020691950563865
+        "total_score": 9.020607737764111
       },
       "section": null,
       "source_name": null,
@@ -2137,7 +2108,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.451638+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.226389+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2166,11 +2137,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8165788847393773,
+        "recency_score": 0.8164950939893212,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.016578884739378
+        "total_score": 9.016495093989322
       },
       "section": null,
       "source_name": null,
@@ -2192,7 +2163,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.376715+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.161906+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2221,11 +2192,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8162670565252184,
+        "recency_score": 0.8161832977724626,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.01626705652522
+        "total_score": 9.016183297772463
       },
       "section": null,
       "source_name": null,
@@ -2246,7 +2217,7 @@
         "eess.SY"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.376926+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.162186+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2275,11 +2246,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8139274271596186,
+        "recency_score": 0.8138439084807897,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.013927427159619
+        "total_score": 9.01384390848079
       },
       "section": null,
       "source_name": null,
@@ -2300,7 +2271,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.393997+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.188053+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2329,11 +2300,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8128598481634438,
+        "recency_score": 0.8127764390309754,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.012859848163444
+        "total_score": 9.012776439030976
       },
       "section": null,
       "source_name": null,
@@ -2353,7 +2324,7 @@
         "stat.ME"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.451865+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.226647+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2382,11 +2353,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8122071881735247,
+        "recency_score": 0.8121238460117691,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.012207188173525
+        "total_score": 9.01212384601177
       },
       "section": null,
       "source_name": null,
@@ -2410,7 +2381,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.452083+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.226923+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2439,11 +2410,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8114789724963561,
+        "recency_score": 0.8113957050582298,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.011478972496356
+        "total_score": 9.01139570505823
       },
       "section": null,
       "source_name": null,
@@ -2465,7 +2436,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.377139+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.162460+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2494,11 +2465,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.81127518913338,
+        "recency_score": 0.8111919426058616,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.01127518913338
+        "total_score": 9.011191942605862
       },
       "section": null,
       "source_name": null,
@@ -2518,7 +2489,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.452304+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.227196+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2547,11 +2518,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8099879365055115,
+        "recency_score": 0.8099048220654927,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.009987936505512
+        "total_score": 9.009904822065494
       },
       "section": null,
       "source_name": null,
@@ -2570,7 +2541,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.452511+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.227451+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2599,11 +2570,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8094855998228537,
+        "recency_score": 0.8094025369285806,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.009485599822854
+        "total_score": 9.009402536928581
       },
       "section": null,
       "source_name": null,
@@ -2625,7 +2596,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.452743+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.227709+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2654,11 +2625,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.809304797423913,
+        "recency_score": 0.8092217530821262,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.009304797423914
+        "total_score": 9.009221753082127
       },
       "section": null,
       "source_name": null,
@@ -2683,7 +2654,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.452968+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.228002+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2712,11 +2683,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8067161734531573,
+        "recency_score": 0.8066333947351186,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.006716173453157
+        "total_score": 9.006633394735118
       },
       "section": null,
       "source_name": null,
@@ -2734,7 +2705,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.370132+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.172829+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2763,11 +2734,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8057438452495469,
+        "recency_score": 0.8056611663039993,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.005743845249548
+        "total_score": 9.005661166304
       },
       "section": null,
       "source_name": null,
@@ -2790,7 +2761,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.377594+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.163043+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2819,11 +2790,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8056505932566819,
+        "recency_score": 0.805567923879903,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.005650593256682
+        "total_score": 9.005567923879903
       },
       "section": null,
       "source_name": null,
@@ -2844,7 +2815,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.453175+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.228265+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2873,11 +2844,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8053354814011899,
+        "recency_score": 0.8052528443586524,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.00533548140119
+        "total_score": 9.005252844358653
       },
       "section": null,
       "source_name": null,
@@ -2897,7 +2868,7 @@
         "cs.IR"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.453381+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.228520+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2926,11 +2897,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8037878181493406,
+        "recency_score": 0.8037053399155442,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.003787818149341
+        "total_score": 9.003705339915545
       },
       "section": null,
       "source_name": null,
@@ -2952,7 +2923,7 @@
         "cs.AR"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.453625+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.228810+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -2981,11 +2952,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.803617589452297,
+        "recency_score": 0.8035351286859987,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.003617589452297
+        "total_score": 9.003535128685998
       },
       "section": null,
       "source_name": null,
@@ -3007,7 +2978,7 @@
         "cs.CV"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.370357+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.173083+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3036,11 +3007,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8034483267233257,
+        "recency_score": 0.8033658833254057,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.003448326723326
+        "total_score": 9.003365883325406
       },
       "section": null,
       "source_name": null,
@@ -3075,7 +3046,7 @@
         "q-bio.GN"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:40.453840+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.229078+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3104,11 +3075,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8028673387330875,
+        "recency_score": 0.802784954951477,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.002867338733088
+        "total_score": 9.002784954951476
       },
       "section": null,
       "source_name": null,
@@ -3125,7 +3096,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.394446+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.188687+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3154,11 +3125,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7981513886442914,
+        "recency_score": 0.7980694887755062,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.998151388644292
+        "total_score": 8.998069488775506
       },
       "section": null,
       "source_name": null,
@@ -3181,7 +3152,7 @@
         "cs.RO"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.370598+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.173332+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3210,11 +3181,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7978115076622532,
+        "recency_score": 0.7977296426693177,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.997811507662252
+        "total_score": 8.997729642669318
       },
       "section": null,
       "source_name": null,
@@ -3240,7 +3211,7 @@
         "cs.MA"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.378015+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.163584+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3269,11 +3240,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7946064023311878,
+        "recency_score": 0.7945248662203539,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.994606402331188
+        "total_score": 8.994524866220354
       },
       "section": null,
       "source_name": null,
@@ -3294,7 +3265,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.378222+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.163866+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3323,11 +3294,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7937533943742214,
+        "recency_score": 0.7936719457921956,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.993753394374222
+        "total_score": 8.993671945792196
       },
       "section": null,
       "source_name": null,
@@ -3347,7 +3318,7 @@
         "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.398881+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.189265+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3376,11 +3347,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7936946000040862,
+        "recency_score": 0.7936131574550651,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.993694600004087
+        "total_score": 8.993613157455066
       },
       "section": null,
       "source_name": null,
@@ -3400,7 +3371,7 @@
         "cs.SE"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.378424+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.164126+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3429,11 +3400,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7933722270592726,
+        "recency_score": 0.7932908175895674,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.993372227059272
+        "total_score": 8.993290817589568
       },
       "section": null,
       "source_name": null,
@@ -3454,7 +3425,7 @@
         "cs.MA"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.378866+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.164647+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3483,11 +3454,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7907915458810221,
+        "recency_score": 0.7907104012200398,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.990791545881022
+        "total_score": 8.99071040122004
       },
       "section": null,
       "source_name": null,
@@ -3507,7 +3478,7 @@
         "eess.SY"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.371047+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.173823+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3536,11 +3507,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7894865364418707,
+        "recency_score": 0.7894055256904491,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.98948653644187
+        "total_score": 8.989405525690449
       },
       "section": null,
       "source_name": null,
@@ -3563,7 +3534,7 @@
         "cs.HC"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.379072+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.164928+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3592,11 +3563,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7893595343565885,
+        "recency_score": 0.7892785366370982,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.989359534356588
+        "total_score": 8.989278536637098
       },
       "section": null,
       "source_name": null,
@@ -3615,7 +3586,7 @@
         "cond-mat.mtrl-sci"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.399239+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.189527+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3644,11 +3615,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7836274422574947,
+        "recency_score": 0.7835470327191408,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.983627442257495
+        "total_score": 8.983547032719141
       },
       "section": null,
       "source_name": null,
@@ -3669,7 +3640,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.380150+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.166282+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3698,11 +3669,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7826439907057383,
+        "recency_score": 0.782563682081264,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.98264399070574
+        "total_score": 8.982563682081263
       },
       "section": null,
       "source_name": null,
@@ -3719,7 +3690,7 @@
         "cs.CY"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.380586+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.166824+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3748,11 +3719,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.779804821798697,
+        "recency_score": 0.7797248045068749,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.979804821798698
+        "total_score": 8.979724804506876
       },
       "section": null,
       "source_name": null,
@@ -3771,7 +3742,7 @@
         "stat.ML"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:41.377801+00:00",
+      "first_seen_at": "2026-02-21T13:03:25.163308+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3800,11 +3771,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7951353962550588,
+        "recency_score": 0.7950538058631278,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 3.75,
-        "total_score": 8.745135396255058
+        "total_score": 8.745053805863128
       },
       "section": null,
       "source_name": null,
@@ -3827,7 +3798,7 @@
         "nucl-th"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:43.393554+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.187477+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3856,11 +3827,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8297895646929295,
+        "recency_score": 0.8297044183692689,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 3.0,
-        "total_score": 8.02978956469293
+        "total_score": 8.029704418369269
       },
       "section": null,
       "source_name": null,
@@ -3889,7 +3860,7 @@
         "nucl-ex"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.368608+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.171013+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3918,11 +3889,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8379564361350592,
+        "recency_score": 0.8378704517928108,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 2.7,
-        "total_score": 7.737956436135059
+        "total_score": 7.737870451792811
       },
       "section": null,
       "source_name": null,
@@ -3943,7 +3914,7 @@
         "cs.LG"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.368880+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.171305+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3972,11 +3943,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8363731874143145,
+        "recency_score": 0.8362873655323017,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 2.7,
-        "total_score": 7.736373187414315
+        "total_score": 7.736287365532302
       },
       "section": null,
       "source_name": null,
@@ -3997,7 +3968,7 @@
         "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:44.370833+00:00",
+      "first_seen_at": "2026-02-21T13:03:28.173569+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4026,11 +3997,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7955247766020952,
+        "recency_score": 0.7954431462550883,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 2.7,
-        "total_score": 7.695524776602095
+        "total_score": 7.695443146255089
       },
       "section": null,
       "source_name": null,
@@ -4054,7 +4025,7 @@
         "AI/ML"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:38.829498+00:00",
+      "first_seen_at": "2026-02-21T13:03:22.794911+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4083,11 +4054,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8305130645775977,
+        "recency_score": 0.8304278440142046,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 2.25,
-        "total_score": 7.580513064577597
+        "total_score": 7.5804278440142046
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -4105,7 +4076,7 @@
         "AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:35.933849+00:00",
+      "first_seen_at": "2026-02-21T13:03:20.448501+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4134,11 +4105,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7900989914480349,
+        "recency_score": 0.7900179178514121,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 2.25,
-        "total_score": 7.540098991448035
+        "total_score": 7.540017917851412
       },
       "section": null,
       "source_name": "Google AI Blog",
@@ -4155,7 +4126,7 @@
         "Research Blog"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:37.792139+00:00",
+      "first_seen_at": "2026-02-21T13:03:21.927226+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4184,11 +4155,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8289285288154784,
+        "recency_score": 0.8288434708443864,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 1.9500000000000002,
-        "total_score": 7.278928528815479
+        "total_score": 7.278843470844387
       },
       "section": null,
       "source_name": "Microsoft Research Blog",
@@ -4207,7 +4178,7 @@
         "Amazon Quick Suite"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:38.829754+00:00",
+      "first_seen_at": "2026-02-21T13:03:22.795163+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4236,11 +4207,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8292643896450643,
+        "recency_score": 0.8291792972106384,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 0.0,
-        "total_score": 5.329264389645064
+        "total_score": 5.329179297210638
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -4255,7 +4226,7 @@
         "AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T11:03:35.934154+00:00",
+      "first_seen_at": "2026-02-21T13:03:20.448822+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4284,11 +4255,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.7900989914480349,
+        "recency_score": 0.7900179178514121,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 0.0,
-        "total_score": 5.290098991448035
+        "total_score": 5.290017917851412
       },
       "section": null,
       "source_name": "Google AI Blog",
@@ -4298,12 +4269,12 @@
     }
   ],
   "run_date": "2026-02-19",
-  "run_id": "21a26e67-accf-40fd-868b-0eb6bb35baf7",
+  "run_id": "80cd780d-8ec0-4f71-b14c-f4f5e1c5b55a",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-19T23:59:59+00:00",
     "items_total": 93,
-    "run_id": "21a26e67-accf-40fd-868b-0eb6bb35baf7-2026-02-19",
+    "run_id": "80cd780d-8ec0-4f71-b14c-f4f5e1c5b55a-2026-02-19",
     "started_at": "2026-02-18T23:59:59+00:00",
     "stories_total": 93,
     "success": true
@@ -4317,7 +4288,7 @@
       "entities": [
         "deepmind"
       ],
-      "first_seen_at": "2026-02-21T11:03:35.647413+00:00",
+      "first_seen_at": "2026-02-21T13:03:20.207632+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4346,11 +4317,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.829238475537798,
+        "recency_score": 0.8291533857624691,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 3.75,
-        "total_score": 11.079238475537798
+        "total_score": 11.079153385762469
       },
       "section": null,
       "source_name": "DeepMind Blog",
@@ -4377,7 +4348,7 @@
       "entities": [
         "01-ai"
       ],
-      "first_seen_at": "2026-02-21T11:03:40.447735+00:00",
+      "first_seen_at": "2026-02-21T13:03:24.221243+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4406,11 +4377,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8382959548438669,
+        "recency_score": 0.8382099356629424,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.038295954843868
+        "total_score": 11.038209935662943
       },
       "section": null,
       "source_name": null,
@@ -4431,7 +4402,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:43.393777+00:00",
+      "first_seen_at": "2026-02-21T13:03:27.187750+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4460,11 +4431,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8274542718278104,
+        "recency_score": 0.8273693651330998,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.02745427182781
+        "total_score": 11.0273693651331
       },
       "section": null,
       "source_name": null,
@@ -4479,7 +4450,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:46.701223+00:00",
+      "first_seen_at": "2026-02-21T13:03:30.224289+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4508,11 +4479,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8213438235278984,
+        "recency_score": 0.821259543838191,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.021343823527898
+        "total_score": 11.021259543838191
       },
       "section": null,
       "source_name": null,
@@ -4527,7 +4498,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T11:03:46.701026+00:00",
+      "first_seen_at": "2026-02-21T13:03:30.224068+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -4556,11 +4527,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8211670254858053,
+        "recency_score": 0.8210827639376895,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.021167025485806
+        "total_score": 11.02108276393769
       },
       "section": null,
       "source_name": null,
