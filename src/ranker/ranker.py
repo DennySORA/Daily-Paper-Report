@@ -7,8 +7,8 @@ from datetime import UTC, datetime
 
 import structlog
 
-from src.config.schemas.entities import EntitiesConfig
-from src.config.schemas.topics import TopicsConfig
+from src.features.config.schemas.entities import EntitiesConfig
+from src.features.config.schemas.topics import TopicsConfig
 from src.linker.models import Story, StorySection
 from src.ranker.metrics import RankerMetrics
 from src.ranker.models import DroppedEntry, RankerOutput, RankerResult, ScoredStory
@@ -34,13 +34,14 @@ class StoryRanker:
         - radar: Worth monitoring section
     """
 
-    def __init__(
+    def __init__(  # noqa: PLR0913
         self,
         run_id: str,
         topics_config: TopicsConfig | None = None,
         entities_config: EntitiesConfig | None = None,
         metrics: RankerMetrics | None = None,
         now: datetime | None = None,
+        llm_scores: dict[str, float] | None = None,
     ) -> None:
         """Initialize the ranker.
 
@@ -50,11 +51,13 @@ class StoryRanker:
             entities_config: Entities configuration.
             metrics: Optional metrics instance.
             now: Current time for recency calculation.
+            llm_scores: Pre-computed LLM relevance scores (story_id -> float).
         """
         self._run_id = run_id
         self._topics_config = topics_config or TopicsConfig()
         self._entities_config = entities_config
         self._now = now or datetime.now(UTC)
+        self._llm_scores = llm_scores or {}
 
         self._scoring_config = self._topics_config.scoring
         self._quotas_config = self._topics_config.quotas
@@ -175,6 +178,7 @@ class StoryRanker:
             model_releases_by_entity={},
             papers=[],
             radar=[],
+            score_map={},
             output_checksum=self._compute_checksum([]),
         )
         return RankerResult(
@@ -198,6 +202,7 @@ class StoryRanker:
             topics=list(self._topics_config.topics),
             entity_ids=self._entity_ids,
             now=self._now,
+            llm_scores=self._llm_scores,
         )
         scorer = StoryScorer(run_id=self._run_id, config=config)
         return scorer.score_stories(stories)
@@ -216,6 +221,7 @@ class StoryRanker:
         quota_filter = QuotaFilter(
             run_id=self._run_id,
             quotas_config=self._quotas_config,
+            llm_relevance_weight=self._scoring_config.llm_relevance_weight,
         )
         kept, _dropped = quota_filter.apply_quotas(scored)
         sections = quota_filter.assign_sections(kept)
@@ -235,6 +241,16 @@ class StoryRanker:
         top5 = [s.story for s in sections.get(StorySection.TOP5, [])]
         papers = [s.story for s in sections.get(StorySection.PAPERS, [])]
         radar = [s.story for s in sections.get(StorySection.RADAR, [])]
+
+        # Build score_map from all scored stories
+        llm_weight = self._scoring_config.llm_relevance_weight
+        score_map: dict[str, dict[str, float]] = {}
+        for section_stories in sections.values():
+            for scored in section_stories:
+                entry = scored.components.to_dict()
+                if llm_weight > 0:
+                    entry["llm_raw_score"] = entry["llm_relevance_score"] / llm_weight
+                score_map[scored.story.story_id] = entry
 
         # Group model releases by entity
         model_releases_by_entity: dict[str, list[Story]] = {}
@@ -265,6 +281,7 @@ class StoryRanker:
             model_releases_by_entity=model_releases_by_entity,
             papers=papers,
             radar=radar,
+            score_map=score_map,
             output_checksum=checksum,
         )
 
@@ -304,12 +321,13 @@ class StoryRanker:
         return topic_hits
 
 
-def rank_stories_pure(
+def rank_stories_pure(  # noqa: PLR0913
     stories: list[Story],
     topics_config: TopicsConfig | None = None,
     entities_config: EntitiesConfig | None = None,
     now: datetime | None = None,
     run_id: str = "pure",
+    llm_scores: dict[str, float] | None = None,
 ) -> RankerResult:
     """Pure function API for Story ranking.
 
@@ -319,6 +337,7 @@ def rank_stories_pure(
         entities_config: Entities configuration.
         now: Current time for recency calculation.
         run_id: Run identifier.
+        llm_scores: Pre-computed LLM relevance scores (story_id -> float).
 
     Returns:
         RankerResult with output sections.
@@ -328,5 +347,6 @@ def rank_stories_pure(
         topics_config=topics_config,
         entities_config=entities_config,
         now=now,
+        llm_scores=llm_scores,
     )
     return ranker.rank_stories(stories)

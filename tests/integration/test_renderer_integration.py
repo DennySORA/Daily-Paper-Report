@@ -2,12 +2,13 @@
 
 import json
 import tempfile
+from collections.abc import Generator
 from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
-from src.config.schemas.base import LinkType
+from src.features.config.schemas.base import LinkType
 from src.linker.models import Story, StoryLink
 from src.ranker.models import RankerOutput
 from src.renderer.metrics import RendererMetrics
@@ -16,7 +17,7 @@ from src.renderer.renderer import StaticRenderer
 
 
 @pytest.fixture
-def temp_output_dir() -> Path:
+def temp_output_dir() -> Generator[Path]:
     """Create a temporary output directory."""
     with tempfile.TemporaryDirectory() as tmpdir:
         yield Path(tmpdir)
@@ -138,18 +139,17 @@ class TestRendererIntegration:
             sources_status=sources_status,
             run_info=run_info,
             recent_runs=[run_info],
+            target_date="2026-01-15",
         )
 
         # Verify success
         assert result.success
         assert result.error_summary is None
 
-        # Verify all files exist
+        # Verify JSON and placeholder day file exist
         assert (temp_output_dir / "api" / "daily.json").is_file()
-        assert (temp_output_dir / "index.html").is_file()
-        assert (temp_output_dir / "archive.html").is_file()
-        assert (temp_output_dir / "sources.html").is_file()
-        assert (temp_output_dir / "status.html").is_file()
+        day_path = temp_output_dir / "day" / "2026-01-15.html"
+        assert day_path.is_file()
 
         # Verify JSON content
         json_data = json.loads((temp_output_dir / "api" / "daily.json").read_text())
@@ -157,19 +157,8 @@ class TestRendererIntegration:
         assert len(json_data["top5"]) == 2
         assert json_data["top5"][0]["title"] == "New GPT-5 Model Released"
 
-        # Verify HTML content
-        index_html = (temp_output_dir / "index.html").read_text()
-        assert "New GPT-5 Model Released" in index_html
-        assert "Claude 4 Announcement" in index_html
-        assert "openai.com" in index_html
-
-        # Verify sources page
-        sources_html = (temp_output_dir / "sources.html").read_text()
-        assert "OpenAI Blog" in sources_html
-        assert "HAS_UPDATE" in sources_html
-
         # Verify manifest
-        assert len(result.manifest.files) == 6
+        assert len(result.manifest.files) == 1
         assert result.manifest.total_bytes > 0
 
     def test_render_with_xss_content_is_safe(
@@ -207,15 +196,16 @@ class TestRendererIntegration:
             sources_status=[],
             run_info=run_info,
             recent_runs=[run_info],
+            target_date="2026-01-15",
         )
 
         assert result.success
 
-        html_content = (temp_output_dir / "index.html").read_text()
-        # Raw script should not appear
-        assert 'onerror="alert(1)"' not in html_content
-        # Should be escaped
-        assert "&lt;" in html_content or "&#" in html_content
+        json_data = json.loads((temp_output_dir / "api" / "daily.json").read_text())
+        assert json_data["top5"][0]["title"] == '<img src=x onerror="alert(1)">'
+
+        placeholder = (temp_output_dir / "day" / "2026-01-15.html").read_text()
+        assert 'onerror="alert(1)"' not in placeholder
 
     def test_render_preserves_existing_day_pages(
         self,
@@ -253,6 +243,7 @@ class TestRendererIntegration:
             sources_status=[],
             run_info=run_info,
             recent_runs=[run_info],
+            target_date="2026-01-15",
         )
 
         assert result.success
@@ -261,10 +252,8 @@ class TestRendererIntegration:
         assert (day_dir / "2026-01-14.html").is_file()
         assert (day_dir / "2026-01-13.html").is_file()
 
-        # Archive should list all dates
-        archive_content = (temp_output_dir / "archive.html").read_text()
-        assert "2026-01-14" in archive_content
-        assert "2026-01-13" in archive_content
+        # Placeholder for the target date should be created
+        assert (day_dir / "2026-01-15.html").is_file()
 
     def test_json_output_is_deterministic(
         self,

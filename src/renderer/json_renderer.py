@@ -7,6 +7,7 @@ from pathlib import Path
 
 import structlog
 
+from src.features.config.schemas.entities import EntityConfig
 from src.linker.models import Story
 from src.ranker.models import RankerOutput
 from src.renderer.io import AtomicWriter
@@ -33,6 +34,8 @@ class JsonRenderer:
         run_id: str,
         output_dir: Path,
         metrics: RendererMetrics | None = None,
+        entity_configs: list[EntityConfig] | None = None,
+        translations: dict[str, object] | None = None,
     ) -> None:
         """Initialize the JSON renderer.
 
@@ -40,30 +43,42 @@ class JsonRenderer:
             run_id: Unique run identifier.
             output_dir: Output directory for rendered files.
             metrics: Optional metrics instance.
+            entity_configs: Optional entity configurations for building entity catalog.
+            translations: Optional map of story_id to TranslationEntry for zh injection.
         """
         self._run_id = run_id
         self._output_dir = output_dir
         self._metrics = metrics or RendererMetrics.get_instance()
+        self._entity_configs = entity_configs or []
+        self._translations = translations or {}
         self._log = logger.bind(run_id=run_id, component="renderer")
         self._writer = AtomicWriter(output_dir, run_id)
 
-    def render(
+    def render(  # noqa: PLR0913
         self,
         ranker_output: RankerOutput,
         sources_status: list[SourceStatus],
         run_info: RunInfo,
         run_date: str,
+        archive_dates: list[str] | None = None,
+        skip_daily_json: bool = False,
     ) -> GeneratedFile:
-        """Render api/daily.json.
+        """Render JSON API output.
+
+        Generates both per-date JSON (api/day/YYYY-MM-DD.json) and optionally
+        the main daily.json file.
 
         Args:
             ranker_output: Output from the ranker.
             sources_status: Per-source status list.
             run_info: Run information.
             run_date: Date string (YYYY-MM-DD).
+            archive_dates: List of available archive dates.
+            skip_daily_json: If True, only writes per-date JSON, not daily.json.
+                            Useful for backfill operations.
 
         Returns:
-            GeneratedFile with path and checksum.
+            GeneratedFile with path and checksum of the per-date JSON file.
         """
         start_time = time.perf_counter()
 
@@ -72,21 +87,25 @@ class JsonRenderer:
         # Build the digest structure
         generated_at = datetime.now(UTC).isoformat()
 
+        score_map = ranker_output.score_map
+
         digest = DailyDigest(
             run_id=self._run_id,
             run_date=run_date,
             generated_at=generated_at,
-            top5=[self._story_to_dict(s) for s in ranker_output.top5],
+            top5=[self._story_to_dict(s, score_map) for s in ranker_output.top5],
             model_releases_by_entity={
-                entity: [self._story_to_dict(s) for s in stories]
+                entity: [self._story_to_dict(s, score_map) for s in stories]
                 for entity, stories in sorted(
                     ranker_output.model_releases_by_entity.items()
                 )
             },
-            papers=[self._story_to_dict(s) for s in ranker_output.papers],
-            radar=[self._story_to_dict(s) for s in ranker_output.radar],
+            papers=[self._story_to_dict(s, score_map) for s in ranker_output.papers],
+            radar=[self._story_to_dict(s, score_map) for s in ranker_output.radar],
             sources_status=[self._source_status_to_dict(s) for s in sources_status],
             run_info=self._run_info_to_dict(run_info),
+            archive_dates=archive_dates or [],
+            entity_catalog=self._build_entity_catalog(),
         )
 
         # Serialize with stable formatting
@@ -97,13 +116,22 @@ class JsonRenderer:
             ensure_ascii=False,
         )
 
-        # Ensure api directory exists
+        # Ensure api directories exist
         api_dir = self._output_dir / "api"
         api_dir.mkdir(parents=True, exist_ok=True)
+        api_day_dir = api_dir / "day"
+        api_day_dir.mkdir(parents=True, exist_ok=True)
 
-        # Write with atomic semantics
-        output_path = api_dir / "daily.json"
-        file_info = self._writer.write(output_path, json_content)
+        # Write per-date JSON file for archive access
+        date_output_path = api_day_dir / f"{run_date}.json"
+        file_info = self._writer.write(date_output_path, json_content)
+        self._log.info("date_json_written", path=str(date_output_path))
+
+        # Write daily.json (skip during backfill to preserve current day's data)
+        if not skip_daily_json:
+            output_path = api_dir / "daily.json"
+            file_info = self._writer.write(output_path, json_content)
+            self._log.info("daily_json_written", path=str(output_path))
 
         duration_ms = (time.perf_counter() - start_time) * 1000
         self._metrics.record_json_duration(duration_ms)
@@ -120,16 +148,47 @@ class JsonRenderer:
 
         return file_info
 
-    def _story_to_dict(self, story: Story) -> dict[str, object]:
-        """Convert a Story to a JSON-serializable dictionary.
+    def _build_entity_catalog(self) -> dict[str, dict[str, str]]:
+        """Build entity catalog mapping entity IDs to display details.
+
+        Returns:
+            Dictionary mapping entity ID to name and type.
+        """
+        return {
+            entity.id: {
+                "name": entity.name,
+                "type": entity.entity_type.value,
+            }
+            for entity in self._entity_configs
+        }
+
+    def _story_to_dict(
+        self,
+        story: Story,
+        score_map: dict[str, dict[str, float]] | None = None,
+    ) -> dict[str, object]:
+        """Convert a Story to a JSON-serializable dictionary with scores.
+
+        Injects Traditional Chinese translations (title_zh, summary_zh)
+        when available from the translations map.
 
         Args:
             story: Story to convert.
+            score_map: Optional mapping of story_id to score breakdown.
 
         Returns:
             Dictionary suitable for JSON serialization.
         """
-        return story.to_json_dict()
+        result = story.to_json_dict()
+        if score_map and story.story_id in score_map:
+            result["scores"] = score_map[story.story_id]
+
+        translation = self._translations.get(story.story_id)
+        if translation is not None:
+            result["title_zh"] = getattr(translation, "title_zh", None)
+            result["summary_zh"] = getattr(translation, "summary_zh", None)
+
+        return result
 
     def _source_status_to_dict(self, status: SourceStatus) -> dict[str, object]:
         """Convert a SourceStatus to a JSON-serializable dictionary.
@@ -178,4 +237,3 @@ class JsonRenderer:
             "items_total": run_info.items_total,
             "stories_total": run_info.stories_total,
         }
-

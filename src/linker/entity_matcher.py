@@ -4,8 +4,8 @@ import json
 import re
 from dataclasses import dataclass, field
 
-from src.config.schemas.entities import EntityConfig
-from src.store.models import Item
+from src.features.config.schemas.entities import EntityConfig
+from src.features.store.models import Item
 
 
 @dataclass
@@ -26,7 +26,7 @@ class EntityMatch:
 
 
 def _build_search_text(item: Item) -> str:
-    """Build searchable text from item title and raw_json."""
+    """Build searchable text from item title, authors, and raw_json."""
     search_text = item.title.lower()
     try:
         raw = json.loads(item.raw_json)
@@ -34,6 +34,11 @@ def _build_search_text(item: Item) -> str:
             search_text += f" {abstract.lower()}"
         if description := raw.get("description"):
             search_text += f" {description.lower()}"
+        if authors := raw.get("authors"):
+            if isinstance(authors, list):
+                search_text += f" {' '.join(str(a) for a in authors).lower()}"
+            elif isinstance(authors, str):
+                search_text += f" {authors.lower()}"
     except (json.JSONDecodeError, KeyError):
         pass
     return search_text

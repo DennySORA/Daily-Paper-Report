@@ -2,12 +2,14 @@
 
 import json
 import tempfile
+from collections.abc import Generator
 from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
-from src.config.schemas.base import LinkType
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntityConfig, EntityRegion, EntityType
 from src.linker.models import Story, StoryLink
 from src.ranker.models import RankerOutput
 from src.renderer.json_renderer import JsonRenderer
@@ -16,7 +18,7 @@ from src.renderer.models import RunInfo, SourceStatus, SourceStatusCode
 
 
 @pytest.fixture
-def temp_output_dir() -> Path:
+def temp_output_dir() -> Generator[Path]:
     """Create a temporary output directory."""
     with tempfile.TemporaryDirectory() as tmpdir:
         yield Path(tmpdir)
@@ -288,3 +290,80 @@ class TestJsonRenderer:
         data = json.loads((temp_output_dir / "api" / "daily.json").read_text())
         assert data["top5"] == []
         assert data["radar"] == []
+
+    def test_render_includes_entity_catalog(
+        self,
+        temp_output_dir: Path,
+        sample_ranker_output: RankerOutput,
+        sample_run_info: RunInfo,
+        sample_source_status: SourceStatus,
+    ) -> None:
+        """Entity catalog is included when entity_configs are provided."""
+        RendererMetrics.reset()
+
+        entity_configs = [
+            EntityConfig(
+                id="openai",
+                name="OpenAI",
+                region=EntityRegion.INTL,
+                entity_type=EntityType.ORGANIZATION,
+                keywords=["OpenAI"],
+                prefer_links=[LinkType.OFFICIAL],
+            ),
+            EntityConfig(
+                id="google-research",
+                name="Google Research",
+                region=EntityRegion.INTL,
+                entity_type=EntityType.INSTITUTION,
+                keywords=["Google Research"],
+                prefer_links=[LinkType.OFFICIAL],
+            ),
+        ]
+
+        renderer = JsonRenderer(
+            run_id="test",
+            output_dir=temp_output_dir,
+            entity_configs=entity_configs,
+        )
+
+        renderer.render(
+            ranker_output=sample_ranker_output,
+            sources_status=[sample_source_status],
+            run_info=sample_run_info,
+            run_date="2026-01-15",
+        )
+
+        data = json.loads((temp_output_dir / "api" / "daily.json").read_text())
+        catalog = data["entity_catalog"]
+
+        assert "openai" in catalog
+        assert catalog["openai"]["name"] == "OpenAI"
+        assert catalog["openai"]["type"] == "organization"
+        assert "google-research" in catalog
+        assert catalog["google-research"]["name"] == "Google Research"
+        assert catalog["google-research"]["type"] == "institution"
+
+    def test_render_empty_entity_catalog_without_configs(
+        self,
+        temp_output_dir: Path,
+        sample_ranker_output: RankerOutput,
+        sample_run_info: RunInfo,
+        sample_source_status: SourceStatus,
+    ) -> None:
+        """Entity catalog is empty when no entity_configs are provided."""
+        RendererMetrics.reset()
+
+        renderer = JsonRenderer(
+            run_id="test",
+            output_dir=temp_output_dir,
+        )
+
+        renderer.render(
+            ranker_output=sample_ranker_output,
+            sources_status=[sample_source_status],
+            run_info=sample_run_info,
+            run_date="2026-01-15",
+        )
+
+        data = json.loads((temp_output_dir / "api" / "daily.json").read_text())
+        assert data["entity_catalog"] == {}

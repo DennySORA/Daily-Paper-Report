@@ -1,9 +1,14 @@
 """Generate test output for E2E validation of sources status feature."""
 
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-from src.config.schemas.base import LinkType
+
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.features.config.schemas.base import LinkType
 from src.linker.models import Story, StoryLink
 from src.ranker.models import RankerOutput
 from src.renderer.models import RunInfo, SourceStatus, SourceStatusCode
@@ -206,11 +211,8 @@ def generate_test_output(output_dir: Path) -> None:
         recent_runs=[run_info],
     )
 
-    print(f"Render success: {result.success}")
-    print(f"Output directory: {output_dir}")
-    print("Files generated:")
-    for f in result.manifest.files:
-        print(f"  - {f.path} ({f.bytes_written} bytes)")
+    for _f in result.manifest.files:
+        pass
 
 
 if __name__ == "__main__":
@@ -219,9 +221,5 @@ if __name__ == "__main__":
 
     # Also output the JSON sources_status for verification
     sources_status = create_sample_sources_status()
-    print("\n--- Sources Status JSON ---")
-    for s in sources_status:
-        print(
-            f"  {s.source_id}: status={s.status.value}, "
-            f"reason_code={s.reason_code}, category={s.category}"
-        )
+    for _s in sources_status:
+        pass

@@ -4,9 +4,9 @@ from datetime import UTC, datetime
 
 from src.collectors.base import RAW_JSON_MAX_SIZE, BaseCollector, CollectorResult
 from src.collectors.state_machine import SourceState
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.models import DateConfidence, Item
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.models import DateConfidence, Item
 
 
 class ConcreteCollector(BaseCollector):

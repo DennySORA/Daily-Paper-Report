@@ -108,9 +108,11 @@ class DailyDigest(BaseModel):
         radar: Worth monitoring section.
         sources_status: Per-source status.
         run_info: Run information.
+        archive_dates: Available archive dates (YYYY-MM-DD, descending order).
+        entity_catalog: Mapping of entity IDs to display details (name, type).
     """
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(frozen=True, extra="forbid")
 
     run_id: Annotated[str, Field(min_length=1)]
     run_date: Annotated[str, Field(pattern=r"^\d{4}-\d{2}-\d{2}$")]
@@ -123,6 +125,8 @@ class DailyDigest(BaseModel):
     radar: list[dict[str, object]] = Field(default_factory=list)
     sources_status: list[dict[str, object]] = Field(default_factory=list)
     run_info: dict[str, object] = Field(default_factory=dict)
+    archive_dates: list[str] = Field(default_factory=list)
+    entity_catalog: dict[str, dict[str, str]] = Field(default_factory=dict)
 
 
 @dataclass(frozen=True)

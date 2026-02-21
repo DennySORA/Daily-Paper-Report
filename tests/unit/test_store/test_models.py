@@ -5,7 +5,7 @@ from datetime import UTC, datetime
 import pytest
 from pydantic import ValidationError
 
-from src.store.models import (
+from src.features.store.models import (
     DateConfidence,
     HttpCacheEntry,
     Item,

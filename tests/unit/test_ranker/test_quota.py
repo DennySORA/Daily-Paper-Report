@@ -2,12 +2,12 @@
 
 from datetime import UTC, datetime
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.topics import QuotasConfig
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.topics import QuotasConfig
+from src.features.store.models import DateConfidence, Item
 from src.linker.models import Story, StoryLink, StorySection
 from src.ranker.models import ScoreComponents, ScoredStory
 from src.ranker.quota import QuotaFilter, apply_quotas_pure
-from src.store.models import DateConfidence, Item
 
 
 def _make_item(
@@ -119,7 +119,7 @@ class TestPerSourceQuota:
         assert "s1" in kept_ids  # Second highest
 
         # Should drop 3
-        dropped_ids = [s.story.story_id for s in dropped]
+        [s.story.story_id for s in dropped]
         assert len(dropped) == 3
         assert all(s.dropped for s in dropped)
 
@@ -210,7 +210,7 @@ class TestDeterministicOrdering:
         quotas = QuotasConfig()
         quota_filter = QuotaFilter(run_id="test", quotas_config=quotas)
 
-        now = datetime.now(UTC)
+        datetime.now(UTC)
         old_time = datetime(2024, 1, 1, tzinfo=UTC)
         new_time = datetime(2024, 1, 15, tzinfo=UTC)
 
@@ -367,6 +367,117 @@ class TestDroppedEntries:
         assert dropped[0].source_id == "src"
         assert dropped[0].score == 5.0
         assert "per_source_max" in dropped[0].drop_reason
+
+
+class TestLlmBypass:
+    """Tests for LLM score bypass of arXiv category quota."""
+
+    def _make_arxiv_scored(
+        self,
+        story_id: str,
+        category: str,
+        total_score: float,
+        llm_weighted: float,
+    ) -> ScoredStory:
+        """Create a scored arXiv story with specific LLM weighted score."""
+        story = _make_story(
+            story_id=story_id,
+            source_id="arxiv",
+            arxiv_id=story_id.replace("arxiv:", ""),
+            kind="paper",
+            raw_json=f'{{"category": "{category}"}}',
+        )
+        components = ScoreComponents(
+            tier_score=1.0,
+            kind_score=1.0,
+            topic_score=2.0,
+            recency_score=1.0,
+            entity_score=0.0,
+            llm_relevance_score=llm_weighted,
+            total_score=total_score,
+        )
+        return ScoredStory(story=story, components=components)
+
+    def test_high_llm_score_bypasses_category_quota(self) -> None:
+        """Papers above LLM bypass threshold skip category quota."""
+        quotas = QuotasConfig(
+            arxiv_per_category_max=2,
+            per_source_max=100,
+            llm_bypass_threshold=0.70,
+        )
+        llm_weight = 18.0
+        quota_filter = QuotaFilter(
+            run_id="test",
+            quotas_config=quotas,
+            llm_relevance_weight=llm_weight,
+        )
+
+        stories = [
+            self._make_arxiv_scored("s1", "cs.AI", 30.0, 0.90 * llm_weight),
+            self._make_arxiv_scored("s2", "cs.AI", 25.0, 0.80 * llm_weight),
+            self._make_arxiv_scored("s3", "cs.AI", 20.0, 0.75 * llm_weight),
+            self._make_arxiv_scored("s4", "cs.AI", 15.0, 0.50 * llm_weight),
+        ]
+
+        kept, dropped = quota_filter.apply_quotas(stories)
+        kept_ids = {s.story.story_id for s in kept}
+
+        # s1 (0.90), s2 (0.80), s3 (0.75) all bypass because >= 0.70
+        # s4 (0.50) is below threshold and category count (3) > max (2) -> dropped
+        assert "s1" in kept_ids
+        assert "s2" in kept_ids
+        assert "s3" in kept_ids
+        assert len(dropped) == 1
+        assert dropped[0].story.story_id == "s4"
+
+    def test_bypass_disabled_when_threshold_is_one(self) -> None:
+        """Setting threshold to 1.0 disables bypass."""
+        quotas = QuotasConfig(
+            arxiv_per_category_max=2,
+            per_source_max=100,
+            llm_bypass_threshold=1.0,
+        )
+        llm_weight = 18.0
+        quota_filter = QuotaFilter(
+            run_id="test",
+            quotas_config=quotas,
+            llm_relevance_weight=llm_weight,
+        )
+
+        stories = [
+            self._make_arxiv_scored("s1", "cs.AI", 30.0, 0.90 * llm_weight),
+            self._make_arxiv_scored("s2", "cs.AI", 25.0, 0.80 * llm_weight),
+            self._make_arxiv_scored("s3", "cs.AI", 20.0, 0.75 * llm_weight),
+        ]
+
+        kept, dropped = quota_filter.apply_quotas(stories)
+
+        assert len(kept) == 2
+        assert len(dropped) == 1
+
+    def test_bypass_with_zero_weight(self) -> None:
+        """Bypass is disabled when LLM weight is zero."""
+        quotas = QuotasConfig(
+            arxiv_per_category_max=2,
+            per_source_max=100,
+            llm_bypass_threshold=0.70,
+        )
+        quota_filter = QuotaFilter(
+            run_id="test",
+            quotas_config=quotas,
+            llm_relevance_weight=0.0,
+        )
+
+        stories = [
+            self._make_arxiv_scored("s1", "cs.AI", 30.0, 0.0),
+            self._make_arxiv_scored("s2", "cs.AI", 25.0, 0.0),
+            self._make_arxiv_scored("s3", "cs.AI", 20.0, 0.0),
+        ]
+
+        kept, dropped = quota_filter.apply_quotas(stories)
+
+        assert len(kept) == 2
+        assert len(dropped) == 1
 
 
 class TestPureFunction:

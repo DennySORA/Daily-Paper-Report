@@ -8,11 +8,12 @@ import pytest
 
 from src.collectors.runner import CollectorRunner
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
-from src.store.store import StateStore
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.store.store import StateStore
+from tests.helpers.time import FIXED_NOW
 
 
 # Sample RSS feed fixture
@@ -142,7 +143,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([rss_source])
+        result = runner.run([rss_source], now=FIXED_NOW)
 
         # Verify runner result
         assert result.sources_succeeded == 1
@@ -170,7 +171,7 @@ class TestCollectorRunnerIntegration:
         mock_http_client.fetch.return_value = FetchResult(
             status_code=200,
             final_url=html_source.url,
-            headers={},
+            headers={"content-type": "text/html; charset=utf-8"},
             body_bytes=HTML_LIST_CONTENT,
             cache_hit=False,
             error=None,
@@ -183,7 +184,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([html_source])
+        result = runner.run([html_source], now=FIXED_NOW)
 
         # Verify runner result
         assert result.sources_succeeded == 1
@@ -220,7 +221,7 @@ class TestCollectorRunnerIntegration:
             return FetchResult(
                 status_code=200,
                 final_url=url,
-                headers={},
+                headers={"content-type": "text/html; charset=utf-8"},
                 body_bytes=HTML_LIST_CONTENT,
                 cache_hit=False,
                 error=None,
@@ -236,7 +237,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([rss_source, html_source])
+        result = runner.run([rss_source, html_source], now=FIXED_NOW)
 
         # Verify both sources succeeded
         assert result.sources_succeeded == 2
@@ -274,7 +275,7 @@ class TestCollectorRunnerIntegration:
             return FetchResult(
                 status_code=200,
                 final_url=url,
-                headers={},
+                headers={"content-type": "text/html; charset=utf-8"},
                 body_bytes=HTML_LIST_CONTENT,
                 cache_hit=False,
                 error=None,
@@ -289,7 +290,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([rss_source, html_source])
+        result = runner.run([rss_source, html_source], now=FIXED_NOW)
 
         # Verify isolation
         assert result.sources_succeeded == 1
@@ -328,12 +329,12 @@ class TestCollectorRunnerIntegration:
         )
 
         # First run
-        result1 = runner.run([rss_source])
+        result1 = runner.run([rss_source], now=FIXED_NOW)
         assert result1.total_new == 3
         assert result1.total_updated == 0
 
         # Second run with same content
-        result2 = runner.run([rss_source])
+        result2 = runner.run([rss_source], now=FIXED_NOW)
         assert result2.total_new == 0  # No new items
         assert result2.total_items == 3  # Same items seen
 
@@ -364,7 +365,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([rss_source])
+        result = runner.run([rss_source], now=FIXED_NOW)
 
         # Verify items are sorted by date descending
         source_result = result.source_results["test-rss"]
@@ -411,7 +412,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([source])
+        result = runner.run([source], now=FIXED_NOW)
 
         # Only 1 item should be collected
         assert result.total_items == 1
@@ -441,7 +442,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([rss_source])
+        result = runner.run([rss_source], now=FIXED_NOW)
 
         # Verify final state
         source_result = result.source_results["test-rss"]
@@ -470,7 +471,7 @@ class TestCollectorRunnerIntegration:
             max_workers=1,
         )
 
-        result = runner.run([rss_source])
+        result = runner.run([rss_source], now=FIXED_NOW)
 
         # Should succeed with 0 items
         assert result.sources_succeeded == 1

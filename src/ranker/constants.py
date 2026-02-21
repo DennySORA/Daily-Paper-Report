@@ -18,14 +18,32 @@ ARXIV_CATEGORY_PATTERNS: list[str] = [
     "cs.LG",
     "cs.CL",
     "cs.CV",
+    "cs.IR",
+    "cs.MA",
+    "cs.RO",
+    "cs.SE",
     "stat.ML",
 ]
 
 # Days for recency calculation
 MAX_RECENCY_DAYS: int = 30
 
-# Output section names
-SECTION_TOP5 = "top5"
-SECTION_MODEL_RELEASES = "model_releases"
-SECTION_PAPERS = "papers"
-SECTION_RADAR = "radar"
+# Quality signal sources for cross-source scoring.
+# Papers appearing in these curated/targeted sources get a bonus
+# because editorial selection or keyword targeting indicates relevance.
+QUALITY_SIGNAL_SOURCES: frozenset[str] = frozenset(
+    {
+        # Curated aggregators
+        "papers_with_code",
+        "hf_daily_papers",
+        # arXiv API keyword queries (targeted search = relevance signal)
+        "arxiv-api-llm",
+        "arxiv-api-agents",
+        "arxiv-api-reasoning",
+        "arxiv-api-alignment",
+        "arxiv-api-multimodal",
+    }
+)
+
+# Maximum cross-source score to prevent overfitting
+CROSS_SOURCE_SCORE_CAP: float = 3.0

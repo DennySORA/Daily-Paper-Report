@@ -5,9 +5,14 @@ from unittest.mock import MagicMock
 
 from src.collectors.rss_atom import RssAtomCollector
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
+
+
+# Fixed timestamp for tests - sample data dates should be within 24h of this.
+# Using a date far enough from midnight that typical test dates (noon) fit within window.
+TEST_TIMESTAMP = datetime(2024, 1, 3, 18, 0, 0, tzinfo=UTC)
 
 
 def make_source_config(
@@ -82,7 +87,7 @@ class TestRssAtomCollectorFetchErrors:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert result.state == SourceState.SOURCE_FAILED
@@ -103,7 +108,7 @@ class TestRssAtomCollectorCacheHit:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert result.state == SourceState.SOURCE_DONE
@@ -133,7 +138,7 @@ class TestRssAtomCollectorParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert result.state == SourceState.SOURCE_DONE
@@ -162,7 +167,7 @@ class TestRssAtomCollectorParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         # Should still parse what it can
@@ -181,13 +186,13 @@ class TestRssAtomCollectorParsing:
                 <item>
                     <title>Article One</title>
                     <link>https://example.com/article-1</link>
-                    <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                     <description>First article description</description>
                 </item>
                 <item>
                     <title>Article Two</title>
                     <link>https://example.com/article-2</link>
-                    <pubDate>Tue, 02 Jan 2024 12:00:00 GMT</pubDate>
+                    <pubDate>Wed, 03 Jan 2024 10:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -197,7 +202,7 @@ class TestRssAtomCollectorParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert result.state == SourceState.SOURCE_DONE
@@ -218,7 +223,7 @@ class TestRssAtomCollectorParsing:
             <entry>
                 <title>Atom Article</title>
                 <link href="https://example.com/atom-1" rel="alternate"/>
-                <updated>2024-01-01T12:00:00Z</updated>
+                <updated>2024-01-03T08:00:00Z</updated>
                 <summary>Article summary</summary>
                 <author><name>Test Author</name></author>
             </entry>
@@ -229,7 +234,7 @@ class TestRssAtomCollectorParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert result.state == SourceState.SOURCE_DONE
@@ -252,10 +257,12 @@ class TestRssAtomCollectorEntryParsing:
                 <title>Test Feed</title>
                 <item>
                     <title>No Link Article</title>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
                 <item>
                     <title>Has Link</title>
                     <link>https://example.com/has-link</link>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -265,7 +272,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -282,6 +289,7 @@ class TestRssAtomCollectorEntryParsing:
             <entry>
                 <title>Alternate Link Article</title>
                 <link href="https://example.com/alternate" rel="alternate"/>
+                <updated>2024-01-03T08:00:00Z</updated>
             </entry>
         </feed>"""
 
@@ -290,7 +298,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -307,6 +315,7 @@ class TestRssAtomCollectorEntryParsing:
             <entry>
                 <title>First Link Article</title>
                 <link href="https://example.com/first" rel="enclosure"/>
+                <updated>2024-01-03T08:00:00Z</updated>
             </entry>
         </feed>"""
 
@@ -315,7 +324,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -332,6 +341,7 @@ class TestRssAtomCollectorEntryParsing:
             <channel>
                 <item>
                     <link>https://example.com/no-title</link>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -341,7 +351,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -359,6 +369,7 @@ class TestRssAtomCollectorEntryParsing:
                 <item>
                     <title>Relative Link</title>
                     <link>/articles/post-1</link>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -368,7 +379,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -386,10 +397,12 @@ class TestRssAtomCollectorEntryParsing:
                 <item>
                     <title>JS Link</title>
                     <link>javascript:void(0)</link>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
                 <item>
                     <title>Valid Link</title>
                     <link>https://example.com/valid</link>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -399,7 +412,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -419,6 +432,7 @@ class TestRssAtomCollectorEntryParsing:
                     <link>https://example.com/tagged</link>
                     <category>Python</category>
                     <category>Programming</category>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -428,7 +442,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -450,6 +464,7 @@ class TestRssAtomCollectorEntryParsing:
                     <title>Authored Article</title>
                     <link>https://example.com/authored</link>
                     <author>jane@example.com (Jane Doe)</author>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -459,7 +474,7 @@ class TestRssAtomCollectorEntryParsing:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -484,7 +499,7 @@ class TestRssAtomCollectorDateExtraction:
                 <item>
                     <title>Dated Article</title>
                     <link>https://example.com/dated</link>
-                    <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -494,7 +509,7 @@ class TestRssAtomCollectorDateExtraction:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -513,7 +528,7 @@ class TestRssAtomCollectorDateExtraction:
             <entry>
                 <title>Updated Article</title>
                 <link href="https://example.com/updated"/>
-                <updated>2024-01-01T12:00:00Z</updated>
+                <updated>2024-01-03T08:00:00Z</updated>
             </entry>
         </feed>"""
 
@@ -522,14 +537,14 @@ class TestRssAtomCollectorDateExtraction:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
         assert result.items[0].published_at is not None
 
-    def test_no_date_returns_low_confidence(self) -> None:
-        """Returns LOW confidence when no date available."""
+    def test_no_date_filtered_by_lookback(self) -> None:
+        """Items without dates are filtered out by the lookback window."""
         collector = RssAtomCollector()
         source_config = make_source_config()
         http_client = MagicMock()
@@ -549,12 +564,12 @@ class TestRssAtomCollectorDateExtraction:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
-        assert len(result.items) == 1
-        assert result.items[0].published_at is None
-        assert result.items[0].date_confidence.value == "low"
+        # Items without dates are filtered out by the time-based lookback window
+        assert len(result.items) == 0
+        assert result.state == SourceState.SOURCE_DONE
 
 
 class TestRssAtomCollectorMaxItems:
@@ -572,12 +587,12 @@ class TestRssAtomCollectorMaxItems:
                 <item>
                     <title>Article 1</title>
                     <link>https://example.com/1</link>
-                    <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
                 <item>
                     <title>Article 2</title>
                     <link>https://example.com/2</link>
-                    <pubDate>Tue, 02 Jan 2024 12:00:00 GMT</pubDate>
+                    <pubDate>Wed, 03 Jan 2024 10:00:00 GMT</pubDate>
                 </item>
                 <item>
                     <title>Article 3</title>
@@ -592,7 +607,7 @@ class TestRssAtomCollectorMaxItems:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert len(result.items) == 1
@@ -616,6 +631,7 @@ class TestRssAtomCollectorExceptionHandling:
                 <item>
                     <title>Valid Article</title>
                     <link>https://example.com/valid</link>
+                    <pubDate>Wed, 03 Jan 2024 08:00:00 GMT</pubDate>
                 </item>
             </channel>
         </rss>"""
@@ -625,7 +641,7 @@ class TestRssAtomCollectorExceptionHandling:
         result = collector.collect(
             source_config=source_config,
             http_client=http_client,
-            now=datetime.now(UTC),
+            now=TEST_TIMESTAMP,
         )
 
         assert result.state == SourceState.SOURCE_DONE

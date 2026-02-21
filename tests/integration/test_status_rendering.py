@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from src.config.schemas.base import LinkType
+from src.features.config.schemas.base import LinkType
 from src.linker.models import Story, StoryLink
 from src.ranker.models import RankerOutput
 from src.renderer.models import RunInfo, SourceStatus, SourceStatusCode
@@ -208,7 +208,7 @@ class TestStatusRendering:
         sample_ranker_output: RankerOutput,
         sample_sources_status: list[SourceStatus],
     ) -> None:
-        """sources.html is rendered with status information."""
+        """Placeholder day page is rendered for the frontend."""
         with tempfile.TemporaryDirectory() as tmpdir:
             output_dir = Path(tmpdir)
             run_id = "test-run-123"
@@ -228,32 +228,21 @@ class TestStatusRendering:
                 sources_status=sample_sources_status,
                 run_info=run_info,
                 recent_runs=[run_info],
+                target_date="2026-01-15",
             )
 
             assert result.success
 
-            sources_html = output_dir / "sources.html"
-            assert sources_html.exists()
-
-            content = sources_html.read_text()
-
-            # Check for status badges
-            assert "HAS_UPDATE" in content
-            assert "NO_UPDATE" in content
-            assert "FETCH_FAILED" in content
-            assert "CANNOT_CONFIRM" in content
-
-            # Check for source names
-            assert "OpenAI Blog" in content
-            assert "Anthropic Blog" in content
-            assert "HuggingFace Blog" in content
+            day_path = output_dir / "day" / "2026-01-15.html"
+            assert day_path.exists()
+            assert "Placeholder" in day_path.read_text()
 
     def test_html_sources_shows_summary_counts(
         self,
         sample_ranker_output: RankerOutput,
         sample_sources_status: list[SourceStatus],
     ) -> None:
-        """sources.html shows summary counts of statuses."""
+        """JSON output includes sources_status for frontend summary."""
         with tempfile.TemporaryDirectory() as tmpdir:
             output_dir = Path(tmpdir)
             run_id = "test-run-123"
@@ -273,17 +262,13 @@ class TestStatusRendering:
                 sources_status=sample_sources_status,
                 run_info=run_info,
                 recent_runs=[run_info],
+                target_date="2026-01-15",
             )
 
             assert result.success
 
-            sources_html = output_dir / "sources.html"
-            content = sources_html.read_text()
-
-            # Should have summary section
-            assert "Summary" in content
-            assert "Has Updates" in content
-            assert "No Updates" in content
+            json_data = json.loads((output_dir / "api" / "daily.json").read_text())
+            assert len(json_data["sources_status"]) == 4
 
     def test_json_reason_codes_are_stable(
         self,

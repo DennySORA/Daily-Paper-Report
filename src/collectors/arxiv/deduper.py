@@ -20,7 +20,7 @@ from src.collectors.arxiv.constants import (
     TIMESTAMP_NOTE_API_PREFERRED,
 )
 from src.collectors.arxiv.utils import extract_arxiv_id
-from src.store.models import DateConfidence, Item
+from src.features.store.models import DateConfidence, Item
 
 
 logger = structlog.get_logger()

@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.fetch.models import FetchError, FetchErrorClass, RetryPolicy
+from src.features.fetch.models import FetchError, FetchErrorClass, RetryPolicy
 
 
 class TestRetryPolicy:

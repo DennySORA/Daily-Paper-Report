@@ -3,7 +3,6 @@
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor
-from datetime import UTC, datetime
 from unittest.mock import MagicMock
 
 import pytest
@@ -22,9 +21,10 @@ from src.collectors.platform.rate_limiter import (
     reset_platform_rate_limiters,
 )
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchResult
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchResult
+from tests.helpers.time import FIXED_NOW
 
 
 @pytest.fixture
@@ -195,7 +195,7 @@ class TestCollectorIntegration:
         }
 
         mock_http = self._make_mock_http(responses)
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         results = {}
 
@@ -261,7 +261,7 @@ class TestDeduplicationIntegration:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         # Run twice
         result1 = collector.collect(config, mock_http, now)
@@ -287,7 +287,7 @@ class TestDeduplicationIntegration:
         )
 
         mock_http = MagicMock()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         # First version
         mock_http.fetch.return_value = FetchResult(

@@ -130,7 +130,8 @@ class TestRankerStateMachine:
         )
         assert sm.state == RankerState.SCORED
         sm.to_quota_filtered()
-        assert sm.state == RankerState.QUOTA_FILTERED
+        # After state transition, mypy incorrectly narrows state type
+        assert sm.state == RankerState.QUOTA_FILTERED  # type: ignore[comparison-overlap]
 
 
 class TestRankerStateTransitionError:

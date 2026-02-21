@@ -6,6 +6,7 @@ from pathlib import Path
 
 import structlog
 
+from src.features.config.schemas.entities import EntityConfig
 from src.ranker.models import RankerOutput
 from src.renderer.html_renderer import HtmlRenderer
 from src.renderer.json_renderer import JsonRenderer
@@ -38,13 +39,15 @@ class StaticRenderer:
         - status.html
     """
 
-    def __init__(
+    def __init__(  # noqa: PLR0913
         self,
         run_id: str,
         output_dir: Path,
         timezone: str = "UTC",
         metrics: RendererMetrics | None = None,
         retention_days: int = 90,
+        entity_configs: list[EntityConfig] | None = None,
+        translations: dict[str, object] | None = None,
     ) -> None:
         """Initialize the static renderer.
 
@@ -54,12 +57,16 @@ class StaticRenderer:
             timezone: Timezone for date display.
             metrics: Optional metrics instance.
             retention_days: Number of days to retain day pages.
+            entity_configs: Optional entity configurations for entity catalog.
+            translations: Optional translation map (story_id -> TranslationEntry).
         """
         self._run_id = run_id
         self._output_dir = Path(output_dir)
         self._timezone = timezone
         self._metrics = metrics or RendererMetrics.get_instance()
         self._retention_days = retention_days
+        self._entity_configs = entity_configs or []
+        self._translations = translations
 
         self._state_machine = RenderStateMachine(run_id)
         self._log = logger.bind(run_id=run_id, component="renderer")
@@ -75,6 +82,7 @@ class StaticRenderer:
         sources_status: list[SourceStatus],
         run_info: RunInfo,
         recent_runs: list[RunInfo],
+        target_date: str | None = None,
     ) -> RenderResult:
         """Render all static pages.
 
@@ -83,12 +91,16 @@ class StaticRenderer:
             sources_status: Per-source status list.
             run_info: Current run information.
             recent_runs: Recent run history for status page.
+            target_date: Optional target date (YYYY-MM-DD) for backfill rendering.
+                        If not provided, uses current UTC date.
 
         Returns:
             RenderResult indicating success/failure and manifest.
         """
         start_time = time.perf_counter()
-        run_date = datetime.now(UTC).strftime("%Y-%m-%d")
+        run_date = (
+            target_date if target_date else datetime.now(UTC).strftime("%Y-%m-%d")
+        )
         generated_at = datetime.now(UTC).isoformat()
 
         manifest = RenderManifest(
@@ -104,26 +116,29 @@ class StaticRenderer:
         )
 
         try:
+            # Collect archive dates before rendering (needed for both JSON and HTML)
+            archive_dates = self._get_archive_dates(run_date)
+
             # Phase 1: Render JSON
             self._state_machine.to_rendering_json()
             json_renderer = JsonRenderer(
                 run_id=self._run_id,
                 output_dir=self._output_dir,
                 metrics=self._metrics,
+                entity_configs=self._entity_configs,
+                translations=self._translations,
             )
             json_file = json_renderer.render(
                 ranker_output=ranker_output,
                 sources_status=sources_status,
                 run_info=run_info,
                 run_date=run_date,
+                archive_dates=archive_dates,
             )
             manifest.add_file(json_file)
 
             # Phase 2: Render HTML
             self._state_machine.to_rendering_html()
-
-            # Collect archive dates before rendering
-            archive_dates = self._get_archive_dates(run_date)
 
             context = RenderContext(
                 run_id=self._run_id,
@@ -186,19 +201,22 @@ class StaticRenderer:
     def _get_archive_dates(self, current_date: str) -> list[str]:
         """Get list of existing archive dates.
 
+        Scans api/day/*.json files to find dates that have actual data.
+        Only includes dates where JSON data exists.
+
         Args:
             current_date: Current run date (will be included).
 
         Returns:
             List of date strings in descending order.
         """
-        day_dir = self._output_dir / "day"
+        api_day_dir = self._output_dir / "api" / "day"
         dates: set[str] = {current_date}
 
-        if day_dir.exists():
-            for html_file in day_dir.glob("*.html"):
-                # Extract date from filename (YYYY-MM-DD.html)
-                date_str = html_file.stem
+        if api_day_dir.exists():
+            for json_file in api_day_dir.glob("*.json"):
+                # Extract date from filename (YYYY-MM-DD.json)
+                date_str = json_file.stem
                 if self._is_valid_date(date_str):
                     dates.add(date_str)
 
@@ -258,6 +276,7 @@ def render_static(  # noqa: PLR0913
     sources_status: list[SourceStatus] | None = None,
     run_info: RunInfo | None = None,
     recent_runs: list[RunInfo] | None = None,
+    entity_configs: list[EntityConfig] | None = None,
 ) -> RenderResult:
     """Pure function API for static rendering.
 
@@ -269,6 +288,7 @@ def render_static(  # noqa: PLR0913
         sources_status: Per-source status list.
         run_info: Current run information.
         recent_runs: Recent run history.
+        entity_configs: Optional entity configurations for entity catalog.
 
     Returns:
         RenderResult indicating success/failure.
@@ -289,6 +309,7 @@ def render_static(  # noqa: PLR0913
         run_id=run_id,
         output_dir=output_dir,
         timezone=timezone,
+        entity_configs=entity_configs,
     )
 
     return renderer.render(

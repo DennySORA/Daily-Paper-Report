@@ -5,8 +5,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from src.config.loader import ConfigLoader
-from src.config.state_machine import ConfigState
+from src.features.config.loader import ConfigLoader
+from src.features.config.state_machine import ConfigState
 
 
 FIXTURES_DIR = Path(__file__).parent.parent / "fixtures" / "config"
@@ -27,9 +27,9 @@ class TestConfigLoaderIntegration:
         )
 
         assert loader.state == ConfigState.READY
-        assert len(effective.sources.sources) == 5
-        assert len(effective.entities.entities) == 4
-        assert len(effective.topics.topics) == 3
+        assert len(effective.sources.sources) == 41
+        assert len(effective.entities.entities) == 24
+        assert len(effective.topics.topics) == 26
 
     @pytest.mark.integration
     def test_load_produces_checksums(self) -> None:
@@ -193,9 +193,9 @@ class TestEffectiveConfigIntegration:
         )
 
         summary = config.summary()
-        assert summary["sources_count"] == 5
-        assert summary["entities_count"] == 4
-        assert summary["topics_count"] == 3
+        assert summary["sources_count"] == 41
+        assert summary["entities_count"] == 24
+        assert summary["topics_count"] == 26
         assert "config_checksum" in summary
 
     @pytest.mark.integration
@@ -210,8 +210,8 @@ class TestEffectiveConfigIntegration:
         )
 
         enabled = config.get_enabled_sources()
-        # All sources in fixture are enabled by default
-        assert len(enabled) == 5
+        # Enabled sources in fixture
+        assert len(enabled) == 34
 
     @pytest.mark.integration
     def test_get_entities_by_region_from_file(self) -> None:
@@ -227,5 +227,5 @@ class TestEffectiveConfigIntegration:
         intl_entities = config.get_entities_by_region("intl")
         cn_entities = config.get_entities_by_region("cn")
 
-        assert len(intl_entities) == 3  # openai, anthropic, deepmind
-        assert len(cn_entities) == 1  # qwen
+        assert len(intl_entities) == 21
+        assert len(cn_entities) == 3

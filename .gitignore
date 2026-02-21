@@ -356,3 +356,29 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,intellij+all,macos,windows,linux
 
+# Feature runner logs
+**/runner_logs/
+
+# Runtime state database
+state.sqlite
+state.sqlite-journal
+state.sqlite-wal
+state.sqlite-shm
+state.db
+state.db-journal
+state.db-wal
+state.db-shm
+
+# Feature development snapshots
+features/*/snapshots/*.json
+
+# Temporary git rewriting tools
+.rewrite/
+
+# Frontend (Node.js)
+frontend/node_modules/
+frontend/dist/
+frontend/.eslintcache
+frontend/test-results/
+frontend/playwright-report/
+frontend/tsconfig.tsbuildinfo

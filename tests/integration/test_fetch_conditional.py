@@ -8,12 +8,12 @@ from pathlib import Path
 
 import pytest
 
-from src.fetch.client import HttpFetcher
-from src.fetch.config import FetchConfig
-from src.fetch.metrics import FetchMetrics
-from src.fetch.models import RetryPolicy
-from src.store.metrics import StoreMetrics
-from src.store.store import StateStore
+from src.features.fetch.client import HttpFetcher
+from src.features.fetch.config import FetchConfig
+from src.features.fetch.metrics import FetchMetrics
+from src.features.fetch.models import RetryPolicy
+from src.features.store.metrics import StoreMetrics
+from src.features.store.store import StateStore
 
 
 def get_server_url(server: HTTPServer, path: str = "/resource") -> str:

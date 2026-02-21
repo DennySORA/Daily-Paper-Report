@@ -1,9 +1,8 @@
 """Unit tests for URL canonicalization."""
 
-from src.store.url import (
+from src.features.store.url import (
     DEFAULT_STRIP_PARAMS,
     canonicalize_url,
-    extract_arxiv_id,
 )
 
 
@@ -124,35 +123,6 @@ class TestArxivUrlNormalization:
         url = "https://arxiv.org/abs/hep-ph/0001234"
         result = canonicalize_url(url)
         assert result == "https://arxiv.org/abs/hep-ph/0001234"
-
-
-class TestExtractArxivId:
-    """Tests for extract_arxiv_id function."""
-
-    def test_extract_from_abs_url(self) -> None:
-        """Test extracting ID from abs URL."""
-        url = "https://arxiv.org/abs/2301.00001"
-        assert extract_arxiv_id(url) == "2301.00001"
-
-    def test_extract_from_pdf_url(self) -> None:
-        """Test extracting ID from PDF URL."""
-        url = "https://arxiv.org/pdf/2301.00001.pdf"
-        assert extract_arxiv_id(url) == "2301.00001"
-
-    def test_extract_versioned_id(self) -> None:
-        """Test extracting versioned ID."""
-        url = "https://arxiv.org/abs/2301.00001v3"
-        assert extract_arxiv_id(url) == "2301.00001v3"
-
-    def test_extract_old_style_id(self) -> None:
-        """Test extracting old-style ID."""
-        url = "https://arxiv.org/abs/hep-ph/0001234"
-        assert extract_arxiv_id(url) == "hep-ph/0001234"
-
-    def test_non_arxiv_url(self) -> None:
-        """Test non-arXiv URL returns None."""
-        url = "https://example.com/article"
-        assert extract_arxiv_id(url) is None
 
 
 class TestDefaultStripParams:

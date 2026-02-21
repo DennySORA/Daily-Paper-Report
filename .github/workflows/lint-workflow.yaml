@@ -23,17 +23,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install actionlint
-        run: |
-          # Download latest actionlint
-          curl -sSL https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64.tar.gz | tar xz
-          chmod +x actionlint
-          ./actionlint --version
-
       - name: Run actionlint
-        run: |
-          echo "Linting workflow files..."
-          ./actionlint -color
+        uses: raven-actions/actionlint@v2
+        with:
+          fail-on-error: true
 
       - name: Validate required permissions
         run: |
@@ -81,9 +74,11 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "## Workflow Lint Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| actionlint | ${{ job.status }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| permissions | ${{ job.status }} |" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Workflow Lint Results"
+            echo ""
+            echo "| Check | Status |"
+            echo "|-------|--------|"
+            echo "| actionlint | ${{ job.status }} |"
+            echo "| permissions | ${{ job.status }} |"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -14,12 +14,18 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.config.schemas.base import LinkType  # noqa: F401 - may be used in future tests
-from src.config.schemas.entities import EntitiesConfig, EntityConfig, EntityRegion
+from src.features.config.schemas.base import (
+    LinkType,  # noqa: F401 - may be used in future tests
+)
+from src.features.config.schemas.entities import (
+    EntitiesConfig,
+    EntityConfig,
+    EntityRegion,
+)
+from src.features.store.models import DateConfidence, Item
 from src.linker.linker import StoryLinker
 from src.linker.persistence import LinkerPersistence, write_daily_json
 from src.linker.state_machine import LinkerState, LinkerStateTransitionError
-from src.store.models import DateConfidence, Item
 
 
 def create_arxiv_item(

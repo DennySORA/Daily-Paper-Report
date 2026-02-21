@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pydantic>=2.10.0",
+    "pydantic-settings>=2.2.1",
     "pyyaml>=6.0.2",
     "click>=8.1.0",
     "structlog>=24.4.0",
@@ -21,6 +22,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+semantic = [
+    "fastembed>=0.4.0",
+    "numpy>=1.26.0",
+]
 dev = [
     "pytest>=8.0.0",
     "pytest-cov>=6.0.0",
@@ -102,6 +107,7 @@ ignore = [
     "PLR2004", # magic values allowed in tests
     "ARG001",  # unused function args for fixtures
     "ARG002",  # unused method args for fixtures
+    "PLR0913", # many args allowed in test helper functions
 ]
 "main.py" = [
     "PLC0415", # import inside function ok for entry point
@@ -109,6 +115,9 @@ ignore = [
 "tests/e2e_linker_validation.py" = [
     "T201",  # print allowed in E2E CLI validation script
     "S108",  # /tmp is acceptable for test artifacts
+]
+"tests/e2e_generate_test_output.py" = [
+    "E402",  # allow sys.path bootstrap before imports in script
 ]
 
 # Configure pydocstyle to use Google docstring convention
@@ -173,5 +182,6 @@ skips = ["**/test_*.py", "**/tests/**"]
 
 [dependency-groups]
 dev = [
+    "mypy>=1.19.1",
     "types-defusedxml>=0.7.0.20250822",
 ]

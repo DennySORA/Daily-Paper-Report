@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.config.constants import (
+from src.features.config.constants import (
     COMPONENT_CLI,
     COMPONENT_CONFIG,
     COMPONENT_EVIDENCE,

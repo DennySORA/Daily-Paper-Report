@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Research Digest - Sources{% endblock %}
-
-{% block header_title %}Sources Status{% endblock %}
+{% block title %}Daily Paper Report - Sources{% endblock %}
 
 {% block content %}
 <style>
-    /* Sources page specific styles */
+    /* Summary cards grid */
     .summary-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: var(--space-3);
-        margin-bottom: var(--space-6);
+        gap: var(--space-4);
+        margin-bottom: var(--space-8);
     }
 
     .summary-card {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: var(--space-4);
-        border-radius: var(--radius-lg);
-        border: 1px solid transparent;
-        transition: transform var(--transition-base), box-shadow var(--transition-base);
+        justify-content: center;
+        padding: var(--space-5) var(--space-4);
+        background: var(--color-bg-elevated);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-xl);
+        text-align: center;
+        transition: all var(--duration-base) var(--ease-out);
     }
 
     .summary-card:hover {
@@ -29,113 +30,57 @@
         box-shadow: var(--shadow-md);
     }
 
-    .summary-card--success {
-        background: var(--color-success-bg);
-        border-color: var(--color-success);
-    }
-
-    .summary-card--info {
-        background: var(--color-info-bg);
-        border-color: var(--color-info);
-    }
-
-    .summary-card--error {
-        background: var(--color-error-bg);
-        border-color: var(--color-error);
-    }
-
-    .summary-card--warning {
-        background: var(--color-warning-bg);
-        border-color: var(--color-warning);
-    }
+    .summary-card--success { border-left: 3px solid var(--color-success); }
+    .summary-card--info { border-left: 3px solid var(--color-info); }
+    .summary-card--warning { border-left: 3px solid var(--color-warning); }
+    .summary-card--error { border-left: 3px solid var(--color-error); }
 
     .summary-card__count {
-        font-size: 1.75rem;
+        font-size: 2rem;
         font-weight: 700;
-        line-height: 1;
+        line-height: 1.2;
+        color: var(--color-text);
     }
+
+    .summary-card--success .summary-card__count { color: var(--color-success); }
+    .summary-card--info .summary-card__count { color: var(--color-info); }
+    .summary-card--warning .summary-card__count { color: var(--color-warning); }
+    .summary-card--error .summary-card__count { color: var(--color-error); }
 
     .summary-card__label {
-        font-size: 0.8125rem;
-        font-weight: 500;
-        margin-top: var(--space-1);
+        font-size: 0.6875rem;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        color: var(--color-text-muted);
+        margin-top: var(--space-2);
     }
 
-    .summary-card--success .summary-card__count,
-    .summary-card--success .summary-card__label {
-        color: var(--color-success);
-    }
-
-    .summary-card--info .summary-card__count,
-    .summary-card--info .summary-card__label {
-        color: var(--color-info);
-    }
-
-    .summary-card--error .summary-card__count,
-    .summary-card--error .summary-card__label {
-        color: var(--color-error);
-    }
-
-    .summary-card--warning .summary-card__count,
-    .summary-card--warning .summary-card__label {
-        color: var(--color-warning);
-    }
-
-    /* Enhanced status badges */
-    .status-badge {
-        transition: transform var(--transition-fast);
-    }
-
-    .status-badge:hover {
-        transform: scale(1.05);
-    }
-
-    /* Source row enhancements */
+    /* Source table styles */
     .source-name {
         font-weight: 600;
         color: var(--color-text);
     }
 
     .source-id {
-        font-size: 0.75rem;
+        font-size: 0.6875rem;
         color: var(--color-text-muted);
         font-family: var(--font-mono);
-    }
-
-    .detail-text {
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
-    }
-
-    .hint-text {
-        display: block;
         margin-top: var(--space-1);
-        font-size: 0.8125rem;
-        color: var(--color-warning);
-        font-style: italic;
-    }
-
-    .meta-text {
         display: block;
-        margin-top: var(--space-1);
-        font-size: 0.75rem;
-        color: var(--color-text-muted);
     }
 
-    /* Tier badge */
     .tier-badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         width: 1.5rem;
         height: 1.5rem;
-        border-radius: 50%;
-        font-size: 0.75rem;
-        font-weight: 600;
+        border-radius: var(--radius-full);
+        font-size: 0.6875rem;
+        font-weight: 700;
         background: var(--color-bg-muted);
-        color: var(--color-text-secondary);
+        color: var(--color-text-muted);
     }
 
     .tier-badge--0 {
@@ -143,20 +88,23 @@
         color: var(--color-primary);
     }
 
-    /* Method tag */
+    .tier-badge--1 {
+        background: var(--accent-papers-light);
+        color: var(--accent-papers);
+    }
+
     .method-tag {
         font-family: var(--font-mono);
-        font-size: 0.75rem;
+        font-size: 0.6875rem;
         padding: var(--space-1) var(--space-2);
-        background: var(--color-bg-muted);
+        background: var(--color-bg-subtle);
         border-radius: var(--radius-sm);
         color: var(--color-text-muted);
     }
 
-    /* Item counts */
     .item-count {
         font-family: var(--font-mono);
-        font-weight: 500;
+        font-weight: 600;
     }
 
     .item-count--positive {
@@ -164,27 +112,42 @@
     }
 
     .item-count--zero {
+        color: var(--color-text-subtle);
+    }
+
+    .detail-text {
+        display: block;
+        font-size: 0.75rem;
         color: var(--color-text-muted);
+    }
+
+    .hint-text {
+        display: block;
+        margin-top: var(--space-1);
+        font-size: 0.6875rem;
+        color: var(--color-warning);
+        font-style: italic;
+    }
+
+    .meta-text {
+        display: block;
+        margin-top: var(--space-1);
+        font-size: 0.6875rem;
+        color: var(--color-text-subtle);
     }
 
     /* Category section */
     .category-section {
-        margin-bottom: var(--space-8);
-    }
-
-    .category-section h2 {
-        display: flex;
-        align-items: center;
-        gap: var(--space-2);
+        margin-bottom: var(--space-10);
     }
 
     .category-count {
-        font-size: 0.875rem;
+        font-size: 0.8125rem;
         font-weight: 400;
         color: var(--color-text-muted);
     }
 
-    /* Responsive table */
+    /* Responsive */
     @media (max-width: 768px) {
         .summary-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -196,29 +159,32 @@
     }
 </style>
 
-<p class="meta">Per-source update status for the latest run. Sources are grouped by category.</p>
+<div class="page-header">
+    <h1>Sources Status</h1>
+    <p class="page-meta">Per-source update status for the latest run.</p>
+</div>
 
 {% macro render_status_badge(status) %}
     {% if status.value == 'HAS_UPDATE' %}
-        <span class="status-badge status-success" role="status" aria-label="Has updates">HAS_UPDATE</span>
+        <span class="status-badge status-success">Updated</span>
     {% elif status.value == 'NO_UPDATE' %}
-        <span class="status-badge status-info" role="status" aria-label="No updates">NO_UPDATE</span>
+        <span class="status-badge status-info">No Change</span>
     {% elif status.value == 'FETCH_FAILED' %}
-        <span class="status-badge status-error" role="status" aria-label="Fetch failed">FETCH_FAILED</span>
+        <span class="status-badge status-error">Fetch Failed</span>
     {% elif status.value == 'PARSE_FAILED' %}
-        <span class="status-badge status-error" role="status" aria-label="Parse failed">PARSE_FAILED</span>
+        <span class="status-badge status-error">Parse Failed</span>
     {% elif status.value == 'CANNOT_CONFIRM' %}
-        <span class="status-badge status-warning" role="status" aria-label="Cannot confirm">CANNOT_CONFIRM</span>
+        <span class="status-badge status-warning">Uncertain</span>
     {% elif status.value == 'STATUS_ONLY' %}
-        <span class="status-badge status-info" role="status" aria-label="Status only">STATUS_ONLY</span>
+        <span class="status-badge status-info">Status Only</span>
     {% else %}
-        <span class="status-badge status-info" role="status">{{ status.value }}</span>
+        <span class="status-badge status-info">{{ status.value }}</span>
     {% endif %}
 {% endmacro %}
 
 {% macro render_item_count(count) %}
     {% if count > 0 %}
-        <span class="item-count item-count--positive">{{ count }}</span>
+        <span class="item-count item-count--positive">+{{ count }}</span>
     {% else %}
         <span class="item-count item-count--zero">{{ count }}</span>
     {% endif %}
@@ -243,7 +209,7 @@
             <tr>
                 <td>
                     <span class="source-name">{{ source.name or source.source_id }}</span>
-                    <br><span class="source-id">{{ source.source_id }}</span>
+                    <span class="source-id">{{ source.source_id }}</span>
                 </td>
                 <td class="hide-mobile">
                     <span class="tier-badge tier-badge--{{ source.tier }}">{{ source.tier }}</span>
@@ -261,7 +227,7 @@
                         <span class="detail-text">{{ source.reason_text }}</span>
                     {% endif %}
                     {% if source.remediation_hint %}
-                        <span class="hint-text">Hint: {{ source.remediation_hint }}</span>
+                        <span class="hint-text">{{ source.remediation_hint }}</span>
                     {% endif %}
                     {% if source.newest_item_date %}
                         <span class="meta-text">Newest: {{ source.newest_item_date.strftime('%Y-%m-%d %H:%M') }}</span>
@@ -320,27 +286,30 @@
         {% set failed_total = fetch_failed_count + parse_failed_count %}
     {% endif %}
 
-    <section aria-labelledby="summary-heading">
-        <h2 id="summary-heading">Summary</h2>
-        <div class="summary-grid" role="list">
-            <div class="summary-card summary-card--success" role="listitem">
+    <section>
+        <h2>
+            <span class="section-icon">📈</span>
+            Summary
+        </h2>
+        <div class="summary-grid">
+            <div class="summary-card summary-card--success">
                 <span class="summary-card__count">{{ has_update_count }}</span>
                 <span class="summary-card__label">Has Updates</span>
             </div>
-            <div class="summary-card summary-card--info" role="listitem">
+            <div class="summary-card summary-card--info">
                 <span class="summary-card__count">{{ no_update_count }}</span>
                 <span class="summary-card__label">No Updates</span>
             </div>
             {% if failed_total > 0 %}
-            <div class="summary-card summary-card--error" role="listitem">
+            <div class="summary-card summary-card--error">
                 <span class="summary-card__count">{{ failed_total }}</span>
                 <span class="summary-card__label">Failed</span>
             </div>
             {% endif %}
             {% if cannot_confirm_count > 0 %}
-            <div class="summary-card summary-card--warning" role="listitem">
+            <div class="summary-card summary-card--warning">
                 <span class="summary-card__count">{{ cannot_confirm_count }}</span>
-                <span class="summary-card__label">Cannot Confirm</span>
+                <span class="summary-card__label">Uncertain</span>
             </div>
             {% endif %}
         </div>
@@ -349,47 +318,66 @@
     {# Render category sections #}
     {% if intl_labs or cn_ecosystem or platforms or paper_sources %}
         {% if intl_labs %}
-        <section class="category-section" aria-labelledby="intl-labs-heading">
-            <h2 id="intl-labs-heading">International Labs <span class="category-count">({{ intl_labs|length }})</span></h2>
+        <section class="category-section">
+            <h2>
+                <span class="section-icon">🌍</span>
+                International Labs <span class="category-count">({{ intl_labs|length }})</span>
+            </h2>
             {{ render_source_table(intl_labs) }}
         </section>
         {% endif %}
 
         {% if cn_ecosystem %}
-        <section class="category-section" aria-labelledby="cn-ecosystem-heading">
-            <h2 id="cn-ecosystem-heading">CN / Chinese Ecosystem <span class="category-count">({{ cn_ecosystem|length }})</span></h2>
+        <section class="category-section">
+            <h2>
+                <span class="section-icon">🇨🇳</span>
+                CN / Chinese Ecosystem <span class="category-count">({{ cn_ecosystem|length }})</span>
+            </h2>
             {{ render_source_table(cn_ecosystem) }}
         </section>
         {% endif %}
 
         {% if platforms %}
-        <section class="category-section" aria-labelledby="platforms-heading">
-            <h2 id="platforms-heading">Platforms <span class="category-count">({{ platforms|length }})</span></h2>
+        <section class="category-section">
+            <h2>
+                <span class="section-icon">🔧</span>
+                Platforms <span class="category-count">({{ platforms|length }})</span>
+            </h2>
             {{ render_source_table(platforms) }}
         </section>
         {% endif %}
 
         {% if paper_sources %}
-        <section class="category-section" aria-labelledby="paper-sources-heading">
-            <h2 id="paper-sources-heading">Paper Sources <span class="category-count">({{ paper_sources|length }})</span></h2>
+        <section class="category-section">
+            <h2>
+                <span class="section-icon">📚</span>
+                Paper Sources <span class="category-count">({{ paper_sources|length }})</span>
+            </h2>
             {{ render_source_table(paper_sources) }}
         </section>
         {% endif %}
 
         {% if other %}
-        <section class="category-section" aria-labelledby="other-sources-heading">
-            <h2 id="other-sources-heading">Other Sources <span class="category-count">({{ other|length }})</span></h2>
+        <section class="category-section">
+            <h2>
+                <span class="section-icon">📦</span>
+                Other Sources <span class="category-count">({{ other|length }})</span>
+            </h2>
             {{ render_source_table(other) }}
         </section>
         {% endif %}
     {% else %}
-        <section class="category-section" aria-labelledby="all-sources-heading">
-            <h2 id="all-sources-heading">All Sources <span class="category-count">({{ sources_status|length }})</span></h2>
+        <section class="category-section">
+            <h2>
+                <span class="section-icon">📦</span>
+                All Sources <span class="category-count">({{ sources_status|length }})</span>
+            </h2>
             {{ render_source_table(sources_status) }}
         </section>
     {% endif %}
 {% else %}
-<div class="empty-state" role="alert">
+<div class="empty-state">
+    <div class="empty-state-icon">📭</div>
     <p>No source status available for this run.</p>
 </div>
 {% endif %}

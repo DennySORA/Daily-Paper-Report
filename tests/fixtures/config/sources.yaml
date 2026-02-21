@@ -3,6 +3,10 @@ defaults:
   max_items: 50
 
 sources:
+  # ============================================================
+  # TIER 0 - Primary AI Company Blogs (Official Sources)
+  # ============================================================
+
   - id: openai-blog
     name: OpenAI Blog
     url: https://openai.com/blog/rss.xml
@@ -20,14 +24,79 @@ sources:
     method: rss_atom
     kind: blog
     timezone: America/Los_Angeles
+    enabled: false # Anthropic does not provide a public RSS feed
 
   - id: deepmind-blog
     name: DeepMind Blog
-    url: https://deepmind.google/discover/blog/rss.xml
+    url: https://deepmind.google/blog/rss.xml
     tier: 0
     method: rss_atom
     kind: blog
     timezone: Europe/London
+    max_items: 20
+
+  - id: google-ai-blog
+    name: Google AI Blog
+    url: https://blog.google/technology/ai/rss/
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 20
+
+  - id: meta-ai-blog
+    name: Meta AI Blog
+    url: https://ai.meta.com/blog/rss/
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 20
+
+  - id: microsoft-research-blog
+    name: Microsoft Research Blog
+    url: https://www.microsoft.com/en-us/research/feed/
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 20
+
+  - id: nvidia-ai-blog
+    name: NVIDIA AI Blog
+    url: https://blogs.nvidia.com/blog/category/deep-learning/feed/
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 20
+
+  - id: aws-ml-blog
+    name: AWS Machine Learning Blog
+    url: https://aws.amazon.com/blogs/machine-learning/feed/
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 20
+
+  # ============================================================
+  # TIER 0 - Individual AI Researcher Blogs
+  # ============================================================
+
+  - id: sebastian-raschka-blog
+    name: Sebastian Raschka Blog
+    url: https://sebastianraschka.com/rss_feed.xml
+    tier: 0
+    method: rss_atom
+    kind: blog
+    timezone: UTC
+    max_items: 20
+    enabled: true
+
+  # ============================================================
+  # TIER 1 - arXiv Paper Categories
+  # ============================================================
 
   - id: arxiv-cs-ai
     name: arXiv cs.AI
@@ -36,12 +105,303 @@ sources:
     method: rss_atom
     kind: paper
     timezone: UTC
-    max_items: 100
+    max_items: 300
+
+  - id: arxiv-cs-lg
+    name: arXiv cs.LG
+    url: https://rss.arxiv.org/rss/cs.LG
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-cs-cl
+    name: arXiv cs.CL
+    url: https://rss.arxiv.org/rss/cs.CL
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-cs-cv
+    name: arXiv cs.CV
+    url: https://rss.arxiv.org/rss/cs.CV
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-stat-ml
+    name: arXiv stat.ML
+    url: https://rss.arxiv.org/rss/stat.ML
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-cs-ma
+    name: arXiv cs.MA
+    url: https://rss.arxiv.org/rss/cs.MA
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-cs-ro
+    name: arXiv cs.RO
+    url: https://rss.arxiv.org/rss/cs.RO
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-cs-se
+    name: arXiv cs.SE
+    url: https://rss.arxiv.org/rss/cs.SE
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  - id: arxiv-cs-ir
+    name: arXiv cs.IR
+    url: https://rss.arxiv.org/rss/cs.IR
+    tier: 1
+    method: rss_atom
+    kind: paper
+    timezone: UTC
+    max_items: 300
+
+  # ============================================================
+  # TIER 1 - arXiv API Keyword Queries (supplements RSS feeds)
+  # Targeted searches for high-priority topics that may be missed
+  # by category-based RSS feeds due to cross-listing gaps.
+  # ============================================================
+
+  - id: arxiv-api-llm
+    name: arXiv API LLM
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"large language model" OR ti:"LLM" OR ti:"foundation model"'
+
+  - id: arxiv-api-agents
+    name: arXiv API Agents
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"AI agent" OR ti:"agentic" OR ti:"tool use" OR ti:"function calling" OR ti:"multi-agent" OR ti:"multi agent"'
+
+  - id: arxiv-api-reasoning
+    name: arXiv API Reasoning
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 30
+    query: 'ti:"chain-of-thought" OR ti:"reasoning" AND ti:"language model"'
+
+  - id: arxiv-api-alignment
+    name: arXiv API Alignment
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 30
+    query: 'ti:"RLHF" OR ti:"alignment" OR ti:"preference optimization" OR ti:"DPO"'
+
+  - id: arxiv-api-multimodal
+    name: arXiv API Multimodal
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 30
+    query: 'ti:"multimodal" OR ti:"vision-language" OR ti:"VLM" OR ti:"MLLM"'
+
+  # ============================================================
+  # TIER 1 - HuggingFace Organization Model Releases
+  # ============================================================
 
   - id: hf-openai
     name: Hugging Face OpenAI
-    url: https://huggingface.co/api/models?author=openai
+    url: https://huggingface.co/openai
     tier: 1
     method: hf_org
     kind: model
     timezone: UTC
+
+  - id: hf-meta-llama
+    name: Hugging Face Meta Llama
+    url: https://huggingface.co/meta-llama
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-google
+    name: Hugging Face Google
+    url: https://huggingface.co/google
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-microsoft
+    name: Hugging Face Microsoft
+    url: https://huggingface.co/microsoft
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-mistralai
+    name: Hugging Face Mistral AI
+    url: https://huggingface.co/mistralai
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-qwen
+    name: Hugging Face Qwen
+    url: https://huggingface.co/Qwen
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-stabilityai
+    name: Hugging Face Stability AI
+    url: https://huggingface.co/stabilityai
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-01-ai
+    name: Hugging Face 01.AI (Yi)
+    url: https://huggingface.co/01-ai
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-deepseek-ai
+    name: Hugging Face DeepSeek AI
+    url: https://huggingface.co/deepseek-ai
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  - id: hf-cohere
+    name: Hugging Face Cohere
+    url: https://huggingface.co/CohereForAI
+    tier: 1
+    method: hf_org
+    kind: model
+    timezone: UTC
+
+  # ============================================================
+  # TIER 1 - GitHub Releases (Major LLM/AI Projects)
+  # DISABLED: Release titles are just version numbers without meaningful content
+  # ============================================================
+
+  - id: gh-transformers
+    name: GitHub Transformers
+    url: https://github.com/huggingface/transformers
+    tier: 1
+    method: github_releases
+    kind: release
+    timezone: UTC
+    max_items: 10
+    enabled: false  # Release titles lack meaningful content
+
+  - id: gh-langchain
+    name: GitHub LangChain
+    url: https://github.com/langchain-ai/langchain
+    tier: 1
+    method: github_releases
+    kind: release
+    timezone: UTC
+    max_items: 10
+    enabled: false  # Release titles lack meaningful content
+
+  - id: gh-vllm
+    name: GitHub vLLM
+    url: https://github.com/vllm-project/vllm
+    tier: 1
+    method: github_releases
+    kind: release
+    timezone: UTC
+    max_items: 10
+    enabled: false  # Release titles lack meaningful content
+
+  - id: gh-ollama
+    name: GitHub Ollama
+    url: https://github.com/ollama/ollama
+    tier: 1
+    method: github_releases
+    kind: release
+    timezone: UTC
+    max_items: 10
+    enabled: false  # Release titles lack meaningful content
+
+  - id: gh-llama-cpp
+    name: GitHub llama.cpp
+    url: https://github.com/ggerganov/llama.cpp
+    tier: 1
+    method: github_releases
+    kind: release
+    timezone: UTC
+    max_items: 10
+    enabled: false  # Release titles lack meaningful content
+
+  - id: gh-pytorch
+    name: GitHub PyTorch
+    url: https://github.com/pytorch/pytorch
+    tier: 1
+    method: github_releases
+    kind: release
+    timezone: UTC
+    max_items: 10
+    enabled: false  # Release titles lack meaningful content
+
+  # ============================================================
+  # TIER 1 - Paper Aggregators (High-Quality Curated Sources)
+  # ============================================================
+
+  - id: hf-daily-papers
+    name: Hugging Face Daily Papers
+    url: https://huggingface.co/papers
+    tier: 1
+    method: hf_daily_papers
+    kind: paper
+    timezone: UTC
+    max_items: 50
+
+  - id: papers-with-code
+    name: Papers With Code
+    url: https://paperswithcode.com/
+    tier: 1
+    method: papers_with_code
+    kind: paper
+    timezone: UTC
+    max_items: 50

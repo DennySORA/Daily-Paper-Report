@@ -6,7 +6,7 @@ import pytest
 
 from src.collectors.html_profile.date_extractor import DateExtractor
 from src.collectors.html_profile.models import DateExtractionMethod, DateExtractionRule
-from src.store.models import DateConfidence
+from src.features.store.models import DateConfidence
 
 
 # Path to HTML fixtures

@@ -1,13 +1,16 @@
 """Unit tests for entity matcher."""
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntityConfig, EntityRegion
+import json
+
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntityConfig, EntityRegion, EntityType
+from src.features.store.models import DateConfidence, Item
 from src.linker.entity_matcher import (
+    _build_search_text,
     get_all_entity_ids,
     get_primary_entity,
     match_item_to_entities,
 )
-from src.store.models import DateConfidence, Item
 
 
 def create_test_item(
@@ -112,8 +115,6 @@ class TestMatchItemToEntities:
 
     def test_raw_json_abstract_match(self) -> None:
         """Test matching in raw_json abstract."""
-        import json
-
         raw = json.dumps({"abstract": "This paper from OpenAI discusses..."})
         item = create_test_item(title="Technical Report", raw_json=raw)
         entities = [create_test_entity(entity_id="openai", keywords=["OpenAI"])]
@@ -182,3 +183,121 @@ class TestGetAllEntityIds:
         """Test returns empty list for no matches."""
         ids = get_all_entity_ids([])
         assert ids == []
+
+
+class TestBuildSearchText:
+    """Tests for _build_search_text function with author matching."""
+
+    def test_includes_title(self) -> None:
+        """Test search text includes title."""
+        item = create_test_item(title="Test Paper Title")
+        search_text = _build_search_text(item)
+        assert "test paper title" in search_text
+
+    def test_includes_abstract(self) -> None:
+        """Test search text includes abstract from raw_json."""
+        raw = json.dumps({"abstract": "This is the abstract"})
+        item = create_test_item(title="Title", raw_json=raw)
+        search_text = _build_search_text(item)
+        assert "this is the abstract" in search_text
+
+    def test_includes_authors_list(self) -> None:
+        """Test search text includes authors as list."""
+        raw = json.dumps({"authors": ["Ilya Sutskever", "Geoffrey Hinton"]})
+        item = create_test_item(title="Paper Title", raw_json=raw)
+        search_text = _build_search_text(item)
+        assert "ilya sutskever" in search_text
+        assert "geoffrey hinton" in search_text
+
+    def test_includes_authors_string(self) -> None:
+        """Test search text includes authors as string."""
+        raw = json.dumps({"authors": "John Doe, Jane Smith"})
+        item = create_test_item(title="Paper Title", raw_json=raw)
+        search_text = _build_search_text(item)
+        assert "john doe" in search_text
+        assert "jane smith" in search_text
+
+    def test_handles_empty_raw_json(self) -> None:
+        """Test handles empty raw_json."""
+        item = create_test_item(title="Title", raw_json="{}")
+        search_text = _build_search_text(item)
+        assert "title" in search_text
+
+    def test_handles_invalid_json(self) -> None:
+        """Test handles invalid JSON gracefully."""
+        item = create_test_item(title="Title", raw_json="not json")
+        search_text = _build_search_text(item)
+        assert "title" in search_text
+
+
+class TestAuthorBasedEntityMatching:
+    """Tests for entity matching based on authors."""
+
+    def test_match_researcher_by_name(self) -> None:
+        """Test matching researcher entity by author name."""
+        raw = json.dumps({"authors": ["Ilya Sutskever", "John Doe"]})
+        item = create_test_item(title="Attention Is All You Need", raw_json=raw)
+        entities = [
+            EntityConfig(
+                id="ilya-sutskever",
+                name="Ilya Sutskever",
+                region=EntityRegion.INTL,
+                entity_type=EntityType.RESEARCHER,
+                keywords=["Ilya Sutskever", "Sutskever"],
+                prefer_links=[LinkType.ARXIV],
+            )
+        ]
+
+        matches = match_item_to_entities(item, entities)
+        assert len(matches) == 1
+        assert matches[0].entity_id == "ilya-sutskever"
+
+    def test_match_institution_by_affiliation(self) -> None:
+        """Test matching institution by affiliation keyword."""
+        raw = json.dumps(
+            {"abstract": "Researchers at Google Research present a new model..."}
+        )
+        item = create_test_item(title="New Research Paper", raw_json=raw)
+        entities = [
+            EntityConfig(
+                id="google-research",
+                name="Google Research",
+                region=EntityRegion.INTL,
+                entity_type=EntityType.INSTITUTION,
+                keywords=["Google Research", "Google Brain"],
+                prefer_links=[LinkType.OFFICIAL],
+            )
+        ]
+
+        matches = match_item_to_entities(item, entities)
+        assert len(matches) == 1
+        assert matches[0].entity_id == "google-research"
+
+    def test_combined_author_and_title_boost(self) -> None:
+        """Test that matching in both author and title gives higher score."""
+        raw = json.dumps({"authors": ["Hinton"]})
+        item_author_only = create_test_item(title="A New Paper", raw_json=raw)
+
+        item_both = create_test_item(
+            title="Hinton's New Paper",
+            raw_json=json.dumps({"authors": ["Hinton"]}),
+        )
+
+        entities = [
+            EntityConfig(
+                id="geoffrey-hinton",
+                name="Geoffrey Hinton",
+                region=EntityRegion.INTL,
+                entity_type=EntityType.RESEARCHER,
+                keywords=["Hinton"],
+                prefer_links=[LinkType.ARXIV],
+            )
+        ]
+
+        matches_author_only = match_item_to_entities(item_author_only, entities)
+        matches_both = match_item_to_entities(item_both, entities)
+
+        assert len(matches_author_only) == 1
+        assert len(matches_both) == 1
+        # Title boost should give higher score
+        assert matches_both[0].match_score > matches_author_only[0].match_score

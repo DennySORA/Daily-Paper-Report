@@ -7,6 +7,7 @@ import unicodedata
 from dataclasses import dataclass
 from datetime import datetime
 
+from src.features.store.models import Item
 from src.linker.constants import (
     ARXIV_ID_PATTERN,
     DATE_BUCKET_FORMAT,
@@ -16,7 +17,6 @@ from src.linker.constants import (
     MODELSCOPE_ID_PATTERN,
     TITLE_STRIP_CHARS,
 )
-from src.store.models import Item
 
 
 def extract_arxiv_id(url: str) -> str | None:

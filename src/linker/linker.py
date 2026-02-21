@@ -4,9 +4,10 @@ from datetime import datetime
 
 import structlog
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntitiesConfig, EntityConfig
-from src.config.schemas.topics import TopicsConfig
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntitiesConfig, EntityConfig
+from src.features.config.schemas.topics import TopicsConfig
+from src.features.store.models import Item
 from src.linker.constants import ALLOWLISTED_LINK_TYPES, DEFAULT_PRIMARY_LINK_ORDER
 from src.linker.entity_matcher import (
     get_all_entity_ids,
@@ -27,7 +28,6 @@ from src.linker.story_id import (
     extract_stable_id,
     generate_story_id,
 )
-from src.store.models import Item
 
 
 logger = structlog.get_logger()

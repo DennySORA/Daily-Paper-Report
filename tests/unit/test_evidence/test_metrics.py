@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.evidence.metrics import EvidenceMetrics
+from src.features.evidence.metrics import EvidenceMetrics
 
 
 class TestEvidenceMetrics:

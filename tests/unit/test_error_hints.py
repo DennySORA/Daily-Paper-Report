@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.config.error_hints import (
+from src.features.config.error_hints import (
     ERROR_HINTS,
     FIELD_HINTS,
     format_validation_error,

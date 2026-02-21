@@ -9,7 +9,7 @@ from src.collectors.platform.helpers import (
     is_auth_error,
     truncate_text,
 )
-from src.fetch.models import FetchErrorClass
+from src.features.fetch.models import FetchErrorClass
 
 
 class TestIsAuthError:
@@ -100,14 +100,6 @@ class TestExtractNestedValue:
     def test_none_value(self) -> None:
         """Test None input returns None."""
         assert extract_nested_value(None) is None
-
-    def test_list_value(self) -> None:
-        """Test list value returns list."""
-        assert extract_nested_value(["a", "b"]) == ["a", "b"]
-
-    def test_integer_value(self) -> None:
-        """Test integer value returns integer."""
-        assert extract_nested_value(42) == 42
 
 
 class TestBuildPdfUrl:

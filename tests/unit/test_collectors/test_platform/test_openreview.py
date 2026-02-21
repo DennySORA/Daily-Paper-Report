@@ -1,7 +1,6 @@
 """Unit tests for OpenReview venue collector."""
 
 import json
-from datetime import UTC, datetime
 from unittest.mock import MagicMock
 
 from src.collectors.errors import CollectorErrorClass
@@ -16,9 +15,10 @@ from src.collectors.platform.rate_limiter import (
     reset_platform_rate_limiters,
 )
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
+from tests.helpers.time import FIXED_NOW
 
 
 class TestExtractVenueId:
@@ -105,7 +105,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result = collector.collect(source_config, mock_http, now)
 
         assert result.state == SourceState.SOURCE_DONE
@@ -127,7 +127,7 @@ class TestOpenReviewVenueCollector:
         )
 
         mock_http = MagicMock()
-        now = datetime.now(UTC)
+        now = FIXED_NOW
 
         result = collector.collect(source_config, mock_http, now)
 
@@ -156,7 +156,7 @@ class TestOpenReviewVenueCollector:
             ),
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result = collector.collect(source_config, mock_http, now)
 
         assert result.state == SourceState.SOURCE_FAILED
@@ -184,7 +184,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result1 = collector.collect(source_config, mock_http, now)
         hash1 = result1.items[0].content_hash
 
@@ -223,7 +223,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result = collector.collect(source_config, mock_http, now)
 
         assert result.state == SourceState.SOURCE_DONE
@@ -247,7 +247,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result = collector.collect(source_config, mock_http, now)
 
         item = result.items[0]
@@ -271,7 +271,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         collector.collect(source_config, mock_http, now)
 
         metrics = PlatformMetrics.get_instance()
@@ -298,7 +298,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result = collector.collect(source_config, mock_http, now)
 
         item = result.items[0]
@@ -325,7 +325,7 @@ class TestOpenReviewVenueCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = FIXED_NOW
         result = collector.collect(source_config, mock_http, now)
 
         assert result.state == SourceState.SOURCE_DONE

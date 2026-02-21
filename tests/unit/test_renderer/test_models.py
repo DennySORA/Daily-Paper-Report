@@ -125,6 +125,31 @@ class TestDailyDigest:
         assert len(digest.top5) == 1
         assert len(digest.radar) == 1
 
+    def test_entity_catalog_default_empty(self) -> None:
+        """entity_catalog defaults to empty dict."""
+        digest = DailyDigest(
+            run_id="test",
+            run_date="2026-01-15",
+            generated_at="2026-01-15T00:00:00Z",
+        )
+        assert digest.entity_catalog == {}
+
+    def test_entity_catalog_with_entries(self) -> None:
+        """entity_catalog stores entity ID to detail mappings."""
+        catalog = {
+            "openai": {"name": "OpenAI", "type": "organization"},
+            "mit": {"name": "MIT", "type": "institution"},
+        }
+        digest = DailyDigest(
+            run_id="test",
+            run_date="2026-01-15",
+            generated_at="2026-01-15T00:00:00Z",
+            entity_catalog=catalog,
+        )
+        assert digest.entity_catalog["openai"]["name"] == "OpenAI"
+        assert digest.entity_catalog["mit"]["type"] == "institution"
+        assert len(digest.entity_catalog) == 2
+
 
 class TestGeneratedFile:
     """Tests for GeneratedFile dataclass."""

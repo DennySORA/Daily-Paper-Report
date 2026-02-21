@@ -2,18 +2,18 @@
 
 from datetime import UTC, datetime
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntitiesConfig, EntityConfig
-from src.config.schemas.topics import (
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntitiesConfig, EntityConfig
+from src.features.config.schemas.topics import (
     QuotasConfig,
     ScoringConfig,
     TopicConfig,
     TopicsConfig,
 )
+from src.features.store.models import DateConfidence, Item
 from src.linker.models import Story, StoryLink
 from src.ranker.ranker import StoryRanker, rank_stories_pure
 from src.ranker.state_machine import RankerState
-from src.store.models import DateConfidence, Item
 
 
 def _make_item(
@@ -23,6 +23,7 @@ def _make_item(
     kind: str = "blog",
     title: str = "Test Item",
     published_at: datetime | None = None,
+    first_seen_at: datetime | None = None,
 ) -> Item:
     """Create a test Item."""
     return Item(
@@ -35,6 +36,7 @@ def _make_item(
         date_confidence=DateConfidence.HIGH if published_at else DateConfidence.LOW,
         content_hash="test-hash",
         raw_json="{}",
+        first_seen_at=first_seen_at or datetime(2024, 1, 1, 0, 0, tzinfo=UTC),
     )
 
 
@@ -91,8 +93,8 @@ class TestRankerStateTransitions:
 
         stories = [_make_story(story_id=f"s{i}") for i in range(3)]
         ranker.rank_stories(stories)
-
-        assert ranker.state == RankerState.ORDERED_OUTPUTS
+        # After state transition, mypy incorrectly narrows state type
+        assert ranker.state == RankerState.ORDERED_OUTPUTS  # type: ignore[comparison-overlap]
 
     def test_empty_input_completes(self) -> None:
         """Empty input still completes state machine."""

@@ -50,7 +50,7 @@ def load_profiles_from_yaml(
     log = logger.bind(component="profile_loader")
 
     # Parse YAML if source is a path
-    if isinstance(source, (str, Path)):
+    if isinstance(source, str | Path):
         path = Path(source)
         if not path.exists():
             raise ProfileNotFoundError(

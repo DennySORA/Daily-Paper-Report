@@ -7,20 +7,23 @@ from datetime import UTC, datetime
 
 import structlog
 
+from src.collectors.arxiv.api import ArxivApiCollector
 from src.collectors.base import BaseCollector, CollectorResult
 from src.collectors.errors import CollectorErrorClass, ErrorRecord
 from src.collectors.html_list import HtmlListCollector
 from src.collectors.metrics import CollectorMetrics
 from src.collectors.platform.github import GitHubReleasesCollector
+from src.collectors.platform.hf_daily_papers import HuggingFaceDailyPapersCollector
 from src.collectors.platform.huggingface import HuggingFaceOrgCollector
 from src.collectors.platform.openreview import OpenReviewVenueCollector
+from src.collectors.platform.papers_with_code import PapersWithCodeCollector
 from src.collectors.rss_atom import RssAtomCollector
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceMethod
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.models import ItemEventType, UpsertResult
-from src.store.store import StateStore
+from src.features.config.schemas.base import SourceMethod
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.models import ItemEventType, UpsertResult
+from src.features.store.store import StateStore
 
 
 logger = structlog.get_logger()
@@ -77,13 +80,14 @@ class CollectorRunner:
     - Structured logging and metrics
     """
 
-    def __init__(
+    def __init__(  # noqa: PLR0913
         self,
         store: StateStore,
         http_client: HttpFetcher,
         run_id: str,
         max_workers: int = 4,
         strip_params: list[str] | None = None,
+        lookback_hours: int = 24,
     ) -> None:
         """Initialize the collector runner.
 
@@ -93,12 +97,14 @@ class CollectorRunner:
             run_id: Unique run identifier.
             max_workers: Maximum parallel workers.
             strip_params: URL parameters to strip.
+            lookback_hours: Number of hours to look back for items.
         """
         self._store = store
         self._http_client = http_client
         self._run_id = run_id
         self._max_workers = max_workers
         self._strip_params = strip_params
+        self._lookback_hours = lookback_hours
         self._metrics = CollectorMetrics.get_instance()
         self._log = logger.bind(
             component="runner",
@@ -108,10 +114,17 @@ class CollectorRunner:
         # Initialize collectors
         self._collectors: dict[SourceMethod, BaseCollector] = {
             SourceMethod.RSS_ATOM: RssAtomCollector(strip_params, run_id),
+            SourceMethod.ARXIV_API: ArxivApiCollector(strip_params, run_id),
             SourceMethod.HTML_LIST: HtmlListCollector(strip_params, run_id),
             SourceMethod.GITHUB_RELEASES: GitHubReleasesCollector(strip_params, run_id),
             SourceMethod.HF_ORG: HuggingFaceOrgCollector(strip_params, run_id),
             SourceMethod.OPENREVIEW_VENUE: OpenReviewVenueCollector(
+                strip_params, run_id
+            ),
+            SourceMethod.PAPERS_WITH_CODE: PapersWithCodeCollector(
+                strip_params, run_id
+            ),
+            SourceMethod.HF_DAILY_PAPERS: HuggingFaceDailyPapersCollector(
                 strip_params, run_id
             ),
         }
@@ -262,7 +275,7 @@ class CollectorRunner:
             )
 
         # Run collector
-        result = collector.collect(source, self._http_client, now)
+        result = collector.collect(source, self._http_client, now, self._lookback_hours)
 
         # Calculate duration
         duration_ms = (time.perf_counter_ns() - start_time_ns) / 1_000_000

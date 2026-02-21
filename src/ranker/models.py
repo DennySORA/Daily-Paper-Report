@@ -18,6 +18,10 @@ class ScoreComponents:
         topic_score: Score contribution from topic keyword matches.
         recency_score: Score contribution from recency decay.
         entity_score: Score contribution from entity matches.
+        citation_score: Score contribution from citation count (Semantic Scholar).
+        cross_source_score: Score contribution from cross-source signals.
+        semantic_score: Score contribution from embedding-based semantic matching.
+        llm_relevance_score: Score contribution from LLM-based relevance evaluation.
         total_score: Sum of all components.
     """
 
@@ -26,7 +30,11 @@ class ScoreComponents:
     topic_score: float
     recency_score: float
     entity_score: float
-    total_score: float
+    citation_score: float = 0.0
+    cross_source_score: float = 0.0
+    semantic_score: float = 0.0
+    llm_relevance_score: float = 0.0
+    total_score: float = 0.0
 
     def to_dict(self) -> dict[str, float]:
         """Convert to dictionary for serialization.
@@ -40,6 +48,10 @@ class ScoreComponents:
             "topic_score": self.topic_score,
             "recency_score": self.recency_score,
             "entity_score": self.entity_score,
+            "citation_score": self.citation_score,
+            "cross_source_score": self.cross_source_score,
+            "semantic_score": self.semantic_score,
+            "llm_relevance_score": self.llm_relevance_score,
             "total_score": self.total_score,
         }
 
@@ -105,6 +117,7 @@ class RankerOutput(BaseModel):
         model_releases_by_entity: Model releases grouped by entity.
         papers: Papers section.
         radar: Worth monitoring section.
+        score_map: Mapping of story_id to score breakdown for serialization.
         output_checksum: SHA-256 of the ordered output JSON.
     """
 
@@ -114,6 +127,7 @@ class RankerOutput(BaseModel):
     model_releases_by_entity: dict[str, list[Story]] = Field(default_factory=dict)
     papers: list[Story] = Field(default_factory=list)
     radar: list[Story] = Field(default_factory=list)
+    score_map: dict[str, dict[str, float]] = Field(default_factory=dict)
     output_checksum: str = ""
 
 
@@ -173,7 +187,7 @@ class RankerResult(BaseModel):
         scored_stories: All scored stories (for audit).
     """
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(frozen=True, extra="forbid")
 
     output: Annotated[RankerOutput, Field(description="Ordered output sections")]
     stories_in: Annotated[int, Field(ge=0, description="Input story count")]

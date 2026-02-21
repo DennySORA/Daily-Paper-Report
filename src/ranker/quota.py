@@ -4,7 +4,7 @@ from collections import defaultdict
 
 import structlog
 
-from src.config.schemas.topics import QuotasConfig
+from src.features.config.schemas.topics import QuotasConfig
 from src.linker.models import Story, StorySection
 from src.ranker.constants import ARXIV_CATEGORY_PATTERNS
 from src.ranker.models import DroppedEntry, ScoredStory
@@ -60,21 +60,30 @@ class QuotaFilter:
     - radar_max: Maximum items in Radar
     - per_source_max: Maximum items per source
     - arxiv_per_category_max: Maximum arXiv items per category
+
+    Papers with LLM raw score >= llm_bypass_threshold bypass the
+    arxiv_per_category_max quota to prevent high-quality papers from
+    being dropped due to category crowding.
     """
 
     def __init__(
         self,
         run_id: str,
         quotas_config: QuotasConfig,
+        llm_relevance_weight: float = 0.0,
     ) -> None:
         """Initialize the quota filter.
 
         Args:
             run_id: Run identifier for logging.
             quotas_config: Quotas configuration.
+            llm_relevance_weight: Weight applied to raw LLM scores, used to
+                compute the raw score from the weighted score stored in
+                ScoreComponents.
         """
         self._run_id = run_id
         self._quotas = quotas_config
+        self._llm_relevance_weight = llm_relevance_weight
         self._log = logger.bind(
             component="ranker",
             subcomponent="quota",
@@ -157,6 +166,9 @@ class QuotaFilter:
     def _apply_per_source_quota(self, stories: list[ScoredStory]) -> list[ScoredStory]:
         """Apply per-source maximum quota.
 
+        Papers with high LLM scores bypass the per-source limit to
+        prevent quality papers from being dropped in crowded sources.
+
         Args:
             stories: Sorted stories.
 
@@ -165,32 +177,65 @@ class QuotaFilter:
         """
         source_counts: dict[str, int] = defaultdict(int)
         result: list[ScoredStory] = []
+        bypass_count = 0
 
         for s in stories:
             source_id = _get_source_id(s.story)
             current_count = source_counts[source_id]
 
             if current_count >= self._quotas.per_source_max:
-                # Mark as dropped
-                dropped_story = ScoredStory(
-                    story=s.story,
-                    components=s.components,
-                    assigned_section=s.assigned_section,
-                    dropped=True,
-                    drop_reason=f"per_source_max ({self._quotas.per_source_max})",
-                )
-                result.append(dropped_story)
-                self._record_drop(s, f"per_source_max:{source_id}")
+                if self._has_llm_bypass(s):
+                    source_counts[source_id] += 1
+                    result.append(s)
+                    bypass_count += 1
+                else:
+                    dropped_story = ScoredStory(
+                        story=s.story,
+                        components=s.components,
+                        assigned_section=s.assigned_section,
+                        dropped=True,
+                        drop_reason=f"per_source_max ({self._quotas.per_source_max})",
+                    )
+                    result.append(dropped_story)
+                    self._record_drop(s, f"per_source_max:{source_id}")
             else:
                 source_counts[source_id] += 1
                 result.append(s)
 
+        if bypass_count > 0:
+            self._log.info(
+                "per_source_llm_bypass_applied",
+                bypass_count=bypass_count,
+                threshold=self._quotas.llm_bypass_threshold,
+            )
+
         return result
+
+    def _has_llm_bypass(self, scored: ScoredStory) -> bool:
+        """Check if a paper's raw LLM score exceeds the bypass threshold.
+
+        Args:
+            scored: The scored story to check.
+
+        Returns:
+            True if the paper should bypass category quotas.
+        """
+        threshold = self._quotas.llm_bypass_threshold
+        if threshold >= 1.0 or self._llm_relevance_weight <= 0.0:
+            return False
+
+        weighted_score = scored.components.llm_relevance_score
+        raw_score = weighted_score / self._llm_relevance_weight
+        return raw_score >= threshold
 
     def _apply_arxiv_category_quota(
         self, stories: list[ScoredStory]
     ) -> list[ScoredStory]:
         """Apply arXiv per-category quota.
+
+        Papers with raw LLM score >= llm_bypass_threshold skip the per-category
+        limit to prevent high-quality papers from being dropped due to category
+        crowding.
 
         Args:
             stories: Stories after source quota.
@@ -200,6 +245,7 @@ class QuotaFilter:
         """
         category_counts: dict[str, int] = defaultdict(int)
         result: list[ScoredStory] = []
+        bypass_count = 0
 
         for s in stories:
             if s.dropped:
@@ -209,8 +255,11 @@ class QuotaFilter:
             arxiv_cat = _extract_arxiv_category(s.story)
 
             if arxiv_cat is not None:
-                current_count = category_counts[arxiv_cat]
-                if current_count >= self._quotas.arxiv_per_category_max:
+                if self._has_llm_bypass(s):
+                    category_counts[arxiv_cat] += 1
+                    result.append(s)
+                    bypass_count += 1
+                elif category_counts[arxiv_cat] >= self._quotas.arxiv_per_category_max:
                     dropped_story = ScoredStory(
                         story=s.story,
                         components=s.components,
@@ -225,6 +274,13 @@ class QuotaFilter:
                     result.append(s)
             else:
                 result.append(s)
+
+        if bypass_count > 0:
+            self._log.info(
+                "llm_bypass_applied",
+                bypass_count=bypass_count,
+                threshold=self._quotas.llm_bypass_threshold,
+            )
 
         return result
 
@@ -324,14 +380,18 @@ class QuotaFilter:
         sections: dict[StorySection, list[ScoredStory]],
         assigned_ids: set[str],
     ) -> None:
-        """Assign papers to PAPERS section."""
+        """Assign papers to PAPERS section (up to papers_max)."""
+        papers_count = 0
         for s in stories:
             if s.story.story_id in assigned_ids:
                 continue
             if self._is_paper(s.story):
+                if papers_count >= self._quotas.papers_max:
+                    continue
                 s.assigned_section = StorySection.PAPERS
                 sections[StorySection.PAPERS].append(s)
                 assigned_ids.add(s.story.story_id)
+                papers_count += 1
 
     def _assign_radar(
         self,
@@ -393,6 +453,7 @@ def apply_quotas_pure(
     scored_stories: list[ScoredStory],
     quotas_config: QuotasConfig,
     run_id: str = "pure",
+    llm_relevance_weight: float = 0.0,
 ) -> tuple[dict[StorySection, list[ScoredStory]], list[DroppedEntry]]:
     """Pure function API for quota filtering.
 
@@ -400,11 +461,16 @@ def apply_quotas_pure(
         scored_stories: Scored stories to filter.
         quotas_config: Quotas configuration.
         run_id: Run identifier.
+        llm_relevance_weight: Weight applied to raw LLM scores.
 
     Returns:
         Tuple of (sections dict, dropped entries).
     """
-    quota_filter = QuotaFilter(run_id=run_id, quotas_config=quotas_config)
+    quota_filter = QuotaFilter(
+        run_id=run_id,
+        quotas_config=quotas_config,
+        llm_relevance_weight=llm_relevance_weight,
+    )
     kept, _dropped = quota_filter.apply_quotas(scored_stories)
     sections = quota_filter.assign_sections(kept)
     return sections, quota_filter.dropped_entries

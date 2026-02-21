@@ -1,7 +1,6 @@
 """Unit tests for evidence redaction utilities."""
 
-
-from src.evidence.redact import (
+from src.features.evidence.redact import (
     SecretMatch,
     contains_secrets,
     get_secret_patterns,
@@ -76,6 +75,20 @@ class TestScanForSecrets:
         assert len(matches) >= 1
         assert any(m.pattern_name == "cookie_header" for m in matches)
 
+    def test_detects_google_oauth_access_token(self) -> None:
+        """Should detect Google OAuth access tokens (ya29.*)."""
+        content = "Token: ya29.a0ARrdaM_test-token-value_here.long"
+        matches = scan_for_secrets(content)
+        assert len(matches) >= 1
+        assert any(m.pattern_name == "google_oauth_access" for m in matches)
+
+    def test_detects_google_oauth_refresh_token(self) -> None:
+        """Should detect Google OAuth refresh tokens (1//...)."""
+        content = "REFRESH=1//0eFQmRBV3xkz-test-refresh-token"
+        matches = scan_for_secrets(content)
+        assert len(matches) >= 1
+        assert any(m.pattern_name == "google_oauth_refresh" for m in matches)
+
     def test_returns_empty_for_safe_content(self) -> None:
         """Should return empty list for content without secrets."""
         content = "This is a normal log message with no secrets."
@@ -127,6 +140,20 @@ class TestRedactContent:
         redacted = redact_content(content)
         assert redacted == content
 
+    def test_redacts_google_oauth_access_token(self) -> None:
+        """Should redact Google OAuth access tokens."""
+        content = "Token: ya29.a0ARrdaM_test-token-value.long"
+        redacted = redact_content(content)
+        assert "ya29." not in redacted
+        assert "[REDACTED]" in redacted
+
+    def test_redacts_google_oauth_refresh_token(self) -> None:
+        """Should redact Google OAuth refresh tokens."""
+        content = "REFRESH=1//0eFQmRBV3xkz-test-refresh"
+        redacted = redact_content(content)
+        assert "1//" not in redacted
+        assert "[REDACTED]" in redacted
+
     def test_redacts_authorization_header(self) -> None:
         """Should redact entire Authorization header."""
         content = "Authorization: Bearer abc123.xyz.789"
@@ -166,6 +193,8 @@ class TestGetSecretPatterns:
         assert "github_token" in patterns
         assert "hf_token" in patterns
         assert "bearer_token" in patterns
+        assert "google_oauth_access" in patterns
+        assert "google_oauth_refresh" in patterns
 
 
 class TestSecretMatch:

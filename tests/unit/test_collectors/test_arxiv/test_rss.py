@@ -6,10 +6,14 @@ from unittest.mock import MagicMock
 from src.collectors.arxiv.metrics import ArxivMetrics
 from src.collectors.arxiv.rss import ArxivRssCollector
 from src.collectors.state_machine import SourceState
-from src.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
-from src.fetch.client import HttpFetcher
-from src.fetch.models import FetchResult
+from src.features.config.schemas.sources import SourceConfig, SourceKind, SourceMethod
+from src.features.fetch.client import HttpFetcher
+from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
 
+
+# Timestamp matching sample data dates - used for run_timestamp in tests
+# to ensure items aren't filtered out by 24-hour lookback window.
+SAMPLE_DATA_TIMESTAMP = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
 
 # Sample arXiv RSS feed content
 SAMPLE_RSS_FEED = b"""<?xml version="1.0" encoding="UTF-8"?>
@@ -25,14 +29,14 @@ SAMPLE_RSS_FEED = b"""<?xml version="1.0" encoding="UTF-8"?>
   <link>http://arxiv.org/abs/2401.12345</link>
   <description>This is a test abstract for the paper.</description>
   <dc:creator>Test Author</dc:creator>
-  <dc:date>2024-01-15T00:00:00Z</dc:date>
+  <dc:date>2024-01-15T10:00:00Z</dc:date>
 </item>
 <item rdf:about="http://arxiv.org/abs/2401.12346">
   <title>Another Test Paper: Transformer Architecture</title>
   <link>http://arxiv.org/abs/2401.12346</link>
   <description>Another test abstract.</description>
   <dc:creator>Another Author</dc:creator>
-  <dc:date>2024-01-14T00:00:00Z</dc:date>
+  <dc:date>2024-01-15T08:00:00Z</dc:date>
 </item>
 </rdf:RDF>"""
 
@@ -47,7 +51,7 @@ SAMPLE_ATOM_FEED = b"""<?xml version="1.0" encoding="UTF-8"?>
     <link href="http://arxiv.org/abs/2401.12345"/>
     <summary>This is a test abstract for the paper.</summary>
     <author><name>Test Author</name></author>
-    <published>2024-01-15T00:00:00Z</published>
+    <published>2024-01-15T10:00:00Z</published>
     <updated>2024-01-15T12:00:00Z</updated>
     <category term="cs.AI"/>
   </entry>
@@ -93,7 +97,7 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        now = datetime.now(UTC)
+        now = SAMPLE_DATA_TIMESTAMP
         result = collector.collect(source_config, mock_client, now)
 
         assert result.success
@@ -116,7 +120,7 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        result = collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         for item in result.items:
             assert item.url.startswith("https://arxiv.org/abs/")
@@ -139,7 +143,7 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        result = collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         assert result.success
         assert len(result.items) == 0
@@ -156,10 +160,14 @@ class TestArxivRssCollector:
             headers={},
             body_bytes=b"",
             cache_hit=False,
-            error="Server error",
+            error=FetchError(
+                error_class=FetchErrorClass.HTTP_5XX,
+                message="Server error",
+                status_code=500,
+            ),
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        result = collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         assert not result.success
         assert result.state == SourceState.SOURCE_FAILED
@@ -185,7 +193,7 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        result = collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         assert result.success
         assert len(result.items) == 0
@@ -195,20 +203,20 @@ class TestArxivRssCollector:
         collector = ArxivRssCollector(run_id="test")
         source_config = make_source_config(max_items=1)
 
-        # Feed with 2 entries
+        # Feed with 2 entries - dates within 24h of SAMPLE_DATA_TIMESTAMP
         feed_with_two = b"""<?xml version="1.0" encoding="UTF-8"?>
         <feed xmlns="http://www.w3.org/2005/Atom">
           <entry>
             <id>http://arxiv.org/abs/2401.12345</id>
             <title>Paper 1</title>
             <link href="http://arxiv.org/abs/2401.12345"/>
-            <published>2024-01-15T00:00:00Z</published>
+            <published>2024-01-15T10:00:00Z</published>
           </entry>
           <entry>
             <id>http://arxiv.org/abs/2401.12346</id>
             <title>Paper 2</title>
             <link href="http://arxiv.org/abs/2401.12346"/>
-            <published>2024-01-14T00:00:00Z</published>
+            <published>2024-01-15T08:00:00Z</published>
           </entry>
         </feed>"""
 
@@ -222,7 +230,7 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        result = collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         assert result.success
         assert len(result.items) == 1
@@ -242,7 +250,7 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        collector.collect(source_config, mock_client, datetime.now(UTC))
+        collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         metrics = ArxivMetrics.get_instance()
         assert metrics.get_items_total("rss", "cs.AI") == 1
@@ -262,9 +270,9 @@ class TestArxivRssCollector:
             error=None,
         )
 
-        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+        result = collector.collect(source_config, mock_client, SAMPLE_DATA_TIMESTAMP)
 
         assert result.items[0].published_at is not None
-        from src.store.models import DateConfidence
+        from src.features.store.models import DateConfidence
 
         assert result.items[0].date_confidence == DateConfidence.HIGH

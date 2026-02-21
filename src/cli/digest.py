@@ -6,26 +6,50 @@ import sys
 import uuid
 import zoneinfo
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import click
 import structlog
 
-from src.config.constants import (
+
+if TYPE_CHECKING:
+    from src.collectors.runner import RunnerResult
+    from src.features.config.effective import EffectiveConfig
+    from src.features.store.models import Run
+    from src.linker.models import LinkerResult
+    from src.ranker.models import RankerResult
+
+from src.collectors.runner import CollectorRunner
+from src.features.config.constants import (
     COMPONENT_CLI,
     FEATURE_KEY,
     STATUS_P1_DONE,
     VALIDATION_PASSED,
 )
-from src.config.error_hints import format_validation_error
-from src.config.loader import ConfigLoader
-from src.config.state_machine import ConfigState
-from src.evidence.capture import EvidenceCapture
+from src.features.config.error_hints import format_validation_error
+from src.features.config.loader import ConfigLoader
+from src.features.config.state_machine import ConfigState
+from src.features.evidence.capture import EvidenceCapture
+from src.features.fetch.client import HttpFetcher
+from src.features.fetch.config import FetchConfig
+from src.features.status import StatusComputer
+from src.features.store.store import StateStore
+from src.linker import StoryLinker
 from src.observability.logging import bind_run_context, configure_logging
-from src.store.store import StateStore
+from src.ranker import StoryRanker
+from src.renderer import RunInfo, SourceStatus, StaticRenderer
 
 
 logger = structlog.get_logger()
+
+
+# Type aliases for phase results
+CollectionPhaseResult = tuple[
+    "CollectorRunner",  # runner
+    object,  # runner_result (RunnerResult)
+]
 
 
 def get_git_commit() -> str:
@@ -55,14 +79,22 @@ class RunOptions:
     json_logs: bool
     verbose: bool
     dry_run: bool = False
+    lookback_hours: int = 24
+    retention_days: int = 90
 
 
-def _execute_run(options: RunOptions) -> None:
-    """Execute the run command with given options."""
-    # Generate run ID
-    run_id = str(uuid.uuid4())
+def _setup_logging_and_context(
+    options: RunOptions, run_id: str
+) -> structlog.typing.FilteringBoundLogger:
+    """Set up logging and return bound logger.
 
-    # Configure logging
+    Args:
+        options: Run options.
+        run_id: Unique run identifier.
+
+    Returns:
+        Bound logger with run context.
+    """
     log_level = logging.DEBUG if options.verbose else logging.INFO
     configure_logging(level=log_level, json_format=options.json_logs)
     bind_run_context(run_id)
@@ -84,19 +116,45 @@ def _execute_run(options: RunOptions) -> None:
         timezone=options.timezone,
     )
 
-    # Validate timezone format
+    return log  # type: ignore[no-any-return]
+
+
+def _validate_timezone(
+    timezone: str, log: structlog.typing.FilteringBoundLogger
+) -> None:
+    """Validate timezone format, exit on failure.
+
+    Args:
+        timezone: Timezone string to validate.
+        log: Logger for error reporting.
+    """
     try:
-        zoneinfo.ZoneInfo(options.timezone)
+        zoneinfo.ZoneInfo(timezone)
     except (KeyError, zoneinfo.ZoneInfoNotFoundError):
-        log.warning("invalid_timezone", timezone=options.timezone)
-        click.echo(f"Error: Invalid timezone '{options.timezone}'", err=True)
+        log.warning("invalid_timezone", timezone=timezone)
+        click.echo(f"Error: Invalid timezone '{timezone}'", err=True)
         sys.exit(1)
 
-    # Load and validate configuration
+
+def _load_configuration(
+    options: RunOptions, run_id: str, log: structlog.typing.FilteringBoundLogger
+) -> "EffectiveConfig":
+    """Load and validate configuration.
+
+    Args:
+        options: Run options with paths.
+        run_id: Run identifier.
+        log: Logger instance.
+
+    Returns:
+        Validated effective configuration.
+    """
+    from src.features.config.effective import EffectiveConfig
+
     loader = ConfigLoader(run_id=run_id)
 
     try:
-        effective_config = loader.load(
+        effective_config: EffectiveConfig = loader.load(
             sources_path=options.config_path,
             entities_path=options.entities_path,
             topics_path=options.topics_path,
@@ -108,7 +166,6 @@ def _execute_run(options: RunOptions) -> None:
             validation_errors=loader.validation_errors,
         )
 
-        # Print validation summary to stderr with hints
         click.echo("Configuration validation failed:", err=True)
         for error in loader.validation_errors:
             formatted = format_validation_error(
@@ -121,7 +178,6 @@ def _execute_run(options: RunOptions) -> None:
 
         sys.exit(1)
 
-    # Configuration is now validated and ready
     if loader.state != ConfigState.READY:
         log.error("unexpected_state", state=loader.state.name)
         sys.exit(1)
@@ -134,9 +190,490 @@ def _execute_run(options: RunOptions) -> None:
         config_checksum=effective_config.compute_checksum(),
     )
 
-    # Initialize state store (skip in dry-run mode)
+    return effective_config
+
+
+def _run_collection_phase(  # noqa: PLR0913
+    store: StateStore,
+    effective_config: "EffectiveConfig",
+    strip_params: list[str],
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+    lookback_hours: int = 24,
+) -> "RunnerResult":
+    """Execute the collection phase.
+
+    Args:
+        store: State store instance.
+        effective_config: Validated configuration.
+        strip_params: URL parameters to strip.
+        run_id: Run identifier.
+        log: Logger instance.
+        lookback_hours: Number of hours to look back for items.
+
+    Returns:
+        CollectorRunner result.
+    """
+    log.info("phase_started", phase="collection", lookback_hours=lookback_hours)
+
+    fetch_config = FetchConfig()
+    http_client = HttpFetcher(
+        config=fetch_config,
+        store=store,
+        run_id=run_id,
+    )
+
+    collector_runner = CollectorRunner(
+        store=store,
+        http_client=http_client,
+        run_id=run_id,
+        max_workers=1,
+        strip_params=strip_params,
+        lookback_hours=lookback_hours,
+    )
+
+    runner_result = collector_runner.run(
+        sources=effective_config.sources.sources,
+        now=datetime.now(UTC),
+    )
+
+    log.info(
+        "collection_complete",
+        total_items=runner_result.total_items,
+        total_new=runner_result.total_new,
+        sources_succeeded=runner_result.sources_succeeded,
+        sources_failed=runner_result.sources_failed,
+    )
+
+    return runner_result
+
+
+def _run_linking_phase(  # noqa: PLR0913
+    store: StateStore,
+    effective_config: "EffectiveConfig",
+    run_record: "Run",
+    lookback_hours: int,
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> "LinkerResult":
+    """Execute the linking phase.
+
+    Args:
+        store: State store instance.
+        effective_config: Validated configuration.
+        run_record: Current run record.
+        lookback_hours: Hours to look back for items.
+        run_id: Run identifier.
+        log: Logger instance.
+
+    Returns:
+        Linker result with stories.
+    """
+    from src.linker.models import LinkerResult
+
+    log.info("phase_started", phase="linking")
+
+    published_cutoff = datetime.fromtimestamp(
+        run_record.started_at.timestamp() - (lookback_hours * 60 * 60),
+        tz=UTC,
+    )
+
+    all_items = store.get_items_published_since(
+        published_since=published_cutoff,
+        first_seen_since=None,
+    )
+
+    log.info(
+        "items_filtered_by_published_at",
+        lookback_hours=lookback_hours,
+        published_cutoff=published_cutoff.isoformat(),
+        items_after_filter=len(all_items),
+    )
+
+    linker = StoryLinker(
+        run_id=run_id,
+        entities_config=effective_config.entities,
+        topics_config=effective_config.topics,
+    )
+
+    linker_result: LinkerResult = linker.link_items(all_items)
+
+    log.info(
+        "linking_complete",
+        stories_count=len(linker_result.stories),
+        items_in=linker_result.items_in,
+    )
+
+    return linker_result
+
+
+def _run_llm_phase(
+    linker_result: "LinkerResult",
+    effective_config: "EffectiveConfig",
+    run_id: str,  # noqa: ARG001
+    log: structlog.typing.FilteringBoundLogger,
+    output_dir: Path | None = None,
+) -> dict[str, float]:
+    """Execute the optional LLM relevance evaluation phase.
+
+    Skips gracefully if GEMINI_REFRESH_TOKEN is not configured or
+    if any error occurs during evaluation. Saves scores to the
+    output directory for offline analysis when output_dir is given.
+
+    Args:
+        linker_result: Result from linking phase.
+        effective_config: Validated configuration.
+        run_id: Run identifier.
+        log: Logger instance.
+        output_dir: Optional output directory for caching scores.
+
+    Returns:
+        Dictionary mapping story_id to LLM relevance score (0.0-1.0).
+        Empty dict when LLM phase is skipped or fails.
+    """
+    import json as _json
+
+    from src.settings.app import get_settings
+
+    settings = get_settings()
+    if not settings.gemini_refresh_token:
+        log.info("llm_phase_skipped", reason="no_gemini_refresh_token")
+        return {}
+
+    log.info("phase_started", phase="llm_relevance")
+
+    # Load cached scores from previous run
+    cached_scores: dict[str, float] = {}
+    if output_dir:
+        cache_path = output_dir / "api" / "llm_scores.json"
+        if cache_path.exists():
+            try:
+                cached_scores = _json.loads(cache_path.read_text())
+                log.info(
+                    "llm_cache_loaded",
+                    cached_count=len(cached_scores),
+                    path=str(cache_path),
+                )
+            except (ValueError, OSError):
+                log.warning("llm_cache_load_failed", path=str(cache_path))
+
+    try:
+        from src.features.llm.auth import refresh_access_token
+        from src.features.llm.client import GeminiCodeAssistClient
+        from src.features.llm.processor import LlmRelevanceProcessor
+
+        access_token = refresh_access_token(
+            settings.gemini_refresh_token,
+            client_id=settings.gemini_oauth_client_id,
+            client_secret=settings.gemini_oauth_client_secret,
+        )
+        client = GeminiCodeAssistClient(access_token=access_token)
+        processor = LlmRelevanceProcessor(
+            client=client,
+            topics=list(effective_config.topics.topics),
+        )
+
+        # Filter to only uncached stories
+        all_stories = linker_result.stories
+        uncached_stories = [s for s in all_stories if s.story_id not in cached_scores]
+
+        if uncached_stories:
+            log.info(
+                "llm_evaluating_uncached",
+                total=len(all_stories),
+                cached=len(all_stories) - len(uncached_stories),
+                to_evaluate=len(uncached_stories),
+            )
+            phase_result = processor.evaluate_stories(uncached_stories)
+        else:
+            log.info(
+                "llm_all_cached",
+                total=len(all_stories),
+                cached=len(cached_scores),
+            )
+            phase_result = processor.evaluate_stories([])
+
+        log.info(
+            "llm_phase_complete",
+            evaluated=phase_result.stories_evaluated,
+            skipped=phase_result.stories_skipped,
+            api_calls=phase_result.api_calls_made,
+            errors=len(phase_result.errors),
+        )
+
+        # Merge cached + new scores
+        scores = {**cached_scores, **phase_result.scores}
+
+        # Cache merged scores for future runs
+        if output_dir and scores:
+            cache_path = output_dir / "api" / "llm_scores.json"
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_path.write_text(_json.dumps(scores, indent=2))
+            log.info("llm_scores_cached", path=str(cache_path), count=len(scores))
+
+        return scores
+
+    except Exception:
+        log.warning("llm_phase_failed", exc_info=True)
+        # Return cached scores as fallback if available
+        if cached_scores:
+            log.info("llm_using_cached_fallback", count=len(cached_scores))
+            return cached_scores
+        return {}
+
+
+def _collect_ranker_story_dicts(
+    ranker_result: "RankerResult",
+) -> list[dict[str, object]]:
+    """Collect deduplicated story dicts from all ranker output sections.
+
+    Args:
+        ranker_result: Result from ranking phase.
+
+    Returns:
+        Deduplicated list of story dicts.
+    """
+    from itertools import chain
+
+    from src.linker.models import Story
+
+    model_release_stories: list[Story] = list(
+        chain.from_iterable(ranker_result.output.model_releases_by_entity.values())
+    )
+    all_stories = [
+        *ranker_result.output.top5,
+        *ranker_result.output.papers,
+        *ranker_result.output.radar,
+        *model_release_stories,
+    ]
+
+    seen: set[str] = set()
+    unique: list[dict[str, object]] = []
+    for story in all_stories:
+        if story.story_id not in seen:
+            seen.add(story.story_id)
+            unique.append(story.to_json_dict())
+    return unique
+
+
+def _run_translation_phase(
+    ranker_result: "RankerResult",
+    run_id: str,  # noqa: ARG001
+    log: structlog.typing.FilteringBoundLogger,
+    output_dir: Path | None = None,
+) -> dict[str, object] | None:
+    """Execute the optional LLM translation phase.
+
+    Translates ranked story titles and summaries to Traditional Chinese.
+    Skips gracefully if GEMINI_REFRESH_TOKEN is not configured or if
+    any error occurs during translation.
+
+    Args:
+        ranker_result: Result from ranking phase (provides final story lists).
+        run_id: Run identifier.
+        log: Logger instance.
+        output_dir: Optional output directory for cache file storage.
+
+    Returns:
+        Dictionary mapping story_id to TranslationEntry, or None if
+        translation phase is skipped or fails.
+    """
+    from src.settings.app import get_settings
+
+    settings = get_settings()
+    if not settings.gemini_refresh_token:
+        log.info("translation_phase_skipped", reason="no_gemini_refresh_token")
+        return None
+
+    if output_dir is None:
+        log.info("translation_phase_skipped", reason="no_output_dir")
+        return None
+
+    log.info("phase_started", phase="translation")
+
+    try:
+        from src.features.llm.auth import refresh_access_token
+        from src.features.llm.client import GeminiCodeAssistClient
+        from src.features.translation.processor import TranslationProcessor
+
+        access_token = refresh_access_token(
+            settings.gemini_refresh_token,
+            client_id=settings.gemini_oauth_client_id,
+            client_secret=settings.gemini_oauth_client_secret,
+        )
+        client = GeminiCodeAssistClient(access_token=access_token)
+        processor = TranslationProcessor(client=client, output_dir=output_dir)
+
+        unique_stories = _collect_ranker_story_dicts(ranker_result)
+        result = processor.translate(unique_stories)
+
+        log.info(
+            "translation_phase_complete",
+            translated=len(result),
+            total_stories=len(unique_stories),
+        )
+
+        return result  # type: ignore[return-value]
+
+    except Exception:
+        log.warning("translation_phase_failed", exc_info=True)
+        return None
+
+
+def _run_ranking_phase(
+    linker_result: "LinkerResult",
+    effective_config: "EffectiveConfig",
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+    llm_scores: dict[str, float] | None = None,
+) -> "RankerResult":
+    """Execute the ranking phase.
+
+    Args:
+        linker_result: Result from linking phase.
+        effective_config: Validated configuration.
+        run_id: Run identifier.
+        log: Logger instance.
+        llm_scores: Pre-computed LLM relevance scores.
+
+    Returns:
+        Ranker result with scored stories.
+    """
+    from src.ranker.models import RankerResult
+
+    log.info("phase_started", phase="ranking")
+
+    ranker = StoryRanker(
+        run_id=run_id,
+        topics_config=effective_config.topics,
+        entities_config=effective_config.entities,
+        llm_scores=llm_scores,
+    )
+
+    ranker_result: RankerResult = ranker.rank_stories(linker_result.stories)
+
+    log.info(
+        "ranking_complete",
+        top5_count=len(ranker_result.output.top5),
+        papers_count=len(ranker_result.output.papers),
+        radar_count=len(ranker_result.output.radar),
+    )
+
+    return ranker_result
+
+
+def _run_rendering_phase(  # noqa: PLR0913
+    ranker_result: "RankerResult",
+    runner_result: "RunnerResult",
+    effective_config: "EffectiveConfig",
+    linker_result: "LinkerResult",
+    run_record: "Run",
+    options: RunOptions,
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+    translations: dict[str, object] | None = None,
+) -> None:
+    """Execute the rendering phase.
+
+    Args:
+        ranker_result: Result from ranking phase.
+        runner_result: Result from collection phase.
+        effective_config: Validated configuration.
+        linker_result: Result from linking phase.
+        run_record: Current run record.
+        options: Run options.
+        run_id: Run identifier.
+        log: Logger instance.
+        translations: Optional translation map (story_id -> TranslationEntry).
+    """
+    log.info("phase_started", phase="rendering")
+
+    source_configs_dict = {s.id: s for s in effective_config.sources.sources}
+    status_computer = StatusComputer(
+        run_id=run_id,
+        source_configs=source_configs_dict,
+    )
+    sources_status = status_computer.compute_all(runner_result)
+
+    run_info = RunInfo(
+        run_id=run_id,
+        started_at=run_record.started_at,
+        finished_at=datetime.now(UTC),
+        items_total=runner_result.total_items,
+        stories_total=len(linker_result.stories),
+        success=True,
+    )
+
+    renderer = StaticRenderer(
+        run_id=run_id,
+        output_dir=options.output_dir,
+        timezone=options.timezone,
+        retention_days=options.retention_days,
+        entity_configs=list(effective_config.entities.entities),
+        translations=translations,
+    )
+
+    render_result = renderer.render(
+        ranker_output=ranker_result.output,
+        sources_status=sources_status,
+        run_info=run_info,
+        recent_runs=[run_info],
+    )
+
+    if render_result.success:
+        log.info(
+            "rendering_complete",
+            files_count=len(render_result.manifest.files),
+            total_bytes=render_result.manifest.total_bytes,
+        )
+    else:
+        log.error("rendering_failed", error=render_result.error_summary)
+
+
+def _write_evidence_capture(
+    effective_config: "EffectiveConfig",
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> None:
+    """Write evidence capture file.
+
+    Args:
+        effective_config: Validated configuration.
+        run_id: Run identifier.
+        log: Logger instance (unused but kept for consistency).
+    """
+    _ = log  # Unused but kept for API consistency
+    git_commit = get_git_commit()
+    evidence = EvidenceCapture(
+        feature_key=FEATURE_KEY,
+        run_id=run_id,
+        git_commit=git_commit,
+    )
+
+    evidence.write_state_md(
+        config=effective_config,
+        status=STATUS_P1_DONE,
+        validation_result=VALIDATION_PASSED,
+    )
+
+
+def _execute_run(options: RunOptions) -> None:
+    """Execute the run command with given options.
+
+    Orchestrates the digest pipeline through phases:
+    1. Setup and validation
+    2. Collection
+    3. Linking
+    4. Ranking
+    5. Rendering
+    6. Evidence capture
+    """
+    run_id = str(uuid.uuid4())
+    log = _setup_logging_and_context(options, run_id)
+    _validate_timezone(options.timezone, log)
+    effective_config = _load_configuration(options, run_id, log)
+
     if not options.dry_run:
-        # Get strip params from topics config for URL canonicalization
         strip_params = list(effective_config.topics.dedupe.canonical_url_strip_params)
 
         with StateStore(
@@ -144,66 +681,11 @@ def _execute_run(options: RunOptions) -> None:
             strip_params=strip_params,
             run_id=run_id,
         ) as store:
-            log.info(
-                "store_connected",
-                db_path=str(options.state_path),
-                schema_version=store.get_schema_version(),
+            _execute_pipeline_phases(
+                store, effective_config, strip_params, options, run_id, log
             )
 
-            # Begin run tracking
-            run_record = store.begin_run(run_id)
-            log.info(
-                "run_started_in_store",
-                run_id=run_record.run_id,
-                started_at=run_record.started_at.isoformat(),
-            )
-
-            # Get last successful run for delta detection
-            last_success = store.get_last_successful_run_finished_at()
-            if last_success:
-                log.info(
-                    "last_successful_run",
-                    finished_at=last_success.isoformat(),
-                )
-            else:
-                log.info("no_previous_successful_run")
-
-            # TODO: Actual collection and rendering will happen here in future features
-
-            # End run successfully
-            run_record = store.end_run(run_id, success=True)
-            log.info(
-                "run_finished_in_store",
-                run_id=run_record.run_id,
-                success=run_record.success,
-                finished_at=run_record.finished_at.isoformat()
-                if run_record.finished_at
-                else None,
-            )
-
-            # Get stats for logging
-            stats = store.get_stats()
-            log.info(
-                "store_stats",
-                runs=stats["runs"],
-                items=stats["items"],
-                http_cache=stats["http_cache"],
-            )
-
-    # Write evidence (skip in dry-run mode)
-    if not options.dry_run:
-        git_commit = get_git_commit()
-        evidence = EvidenceCapture(
-            feature_key=FEATURE_KEY,
-            run_id=run_id,
-            git_commit=git_commit,
-        )
-
-        evidence.write_state_md(
-            config=effective_config,
-            status=STATUS_P1_DONE,
-            validation_result=VALIDATION_PASSED,
-        )
+        _write_evidence_capture(effective_config, run_id, log)
     else:
         log.info(
             "dry_run_skip_evidence", message="Skipping evidence capture in dry-run mode"
@@ -216,6 +698,105 @@ def _execute_run(options: RunOptions) -> None:
     )
 
     click.echo(f"Configuration validated successfully. Run ID: {run_id}")
+
+
+def _execute_pipeline_phases(  # noqa: PLR0913
+    store: StateStore,
+    effective_config: "EffectiveConfig",
+    strip_params: list[str],
+    options: RunOptions,
+    run_id: str,
+    log: structlog.typing.FilteringBoundLogger,
+) -> None:
+    """Execute all pipeline phases within store context.
+
+    Args:
+        store: State store instance.
+        effective_config: Validated configuration.
+        strip_params: URL parameters to strip.
+        options: Run options.
+        run_id: Run identifier.
+        log: Logger instance.
+    """
+    log.info(
+        "store_connected",
+        db_path=str(options.state_path),
+        schema_version=store.get_schema_version(),
+    )
+
+    run_record = store.begin_run(run_id)
+    log.info(
+        "run_started_in_store",
+        run_id=run_record.run_id,
+        started_at=run_record.started_at.isoformat(),
+    )
+
+    last_success = store.get_last_successful_run_finished_at()
+    if last_success:
+        log.info("last_successful_run", finished_at=last_success.isoformat())
+    else:
+        log.info("no_previous_successful_run")
+
+    # Phase 1: Collection
+    runner_result = _run_collection_phase(
+        store, effective_config, strip_params, run_id, log, options.lookback_hours
+    )
+
+    # Phase 2: Linking
+    linker_result = _run_linking_phase(
+        store, effective_config, run_record, options.lookback_hours, run_id, log
+    )
+
+    # Phase 2.5: LLM Relevance (optional, skips gracefully if unconfigured)
+    llm_scores = _run_llm_phase(
+        linker_result,
+        effective_config,
+        run_id,
+        log,
+        output_dir=options.output_dir,
+    )
+
+    # Phase 3: Ranking
+    ranker_result = _run_ranking_phase(
+        linker_result, effective_config, run_id, log, llm_scores
+    )
+
+    # Phase 3.5: Translation (optional, skips gracefully if unconfigured)
+    translations = _run_translation_phase(
+        ranker_result, run_id, log, output_dir=options.output_dir
+    )
+
+    # Phase 4: Rendering
+    _run_rendering_phase(
+        ranker_result,
+        runner_result,
+        effective_config,
+        linker_result,
+        run_record,
+        options,
+        run_id,
+        log,
+        translations=translations,
+    )
+
+    # Finalize run
+    run_record = store.end_run(run_id, success=True)
+    log.info(
+        "run_finished_in_store",
+        run_id=run_record.run_id,
+        success=run_record.success,
+        finished_at=run_record.finished_at.isoformat()
+        if run_record.finished_at
+        else None,
+    )
+
+    stats = store.get_stats()
+    log.info(
+        "store_stats",
+        runs=stats["runs"],
+        items=stats["items"],
+        http_cache=stats["http_cache"],
+    )
 
 
 @click.group()
@@ -283,6 +864,20 @@ def cli() -> None:
     is_flag=True,
     help="Validate configuration without writing state or evidence.",
 )
+@click.option(
+    "--lookback",
+    "lookback_hours",
+    type=int,
+    default=24,
+    help="Lookback window in hours for filtering items by published_at (default: 24).",
+)
+@click.option(
+    "--retention-days",
+    "retention_days",
+    type=int,
+    default=90,
+    help="Number of days to retain archive pages (default: 90).",
+)
 def run(  # noqa: PLR0913
     config_path: Path,
     entities_path: Path,
@@ -293,6 +888,8 @@ def run(  # noqa: PLR0913
     json_logs: bool,
     verbose: bool,
     dry_run: bool,
+    lookback_hours: int,
+    retention_days: int,
 ) -> None:
     """Run the digest pipeline.
 
@@ -312,6 +909,8 @@ def run(  # noqa: PLR0913
         json_logs=json_logs,
         verbose=verbose,
         dry_run=dry_run,
+        lookback_hours=lookback_hours,
+        retention_days=retention_days,
     )
     _execute_run(options)
 
@@ -465,7 +1064,7 @@ def render(
     """
     from datetime import UTC, datetime
 
-    from src.config.schemas.base import LinkType
+    from src.features.config.schemas.base import LinkType
     from src.linker.models import Story, StoryLink
     from src.ranker.models import RankerOutput
     from src.renderer import RenderResult, RunInfo, StaticRenderer
@@ -546,6 +1145,356 @@ def render(
         log.error("render_failed", error=result.error_summary)
         click.echo(f"Render failed: {result.error_summary}", err=True)
         sys.exit(1)
+
+
+@cli.command("clear-archives")
+@click.option(
+    "--out",
+    "output_dir",
+    required=True,
+    type=click.Path(path_type=Path),
+    help="Output directory containing day archives.",
+)
+@click.option(
+    "--json-logs/--no-json-logs",
+    default=True,
+    help="Use JSON format for logs (default: true).",
+)
+@click.option(
+    "--verbose",
+    "-v",
+    is_flag=True,
+    help="Enable verbose logging.",
+)
+def clear_archives(
+    output_dir: Path,
+    json_logs: bool,
+    verbose: bool,
+) -> None:
+    """Clear all day archive HTML files.
+
+    This command removes all day/YYYY-MM-DD.html files from the output
+    directory. Useful when the frontend panel design changes and you
+    need to regenerate all archives with the new design.
+    """
+    run_id = str(uuid.uuid4())
+
+    # Configure logging
+    log_level = logging.DEBUG if verbose else logging.INFO
+    configure_logging(level=log_level, json_format=json_logs)
+    bind_run_context(run_id)
+
+    log = logger.bind(
+        run_id=run_id,
+        component=COMPONENT_CLI,
+        command="clear-archives",
+    )
+
+    day_dir = Path(output_dir) / "day"
+
+    if not day_dir.exists():
+        log.info("day_dir_not_found", path=str(day_dir))
+        click.echo(f"Day archive directory does not exist: {day_dir}")
+        return
+
+    # Find and delete all HTML files in day directory
+    deleted_count = 0
+    for html_file in day_dir.glob("*.html"):
+        try:
+            html_file.unlink()
+            deleted_count += 1
+            log.debug("file_deleted", path=str(html_file))
+        except OSError as e:
+            log.warning("file_delete_failed", path=str(html_file), error=str(e))
+
+    log.info("clear_archives_complete", deleted_count=deleted_count)
+    click.echo(f"Cleared {deleted_count} day archive files from {day_dir}")
+
+
+@cli.command()
+@click.option(
+    "--config",
+    "config_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to sources.yaml configuration file.",
+)
+@click.option(
+    "--entities",
+    "entities_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to entities.yaml configuration file.",
+)
+@click.option(
+    "--topics",
+    "topics_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to topics.yaml configuration file.",
+)
+@click.option(
+    "--state",
+    "state_path",
+    required=True,
+    type=click.Path(exists=True, path_type=Path),
+    help="Path to SQLite state database.",
+)
+@click.option(
+    "--out",
+    "output_dir",
+    required=True,
+    type=click.Path(path_type=Path),
+    help="Output directory for generated files.",
+)
+@click.option(
+    "--tz",
+    "timezone",
+    required=True,
+    type=str,
+    help="Timezone for date handling (e.g., Asia/Taipei).",
+)
+@click.option(
+    "--days",
+    "days",
+    type=int,
+    default=7,
+    help="Number of days to backfill (default: 7). Ignored if --date is specified.",
+)
+@click.option(
+    "--date",
+    "target_date_str",
+    type=str,
+    default=None,
+    help="Specific date to generate (YYYY-MM-DD format). If specified, only this date is generated.",
+)
+@click.option(
+    "--json-logs/--no-json-logs",
+    default=True,
+    help="Use JSON format for logs (default: true).",
+)
+@click.option(
+    "--verbose",
+    "-v",
+    is_flag=True,
+    help="Enable verbose logging.",
+)
+def backfill(  # noqa: PLR0913, PLR0915
+    config_path: Path,
+    entities_path: Path,
+    topics_path: Path,
+    state_path: Path,
+    output_dir: Path,
+    timezone: str,  # noqa: ARG001 - kept for CLI API compatibility
+    days: int,
+    target_date_str: str | None,
+    json_logs: bool,
+    verbose: bool,
+) -> None:
+    """Backfill historical day archives from existing database data.
+
+    Generates day/YYYY-MM-DD.html pages for the past N days using
+    items already stored in the state database. This is useful for
+    populating the archive page with historical data.
+
+    Use --date to generate a specific date's report, or --days to
+    generate multiple days at once.
+
+    Note: This command does NOT fetch new data from sources. It only
+    re-renders from existing database content.
+    """
+    from datetime import timedelta
+
+    run_id = str(uuid.uuid4())
+
+    # Configure logging
+    log_level = logging.DEBUG if verbose else logging.INFO
+    configure_logging(level=log_level, json_format=json_logs)
+    bind_run_context(run_id)
+
+    log = logger.bind(
+        run_id=run_id,
+        component=COMPONENT_CLI,
+        command="backfill",
+    )
+
+    # Validate target_date_str if provided
+    target_dates: list[str] = []
+    if target_date_str:
+        try:
+            datetime.strptime(target_date_str, "%Y-%m-%d")
+            target_dates = [target_date_str]
+            log.info(
+                "backfill_started",
+                target_date=target_date_str,
+                state_path=str(state_path),
+                output_dir=str(output_dir),
+            )
+        except ValueError:
+            click.echo(
+                f"Error: Invalid date format '{target_date_str}'. Use YYYY-MM-DD.",
+                err=True,
+            )
+            sys.exit(1)
+    else:
+        # Generate list of dates for backfill
+        now = datetime.now(UTC)
+        for day_offset in range(days):
+            target_dt = now - timedelta(days=day_offset)
+            target_dates.append(target_dt.strftime("%Y-%m-%d"))
+        log.info(
+            "backfill_started",
+            days=days,
+            state_path=str(state_path),
+            output_dir=str(output_dir),
+        )
+
+    # Load and validate configuration
+    loader = ConfigLoader(run_id=run_id)
+
+    try:
+        effective_config = loader.load(
+            sources_path=config_path,
+            entities_path=entities_path,
+            topics_path=topics_path,
+        )
+    except Exception as e:
+        log.warning("config_load_failed", error=str(e))
+        click.echo("Configuration validation failed.", err=True)
+        sys.exit(1)
+
+    # Get strip params for store
+    strip_params = list(effective_config.topics.dedupe.canonical_url_strip_params)
+
+    # Open state store
+    with StateStore(
+        db_path=state_path,
+        strip_params=strip_params,
+        run_id=run_id,
+    ) as store:
+        log.info("store_connected", db_path=str(state_path))
+
+        # Generate archives for each date in target_dates
+        generated_count = 0
+
+        for target_date in target_dates:
+            # Parse the target date
+            target_dt = datetime.strptime(target_date, "%Y-%m-%d").replace(tzinfo=UTC)
+
+            # Calculate the time window for this date (24h lookback from end of day)
+            day_end = datetime(
+                target_dt.year, target_dt.month, target_dt.day, 23, 59, 59, tzinfo=UTC
+            )
+            day_start = day_end - timedelta(hours=24)
+
+            # Get items published on this date
+            items = store.get_items_published_in_range(day_start, day_end)
+
+            log.info(
+                "processing_date",
+                target_date=target_date,
+                items_count=len(items),
+            )
+
+            if not items:
+                log.info("no_items_for_date", target_date=target_date)
+                continue
+
+            # === Run linking ===
+            linker = StoryLinker(
+                run_id=run_id,
+                entities_config=effective_config.entities,
+                topics_config=effective_config.topics,
+            )
+            linker_result = linker.link_items(items)
+
+            # === Run ranking ===
+            ranker = StoryRanker(
+                run_id=run_id,
+                topics_config=effective_config.topics,
+                entities_config=effective_config.entities,
+            )
+            ranker_result = ranker.rank_stories(linker_result.stories)
+
+            log.info(
+                "backfill_processing",
+                target_date=target_date,
+                stories_count=len(linker_result.stories),
+                top5_count=len(ranker_result.output.top5),
+            )
+
+            # === Generate JSON for this date ===
+            from src.renderer.json_renderer import JsonRenderer
+            from src.renderer.metrics import RendererMetrics
+
+            # For backfill, we don't have fresh fetch data, so sources_status is empty
+            # Historical archives focus on content, not source health
+            sources_status: list[SourceStatus] = []
+
+            # Build run info for this date
+            run_info = RunInfo(
+                run_id=f"{run_id}-{target_date}",
+                started_at=day_start,
+                finished_at=day_end,
+                items_total=len(items),
+                stories_total=len(linker_result.stories),
+                success=True,
+            )
+
+            # Ensure day directories exist (for HTML routing and JSON data)
+            day_dir = output_dir / "day"
+            day_dir.mkdir(parents=True, exist_ok=True)
+            api_day_dir = output_dir / "api" / "day"
+            api_day_dir.mkdir(parents=True, exist_ok=True)
+
+            # Get archive dates (scan existing api/day/*.json files)
+            archive_dates = set()
+            date_str_len = len("YYYY-MM-DD")  # 10 characters
+            for json_file in api_day_dir.glob("*.json"):
+                date_str = json_file.stem
+                if len(date_str) == date_str_len:
+                    archive_dates.add(date_str)
+            archive_dates.add(target_date)
+            sorted_archive_dates = sorted(archive_dates, reverse=True)
+
+            # Render JSON for this specific date only (skip daily.json update)
+            json_renderer = JsonRenderer(
+                run_id=run_id,
+                output_dir=output_dir,
+                metrics=RendererMetrics.get_instance(),
+                entity_configs=list(effective_config.entities.entities),
+            )
+            json_renderer.render(
+                ranker_output=ranker_result.output,
+                sources_status=sources_status,
+                run_info=run_info,
+                run_date=target_date,
+                archive_dates=sorted_archive_dates,
+                skip_daily_json=True,  # Don't overwrite daily.json during backfill
+            )
+
+            # Create placeholder HTML file (will be replaced by Vue SPA)
+            placeholder_path = day_dir / f"{target_date}.html"
+            placeholder_content = (
+                f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
+            )
+            placeholder_path.write_text(placeholder_content)
+
+            generated_count += 1
+            log.info(
+                "day_archive_generated",
+                target_date=target_date,
+                items_count=len(items),
+                stories_count=len(linker_result.stories),
+            )
+
+        log.info(
+            "backfill_complete",
+            days_requested=days,
+            days_generated=generated_count,
+        )
+
+        click.echo(f"Backfill complete. Generated {generated_count} day archives.")
 
 
 if __name__ == "__main__":

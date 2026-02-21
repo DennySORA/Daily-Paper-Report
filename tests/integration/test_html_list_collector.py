@@ -1,6 +1,5 @@
 """Integration tests for HTML list collector with domain profiles."""
 
-from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import MagicMock
 
@@ -11,10 +10,11 @@ from src.collectors.html_profile.metrics import HtmlProfileMetrics
 from src.collectors.html_profile.models import DomainProfile
 from src.collectors.html_profile.registry import ProfileRegistry
 from src.collectors.state_machine import SourceState
-from src.config.schemas.base import SourceKind, SourceMethod, SourceTier
-from src.config.schemas.sources import SourceConfig
-from src.fetch.models import FetchResult
-from src.store.models import DateConfidence
+from src.features.config.schemas.base import SourceKind, SourceMethod, SourceTier
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.models import FetchResult
+from src.features.store.models import DateConfidence
+from tests.helpers.time import FIXED_NOW
 
 
 # Path to HTML fixtures
@@ -85,7 +85,7 @@ class TestHtmlListCollectorWithFixtures:
         result = collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         # Verify results
@@ -133,7 +133,7 @@ class TestHtmlListCollectorWithFixtures:
         result = collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         assert result.success
@@ -175,7 +175,7 @@ class TestHtmlListCollectorWithFixtures:
         result = collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         assert result.success
@@ -192,7 +192,7 @@ class TestHtmlListCollectorWithFixtures:
         registry: ProfileRegistry,
         _reset_metrics: None,
     ) -> None:
-        """Test parsing blog list without dates marks LOW confidence."""
+        """Test parsing blog list without dates drops items."""
         fixture_path = FIXTURES_PATH / "blog_list_no_dates.html"
         if not fixture_path.exists():
             pytest.skip("Fixture file not found")
@@ -225,16 +225,11 @@ class TestHtmlListCollectorWithFixtures:
         result = collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         assert result.success
-        assert len(result.items) == 3
-
-        # Check items have LOW confidence
-        for item in result.items:
-            assert item.published_at is None
-            assert item.date_confidence == DateConfidence.LOW
+        assert len(result.items) == 0
 
 
 class TestHtmlListCollectorItemRecovery:
@@ -310,7 +305,7 @@ class TestHtmlListCollectorItemRecovery:
         result = collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         assert result.success
@@ -348,7 +343,7 @@ class TestHtmlListCollectorSecurity:
         result = collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         assert not result.success
@@ -391,7 +386,7 @@ class TestHtmlListCollectorMetrics:
         collector.collect(
             source_config=source_config,
             http_client=mock_client,
-            now=datetime.now(UTC),
+            now=FIXED_NOW,
         )
 
         metrics = HtmlProfileMetrics.get_instance()
@@ -437,7 +432,7 @@ class TestHtmlListCollectorIdempotency:
             result = collector.collect(
                 source_config=source_config,
                 http_client=mock_client,
-                now=datetime.now(UTC),
+                now=FIXED_NOW,
             )
             results.append([item.url for item in result.items])
 

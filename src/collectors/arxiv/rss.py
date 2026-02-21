@@ -19,10 +19,10 @@ from src.collectors.arxiv.utils import (
 from src.collectors.base import BaseCollector, CollectorResult
 from src.collectors.errors import CollectorErrorClass, ErrorRecord
 from src.collectors.state_machine import SourceState, SourceStateMachine
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.hash import compute_content_hash
-from src.store.models import DateConfidence, Item
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.hash import compute_content_hash
+from src.features.store.models import DateConfidence, Item
 
 
 logger = structlog.get_logger()
@@ -61,6 +61,7 @@ class ArxivRssCollector(BaseCollector):
         source_config: SourceConfig,
         http_client: HttpFetcher,
         now: datetime,
+        lookback_hours: int = 24,
     ) -> CollectorResult:
         """Collect items from an arXiv RSS feed.
 
@@ -148,12 +149,19 @@ class ArxivRssCollector(BaseCollector):
                     state=SourceState.SOURCE_DONE,
                 )
 
-            _ = now  # Keep for interface compliance
             items = self._parse_entries(
                 entries=feed.entries,
                 source_config=source_config,
                 category=category,
                 parse_warnings=parse_warnings,
+            )
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=now,
+                lookback_hours=lookback_hours,
+                source_id=source_config.id,
             )
 
             items = self.sort_items_deterministically(items)

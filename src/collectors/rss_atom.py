@@ -14,10 +14,10 @@ from src.collectors.errors import (
     ParseError,
 )
 from src.collectors.state_machine import SourceState, SourceStateMachine
-from src.config.schemas.sources import SourceConfig
-from src.fetch.client import HttpFetcher
-from src.store.hash import compute_content_hash
-from src.store.models import DateConfidence, Item
+from src.features.config.schemas.sources import SourceConfig
+from src.features.fetch.client import HttpFetcher
+from src.features.store.hash import compute_content_hash
+from src.features.store.models import DateConfidence, Item
 
 
 logger = structlog.get_logger()
@@ -49,6 +49,7 @@ class RssAtomCollector(BaseCollector):
         source_config: SourceConfig,
         http_client: HttpFetcher,
         now: datetime,
+        lookback_hours: int = 24,
     ) -> CollectorResult:
         """Collect items from an RSS/Atom feed.
 
@@ -137,13 +138,20 @@ class RssAtomCollector(BaseCollector):
                     state=SourceState.SOURCE_DONE,
                 )
 
-            # Parse entries (now parameter unused but kept in signature for interface)
-            _ = now  # Mark as used for interface compliance
+            # Parse entries
             items = self._parse_entries(
                 entries=feed.entries,
                 source_config=source_config,
                 base_url=source_config.url,
                 parse_warnings=parse_warnings,
+            )
+
+            # Filter by time: only keep items published in the last 24 hours
+            items = self.filter_items_by_time(
+                items=items,
+                now=now,
+                lookback_hours=lookback_hours,
+                source_id=source_config.id,
             )
 
             # Sort deterministically

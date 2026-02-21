@@ -1,12 +1,12 @@
 """Unit tests for error mapper module."""
 
 from src.collectors.errors import CollectorErrorClass
-from src.status.error_mapper import (
+from src.features.status.error_mapper import (
     map_fetch_error_to_reason_code,
     map_http_status_to_reason_code,
     map_parse_error_to_reason_code,
 )
-from src.status.models import ReasonCode
+from src.features.status.models import ReasonCode
 
 
 class TestMapFetchErrorToReasonCode:

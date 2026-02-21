@@ -7,7 +7,12 @@ regex patterns for efficient topic keyword matching across stories.
 import re
 from dataclasses import dataclass, field
 
-from src.config.schemas.topics import TopicConfig
+from src.features.config.schemas.topics import TopicConfig
+
+
+# Keywords this short are prone to substring false positives
+# (e.g. "RL" in "URL", "QA" in "QUALITY"), so they get \b guards.
+_SHORT_KEYWORD_THRESHOLD = 4
 
 
 @dataclass(frozen=True)
@@ -38,6 +43,29 @@ class CompiledTopic:
     patterns: list[re.Pattern[str]] = field(default_factory=list)
 
 
+_WORD_CHARS_ONLY = re.compile(r"^\w+$")
+
+
+def _compile_keyword_pattern(keyword: str) -> re.Pattern[str]:
+    """Compile a keyword into a regex pattern.
+
+    Short all-word-character keywords (≤ _SHORT_KEYWORD_THRESHOLD chars)
+    get word-boundary anchors to prevent false positives (e.g. "RL"
+    matching "URL"). Keywords containing non-word characters (like "c++",
+    ".net") or longer keywords use plain substring matching.
+
+    Args:
+        keyword: Raw keyword string from topic config.
+
+    Returns:
+        Compiled regex pattern.
+    """
+    escaped = re.escape(keyword)
+    if len(keyword) <= _SHORT_KEYWORD_THRESHOLD and _WORD_CHARS_ONLY.match(keyword):
+        return re.compile(rf"\b{escaped}\b", re.IGNORECASE)
+    return re.compile(escaped, re.IGNORECASE)
+
+
 class TopicMatcher:
     """Matches text against topic keywords using pre-compiled patterns.
 
@@ -54,9 +82,7 @@ class TopicMatcher:
         self._compiled_topics: list[CompiledTopic] = []
 
         for topic in topics:
-            patterns = [
-                re.compile(re.escape(kw), re.IGNORECASE) for kw in topic.keywords
-            ]
+            patterns = [_compile_keyword_pattern(kw) for kw in topic.keywords]
             self._compiled_topics.append(CompiledTopic(config=topic, patterns=patterns))
 
     @property

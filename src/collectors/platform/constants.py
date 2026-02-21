@@ -16,19 +16,41 @@ OPENREVIEW_API_BASE_URL = "https://api2.openreview.net"
 OPENREVIEW_API_NOTES_PATH = "/notes"
 OPENREVIEW_DEFAULT_MAX_QPS = 5.0  # Conservative default
 
+# Semantic Scholar API
+SEMANTIC_SCHOLAR_API_BASE_URL = "https://api.semanticscholar.org/graph/v1"
+SEMANTIC_SCHOLAR_PAPER_PATH = "/paper/arXiv:{arxiv_id}"
+SEMANTIC_SCHOLAR_BATCH_PATH = "/paper/batch"
+SEMANTIC_SCHOLAR_DEFAULT_MAX_QPS = 0.33  # 100 requests per 5 minutes (unauthenticated)
+SEMANTIC_SCHOLAR_AUTHENTICATED_MAX_QPS = 1.67  # 100 requests per minute with API key
+
+# Papers With Code API
+PAPERS_WITH_CODE_API_BASE_URL = "https://paperswithcode.com/api/v1"
+PAPERS_WITH_CODE_PAPERS_PATH = "/papers/"
+PAPERS_WITH_CODE_DEFAULT_MAX_QPS = 1.0  # Conservative default
+
+# HuggingFace Daily Papers API
+HF_DAILY_PAPERS_API_URL = "https://huggingface.co/api/daily_papers"
+HF_DAILY_PAPERS_DEFAULT_MAX_QPS = 1.0  # Conservative default
+
 # Default model card/README size cap in bytes
 MODEL_CARD_MAX_SIZE = 200 * 1024  # 200 KB
 
 # Truncation limits for raw_json fields
 RELEASE_BODY_MAX_LENGTH = 1000  # Max chars for release notes body
+README_SUMMARY_MAX_LENGTH = 800  # Max chars for HuggingFace README summary
+README_MIN_LINE_LENGTH = 10  # Min chars for a line to be considered content
 
 # Platform identifiers
 PLATFORM_GITHUB = "github"
 PLATFORM_HUGGINGFACE = "huggingface"
 PLATFORM_OPENREVIEW = "openreview"
+PLATFORM_SEMANTIC_SCHOLAR = "semantic_scholar"
+PLATFORM_PAPERS_WITH_CODE = "papers_with_code"
+PLATFORM_HF_DAILY_PAPERS = "hf_daily_papers"
 
 # Field names for raw_json
 FIELD_PLATFORM = "platform"
+FIELD_README_SUMMARY = "readme_summary"
 FIELD_RELEASE_ID = "release_id"
 FIELD_TAG_NAME = "tag_name"
 FIELD_PRERELEASE = "prerelease"
@@ -50,6 +72,7 @@ AUTH_TOKEN_ENV_VARS = {
     PLATFORM_GITHUB: "GITHUB_TOKEN",
     PLATFORM_HUGGINGFACE: "HF_TOKEN",
     PLATFORM_OPENREVIEW: "OPENREVIEW_TOKEN",
+    PLATFORM_SEMANTIC_SCHOLAR: "SEMANTIC_SCHOLAR_API_KEY",
 }
 
 # Auth error remediation hints
@@ -65,5 +88,9 @@ AUTH_ERROR_HINTS = {
     PLATFORM_OPENREVIEW: (
         "Authentication failed. Check that OPENREVIEW_TOKEN environment variable "
         "is set if required by the venue policy."
+    ),
+    PLATFORM_SEMANTIC_SCHOLAR: (
+        "Rate limited or authentication failed. For higher rate limits, set "
+        "SEMANTIC_SCHOLAR_API_KEY environment variable with a valid API key."
     ),
 }

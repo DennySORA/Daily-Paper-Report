@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.status.models import (
+from src.features.status.models import (
     CATEGORY_DISPLAY_NAMES,
     REASON_TEXT_MAP,
     REMEDIATION_HINT_MAP,

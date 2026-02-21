@@ -1,6 +1,6 @@
 """Unit tests for status metrics."""
 
-from src.status.metrics import StatusMetrics
+from src.features.status.metrics import StatusMetrics
 
 
 class TestStatusMetrics:

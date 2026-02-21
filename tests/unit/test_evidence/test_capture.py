@@ -7,14 +7,14 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from src.evidence.capture import (
+from src.features.evidence.capture import (
     ArtifactInfo,
     ArtifactManifest,
     EvidenceCapture,
     EvidenceWriteError,
 )
-from src.evidence.metrics import EvidenceMetrics
-from src.evidence.state_machine import EvidenceState
+from src.features.evidence.metrics import EvidenceMetrics
+from src.features.evidence.state_machine import EvidenceState
 
 
 class TestArtifactInfo:
@@ -205,7 +205,8 @@ class TestEvidenceCapture:
         )
         assert capture.state == EvidenceState.EVIDENCE_PENDING
         capture.write_state_md(config=mock_config)
-        assert capture.state == EvidenceState.EVIDENCE_WRITING
+        # After state transition, mypy incorrectly narrows state type
+        assert capture.state == EvidenceState.EVIDENCE_WRITING  # type: ignore[comparison-overlap]
 
     def test_write_state_md_includes_config_summary(
         self, temp_base_path: Path, mock_config: MagicMock

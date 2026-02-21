@@ -1,47 +1,53 @@
 {% extends "base.html" %}
-{% from "_macros.html" import story_item, story_section %}
+{% from "_macros.html" import story_card, story_section, entity_group, section_descriptions %}
 
-{% block title %}Research Digest - {{ run_date }}{% endblock %}
-
-{% block header_title %}Research Digest - {{ run_date }}{% endblock %}
+{% block title %}Daily Paper Report - {{ run_date }}{% endblock %}
 
 {% block content %}
-<p class="meta">Latest digest for {{ run_date }}. <a href="day/{{ run_date }}.html">Permanent link</a></p>
-
-{% if top5 %}
-<section>
-    <h2>Top 5 Must-Read</h2>
-    <ol class="story-list">
-        {% for story in top5 %}
-        {{ story_item(story, show_entities=true) }}
-        {% endfor %}
-    </ol>
-</section>
-{% endif %}
-
-{% if model_releases_by_entity %}
-<section>
-    <h2>Model Releases</h2>
-    {% for entity_id, stories in model_releases_by_entity.items() %}
-    <div class="entity-group">
-        <div class="entity-name">{{ entity_id }}</div>
-        <ul class="story-list">
-            {% for story in stories %}
-            {{ story_item(story) }}
-            {% endfor %}
-        </ul>
-    </div>
-    {% endfor %}
-</section>
-{% endif %}
-
-{{ story_section('Papers', papers, show_arxiv=true) }}
-
-{{ story_section('Radar', radar) }}
-
-{% if not top5 and not model_releases_by_entity and not papers and not radar %}
-<div class="empty-state">
-    <p>No stories available for this date.</p>
+<div class="page-header">
+    <h1>Daily Digest</h1>
+    <p class="page-meta">{{ run_date }} · <a href="/day/{{ run_date }}.html" class="link-animated">Permanent link</a></p>
 </div>
-{% endif %}
+
+<section class="section-top5">
+    <h2>
+        <span class="section-icon">⭐</span>
+        Top 5 Must-Read
+    </h2>
+    <p class="section-description">Curated selection of the most significant AI/ML developments today, combining breakthrough research, major releases, and high-impact announcements.</p>
+    {% if top5 %}
+    <ul class="story-list">
+        {% for story in top5 %}
+        {{ story_card(story, show_entities=true, rank=loop.index) }}
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="section-empty">
+        <span class="section-empty-icon">📭</span>
+        <p>No top stories today. Check back tomorrow!</p>
+    </div>
+    {% endif %}
+</section>
+
+<section class="section-models">
+    <h2>
+        <span class="section-icon">🚀</span>
+        Model Releases
+    </h2>
+    <p class="section-description">New model releases and updates from leading AI labs and the open-source community.</p>
+    {% if model_releases_by_entity %}
+    {% for entity_id, stories in model_releases_by_entity.items() %}
+    {{ entity_group(entity_id, stories) }}
+    {% endfor %}
+    {% else %}
+    <div class="section-empty">
+        <span class="section-empty-icon">📭</span>
+        <p>No new model releases today. Check back tomorrow!</p>
+    </div>
+    {% endif %}
+</section>
+
+{{ story_section('Papers', papers, section_class='papers', icon='📄', show_arxiv=true) }}
+
+{{ story_section('Radar', radar, section_class='radar', icon='📡') }}
 {% endblock %}

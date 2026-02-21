@@ -1,7 +1,6 @@
 """Unit tests for TopicMatcher utility."""
 
-
-from src.config.schemas.topics import TopicConfig
+from src.features.config.schemas.topics import TopicConfig
 from src.ranker.topic_matcher import TopicMatcher
 
 
@@ -155,6 +154,92 @@ class TestComputeBoostScore:
         matcher = TopicMatcher([topic])
         score = matcher.compute_boost_score("The AI revolution", topic_match_weight=0.0)
         assert score == 0.0
+
+
+class TestWordBoundary:
+    """Tests for word boundary behavior on short keywords."""
+
+    def test_short_keyword_no_substring_match(self) -> None:
+        """Short keywords (≤4 chars) should NOT match as substrings."""
+        topic = TopicConfig(name="RL", keywords=["RL"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        # "RL" should NOT match inside "URL" or "CURL"
+        assert matcher.match_text("check this URL") == []
+        assert matcher.match_text("using CURL to fetch") == []
+
+    def test_short_keyword_matches_standalone(self) -> None:
+        """Short keywords match when they appear as standalone words."""
+        topic = TopicConfig(name="RL", keywords=["RL"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        assert len(matcher.match_text("RL for robotics")) == 1
+        assert len(matcher.match_text("using RL algorithms")) == 1
+        assert len(matcher.match_text("deep RL")) == 1
+
+    def test_short_keyword_qa_no_false_positive(self) -> None:
+        """QA keyword should not match 'quality' or 'qualitative'."""
+        topic = TopicConfig(name="NLP", keywords=["QA"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        assert matcher.match_text("quality assurance") == []
+        assert matcher.match_text("quantitative analysis") == []
+
+    def test_short_keyword_qa_matches_correctly(self) -> None:
+        """QA keyword should match standalone QA."""
+        topic = TopicConfig(name="NLP", keywords=["QA"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        assert len(matcher.match_text("visual QA benchmark")) == 1
+        assert len(matcher.match_text("QA dataset")) == 1
+
+    def test_short_keyword_cot_no_false_positive(self) -> None:
+        """CoT should not match 'cotton' or 'cottage'."""
+        topic = TopicConfig(name="Reasoning", keywords=["CoT"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        assert matcher.match_text("cotton fabric") == []
+        assert matcher.match_text("cottage cheese") == []
+
+    def test_short_keyword_cot_matches_correctly(self) -> None:
+        """CoT matches chain-of-thought abbreviation."""
+        topic = TopicConfig(name="Reasoning", keywords=["CoT"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        assert len(matcher.match_text("CoT prompting")) == 1
+        assert len(matcher.match_text("using CoT")) == 1
+
+    def test_long_keyword_still_substring_matches(self) -> None:
+        """Keywords longer than 4 chars keep substring matching."""
+        topic = TopicConfig(name="LLM", keywords=["language model"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        # "language model" should match even embedded in larger phrase
+        assert len(matcher.match_text("large language models are powerful")) == 1
+
+    def test_short_keyword_with_hyphen_boundary(self) -> None:
+        """Short keywords match at hyphen boundaries."""
+        topic = TopicConfig(name="RL", keywords=["RL"], boost_weight=1.0)
+        matcher = TopicMatcher([topic])
+
+        assert len(matcher.match_text("multi-agent RL")) == 1
+        assert len(matcher.match_text("RL-based approach")) == 1
+
+    def test_mixed_short_and_long_keywords(self) -> None:
+        """Topic with both short and long keywords uses appropriate matching."""
+        topic = TopicConfig(
+            name="NLP",
+            keywords=["NLP", "natural language processing"],
+            boost_weight=1.0,
+        )
+        matcher = TopicMatcher([topic])
+
+        # Short "NLP" should not match substring
+        assert matcher.match_text("UNLP conference") == []
+        # But should match standalone
+        assert len(matcher.match_text("NLP tasks")) == 1
+        # Long keyword still does substring matching
+        assert len(matcher.match_text("natural language processing")) == 1
 
 
 class TestEdgeCases:

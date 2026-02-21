@@ -2,18 +2,18 @@
 
 from datetime import UTC, datetime, timedelta
 
-from src.config.schemas.base import LinkType
-from src.config.schemas.entities import EntitiesConfig, EntityConfig
-from src.config.schemas.topics import (
+from src.features.config.schemas.base import LinkType
+from src.features.config.schemas.entities import EntitiesConfig, EntityConfig
+from src.features.config.schemas.topics import (
     QuotasConfig,
     ScoringConfig,
     TopicConfig,
     TopicsConfig,
 )
+from src.features.store.models import DateConfidence, Item
 from src.linker.models import Story, StoryLink
 from src.ranker import StoryRanker, rank_stories_pure
 from src.ranker.state_machine import RankerState
-from src.store.models import DateConfidence, Item
 
 
 def _make_item(
@@ -36,6 +36,8 @@ def _make_item(
         date_confidence=DateConfidence.HIGH if published_at else DateConfidence.LOW,
         content_hash="test-hash",
         raw_json=raw_json,
+        first_seen_at=published_at or datetime(2024, 1, 1, tzinfo=UTC),
+        last_seen_at=published_at or datetime(2024, 1, 1, tzinfo=UTC),
     )
 
 
@@ -213,7 +215,7 @@ class TestFourOutputSections:
 
         # Model releases should have the model
         has_model = any(
-            "model1" in stories
+            any(s.story_id == "model1" for s in stories)
             for stories in result.output.model_releases_by_entity.values()
         )
         # Note: model might be in top5 due to scoring

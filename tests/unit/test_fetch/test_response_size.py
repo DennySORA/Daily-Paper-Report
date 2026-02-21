@@ -2,9 +2,14 @@
 
 import pytest
 
-from src.fetch.config import FetchConfig
-from src.fetch.constants import DEFAULT_MAX_RESPONSE_SIZE_BYTES
-from src.fetch.models import FetchError, FetchErrorClass, FetchResult, RetryPolicy
+from src.features.fetch.config import FetchConfig
+from src.features.fetch.constants import DEFAULT_MAX_RESPONSE_SIZE_BYTES
+from src.features.fetch.models import (
+    FetchError,
+    FetchErrorClass,
+    FetchResult,
+    RetryPolicy,
+)
 
 
 class TestMaxResponseSizeConfig:
