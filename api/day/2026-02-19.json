@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-21",
     "2026-02-20",
     "2026-02-19",
     "2026-02-18",
@@ -33,48 +34,8 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-20T06:26:09.929973+00:00",
+  "generated_at": "2026-02-21T06:19:11.450639+00:00",
   "model_releases_by_entity": {
-    "huggingface": [
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [
-          "huggingface"
-        ],
-        "first_seen_at": "2026-02-20T06:26:06.549933+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 0,
-          "likes": 1
-        },
-        "hf_model_id": "google/timesfm-2.5-200m-transformers",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-google",
-            "tier": 1,
-            "title": "google/timesfm-2.5-200m-transformers",
-            "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/timesfm-2.5-200m-transformers",
-          "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
-        },
-        "published_at": "2026-02-19T22:09:20+00:00",
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:google/timesfm-2.5-200m-transformers",
-        "summary": "license: apache-2.0",
-        "title": "google/timesfm-2.5-200m-transformers"
-      }
-    ],
     "other": [
       {
         "arxiv_id": null,
@@ -1448,14 +1409,14 @@
     }
   ],
   "run_date": "2026-02-19",
-  "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026",
+  "run_id": "222e96ba-242c-4632-b8e9-9e07eab07c73",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-19T23:59:59+00:00",
-    "items_total": 339,
-    "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026-2026-02-19",
+    "items_total": 338,
+    "run_id": "222e96ba-242c-4632-b8e9-9e07eab07c73-2026-02-19",
     "started_at": "2026-02-18T23:59:59+00:00",
-    "stories_total": 339,
+    "stories_total": 338,
     "success": true
   },
   "sources_status": [],

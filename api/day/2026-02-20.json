@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-02-21",
     "2026-02-20",
     "2026-02-19",
     "2026-02-18",
@@ -33,8 +34,49 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-20T06:26:09.457290+00:00",
+  "generated_at": "2026-02-21T06:19:10.992354+00:00",
   "model_releases_by_entity": {
+    "huggingface": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [
+          "huggingface"
+        ],
+        "first_seen_at": "2026-02-20T06:26:06.549933+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 11,
+          "likes": 6,
+          "pipeline_tag": "time-series-forecasting"
+        },
+        "hf_model_id": "google/timesfm-2.5-200m-transformers",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/timesfm-2.5-200m-transformers",
+            "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/timesfm-2.5-200m-transformers",
+          "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
+        },
+        "published_at": "2026-02-20T15:55:54+00:00",
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/timesfm-2.5-200m-transformers",
+        "summary": "TimesFM (Time Series Foundation Model) is a pretrained decoder-only model for time-series forecasting. This repository contains the **Transformers** port of the official TimesFM 2.5 PyTorch release. **Resources and Technical Documentation**: * Original model: google/timesfm-2.5-200m-pytorch * Transformers model: google/timesfm-2.5-200m-transformers * Paper: A decoder-only foundation model for time-series forecasting * Transformers docs: TimesFM 2.5 This model is converted from the official TimesFM 2.5 PyTorch checkpoint and integrated into `transformers` as `Timesfm2P5ModelForPrediction`. The converted checkpoint preserves the original architecture and forecasting behavior, including: * patch-based inputs for time-series contexts * decoder-only self-attention stack",
+        "title": "google/timesfm-2.5-200m-transformers"
+      }
+    ],
     "qwen": [
       {
         "arxiv_id": null,
@@ -1260,6 +1302,47 @@
       "title": "Art2Mus: Artwork-to-Music Generation via Visual Conditioning and Large-Scale Cross-Modal Alignment"
     },
     {
+      "arxiv_id": null,
+      "authors": [
+        "Dan Ferguson"
+      ],
+      "categories": [
+        "Amazon SageMaker AI",
+        "Amazon SageMaker Data & AI Governance",
+        "Foundational (100)"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-02-21T06:19:06.557399+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Amazon SageMaker AI in 2025, a year in review part 1: Flexible Training Plans and improvements to price performance for inference workloads",
+          "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-in-2025-a-year-in-review-part-1-flexible-training-plans-and-improvements-to-price-performance-for-inference-workloads"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Amazon SageMaker AI in 2025, a year in review part 1: Flexible Training Plans and improvements to price performance for inference workloads",
+        "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-in-2025-a-year-in-review-part-1-flexible-training-plans-and-improvements-to-price-performance-for-inference-workloads"
+      },
+      "published_at": "2026-02-20T20:26:47+00:00",
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:cf7b1d292be16c83",
+      "summary": "In 2025, Amazon SageMaker AI saw dramatic improvements to core infrastructure offerings along four dimensions: capacity, price performance, observability, and usability. In this series of posts, we discuss these various improvements and their benefits. In Part 1, we discuss capacity improvements with the launch of Flexible Training Plans. We also describe improvements to price performance for inference workloads. In Part 2, we discuss enhancements made to observability, model customization, and model hosting.",
+      "title": "Amazon SageMaker AI in 2025, a year in review part 1: Flexible Training Plans and improvements to price performance for inference workloads"
+    },
+    {
       "arxiv_id": "2602.17047",
       "authors": [
         "Chaojie Yang, Tian Li, Yue Zhang, Jun Gao"
@@ -1375,57 +1458,17 @@
       "story_id": "arxiv:2510.02894",
       "summary": "arXiv:2510.02894v2 Announce Type: replace-cross \nAbstract: PyRadiomics-cuda is a GPU-accelerated extension of the PyRadiomics library, designed to address the computational challenges of extracting three-dimensional shape features from medical images. By offloading key geometric computations to GPU hardware it dramatically reduces processing times for large volumetric datasets. The system maintains full compatibility with the original PyRadiomics API, enabling seamless integration into existing AI workflows without code modifications. This transparent acceleration facilitates efficient, scalable radiomics analysis, supporting rapid feature extraction essential for high-throughput AI pipeline. Tests performed on a typical computational cluster, budget and home devices prove usefulness in all scenarios.",
       "title": "PyRadiomics-cuda: 3D features extraction from medical images for HPC using GPU acceleration"
-    },
-    {
-      "arxiv_id": "2602.16857",
-      "authors": [
-        "Michael Groom, Davide Bassetti, Illia Horenko, Terence J. O'Kane"
-      ],
-      "categories": [
-        "physics.comp-ph",
-        "physics.data-an",
-        "physics.geo-ph",
-        "stat.ML"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-20T06:26:06.093224+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-stat-ml",
-          "tier": 1,
-          "title": "Distillation and Interpretability of Ensemble Forecasts of ENSO Phase using Entropic Learning",
-          "url": "https://arxiv.org/abs/2602.16857"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-stat-ml",
-        "tier": 1,
-        "title": "Distillation and Interpretability of Ensemble Forecasts of ENSO Phase using Entropic Learning",
-        "url": "https://arxiv.org/abs/2602.16857"
-      },
-      "published_at": "2026-02-20T05:00:00+00:00",
-      "section": null,
-      "source_name": "arXiv stat.ML",
-      "story_id": "arxiv:2602.16857",
-      "summary": "arXiv:2602.16857v1 Announce Type: cross \nAbstract: This paper introduces a distillation framework for an ensemble of entropy-optimal Sparse Probabilistic Approximation (eSPA) models, trained exclusively on satellite-era observational and reanalysis data to predict ENSO phase up to 24 months in advance. While eSPA ensembles yield state-of-the-art forecast skill, they are harder to interpret than individual eSPA models. We show how to compress the ensemble into a compact set of \"distilled\" models by aggregating the structure of only those ensemble members that make correct predictions. This process yields a single, diagnostically tractable model for each forecast lead time that preserves forecast performance while also enabling diagnostics that are impractical to implement on the full ensemble.\n  An analysis of the regime persistence of the distilled model \"superclusters\", as well as cross-lead clustering consistency, shows that the discretised system accurately captures the spatiotempor",
-      "title": "Distillation and Interpretability of Ensemble Forecasts of ENSO Phase using Entropic Learning"
     }
   ],
   "run_date": "2026-02-20",
-  "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026",
+  "run_id": "222e96ba-242c-4632-b8e9-9e07eab07c73",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-20T23:59:59+00:00",
-    "items_total": 326,
-    "run_id": "0a678835-682a-40e6-a4f4-77a8a45fb026-2026-02-20",
+    "items_total": 330,
+    "run_id": "222e96ba-242c-4632-b8e9-9e07eab07c73-2026-02-20",
     "started_at": "2026-02-19T23:59:59+00:00",
-    "stories_total": 326,
+    "stories_total": 330,
     "success": true
   },
   "sources_status": [],
