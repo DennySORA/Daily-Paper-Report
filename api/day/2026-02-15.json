@@ -1,424 +1,608 @@
 {
   "archive_dates": [
+    "2026-02-21",
+    "2026-02-20",
+    "2026-02-19",
+    "2026-02-18",
+    "2026-02-17",
+    "2026-02-16",
     "2026-02-15",
-    "2026-02-14",
-    "2026-02-13",
-    "2026-02-12",
-    "2026-02-11",
-    "2026-02-10",
-    "2026-02-09",
-    "2026-02-07",
-    "2026-02-06",
-    "2026-02-05",
-    "2026-02-04",
-    "2026-02-03",
-    "2026-02-02",
-    "2026-01-30",
-    "2026-01-29",
-    "2026-01-28",
-    "2026-01-27",
-    "2026-01-26",
-    "2026-01-24",
-    "2026-01-23",
-    "2026-01-22",
-    "2026-01-21",
-    "2026-01-20",
-    "2026-01-19",
-    "2026-01-18",
-    "2026-01-16",
-    "2026-01-15"
+    "2026-02-03"
   ],
-  "generated_at": "2026-02-15T06:24:28.546077+00:00",
-  "model_releases_by_entity": {},
-  "papers": [],
-  "radar": [],
-  "run_date": "2026-02-15",
-  "run_id": "38e2b9a3-a501-45d2-b1a7-59fa670917b6",
-  "run_info": {
-    "error_summary": null,
-    "finished_at": "2026-02-15T06:24:28.512125+00:00",
-    "items_total": 0,
-    "run_id": "38e2b9a3-a501-45d2-b1a7-59fa670917b6",
-    "started_at": "2026-02-15T06:24:22.681105+00:00",
-    "stories_total": 0,
-    "success": true
+  "entity_catalog": {
+    "01-ai": {
+      "name": "01.AI",
+      "type": "organization"
+    },
+    "andrej-karpathy": {
+      "name": "Andrej Karpathy",
+      "type": "researcher"
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "type": "organization"
+    },
+    "aws": {
+      "name": "AWS",
+      "type": "organization"
+    },
+    "cohere": {
+      "name": "Cohere",
+      "type": "organization"
+    },
+    "deepmind": {
+      "name": "DeepMind",
+      "type": "organization"
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "type": "organization"
+    },
+    "geoffrey-hinton": {
+      "name": "Geoffrey Hinton",
+      "type": "researcher"
+    },
+    "google-research": {
+      "name": "Google Research",
+      "type": "institution"
+    },
+    "huggingface": {
+      "name": "Hugging Face",
+      "type": "organization"
+    },
+    "ilya-sutskever": {
+      "name": "Ilya Sutskever",
+      "type": "researcher"
+    },
+    "langchain": {
+      "name": "LangChain",
+      "type": "organization"
+    },
+    "llama-cpp": {
+      "name": "llama.cpp",
+      "type": "organization"
+    },
+    "meta-ai": {
+      "name": "Meta AI",
+      "type": "institution"
+    },
+    "microsoft-research": {
+      "name": "Microsoft Research",
+      "type": "institution"
+    },
+    "mistral-ai": {
+      "name": "Mistral AI",
+      "type": "organization"
+    },
+    "nvidia": {
+      "name": "NVIDIA",
+      "type": "organization"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "type": "organization"
+    },
+    "openai": {
+      "name": "OpenAI",
+      "type": "organization"
+    },
+    "qwen": {
+      "name": "Qwen",
+      "type": "organization"
+    },
+    "stability-ai": {
+      "name": "Stability AI",
+      "type": "organization"
+    },
+    "vllm": {
+      "name": "vLLM",
+      "type": "organization"
+    },
+    "yann-lecun": {
+      "name": "Yann LeCun",
+      "type": "researcher"
+    },
+    "yoshua-bengio": {
+      "name": "Yoshua Bengio",
+      "type": "researcher"
+    }
   },
-  "sources_status": [
+  "generated_at": "2026-02-21T11:13:40.868178+00:00",
+  "model_releases_by_entity": {},
+  "papers": [
     {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "arXiv cs.AI",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "arxiv-cs-ai",
-      "status": "NO_UPDATE",
-      "tier": 1
+      "arxiv_id": "2602.14216",
+      "authors": [
+        "Dragan Stoll",
+        "Brian E. Perron",
+        "Zia Qi",
+        "Selina Steinmann",
+        "Nicole F. Eicher",
+        "Andreas Jud"
+      ],
+      "categories": [
+        "cs.CY",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-21T11:03:42.381720+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-api-reasoning",
+          "tier": 1,
+          "title": "Reasoning Language Models for complex assessments tasks: Evaluating parental cooperation from child protection case reports",
+          "url": "https://arxiv.org/abs/2602.14216"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-api-reasoning",
+        "tier": 1,
+        "title": "Reasoning Language Models for complex assessments tasks: Evaluating parental cooperation from child protection case reports",
+        "url": "https://arxiv.org/abs/2602.14216"
+      },
+      "published_at": "2026-02-15T16:14:19+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.560389901117837,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.760389901117836
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14216",
+      "summary": "Purpose: Reasoning language models (RLMs) have demonstrated significant advances in solving complex reasoning tasks. We examined their potential to assess parental cooperation during CPS interventions using case reports, a case factor characterized by ambiguous and conflicting information. Methods: A four stage workflow comprising (1) case reports collection, (2) reasoning-based assessment of parental cooperation, (3) automated category extraction, and (4) case labeling was developed. The perfor",
+      "title": "Reasoning Language Models for complex assessments tasks: Evaluating parental cooperation from child protection case reports"
     },
     {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "arXiv cs.CL",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "arxiv-cs-cl",
-      "status": "NO_UPDATE",
-      "tier": 1
+      "arxiv_id": "2602.14147",
+      "authors": [
+        "Shufan Li",
+        "Yuchen Zhu",
+        "Jiuxiang Gu",
+        "Kangning Liu",
+        "Zhe Lin",
+        "Yongxin Chen",
+        "Molei Tao",
+        "Aditya Grover",
+        "Jason Kuen"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-21T11:03:42.381939+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-api-reasoning",
+          "tier": 1,
+          "title": "LaViDa-R1: Advancing Reasoning for Unified Multimodal Diffusion Language Models",
+          "url": "https://arxiv.org/abs/2602.14147"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-api-reasoning",
+        "tier": 1,
+        "title": "LaViDa-R1: Advancing Reasoning for Unified Multimodal Diffusion Language Models",
+        "url": "https://arxiv.org/abs/2602.14147"
+      },
+      "published_at": "2026-02-15T13:52:45+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5549076896377312,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.754907689637731
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14147",
+      "summary": "Diffusion language models (dLLMs) recently emerged as a promising alternative to auto-regressive LLMs. The latest works further extended it to multimodal understanding and generation tasks. In this work, we propose LaViDa-R1, a multimodal, general-purpose reasoning dLLM. Unlike existing works that build reasoning dLLMs through task-specific reinforcement learning, LaViDa-R1 incorporates diverse multimodal understanding and generation tasks in a unified manner. In particular, LaViDa-R1 is built w",
+      "title": "LaViDa-R1: Advancing Reasoning for Unified Multimodal Diffusion Language Models"
     },
     {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "arXiv cs.CV",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "arxiv-cs-cv",
-      "status": "NO_UPDATE",
-      "tier": 1
+      "arxiv_id": "2602.14089",
+      "authors": [
+        "Zhizhao Luo",
+        "Zhaojing Luo",
+        "Meihui Zhang",
+        "Rui Mao"
+      ],
+      "categories": [
+        "cs.DB",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-21T11:03:42.382179+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-api-reasoning",
+          "tier": 1,
+          "title": "TabTracer: Monte Carlo Tree Search for Complex Table Reasoning with Large Language Models",
+          "url": "https://arxiv.org/abs/2602.14089"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-api-reasoning",
+        "tier": 1,
+        "title": "TabTracer: Monte Carlo Tree Search for Complex Table Reasoning with Large Language Models",
+        "url": "https://arxiv.org/abs/2602.14089"
+      },
+      "published_at": "2026-02-15T10:39:43+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5475187361278737,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.747518736127873
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14089",
+      "summary": "Large language models (LLMs) have emerged as powerful tools for natural language table reasoning, where there are two main categories of methods. Prompt-based approaches rely on language-only inference or one-pass program generation without step-level verification. Agent-based approaches use tools in a closed loop, but verification is often local and backtracking is limited, allowing errors to propagate and increasing cost. Moreover, they rely on chain- or beam-style trajectories that are typica",
+      "title": "TabTracer: Monte Carlo Tree Search for Complex Table Reasoning with Large Language Models"
     },
     {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "arXiv cs.LG",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "arxiv-cs-lg",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "arXiv stat.ML",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "arxiv-stat-ml",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "AWS Machine Learning Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "aws-ml-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "DeepMind Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "deepmind-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "Google AI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "google-ai-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face 01.AI (Yi)",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-01-ai",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Cohere",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-cohere",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_daily_papers",
-      "name": "Hugging Face Daily Papers",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-daily-papers",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face DeepSeek AI",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-deepseek-ai",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Google",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-google",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Meta Llama",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-meta-llama",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Microsoft",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-microsoft",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Mistral AI",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-mistralai",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face OpenAI",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-openai",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Qwen",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-qwen",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "hf_org",
-      "name": "Hugging Face Stability AI",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "hf-stabilityai",
-      "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "Meta AI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
-      "source_id": "meta-ai-blog",
-      "status": "FETCH_FAILED",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "Microsoft Research Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "microsoft-research-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "NVIDIA AI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "nvidia-ai-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "OpenAI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "openai-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "papers_with_code",
-      "name": "Papers With Code",
-      "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
-      "source_id": "papers-with-code",
-      "status": "FETCH_FAILED",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "Sebastian Raschka Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
-      "source_id": "sebastian-raschka-blog",
-      "status": "NO_UPDATE",
-      "tier": 0
+      "arxiv_id": "2602.14054",
+      "authors": [
+        "Jizheng Chen",
+        "Weiming Zhang",
+        "Xinyi Dai",
+        "Weiwen Liu",
+        "Kounianhua Du",
+        "Yasheng Wang",
+        "Ruiming Tang",
+        "Yong Yu",
+        "Weinan Zhang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-21T11:03:42.382400+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-api-reasoning",
+          "tier": 1,
+          "title": "LogitsCoder: Towards Efficient Chain-of-Thought Path Search via Logits Preference Decoding for Code Generation",
+          "url": "https://arxiv.org/abs/2602.14054"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-api-reasoning",
+        "tier": 1,
+        "title": "LogitsCoder: Towards Efficient Chain-of-Thought Path Search via Logits Preference Decoding for Code Generation",
+        "url": "https://arxiv.org/abs/2602.14054"
+      },
+      "published_at": "2026-02-15T08:52:19+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5434503494388531,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.743450349438852
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14054",
+      "summary": "Code generation remains a challenging task that requires precise and structured reasoning. Existing Test Time Scaling (TTS) methods, including structured tree search, have made progress in exploring reasoning paths but still face two major challenges: (1) underthinking, where reasoning chains tend to be shallow and fail to capture the full complexity of problems; and (2) overthinking, where overly verbose reasoning leads to inefficiency and increased computational costs. To address these issues,",
+      "title": "LogitsCoder: Towards Efficient Chain-of-Thought Path Search via Logits Preference Decoding for Code Generation"
     }
   ],
-  "top5": []
+  "radar": [],
+  "run_date": "2026-02-15",
+  "run_id": "7a2c2a23-c5c4-4ffb-9821-5a772cffb621",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-02-15T23:59:59+00:00",
+    "items_total": 9,
+    "run_id": "7a2c2a23-c5c4-4ffb-9821-5a772cffb621-2026-02-15",
+    "started_at": "2026-02-14T23:59:59+00:00",
+    "stories_total": 9,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": "2602.14080",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "openai",
+        "deepmind"
+      ],
+      "first_seen_at": "2026-02-21T11:03:46.703929+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Empty Shelves or Lost Keys? Recall Is the Bottleneck for Parametric Factuality",
+          "url": "https://arxiv.org/abs/2602.14080"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Empty Shelves or Lost Keys? Recall Is the Bottleneck for Parametric Factuality",
+        "url": "https://arxiv.org/abs/2602.14080"
+      },
+      "published_at": "2026-02-15T10:13:30+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 4.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5465228293529004,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 12.746522829352902
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14080",
+      "summary": "Standard factuality evaluations of LLMs treat all errors alike, obscuring whether failures arise from missing knowledge (empty shelves) or from limited access to encoded facts (lost keys). We propose a behavioral framework that profiles factual knowledge at the level of facts rather than questions, characterizing each fact by whether it is encoded, and then by how accessible it is: cannot be recalled, can be directly recalled, or can only be recalled with inference-time computation (thinking). To support such profiling, we introduce WikiProfile, a new benchmark constructed via an automated pipeline with a prompted LLM grounded in web search. Across 4 million responses from 13 LLMs, we find that encoding is nearly saturated in frontier models on our benchmark, with GPT-5 and Gemini-3 encoding 95--98% of facts. However, recall remains a major bottleneck: many errors previously attributed to missing knowledge instead stem from failures to access it. These failures are systematic and disproportionately affect long-tail facts and reverse questions. Finally, we show that thinking improves recall and can recover a substantial fraction of failures, indicating that future gains may rely less on scaling and more on methods that improve how models utilize what they already encode.",
+      "title": "Empty Shelves or Lost Keys? Recall Is the Bottleneck for Parametric Factuality"
+    },
+    {
+      "arxiv_id": "2602.14296",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-02-21T11:03:46.702447+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "AutoWebWorld: Synthesizing Infinite Verifiable Web Environments via Finite State Machines",
+          "url": "https://arxiv.org/abs/2602.14296"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "AutoWebWorld: Synthesizing Infinite Verifiable Web Environments via Finite State Machines",
+        "url": "https://arxiv.org/abs/2602.14296"
+      },
+      "published_at": "2026-02-15T20:03:19+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5693728951485906,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.76937289514859
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.14296",
+      "summary": "The performance of autonomous Web GUI agents heavily relies on the quality and quantity of their training data. However, a fundamental bottleneck persists: collecting interaction trajectories from real-world websites is expensive and difficult to verify. The underlying state transitions are hidden, leading to reliance on inconsistent and costly external verifiers to evaluate step-level correctness. To address this, we propose AutoWebWorld, a novel framework for synthesizing controllable and verifiable web environments by modeling them as Finite State Machines (FSMs) and use coding agents to translate FSMs into interactive websites. Unlike real websites, where state transitions are implicit, AutoWebWorld explicitly defines all states, actions, and transition rules. This enables programmatic verification: action correctness is checked against predefined rules, and task success is confirmed by reaching a goal state in the FSM graph. AutoWebWorld enables a fully automated search-and-verify pipeline, generating over 11,663 verified trajectories from 29 diverse web environments at only $0.04 per trajectory. Training on this synthetic data significantly boosts real-world performance. Our 7B Web GUI agent outperforms all baselines within 15 steps on WebVoyager. Furthermore, we observe a clear scaling law: as the synthetic data volume increases, performance on WebVoyager and Online-Mind2Web consistently improves.",
+      "title": "AutoWebWorld: Synthesizing Infinite Verifiable Web Environments via Finite State Machines"
+    },
+    {
+      "arxiv_id": "2602.13979",
+      "authors": [
+        "Tongze Zhang",
+        "Jun-En Ding",
+        "Melik Ozolcer",
+        "Fang-Ming Hung",
+        "Albert Chih-Chieh Yang",
+        "Feng Liu",
+        "Yi-Rou Ji",
+        "Sang Won Bae"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "entities": [
+        "01-ai"
+      ],
+      "first_seen_at": "2026-02-21T11:03:42.382671+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-api-reasoning",
+          "tier": 1,
+          "title": "Chain-of-Thought Reasoning with Large Language Models for Clinical Alzheimer's Disease Assessment and Diagnosis",
+          "url": "https://arxiv.org/abs/2602.13979"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-api-reasoning",
+        "tier": 1,
+        "title": "Chain-of-Thought Reasoning with Large Language Models for Clinical Alzheimer's Disease Assessment and Diagnosis",
+        "url": "https://arxiv.org/abs/2602.13979"
+      },
+      "published_at": "2026-02-15T03:56:24+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5323965362011299,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.73239653620113
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.13979",
+      "summary": "Alzheimer's disease (AD) has become a prevalent neurodegenerative disease worldwide. Traditional diagnosis still relies heavily on medical imaging and clinical assessment by physicians, which is often time-consuming and resource-intensive in terms of both human expertise and healthcare resources. In recent years, large language models (LLMs) have been increasingly applied to the medical field using electronic health records (EHRs), yet their application in Alzheimer's disease assessment remains ",
+      "title": "Chain-of-Thought Reasoning with Large Language Models for Clinical Alzheimer's Disease Assessment and Diagnosis"
+    },
+    {
+      "arxiv_id": "2602.13964",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-02-21T11:03:46.706092+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "HLE-Verified: A Systematic Verification and Structured Revision of Humanity's Last Exam",
+          "url": "https://arxiv.org/abs/2602.13964"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "HLE-Verified: A Systematic Verification and Structured Revision of Humanity's Last Exam",
+        "url": "https://arxiv.org/abs/2602.13964"
+      },
+      "published_at": "2026-02-15T02:50:15+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5299564484804418,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.729956448480442
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.13964",
+      "summary": "Humanity's Last Exam (HLE) has become a widely used benchmark for evaluating frontier large language models on challenging, multi-domain questions. However, community-led analyses have raised concerns that HLE contains a non-trivial number of noisy items, which can bias evaluation results and distort cross-model comparisons. To address this challenge, we introduce HLE-Verified, a verified and revised version of HLE with a transparent verification protocol and fine-grained error taxonomy. Our construction follows a two-stage validation-and-repair workflow resulting in a certified benchmark. In Stage I, each item undergoes binary validation of the problem and final answer through domain-expert review and model-based cross-checks, yielding 641 verified items. In Stage II, flawed but fixable items are revised under strict constraints preserving the original evaluation intent, through dual independent expert repairs, model-assisted auditing, and final adjudication, resulting in 1,170 revised-and-certified items. The remaining 689 items are released as a documented uncertain set with explicit uncertainty sources and expertise tags for future refinement. We evaluate seven state-of-the-art language models on HLE and HLE-Verified, observing an average absolute accuracy gain of 7--10 percentage points on HLE-Verified. The improvement is particularly pronounced on items where the original problem statement and/or reference answer is erroneous, with gains of 30--40 percentage points. Our analyses further reveal a strong association between model confidence and the presence of errors in the problem statement or reference answer, supporting the effectiveness of our revisions. Overall, HLE-Verified improves HLE-style evaluations by reducing annotation noise and enabling more faithful measurement of model capabilities. Data is available at: https://github.com/SKYLENAGE-AI/HLE-Verified",
+      "title": "HLE-Verified: A Systematic Verification and Structured Revision of Humanity's Last Exam"
+    },
+    {
+      "arxiv_id": "2602.16855",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-02-21T11:03:46.700390+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Mobile-Agent-v3.5: Multi-platform Fundamental GUI Agents",
+          "url": "https://arxiv.org/abs/2602.16855"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Mobile-Agent-v3.5: Multi-platform Fundamental GUI Agents",
+        "url": "https://arxiv.org/abs/2602.16855"
+      },
+      "published_at": "2026-02-15T01:52:19+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.5278286382939553,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.727828638293955
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.16855",
+      "summary": "The paper introduces GUI-Owl-1.5, the latest native GUI agent model that features instruct/thinking variants in multiple sizes (2B/4B/8B/32B/235B) and supports a range of platforms (desktop, mobile, browser, and more) to enable cloud-edge collaboration and real-time interaction. GUI-Owl-1.5 achieves state-of-the-art results on more than 20+ GUI benchmarks on open-source models: (1) on GUI automation tasks, it obtains 56.5 on OSWorld, 71.6 on AndroidWorld, and 48.4 on WebArena; (2) on grounding tasks, it obtains 80.3 on ScreenSpotPro; (3) on tool-calling tasks, it obtains 47.6 on OSWorld-MCP, and 46.8 on MobileWorld; (4) on memory and knowledge tasks, it obtains 75.5 on GUI-Knowledge Bench. GUI-Owl-1.5 incorporates several key innovations: (1) Hybird Data Flywheel: we construct the data pipeline for UI understanding and trajectory generation based on a combination of simulated environments and cloud-based sandbox environments, in order to improve the efficiency and quality of data collection. (2) Unified Enhancement of Agent Capabilities: we use a unified thought-synthesis pipeline to enhance the model's reasoning capabilities, while placing particular emphasis on improving key agent abilities, including Tool/MCP use, memory and multi-agent adaptation; (3) Multi-platform Environment RL Scaling: We propose a new environment RL algorithm, MRPO, to address the challenges of multi-platform conflicts and the low training efficiency of long-horizon tasks. The GUI-Owl-1.5 models are open-sourced, and an online cloud-sandbox demo is available at https://github.com/X-PLUG/MobileAgent.",
+      "title": "Mobile-Agent-v3.5: Multi-platform Fundamental GUI Agents"
+    }
+  ]
 }

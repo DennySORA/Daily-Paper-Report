@@ -2,37 +2,7 @@
   "archive_dates": [
     "2026-02-21",
     "2026-02-20",
-    "2026-02-19",
-    "2026-02-18",
-    "2026-02-17",
-    "2026-02-16",
-    "2026-02-15",
-    "2026-02-14",
-    "2026-02-13",
-    "2026-02-12",
-    "2026-02-11",
-    "2026-02-10",
-    "2026-02-09",
-    "2026-02-07",
-    "2026-02-06",
-    "2026-02-05",
-    "2026-02-04",
-    "2026-02-03",
-    "2026-02-02",
-    "2026-01-30",
-    "2026-01-29",
-    "2026-01-28",
-    "2026-01-27",
-    "2026-01-26",
-    "2026-01-24",
-    "2026-01-23",
-    "2026-01-22",
-    "2026-01-21",
-    "2026-01-20",
-    "2026-01-19",
-    "2026-01-18",
-    "2026-01-16",
-    "2026-01-15"
+    "2026-02-03"
   ],
   "entity_catalog": {
     "01-ai": {
@@ -132,19 +102,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T11:02:38.058632+00:00",
+  "generated_at": "2026-02-21T11:13:39.832138+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
   "run_date": "2026-02-20",
-  "run_id": "daefba64-f670-4e65-825f-bfa0fd617590",
+  "run_id": "7a2c2a23-c5c4-4ffb-9821-5a772cffb621",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-20T23:59:59+00:00",
-    "items_total": 4,
-    "run_id": "daefba64-f670-4e65-825f-bfa0fd617590-2026-02-20",
+    "items_total": 5,
+    "run_id": "7a2c2a23-c5c4-4ffb-9821-5a772cffb621-2026-02-20",
     "started_at": "2026-02-19T23:59:59+00:00",
-    "stories_total": 4,
+    "stories_total": 5,
     "success": true
   },
   "sources_status": [],
@@ -162,7 +132,7 @@
       "entities": [
         "aws"
       ],
-      "first_seen_at": "2026-02-21T10:57:59.858879+00:00",
+      "first_seen_at": "2026-02-21T11:03:38.828630+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -191,11 +161,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9409898128041714,
+        "recency_score": 0.9402693482476188,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.44098981280417
+        "total_score": 11.440269348247618
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -216,7 +186,7 @@
       "entities": [
         "aws"
       ],
-      "first_seen_at": "2026-02-21T10:57:59.859227+00:00",
+      "first_seen_at": "2026-02-21T11:03:38.828999+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -245,11 +215,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9409712981404649,
+        "recency_score": 0.9402508477595799,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.440971298140465
+        "total_score": 11.44025084775958
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -264,7 +234,7 @@
       "entities": [
         "huggingface"
       ],
-      "first_seen_at": "2026-02-21T10:58:05.688397+00:00",
+      "first_seen_at": "2026-02-21T11:03:44.958145+00:00",
       "github_release_url": null,
       "hf_metadata": {
         "downloads": 182,
@@ -297,17 +267,69 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9234539844061554,
+        "recency_score": 0.9227469460766018,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.723453984406156
+        "total_score": 10.722746946076601
       },
       "section": null,
       "source_name": null,
       "story_id": "hf:google/timesfm-2.5-200m-transformers",
       "summary": "TimesFM (Time Series Foundation Model) is a pretrained decoder-only model for time-series forecasting. This repository contains the **Transformers** port of the official TimesFM 2.5 PyTorch release. **Resources and Technical Documentation**: * Original model: google/timesfm-2.5-200m-pytorch * Transformers model: google/timesfm-2.5-200m-transformers * Paper: A decoder-only foundation model for time-series forecasting * Transformers docs: TimesFM 2.5 This model is converted from the official TimesFM 2.5 PyTorch checkpoint and integrated into `transformers` as `Timesfm2P5ModelForPrediction`. The converted checkpoint preserves the original architecture and forecasting behavior, including: * patch-based inputs for time-series contexts * decoder-only self-attention stack",
       "title": "google/timesfm-2.5-200m-transformers"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "qwen"
+      ],
+      "first_seen_at": "2026-02-21T11:03:45.936632+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 133264,
+        "likes": 793,
+        "pipeline_tag": "image-text-to-text"
+      },
+      "hf_model_id": "qwen/qwen3.5-397b-a17b",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3.5-397B-A17B",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-qwen",
+        "tier": 1,
+        "title": "Qwen/Qwen3.5-397B-A17B",
+        "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
+      },
+      "published_at": "2026-02-20T05:27:33+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8833483371747924,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.683348337174792
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:qwen/qwen3.5-397b-a17b",
+      "summary": "> This repository contains model weights and configuration files for the post-trained model in the Hugging Face Transformers format. > These artifacts are compatible with Hugging Face Transformers, vLLM, SGLang, KTransformers, etc. > For users seeking managed, scalable inference without infrastructure maintenance, the official Qwen API service is provided by Alibaba Cloud Model Studio. > In particular, **Qwen3.5-Plus** is the hosted version corresponding to Qwen3.5-397B-A17B with more production features, e.g., 1M context length by default, official built-in tools, and adaptive tool use. > For more information, please refer to the User Guide. Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5...",
+      "title": "Qwen/Qwen3.5-397B-A17B"
     },
     {
       "arxiv_id": null,
@@ -321,7 +343,7 @@
         "Technical How-to"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-21T10:57:59.859454+00:00",
+      "first_seen_at": "2026-02-21T11:03:38.829250+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -350,11 +372,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9254087708617144,
+        "recency_score": 0.9247002358588304,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 3.75,
-        "total_score": 9.175408770861715
+        "total_score": 9.17470023585883
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
