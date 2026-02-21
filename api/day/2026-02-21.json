@@ -34,17 +34,115 @@
     "2026-01-16",
     "2026-01-15"
   ],
-  "generated_at": "2026-02-21T06:19:10.548184+00:00",
+  "entity_catalog": {
+    "01-ai": {
+      "name": "01.AI",
+      "type": "organization"
+    },
+    "andrej-karpathy": {
+      "name": "Andrej Karpathy",
+      "type": "researcher"
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "type": "organization"
+    },
+    "aws": {
+      "name": "AWS",
+      "type": "organization"
+    },
+    "cohere": {
+      "name": "Cohere",
+      "type": "organization"
+    },
+    "deepmind": {
+      "name": "DeepMind",
+      "type": "organization"
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "type": "organization"
+    },
+    "geoffrey-hinton": {
+      "name": "Geoffrey Hinton",
+      "type": "researcher"
+    },
+    "google-research": {
+      "name": "Google Research",
+      "type": "institution"
+    },
+    "huggingface": {
+      "name": "Hugging Face",
+      "type": "organization"
+    },
+    "ilya-sutskever": {
+      "name": "Ilya Sutskever",
+      "type": "researcher"
+    },
+    "langchain": {
+      "name": "LangChain",
+      "type": "organization"
+    },
+    "llama-cpp": {
+      "name": "llama.cpp",
+      "type": "organization"
+    },
+    "meta-ai": {
+      "name": "Meta AI",
+      "type": "institution"
+    },
+    "microsoft-research": {
+      "name": "Microsoft Research",
+      "type": "institution"
+    },
+    "mistral-ai": {
+      "name": "Mistral AI",
+      "type": "organization"
+    },
+    "nvidia": {
+      "name": "NVIDIA",
+      "type": "organization"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "type": "organization"
+    },
+    "openai": {
+      "name": "OpenAI",
+      "type": "organization"
+    },
+    "qwen": {
+      "name": "Qwen",
+      "type": "organization"
+    },
+    "stability-ai": {
+      "name": "Stability AI",
+      "type": "organization"
+    },
+    "vllm": {
+      "name": "vLLM",
+      "type": "organization"
+    },
+    "yann-lecun": {
+      "name": "Yann LeCun",
+      "type": "researcher"
+    },
+    "yoshua-bengio": {
+      "name": "Yoshua Bengio",
+      "type": "researcher"
+    }
+  },
+  "generated_at": "2026-02-21T08:13:56.891806+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
   "run_date": "2026-02-21",
-  "run_id": "222e96ba-242c-4632-b8e9-9e07eab07c73",
+  "run_id": "a109575a-ac32-400a-971a-01aeac2cb8e9",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-21T23:59:59+00:00",
     "items_total": 1,
-    "run_id": "222e96ba-242c-4632-b8e9-9e07eab07c73-2026-02-21",
+    "run_id": "a109575a-ac32-400a-971a-01aeac2cb8e9-2026-02-21",
     "started_at": "2026-02-20T23:59:59+00:00",
     "stories_total": 1,
     "success": true
@@ -82,6 +180,19 @@
         "url": "https://huggingface.co/microsoft/latent-zoning-networks"
       },
       "published_at": "2026-02-21T00:14:28+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9672509417783202,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 1.2000000000000002,
+        "total_score": 5.96725094177832
+      },
       "section": null,
       "source_name": null,
       "story_id": "hf:microsoft/latent-zoning-networks",
