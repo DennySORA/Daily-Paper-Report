@@ -132,17 +132,17 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T12:49:53.192510+00:00",
+  "generated_at": "2026-02-21T13:00:08.331789+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
   "run_date": "2026-02-21",
-  "run_id": "2a4861d4-5d69-4bb6-b0c8-ea28063d026b",
+  "run_id": "bbac2785-6da0-4ca7-a995-947a9c61e982",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-21T23:59:59+00:00",
     "items_total": 1,
-    "run_id": "2a4861d4-5d69-4bb6-b0c8-ea28063d026b-2026-02-21",
+    "run_id": "bbac2785-6da0-4ca7-a995-947a9c61e982-2026-02-21",
     "started_at": "2026-02-20T23:59:59+00:00",
     "stories_total": 1,
     "success": true
@@ -187,11 +187,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9488925635735269,
+        "recency_score": 0.9482172273242869,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 1.2000000000000002,
-        "total_score": 5.948892563573527
+        "total_score": 5.948217227324287
       },
       "section": null,
       "source_name": null,
