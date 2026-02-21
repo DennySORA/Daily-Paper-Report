@@ -6,7 +6,33 @@
     "2026-02-18",
     "2026-02-17",
     "2026-02-16",
-    "2026-02-03"
+    "2026-02-15",
+    "2026-02-14",
+    "2026-02-13",
+    "2026-02-12",
+    "2026-02-11",
+    "2026-02-10",
+    "2026-02-09",
+    "2026-02-07",
+    "2026-02-06",
+    "2026-02-05",
+    "2026-02-04",
+    "2026-02-03",
+    "2026-02-02",
+    "2026-01-30",
+    "2026-01-29",
+    "2026-01-28",
+    "2026-01-27",
+    "2026-01-26",
+    "2026-01-24",
+    "2026-01-23",
+    "2026-01-22",
+    "2026-01-21",
+    "2026-01-20",
+    "2026-01-19",
+    "2026-01-18",
+    "2026-01-16",
+    "2026-01-15"
   ],
   "entity_catalog": {
     "01-ai": {
@@ -106,7 +132,7 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T11:13:40.790494+00:00",
+  "generated_at": "2026-02-21T12:15:19.746017+00:00",
   "model_releases_by_entity": {},
   "papers": [
     {
@@ -153,11 +179,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6138317430495762,
+        "recency_score": 0.6112094277033746,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.813831743049576
+        "total_score": 8.811209427703375
       },
       "section": null,
       "source_name": null,
@@ -199,11 +225,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.5955868639192915,
+        "recency_score": 0.5930424914736888,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.795586863919292
+        "total_score": 8.793042491473688
       },
       "section": null,
       "source_name": null,
@@ -245,11 +271,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.5946101862350937,
+        "recency_score": 0.5920699861981494,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.794610186235094
+        "total_score": 8.79206998619815
       },
       "section": null,
       "source_name": null,
@@ -301,11 +327,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.5823823008937187,
+        "recency_score": 0.5798943389036748,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.782382300893719
+        "total_score": 8.779894338903675
       },
       "section": null,
       "source_name": null,
@@ -362,11 +388,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.5915315786715293,
+        "recency_score": 0.5890045305771985,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 3.75,
-        "total_score": 8.54153157867153
+        "total_score": 8.539004530577198
       },
       "section": null,
       "source_name": null,
@@ -377,12 +403,12 @@
   ],
   "radar": [],
   "run_date": "2026-02-16",
-  "run_id": "7a2c2a23-c5c4-4ffb-9821-5a772cffb621",
+  "run_id": "65c8bccb-b395-4578-b56b-977e323d5fe8",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-16T23:59:59+00:00",
     "items_total": 10,
-    "run_id": "7a2c2a23-c5c4-4ffb-9821-5a772cffb621-2026-02-16",
+    "run_id": "65c8bccb-b395-4578-b56b-977e323d5fe8-2026-02-16",
     "started_at": "2026-02-15T23:59:59+00:00",
     "stories_total": 10,
     "success": true
@@ -425,11 +451,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.618366898125443,
+        "recency_score": 0.6157252084036287,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.818366898125443
+        "total_score": 10.815725208403629
       },
       "section": null,
       "source_name": null,
@@ -473,11 +499,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6036426782331437,
+        "recency_score": 0.601063891005737,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.803642678233144
+        "total_score": 10.801063891005736
       },
       "section": null,
       "source_name": null,
@@ -521,11 +547,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.58976783433076,
+        "recency_score": 0.5872483210273615,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.78976783433076
+        "total_score": 10.787248321027363
       },
       "section": null,
       "source_name": null,
@@ -569,11 +595,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.5801379936688154,
+        "recency_score": 0.5776596194548096,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.780137993668816
+        "total_score": 10.777659619454809
       },
       "section": null,
       "source_name": null,
@@ -615,11 +641,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6290243263191208,
+        "recency_score": 0.6263371076102188,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.829024326319121
+        "total_score": 8.826337107610218
       },
       "section": null,
       "source_name": null,
