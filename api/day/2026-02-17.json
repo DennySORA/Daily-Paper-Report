@@ -132,7 +132,7 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T12:15:19.648914+00:00",
+  "generated_at": "2026-02-21T12:16:48.916590+00:00",
   "model_releases_by_entity": {},
   "papers": [
     {
@@ -174,11 +174,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6897272979352579,
+        "recency_score": 0.6896560351351703,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.88972729793526
+        "total_score": 8.889656035135172
       },
       "section": null,
       "source_name": null,
@@ -229,11 +229,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6894080536466123,
+        "recency_score": 0.6893368238309259,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.889408053646612
+        "total_score": 8.889336823830927
       },
       "section": null,
       "source_name": null,
@@ -275,11 +275,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6893322548450065,
+        "recency_score": 0.6892610328608717,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.889332254845007
+        "total_score": 8.889261032860873
       },
       "section": null,
       "source_name": null,
@@ -333,11 +333,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6884320837125427,
+        "recency_score": 0.6883609547343185,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.888432083712543
+        "total_score": 8.888360954734319
       },
       "section": null,
       "source_name": null,
@@ -379,11 +379,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6882281340521437,
+        "recency_score": 0.6881570261460503,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.888228134052143
+        "total_score": 8.88815702614605
       },
       "section": null,
       "source_name": null,
@@ -435,11 +435,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.68675925340881,
+        "recency_score": 0.686688297267839,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.88675925340881
+        "total_score": 8.886688297267838
       },
       "section": null,
       "source_name": null,
@@ -490,11 +490,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6866336769722386,
+        "recency_score": 0.6865627338058569,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.886633676972238
+        "total_score": 8.886562733805857
       },
       "section": null,
       "source_name": null,
@@ -544,11 +544,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.685870380523585,
+        "recency_score": 0.6857995162211867,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.885870380523585
+        "total_score": 8.885799516221187
       },
       "section": null,
       "source_name": null,
@@ -596,11 +596,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6837841953061099,
+        "recency_score": 0.6837135465488997,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.88378419530611
+        "total_score": 8.8837135465489
       },
       "section": null,
       "source_name": null,
@@ -653,11 +653,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6808669420523857,
+        "recency_score": 0.6807965947065245,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.880866942052386
+        "total_score": 8.880796594706524
       },
       "section": null,
       "source_name": null,
@@ -708,11 +708,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6788831876282555,
+        "recency_score": 0.6788130452444067,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.878883187628256
+        "total_score": 8.878813045244407
       },
       "section": null,
       "source_name": null,
@@ -767,11 +767,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6786702842787933,
+        "recency_score": 0.6786001638921728,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.878670284278794
+        "total_score": 8.878600163892173
       },
       "section": null,
       "source_name": null,
@@ -813,11 +813,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.678219558155581,
+        "recency_score": 0.6781494843380984,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.878219558155582
+        "total_score": 8.878149484338099
       },
       "section": null,
       "source_name": null,
@@ -865,11 +865,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6762630845878487,
+        "recency_score": 0.6761932129137134,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.876263084587848
+        "total_score": 8.876193212913714
       },
       "section": null,
       "source_name": null,
@@ -921,11 +921,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6750001855451041,
+        "recency_score": 0.6749304443540195,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.875000185545105
+        "total_score": 8.87493044435402
       },
       "section": null,
       "source_name": null,
@@ -974,11 +974,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.673769277644095,
+        "recency_score": 0.6736996636307282,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.873769277644096
+        "total_score": 8.873699663630727
       },
       "section": null,
       "source_name": null,
@@ -1020,11 +1020,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6737037754818418,
+        "recency_score": 0.6736341682361752,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.873703775481843
+        "total_score": 8.873634168236176
       },
       "section": null,
       "source_name": null,
@@ -1074,11 +1074,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6521867982715173,
+        "recency_score": 0.6521194141654161,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.852186798271518
+        "total_score": 8.852119414165417
       },
       "section": null,
       "source_name": null,
@@ -1127,11 +1127,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6476059504319991,
+        "recency_score": 0.6475390396202634,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.847605950432
+        "total_score": 8.847539039620264
       },
       "section": null,
       "source_name": null,
@@ -1181,11 +1181,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.684441386941487,
+        "recency_score": 0.6843706702830696,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 3.45,
-        "total_score": 8.334441386941489
+        "total_score": 8.33437067028307
       },
       "section": null,
       "source_name": null,
@@ -1229,11 +1229,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6743824994170639,
+        "recency_score": 0.6743128220454673,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 2.4000000000000004,
-        "total_score": 7.574382499417064
+        "total_score": 7.574312822045467
       },
       "section": null,
       "source_name": "DeepMind Blog",
@@ -1279,11 +1279,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6995525910219375,
+        "recency_score": 0.6994803130700659,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 0.0,
-        "total_score": 5.199552591021938
+        "total_score": 5.199480313070066
       },
       "section": null,
       "source_name": "Google AI Blog",
@@ -1293,12 +1293,12 @@
     }
   ],
   "run_date": "2026-02-17",
-  "run_id": "65c8bccb-b395-4578-b56b-977e323d5fe8",
+  "run_id": "69c0c7cf-df33-452b-97c2-5f3af3e36cc9",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-17T23:59:59+00:00",
     "items_total": 27,
-    "run_id": "65c8bccb-b395-4578-b56b-977e323d5fe8-2026-02-17",
+    "run_id": "69c0c7cf-df33-452b-97c2-5f3af3e36cc9-2026-02-17",
     "started_at": "2026-02-16T23:59:59+00:00",
     "stories_total": 27,
     "success": true
@@ -1341,11 +1341,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6952350590135411,
+        "recency_score": 0.6951632271501762,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.89523505901354
+        "total_score": 10.895163227150176
       },
       "section": null,
       "source_name": null,
@@ -1389,11 +1389,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6545219326846043,
+        "recency_score": 0.6544543073118209,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.854521932684605
+        "total_score": 10.854454307311821
       },
       "section": null,
       "source_name": null,
@@ -1446,11 +1446,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.698495964247903,
+        "recency_score": 0.6984237954669786,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.898495964247903
+        "total_score": 8.898423795466979
       },
       "section": null,
       "source_name": null,
@@ -1503,11 +1503,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6961860243165241,
+        "recency_score": 0.6961140941991819,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.896186024316524
+        "total_score": 8.896114094199183
       },
       "section": null,
       "source_name": null,
@@ -1549,11 +1549,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.6935842294562404,
+        "recency_score": 0.6935125681570058,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.893584229456241
+        "total_score": 8.893512568157007
       },
       "section": null,
       "source_name": null,
