@@ -132,17 +132,17 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-21T13:00:08.357567+00:00",
+  "generated_at": "2026-02-21T13:02:35.731129+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
   "run_date": "2026-02-20",
-  "run_id": "bbac2785-6da0-4ca7-a995-947a9c61e982",
+  "run_id": "21a26e67-accf-40fd-868b-0eb6bb35baf7",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-20T23:59:59+00:00",
     "items_total": 5,
-    "run_id": "bbac2785-6da0-4ca7-a995-947a9c61e982-2026-02-20",
+    "run_id": "21a26e67-accf-40fd-868b-0eb6bb35baf7-2026-02-20",
     "started_at": "2026-02-19T23:59:59+00:00",
     "stories_total": 5,
     "success": true
@@ -191,11 +191,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9333425176191202,
+        "recency_score": 0.9331833346250384,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.43334251761912
+        "total_score": 11.433183334625038
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -245,11 +245,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.933324153421547,
+        "recency_score": 0.9331649735595072,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.433324153421546
+        "total_score": 11.433164973559506
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -297,11 +297,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9159492004940737,
+        "recency_score": 0.9157929839568335,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.715949200494073
+        "total_score": 10.715792983956833
       },
       "section": null,
       "source_name": null,
@@ -349,11 +349,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8768408355435001,
+        "recency_score": 0.8766912889977251,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.6768408355435
+        "total_score": 10.676691288997725
       },
       "section": null,
       "source_name": null,
@@ -402,11 +402,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9178881006681384,
+        "recency_score": 0.9177315534485078,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 3.75,
-        "total_score": 9.167888100668138
+        "total_score": 9.167731553448508
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
