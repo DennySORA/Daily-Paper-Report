@@ -7,18 +7,27 @@ from src.linker.models import Story
 SYSTEM_INSTRUCTION = (
     "You are an expert AI/ML research curator for practitioners and researchers "
     "focused on large language models, AI agents, multi-agent systems, reasoning, "
-    "alignment, and safety. "
-    "Your task is to evaluate papers on BOTH topical relevance AND research quality. "
-    "Score generously for papers that: (a) advance LLM/agent capabilities, "
-    "(b) introduce novel multi-agent architectures or orchestration, "
-    "(c) propose new safety/alignment methods, or (d) provide practical frameworks "
-    "for agentic systems, even when applied to specific domains. "
-    "Score lower for papers that merely USE LLMs as a black-box tool for narrow "
-    "domain tasks without methodological contribution. "
-    "Prioritize: (1) novelty of approach, (2) practical utility for AI practitioners, "
-    "(3) broad impact and applicability, (4) methodological rigor. "
-    "Penalize: keyword-stuffing without substance, trivial prompt engineering, "
-    "routine domain applications with no AI methodology contribution. "
+    "alignment, safety, and core ML methodology. "
+    "Your task is to evaluate papers on BOTH topical relevance AND research quality.\n\n"
+    "Score HIGH (0.85+) for papers that: "
+    "(a) advance LLM/agent capabilities or training methodology, "
+    "(b) introduce novel architectures, training algorithms, or scaling insights, "
+    "(c) propose new safety/alignment/evaluation methods with empirical evidence, "
+    "(d) provide reusable frameworks, benchmarks, or open-source tools, "
+    "(e) reveal mechanistic insights about how models work (interpretability), "
+    "(f) come from top labs (OpenAI, Anthropic, DeepMind, Meta FAIR, MIT, CMU, Stanford, "
+    "Microsoft Research, Princeton) with strong empirical results.\n\n"
+    "Score MEDIUM (0.5-0.7) for: solid incremental work, useful datasets, "
+    "application papers that contribute novel methodology.\n\n"
+    "Score LOW (0.0-0.3) for papers that merely USE LLMs/agents as a black-box tool "
+    "for domain tasks (medical, agriculture, weather, geology, underwater imaging, "
+    "fashion, music generation, EEG, drug discovery) WITHOUT contributing new AI/ML "
+    "methodology. The key test: would an AI/ML researcher learn something new about "
+    "how to build better models/agents from this paper? If not, score low.\n\n"
+    "Prioritize: (1) novelty, (2) practical utility for AI practitioners, "
+    "(3) broad impact, (4) rigor. "
+    "Penalize: keyword-stuffing, trivial prompt engineering, domain applications "
+    "disguised as AI research. "
     "Respond ONLY with a JSON array, no markdown fences or extra text."
 )
 
@@ -32,29 +41,35 @@ _BATCH_TEMPLATE = """## Topics of Interest
 Rate each paper considering BOTH relevance and quality:
 
 - **0.85-1.0**: Breakthrough or highly novel work. New architectures, paradigm-shifting methods,
-  or major advances in LLM/agent/reasoning/safety capabilities. Papers from top venues
-  (ICLR, NeurIPS, ICML, ACL) or leading labs (Google DeepMind, OpenAI, Anthropic, Meta FAIR,
-  Stanford, MIT, CMU) that practitioners must read.
+  major advances in LLM/agent/reasoning/safety/training. Papers from top venues
+  (ICLR, NeurIPS, ICML, ACL) or leading labs. Examples: novel RL algorithms for LLM training,
+  new agent frameworks with strong benchmarks, safety findings that change how we think about
+  alignment, mechanistic interpretability discoveries, new training paradigms.
 - **0.7-0.84**: Significant contribution with clear novelty. New training techniques,
-  meaningful benchmark results, practical frameworks, or open-source tools that advance
-  the field. Theoretical advances that explain WHY existing methods work (e.g., proving
-  properties of attention mechanisms). Cross-model safety findings with empirical evidence.
-  Production-scale systems with real-world deployment insights.
+  meaningful benchmark results, practical frameworks, open-source tools, production-scale
+  deployment insights, theoretical advances explaining model behavior, new evaluation
+  methodologies, cross-model safety findings with empirical evidence.
 - **0.5-0.69**: Solid work with some novelty. Useful ablations, new datasets, meaningful
-  improvements on existing approaches, or insightful analysis of existing methods.
+  improvements on existing approaches, insightful analysis, good survey papers.
 - **0.3-0.49**: Incremental or narrow. Applies existing methods to specific domains without
-  methodological novelty, or provides minor improvements without new insights.
-- **0.1-0.29**: Tangentially related. Domain-specific applications (e.g., LLMs for medical
-  diagnosis, weather prediction, agriculture, particle physics) without contributions to
-  core AI/ML methodology. Papers that mention AI keywords but focus on domain science.
-- **0.0-0.09**: Not relevant. Pure domain science, unrelated to AI/ML, or trivial extensions.
+  AI/ML methodological novelty, or provides minor improvements without new insights.
+- **0.1-0.29**: Domain applications. Papers that USE LLMs/transformers/agents as tools for
+  domain tasks (medical imaging, EEG analysis, underwater imaging, fashion try-on, music
+  generation, crop prediction, weather forecasting, drug discovery, geospatial analysis)
+  WITHOUT advancing core AI/ML methodology. Even if the title contains "LLM" or "agent",
+  if the contribution is in the domain rather than in AI/ML methodology, score here.
+- **0.0-0.09**: Not relevant. Pure domain science or trivial applications.
 
 CRITICAL SCORING RULES:
 1. Keyword density does NOT equal quality. A paper mentioning "LLM" 20 times can still be 0.2.
-2. DOMAIN vs METHOD: A paper about "using transformers for crop yield prediction" is domain (0.2).
-   A paper about "improving transformer attention for long sequences" is method (0.6+).
-3. TOP-VENUE ACCEPTANCE (NeurIPS, ICML, ICLR, ACL, CVPR oral/spotlight) adds +0.1 to base score.
-4. OPEN-SOURCE code/models with the paper adds +0.05 to base score.
+2. THE DOMAIN TEST: Ask "Does this paper teach AI/ML researchers how to build BETTER models,
+   agents, or systems?" If the answer is mainly about the domain, score 0.1-0.29.
+   Examples: "LLM for medical diagnosis" = domain (0.2). "Improving attention for long
+   sequences" = method (0.7+). "Agent safety benchmark across 6 models" = method (0.8+).
+3. TOP-VENUE ACCEPTANCE (NeurIPS, ICML, ICLR, ACL, CVPR oral/spotlight) adds +0.1.
+4. OPEN-SOURCE code/models with the paper adds +0.05.
+5. REUSABLE INSIGHTS: Papers with findings that generalize beyond one task score higher.
+   "Training technique X improves 3 different benchmarks" (0.8) vs "Applying X to task Y" (0.3).
 
 ## Output Format
 Respond with a JSON array. Each element must have these fields:

@@ -192,8 +192,8 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
-    query: 'ti:"large language model" OR ti:"LLM" OR ti:"foundation model"'
+    max_items: 100
+    query: 'ti:"large language model" OR ti:"LLM" OR ti:"foundation model" OR ti:"language model"'
 
   - id: arxiv-api-agents
     name: arXiv API Agents
@@ -202,8 +202,8 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
-    query: 'ti:"AI agent" OR ti:"agentic" OR ti:"tool use" OR ti:"function calling" OR ti:"multi-agent" OR ti:"multi agent"'
+    max_items: 100
+    query: 'ti:"AI agent" OR ti:"agentic" OR ti:"tool use" OR ti:"function calling" OR ti:"multi-agent" OR ti:"multi agent" OR ti:"coding agent"'
 
   - id: arxiv-api-reasoning
     name: arXiv API Reasoning
@@ -212,8 +212,8 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 30
-    query: 'ti:"chain-of-thought" OR ti:"reasoning" AND ti:"language model"'
+    max_items: 50
+    query: 'ti:"chain-of-thought" OR ti:"reasoning" OR ti:"test-time" OR ti:"think" OR ti:"thought"'
 
   - id: arxiv-api-alignment
     name: arXiv API Alignment
@@ -222,8 +222,8 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 30
-    query: 'ti:"RLHF" OR ti:"alignment" OR ti:"preference optimization" OR ti:"DPO"'
+    max_items: 50
+    query: 'ti:"RLHF" OR ti:"alignment" OR ti:"preference optimization" OR ti:"DPO" OR ti:"reward model" OR ti:"fine-tuning"'
 
   - id: arxiv-api-multimodal
     name: arXiv API Multimodal
@@ -232,8 +232,68 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 30
-    query: 'ti:"multimodal" OR ti:"vision-language" OR ti:"VLM" OR ti:"MLLM"'
+    max_items: 50
+    query: 'ti:"multimodal" OR ti:"vision-language" OR ti:"VLM" OR ti:"MLLM" OR ti:"diffusion"'
+
+  - id: arxiv-api-safety
+    name: arXiv API Safety
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"safety" OR ti:"jailbreak" OR ti:"red-team" OR ti:"adversarial attack" OR ti:"guardrail" OR ti:"harmful"'
+
+  - id: arxiv-api-evaluation
+    name: arXiv API Evaluation
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"benchmark" OR ti:"evaluation" OR ti:"faithfulness" OR ti:"hallucination" OR ti:"leaderboard"'
+
+  - id: arxiv-api-efficiency
+    name: arXiv API Efficiency
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"efficient" OR ti:"pruning" OR ti:"quantization" OR ti:"distillation" OR ti:"inference" OR ti:"LoRA"'
+
+  - id: arxiv-api-retrieval
+    name: arXiv API Retrieval
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"retrieval" OR ti:"RAG" OR ti:"knowledge graph" OR ti:"information retrieval" OR ti:"retrieval-augmented"'
+
+  - id: arxiv-api-interpretability
+    name: arXiv API Interpretability
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"interpretability" OR ti:"mechanistic" OR ti:"attention" AND ti:"transformer" OR ti:"probing"'
+
+  - id: arxiv-api-rl
+    name: arXiv API Reinforcement Learning
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 50
+    query: 'ti:"reinforcement learning" AND (ti:"language" OR ti:"LLM" OR ti:"agent") OR ti:"RLVR" OR ti:"GRPO"'
 
   # ============================================================
   # TIER 1 - HuggingFace Organization Model Releases
