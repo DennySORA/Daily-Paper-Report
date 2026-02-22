@@ -4,18 +4,18 @@
 
 - **FEATURE_KEY**: add-yaml-config-contracts
 - **STATUS**: P1_DONE_DEPLOYED
-- **Last Updated**: 2026-02-21T03:08:23.146053+00:00
+- **Last Updated**: 2026-02-22T01:09:03.439799+00:00
 
 ## Run Information
 
-- **Run ID**: 8bb0754f-e74e-4e47-bef1-3a38b1b782a0
-- **Git Commit**: e3508ae9900f
-- **Started At**: 2026-02-21T03:08:23.145672+00:00
+- **Run ID**: 27e06276-703f-4be3-839d-b7d14f133ea8
+- **Git Commit**: 185ee313bf09
+- **Started At**: 2026-02-22T01:09:03.439365+00:00
 
 ## Configuration Summary
 
-- **Sources Count**: 41
-- **Enabled Sources**: 34
+- **Sources Count**: 47
+- **Enabled Sources**: 40
 - **Entities Count**: 24
 - **Topics Count**: 26
 - **Config Checksum**: [REDACTED]
@@ -40,6 +40,6 @@
 
 ## Configuration Snapshots
 
-Latest snapshot: 2026-02-21T03:08:23.146053+00:00
+Latest snapshot: 2026-02-22T01:09:03.439799+00:00
 
 
