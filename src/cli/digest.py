@@ -44,6 +44,11 @@ from src.renderer import RunInfo, SourceStatus, StaticRenderer
 
 logger = structlog.get_logger()
 
+# Daily digest display window (always 24 hours regardless of collection lookback)
+# This ensures daily.json only shows papers from the last 24 hours,
+# even when a larger lookback is used for data collection.
+DAILY_DISPLAY_HOURS = 24
+
 
 # Type aliases for phase results
 CollectionPhaseResult = tuple[
@@ -743,8 +748,10 @@ def _execute_pipeline_phases(  # noqa: PLR0913
     )
 
     # Phase 2: Linking
+    # Always use DAILY_DISPLAY_HOURS (24) for linking phase to ensure daily.json
+    # only contains papers from the last 24 hours, regardless of collection lookback.
     linker_result = _run_linking_phase(
-        store, effective_config, run_record, options.lookback_hours, run_id, log
+        store, effective_config, run_record, DAILY_DISPLAY_HOURS, run_id, log
     )
 
     # Phase 2.5: LLM Relevance (optional, skips gracefully if unconfigured)
