@@ -1,0 +1,220 @@
+# Reset Site Workflow
+# Completely clears all data from the Daily Paper Report site
+# This is a destructive operation - use with caution!
+
+name: Reset Site
+
+"on":
+  workflow_dispatch:
+    inputs:
+      confirm_reset:
+        description: 'Type "RESET" to confirm complete data deletion'
+        required: true
+        type: string
+      deploy_empty:
+        description: 'Deploy empty site after reset (recommended)'
+        required: false
+        default: 'true'
+        type: boolean
+
+# Least privilege permissions
+permissions:
+  contents: write      # Delete state branch
+  pages: write         # Deploy empty site to GitHub Pages
+  id-token: write      # OIDC for Pages deployment
+
+# Use same concurrency group as daily-digest to prevent conflicts
+concurrency:
+  group: digest-deploy
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: '3.13'
+  STATE_BRANCH: state
+  OUTPUT_DIR: public
+  CONFIG_DIR: tests/fixtures/config
+  TIMEZONE: Asia/Taipei
+  SITE_URL: https://paper.sorahane-kyoukai.org
+
+jobs:
+  validate:
+    name: Validate Reset Request
+    runs-on: ubuntu-latest
+    outputs:
+      confirmed: ${{ steps.check.outputs.confirmed }}
+
+    steps:
+      - name: Check confirmation
+        id: check
+        run: |
+          if [ "${{ inputs.confirm_reset }}" = "RESET" ]; then
+            echo "confirmed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Reset confirmed. Proceeding with data deletion."
+          else
+            echo "confirmed=false" >> "$GITHUB_OUTPUT"
+            echo "::error::Reset NOT confirmed. You must type 'RESET' exactly to proceed."
+            exit 1
+          fi
+
+  delete-state:
+    name: Delete State Branch
+    needs: validate
+    if: needs.validate.outputs.confirmed == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete state branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Checking if state branch exists..."
+
+          # Check if branch exists
+          if gh api "repos/${{ github.repository }}/branches/${{ env.STATE_BRANCH }}" > /dev/null 2>&1; then
+            echo "State branch found. Deleting..."
+            gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/${{ env.STATE_BRANCH }}"
+            echo "::notice::State branch deleted successfully."
+          else
+            echo "::notice::State branch does not exist. Nothing to delete."
+          fi
+
+  deploy-empty:
+    name: Deploy Empty Site
+    needs: [validate, delete-state]
+    if: needs.validate.outputs.confirmed == 'true' && inputs.deploy_empty == 'true'
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: 'uv.lock'
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Run minimal digest (no data collection)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          OPENREVIEW_TOKEN: ${{ secrets.OPENREVIEW_TOKEN }}
+          GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
+          GEMINI_OAUTH_CLIENT_ID: ${{ secrets.GEMINI_OAUTH_CLIENT_ID }}
+          GEMINI_OAUTH_CLIENT_SECRET: ${{ secrets.GEMINI_OAUTH_CLIENT_SECRET }}
+        run: |
+          mkdir -p "${OUTPUT_DIR}"
+
+          # Run with minimal lookback to generate empty structure
+          uv run python main.py run \
+            --config "${CONFIG_DIR}/sources.yaml" \
+            --entities "${CONFIG_DIR}/entities.yaml" \
+            --topics "${CONFIG_DIR}/topics.yaml" \
+            --out "${OUTPUT_DIR}" \
+            --tz "${TIMEZONE}" \
+            --lookback 1 \
+            --json-logs
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Build Vue.js frontend
+        run: |
+          cd frontend
+          pnpm install --frozen-lockfile
+          pnpm run build-only
+
+          # Copy built files to public directory
+          cp dist/index.html "../${OUTPUT_DIR}/"
+          cp dist/index.html "../${OUTPUT_DIR}/404.html"
+          cp -r dist/assets "../${OUTPUT_DIR}/"
+
+      - name: Ensure empty archive state
+        run: |
+          # Remove any day archives that might have been created
+          rm -rf "${OUTPUT_DIR}/day" || true
+          rm -rf "${OUTPUT_DIR}/api/day" || true
+          mkdir -p "${OUTPUT_DIR}/api/day"
+          mkdir -p "${OUTPUT_DIR}/day"
+
+          # Update daily.json to have empty archives
+          if [ -f "${OUTPUT_DIR}/api/daily.json" ]; then
+            jq '.archive_dates = []' "${OUTPUT_DIR}/api/daily.json" > "${OUTPUT_DIR}/api/daily.json.tmp"
+            mv "${OUTPUT_DIR}/api/daily.json.tmp" "${OUTPUT_DIR}/api/daily.json"
+          fi
+
+          echo "::notice::Site prepared with empty archive state."
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.OUTPUT_DIR }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Log deployment
+        run: |
+          echo "::notice::Empty site deployed to ${{ steps.deployment.outputs.page_url }}"
+
+  report:
+    name: Reset Report
+    needs: [validate, delete-state, deploy-empty]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate summary
+        run: |
+          VALIDATE_STATUS="${{ needs.validate.result }}"
+          DELETE_STATUS="${{ needs.delete-state.result }}"
+          DEPLOY_STATUS="${{ needs.deploy-empty.result }}"
+
+          {
+            echo "## Site Reset Report"
+            echo ""
+            echo "| Step | Status |"
+            echo "|------|--------|"
+            echo "| Validation | ${VALIDATE_STATUS} |"
+            echo "| Delete State Branch | ${DELETE_STATUS} |"
+            echo "| Deploy Empty Site | ${DEPLOY_STATUS} |"
+            echo ""
+
+            if [ "${VALIDATE_STATUS}" = "success" ] && [ "${DELETE_STATUS}" = "success" ]; then
+              echo "### Reset Complete"
+              echo ""
+              echo "The site has been completely reset. All historical data has been deleted."
+              echo ""
+              echo "To repopulate data, run the Daily Digest workflow with desired backfill_days:"
+              echo ""
+              echo '```bash'
+              echo "gh workflow run daily-digest.yaml --ref main -f backfill_days=7 -f lookback_hours=168"
+              echo '```'
+            else
+              echo "### Reset Failed"
+              echo ""
+              echo "The reset process did not complete successfully. Please check the job logs for details."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

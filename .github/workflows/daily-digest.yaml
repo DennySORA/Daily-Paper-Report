@@ -26,26 +26,11 @@ name: Daily Digest
         required: false
         default: 'false'
         type: boolean
-      reset_state:
-        description: 'Reset state (clear all history and start fresh)'
-        required: false
-        default: 'false'
-        type: boolean
-      skip_archive_restore:
-        description: 'Skip restoring archive pages from current site'
-        required: false
-        default: 'false'
-        type: boolean
       backfill_days:
         description: 'Number of days to backfill archives (default: 7)'
         required: false
         default: '7'
         type: string
-      clear_archives:
-        description: 'Clear all existing day archives before regenerating'
-        required: false
-        default: 'false'
-        type: boolean
       target_date:
         description: 'Specific date to generate (YYYY-MM-DD). If set, only generates this date.'
         required: false
@@ -102,7 +87,6 @@ jobs:
 
       - name: Restore state and archives from state branch
         id: restore-state
-        if: ${{ github.event.inputs.reset_state != 'true' }}
         run: |
           START_TIME=$(date +%s%3N)
           RUN_ID="${{ steps.init.outputs.run_id }}"
@@ -155,7 +139,6 @@ jobs:
 
       - name: Restore archive pages from GitHub Pages
         id: restore-archive
-        if: ${{ github.event.inputs.reset_state != 'true' && github.event.inputs.skip_archive_restore != 'true' }}
         run: |
           RUN_ID="${{ steps.init.outputs.run_id }}"
           SITE_URL="https://paper.sorahane-kyoukai.org"
@@ -264,21 +247,6 @@ jobs:
             echo "pipeline_success=false" >> "$GITHUB_OUTPUT"
             exit ${EXIT_CODE}
           fi
-
-      - name: Clear existing archives
-        id: clear-archives
-        if: ${{ inputs.clear_archives == 'true' || github.event.client_payload.clear_archives == true }}
-        env:
-          STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
-        run: |
-          RUN_ID="${STEP_RUN_ID}"
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"clear_archives","event":"clearing_archives"}'
-
-          uv run python main.py clear-archives \
-            --out "${OUTPUT_DIR}" \
-            --json-logs
-
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"clear_archives","event":"archives_cleared"}'
 
       - name: Backfill historical archives
         id: backfill
