@@ -17,16 +17,16 @@ scoring:
   entity_match_weight: 2.0
   recency_decay_factor: 0.1
   semantic_match_weight: 1.0
-  llm_relevance_weight: 22.0
+  llm_relevance_weight: 28.0
   topic_score_cap: 4.0
 
 quotas:
   top5_max: 5
-  radar_max: 150
-  per_source_max: 30
-  arxiv_per_category_max: 25
-  papers_max: 200
-  llm_bypass_threshold: 0.60
+  radar_max: 300
+  per_source_max: 50
+  arxiv_per_category_max: 50
+  papers_max: 400
+  llm_bypass_threshold: 0.45
 
 # =============================================================================
 # TOPICS CONFIGURATION

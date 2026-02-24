@@ -9,25 +9,29 @@ SYSTEM_INSTRUCTION = (
     "focused on large language models, AI agents, multi-agent systems, reasoning, "
     "alignment, safety, and core ML methodology. "
     "Your task is to evaluate papers on BOTH topical relevance AND research quality.\n\n"
+    "MANDATORY EXCLUSIONS - Score 0.0-0.2 regardless of quality:\n"
+    "- Single-cell biology / genomics foundation models (scGPT, Geneformer, scBERT)\n"
+    "- Pure computer vision WITHOUT language component (image classification, segmentation)\n"
+    "- Pure robotics manipulation WITHOUT language/agent methodology\n"
+    "- Pure audio/speech processing WITHOUT LLM integration\n"
+    "- Pure diffusion models for image/video generation WITHOUT language\n"
+    "- Medical imaging, EEG analysis, protein structure prediction\n"
+    "- Any 'foundation model' that is NOT a language model\n"
+    "These are OUT OF SCOPE even if well-written or from top labs.\n\n"
     "Score HIGH (0.85+) for papers that: "
     "(a) advance LLM/agent capabilities or training methodology, "
-    "(b) introduce novel architectures, training algorithms, or scaling insights, "
+    "(b) introduce novel architectures for LANGUAGE models, "
     "(c) propose new safety/alignment/evaluation methods with empirical evidence, "
-    "(d) provide reusable frameworks, benchmarks, or open-source tools, "
-    "(e) reveal mechanistic insights about how models work (interpretability), "
-    "(f) come from top labs (OpenAI, Anthropic, DeepMind, Meta FAIR, MIT, CMU, Stanford, "
-    "Microsoft Research, Princeton) with strong empirical results.\n\n"
-    "Score MEDIUM (0.5-0.7) for: solid incremental work, useful datasets, "
-    "application papers that contribute novel methodology.\n\n"
+    "(d) provide reusable frameworks, benchmarks, or open-source tools for LLM/agents, "
+    "(e) reveal mechanistic insights about how LANGUAGE models work (interpretability), "
+    "(f) come from top labs with strong empirical results ON LANGUAGE TASKS.\n\n"
+    "Score MEDIUM (0.5-0.7) for: solid incremental work on LLM/agents, useful NLP datasets, "
+    "application papers that contribute novel LLM methodology.\n\n"
     "Score LOW (0.0-0.3) for papers that merely USE LLMs/agents as a black-box tool "
-    "for domain tasks (medical, agriculture, weather, geology, underwater imaging, "
-    "fashion, music generation, EEG, drug discovery) WITHOUT contributing new AI/ML "
-    "methodology. The key test: would an AI/ML researcher learn something new about "
-    "how to build better models/agents from this paper? If not, score low.\n\n"
-    "Prioritize: (1) novelty, (2) practical utility for AI practitioners, "
-    "(3) broad impact, (4) rigor. "
-    "Penalize: keyword-stuffing, trivial prompt engineering, domain applications "
-    "disguised as AI research. "
+    "for domain tasks WITHOUT contributing new AI/ML methodology.\n\n"
+    "CRITICAL: Use the FULL score range. Not everything deserves 0.8+. "
+    "Be strict: only truly important LLM/agent papers get 0.85+. "
+    "Domain applications get 0.1-0.3. Mediocre work gets 0.4-0.6.\n\n"
     "Respond ONLY with a JSON array, no markdown fences or extra text."
 )
 
@@ -53,12 +57,23 @@ Rate each paper considering BOTH relevance and quality:
   improvements on existing approaches, insightful analysis, good survey papers.
 - **0.3-0.49**: Incremental or narrow. Applies existing methods to specific domains without
   AI/ML methodological novelty, or provides minor improvements without new insights.
-- **0.1-0.29**: Domain applications. Papers that USE LLMs/transformers/agents as tools for
-  domain tasks (medical imaging, EEG analysis, underwater imaging, fashion try-on, music
-  generation, crop prediction, weather forecasting, drug discovery, geospatial analysis)
-  WITHOUT advancing core AI/ML methodology. Even if the title contains "LLM" or "agent",
-  if the contribution is in the domain rather than in AI/ML methodology, score here.
-- **0.0-0.09**: Not relevant. Pure domain science or trivial applications.
+- **0.1-0.29**: Domain applications or out-of-scope areas:
+  * Papers that USE LLMs/transformers/agents as tools for domain tasks
+  * Single-cell foundation models (scGPT, Geneformer) - these are biology, not LLM research
+  * Pure computer vision without language (image segmentation, object detection)
+  * Pure robotics manipulation without language/agent methodology
+  * Medical imaging, EEG analysis, protein structure, drug discovery
+  * Diffusion models for pure image/video generation without language
+  Even if the title contains "LLM", "foundation model", or "agent", if the contribution
+  is in the domain rather than in AI/ML methodology for language, score here.
+- **0.0-0.09**: Completely irrelevant. Pure domain science with no AI connection.
+
+CONCRETE LOW-SCORE EXAMPLES (score these 0.1-0.2):
+- "scGPT: Single-cell foundation model" → 0.15 (biology domain, not language model)
+- "Diffusion for image generation" → 0.2 (CV domain, no language component)
+- "Robot manipulation with visual feedback" → 0.15 (robotics, no language/agent)
+- "EEG-based emotion recognition with transformers" → 0.1 (medical domain)
+- "Protein structure prediction" → 0.1 (biology domain)
 
 CRITICAL SCORING RULES:
 1. Keyword density does NOT equal quality. A paper mentioning "LLM" 20 times can still be 0.2.

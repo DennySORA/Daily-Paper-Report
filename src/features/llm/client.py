@@ -16,9 +16,9 @@ logger = structlog.get_logger()
 _GENERATE_ENDPOINT = "https://cloudcode-pa.googleapis.com/v1internal:generateContent"
 _CODE_ASSIST_ENDPOINT = "https://cloudcode-pa.googleapis.com/v1internal:loadCodeAssist"
 
-_MIN_REQUEST_INTERVAL = 2.0  # seconds between requests
-_MAX_RETRIES = 5
-_RETRY_BASE_DELAY = 3.0  # seconds
+_MIN_REQUEST_INTERVAL = 5.0  # seconds between requests (increased for rate limit)
+_MAX_RETRIES = 8  # increased retries
+_RETRY_BASE_DELAY = 5.0  # seconds (increased base delay)
 _RETRYABLE_STATUS_CODES = {HTTPStatus.TOO_MANY_REQUESTS, HTTPStatus.SERVICE_UNAVAILABLE}
 
 

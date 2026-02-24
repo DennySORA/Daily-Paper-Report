@@ -95,89 +95,120 @@ sources:
     enabled: true
 
   # ============================================================
-  # TIER 1 - arXiv Paper Categories
+  # TIER 1 - arXiv Paper Categories (via API for full lookback support)
+  # Using arxiv_api method instead of rss_atom to support --lookback parameter
+  # for fetching papers over configurable date ranges (e.g., 7 days)
   # ============================================================
 
   - id: arxiv-cs-ai
     name: arXiv cs.AI
-    url: https://rss.arxiv.org/rss/cs.AI
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 500
+    query: 'cat:cs.AI'
 
   - id: arxiv-cs-lg
     name: arXiv cs.LG
-    url: https://rss.arxiv.org/rss/cs.LG
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 500
+    query: 'cat:cs.LG'
 
   - id: arxiv-cs-cl
     name: arXiv cs.CL
-    url: https://rss.arxiv.org/rss/cs.CL
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 500
+    query: 'cat:cs.CL'
 
   - id: arxiv-cs-cv
     name: arXiv cs.CV
-    url: https://rss.arxiv.org/rss/cs.CV
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 500
+    query: 'cat:cs.CV'
 
   - id: arxiv-stat-ml
     name: arXiv stat.ML
-    url: https://rss.arxiv.org/rss/stat.ML
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
     max_items: 300
+    query: 'cat:stat.ML'
 
   - id: arxiv-cs-ma
     name: arXiv cs.MA
-    url: https://rss.arxiv.org/rss/cs.MA
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
     max_items: 300
+    query: 'cat:cs.MA'
 
   - id: arxiv-cs-ro
     name: arXiv cs.RO
-    url: https://rss.arxiv.org/rss/cs.RO
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
     max_items: 300
+    query: 'cat:cs.RO'
 
   - id: arxiv-cs-se
     name: arXiv cs.SE
-    url: https://rss.arxiv.org/rss/cs.SE
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
     max_items: 300
+    query: 'cat:cs.SE'
 
   - id: arxiv-cs-ir
     name: arXiv cs.IR
-    url: https://rss.arxiv.org/rss/cs.IR
+    url: https://export.arxiv.org/api/query
     tier: 1
-    method: rss_atom
+    method: arxiv_api
     kind: paper
     timezone: UTC
     max_items: 300
+    query: 'cat:cs.IR'
+
+  - id: arxiv-cs-hc
+    name: arXiv cs.HC
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 200
+    query: 'cat:cs.HC'
+
+  - id: arxiv-cs-cr
+    name: arXiv cs.CR
+    url: https://export.arxiv.org/api/query
+    tier: 1
+    method: arxiv_api
+    kind: paper
+    timezone: UTC
+    max_items: 200
+    query: 'cat:cs.CR'
 
   # ============================================================
   # TIER 1 - arXiv API Keyword Queries (supplements RSS feeds)

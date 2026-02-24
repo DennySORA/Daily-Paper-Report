@@ -44,10 +44,9 @@ from src.renderer import RunInfo, SourceStatus, StaticRenderer
 
 logger = structlog.get_logger()
 
-# Daily digest display window (always 24 hours regardless of collection lookback)
-# This ensures daily.json only shows papers from the last 24 hours,
-# even when a larger lookback is used for data collection.
-DAILY_DISPLAY_HOURS = 24
+# Default daily digest display window (24 hours)
+# Can be overridden via --lookback parameter to show papers from longer periods.
+DEFAULT_DISPLAY_HOURS = 24
 
 
 # Type aliases for phase results
@@ -86,6 +85,7 @@ class RunOptions:
     dry_run: bool = False
     lookback_hours: int = 24
     retention_days: int = 90
+    skip_translation: bool = False
 
 
 def _setup_logging_and_context(
@@ -748,10 +748,10 @@ def _execute_pipeline_phases(  # noqa: PLR0913
     )
 
     # Phase 2: Linking
-    # Always use DAILY_DISPLAY_HOURS (24) for linking phase to ensure daily.json
-    # only contains papers from the last 24 hours, regardless of collection lookback.
+    # Use the same lookback_hours for linking phase to ensure daily.json
+    # contains papers from the entire lookback period (e.g., 7 days with --lookback 168).
     linker_result = _run_linking_phase(
-        store, effective_config, run_record, DAILY_DISPLAY_HOURS, run_id, log
+        store, effective_config, run_record, options.lookback_hours, run_id, log
     )
 
     # Phase 2.5: LLM Relevance (optional, skips gracefully if unconfigured)
@@ -768,10 +768,14 @@ def _execute_pipeline_phases(  # noqa: PLR0913
         linker_result, effective_config, run_id, log, llm_scores
     )
 
-    # Phase 3.5: Translation (optional, skips gracefully if unconfigured)
-    translations = _run_translation_phase(
-        ranker_result, run_id, log, output_dir=options.output_dir
-    )
+    # Phase 3.5: Translation (optional, skips gracefully if unconfigured or disabled)
+    translations: dict[str, object] | None = None
+    if options.skip_translation:
+        log.info("translation_phase_skipped", reason="disabled_by_flag")
+    else:
+        translations = _run_translation_phase(
+            ranker_result, run_id, log, output_dir=options.output_dir
+        )
 
     # Phase 4: Rendering
     _run_rendering_phase(
@@ -885,6 +889,13 @@ def cli() -> None:
     default=90,
     help="Number of days to retain archive pages (default: 90).",
 )
+@click.option(
+    "--no-translate",
+    "skip_translation",
+    is_flag=True,
+    default=False,
+    help="Skip the translation phase (saves time and tokens).",
+)
 def run(  # noqa: PLR0913
     config_path: Path,
     entities_path: Path,
@@ -897,6 +908,7 @@ def run(  # noqa: PLR0913
     dry_run: bool,
     lookback_hours: int,
     retention_days: int,
+    skip_translation: bool,
 ) -> None:
     """Run the digest pipeline.
 
@@ -918,6 +930,7 @@ def run(  # noqa: PLR0913
         dry_run=dry_run,
         lookback_hours=lookback_hours,
         retention_days=retention_days,
+        skip_translation=skip_translation,
     )
     _execute_run(options)
 
