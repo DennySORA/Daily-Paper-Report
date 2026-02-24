@@ -147,7 +147,7 @@ jobs:
           cp dist/index.html "../${OUTPUT_DIR}/404.html"
           cp -r dist/assets "../${OUTPUT_DIR}/"
 
-      - name: Ensure empty archive state
+      - name: Ensure completely empty state
         run: |
           # Remove any day archives that might have been created
           rm -rf "${OUTPUT_DIR}/day" || true
@@ -155,13 +155,14 @@ jobs:
           mkdir -p "${OUTPUT_DIR}/api/day"
           mkdir -p "${OUTPUT_DIR}/day"
 
-          # Update daily.json to have empty archives
+          # Clear ALL data from daily.json (papers, top5, radar, archive_dates)
           if [ -f "${OUTPUT_DIR}/api/daily.json" ]; then
-            jq '.archive_dates = []' "${OUTPUT_DIR}/api/daily.json" > "${OUTPUT_DIR}/api/daily.json.tmp"
+            jq '.archive_dates = [] | .papers = [] | .top5 = [] | .radar = [] | .sources_status = [] | .model_releases_by_entity = {}' \
+              "${OUTPUT_DIR}/api/daily.json" > "${OUTPUT_DIR}/api/daily.json.tmp"
             mv "${OUTPUT_DIR}/api/daily.json.tmp" "${OUTPUT_DIR}/api/daily.json"
           fi
 
-          echo "::notice::Site prepared with empty archive state."
+          echo "::notice::Site prepared with completely empty state."
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
