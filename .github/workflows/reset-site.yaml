@@ -26,6 +26,7 @@ concurrency:
 env:
   PYTHON_VERSION: '3.13'
   STATE_BRANCH: state
+  STATE_FILE: state.sqlite
   OUTPUT_DIR: public
   CONFIG_DIR: tests/fixtures/config
   TIMEZONE: Asia/Taipei
@@ -119,6 +120,7 @@ jobs:
             --config "${CONFIG_DIR}/sources.yaml" \
             --entities "${CONFIG_DIR}/entities.yaml" \
             --topics "${CONFIG_DIR}/topics.yaml" \
+            --state "${STATE_FILE}" \
             --out "${OUTPUT_DIR}" \
             --tz "${TIMEZONE}" \
             --lookback 1 \
