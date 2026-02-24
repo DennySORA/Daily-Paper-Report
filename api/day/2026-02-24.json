@@ -1,0 +1,371 @@
+{
+  "archive_dates": [
+    "2026-02-24"
+  ],
+  "entity_catalog": {
+    "01-ai": {
+      "name": "01.AI",
+      "type": "organization"
+    },
+    "andrej-karpathy": {
+      "name": "Andrej Karpathy",
+      "type": "researcher"
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "type": "organization"
+    },
+    "aws": {
+      "name": "AWS",
+      "type": "organization"
+    },
+    "cohere": {
+      "name": "Cohere",
+      "type": "organization"
+    },
+    "deepmind": {
+      "name": "DeepMind",
+      "type": "organization"
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "type": "organization"
+    },
+    "geoffrey-hinton": {
+      "name": "Geoffrey Hinton",
+      "type": "researcher"
+    },
+    "google-research": {
+      "name": "Google Research",
+      "type": "institution"
+    },
+    "huggingface": {
+      "name": "Hugging Face",
+      "type": "organization"
+    },
+    "ilya-sutskever": {
+      "name": "Ilya Sutskever",
+      "type": "researcher"
+    },
+    "langchain": {
+      "name": "LangChain",
+      "type": "organization"
+    },
+    "llama-cpp": {
+      "name": "llama.cpp",
+      "type": "organization"
+    },
+    "meta-ai": {
+      "name": "Meta AI",
+      "type": "institution"
+    },
+    "microsoft-research": {
+      "name": "Microsoft Research",
+      "type": "institution"
+    },
+    "mistral-ai": {
+      "name": "Mistral AI",
+      "type": "organization"
+    },
+    "nvidia": {
+      "name": "NVIDIA",
+      "type": "organization"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "type": "organization"
+    },
+    "openai": {
+      "name": "OpenAI",
+      "type": "organization"
+    },
+    "qwen": {
+      "name": "Qwen",
+      "type": "organization"
+    },
+    "stability-ai": {
+      "name": "Stability AI",
+      "type": "organization"
+    },
+    "vllm": {
+      "name": "vLLM",
+      "type": "organization"
+    },
+    "yann-lecun": {
+      "name": "Yann LeCun",
+      "type": "researcher"
+    },
+    "yoshua-bengio": {
+      "name": "Yoshua Bengio",
+      "type": "researcher"
+    }
+  },
+  "generated_at": "2026-02-24T09:38:20.701088+00:00",
+  "model_releases_by_entity": {},
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-02-24",
+  "run_id": "6a778ebe-5a43-4b4b-94a9-99951ed18610",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-02-24T23:59:59+00:00",
+    "items_total": 5,
+    "run_id": "6a778ebe-5a43-4b4b-94a9-99951ed18610-2026-02-24",
+    "started_at": "2026-02-23T23:59:59+00:00",
+    "stories_total": 5,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:58.989827+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 8,
+        "likes": 2,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "microsoft/dayhoff-170m-grs-76000",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GRS-76000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-76000"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-microsoft",
+        "tier": 1,
+        "title": "microsoft/Dayhoff-170M-GRS-76000",
+        "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-76000"
+      },
+      "published_at": "2026-02-24T01:51:55+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9681281410616789,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.768128141061679
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:microsoft/dayhoff-170m-grs-76000",
+      "summary": "Dayhoff is an Atlas of both protein sequence data and generative language models — a centralized resource that brings together 3.34 billion protein sequences across 1.7 billion clusters of metagenomic and natural protein sequences (GigaRef), 46 million structure-derived synthetic sequences (BackboneRef), and 16 million multiple sequence alignments (OpenProteinSet). These models can natively predict zero-shot mutation effects on fitness, scaffold structural motifs by conditioning on evolutionary or structural context, and perform guided generation of novel proteins within specified families. Learning from metagenomic and structure-based synthetic data from the Dayhoff Atlas increased the cellular expression rates of generated proteins, highlighting the real-world value of expanding the...",
+      "title": "microsoft/Dayhoff-170M-GRS-76000"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:58.990071+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 9,
+        "likes": 0,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "microsoft/dayhoff-170m-grs-50000",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GRS-50000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-50000"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-microsoft",
+        "tier": 1,
+        "title": "microsoft/Dayhoff-170M-GRS-50000",
+        "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-50000"
+      },
+      "published_at": "2026-02-24T01:51:34+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9681046104553248,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.768104610455325
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:microsoft/dayhoff-170m-grs-50000",
+      "summary": "Dayhoff is an Atlas of both protein sequence data and generative language models — a centralized resource that brings together 3.34 billion protein sequences across 1.7 billion clusters of metagenomic and natural protein sequences (GigaRef), 46 million structure-derived synthetic sequences (BackboneRef), and 16 million multiple sequence alignments (OpenProteinSet). These models can natively predict zero-shot mutation effects on fitness, scaffold structural motifs by conditioning on evolutionary or structural context, and perform guided generation of novel proteins within specified families. Learning from metagenomic and structure-based synthetic data from the Dayhoff Atlas increased the cellular expression rates of generated proteins, highlighting the real-world value of expanding the...",
+      "title": "microsoft/Dayhoff-170M-GRS-50000"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:58.990268+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 6,
+        "likes": 0,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "microsoft/dayhoff-170m-grs-26000",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GRS-26000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-26000"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-microsoft",
+        "tier": 1,
+        "title": "microsoft/Dayhoff-170M-GRS-26000",
+        "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-26000"
+      },
+      "published_at": "2026-02-24T01:51:15+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9680833213519088,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.76808332135191
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:microsoft/dayhoff-170m-grs-26000",
+      "summary": "Dayhoff is an Atlas of both protein sequence data and generative language models — a centralized resource that brings together 3.34 billion protein sequences across 1.7 billion clusters of metagenomic and natural protein sequences (GigaRef), 46 million structure-derived synthetic sequences (BackboneRef), and 16 million multiple sequence alignments (OpenProteinSet). These models can natively predict zero-shot mutation effects on fitness, scaffold structural motifs by conditioning on evolutionary or structural context, and perform guided generation of novel proteins within specified families. Learning from metagenomic and structure-based synthetic data from the Dayhoff Atlas increased the cellular expression rates of generated proteins, highlighting the real-world value of expanding the...",
+      "title": "microsoft/Dayhoff-170M-GRS-26000"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:58.990461+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 7,
+        "likes": 0,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "microsoft/dayhoff-170m-grs-112000",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GRS-112000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-112000"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-microsoft",
+        "tier": 1,
+        "title": "microsoft/Dayhoff-170M-GRS-112000",
+        "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-112000"
+      },
+      "published_at": "2026-02-24T01:50:59+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.968065394048989,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.768065394048989
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:microsoft/dayhoff-170m-grs-112000",
+      "summary": "Dayhoff is an Atlas of both protein sequence data and generative language models — a centralized resource that brings together 3.34 billion protein sequences across 1.7 billion clusters of metagenomic and natural protein sequences (GigaRef), 46 million structure-derived synthetic sequences (BackboneRef), and 16 million multiple sequence alignments (OpenProteinSet). These models can natively predict zero-shot mutation effects on fitness, scaffold structural motifs by conditioning on evolutionary or structural context, and perform guided generation of novel proteins within specified families. Learning from metagenomic and structure-based synthetic data from the Dayhoff Atlas increased the cellular expression rates of generated proteins, highlighting the real-world value of expanding the...",
+      "title": "microsoft/Dayhoff-170M-GRS-112000"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:58.990642+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 9,
+        "likes": 0,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "microsoft/dayhoff-170m-grs-2000",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-microsoft",
+          "tier": 1,
+          "title": "microsoft/Dayhoff-170M-GRS-2000",
+          "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-2000"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-microsoft",
+        "tier": 1,
+        "title": "microsoft/Dayhoff-170M-GRS-2000",
+        "url": "https://huggingface.co/microsoft/Dayhoff-170M-GRS-2000"
+      },
+      "published_at": "2026-02-24T01:50:31+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.968034022067712,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.768034022067711
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:microsoft/dayhoff-170m-grs-2000",
+      "summary": "Dayhoff is an Atlas of both protein sequence data and generative language models — a centralized resource that brings together 3.34 billion protein sequences across 1.7 billion clusters of metagenomic and natural protein sequences (GigaRef), 46 million structure-derived synthetic sequences (BackboneRef), and 16 million multiple sequence alignments (OpenProteinSet). These models can natively predict zero-shot mutation effects on fitness, scaffold structural motifs by conditioning on evolutionary or structural context, and perform guided generation of novel proteins within specified families. Learning from metagenomic and structure-based synthetic data from the Dayhoff Atlas increased the cellular expression rates of generated proteins, highlighting the real-world value of expanding the...",
+      "title": "microsoft/Dayhoff-170M-GRS-2000"
+    }
+  ]
+}
