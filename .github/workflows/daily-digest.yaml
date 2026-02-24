@@ -526,16 +526,26 @@ jobs:
       - name: Initialize state branch if needed
         if: steps.verify.outputs.state_exists == 'true'
         id: init-branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RUN_ID="${{ needs.digest.outputs.run_id }}"
 
           if [ ! -d "state-repo/.git" ]; then
-            # State branch doesn't exist, create it
+            # State branch doesn't exist, create it as orphan
             mkdir -p state-repo
             cd state-repo
             git init
-            git remote add origin "https://github.com/${{ github.repository }}.git"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
             git checkout --orphan "${{ env.STATE_BRANCH }}"
+            # Create initial commit so branch exists
+            echo "# State Branch" > README.md
+            echo "This branch stores pipeline state and archive data." >> README.md
+            git add README.md
+            git commit -m "chore: initialize state branch"
+            git push -u origin "${{ env.STATE_BRANCH }}"
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"created_orphan_branch"}'
           else
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_branch_checked_out"}'
