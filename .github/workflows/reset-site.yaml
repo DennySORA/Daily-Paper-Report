@@ -11,11 +11,6 @@ name: Reset Site
         description: 'Type "RESET" to confirm complete data deletion'
         required: true
         type: string
-      deploy_empty:
-        description: 'Deploy empty site after reset (recommended)'
-        required: false
-        default: 'true'
-        type: boolean
 
 # Least privilege permissions
 permissions:
@@ -81,7 +76,7 @@ jobs:
   deploy-empty:
     name: Deploy Empty Site
     needs: [validate, delete-state]
-    if: needs.validate.outputs.confirmed == 'true' && inputs.deploy_empty == 'true'
+    if: needs.validate.outputs.confirmed == 'true'
     runs-on: ubuntu-latest
 
     environment:
