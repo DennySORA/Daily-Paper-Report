@@ -22,10 +22,10 @@ scoring:
 
 quotas:
   top5_max: 5
-  radar_max: 300
-  per_source_max: 50
-  arxiv_per_category_max: 50
-  papers_max: 400
+  radar_max: 20
+  per_source_max: 25
+  arxiv_per_category_max: 15
+  papers_max: 70
   llm_bypass_threshold: 0.45
 
 # =============================================================================
