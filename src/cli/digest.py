@@ -1357,14 +1357,20 @@ def backfill(  # noqa: PLR0913, PLR0915
             )
             sys.exit(1)
     else:
-        # Generate list of dates for backfill
+        # Generate list of dates for backfill (skip today — run command already
+        # produced today's archive with full LLM scores)
         now = datetime.now(UTC)
+        today_str = now.strftime("%Y-%m-%d")
         for day_offset in range(days):
             target_dt = now - timedelta(days=day_offset)
-            target_dates.append(target_dt.strftime("%Y-%m-%d"))
+            date_str = target_dt.strftime("%Y-%m-%d")
+            if date_str == today_str:
+                continue
+            target_dates.append(date_str)
         log.info(
             "backfill_started",
             days=days,
+            skipped_today=today_str,
             state_path=str(state_path),
             output_dir=str(output_dir),
         )
