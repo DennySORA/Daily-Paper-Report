@@ -1,0 +1,175 @@
+{
+  "archive_dates": [
+    "2026-02-25",
+    "2026-02-24",
+    "2026-02-23"
+  ],
+  "entity_catalog": {
+    "01-ai": {
+      "name": "01.AI",
+      "type": "organization"
+    },
+    "andrej-karpathy": {
+      "name": "Andrej Karpathy",
+      "type": "researcher"
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "type": "organization"
+    },
+    "aws": {
+      "name": "AWS",
+      "type": "organization"
+    },
+    "cohere": {
+      "name": "Cohere",
+      "type": "organization"
+    },
+    "deepmind": {
+      "name": "DeepMind",
+      "type": "organization"
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "type": "organization"
+    },
+    "geoffrey-hinton": {
+      "name": "Geoffrey Hinton",
+      "type": "researcher"
+    },
+    "google-research": {
+      "name": "Google Research",
+      "type": "institution"
+    },
+    "huggingface": {
+      "name": "Hugging Face",
+      "type": "organization"
+    },
+    "ilya-sutskever": {
+      "name": "Ilya Sutskever",
+      "type": "researcher"
+    },
+    "langchain": {
+      "name": "LangChain",
+      "type": "organization"
+    },
+    "llama-cpp": {
+      "name": "llama.cpp",
+      "type": "organization"
+    },
+    "meta-ai": {
+      "name": "Meta AI",
+      "type": "institution"
+    },
+    "microsoft-research": {
+      "name": "Microsoft Research",
+      "type": "institution"
+    },
+    "mistral-ai": {
+      "name": "Mistral AI",
+      "type": "organization"
+    },
+    "nvidia": {
+      "name": "NVIDIA",
+      "type": "organization"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "type": "organization"
+    },
+    "openai": {
+      "name": "OpenAI",
+      "type": "organization"
+    },
+    "qwen": {
+      "name": "Qwen",
+      "type": "organization"
+    },
+    "stability-ai": {
+      "name": "Stability AI",
+      "type": "organization"
+    },
+    "vllm": {
+      "name": "vLLM",
+      "type": "organization"
+    },
+    "yann-lecun": {
+      "name": "Yann LeCun",
+      "type": "researcher"
+    },
+    "yoshua-bengio": {
+      "name": "Yoshua Bengio",
+      "type": "researcher"
+    }
+  },
+  "generated_at": "2026-02-25T07:14:50.742357+00:00",
+  "model_releases_by_entity": {},
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-02-25",
+  "run_id": "c69faafa-b71c-42aa-a997-f1ef500a209c",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-02-25T23:59:59+00:00",
+    "items_total": 1,
+    "run_id": "c69faafa-b71c-42aa-a997-f1ef500a209c-2026-02-25",
+    "started_at": "2026-02-24T23:59:59+00:00",
+    "stories_total": 1,
+    "success": true
+  },
+  "sources_status": [],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "qwen"
+      ],
+      "first_seen_at": "2026-02-25T06:33:17.776387+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 0,
+        "likes": 184,
+        "pipeline_tag": "image-text-to-text"
+      },
+      "hf_model_id": "qwen/qwen3.5-27b",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3.5-27B",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-27B"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-qwen",
+        "tier": 1,
+        "title": "Qwen/Qwen3.5-27B",
+        "url": "https://huggingface.co/Qwen/Qwen3.5-27B"
+      },
+      "published_at": "2026-02-25T02:43:25+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.981327315719784,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.781327315719784
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:qwen/qwen3.5-27b",
+      "summary": "> This repository contains model weights and configuration files for the post-trained model in the Hugging Face Transformers format. > These artifacts are compatible with Hugging Face Transformers, vLLM, SGLang, KTransformers, etc. Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a significant leap forward, integrating breakthroughs in multimodal learning, architectural efficiency, reinforcement learning scale, and global accessibility to empower developers and enterprises with unprecedented capability and efficiency. Qwen3.5 features the following enhancement: - **Unified Vision-Language Foundation**: Early fusion training on multimodal tokens achieves cross-generational parity with...",
+      "title": "Qwen/Qwen3.5-27B"
+    }
+  ]
+}
