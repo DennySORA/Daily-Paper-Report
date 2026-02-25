@@ -102,7 +102,7 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-25T07:14:52.509186+00:00",
+  "generated_at": "2026-02-25T08:12:22.082677+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -142,11 +142,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.8564996053878591,
+          "recency_score": 0.8530868282982215,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.65649960538786
+          "total_score": 8.653086828298221
         },
         "section": null,
         "source_name": null,
@@ -200,11 +200,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.858225245149677,
+        "recency_score": 0.8548055921387815,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.058225245149677
+        "total_score": 10.054805592138782
       },
       "section": null,
       "source_name": null,
@@ -255,11 +255,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.850061515590649,
+        "recency_score": 0.8466743914788094,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.050061515590649
+        "total_score": 10.04667439147881
       },
       "section": null,
       "source_name": null,
@@ -322,11 +322,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8472356363116955,
+        "recency_score": 0.8438597720953661,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.047235636311695
+        "total_score": 10.043859772095367
       },
       "section": null,
       "source_name": null,
@@ -376,11 +376,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8409216838318857,
+        "recency_score": 0.8375709779603269,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.040921683831886
+        "total_score": 10.037570977960327
       },
       "section": null,
       "source_name": null,
@@ -430,11 +430,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8393882070019161,
+        "recency_score": 0.8360436113662054,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.039388207001917
+        "total_score": 10.036043611366205
       },
       "section": null,
       "source_name": null,
@@ -486,11 +486,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8319744853500137,
+        "recency_score": 0.8286594301592063,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.031974485350014
+        "total_score": 10.028659430159207
       },
       "section": null,
       "source_name": null,
@@ -532,11 +532,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8598180139648283,
+        "recency_score": 0.8563920144654028,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.05981801396483
+        "total_score": 9.056392014465404
       },
       "section": null,
       "source_name": null,
@@ -578,11 +578,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8598050769855563,
+        "recency_score": 0.8563791290343467,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.059805076985556
+        "total_score": 9.056379129034347
       },
       "section": null,
       "source_name": null,
@@ -624,11 +624,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8598010964157105,
+        "recency_score": 0.8563751643253342,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.059801096415711
+        "total_score": 9.056375164325335
       },
       "section": null,
       "source_name": null,
@@ -682,11 +682,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.859355389188688,
+        "recency_score": 0.8559312330470729,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.059355389188688
+        "total_score": 9.055931233047072
       },
       "section": null,
       "source_name": null,
@@ -728,11 +728,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8564133649779656,
+        "recency_score": 0.8530009315187199,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.056413364977965
+        "total_score": 9.05300093151872
       },
       "section": null,
       "source_name": null,
@@ -774,11 +774,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8508391263623658,
+        "recency_score": 0.8474489038110059,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.050839126362366
+        "total_score": 9.047448903811006
       },
       "section": null,
       "source_name": null,
@@ -829,11 +829,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.845992172363236,
+        "recency_score": 0.8426212628080044,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.045992172363237
+        "total_score": 9.042621262808005
       },
       "section": null,
       "source_name": null,
@@ -875,11 +875,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.844259860267345,
+        "recency_score": 0.8408958532197104,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.044259860267346
+        "total_score": 9.04089585321971
       },
       "section": null,
       "source_name": null,
@@ -925,11 +925,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8392949468267993,
+        "recency_score": 0.8359507227921811,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.0392949468268
+        "total_score": 9.035950722792181
       },
       "section": null,
       "source_name": null,
@@ -979,11 +979,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8525138924772098,
+        "recency_score": 0.8491169967138702,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 3.75,
-        "total_score": 8.80251389247721
+        "total_score": 8.79911699671387
       },
       "section": null,
       "source_name": null,
@@ -1035,11 +1035,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8306168951205809,
+        "recency_score": 0.827307249334288,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 3.75,
-        "total_score": 8.78061689512058
+        "total_score": 8.777307249334289
       },
       "section": null,
       "source_name": null,
@@ -1088,11 +1088,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8597901499436562,
+        "recency_score": 0.8563642614701934,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059790149943657
+        "total_score": 8.056364261470193
       },
       "section": null,
       "source_name": null,
@@ -1142,11 +1142,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8597871645663742,
+        "recency_score": 0.8563612879883367,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059787164566375
+        "total_score": 8.056361287988336
       },
       "section": null,
       "source_name": null,
@@ -1196,11 +1196,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8597642770182525,
+        "recency_score": 0.8563384916371045,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059764277018253
+        "total_score": 8.056338491637105
       },
       "section": null,
       "source_name": null,
@@ -1251,11 +1251,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8597244740379111,
+        "recency_score": 0.8562988472542669,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.05972447403791
+        "total_score": 8.056298847254267
       },
       "section": null,
       "source_name": null,
@@ -1317,11 +1317,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8594936530870452,
+        "recency_score": 0.8560689460241433,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059493653087046
+        "total_score": 8.056068946024144
       },
       "section": null,
       "source_name": null,
@@ -1378,11 +1378,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8594110899541963,
+        "recency_score": 0.8559867118693425,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059411089954196
+        "total_score": 8.055986711869343
       },
       "section": null,
       "source_name": null,
@@ -1431,11 +1431,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8590948371309071,
+        "recency_score": 0.8556717191755185,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059094837130907
+        "total_score": 8.05567171917552
       },
       "section": null,
       "source_name": null,
@@ -1488,11 +1488,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8590113180817611,
+        "recency_score": 0.8555885329133298,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.059011318081762
+        "total_score": 8.05558853291333
       },
       "section": null,
       "source_name": null,
@@ -1551,11 +1551,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8589556432265529,
+        "recency_score": 0.8555330798981192,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.058955643226554
+        "total_score": 8.055533079898119
       },
       "section": null,
       "source_name": null,
@@ -1602,11 +1602,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.85887511990959,
+        "recency_score": 0.8554528774314281,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.05887511990959
+        "total_score": 8.055452877431428
       },
       "section": null,
       "source_name": null,
@@ -1661,11 +1661,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8587955981171456,
+        "recency_score": 0.8553736724986175,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.058795598117145
+        "total_score": 8.055373672498618
       },
       "section": null,
       "source_name": null,
@@ -1716,11 +1716,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8584964633340039,
+        "recency_score": 0.8550757296370228,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.058496463334004
+        "total_score": 8.055075729637023
       },
       "section": null,
       "source_name": null,
@@ -1775,11 +1775,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8583464382891629,
+        "recency_score": 0.8549263023765038,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.058346438289163
+        "total_score": 8.054926302376504
       },
       "section": null,
       "source_name": null,
@@ -1832,11 +1832,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8582977602997484,
+        "recency_score": 0.8548778183476305,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.058297760299748
+        "total_score": 8.05487781834763
       },
       "section": null,
       "source_name": null,
@@ -1888,11 +1888,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8574210360142834,
+        "recency_score": 0.8540045874257779,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.057421036014283
+        "total_score": 8.054004587425778
       },
       "section": null,
       "source_name": null,
@@ -1945,11 +1945,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8567911027624747,
+        "recency_score": 0.8533771641830297,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.056791102762475
+        "total_score": 8.05337716418303
       },
       "section": null,
       "source_name": null,
@@ -1997,11 +1997,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8566165890166932,
+        "recency_score": 0.8532033457983548,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.056616589016693
+        "total_score": 8.053203345798355
       },
       "section": null,
       "source_name": null,
@@ -2056,11 +2056,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8563866024784763,
+        "recency_score": 0.85297427565611,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.056386602478476
+        "total_score": 8.05297427565611
       },
       "section": null,
       "source_name": null,
@@ -2107,11 +2107,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8563677701097969,
+        "recency_score": 0.8529555183262001,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.056367770109798
+        "total_score": 8.0529555183262
       },
       "section": null,
       "source_name": null,
@@ -2162,11 +2162,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.856103169567404,
+        "recency_score": 0.8526919721014778,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.056103169567404
+        "total_score": 8.052691972101478
       },
       "section": null,
       "source_name": null,
@@ -2215,11 +2215,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8557158308997189,
+        "recency_score": 0.8523061768093212,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.05571583089972
+        "total_score": 8.05230617680932
       },
       "section": null,
       "source_name": null,
@@ -2274,17 +2274,70 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8556009508381545,
+        "recency_score": 0.8521917544946602,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.055600950838155
+        "total_score": 8.052191754494661
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20083",
       "summary": "Deploying Retrieval-Augmented Generation (RAG) on edge devices is in high demand, but is hindered by the latency of massive data movement and computation on traditional architectures. Compute-in-Memory (CiM) architectures address this bottleneck by performing vector search directly within their crossbar structure. However, CiM's adoption for RAG is limited by a fundamental ``representation gap,'' as high-precision, high-dimension embeddings are incompatible with CiM's low-precision, low-dimensio",
       "title": "CQ-CiM: Hardware-Aware Embedding Shaping for Robust CiM-Based Retrieval"
+    },
+    {
+      "arxiv_id": "2602.20078",
+      "authors": [
+        "Shan Yang",
+        "Yang Liu"
+      ],
+      "categories": [
+        "cs.MA",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.861546+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Descent-Guided Policy Gradient for Scalable Cooperative Multi-Agent Learning",
+          "url": "https://arxiv.org/abs/2602.20078"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Descent-Guided Policy Gradient for Scalable Cooperative Multi-Agent Learning",
+        "url": "https://arxiv.org/abs/2602.20078"
+      },
+      "published_at": "2026-02-23T17:45:08+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8519530953216513,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.051953095321652
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20078",
+      "summary": "Scaling cooperative multi-agent reinforcement learning (MARL) is fundamentally limited by cross-agent noise: when agents share a common reward, the actions of all $N$ agents jointly determine each agent's learning signal, so cross-agent noise grows with $N$. In the policy gradient setting, per-agent gradient estimate variance scales as $Θ(N)$, yielding sample complexity $\\mathcal{O}(N/ε)$. We observe that many domains -- cloud computing, transportation, power systems -- have differentiable analy",
+      "title": "Descent-Guided Policy Gradient for Scalable Cooperative Multi-Agent Learning"
     },
     {
       "arxiv_id": "2602.20070",
@@ -2330,17 +2383,186 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8542344680772738,
+        "recency_score": 0.8508307165711506,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.054234468077274
+        "total_score": 8.05083071657115
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20070",
       "summary": "We develop a kernel method for generative modeling within the stochastic interpolant framework, replacing neural network training with linear systems. The drift of the generative SDE is $\\hat b_t(x) = \\nablaφ(x)^\\topη_t$, where $η_t\\in\\R^P$ solves a $P\\times P$ system computable from data, with $P$ independent of the data dimension $d$. Since estimates are inexact, the diffusion coefficient $D_t$ affects sample quality; the optimal $D_t^*$ from Girsanov diverges at $t=0$, but this poses no diffi",
       "title": "Training-Free Generative Modeling via Kernelized Stochastic Interpolants"
+    },
+    {
+      "arxiv_id": "2602.20066",
+      "authors": [
+        "Kundan Thota",
+        "Xuanhao Mu",
+        "Thorsten Schlachter",
+        "Veit Hagenmeyer"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.861987+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "HeatPrompt: Zero-Shot Vision-Language Modeling of Urban Heat Demand from Satellite Images",
+          "url": "https://arxiv.org/abs/2602.20066"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "HeatPrompt: Zero-Shot Vision-Language Modeling of Urban Heat Demand from Satellite Images",
+        "url": "https://arxiv.org/abs/2602.20066"
+      },
+      "published_at": "2026-02-23T17:22:54+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8506387104734277,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.050638710473429
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20066",
+      "summary": "Accurate heat-demand maps play a crucial role in decarbonizing space heating, yet most municipalities lack detailed building-level data needed to calculate them. We introduce HeatPrompt, a zero-shot vision-language energy modeling framework that estimates annual heat demand using semantic features extracted from satellite images, basic Geographic Information System (GIS), and building-level features. We feed pretrained Large Vision Language Models (VLMs) with a domain-specific prompt to act as a",
+      "title": "HeatPrompt: Zero-Shot Vision-Language Modeling of Urban Heat Demand from Satellite Images"
+    },
+    {
+      "arxiv_id": "2602.20065",
+      "authors": [
+        "Natalia Moskvina",
+        "Raquel Montero",
+        "Masaya Yoshida",
+        "Ferdy Hubers",
+        "Paolo Morosi",
+        "Walid Irhaymi",
+        "Jin Yan",
+        "Tamara Serrano",
+        "Elena Pagliarini",
+        "Fritz Günther",
+        "Evelina Leivada"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.862190+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Multilingual Large Language Models do not comprehend all natural languages to equal degrees",
+          "url": "https://arxiv.org/abs/2602.20065"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Multilingual Large Language Models do not comprehend all natural languages to equal degrees",
+        "url": "https://arxiv.org/abs/2602.20065"
+      },
+      "published_at": "2026-02-23T17:22:46+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8506308342255355,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.050630834225537
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20065",
+      "summary": "Large Language Models (LLMs) play a critical role in how humans access information. While their core use relies on comprehending written requests, our understanding of this ability is currently limited, because most benchmarks evaluate LLMs in high-resource languages predominantly spoken by Western, Educated, Industrialised, Rich, and Democratic (WEIRD) communities. The default assumption is that English is the best-performing language for LLMs, while smaller, low-resource languages are linked t",
+      "title": "Multilingual Large Language Models do not comprehend all natural languages to equal degrees"
+    },
+    {
+      "arxiv_id": "2602.20064",
+      "authors": [
+        "Zac Garby",
+        "Andrew D. Gordon",
+        "David Sands"
+      ],
+      "categories": [
+        "cs.PL",
+        "cs.AI",
+        "cs.CR"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.862392+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "The LLMbda Calculus: AI Agents, Conversations, and Information Flow",
+          "url": "https://arxiv.org/abs/2602.20064"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "The LLMbda Calculus: AI Agents, Conversations, and Information Flow",
+        "url": "https://arxiv.org/abs/2602.20064"
+      },
+      "published_at": "2026-02-23T17:22:35+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8506200045037614,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.050620004503761
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20064",
+      "summary": "A conversation with a large language model (LLM) is a sequence of prompts and responses, with each response generated from the preceding conversation. AI agents build such conversations automatically: given an initial human prompt, a planner loop interleaves LLM calls with tool invocations and code execution. This tight coupling creates a new and poorly understood attack surface. A malicious prompt injected into a conversation can compromise later reasoning, trigger dangerous tool calls, or dist",
+      "title": "The LLMbda Calculus: AI Agents, Conversations, and Information Flow"
     },
     {
       "arxiv_id": "2602.20062",
@@ -2387,11 +2609,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8538430336566455,
+        "recency_score": 0.8504408418458385,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.053843033656646
+        "total_score": 8.05044084184584
       },
       "section": null,
       "source_name": null,
@@ -2442,11 +2664,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8537442149502392,
+        "recency_score": 0.8503424168888456,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.053744214950239
+        "total_score": 8.050342416888846
       },
       "section": null,
       "source_name": null,
@@ -2504,17 +2726,179 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.853717535860385,
+        "recency_score": 0.8503158441035197,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.053717535860386
+        "total_score": 8.050315844103519
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20060",
       "summary": "Generative models have shown great potential in trajectory planning. Recent studies demonstrate that anchor-guided generative models are effective in modeling the uncertainty of driving behaviors and improving overall performance. However, these methods rely on discrete anchor vocabularies that must sufficiently cover the trajectory distribution during testing to ensure robustness, inducing an inherent trade-off between vocabulary size and model performance. To overcome this limitation, we propo",
       "title": "MeanFuser: Fast One-Step Multi-Modal Trajectory Generation and Adaptive Reconstruction via MeanFlow for End-to-End Autonomous Driving"
+    },
+    {
+      "arxiv_id": "2602.20059",
+      "authors": [
+        "Sarath Shekkizhar",
+        "Adam Earle"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.862604+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Interaction Theater: A case of LLM Agents Interacting at Scale",
+          "url": "https://arxiv.org/abs/2602.20059"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Interaction Theater: A case of LLM Agents Interacting at Scale",
+        "url": "https://arxiv.org/abs/2602.20059"
+      },
+      "published_at": "2026-02-23T17:14:29+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8501416652967424,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.050141665296742
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20059",
+      "summary": "As multi-agent architectures and agent-to-agent protocols proliferate, a fundamental question arises: what actually happens when autonomous LLM agents interact at scale? We study this question empirically using data from Moltbook, an AI-agent-only social platform, with 800K posts, 3.5M comments, and 78K agent profiles. We combine lexical metrics (Jaccard specificity), embedding-based semantic similarity, and LLM-as-judge validation to characterize agent interaction quality. Our findings reveal a",
+      "title": "Interaction Theater: A case of LLM Agents Interacting at Scale"
+    },
+    {
+      "arxiv_id": "2602.20057",
+      "authors": [
+        "Ge Yuan",
+        "Qiyuan Qiao",
+        "Jing Zhang",
+        "Dong Xu"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.862807+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "AdaWorldPolicy: World-Model-Driven Diffusion Policy with Online Adaptive Learning for Robotic Manipulation",
+          "url": "https://arxiv.org/abs/2602.20057"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "AdaWorldPolicy: World-Model-Driven Diffusion Policy with Online Adaptive Learning for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2602.20057"
+      },
+      "published_at": "2026-02-23T17:12:25+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8500196629794134,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.050019662979414
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20057",
+      "summary": "Effective robotic manipulation requires policies that can anticipate physical outcomes and adapt to real-world environments. Effective robotic manipulation requires policies that can anticipate physical outcomes and adapt to real-world environments. In this work, we introduce a unified framework, World-Model-Driven Diffusion Policy with Online Adaptive Learning (AdaWorldPolicy) to enhance robotic manipulation under dynamic conditions with minimal human involvement. Our core insight is that world",
+      "title": "AdaWorldPolicy: World-Model-Driven Diffusion Policy with Online Adaptive Learning for Robotic Manipulation"
+    },
+    {
+      "arxiv_id": "2602.20055",
+      "authors": [
+        "Apoorva Vashisth",
+        "Manav Kulshrestha",
+        "Pranav Bakshi",
+        "Damon Conover",
+        "Guillaume Sartoretti",
+        "Aniket Bera"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.863021+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "To Move or Not to Move: Constraint-based Planning Enables Zero-Shot Generalization for Interactive Navigation",
+          "url": "https://arxiv.org/abs/2602.20055"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "To Move or Not to Move: Constraint-based Planning Enables Zero-Shot Generalization for Interactive Navigation",
+        "url": "https://arxiv.org/abs/2602.20055"
+      },
+      "published_at": "2026-02-23T17:10:00+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8498770211862274,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.049877021186228
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20055",
+      "summary": "Visual navigation typically assumes the existence of at least one obstacle-free path between start and goal, which must be discovered/planned by the robot. However, in real-world scenarios, such as home environments and warehouses, clutter can block all routes. Targeted at such cases, we introduce the Lifelong Interactive Navigation problem, where a mobile robot with manipulation abilities can move clutter to forge its own path to complete sequential object- placement tasks - each involving plac",
+      "title": "To Move or Not to Move: Constraint-based Planning Enables Zero-Shot Generalization for Interactive Navigation"
     },
     {
       "arxiv_id": "2602.20053",
@@ -2559,11 +2943,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8528573352892697,
+        "recency_score": 0.8494590710562272,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.05285733528927
+        "total_score": 8.049459071056228
       },
       "section": null,
       "source_name": null,
@@ -2609,17 +2993,119 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8528474643124202,
+        "recency_score": 0.8494492394109121,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.052847464312421
+        "total_score": 8.049449239410912
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20052",
       "summary": "In this study, the output of large language models (LLM) is considered an information source generating an unlimited sequence of symbols drawn from a finite alphabet. Given the probabilistic nature of modern LLMs, we assume a probabilistic model for these LLMs, following a constant random distribution and the source itself thus being stationary. We compare this source entropy (per word) to that of natural language (written or spoken) as represented by the Open American National Corpus (OANC). Ou",
       "title": "Entropy in Large Language Models"
+    },
+    {
+      "arxiv_id": "2602.20049",
+      "authors": [
+        "Tobias Gürtler",
+        "Benjamin Lucien Kaminski"
+      ],
+      "categories": [
+        "cs.LO"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:54.700858+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-api-efficiency",
+          "tier": 1,
+          "title": "noDice: Inference for Discrete Probabilistic Programs with Nondeterminism and Conditioning",
+          "url": "https://arxiv.org/abs/2602.20049"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-api-efficiency",
+        "tier": 1,
+        "title": "noDice: Inference for Discrete Probabilistic Programs with Nondeterminism and Conditioning",
+        "url": "https://arxiv.org/abs/2602.20049"
+      },
+      "published_at": "2026-02-23T16:59:37+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.849264425656414,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.049264425656414
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20049",
+      "summary": "Probabilistic programming languages (PPLs) are an expressive and intuitive means of representing complex probability distributions. In that realm, languages like Dice target an important class of probabilistic programs: those whose probability distributions are discrete. Discrete distributions are common in many fields, including text analysis, network verification, artificial intelligence, and graph analysis. Another important feature in the world of probabilistic modeling are nondeterministic ",
+      "title": "noDice: Inference for Discrete Probabilistic Programs with Nondeterminism and Conditioning"
+    },
+    {
+      "arxiv_id": "2602.20048",
+      "authors": [
+        "Tarakanath Paipuru"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.863466+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "CodeCompass: Navigating the Navigation Paradox in Agentic Code Intelligence",
+          "url": "https://arxiv.org/abs/2602.20048"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "CodeCompass: Navigating the Navigation Paradox in Agentic Code Intelligence",
+        "url": "https://arxiv.org/abs/2602.20048"
+      },
+      "published_at": "2026-02-23T16:58:37+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8492054510079424,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.049205451007943
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20048",
+      "summary": "Modern code intelligence agents operate in contexts exceeding 1 million tokens--far beyond the scale where humans manually locate relevant files. Yet agents consistently fail to discover architecturally critical files when solving real-world coding tasks. We identify the Navigation Paradox: agents perform poorly not due to context limits, but because navigation and retrieval are fundamentally distinct problems. Through 258 automated trials across 30 benchmark tasks on a production FastAPI reposi",
+      "title": "CodeCompass: Navigating the Navigation Paradox in Agentic Code Intelligence"
     },
     {
       "arxiv_id": "2602.20046",
@@ -2662,11 +3148,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8525454676505418,
+        "recency_score": 0.8491484460739183,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.052545467650543
+        "total_score": 8.049148446073918
       },
       "section": null,
       "source_name": null,
@@ -2719,11 +3205,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8521942597024218,
+        "recency_score": 0.8487986375361791,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.052194259702421
+        "total_score": 8.04879863753618
       },
       "section": null,
       "source_name": null,
@@ -2775,17 +3261,123 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8521133839925387,
+        "recency_score": 0.8487180840806999,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.05211338399254
+        "total_score": 8.0487180840807
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20041",
       "summary": "Brain-computer interfaces (BCIs) provide a hands-free control modality for mobile robotics, yet decoding user intent during real-world navigation remains challenging. This work presents a brain-robot control framework for offline decoding of driving commands during robotic rover operation. A 4WD Rover Pro platform was remotely operated by 12 participants who navigated a predefined route using a joystick, executing the commands forward, reverse, left, right, and stop. Electroencephalogram (EEG) s",
       "title": "EEG-Driven Intention Decoding: Offline Deep Learning Benchmarking on a Robotic Rover"
+    },
+    {
+      "arxiv_id": "2602.20040",
+      "authors": [
+        "Fahmida Liza Piya",
+        "Rahmatollah Beheshti"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.863665+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "AgenticSum: An Agentic Inference-Time Framework for Faithful Clinical Text Summarization",
+          "url": "https://arxiv.org/abs/2602.20040"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "AgenticSum: An Agentic Inference-Time Framework for Faithful Clinical Text Summarization",
+        "url": "https://arxiv.org/abs/2602.20040"
+      },
+      "published_at": "2026-02-23T16:49:37+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8486748634269533,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.048674863426953
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20040",
+      "summary": "Large language models (LLMs) offer substantial promise for automating clinical text summarization, yet maintaining factual consistency remains challenging due to the length, noise, and heterogeneity of clinical documentation. We present AgenticSum, an inference-time, agentic framework that separates context selection, generation, verification, and targeted correction to reduce hallucinated content. The framework decomposes summarization into coordinated stages that compress task-relevant context",
+      "title": "AgenticSum: An Agentic Inference-Time Framework for Faithful Clinical Text Summarization"
+    },
+    {
+      "arxiv_id": "2602.20031",
+      "authors": [
+        "Theia Pearson-Vogel",
+        "Martin Vanek",
+        "Raymond Douglas",
+        "Jan Kulveit"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.863879+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Latent Introspection: Models Can Detect Prior Concept Injections",
+          "url": "https://arxiv.org/abs/2602.20031"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Latent Introspection: Models Can Detect Prior Concept Injections",
+        "url": "https://arxiv.org/abs/2602.20031"
+      },
+      "published_at": "2026-02-23T16:39:42+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8480906183911995,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.0480906183912
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20031",
+      "summary": "We uncover a latent capacity for introspection in a Qwen 32B model, demonstrating that the model can detect when concepts have been injected into its earlier context and identify which concept was injected. While the model denies injection in sampled outputs, logit lens analysis reveals clear detection signals in the residual stream, which are attenuated in the final layers. Furthermore, prompting the model with accurate information about AI introspection mechanisms can dramatically strengthen t",
+      "title": "Latent Introspection: Models Can Detect Prior Concept Injections"
     },
     {
       "arxiv_id": "2602.20017",
@@ -2830,17 +3422,73 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8505447318203985,
+        "recency_score": 0.8471556823027934,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.050544731820398
+        "total_score": 8.047155682302794
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20017",
       "summary": "Real-world tables often exhibit irregular schemas, heterogeneous value formats, and implicit relational structure, which degrade the reliability of downstream table reasoning and question answering. Most existing approaches address these issues in a query-dependent manner, entangling table cleanup with reasoning and thus limiting generalization. We introduce QuIeTT, a query-independent table transformation framework that preprocesses raw tables into a single SQL-ready canonical representation be",
       "title": "QUIETT: Query-Independent Table Transformation for Robust Reasoning"
+    },
+    {
+      "arxiv_id": "2602.20003",
+      "authors": [
+        "Nuocheng Yang",
+        "Sihua Wang",
+        "Zhaohui Yang",
+        "Mingzhe Chen",
+        "Changchuan Yin",
+        "Kaibin Huang"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.864509+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "A Secure and Private Distributed Bayesian Federated Learning Design",
+          "url": "https://arxiv.org/abs/2602.20003"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "A Secure and Private Distributed Bayesian Federated Learning Design",
+        "url": "https://arxiv.org/abs/2602.20003"
+      },
+      "published_at": "2026-02-23T16:12:02+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8464627493373097,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.04646274933731
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20003",
+      "summary": "Distributed Federated Learning (DFL) enables decentralized model training across large-scale systems without a central parameter server. However, DFL faces three critical challenges: privacy leakage from honest-but-curious neighbors, slow convergence due to the lack of central coordination, and vulnerability to Byzantine adversaries aiming to degrade model accuracy. To address these issues, we propose a novel DFL framework that integrates Byzantine robustness, privacy preservation, and convergen",
+      "title": "A Secure and Private Distributed Bayesian Federated Learning Design"
     },
     {
       "arxiv_id": "2602.19991",
@@ -2883,11 +3531,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8489779847598862,
+        "recency_score": 0.8455951780454765,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.048977984759887
+        "total_score": 8.045595178045478
       },
       "section": null,
       "source_name": null,
@@ -2936,11 +3584,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8488757991156096,
+        "recency_score": 0.8454933995663912,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.04887579911561
+        "total_score": 8.045493399566391
       },
       "section": null,
       "source_name": null,
@@ -2993,17 +3641,73 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8487510314031745,
+        "recency_score": 0.8453691289988328,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.048751031403174
+        "total_score": 8.045369128998832
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.19987",
       "summary": "This paper tackles the problem of time-to-event counterfactual survival prediction, aiming to optimize individualized survival outcomes in the presence of heterogeneity and censored data. We propose CURE, a framework that advances counterfactual survival modeling via comprehensive multimodal embedding and latent subgroup retrieval. CURE integrates clinical, paraclinical, demographic, and multi-omics information, which are aligned and fused through cross-attention mechanisms. Complex multi-omics ",
       "title": "Counterfactual Understanding via Retrieval-aware Multimodal Modeling for Time-to-Event Survival Prediction"
+    },
+    {
+      "arxiv_id": "2602.19983",
+      "authors": [
+        "Zachary Ravichadran",
+        "David Snyder",
+        "Alexander Robey",
+        "Hamed Hassani",
+        "Vijay Kumar",
+        "George J. Pappas"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.864709+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Contextual Safety Reasoning and Grounding for Open-World Robots",
+          "url": "https://arxiv.org/abs/2602.19983"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Contextual Safety Reasoning and Grounding for Open-World Robots",
+        "url": "https://arxiv.org/abs/2602.19983"
+      },
+      "published_at": "2026-02-23T15:51:23+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8452497681741149,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.045249768174115
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19983",
+      "summary": "Robots are increasingly operating in open-world environments where safe behavior depends on context: the same hallway may require different navigation strategies when crowded versus empty, or during an emergency versus normal operations. Traditional safety approaches enforce fixed constraints in user-specified contexts, limiting their ability to handle the open-ended contextual variability of real-world deployment. We address this gap via CORE, a safety framework that enables online contextual r",
+      "title": "Contextual Safety Reasoning and Grounding for Open-World Robots"
     },
     {
       "arxiv_id": "2602.19982",
@@ -3045,11 +3749,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.848535923856177,
+        "recency_score": 0.8451548785615217,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.048535923856177
+        "total_score": 8.045154878561522
       },
       "section": null,
       "source_name": null,
@@ -3098,11 +3802,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8483994226914425,
+        "recency_score": 0.8450189212943496,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.048399422691443
+        "total_score": 8.04501892129435
       },
       "section": null,
       "source_name": null,
@@ -3153,17 +3857,72 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8479537373228511,
+        "recency_score": 0.844575011787423,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.047953737322851
+        "total_score": 8.044575011787423
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.19974",
       "summary": "Recent advancements in image generation have achieved impressive results in producing high-quality images. However, existing image generation models still generally struggle with a spatial reasoning dilemma, lacking the ability to accurately capture fine-grained spatial relationships from the prompt and correctly generate scenes with structural integrity. To mitigate this dilemma, we propose RL-RIG, a Reinforcement Learning framework for Reflection-based Image Generation. Our architecture compri",
       "title": "RL-RIG: A Generative Spatial Reasoner via Intrinsic Reflection"
+    },
+    {
+      "arxiv_id": "2602.19969",
+      "authors": [
+        "Yuxing Tian",
+        "Fengran Mo",
+        "Weixu Zhang",
+        "Yiyan Qi",
+        "Jian-Yun Nie"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.864906+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "ReAttn: Improving Attention-based Re-ranking via Attention Re-weighting",
+          "url": "https://arxiv.org/abs/2602.19969"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "ReAttn: Improving Attention-based Re-ranking via Attention Re-weighting",
+        "url": "https://arxiv.org/abs/2602.19969"
+      },
+      "published_at": "2026-02-23T15:30:52+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8440463404207005,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.044046340420701
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19969",
+      "summary": "The strong capabilities of recent Large Language Models (LLMs) have made them highly effective for zero-shot re-ranking task. Attention-based re-ranking methods, which derive relevance scores directly from attention weights, offer an efficient and interpretable alternative to generation-based re-ranking methods. However, they still face two major limitations. First, attention signals are highly concentrated a small subset of tokens within a few documents, making others indistinguishable. Second,",
+      "title": "ReAttn: Improving Attention-based Re-ranking via Attention Re-weighting"
     },
     {
       "arxiv_id": "2602.19967",
@@ -3206,17 +3965,405 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.847362142742883,
+        "recency_score": 0.8439857744536418,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.047362142742884
+        "total_score": 8.043985774453642
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.19967",
       "summary": "Physics-informed neural networks (PINNs) provide a promising framework for solving inverse problems governed by partial differential equations (PDEs) by integrating observational data and physical constraints in a unified optimization objective. However, the ill-posed nature of PDE inverse problems makes them highly sensitive to noise. Even a small fraction of corrupted observations can distort internal neural representations, severely impairing accuracy and destabilizing training. Motivated by ",
       "title": "Unlearning Noise in PINNs: A Selective Pruning Framework for PDE Inverse Problems"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Matthew Lee"
+      ],
+      "categories": [
+        "Advanced (300)",
+        "Amazon Machine Learning",
+        "Amazon SageMaker",
+        "Amazon SageMaker AI",
+        "Artificial Intelligence",
+        "Customer Solutions",
+        "Healthcare"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-02-24T09:02:36.297996+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "How Sonrai uses Amazon SageMaker AI to accelerate precision medicine trials",
+          "url": "https://aws.amazon.com/blogs/machine-learning/how-sonrai-uses-amazon-sagemaker-ai-to-accelerate-precision-medicine-trials"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "How Sonrai uses Amazon SageMaker AI to accelerate precision medicine trials",
+        "url": "https://aws.amazon.com/blogs/machine-learning/how-sonrai-uses-amazon-sagemaker-ai-to-accelerate-precision-medicine-trials"
+      },
+      "published_at": "2026-02-23T17:31:45+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8511616595289992,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 2.7,
+        "total_score": 10.051161659528999
+      },
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:9b135fce3a12d59c",
+      "summary": "In this post, we explore how Sonrai, a life sciences AI company, partnered with AWS to build a robust MLOps framework using Amazon SageMaker AI that addresses these challenges while maintaining the traceability and reproducibility required in regulated environments.",
+      "title": "How Sonrai uses Amazon SageMaker AI to accelerate precision medicine trials"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Laura Kulowski"
+      ],
+      "categories": [
+        "Amazon Bedrock",
+        "Artificial Intelligence"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.297555+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Scaling data annotation using vision-language models to power physical AI systems",
+          "url": "https://aws.amazon.com/blogs/machine-learning/scaling-data-annotation-using-vision-language-models-to-power-physical-ai-systems"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Scaling data annotation using vision-language models to power physical AI systems",
+        "url": "https://aws.amazon.com/blogs/machine-learning/scaling-data-annotation-using-vision-language-models-to-power-physical-ai-systems"
+      },
+      "published_at": "2026-02-23T23:20:37+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8720344470079316,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 4.0,
+        "total_score": 9.372034447007932
+      },
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:a33585692c1d4c8b",
+      "summary": "In this post, we examine how Bedrock Robotics tackles this challenge. By joining the AWS Physical AI Fellowship, the startup partnered with the AWS Generative AI Innovation Center to apply vision-language models that analyze construction video footage, extract operational details, and generate labeled training datasets at scale, to improve data preparation for autonomous construction equipment.",
+      "title": "Scaling data annotation using vision-language models to power physical AI systems"
+    },
+    {
+      "arxiv_id": "2602.19966",
+      "authors": [
+        "Joydeep Chandra",
+        "Satyam Kumar Navneet",
+        "Yong Zhang"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:45.715071+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-hc",
+          "tier": 1,
+          "title": "GazeFlow: Personalized Ambient Soundscape Generation for Passive Strabismus Self-Monitoring",
+          "url": "https://arxiv.org/abs/2602.19966"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-hc",
+        "tier": 1,
+        "title": "GazeFlow: Personalized Ambient Soundscape Generation for Passive Strabismus Self-Monitoring",
+        "url": "https://arxiv.org/abs/2602.19966"
+      },
+      "published_at": "2026-02-23T15:28:55+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8439320502173423,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.043932050217343
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19966",
+      "summary": "Strabismus affects 2-4% of the population, yet individuals recovering from corrective surgery lack accessible tools for monitoring eye alignment. Dichoptic therapies require active engagement & clinical supervision, limiting their adoption for passive self-awareness. We present GazeFlow, a browser-based self-monitoring system that uses a personalized temporal autoencoder to detect eye drift patterns from webcam-based gaze tracking & provides ambient audio feedback. Unlike alert-based systems, Ga",
+      "title": "GazeFlow: Personalized Ambient Soundscape Generation for Passive Strabismus Self-Monitoring"
+    },
+    {
+      "arxiv_id": "2602.19964",
+      "authors": [
+        "Moritz A. Zanger",
+        "Yijun Wu",
+        "Pascal R. Van der Vaart",
+        "Wendelin Böhmer",
+        "Matthijs T. J. Spaan"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "math.PR",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.865137+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "On the Equivalence of Random Network Distillation, Deep Ensembles, and Bayesian Inference",
+          "url": "https://arxiv.org/abs/2602.19964"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "On the Equivalence of Random Network Distillation, Deep Ensembles, and Bayesian Inference",
+        "url": "https://arxiv.org/abs/2602.19964"
+      },
+      "published_at": "2026-02-23T15:28:27+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8439047010107276,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.043904701010728
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19964",
+      "summary": "Uncertainty quantification is central to safe and efficient deployments of deep learning models, yet many computationally practical methods lack lacking rigorous theoretical motivation. Random network distillation (RND) is a lightweight technique that measures novelty via prediction errors against a fixed random target. While empirically effective, it has remained unclear what uncertainties RND measures and how its estimates relate to other approaches, e.g. Bayesian inference or deep ensembles. ",
+      "title": "On the Equivalence of Random Network Distillation, Deep Ensembles, and Bayesian Inference"
+    },
+    {
+      "arxiv_id": "2602.19948",
+      "authors": [
+        "Ian Steenstra",
+        "Paola Pedrelli",
+        "Weiyan Shi",
+        "Stacy Marsella",
+        "Timothy W. Bickmore"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CY",
+        "cs.HC",
+        "cs.MA"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.865337+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Assessing Risks of Large Language Models in Mental Health Support: A Framework for Automated Clinical AI Red Teaming",
+          "url": "https://arxiv.org/abs/2602.19948"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Assessing Risks of Large Language Models in Mental Health Support: A Framework for Automated Clinical AI Red Teaming",
+        "url": "https://arxiv.org/abs/2602.19948"
+      },
+      "published_at": "2026-02-23T15:17:18+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8432515138282424,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.043251513828242
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19948",
+      "summary": "Large Language Models (LLMs) are increasingly utilized for mental health support; however, current safety benchmarks often fail to detect the complex, longitudinal risks inherent in therapeutic dialogue. We introduce an evaluation framework that pairs AI psychotherapists with simulated patient agents equipped with dynamic cognitive-affective models and assesses therapy session simulations against a comprehensive quality of care and risk ontology. We apply this framework to a high-impact test cas",
+      "title": "Assessing Risks of Large Language Models in Mental Health Support: A Framework for Automated Clinical AI Red Teaming"
+    },
+    {
+      "arxiv_id": "2602.19946",
+      "authors": [
+        "Krzysztof Adamkiewicz",
+        "Brian Moser",
+        "Stanislav Frolov",
+        "Tobias Christian Nauen",
+        "Federico Raue",
+        "Andreas Dengel"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.865536+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "When Pretty Isn't Useful: Investigating Why Modern Text-to-Image Models Fail as Reliable Training Data Generators",
+          "url": "https://arxiv.org/abs/2602.19946"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "When Pretty Isn't Useful: Investigating Why Modern Text-to-Image Models Fail as Reliable Training Data Generators",
+        "url": "https://arxiv.org/abs/2602.19946"
+      },
+      "published_at": "2026-02-23T15:15:53+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8431685591372202,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.04316855913722
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19946",
+      "summary": "Recent text-to-image (T2I) diffusion models produce visually stunning images and demonstrate excellent prompt following. But do they perform well as synthetic vision data generators? In this work, we revisit the promise of synthetic data as a scalable substitute for real training sets and uncover a surprising performance regression. We generate large-scale synthetic datasets using state-of-the-art T2I models released between 2022 and 2025, train standard classifiers solely on this synthetic data",
+      "title": "When Pretty Isn't Useful: Investigating Why Modern Text-to-Image Models Fail as Reliable Training Data Generators"
+    },
+    {
+      "arxiv_id": "2602.19945",
+      "authors": [
+        "Jin Liu",
+        "Yinbin Miao",
+        "Ning Xi",
+        "Junkang Liu"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.865752+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "DP-FedAdamW: An Efficient Optimizer for Differentially Private Federated Large Models",
+          "url": "https://arxiv.org/abs/2602.19945"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "DP-FedAdamW: An Efficient Optimizer for Differentially Private Federated Large Models",
+        "url": "https://arxiv.org/abs/2602.19945"
+      },
+      "published_at": "2026-02-23T15:15:47+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.843162703820335,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.043162703820336
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19945",
+      "summary": "Balancing convergence efficiency and robustness under Differential Privacy (DP) is a central challenge in Federated Learning (FL). While AdamW accelerates training and fine-tuning in large-scale models, we find that directly applying it to Differentially Private FL (DPFL) suffers from three major issues: (i) data heterogeneity and privacy noise jointly amplify the variance of second-moment estimator, (ii) DP perturbations bias the second-moment estimator, and (iii) DP amplify AdamW sensitivity t",
+      "title": "DP-FedAdamW: An Efficient Optimizer for Differentially Private Federated Large Models"
     },
     {
       "arxiv_id": "2602.19938",
@@ -3265,11 +4412,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.846270298831692,
+        "recency_score": 0.842898281063878,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.046270298831692
+        "total_score": 8.042898281063879
       },
       "section": null,
       "source_name": null,
@@ -3318,17 +4465,71 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8460117557420326,
+        "recency_score": 0.8426407681555841,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.046011755742033
+        "total_score": 8.042640768155584
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.19931",
       "summary": "Incorporating diffusion-generated synthetic data into adversarial training (AT) has been shown to substantially improve the training of robust image classifiers. In this work, we extend the role of diffusion models beyond merely generating synthetic data, examining whether their internal representations, which encode meaningful features of the data, can provide additional benefits for robust classifier training. Through systematic experiments, we show that diffusion models offer representations ",
       "title": "Expanding the Role of Diffusion Models for Robust Classifier Training"
+    },
+    {
+      "arxiv_id": "2602.19926",
+      "authors": [
+        "Jin Liu",
+        "Yinbin Miao",
+        "Ning Xi",
+        "Junkang Liu"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.866171+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Rethinking LoRA for Privacy-Preserving Federated Learning in Large Models",
+          "url": "https://arxiv.org/abs/2602.19926"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Rethinking LoRA for Privacy-Preserving Federated Learning in Large Models",
+        "url": "https://arxiv.org/abs/2602.19926"
+      },
+      "published_at": "2026-02-23T15:05:28+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8425588487298279,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.042558848729827
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19926",
+      "summary": "Fine-tuning large vision models (LVMs) and large language models (LLMs) under differentially private federated learning (DPFL) is hindered by a fundamental privacy-utility trade-off. Low-Rank Adaptation (LoRA), a promising parameter-efficient fine-tuning (PEFT) method, reduces computational and communication costs by introducing two trainable low-rank matrices while freezing pre-trained weights. However, directly applying LoRA in DPFL settings leads to performance degradation, especially in LVMs",
+      "title": "Rethinking LoRA for Privacy-Preserving Federated Learning in Large Models"
     },
     {
       "arxiv_id": "2602.19919",
@@ -3376,11 +4577,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8455409011083921,
+        "recency_score": 0.8421717896721439,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.045540901108392
+        "total_score": 8.042171789672144
       },
       "section": null,
       "source_name": null,
@@ -3429,11 +4630,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8454988208375421,
+        "recency_score": 0.8421298770728065,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.045498820837542
+        "total_score": 8.042129877072806
       },
       "section": null,
       "source_name": null,
@@ -3484,17 +4685,68 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.845483163596946,
+        "recency_score": 0.8421142822194801,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.045483163596947
+        "total_score": 8.04211428221948
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.19917",
       "summary": "Offline reinforcement learning (RL) has garnered significant interest due to its safe and easily scalable paradigm. However, training under this paradigm presents its own challenge: the extrapolation error stemming from out-of-distribution (OOD) data. Existing methodologies have endeavored to address this issue through means like penalizing OOD Q-values or imposing similarity constraints on the learned policy and the behavior policy. Nonetheless, these approaches are often beset by limitations s",
       "title": "Uncertainty-Aware Rank-One MIMO Q Network Framework for Accelerated Offline Reinforcement Learning"
+    },
+    {
+      "arxiv_id": "2602.19914",
+      "authors": [
+        "Thatchawin Leelawat",
+        "Lewis D Griffin"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:36.866381+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Watson & Holmes: A Naturalistic Benchmark for Comparing Human and LLM Reasoning",
+          "url": "https://arxiv.org/abs/2602.19914"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Watson & Holmes: A Naturalistic Benchmark for Comparing Human and LLM Reasoning",
+        "url": "https://arxiv.org/abs/2602.19914"
+      },
+      "published_at": "2026-02-23T14:54:38+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.841925217600503,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.041925217600504
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19914",
+      "summary": "Existing benchmarks for AI reasoning provide limited insight into how closely these capabilities resemble human reasoning in naturalistic contexts. We present an adaptation of the Watson & Holmes detective tabletop game as a new benchmark designed to evaluate reasoning performance using incrementally presented narrative evidence, open-ended questions and unconstrained language responses. An automated grading system was developed and validated against human assessors to enable scalable and replic",
+      "title": "Watson & Holmes: A Naturalistic Benchmark for Comparing Human and LLM Reasoning"
     },
     {
       "arxiv_id": "2602.19910",
@@ -3539,11 +4791,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8450888924590765,
+        "recency_score": 0.8417215820800068,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.045088892459077
+        "total_score": 8.041721582080006
       },
       "section": null,
       "source_name": null,
@@ -3594,11 +4846,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8447945319812917,
+        "recency_score": 0.8414283945002461,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.044794531981292
+        "total_score": 8.041428394500246
       },
       "section": null,
       "source_name": null,
@@ -3649,17 +4901,71 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8443399905842813,
+        "recency_score": 0.8409756642523083,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.044339990584282
+        "total_score": 8.040975664252308
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.19898",
       "summary": "In disaster response and situation assessment, robots have great potential in reducing the risks to the safety and health of first responders. As the situations encountered and the required capabilities of the robots deployed in such missions differ wildly and are often not known in advance, heterogeneous fleets of robots are needed to cover a wide range of mission requirements. While UAVs can quickly survey the mission environment, their ability to carry heavy payloads such as sensors and manip",
       "title": "Athena: An Autonomous Open-Hardware Tracked Rescue Robot Platform"
+    },
+    {
+      "arxiv_id": "2602.19893",
+      "authors": [
+        "Soumen Pachal",
+        "Prashanth L. A.",
+        "Shalabh Bhatnagar",
+        "Avinash Achar"
+      ],
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-24T09:02:37.769886+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-lg",
+          "tier": 1,
+          "title": "Generalized Random Direction Newton Algorithms for Stochastic Optimization",
+          "url": "https://arxiv.org/abs/2602.19893"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-lg",
+        "tier": 1,
+        "title": "Generalized Random Direction Newton Algorithms for Stochastic Optimization",
+        "url": "https://arxiv.org/abs/2602.19893"
+      },
+      "published_at": "2026-02-23T14:33:39+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.8406992778638471,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.040699277863848
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.19893",
+      "summary": "We present a family of generalized Hessian estimators of the objective using random direction stochastic approximation (RDSA) by utilizing only noisy function measurements. The form of each estimator and the order of the bias depend on the number of function measurements. In particular, we demonstrate that estimators with more function measurements exhibit lower-order estimation bias. We show the asymptotic unbiasedness of the estimators. We also perform asymptotic and non-asymptotic convergence",
+      "title": "Generalized Random Direction Newton Algorithms for Stochastic Optimization"
     },
     {
       "arxiv_id": "2602.19891",
@@ -3701,11 +5007,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8440478447754073,
+        "recency_score": 0.8406846825169693,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.044047844775408
+        "total_score": 8.04068468251697
       },
       "section": null,
       "source_name": null,
@@ -3714,22 +5020,22 @@
       "title": "Using Unsupervised Domain Adaptation Semantic Segmentation for Pulmonary Embolism Detection in Computed Tomography Pulmonary Angiogram (CTPA) Images"
     },
     {
-      "arxiv_id": "2602.19878",
+      "arxiv_id": "2602.19888",
       "authors": [
-        "Daham Mustafa",
-        "Diego Collarana",
-        "Yixin Peng",
-        "Rafiqul Haque",
-        "Christoph Lange-Bever",
-        "Christoph Quix",
-        "Stephan Decker"
+        "Naoki Wada",
+        "Yuta Kimura",
+        "Masaichiro Mizumaki",
+        "Koji Amezawa",
+        "Ichiro Akai",
+        "Toru Aonishi"
       ],
       "categories": [
-        "cs.CL",
-        "cs.LO"
+        "physics.chem-ph",
+        "cond-mat.dis-nn",
+        "cond-mat.mtrl-sci"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.837951+00:00",
+      "first_seen_at": "2026-02-24T09:02:54.703017+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3737,20 +5043,20 @@
       "links": [
         {
           "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
+          "source_id": "arxiv-api-efficiency",
           "tier": 1,
-          "title": "Axis Decomposition for ODRL: Resolving Dimensional Ambiguity in Policy Constraints through Interval Semantics",
-          "url": "https://arxiv.org/abs/2602.19878"
+          "title": "A Physics-Regularized Neural Network and Kirchhoff Markov Random Field Framework for Inferring Internal Electrochemical States from Operando Spectromicroscopy",
+          "url": "https://arxiv.org/abs/2602.19888"
         }
       ],
       "primary_link": {
         "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
+        "source_id": "arxiv-api-efficiency",
         "tier": 1,
-        "title": "Axis Decomposition for ODRL: Resolving Dimensional Ambiguity in Policy Constraints through Interval Semantics",
-        "url": "https://arxiv.org/abs/2602.19878"
+        "title": "A Physics-Regularized Neural Network and Kirchhoff Markov Random Field Framework for Inferring Internal Electrochemical States from Operando Spectromicroscopy",
+        "url": "https://arxiv.org/abs/2602.19888"
       },
-      "published_at": "2026-02-23T14:24:46+00:00",
+      "published_at": "2026-02-23T14:32:30+00:00",
       "scores": {
         "citation_score": 0.0,
         "cross_source_score": 0.0,
@@ -3758,1325 +5064,26 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.843541958495367,
+        "recency_score": 0.84063214136624,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.043541958495368
+        "total_score": 8.04063214136624
       },
       "section": null,
       "source_name": null,
-      "story_id": "arxiv:2602.19878",
-      "summary": "Every ODRL 2.2 constraint compares a single scalar value: (leftOperand, operator, rightOperand). Five of ODRL's approximately 34 left operands, however, denote multi-dimensional quantities--image dimensions, canvas positions, geographic coordinates--whose specification text explicitly references multiple axes. For these operands, a single scalar constraint admits one interpretation per axis, making policy evaluation non-deterministic.\n  We classify ODRL's left operands by value-domain structure ",
-      "title": "Axis Decomposition for ODRL: Resolving Dimensional Ambiguity in Policy Constraints through Interval Semantics"
-    },
-    {
-      "arxiv_id": "2602.19870",
-      "authors": [
-        "Qiankun Ma",
-        "Ziyao Zhang",
-        "Haofei Wang",
-        "Jie Chen",
-        "Zhen Song",
-        "Hairong Zheng"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:39.760581+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "ApET: Approximation-Error Guided Token Compression for Efficient VLMs",
-          "url": "https://arxiv.org/abs/2602.19870"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "ApET: Approximation-Error Guided Token Compression for Efficient VLMs",
-        "url": "https://arxiv.org/abs/2602.19870"
-      },
-      "published_at": "2026-02-23T14:15:37+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8430061281317068,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.043006128131706
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19870",
-      "summary": "Recent Vision-Language Models (VLMs) have demonstrated remarkable multimodal understanding capabilities, yet the redundant visual tokens incur prohibitive computational overhead and degrade inference efficiency. Prior studies typically relies on [CLS] attention or text-vision cross-attention to identify and discard redundant visual tokens. Despite promising results, such solutions are prone to introduce positional bias and, more critically, are incompatible with efficient attention kernels such ",
-      "title": "ApET: Approximation-Error Guided Token Compression for Efficient VLMs"
-    },
-    {
-      "arxiv_id": "2602.19863",
-      "authors": [
-        "Filip Wolf",
-        "Blaž Rolih",
-        "Luka Čehovin Zajc"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:39.760775+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation",
-          "url": "https://arxiv.org/abs/2602.19863"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation",
-        "url": "https://arxiv.org/abs/2602.19863"
-      },
-      "published_at": "2026-02-23T14:09:01+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8426198388543682,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.042619838854367
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19863",
-      "summary": "Foundation models are transforming Earth Observation (EO), yet the diversity of EO sensors and modalities makes a single universal model unrealistic. Multiple specialized EO foundation models (EOFMs) will likely coexist, making efficient knowledge transfer across modalities essential. Most existing EO pretraining relies on masked image modeling, which emphasizes local reconstruction but provides limited control over global semantic structure. To address this, we propose a dual-teacher contrastiv",
-      "title": "Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation"
-    },
-    {
-      "arxiv_id": "2602.19850",
-      "authors": [
-        "Junhui Lee",
-        "Hyosung Kim",
-        "Saekwang Nam"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.769462+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data",
-          "url": "https://arxiv.org/abs/2602.19850"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data",
-        "url": "https://arxiv.org/abs/2602.19850"
-      },
-      "published_at": "2026-02-23T13:53:14+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8416967788559385,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.041696778855938
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19850",
-      "summary": "Real-time prediction of deformation in highly compliant soft materials remains a significant challenge in soft robotics. While vision-based soft tactile sensors can track internal marker displacements, learning-based models for 3D contact estimation heavily depend on their training datasets, inherently limiting their ability to generalize to complex scenarios such as multi-point sensing. To address this limitation, we introduce TactiVerse, a U-Net-based framework that formulates contact geometry",
-      "title": "TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data"
-    },
-    {
-      "arxiv_id": "2602.19848",
-      "authors": [
-        "Francisco Filho",
-        "Kelvin Cunha",
-        "Fábio Papais",
-        "Emanoel dos Santos",
-        "Rodrigo Mota",
-        "Thales Bezerra",
-        "Erico Medeiros",
-        "Paulo Borba",
-        "Tsang Ing Ren"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:39.761232+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "DerMAE: Improving skin lesion classification through conditioned latent diffusion and MAE distillation",
-          "url": "https://arxiv.org/abs/2602.19848"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "DerMAE: Improving skin lesion classification through conditioned latent diffusion and MAE distillation",
-        "url": "https://arxiv.org/abs/2602.19848"
-      },
-      "published_at": "2026-02-23T13:52:28+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.841651967488859,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.041651967488859
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19848",
-      "summary": "Skin lesion classification datasets often suffer from severe class imbalance, with malignant cases significantly underrepresented, leading to biased decision boundaries during deep learning training. We address this challenge using class-conditioned diffusion models to generate synthetic dermatological images, followed by self-supervised MAE pretraining to enable huge ViT models to learn robust, domain-relevant features. To support deployment in practical clinical settings, where lightweight mod",
-      "title": "DerMAE: Improving skin lesion classification through conditioned latent diffusion and MAE distillation"
-    }
-  ],
-  "radar": [
-    {
-      "arxiv_id": null,
-      "authors": [
-        "Matthew Lee"
-      ],
-      "categories": [
-        "Advanced (300)",
-        "Amazon Machine Learning",
-        "Amazon SageMaker",
-        "Amazon SageMaker AI",
-        "Artificial Intelligence",
-        "Customer Solutions",
-        "Healthcare"
-      ],
-      "entities": [
-        "aws"
-      ],
-      "first_seen_at": "2026-02-24T09:02:36.297996+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "aws-ml-blog",
-          "tier": 0,
-          "title": "How Sonrai uses Amazon SageMaker AI to accelerate precision medicine trials",
-          "url": "https://aws.amazon.com/blogs/machine-learning/how-sonrai-uses-amazon-sagemaker-ai-to-accelerate-precision-medicine-trials"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "aws-ml-blog",
-        "tier": 0,
-        "title": "How Sonrai uses Amazon SageMaker AI to accelerate precision medicine trials",
-        "url": "https://aws.amazon.com/blogs/machine-learning/how-sonrai-uses-amazon-sagemaker-ai-to-accelerate-precision-medicine-trials"
-      },
-      "published_at": "2026-02-23T17:31:45+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8545667349736795,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 2.7,
-        "total_score": 10.05456673497368
-      },
-      "section": null,
-      "source_name": "AWS Machine Learning Blog",
-      "story_id": "fallback:9b135fce3a12d59c",
-      "summary": "In this post, we explore how Sonrai, a life sciences AI company, partnered with AWS to build a robust MLOps framework using Amazon SageMaker AI that addresses these challenges while maintaining the traceability and reproducibility required in regulated environments.",
-      "title": "How Sonrai uses Amazon SageMaker AI to accelerate precision medicine trials"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [
-        "Laura Kulowski"
-      ],
-      "categories": [
-        "Amazon Bedrock",
-        "Artificial Intelligence"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:36.297555+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "aws-ml-blog",
-          "tier": 0,
-          "title": "Scaling data annotation using vision-language models to power physical AI systems",
-          "url": "https://aws.amazon.com/blogs/machine-learning/scaling-data-annotation-using-vision-language-models-to-power-physical-ai-systems"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "aws-ml-blog",
-        "tier": 0,
-        "title": "Scaling data annotation using vision-language models to power physical AI systems",
-        "url": "https://aws.amazon.com/blogs/machine-learning/scaling-data-annotation-using-vision-language-models-to-power-physical-ai-systems"
-      },
-      "published_at": "2026-02-23T23:20:37+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8755230241180252,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 4.0,
-        "total_score": 9.375523024118024
-      },
-      "section": null,
-      "source_name": "AWS Machine Learning Blog",
-      "story_id": "fallback:a33585692c1d4c8b",
-      "summary": "In this post, we examine how Bedrock Robotics tackles this challenge. By joining the AWS Physical AI Fellowship, the startup partnered with the AWS Generative AI Innovation Center to apply vision-language models that analyze construction video footage, extract operational details, and generate labeled training datasets at scale, to improve data preparation for autonomous construction equipment.",
-      "title": "Scaling data annotation using vision-language models to power physical AI systems"
-    },
-    {
-      "arxiv_id": "2602.19840",
-      "authors": [
-        "Jingzhuo Wu",
-        "Jiajun Zhang",
-        "Keyan Jin",
-        "Dehua Ma",
-        "Junbo Wang"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.838384+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "SAMAS: A Spectrum-Guided Multi-Agent System for Achieving Style Fidelity in Literary Translation",
-          "url": "https://arxiv.org/abs/2602.19840"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "SAMAS: A Spectrum-Guided Multi-Agent System for Achieving Style Fidelity in Literary Translation",
-        "url": "https://arxiv.org/abs/2602.19840"
-      },
-      "published_at": "2026-02-23T13:40:44+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8409664563170874,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.040966456317088
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19840",
-      "summary": "Modern large language models (LLMs) excel at generating fluent and faithful translations. However, they struggle to preserve an author's unique literary style, often producing semantically correct but generic outputs. This limitation stems from the inability of current single-model and static multi-agent systems to perceive and adapt to stylistic variations. To address this, we introduce the Style-Adaptive Multi-Agent System (SAMAS), a novel framework that treats style preservation as a signal p",
-      "title": "SAMAS: A Spectrum-Guided Multi-Agent System for Achieving Style Fidelity in Literary Translation"
-    },
-    {
-      "arxiv_id": "2602.19832",
-      "authors": [
-        "Penghui Niu",
-        "Taotao Cai",
-        "Suqi Zhang",
-        "Junhua Gu",
-        "Ping Zhang",
-        "Qiqi Liu",
-        "Jianxin Li"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:39.761433+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
-          "tier": 1,
-          "title": "M3S-Net: Multimodal Feature Fusion Network Based on Multi-scale Data for Ultra-short-term PV Power Forecasting",
-          "url": "https://arxiv.org/abs/2602.19832"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
-        "tier": 1,
-        "title": "M3S-Net: Multimodal Feature Fusion Network Based on Multi-scale Data for Ultra-short-term PV Power Forecasting",
-        "url": "https://arxiv.org/abs/2602.19832"
-      },
-      "published_at": "2026-02-23T13:30:59+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8403972446692286,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.04039724466923
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19832",
-      "summary": "The inherent intermittency and high-frequency variability of solar irradiance, particularly during rapid cloud advection, present significant stability challenges to high-penetration photovoltaic grids. Although multimodal forecasting has emerged as a viable mitigation strategy, existing architectures predominantly rely on shallow feature concatenation and binary cloud segmentation, thereby failing to capture the fine-grained optical features of clouds and the complex spatiotemporal coupling bet",
-      "title": "M3S-Net: Multimodal Feature Fusion Network Based on Multi-scale Data for Ultra-short-term PV Power Forecasting"
-    },
-    {
-      "arxiv_id": "2602.19764",
-      "authors": [
-        "Yirui Sun",
-        "Guangyu Zhuge",
-        "Keliang Liu",
-        "Jie Gu",
-        "Zhihao xia",
-        "Qionglin Ren",
-        "Chunxu tian",
-        "Zhongxue Ga"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.769641+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "Towards Dexterous Embodied Manipulation via Deep Multi-Sensory Fusion and Sparse Expert Scaling",
-          "url": "https://arxiv.org/abs/2602.19764"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "Towards Dexterous Embodied Manipulation via Deep Multi-Sensory Fusion and Sparse Expert Scaling",
-        "url": "https://arxiv.org/abs/2602.19764"
-      },
-      "published_at": "2026-02-23T12:12:51+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8358496600569154,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.035849660056915
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19764",
-      "summary": "Realizing dexterous embodied manipulation necessitates the deep integration of heterogeneous multimodal sensory inputs. However, current vision-centric paradigms often overlook the critical force and geometric feedback essential for complex tasks. This paper presents DeMUSE, a Deep Multimodal Unified Sparse Experts framework leveraging a Diffusion Transformer to integrate RGB, depth, and 6-axis force into a unified serialized stream. Adaptive Modality-specific Normalization (AdaMN) is employed t",
-      "title": "Towards Dexterous Embodied Manipulation via Deep Multi-Sensory Fusion and Sparse Expert Scaling"
-    },
-    {
-      "arxiv_id": "2602.19699",
-      "authors": [
-        "Elisa Alboni",
-        "Pietro Noah Crestaz",
-        "Elias Fontanari",
-        "Andrea Del Prete"
-      ],
-      "categories": [
-        "cs.RO",
-        "math.OC"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.770009+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "CACTO-BIC: Scalable Actor-Critic Learning via Biased Sampling and GPU-Accelerated Trajectory Optimization",
-          "url": "https://arxiv.org/abs/2602.19699"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "CACTO-BIC: Scalable Actor-Critic Learning via Biased Sampling and GPU-Accelerated Trajectory Optimization",
-        "url": "https://arxiv.org/abs/2602.19699"
-      },
-      "published_at": "2026-02-23T10:45:36+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8308005355881578,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.030800535588158
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19699",
-      "summary": "Trajectory Optimization (TO) and Reinforcement Learning (RL) offer complementary strengths for solving optimal control problems. TO efficiently computes locally optimal solutions but can struggle with non-convexity, while RL is more robust to non-convexity at the cost of significantly higher computational demands. CACTO (Continuous Actor-Critic with Trajectory Optimization) was introduced to combine these advantages by learning a warm-start policy that guides the TO solver towards low-cost traje",
-      "title": "CACTO-BIC: Scalable Actor-Critic Learning via Biased Sampling and GPU-Accelerated Trajectory Optimization"
-    },
-    {
-      "arxiv_id": "2602.19653",
-      "authors": [
-        "Bailey Dacre",
-        "Rodrigo Moreno",
-        "Jørn Lambertsen",
-        "Kasper Stoy",
-        "Andrés Faíña"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.770364+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "Scalable Low-Density Distributed Manipulation Using an Interconnected Actuator Array",
-          "url": "https://arxiv.org/abs/2602.19653"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "Scalable Low-Density Distributed Manipulation Using an Interconnected Actuator Array",
-        "url": "https://arxiv.org/abs/2602.19653"
-      },
-      "published_at": "2026-02-23T09:54:32+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8278594887199184,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.027859488719919
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19653",
-      "summary": "Distributed Manipulator Systems, composed of arrays of robotic actuators necessitate dense actuator arrays to effectively manipulate small objects. This paper presents a system composed of modular 3-DoF robotic tiles interconnected by a compliant surface layer, forming a continuous, controllable manipulation surface. The compliant layer permits increased actuator spacing without compromising object manipulation capabilities, significantly reducing actuator density while maintaining robust contro",
-      "title": "Scalable Low-Density Distributed Manipulation Using an Interconnected Actuator Array"
-    },
-    {
-      "arxiv_id": "2602.19643",
-      "authors": [
-        "Alex Robertson",
-        "Huizhi Liang",
-        "Mahbub Gani",
-        "Rohit Kumar",
-        "Srijith Rajamohan"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.838999+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge",
-          "url": "https://arxiv.org/abs/2602.19643"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge",
-        "url": "https://arxiv.org/abs/2602.19643"
-      },
-      "published_at": "2026-02-23T09:41:46+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.827125855218518,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.027125855218518
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19643",
-      "summary": "Large Language Models (LLMs) possess a remarkable capacity to generate persuasive and intelligible language. However, coherence does not equate to truthfulness, as the responses often contain subtle hallucinations. Existing benchmarks are limited by static and narrow questions, leading to limited coverage and misleading evaluations. We present KGHaluBench, a Knowledge Graph-based hallucination benchmark that assesses LLMs across the breadth and depth of their knowledge, providing a fairer and mo",
-      "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge"
-    },
-    {
-      "arxiv_id": "2602.19628",
-      "authors": [
-        "Pasan Peiris",
-        "Matthias Galster",
-        "Antonija Mitrovic",
-        "Sanna Malinen",
-        "Raul Vincent Lumapas",
-        "Jay Holland"
-      ],
-      "categories": [
-        "cs.SE"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:43.726516+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-se",
-          "tier": 1,
-          "title": "Towards Understanding Views on Combining Videos and Gamification in Software Engineering Training",
-          "url": "https://arxiv.org/abs/2602.19628"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-se",
-        "tier": 1,
-        "title": "Towards Understanding Views on Combining Videos and Gamification in Software Engineering Training",
-        "url": "https://arxiv.org/abs/2602.19628"
-      },
-      "published_at": "2026-02-23T09:16:42+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8256872959872077,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.025687295987208
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19628",
-      "summary": "Watching training videos passively leads to superficial learning. Adding gamification can increase engagement. We study how software engineering students and industry practitioners view gamifying video-based training. We conducted a survey with students and professionals. Students and professionals share similar perceptions toward video-based training in general and support combining gamification and video-based training. Our findings can inform the design of gamified training solutions for soft",
-      "title": "Towards Understanding Views on Combining Videos and Gamification in Software Engineering Training"
-    },
-    {
-      "arxiv_id": "2602.19626",
-      "authors": [
-        "Roberto Tacconelli"
-      ],
-      "categories": [
-        "cs.IT",
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.839206+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Nacrith: Neural Lossless Compression via Ensemble Context Modeling and High-Precision CDF Coding",
-          "url": "https://arxiv.org/abs/2602.19626"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Nacrith: Neural Lossless Compression via Ensemble Context Modeling and High-Precision CDF Coding",
-        "url": "https://arxiv.org/abs/2602.19626"
-      },
-      "published_at": "2026-02-23T09:14:05+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8255372715332798,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.02553727153328
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19626",
-      "summary": "We present Nacrith, a lossless compression system that combines a 135M-parameter transformer language model (SmolLM2-135M) with an ensemble of lightweight online predictors and a 32-bit arithmetic coder. Beyond the base LLM-plus-arithmetic-coding paradigm, Nacrith introduces several contributions: (1) a CDF precision upgrade from 2^16 to 2^24 that eliminates ~75% of quantization overhead caused by minimum-probability floors in large vocabularies; (2) a token-level N-gram model for fast local pre",
-      "title": "Nacrith: Neural Lossless Compression via Ensemble Context Modeling and High-Precision CDF Coding"
-    },
-    {
-      "arxiv_id": "2602.19855",
-      "authors": [
-        "Francois Vandenhende",
-        "Anna Georgiou",
-        "Theodoros Psaras",
-        "Ellie Karekla"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.838189+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "SHIELD: Semantic Heterogeneity Integrated Embedding for Latent Discovery in Clinical Trial Safety Signals",
-          "url": "https://arxiv.org/abs/2602.19855"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "SHIELD: Semantic Heterogeneity Integrated Embedding for Latent Discovery in Clinical Trial Safety Signals",
-        "url": "https://arxiv.org/abs/2602.19855"
-      },
-      "published_at": "2026-02-23T13:55:36+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8418351246486234,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.9000000000000004,
-        "total_score": 7.941835124648624
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19855",
-      "summary": "We present SHIELD, a novel methodology for automated and integrated safety signal detection in clinical trials. SHIELD combines disproportionality analysis with semantic clustering of adverse event (AE) terms applied to MedDRA term embeddings. For each AE, the pipeline computes an information-theoretic disproportionality measure (Information Component) with effect size derived via empirical Bayesian shrinkage. A utility matrix is constructed by weighting semantic term-term similarities by signal",
-      "title": "SHIELD: Semantic Heterogeneity Integrated Embedding for Latent Discovery in Clinical Trial Safety Signals"
-    },
-    {
-      "arxiv_id": "2602.20020",
-      "authors": [
-        "Wanyong Feng",
-        "Andrew Lan"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.830993+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "gencat: Generative computerized adaptive testing",
-          "url": "https://arxiv.org/abs/2602.20020"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "gencat: Generative computerized adaptive testing",
-        "url": "https://arxiv.org/abs/2602.20020"
-      },
-      "published_at": "2026-02-23T16:28:46+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8508371568296307,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.75,
-        "total_score": 7.800837156829631
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20020",
-      "summary": "Existing computerized Adaptive Testing (CAT) frameworks are typically built on predicting the correctness of a student response to a question. Although effective, this approach fails to leverage textual information in questions and responses, especially for open-ended questions. In this work, we propose GENCAT (\\textbf{GEN}erative \\textbf{CAT}), a novel CAT framework that leverages Large Language Models for knowledge estimate and question selection. First, we develop a Generative Item Response T",
-      "title": "gencat: Generative computerized adaptive testing"
-    },
-    {
-      "arxiv_id": "2602.19639",
-      "authors": [
-        "Made Krisnanda",
-        "Raymond Chiong",
-        "Yang Yang",
-        "Kirill Glavatskiy"
-      ],
-      "categories": [
-        "cs.MA"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:41.736040+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ma",
-          "tier": 1,
-          "title": "Effects of Property Recovery Incentives and Social Interaction on Self-Evacuation Decisions in Natural Disasters: An Agent-Based Modelling Approach",
-          "url": "https://arxiv.org/abs/2602.19639"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ma",
-        "tier": 1,
-        "title": "Effects of Property Recovery Incentives and Social Interaction on Self-Evacuation Decisions in Natural Disasters: An Agent-Based Modelling Approach",
-        "url": "https://arxiv.org/abs/2602.19639"
-      },
-      "published_at": "2026-02-23T09:34:06+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8266856044931146,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.75,
-        "total_score": 7.776685604493115
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19639",
-      "summary": "Understanding evacuation decision-making behaviour is one of the key components for designing disaster mitigation policies. This study investigates how communications between household agents in a community influence self-evacuation decisions. We develop an agent-based model that simulates household agents' decisions to evacuate or stay. These agents interact within the framework of evolutionary game theory, effectively competing for limited shared resources, which include property recovery fund",
-      "title": "Effects of Property Recovery Incentives and Social Interaction on Self-Evacuation Decisions in Natural Disasters: An Agent-Based Modelling Approach"
-    },
-    {
-      "arxiv_id": "2602.20054",
-      "authors": [
-        "A. Giordano",
-        "G. De Meurichy",
-        "V. Telazzi",
-        "C. Mucignat",
-        "I. Lunati",
-        "D. A. L. M. Louchard",
-        "M. Iovieno",
-        "S. F. Armanini",
-        "M. Kovac"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.768177+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "Hydrodynamic Performance Enhancement of Unmanned Underwater Gliders with Soft Robotic Morphing Wings for Agility Improvement",
-          "url": "https://arxiv.org/abs/2602.20054"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "Hydrodynamic Performance Enhancement of Unmanned Underwater Gliders with Soft Robotic Morphing Wings for Agility Improvement",
-        "url": "https://arxiv.org/abs/2602.20054"
-      },
-      "published_at": "2026-02-23T17:04:21+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8529422304064738,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.6000000000000005,
-        "total_score": 7.652942230406475
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20054",
-      "summary": "This work assesses the hydrodynamic efficiency of Underwater Unmanned Vehicles (UUVs) equipped with soft morphing wings compared to conventional rigid wings. Unlike rigid wings, deformable counterparts can alter their aerodynamic properties on demand. Improvements in hydrodynamic efficiency extend a UUV's operational range and may determine mission feasibility. Structural and Computational Fluid Dynamics (CFD) simulations were conducted for both a soft morphing wing and a UUV incorporating it. T",
-      "title": "Hydrodynamic Performance Enhancement of Unmanned Underwater Gliders with Soft Robotic Morphing Wings for Agility Improvement"
-    },
-    {
-      "arxiv_id": "2602.19711",
-      "authors": [
-        "Krzysztof Kutt",
-        "Elżbieta Sroka",
-        "Oleksandra Ishchuk",
-        "Luiz do Valle Miranda"
-      ],
-      "categories": [
-        "cs.IR",
-        "cs.DL",
-        "cs.HC"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:44.746050+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ir",
-          "tier": 1,
-          "title": "A Three-stage Neuro-symbolic Recommendation Pipeline for Cultural Heritage Knowledge Graphs",
-          "url": "https://arxiv.org/abs/2602.19711"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ir",
-        "tier": 1,
-        "title": "A Three-stage Neuro-symbolic Recommendation Pipeline for Cultural Heritage Knowledge Graphs",
-        "url": "https://arxiv.org/abs/2602.19711"
-      },
-      "published_at": "2026-02-23T11:02:13+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.831759778903909,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.45,
-        "total_score": 7.48175977890391
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19711",
-      "summary": "The growing volume of digital cultural heritage resources highlights the need for advanced recommendation methods capable of interpreting semantic relationships between heterogeneous data entities. This paper presents a complete methodology for implementing a hybrid recommendation pipeline integrating knowledge-graph embeddings, approximate nearest-neighbour search, and SPARQL-driven semantic filtering. The work is evaluated on the JUHMP (Jagiellonian University Heritage Metadata Portal) knowled",
-      "title": "A Three-stage Neuro-symbolic Recommendation Pipeline for Cultural Heritage Knowledge Graphs"
-    },
-    {
-      "arxiv_id": "2602.19943",
-      "authors": [
-        "Abulikemu Abuduweili",
-        "Yuyang Pang",
-        "Feihan Li",
-        "Changliu Liu"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.768696+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "Scaling Law of Neural Koopman Operators",
-          "url": "https://arxiv.org/abs/2602.19943"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "Scaling Law of Neural Koopman Operators",
-        "url": "https://arxiv.org/abs/2602.19943"
-      },
-      "published_at": "2026-02-23T15:13:43+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.846414294569325,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.1500000000000004,
-        "total_score": 7.196414294569325
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19943",
-      "summary": "Data-driven neural Koopman operator theory has emerged as a powerful tool for linearizing and controlling nonlinear robotic systems. However, the performance of these data-driven models fundamentally depends on the trade-off between sample size and model dimensions, a relationship for which the scaling laws have remained unclear. This paper establishes a rigorous framework to address this challenge by deriving and empirically validating scaling laws that connect sample size, latent space dimensi",
-      "title": "Scaling Law of Neural Koopman Operators"
-    },
-    {
-      "arxiv_id": "2602.19862",
-      "authors": [
-        "Lars Fischer",
-        "Daniel Flögel",
-        "Sören Hohmann"
-      ],
-      "categories": [
-        "eess.SY",
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:42.769279+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "Rendezvous and Docking of Mobile Ground Robots for Efficient Transportation Systems",
-          "url": "https://arxiv.org/abs/2602.19862"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "Rendezvous and Docking of Mobile Ground Robots for Efficient Transportation Systems",
-        "url": "https://arxiv.org/abs/2602.19862"
-      },
-      "published_at": "2026-02-23T14:01:37+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8421869371228453,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.1500000000000004,
-        "total_score": 7.1921869371228455
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19862",
-      "summary": "In-Motion physical coupling of multiple mobile ground robots has the potential to enable new applications like in-motion transfer that improves efficiency in handling and transferring goods, which tackles current challenges in logistics. A key challenge lies in achieving reliable autonomous in-motion physical coupling of two mobile ground robots starting at any initial position. Existing approaches neglect the modeling of the docking interface and the strategy for approaching it, resulting in un",
-      "title": "Rendezvous and Docking of Mobile Ground Robots for Efficient Transportation Systems"
-    },
-    {
-      "arxiv_id": "2602.19728",
-      "authors": [
-        "Adamya Shyam",
-        "Venkateswara Rao Kagita",
-        "Bharti Rana",
-        "Vikas Kumar"
-      ],
-      "categories": [
-        "cs.IR"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:44.745826+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ir",
-          "tier": 1,
-          "title": "GrIT: Group Informed Transformer for Sequential Recommendation",
-          "url": "https://arxiv.org/abs/2602.19728"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ir",
-        "tier": 1,
-        "title": "GrIT: Group Informed Transformer for Sequential Recommendation",
-        "url": "https://arxiv.org/abs/2602.19728"
-      },
-      "published_at": "2026-02-23T11:26:11+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8331452724868029,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.0,
-        "total_score": 7.033145272486803
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19728",
-      "summary": "Sequential recommender systems aim to predict a user's future interests by extracting temporal patterns from their behavioral history. Existing approaches typically employ transformer-based architectures to process long sequences of user interactions, capturing preference shifts by modeling temporal relationships between items. However, these methods often overlook the influence of group-level features that capture the collective behavior of similar users. We hypothesize that explicitly modeling",
-      "title": "GrIT: Group Informed Transformer for Sequential Recommendation"
-    },
-    {
-      "arxiv_id": "2602.19883",
-      "authors": [
-        "Daham Mustafa",
-        "Diego Collarana",
-        "Yixin Peng",
-        "Rafiqul Haque",
-        "Christoph Lange-Bever",
-        "Christoph Quix",
-        "Stephan Decker"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.LO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.837751+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Denotational Semantics for ODRL: Knowledge-Based Constraint Conflict Detection",
-          "url": "https://arxiv.org/abs/2602.19883"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Denotational Semantics for ODRL: Knowledge-Based Constraint Conflict Detection",
-        "url": "https://arxiv.org/abs/2602.19883"
-      },
-      "published_at": "2026-02-23T14:28:13+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8437440813012508,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 2.25,
-        "total_score": 6.293744081301251
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19883",
-      "summary": "ODRL's six set-based operators -- isA, isPartOf, hasPart, isAnyOf, isAllOf, isNoneOf -- depend on external domain knowledge that the W3C specification leaves unspecified. Without it, every cross-dataspace policy comparison defaults to Unknown. We present a denotational semantics that maps each ODRL constraint to the set of knowledge-base concepts satisfying it. Conflict detection reduces to denotation intersection under a three-valued verdict -- Conflict, Compatible, or Unknown -- that is sound ",
-      "title": "Denotational Semantics for ODRL: Knowledge-Based Constraint Conflict Detection"
-    },
-    {
-      "arxiv_id": "2602.19815",
-      "authors": [
-        "Akhilesh Kakolu Ramarao"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-24T09:02:38.838576+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Keyboards for the Endangered Idu Mishmi Language",
-          "url": "https://arxiv.org/abs/2602.19815"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Keyboards for the Endangered Idu Mishmi Language",
-        "url": "https://arxiv.org/abs/2602.19815"
-      },
-      "published_at": "2026-02-23T13:13:40+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.8393872354883498,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 2.25,
-        "total_score": 6.28938723548835
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.19815",
-      "summary": "We present a mobile and desktop keyboard suite for Idu Mishmi, an endangered Trans-Himalayan language spoken by approximately 11,000 people in Arunachal Pradesh, India. Although a Latin-based orthography was developed in 2018, no digital input tools existed to use it, forcing speakers into ad-hoc romanizations that cannot represent the full writing system. Our keyboards comprise two tools: (1) an Android mobile keyboard, published on the Google Play Store and actively used in teacher training pr",
-      "title": "Keyboards for the Endangered Idu Mishmi Language"
+      "story_id": "arxiv:2602.19888",
+      "summary": "Quantitative understanding of coupled reaction and transport processes in lithium-ion battery (LIB) composite electrodes remains challenging because key internal states cannot be measured directly. In this study, we develop a physics-integrated, data-driven analysis pipeline to estimate internal electrochemical states from operando microscopic X-ray absorption fine structure ($μ$-XAFS) hyperspectral data of LIB cathodes with LiPF$_6$ electrolyte. State-of-charge (SOC) maps are first constructed ",
+      "title": "A Physics-Regularized Neural Network and Kirchhoff Markov Random Field Framework for Inferring Internal Electrochemical States from Operando Spectromicroscopy"
     }
   ],
   "run_date": "2026-02-23",
-  "run_id": "c69faafa-b71c-42aa-a997-f1ef500a209c",
+  "run_id": "0cf1f9be-77a8-43ed-9f15-f6121356847f",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-23T23:59:59+00:00",
     "items_total": 231,
-    "run_id": "c69faafa-b71c-42aa-a997-f1ef500a209c-2026-02-23",
+    "run_id": "0cf1f9be-77a8-43ed-9f15-f6121356847f-2026-02-23",
     "started_at": "2026-02-22T23:59:59+00:00",
     "stories_total": 231,
     "success": true
@@ -5136,11 +5143,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8483788021227392,
+        "recency_score": 0.8449983828896123,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 13.348378802122738
+        "total_score": 13.344998382889612
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -5184,11 +5191,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8291761029494228,
+        "recency_score": 0.8258721980910669,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.029176102949423
+        "total_score": 11.025872198091067
       },
       "section": null,
       "source_name": null,
@@ -5239,11 +5246,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8544144299397097,
+        "recency_score": 0.8510099613641129,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 3.45,
-        "total_score": 10.80441442993971
+        "total_score": 10.801009961364112
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -5291,11 +5298,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8418682530715604,
+        "recency_score": 0.8385137755347322,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.64186825307156
+        "total_score": 10.638513775534731
       },
       "section": null,
       "source_name": null,
@@ -5343,11 +5350,11 @@
         "kind_score": 1.8,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.8418205095823544,
+        "recency_score": 0.838466222282492,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.641820509582354
+        "total_score": 10.638466222282492
       },
       "section": null,
       "source_name": null,

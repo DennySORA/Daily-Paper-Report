@@ -102,7 +102,7 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-25T07:14:51.649087+00:00",
+  "generated_at": "2026-02-25T08:12:21.187761+00:00",
   "model_releases_by_entity": {
     "other": [
       {
@@ -143,11 +143,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.8847715233187043,
+          "recency_score": 0.8812461302513477,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.684771523318704
+          "total_score": 8.681246130251347
         },
         "section": null,
         "source_name": null,
@@ -193,11 +193,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.8847500187166321,
+          "recency_score": 0.8812247113348711,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.684750018716631
+          "total_score": 8.68122471133487
         },
         "section": null,
         "source_name": null,
@@ -243,11 +243,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.8847305626222778,
+          "recency_score": 0.8812053327637852,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.684730562622278
+          "total_score": 8.681205332763785
         },
         "section": null,
         "source_name": null,
@@ -293,11 +293,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.8847141788746719,
+          "recency_score": 0.8811890142976092,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.684714178874671
+          "total_score": 8.681189014297608
         },
         "section": null,
         "source_name": null,
@@ -343,11 +343,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.884685508046414,
+          "recency_score": 0.8811604577089449,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 8.684685508046414
+          "total_score": 8.681160457708945
         },
         "section": null,
         "source_name": null,
@@ -397,11 +397,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.9405261000821498,
+          "recency_score": 0.936778551584589,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 10.74052610008215
+          "total_score": 10.736778551584589
         },
         "section": null,
         "source_name": null,
@@ -449,11 +449,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.9380832569998974,
+          "recency_score": 0.9343454420683928,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 10.738083256999897
+          "total_score": 10.734345442068392
         },
         "section": null,
         "source_name": null,
@@ -501,11 +501,11 @@
           "kind_score": 1.8,
           "llm_raw_score": 0.0,
           "llm_relevance_score": 0.0,
-          "recency_score": 0.9358731173470355,
+          "recency_score": 0.9321441087692671,
           "semantic_score": 0.0,
           "tier_score": 2.0,
           "topic_score": 4.0,
-          "total_score": 10.735873117347035
+          "total_score": 10.732144108769267
         },
         "section": null,
         "source_name": null,
@@ -552,17 +552,113 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9499961368931572,
+        "recency_score": 0.9462108548098727,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.149996136893158
+        "total_score": 11.146210854809873
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.21201",
       "summary": "We report the performance of Aletheia (Feng et al., 2026b), a mathematics research agent powered by Gemini 3 Deep Think, on the inaugural FirstProof challenge. Within the allowed timeframe of the challenge, Aletheia autonomously solved 6 problems (2, 5, 7, 8, 9, 10) out of 10 according to majority expert assessments; we note that experts were not unanimous on Problem 8 (only). For full transparency, we explain our interpretation of FirstProof and disclose details about our experiments as well as our evaluation. Raw prompts and outputs are available at https://github.com/google-deepmind/superhuman/tree/main/aletheia.",
       "title": "Aletheia tackles FirstProof autonomously"
+    },
+    {
+      "arxiv_id": "2602.21196",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "huggingface"
+      ],
+      "first_seen_at": "2026-02-25T06:31:30.394739+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking",
+          "url": "https://arxiv.org/abs/2602.21196"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking",
+        "url": "https://arxiv.org/abs/2602.21196"
+      },
+      "published_at": "2026-02-24T18:54:39+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9461112012757611,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 11.146111201275762
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.21196",
+      "summary": "Efficiently processing long sequences with Transformer models usually requires splitting the computations across accelerators via context parallelism. The dominant approaches in this family of methods, such as Ring Attention or DeepSpeed Ulysses, enable scaling over the context dimension but do not focus on memory efficiency, which limits the sequence lengths they can support. More advanced techniques, such as Fully Pipelined Distributed Transformer or activation offloading, can further extend the possible context length at the cost of training throughput. In this paper, we present UPipe, a simple yet effective context parallelism technique that performs fine-grained chunking at the attention head level. This technique significantly reduces the activation memory usage of self-attention, breaking the activation memory barrier and unlocking much longer context lengths. Our approach reduces intermediate tensor memory usage in the attention layer by as much as 87.5% for 32B Transformers, while matching previous context parallelism techniques in terms of training speed. UPipe can support the context length of 5M tokens when training Llama3-8B on a single 8timesH100 node, improving upon prior methods by over 25%.",
+      "title": "Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking"
+    },
+    {
+      "arxiv_id": "2602.21042",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "01-ai"
+      ],
+      "first_seen_at": "2026-02-25T06:31:33.024449+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "OmniOCR: Generalist OCR for Ethnic Minority Languages",
+          "url": "https://arxiv.org/abs/2602.21042"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "OmniOCR: Generalist OCR for Ethnic Minority Languages",
+        "url": "https://arxiv.org/abs/2602.21042"
+      },
+      "published_at": "2026-02-24T16:02:49+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9348884718128203,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 11.13488847181282
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.21042",
+      "summary": "Optical character recognition (OCR) has advanced rapidly with deep learning and multimodal models, yet most methods focus on well-resourced scripts such as Latin and Chinese. Ethnic minority languages remain underexplored due to complex writing systems, scarce annotations, and diverse historical and modern forms, making generalization in low-resource or zero-shot settings challenging. To address these challenges, we present OmniOCR, a universal framework for ethnic minority scripts. OmniOCR introduces Dynamic Low-Rank Adaptation (Dynamic LoRA) to allocate model capacity across layers and scripts, enabling effective adaptation while preserving knowledge.A sparsity regularization prunes redundant updates, ensuring compact and efficient adaptation without extra inference cost. Evaluations on TibetanMNIST, Shui, ancient Yi, and Dongba show that OmniOCR outperforms zero-shot foundation models and standard post training, achieving state-of-the-art accuracy with superior parameter efficiency, and compared with the state-of-the-art baseline models, it improves accuracy by 39%-66% on these four datasets. Code: https://github.com/AIGeeksGroup/OmniOCR.",
+      "title": "OmniOCR: Generalist OCR for Ethnic Minority Languages"
     },
     {
       "arxiv_id": "2602.20945",
@@ -600,17 +696,65 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9324856395857951,
+        "recency_score": 0.9287701284933103,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 11.132485639585795
+        "total_score": 11.128770128493311
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20945",
       "summary": "Large Language Models (LLMs) consistently benefit from scaled Chain-of-Thought (CoT) reasoning, but also suffer from heavy computational overhead. To address this issue, efficient reasoning aims to incentivize short yet accurate thinking trajectories, typically through reward shaping with Reinforcement Learning (RL). In this paper, we systematically investigate the mechanics of efficient reasoning for LLMs. For comprehensive evaluation, we advocate for more fine-grained metrics, including length distribution conditioned on correctness and performance across a wide spectrum of token budgets ranging from 2k to 32k. First, we reveal that the training process follows a two-stage paradigm: length adaptation and reasoning refinement. After that, we conduct extensive experiments (about 0.2 million GPU hours) in a unified protocol, deconstructing training prompts and rollouts, reward shaping, and optimization strategies. In particular, a key finding is to train on relatively easier prompts, ensuring the density of positive reward signals and thus avoiding the length collapse. Meanwhile, the learned length bias can be generalized across domains. We distill all findings into valuable insights and practical guidelines, and further validate them across the Qwen3 series, ranging from 0.6B to 30B, demonstrating the robustness and generalization.",
       "title": "The Art of Efficient Reasoning: Data, Reward, and Optimization"
+    },
+    {
+      "arxiv_id": "2602.20903",
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "qwen"
+      ],
+      "first_seen_at": "2026-02-25T06:31:33.028541+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "TextPecker: Rewarding Structural Anomaly Quantification for Enhancing Visual Text Rendering",
+          "url": "https://arxiv.org/abs/2602.20903"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "TextPecker: Rewarding Structural Anomaly Quantification for Enhancing Visual Text Rendering",
+        "url": "https://arxiv.org/abs/2602.20903"
+      },
+      "published_at": "2026-02-24T13:40:23+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 2.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9256868819182695,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 11.12568688191827
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20903",
+      "summary": "Visual Text Rendering (VTR) remains a critical challenge in text-to-image generation, where even advanced models frequently produce text with structural anomalies such as distortion, blurriness, and misalignment. However, we find that leading MLLMs and specialist OCR models largely fail to perceive these structural anomalies, creating a critical bottleneck for both VTR evaluation and RL-based optimization. As a result, even state-of-the-art generators (e.g., SeedDream4.0, Qwen-Image) still struggle to render structurally faithful text. To address this, we propose TextPecker, a plug-and-play structural anomaly perceptive RL strategy that mitigates noisy reward signals and works with any textto-image generator. To enable this capability, we construct a recognition dataset with character-level structural-anomaly annotations and develop a stroke-editing synthesis engine to expand structural-error coverage. Experiments show that TextPecker consistently improves diverse text-to-image models; even on the well-optimized Qwen-Image, it significantly yields average gains of 4% in structural fidelity and 8.7% in semantic alignment for Chinese text rendering, establishing a new state-of-the-art in high-fidelity VTR. Our work fills a gap in VTR optimization, providing a foundational step towards reliable and structural faithful visual text generation.",
+      "title": "TextPecker: Rewarding Structural Anomaly Quantification for Enhancing Visual Text Rendering"
     },
     {
       "arxiv_id": "2602.21081",
@@ -656,11 +800,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9413951817234244,
+        "recency_score": 0.9376441703495025,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.141395181723425
+        "total_score": 10.137644170349503
       },
       "section": null,
       "source_name": null,
@@ -716,11 +860,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9381614338619714,
+        "recency_score": 0.9344233074329102,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.138161433861972
+        "total_score": 10.134423307432911
       },
       "section": null,
       "source_name": null,
@@ -772,11 +916,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9223795153799159,
+        "recency_score": 0.9187042723784289,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.122379515379915
+        "total_score": 10.118704272378428
       },
       "section": null,
       "source_name": null,
@@ -830,11 +974,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9209564773441545,
+        "recency_score": 0.9172869044713885,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.120956477344155
+        "total_score": 10.117286904471388
       },
       "section": null,
       "source_name": null,
@@ -886,11 +1030,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9026064395945699,
+        "recency_score": 0.8990099828813581,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 10.10260643959457
+        "total_score": 10.099009982881359
       },
       "section": null,
       "source_name": null,
@@ -932,11 +1076,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9502160688604336,
+        "recency_score": 0.9464299104530222,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.150216068860434
+        "total_score": 9.146429910453023
       },
       "section": null,
       "source_name": null,
@@ -978,11 +1122,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9499389629202634,
+        "recency_score": 0.9461539086480265,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.149938962920263
+        "total_score": 9.146153908648026
       },
       "section": null,
       "source_name": null,
@@ -1024,17 +1168,63 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9486249108193331,
+        "recency_score": 0.9448450924187813,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.148624910819333
+        "total_score": 9.144845092418782
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.21185",
       "summary": "Uniform-state discrete diffusion models excel at few-step generation and guidance due to their ability to self-correct, making them preferred over autoregressive or Masked diffusion models in these settings. However, their sampling quality plateaus with ancestral samplers as the number of steps increases. We introduce a family of Predictor-Corrector (PC) samplers for discrete diffusion that generalize prior methods and apply to arbitrary noise processes. When paired with uniform-state diffusion, our samplers outperform ancestral sampling on both language and image modeling, achieving lower generative perplexity at matched unigram entropy on OpenWebText and better FID/IS scores on CIFAR10. Crucially, unlike conventional samplers, our PC methods continue to improve with more sampling steps. Taken together, these findings call into question the assumption that Masked diffusion is the inevitable future of diffusion-based language modeling. Beyond sampling, we develop a memory-efficient curriculum for the Gaussian relaxation training phase, reducing training time by 25% and memory by 33% compared to Duo while maintaining comparable perplexity on OpenWebText and LM1B and strong downstream performance. We release code, checkpoints, and a video-tutorial on: https://s-sahoo.com/duo-ch2",
       "title": "The Diffusion Duality, Chapter II: Ψ-Samplers and Efficient Curriculum"
+    },
+    {
+      "arxiv_id": "2602.21053",
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:33.024196+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "hf-daily-papers",
+          "tier": 1,
+          "title": "OCR-Agent: Agentic OCR with Capability and Memory Reflection",
+          "url": "https://arxiv.org/abs/2602.21053"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "hf-daily-papers",
+        "tier": 1,
+        "title": "OCR-Agent: Agentic OCR with Capability and Memory Reflection",
+        "url": "https://arxiv.org/abs/2602.21053"
+      },
+      "published_at": "2026-02-24T16:10:27+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 1.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9353841806408095,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 9.13538418064081
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.21053",
+      "summary": "Large Vision-Language Models (VLMs) have demonstrated significant potential on complex visual understanding tasks through iterative optimization methods.However, these models generally lack effective self-correction mechanisms, making it difficult for them to independently rectify cognitive biases. Consequently, during multi-turn revisions, they often fall into repetitive and ineffective attempts, failing to achieve stable improvements in answer quality.To address this issue, we propose a novel iterative self-correction framework that endows models with two key capabilities: Capability Reflection and Memory Reflection. This framework guides the model to first diagnose errors and generate a correction plan via Capability Reflection, then leverage Memory Reflection to review past attempts to avoid repetition and explore new solutions, and finally, optimize the answer through rigorous re-reasoning. Experiments on the challenging OCRBench v2 benchmark show that OCR-Agent outperforms the current open-source SOTA model InternVL3-8B by +2.0 on English and +1.2 on Chinese subsets, while achieving state-of-the-art results in Visual Understanding (79.9) and Reasoning (66.5) - surpassing even larger fine-tuned models. Our method demonstrates that structured, self-aware reflection can significantly enhance VLMs' reasoning robustness without additional training. Code: https://github.com/AIGeeksGroup/OCR-Agent.",
+      "title": "OCR-Agent: Agentic OCR with Capability and Memory Reflection"
     },
     {
       "arxiv_id": "2602.21015",
@@ -1070,11 +1260,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9366891122947608,
+        "recency_score": 0.9329568523658177,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.13668911229476
+        "total_score": 9.132956852365817
       },
       "section": null,
       "source_name": null,
@@ -1116,11 +1306,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9158181986276047,
+        "recency_score": 0.9121690993479505,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 9.115818198627604
+        "total_score": 9.11216909934795
       },
       "section": null,
       "source_name": null,
@@ -1169,11 +1359,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9501291896501803,
+        "recency_score": 0.9463433774150375,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.15012918965018
+        "total_score": 8.146343377415038
       },
       "section": null,
       "source_name": null,
@@ -1226,71 +1416,17 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9500874024797583,
+        "recency_score": 0.9463017567465847,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.150087402479759
+        "total_score": 8.146301756746585
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.21202",
       "summary": "We study efficient multi-vector retrieval for late interaction in any modality. Late interaction has emerged as a dominant paradigm for information retrieval in text, images, visual documents, and videos, but its computation and storage costs grow linearly with document length, making it costly for image-, video-, and audio-rich corpora. To address this limitation, we explore query-agnostic methods for compressing multi-vector document representations under a constant vector budget. We introduce",
       "title": "Multi-Vector Index Compression in Any Modality"
-    },
-    {
-      "arxiv_id": "2602.21196",
-      "authors": [
-        "Ravi Ghadia",
-        "Maksim Abraham",
-        "Sergei Vorobyov",
-        "Max Ryabinin"
-      ],
-      "categories": [
-        "cs.LG",
-        "cs.DC"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:30.394739+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-lg",
-          "tier": 1,
-          "title": "Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking",
-          "url": "https://arxiv.org/abs/2602.21196"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-lg",
-        "tier": 1,
-        "title": "Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking",
-        "url": "https://arxiv.org/abs/2602.21196"
-      },
-      "published_at": "2026-02-24T18:54:39+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9498960846987098,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.14989608469871
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.21196",
-      "summary": "Efficiently processing long sequences with Transformer models usually requires splitting the computations across accelerators via context parallelism. The dominant approaches in this family of methods, such as Ring Attention or DeepSpeed Ulysses, enable scaling over the context dimension but do not focus on memory efficiency, which limits the sequence lengths they can support. More advanced techniques, such as Fully Pipelined Distributed Transformer or activation offloading, can further extend t",
-      "title": "Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking"
     },
     {
       "arxiv_id": "2602.21189",
@@ -1334,11 +1470,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9491366914241984,
+        "recency_score": 0.9453548338217184,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.149136691424198
+        "total_score": 8.145354833821719
       },
       "section": null,
       "source_name": null,
@@ -1391,11 +1527,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.948769850696667,
+        "recency_score": 0.9449894547797449,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.148769850696667
+        "total_score": 8.144989454779745
       },
       "section": null,
       "source_name": null,
@@ -1445,11 +1581,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9482198554326966,
+        "recency_score": 0.9444416509849161,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.148219855432696
+        "total_score": 8.144441650984916
       },
       "section": null,
       "source_name": null,
@@ -1500,11 +1636,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9481485221314908,
+        "recency_score": 0.9443706019129366,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14814852213149
+        "total_score": 8.144370601912938
       },
       "section": null,
       "source_name": null,
@@ -1555,11 +1691,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9476756632154374,
+        "recency_score": 0.9438996271144215,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.147675663215438
+        "total_score": 8.143899627114422
       },
       "section": null,
       "source_name": null,
@@ -1609,11 +1745,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9475210204308303,
+        "recency_score": 0.9437456005076483,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14752102043083
+        "total_score": 8.143745600507648
       },
       "section": null,
       "source_name": null,
@@ -1663,11 +1799,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9474387739120302,
+        "recency_score": 0.9436636817020483,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14743877391203
+        "total_score": 8.143663681702048
       },
       "section": null,
       "source_name": null,
@@ -1716,11 +1852,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9470462822219884,
+        "recency_score": 0.9432727539044313,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14704628222199
+        "total_score": 8.143272753904432
       },
       "section": null,
       "source_name": null,
@@ -1775,11 +1911,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9469553087660098,
+        "recency_score": 0.9431821429343403,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14695530876601
+        "total_score": 8.143182142934341
       },
       "section": null,
       "source_name": null,
@@ -1829,11 +1965,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9467646216903235,
+        "recency_score": 0.9429922156558186,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.146764621690323
+        "total_score": 8.142992215655818
       },
       "section": null,
       "source_name": null,
@@ -1885,11 +2021,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9466199881440203,
+        "recency_score": 0.9428481584053025,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.146619988144021
+        "total_score": 8.142848158405302
       },
       "section": null,
       "source_name": null,
@@ -1946,11 +2082,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9465947891047413,
+        "recency_score": 0.9428230597721917,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.146594789104741
+        "total_score": 8.142823059772192
       },
       "section": null,
       "source_name": null,
@@ -2002,11 +2138,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9462552153228676,
+        "recency_score": 0.9424848390300858,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.146255215322867
+        "total_score": 8.142484839030086
       },
       "section": null,
       "source_name": null,
@@ -2056,11 +2192,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9455031100560499,
+        "recency_score": 0.9417357305444977,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14550311005605
+        "total_score": 8.141735730544498
       },
       "section": null,
       "source_name": null,
@@ -2125,11 +2261,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9452164384600341,
+        "recency_score": 0.9414502011982385,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.145216438460034
+        "total_score": 8.14145020119824
       },
       "section": null,
       "source_name": null,
@@ -2185,11 +2321,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9451661157763105,
+        "recency_score": 0.9414000790264389,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.145166115776311
+        "total_score": 8.14140007902644
       },
       "section": null,
       "source_name": null,
@@ -2240,11 +2376,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9451529885603084,
+        "recency_score": 0.9413870041161395,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.145152988560309
+        "total_score": 8.14138700411614
       },
       "section": null,
       "source_name": null,
@@ -2293,11 +2429,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9447067716807657,
+        "recency_score": 0.9409425651983103,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.144706771680767
+        "total_score": 8.14094256519831
       },
       "section": null,
       "source_name": null,
@@ -2352,11 +2488,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9445384014516615,
+        "recency_score": 0.9407748658443673,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.144538401451662
+        "total_score": 8.140774865844367
       },
       "section": null,
       "source_name": null,
@@ -2406,11 +2542,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9445274693575018,
+        "recency_score": 0.9407639773093955,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.144527469357502
+        "total_score": 8.140763977309396
       },
       "section": null,
       "source_name": null,
@@ -2465,11 +2601,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9438816072505809,
+        "recency_score": 0.9401206886553201,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14388160725058
+        "total_score": 8.14012068865532
       },
       "section": null,
       "source_name": null,
@@ -2524,11 +2660,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9433857627099286,
+        "recency_score": 0.939626819818971,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14338576270993
+        "total_score": 8.139626819818972
       },
       "section": null,
       "source_name": null,
@@ -2576,11 +2712,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9425824799884657,
+        "recency_score": 0.9388267377965165,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.142582479988466
+        "total_score": 8.138826737796517
       },
       "section": null,
       "source_name": null,
@@ -2632,11 +2768,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9425061164458277,
+        "recency_score": 0.938750678526221,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.142506116445828
+        "total_score": 8.138750678526222
       },
       "section": null,
       "source_name": null,
@@ -2690,11 +2826,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9424799360839887,
+        "recency_score": 0.9387246024806531,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.142479936083989
+        "total_score": 8.138724602480654
       },
       "section": null,
       "source_name": null,
@@ -2741,11 +2877,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9424679369945191,
+        "recency_score": 0.9387126512018393,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14246793699452
+        "total_score": 8.138712651201839
       },
       "section": null,
       "source_name": null,
@@ -2796,11 +2932,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9418790785713234,
+        "recency_score": 0.9381261390989625,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.141879078571323
+        "total_score": 8.138126139098963
       },
       "section": null,
       "source_name": null,
@@ -2850,11 +2986,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9414006296279711,
+        "recency_score": 0.9376495965467446,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.141400629627972
+        "total_score": 8.137649596546744
       },
       "section": null,
       "source_name": null,
@@ -2902,11 +3038,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9402496434644296,
+        "recency_score": 0.9365031965148028,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.14024964346443
+        "total_score": 8.136503196514804
       },
       "section": null,
       "source_name": null,
@@ -2955,11 +3091,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9401974088241017,
+        "recency_score": 0.9364511700046352,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.140197408824102
+        "total_score": 8.136451170004635
       },
       "section": null,
       "source_name": null,
@@ -3007,11 +3143,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9398905889105286,
+        "recency_score": 0.9361455726222666,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.139890588910529
+        "total_score": 8.136145572622267
       },
       "section": null,
       "source_name": null,
@@ -3062,11 +3198,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9395360211630661,
+        "recency_score": 0.9357924176583826,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.139536021163066
+        "total_score": 8.135792417658383
       },
       "section": null,
       "source_name": null,
@@ -3075,22 +3211,21 @@
       "title": "An Expert Schema for Evaluating Large Language Model Errors in Scholarly Question-Answering Systems"
     },
     {
-      "arxiv_id": "2602.21053",
+      "arxiv_id": "2602.21054",
       "authors": [
-        "Shimin Wen",
-        "Zeyu Zhang",
-        "Xingdou Bian",
-        "Hongjie Zhu",
-        "Lulu He",
-        "Layi Shama",
-        "Daji Ergu",
-        "Ying Cai"
+        "Seongheon Park",
+        "Changdae Oh",
+        "Hyeong Kyu Choi",
+        "Xuefeng Du",
+        "Sharon Li"
       ],
       "categories": [
-        "cs.CV"
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-25T06:31:33.024196+00:00",
+      "first_seen_at": "2026-02-25T06:31:29.265457+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3098,20 +3233,20 @@
       "links": [
         {
           "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "OCR-Agent: Agentic OCR with Capability and Memory Reflection",
-          "url": "https://arxiv.org/abs/2602.21053"
+          "title": "VAUQ: Vision-Aware Uncertainty Quantification for LVLM Self-Evaluation",
+          "url": "https://arxiv.org/abs/2602.21054"
         }
       ],
       "primary_link": {
         "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "OCR-Agent: Agentic OCR with Capability and Memory Reflection",
-        "url": "https://arxiv.org/abs/2602.21053"
+        "title": "VAUQ: Vision-Aware Uncertainty Quantification for LVLM Self-Evaluation",
+        "url": "https://arxiv.org/abs/2602.21054"
       },
-      "published_at": "2026-02-24T16:10:27+00:00",
+      "published_at": "2026-02-24T16:11:14+00:00",
       "scores": {
         "citation_score": 0.0,
         "cross_source_score": 0.0,
@@ -3119,17 +3254,70 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9391261510081639,
+        "recency_score": 0.9354350651920437,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.139126151008163
+        "total_score": 8.135435065192043
       },
       "section": null,
       "source_name": null,
-      "story_id": "arxiv:2602.21053",
-      "summary": "Large Vision-Language Models (VLMs) have demonstrated significant potential on complex visual understanding tasks through iterative optimization methods.However, these models generally lack effective self-correction mechanisms, making it difficult for them to independently rectify cognitive biases. Consequently, during multi-turn revisions, they often fall into repetitive and ineffective attempts, failing to achieve stable improvements in answer quality.To address this issue, we propose a novel ",
-      "title": "OCR-Agent: Agentic OCR with Capability and Memory Reflection"
+      "story_id": "arxiv:2602.21054",
+      "summary": "Large Vision-Language Models (LVLMs) frequently hallucinate, limiting their safe deployment in real-world applications. Existing LLM self-evaluation methods rely on a model's ability to estimate the correctness of its own outputs, which can improve deployment reliability; however, they depend heavily on language priors and are therefore ill-suited for evaluating vision-conditioned predictions. We propose VAUQ, a vision-aware uncertainty quantification framework for LVLM self-evaluation that expl",
+      "title": "VAUQ: Vision-Aware Uncertainty Quantification for LVLM Self-Evaluation"
+    },
+    {
+      "arxiv_id": "2602.21052",
+      "authors": [
+        "Timur Nabiev",
+        "Evgeny Frolov"
+      ],
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.265728+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Position-Aware Sequential Attention for Accurate Next Item Recommendations",
+          "url": "https://arxiv.org/abs/2602.21052"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Position-Aware Sequential Attention for Accurate Next Item Recommendations",
+        "url": "https://arxiv.org/abs/2602.21052"
+      },
+      "published_at": "2026-02-24T16:09:47+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9353408768200427,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.135340876820043
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.21052",
+      "summary": "Sequential self-attention models usually rely on additive positional embeddings, which inject positional information into item representations at the input. In the absence of positional signals, the attention block is permutation-equivariant over sequence positions and thus has no intrinsic notion of temporal order beyond causal masking. We argue that additive positional embeddings make the attention mechanism only superficially sensitive to sequence order: positional information is entangled wi",
+      "title": "Position-Aware Sequential Attention for Accurate Next Item Recommendations"
     },
     {
       "arxiv_id": "2602.21046",
@@ -3173,11 +3361,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9387620928173072,
+        "recency_score": 0.9350215730484276,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.138762092817307
+        "total_score": 8.135021573048428
       },
       "section": null,
       "source_name": null,
@@ -3227,11 +3415,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9387599197594223,
+        "recency_score": 0.9350194086491432,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.138759919759423
+        "total_score": 8.135019408649143
       },
       "section": null,
       "source_name": null,
@@ -3240,22 +3428,22 @@
       "title": "PaperTrail: A Claim-Evidence Interface for Grounding Provenance in LLM-based Scholarly Q&A"
     },
     {
-      "arxiv_id": "2602.21042",
+      "arxiv_id": "2602.21044",
       "authors": [
-        "Bonan Liu",
-        "Zeyu Zhang",
-        "Bingbing Meng",
-        "Han Wang",
-        "Hanshuo Zhang",
-        "Chengping Wang",
-        "Daji Ergu",
-        "Ying Cai"
+        "Yanrui Wu",
+        "Lingling Zhang",
+        "Xinyu Zhang",
+        "Jiayu Chang",
+        "Pengyu Li",
+        "Xu Jiang",
+        "Jingtao Hu",
+        "Jun Liu"
       ],
       "categories": [
-        "cs.CV"
+        "cs.AI"
       ],
       "entities": [],
-      "first_seen_at": "2026-02-25T06:31:33.024449+00:00",
+      "first_seen_at": "2026-02-25T06:31:29.265947+00:00",
       "github_release_url": null,
       "hf_metadata": null,
       "hf_model_id": null,
@@ -3263,20 +3451,20 @@
       "links": [
         {
           "link_type": "arxiv",
-          "source_id": "arxiv-cs-cv",
+          "source_id": "arxiv-cs-ai",
           "tier": 1,
-          "title": "OmniOCR: Generalist OCR for Ethnic Minority Languages",
-          "url": "https://arxiv.org/abs/2602.21042"
+          "title": "LogicGraph : Benchmarking Multi-Path Logical Reasoning via Neuro-Symbolic Generation and Verification",
+          "url": "https://arxiv.org/abs/2602.21044"
         }
       ],
       "primary_link": {
         "link_type": "arxiv",
-        "source_id": "arxiv-cs-cv",
+        "source_id": "arxiv-cs-ai",
         "tier": 1,
-        "title": "OmniOCR: Generalist OCR for Ethnic Minority Languages",
-        "url": "https://arxiv.org/abs/2602.21042"
+        "title": "LogicGraph : Benchmarking Multi-Path Logical Reasoning via Neuro-Symbolic Generation and Verification",
+        "url": "https://arxiv.org/abs/2602.21044"
       },
-      "published_at": "2026-02-24T16:02:49+00:00",
+      "published_at": "2026-02-24T16:04:26+00:00",
       "scores": {
         "citation_score": 0.0,
         "cross_source_score": 0.0,
@@ -3284,17 +3472,17 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9386284591150515,
+        "recency_score": 0.9349934362485214,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.138628459115052
+        "total_score": 8.134993436248521
       },
       "section": null,
       "source_name": null,
-      "story_id": "arxiv:2602.21042",
-      "summary": "Optical character recognition (OCR) has advanced rapidly with deep learning and multimodal models, yet most methods focus on well-resourced scripts such as Latin and Chinese. Ethnic minority languages remain underexplored due to complex writing systems, scarce annotations, and diverse historical and modern forms, making generalization in low-resource or zero-shot settings challenging. To address these challenges, we present OmniOCR, a universal framework for ethnic minority scripts. OmniOCR intr",
-      "title": "OmniOCR: Generalist OCR for Ethnic Minority Languages"
+      "story_id": "arxiv:2602.21044",
+      "summary": "Evaluations of large language models (LLMs) primarily emphasize convergent logical reasoning, where success is defined by producing a single correct proof. However, many real-world reasoning problems admit multiple valid derivations, requiring models to explore diverse logical paths rather than committing to one route. To address this limitation, we introduce LogicGraph, the first benchmark aimed to systematically evaluate multi-path logical reasoning, constructed via a neuro-symbolic framework ",
+      "title": "LogicGraph : Benchmarking Multi-Path Logical Reasoning via Neuro-Symbolic Generation and Verification"
     },
     {
       "arxiv_id": "2602.21031",
@@ -3337,11 +3525,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9379822881946112,
+        "recency_score": 0.9342448755757,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.13798228819461
+        "total_score": 8.1342448755757
       },
       "section": null,
       "source_name": null,
@@ -3391,11 +3579,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9378693897141326,
+        "recency_score": 0.9341324269418879,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.137869389714133
+        "total_score": 8.134132426941887
       },
       "section": null,
       "source_name": null,
@@ -3444,11 +3632,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9365514377869877,
+        "recency_score": 0.932819726425378,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.136551437786988
+        "total_score": 8.132819726425378
       },
       "section": null,
       "source_name": null,
@@ -3498,11 +3686,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9364864017509187,
+        "recency_score": 0.9327549495269335,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.136486401750918
+        "total_score": 8.132754949526934
       },
       "section": null,
       "source_name": null,
@@ -3556,11 +3744,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9364246216998203,
+        "recency_score": 0.9326934156399104,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.13642462169982
+        "total_score": 8.13269341563991
       },
       "section": null,
       "source_name": null,
@@ -3612,11 +3800,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9358427886170804,
+        "recency_score": 0.932113900884854,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.135842788617081
+        "total_score": 8.132113900884853
       },
       "section": null,
       "source_name": null,
@@ -3670,17 +3858,73 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.935504906398041,
+        "recency_score": 0.9317773649655103,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.13550490639804
+        "total_score": 8.13177736496551
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20995",
       "summary": "Pre-ranking is a critical stage in industrial recommendation systems, tasked with efficiently scoring thousands of recalled items for downstream ranking. A key challenge is the train-serving discrepancy: pre-ranking models are trained only on exposed interactions, yet must score all recalled candidates -- including unexposed items -- during online serving. This mismatch not only induces severe sample selection bias but also degrades generalization, especially for long-tail content. Existing debi",
       "title": "Generative Pseudo-Labeling for Pre-Ranking with LLMs"
+    },
+    {
+      "arxiv_id": "2602.20994",
+      "authors": [
+        "Yubin Ge",
+        "Yongsong Huang",
+        "Xiaofeng Liu"
+      ],
+      "categories": [
+        "eess.IV",
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.266424+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Multimodal MRI Report Findings Supervised Brain Lesion Segmentation with Substructures",
+          "url": "https://arxiv.org/abs/2602.20994"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Multimodal MRI Report Findings Supervised Brain Lesion Segmentation with Substructures",
+        "url": "https://arxiv.org/abs/2602.20994"
+      },
+      "published_at": "2026-02-24T15:14:04+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9317288361582003,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.131728836158201
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20994",
+      "summary": "Report-supervised (RSuper) learning seeks to alleviate the need for dense tumor voxel labels with constraints derived from radiology reports (e.g., volumes, counts, sizes, locations). In MRI studies of brain tumors, however, we often involve multi-parametric scans and substructures. Here, fine-grained modality/parameter-wise reports are usually provided along with global findings and are correlated with different substructures. Moreover, the reports often describe only the largest lesion and pro",
+      "title": "Multimodal MRI Report Findings Supervised Brain Lesion Segmentation with Substructures"
     },
     {
       "arxiv_id": "2602.20989",
@@ -3725,11 +3969,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9352255959431697,
+        "recency_score": 0.9314991674297546,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.13522559594317
+        "total_score": 8.131499167429755
       },
       "section": null,
       "source_name": null,
@@ -3778,17 +4022,240 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9351281816840064,
+        "recency_score": 0.9314021413200116,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.135128181684006
+        "total_score": 8.131402141320011
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20986",
       "summary": "This report presents our participation to the WSDM Cup 2026 shared task on multilingual document retrieval from English queries. The task provides a challenging benchmark for cross-lingual generalization. It also provides a natural testbed for evaluating SPLARE, our recently proposed learned sparse retrieval model, which produces generalizable sparse latent representations and is particularly well suited to multilingual retrieval settings.\n  We evaluate five progressively enhanced runs, starting",
       "title": "Naver Labs Europe @ WSDM CUP | Multilingual Retrieval"
+    },
+    {
+      "arxiv_id": "2602.20985",
+      "authors": [
+        "Munish Monga",
+        "Vishal Chudasama",
+        "Pankaj Wasnik",
+        "C. V. Jawahar"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:33.026127+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "EW-DETR: Evolving World Object Detection via Incremental Low-Rank DEtection TRansformer",
+          "url": "https://arxiv.org/abs/2602.20985"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "EW-DETR: Evolving World Object Detection via Incremental Low-Rank DEtection TRansformer",
+        "url": "https://arxiv.org/abs/2602.20985"
+      },
+      "published_at": "2026-02-24T15:06:04+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9312113527856924,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.131211352785693
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20985",
+      "summary": "Real-world object detection must operate in evolving environments where new classes emerge, domains shift, and unseen objects must be identified as \"unknown\": all without accessing prior data. We introduce Evolving World Object Detection (EWOD), a paradigm coupling incremental learning, domain adaptation, and unknown detection under exemplar-free constraints. To tackle EWOD, we propose EW-DETR framework that augments DETR-based detectors with three synergistic modules: Incremental LoRA Adapters ",
+      "title": "EW-DETR: Evolving World Object Detection via Incremental Low-Rank DEtection TRansformer"
+    },
+    {
+      "arxiv_id": "2602.20981",
+      "authors": [
+        "Christian Simon",
+        "MAsato Ishii",
+        "Wei-Yao Wang",
+        "Koichi Saito",
+        "Akio Hayakawa",
+        "Dongseok Shim",
+        "Zhi Zhong",
+        "Shuyang Cui",
+        "Shusuke Takahashi",
+        "Takashi Shibuya",
+        "Yuki Mitsufuji"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.266648+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Echoes Over Time: Unlocking Length Generalization in Video-to-Audio Generation Models",
+          "url": "https://arxiv.org/abs/2602.20981"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Echoes Over Time: Unlocking Length Generalization in Video-to-Audio Generation Models",
+        "url": "https://arxiv.org/abs/2602.20981"
+      },
+      "published_at": "2026-02-24T15:01:39+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9309257819889061,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.130925781988907
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20981",
+      "summary": "Scaling multimodal alignment between video and audio is challenging, particularly due to limited data and the mismatch between text descriptions and frame-level video information. In this work, we tackle the scaling challenge in multimodal-to-audio generation, examining whether models trained on short instances can generalize to longer ones during testing. To tackle this challenge, we present multimodal hierarchical networks so-called MMHNet, an enhanced extension of state-of-the-art video-to-au",
+      "title": "Echoes Over Time: Unlocking Length Generalization in Video-to-Audio Generation Models"
+    },
+    {
+      "arxiv_id": "2602.20980",
+      "authors": [
+        "Yang Zhang",
+        "Danyang Li",
+        "Yuxuan Li",
+        "Xin Zhang",
+        "Tianyu Xie",
+        "Mingming Cheng",
+        "Xiang Li"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.266863+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "CrystaL: Spontaneous Emergence of Visual Latents in MLLMs",
+          "url": "https://arxiv.org/abs/2602.20980"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "CrystaL: Spontaneous Emergence of Visual Latents in MLLMs",
+        "url": "https://arxiv.org/abs/2602.20980"
+      },
+      "published_at": "2026-02-24T15:01:30+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9309160848958494,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.13091608489585
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20980",
+      "summary": "Multimodal Large Language Models (MLLMs) have achieved remarkable performance by integrating powerful language backbones with large-scale visual encoders. Among these, latent Chain-of-Thought (CoT) methods enable implicit reasoning in continuous hidden states, facilitating seamless vision-language integration and faster inference. However, existing heuristically predefined supervision signals in latent CoT provide limited guidance for preserving critical visual information in intermediate latent",
+      "title": "CrystaL: Spontaneous Emergence of Visual Latents in MLLMs"
+    },
+    {
+      "arxiv_id": "2602.20979",
+      "authors": [
+        "Mark Marron"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.PL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.267106+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Toward an Agentic Infused Software Ecosystem",
+          "url": "https://arxiv.org/abs/2602.20979"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Toward an Agentic Infused Software Ecosystem",
+        "url": "https://arxiv.org/abs/2602.20979"
+      },
+      "published_at": "2026-02-24T15:01:29+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9309150074473006,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.130915007447301
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20979",
+      "summary": "Fully leveraging the capabilities of AI agents in software development requires a rethinking of the software ecosystem itself. To this end, this paper outlines the creation of an Agentic Infused Software Ecosystem (AISE), that rests on three pillars. The first, of course, is the AI agents themselves, which in the past 5 years have moved from simple code completion and toward sophisticated independent development tasks, a trend which will only continue. The second pillar is the programming langua",
+      "title": "Toward an Agentic Infused Software Ecosystem"
     },
     {
       "arxiv_id": "2602.20976",
@@ -3835,17 +4302,74 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9345428275272153,
+        "recency_score": 0.9308191195207071,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.134542827527216
+        "total_score": 8.130819119520707
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20976",
       "summary": "As large language models (LLMs) are increasingly embedded in everyday decision-making, their safety responsibilities extend beyond reacting to explicit harmful intent toward anticipating unintended but consequential risks. In this work, we introduce a proactive risk awareness evaluation framework that measures whether LLMs can anticipate potential harms and provide warnings before damage occurs. We construct the Butterfly dataset to instantiate this framework in the environmental and ecological ",
       "title": "Evaluating Proactive Risk Awareness of Large Language Models"
+    }
+  ],
+  "radar": [
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Kara Yang"
+      ],
+      "categories": [
+        "Amazon Bedrock",
+        "Amazon Rekognition",
+        "Intermediate (200)",
+        "Technical How-to"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-02-25T06:31:27.626061+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Build an intelligent photo search using Amazon Rekognition, Amazon Neptune, and Amazon Bedrock",
+          "url": "https://aws.amazon.com/blogs/machine-learning/build-an-intelligent-photo-search-using-amazon-rekognition-amazon-neptune-and-amazon-bedrock"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Build an intelligent photo search using Amazon Rekognition, Amazon Neptune, and Amazon Bedrock",
+        "url": "https://aws.amazon.com/blogs/machine-learning/build-an-intelligent-photo-search-using-amazon-rekognition-amazon-neptune-and-amazon-bedrock"
+      },
+      "published_at": "2026-02-24T18:22:26+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9439968625238134,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 1.2000000000000002,
+        "total_score": 8.643996862523814
+      },
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:a722197acaace989",
+      "summary": "In this post, we show you how to build a comprehensive photo search system using the AWS Cloud Development Kit (AWS CDK) that integrates Amazon Rekognition for face and object detection, Amazon Neptune for relationship mapping, and Amazon Bedrock for AI-powered captioning.",
+      "title": "Build an intelligent photo search using Amazon Rekognition, Amazon Neptune, and Amazon Bedrock"
     },
     {
       "arxiv_id": "2602.20974",
@@ -3886,11 +4410,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9343719429595567,
+        "recency_score": 0.9306489158466513,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.134371942959557
+        "total_score": 8.13064891584665
       },
       "section": null,
       "source_name": null,
@@ -3940,17 +4464,185 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9341254051164496,
+        "recency_score": 0.9304033603394128,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.13412540511645
+        "total_score": 8.130403360339413
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20973",
       "summary": "To comprehensively evaluate the mathematical reasoning capabilities of Large Language Models (LLMs), researchers have introduced abundant mathematical reasoning datasets. However, most existing datasets primarily focus on linear reasoning, neglecting other parts such as proof by contradiction and proof by cases, which are crucial for investigating LLMs' reasoning abilities. To address this limitation, we first introduce a novel first-order logic (FOL) dataset named PC-FOL, annotated by professio",
       "title": "Linear Reasoning vs. Proof by Cases: Obstacles for Large Language Models in FOL Problem Solving"
+    },
+    {
+      "arxiv_id": "2602.20972",
+      "authors": [
+        "Ming-Kun Xie",
+        "Jia-Hao Xiao",
+        "Zhiqiang Kou",
+        "Zhongnian Li",
+        "Gang Niu",
+        "Masashi Sugiyama"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:33.026727+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Are Multimodal Large Language Models Good Annotators for Image Tagging?",
+          "url": "https://arxiv.org/abs/2602.20972"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Are Multimodal Large Language Models Good Annotators for Image Tagging?",
+        "url": "https://arxiv.org/abs/2602.20972"
+      },
+      "published_at": "2026-02-24T14:53:16+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9303839771379815,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.130383977137981
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20972",
+      "summary": "Image tagging, a fundamental vision task, traditionally relies on human-annotated datasets to train multi-label classifiers, which incurs significant labor and costs. While Multimodal Large Language Models (MLLMs) offer promising potential to automate annotation, their capability to replace human annotators remains underexplored. This paper aims to analyze the gap between MLLM-generated and human annotations and to propose an effective solution that enables MLLM-based annotation to replace manua",
+      "title": "Are Multimodal Large Language Models Good Annotators for Image Tagging?"
+    },
+    {
+      "arxiv_id": "2602.20971",
+      "authors": [
+        "Himadri Mandal",
+        "Vishnu Varadarajan",
+        "Jaee Ponde",
+        "Aritra Das",
+        "Mihir More",
+        "Debayan Gupta"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.267349+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Does Order Matter : Connecting The Law of Robustness to Robust Generalization",
+          "url": "https://arxiv.org/abs/2602.20971"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Does Order Matter : Connecting The Law of Robustness to Robust Generalization",
+        "url": "https://arxiv.org/abs/2602.20971"
+      },
+      "published_at": "2026-02-24T14:52:20+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9303236764270074,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.130323676427007
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20971",
+      "summary": "Bubeck and Sellke (2021) pose as an open problem the connection between the law of robustness and robust generalization. The law of robustness states that overparameterization is necessary for models to interpolate robustly; in particular, robust interpolation requires the learned function to be Lipschitz. Robust generalization asks whether small robust training loss implies small robust test loss. We resolve this problem by explicitly connecting the two for arbitrary data distributions. Specifi",
+      "title": "Does Order Matter : Connecting The Law of Robustness to Robust Generalization"
+    },
+    {
+      "arxiv_id": "2602.20967",
+      "authors": [
+        "Haoyang Li",
+        "Changsong Liu",
+        "Wei Rao",
+        "Hao Shi",
+        "Sakriani Sakti",
+        "Eng Siong Chng"
+      ],
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.SD"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.267575+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Training-Free Intelligibility-Guided Observation Addition for Noisy ASR",
+          "url": "https://arxiv.org/abs/2602.20967"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Training-Free Intelligibility-Guided Observation Addition for Noisy ASR",
+        "url": "https://arxiv.org/abs/2602.20967"
+      },
+      "published_at": "2026-02-24T14:46:54+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.929972717736439,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.12997271773644
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20967",
+      "summary": "Automatic speech recognition (ASR) degrades severely in noisy environments. Although speech enhancement (SE) front-ends effectively suppress background noise, they often introduce artifacts that harm recognition. Observation addition (OA) addressed this issue by fusing noisy and SE enhanced speech, improving recognition without modifying the parameters of the SE or ASR models. This paper proposes an intelligibility-guided OA method, where fusion weights are derived from intelligibility estimates",
+      "title": "Training-Free Intelligibility-Guided Observation Addition for Noisy ASR"
     },
     {
       "arxiv_id": "2602.20966",
@@ -3993,17 +4685,130 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9335784964664557,
+        "recency_score": 0.9298586308598742,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.133578496466455
+        "total_score": 8.129858630859875
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20966",
       "summary": "This article describes a novel language task, the Blackbird Language Matrices (BLM) task, inspired by intelligence tests, and illustrates the BLM datasets, their construction and benchmarking, and targeted experiments on chunking and systematicity. BLMs are multiple-choice problems, structured at multiple levels: within each sentence, across the input sequence, within each candidate answer. Because of their rich structure, these curated, but naturalistic datasets are key to answer some core ques",
       "title": "Blackbird Language Matrices: A Framework to Investigate the Linguistic Competence of Language Models"
+    },
+    {
+      "arxiv_id": "2602.20951",
+      "authors": [
+        "Jaehyun Park",
+        "Minyoung Ahn",
+        "Minkyu Kim",
+        "Jonghyun Lee",
+        "Jae-Gil Lee",
+        "Dongmin Park"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.268027+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "See and Fix the Flaws: Enabling VLMs and Diffusion Models to Comprehend Visual Artifacts via Agentic Data Synthesis",
+          "url": "https://arxiv.org/abs/2602.20951"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "See and Fix the Flaws: Enabling VLMs and Diffusion Models to Comprehend Visual Artifacts via Agentic Data Synthesis",
+        "url": "https://arxiv.org/abs/2602.20951"
+      },
+      "published_at": "2026-02-24T14:34:13+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9291539704457897,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.12915397044579
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20951",
+      "summary": "Despite recent advances in diffusion models, AI generated images still often contain visual artifacts that compromise realism. Although more thorough pre-training and bigger models might reduce artifacts, there is no assurance that they can be completely eliminated, which makes artifact mitigation a highly crucial area of study. Previous artifact-aware methodologies depend on human-labeled artifact datasets, which are costly and difficult to scale, underscoring the need for an automated approach",
+      "title": "See and Fix the Flaws: Enabling VLMs and Diffusion Models to Comprehend Visual Artifacts via Agentic Data Synthesis"
+    },
+    {
+      "arxiv_id": "2602.20943",
+      "authors": [
+        "Kaiyuan Tan",
+        "Yingying Shen",
+        "Mingfei Tu",
+        "Haohui Zhu",
+        "Bing Wang",
+        "Guang Chen",
+        "Hangjun Ye",
+        "Haiyang Sun"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:33.027333+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "UFO: Unifying Feed-Forward and Optimization-based Methods for Large Driving Scene Modeling",
+          "url": "https://arxiv.org/abs/2602.20943"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "UFO: Unifying Feed-Forward and Optimization-based Methods for Large Driving Scene Modeling",
+        "url": "https://arxiv.org/abs/2602.20943"
+      },
+      "published_at": "2026-02-24T14:24:50+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9285487120122156,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.128548712012215
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20943",
+      "summary": "Dynamic driving scene reconstruction is critical for autonomous driving simulation and closed-loop learning. While recent feed-forward methods have shown promise for 3D reconstruction, they struggle with long-range driving sequences due to quadratic complexity in sequence length and challenges in modeling dynamic objects over extended durations. We propose UFO, a novel recurrent paradigm that combines the benefits of optimization-based and feed-forward methods for efficient long-range 4D reconst",
+      "title": "UFO: Unifying Feed-Forward and Optimization-based Methods for Large Driving Scene Modeling"
     },
     {
       "arxiv_id": "2602.20937",
@@ -4046,17 +4851,70 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.93181134238503,
+        "recency_score": 0.9280985180456948,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.13181134238503
+        "total_score": 8.128098518045695
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20937",
       "summary": "Several variations of adaptive first-order and second-order optimization methods have been proposed to accelerate and scale the training of large language models. The performance of these optimization routines is highly sensitive to the choice of hyperparameters (HPs), which are computationally expensive to tune for large-scale models. Maximal update parameterization $(μ$P$)$ is a set of scaling rules which aims to make the optimal HPs independent of the model size, thereby allowing the HPs tune",
       "title": "Extending $μ$P: Spectral Conditions for Feature Learning Across Optimizers"
+    },
+    {
+      "arxiv_id": "2602.20934",
+      "authors": [
+        "ChengYou Li",
+        "XiaoDong Liu",
+        "XiangBao Meng",
+        "XinYu Zhao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.268764+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Architecting AgentOS: From Token-Level Context to Emergent System-Level Intelligence",
+          "url": "https://arxiv.org/abs/2602.20934"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Architecting AgentOS: From Token-Level Context to Emergent System-Level Intelligence",
+        "url": "https://arxiv.org/abs/2602.20934"
+      },
+      "published_at": "2026-02-24T14:12:21+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9277441036604414,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.127744103660442
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20934",
+      "summary": "The paradigm of Large Language Models is undergoing a fundamental transition from static inference engines to dynamic autonomous cognitive systems.While current research primarily focuses on scaling context windows or optimizing prompt engineering the theoretical bridge between micro scale token processing and macro scale systemic intelligence remains fragmented.This paper proposes AgentOS,a holistic conceptual framework that redefines the LLM as a \"Reasoning Kernel\" governed by structured opera",
+      "title": "Architecting AgentOS: From Token-Level Context to Emergent System-Level Intelligence"
     },
     {
       "arxiv_id": "2602.20932",
@@ -4102,17 +4960,126 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9313477090658244,
+        "recency_score": 0.9276367320844185,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.131347709065825
+        "total_score": 8.127636732084419
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20932",
       "summary": "An electroencephalogram (EEG) records the spatially averaged electrical activity of neurons in the brain, measured from the human scalp. Prior studies have explored EEG-based classification of objects or concepts, often for passive viewing of briefly presented image or video stimuli, with limited classes. Because EEG exhibits a low signal-to-noise ratio, recognizing fine-grained representations across a large number of classes remains challenging; however, abstract-level object representations m",
       "title": "Hierarchic-EEG2Text: Assessing EEG-To-Text Decoding across Hierarchical Abstraction Levels"
+    },
+    {
+      "arxiv_id": "2602.20930",
+      "authors": [
+        "Cristian Valero-Abundio",
+        "Emilio Sansano-Sansano",
+        "Raúl Montoliu",
+        "Marina Martínez García"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:33.027741+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "Computing a Characteristic Orientation for Rotation-Independent Image Analysis",
+          "url": "https://arxiv.org/abs/2602.20930"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "Computing a Characteristic Orientation for Rotation-Independent Image Analysis",
+        "url": "https://arxiv.org/abs/2602.20930"
+      },
+      "published_at": "2026-02-24T14:08:12+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9274767714875741,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.127476771487574
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20930",
+      "summary": "Handling geometric transformations, particularly rotations, remains a challenge in deep learning for computer vision. Standard neural networks lack inherent rotation invariance and typically rely on data augmentation or architectural modifications to improve robustness. Although effective, these approaches increase computational demands, require specialised implementations, or alter network structures, limiting their applicability. This paper introduces General Intensity Direction (GID), a prepr",
+      "title": "Computing a Characteristic Orientation for Rotation-Independent Image Analysis"
+    },
+    {
+      "arxiv_id": "2602.20926",
+      "authors": [
+        "Yuqi Huang",
+        "Ning Liao",
+        "Kai Yang",
+        "Anning Hu",
+        "Shengchao Hu",
+        "Xiaoxing Wang",
+        "Junchi Yan"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.268981+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "HELP: HyperNode Expansion and Logical Path-Guided Evidence Localization for Accurate and Efficient GraphRAG",
+          "url": "https://arxiv.org/abs/2602.20926"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "HELP: HyperNode Expansion and Logical Path-Guided Evidence Localization for Accurate and Efficient GraphRAG",
+        "url": "https://arxiv.org/abs/2602.20926"
+      },
+      "published_at": "2026-02-24T14:05:29+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.927301812628596,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.127301812628597
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20926",
+      "summary": "Large Language Models (LLMs) often struggle with inherent knowledge boundaries and hallucinations, limiting their reliability in knowledge-intensive tasks. While Retrieval-Augmented Generation (RAG) mitigates these issues, it frequently overlooks structural interdependencies essential for multi-hop reasoning. Graph-based RAG approaches attempt to bridge this gap, yet they typically face trade-offs between accuracy and efficiency due to challenges such as costly graph traversals and semantic nois",
+      "title": "HELP: HyperNode Expansion and Logical Path-Guided Evidence Localization for Accurate and Efficient GraphRAG"
     },
     {
       "arxiv_id": "2602.20923",
@@ -4155,17 +5122,126 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.930757180451677,
+        "recency_score": 0.9270485564455054,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.130757180451678
+        "total_score": 8.127048556445505
       },
       "section": null,
       "source_name": null,
       "story_id": "arxiv:2602.20923",
       "summary": "Automated parking is a challenging operational domain for advanced driver assistance systems, requiring robust scene understanding and interaction reasoning. The key challenge is twofold: (i) predict multiple plausible ego intentions according to context and (ii) for each intention, predict the joint responses of surrounding agents, enabling effective what-if decision-making. However, existing methods often fall short, typically treating these interdependent problems in isolation. We propose Par",
       "title": "ParkDiffusion++: Ego Intention Conditioned Joint Multi-Agent Trajectory Prediction for Automated Parking using Diffusion Models"
+    },
+    {
+      "arxiv_id": "2602.20918",
+      "authors": [
+        "Hyewon Jang",
+        "Nikolai Ilinykh",
+        "Sharid Loáiciga",
+        "Jey Han Lau",
+        "Shalom Lappin"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:29.269469+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-ai",
+          "tier": 1,
+          "title": "Predicting Sentence Acceptability Judgments in Multimodal Contexts",
+          "url": "https://arxiv.org/abs/2602.20918"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-ai",
+        "tier": 1,
+        "title": "Predicting Sentence Acceptability Judgments in Multimodal Contexts",
+        "url": "https://arxiv.org/abs/2602.20918"
+      },
+      "published_at": "2026-02-24T13:54:38+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.926603379629139,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.12660337962914
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20918",
+      "summary": "Previous work has examined the capacity of deep neural networks (DNNs), particularly transformers, to predict human sentence acceptability judgments, both independently of context, and in document contexts. We consider the effect of prior exposure to visual images (i.e., visual context) on these judgments for humans and large language models (LLMs). Our results suggest that, in contrast to textual context, visual images appear to have little if any impact on human acceptability ratings. However,",
+      "title": "Predicting Sentence Acceptability Judgments in Multimodal Contexts"
+    },
+    {
+      "arxiv_id": "2602.20913",
+      "authors": [
+        "Jihao Qiu",
+        "Lingxi Xie",
+        "Xinyue Huo",
+        "Qi Tian",
+        "Qixiang Ye"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-02-25T06:31:33.028144+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "arxiv",
+          "source_id": "arxiv-cs-cv",
+          "tier": 1,
+          "title": "LongVideo-R1: Smart Navigation for Low-cost Long Video Understanding",
+          "url": "https://arxiv.org/abs/2602.20913"
+        }
+      ],
+      "primary_link": {
+        "link_type": "arxiv",
+        "source_id": "arxiv-cs-cv",
+        "tier": 1,
+        "title": "LongVideo-R1: Smart Navigation for Low-cost Long Video Understanding",
+        "url": "https://arxiv.org/abs/2602.20913"
+      },
+      "published_at": "2026-02-24T13:49:47+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.2,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9262913470131924,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.126291347013193
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "arxiv:2602.20913",
+      "summary": "This paper addresses the critical and underexplored challenge of long video understanding with low computational budgets. We propose LongVideo-R1, an active, reasoning-equipped multimodal large language model (MLLM) agent designed for efficient video context navigation, avoiding the redundancy of exhaustive search. At the core of LongVideo-R1 lies a reasoning module that leverages high-level visual cues to infer the most informative video clip for subsequent processing. During inference, the age",
+      "title": "LongVideo-R1: Smart Navigation for Low-cost Long Video Understanding"
     },
     {
       "arxiv_id": "2602.20911",
@@ -4211,11 +5287,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9298957671115708,
+        "recency_score": 0.926190575427233,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.12989576711157
+        "total_score": 8.126190575427234
       },
       "section": null,
       "source_name": null,
@@ -4264,11 +5340,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9293954370253124,
+        "recency_score": 0.9256922389180404,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.129395437025313
+        "total_score": 8.12569223891804
       },
       "section": null,
       "source_name": null,
@@ -4323,11 +5399,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9292760431977538,
+        "recency_score": 0.9255733208180126,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 8.129276043197754
+        "total_score": 8.125573320818013
       },
       "section": null,
       "source_name": null,
@@ -4336,1099 +5412,13 @@
       "title": "SpatiaLQA: A Benchmark for Evaluating Spatial Logical Reasoning in Vision-Language Models"
     }
   ],
-  "radar": [
-    {
-      "arxiv_id": null,
-      "authors": [
-        "Kara Yang"
-      ],
-      "categories": [
-        "Amazon Bedrock",
-        "Amazon Rekognition",
-        "Intermediate (200)",
-        "Technical How-to"
-      ],
-      "entities": [
-        "aws"
-      ],
-      "first_seen_at": "2026-02-25T06:31:27.626061+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "aws-ml-blog",
-          "tier": 0,
-          "title": "Build an intelligent photo search using Amazon Rekognition, Amazon Neptune, and Amazon Bedrock",
-          "url": "https://aws.amazon.com/blogs/machine-learning/build-an-intelligent-photo-search-using-amazon-rekognition-amazon-neptune-and-amazon-bedrock"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "aws-ml-blog",
-        "tier": 0,
-        "title": "Build an intelligent photo search using Amazon Rekognition, Amazon Neptune, and Amazon Bedrock",
-        "url": "https://aws.amazon.com/blogs/machine-learning/build-an-intelligent-photo-search-using-amazon-rekognition-amazon-neptune-and-amazon-bedrock"
-      },
-      "published_at": "2026-02-24T18:22:26+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9477732876115453,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 1.2000000000000002,
-        "total_score": 8.647773287611546
-      },
-      "section": null,
-      "source_name": "AWS Machine Learning Blog",
-      "story_id": "fallback:a722197acaace989",
-      "summary": "In this post, we show you how to build a comprehensive photo search system using the AWS Cloud Development Kit (AWS CDK) that integrates Amazon Rekognition for face and object detection, Amazon Neptune for relationship mapping, and Amazon Bedrock for AI-powered captioning.",
-      "title": "Build an intelligent photo search using Amazon Rekognition, Amazon Neptune, and Amazon Bedrock"
-    },
-    {
-      "arxiv_id": "2602.20892",
-      "authors": [
-        "Seyed Himan Ghaderi",
-        "Saeed Sarbazi Azad",
-        "Mohammad Mehdi Jaziriyan",
-        "Ahmad Akbari"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:32.036422+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Exa-PSD: a new Persian sentiment analysis dataset on Twitter",
-          "url": "https://arxiv.org/abs/2602.20892"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Exa-PSD: a new Persian sentiment analysis dataset on Twitter",
-        "url": "https://arxiv.org/abs/2602.20892"
-      },
-      "published_at": "2026-02-24T13:28:23+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9286158894948228,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.128615889494823
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20892",
-      "summary": "Today, Social networks such as Twitter are the most widely used platforms for communication of people. Analyzing this data has useful information to recognize the opinion of people in tweets. Sentiment analysis plays a vital role in NLP, which identifies the opinion of the individuals about a specific topic. Natural language processing in Persian has many challenges despite the adventure of strong language models. The datasets available in Persian are generally in special topics such as products",
-      "title": "Exa-PSD: a new Persian sentiment analysis dataset on Twitter"
-    },
-    {
-      "arxiv_id": "2602.20875",
-      "authors": [
-        "Louis Sharrock",
-        "Nikolas Kantas",
-        "Grigorios A. Pavliotis"
-      ],
-      "categories": [
-        "math.ST",
-        "math.OC",
-        "math.PR",
-        "stat.ME",
-        "stat.ML"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:33.896305+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-stat-ml",
-          "tier": 1,
-          "title": "Efficient Online Learning in Interacting Particle Systems",
-          "url": "https://arxiv.org/abs/2602.20875"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-stat-ml",
-        "tier": 1,
-        "title": "Efficient Online Learning in Interacting Particle Systems",
-        "url": "https://arxiv.org/abs/2602.20875"
-      },
-      "published_at": "2026-02-24T13:19:07+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.928018500209492,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.128018500209492
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20875",
-      "summary": "We introduce a new method for online parameter estimation in stochastic interacting particle systems, based on continuous observation of a small number of particles from the system. Our method recursively updates the model parameters using a stochastic approximation of the gradient of the asymptotic log likelihood, which is computed using the continuous stream of observations. Under suitable assumptions, we rigorously establish convergence of our method to the stationary points of the asymptotic",
-      "title": "Efficient Online Learning in Interacting Particle Systems"
-    },
-    {
-      "arxiv_id": "2602.20859",
-      "authors": [
-        "Zirui He",
-        "Huopu Zhang",
-        "Yanguang Liu",
-        "Sirui Wu",
-        "Mengnan Du"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:32.036611+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "FinAnchor: Aligned Multi-Model Representations for Financial Prediction",
-          "url": "https://arxiv.org/abs/2602.20859"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "FinAnchor: Aligned Multi-Model Representations for Financial Prediction",
-        "url": "https://arxiv.org/abs/2602.20859"
-      },
-      "published_at": "2026-02-24T13:02:09+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9269257149128844,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.126925714912884
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20859",
-      "summary": "Financial prediction from long documents involves significant challenges, as actionable signals are often sparse and obscured by noise, and the optimal LLM for generating embeddings varies across tasks and time periods. In this paper, we propose FinAnchor(Financial Anchored Representations), a lightweight framework that integrates embeddings from multiple LLMs without fine-tuning the underlying models. FinAnchor addresses the incompatibility of feature spaces by selecting an anchor embedding spa",
-      "title": "FinAnchor: Aligned Multi-Model Representations for Financial Prediction"
-    },
-    {
-      "arxiv_id": "2602.20850",
-      "authors": [
-        "Lei Ye",
-        "Haibo Gao",
-        "Huaiguang Yang",
-        "Peng Xu",
-        "Haoyu Wang",
-        "Tie Liu",
-        "Junqi Shan",
-        "Zongquan Deng",
-        "Liang Ding"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:35.632496+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "KCFRC: Kinematic Collision-Aware Foothold Reachability Criteria for Legged Locomotion",
-          "url": "https://arxiv.org/abs/2602.20850"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "KCFRC: Kinematic Collision-Aware Foothold Reachability Criteria for Legged Locomotion",
-        "url": "https://arxiv.org/abs/2602.20850"
-      },
-      "published_at": "2026-02-24T12:46:34+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9259231607868951,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.125923160786895
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20850",
-      "summary": "Legged robots face significant challenges in navigating complex environments, as they require precise real-time decisions for foothold selection and contact planning. While existing research has explored methods to select footholds based on terrain geometry or kinematics, a critical gap remains: few existing methods efficiently validate the existence of a non-collision swing trajectory. This paper addresses this gap by introducing KCFRC, a novel approach for efficient foothold reachability analy",
-      "title": "KCFRC: Kinematic Collision-Aware Foothold Reachability Criteria for Legged Locomotion"
-    },
-    {
-      "arxiv_id": "2602.20846",
-      "authors": [
-        "Yuki Nakamura"
-      ],
-      "categories": [
-        "cs.GT",
-        "cs.MA",
-        "cs.NE",
-        "nlin.AO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:34.606600+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ma",
-          "tier": 1,
-          "title": "Body-Reservoir Governance in Repeated Games: Embodied Decision-Making, Dynamic Sentinel Adaptation, and Complexity-Regularized Optimization",
-          "url": "https://arxiv.org/abs/2602.20846"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ma",
-        "tier": 1,
-        "title": "Body-Reservoir Governance in Repeated Games: Embodied Decision-Making, Dynamic Sentinel Adaptation, and Complexity-Regularized Optimization",
-        "url": "https://arxiv.org/abs/2602.20846"
-      },
-      "published_at": "2026-02-24T12:36:41+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9252878783198252,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.125287878319826
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20846",
-      "summary": "Standard game theory explains cooperation in repeated games through conditional strategies such as Tit-for-Tat (TfT), but these require continuous computation that imposes physical costs on embodied agents. We propose a three-layer Body-Reservoir Governance (BRG) architecture: (1) a body reservoir (echo state network) whose $d$-dimensional state performs implicit inference over interaction history, serving as both decision-maker and anomaly detector, (2) a cognitive filter providing costly strat",
-      "title": "Body-Reservoir Governance in Repeated Games: Embodied Decision-Making, Dynamic Sentinel Adaptation, and Complexity-Regularized Optimization"
-    },
-    {
-      "arxiv_id": "2602.20844",
-      "authors": [
-        "Subhrosekhar Ghosh",
-        "Rathindra Nath Karmakar",
-        "Samriddha Lahiry"
-      ],
-      "categories": [
-        "math.ST",
-        "cs.IT",
-        "math.PR",
-        "stat.ME",
-        "stat.ML"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:33.896702+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-stat-ml",
-          "tier": 1,
-          "title": "Maximum entropy based testing in network models: ERGMs and constrained optimization",
-          "url": "https://arxiv.org/abs/2602.20844"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-stat-ml",
-        "tier": 1,
-        "title": "Maximum entropy based testing in network models: ERGMs and constrained optimization",
-        "url": "https://arxiv.org/abs/2602.20844"
-      },
-      "published_at": "2026-02-24T12:35:08+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9251882867207611,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.12518828672076
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20844",
-      "summary": "Stochastic network models play a central role across a wide range of scientific disciplines, and questions of statistical inference arise naturally in this context. In this paper we investigate goodness-of-fit and two-sample testing procedures for statistical networks based on the principle of maximum entropy (MaxEnt). Our approach formulates a constrained entropy-maximization problem on the space of networks, subject to prescribed structural constraints. The resulting test statistics are define",
-      "title": "Maximum entropy based testing in network models: ERGMs and constrained optimization"
-    },
-    {
-      "arxiv_id": "2602.20800",
-      "authors": [
-        "Dalia Nahhas",
-        "Xiaohao Cai",
-        "Imran Razzak",
-        "Shoaib Jameel"
-      ],
-      "categories": [
-        "cs.IR"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:37.770328+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ir",
-          "tier": 1,
-          "title": "Mitigating Preference Leakage via Strict Estimator Separation for Normative Generative Ranking",
-          "url": "https://arxiv.org/abs/2602.20800"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ir",
-        "tier": 1,
-        "title": "Mitigating Preference Leakage via Strict Estimator Separation for Normative Generative Ranking",
-        "url": "https://arxiv.org/abs/2602.20800"
-      },
-      "published_at": "2026-02-24T11:38:36+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9215631866328766,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.121563186632876
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20800",
-      "summary": "In Generative Information Retrieval (GenIR), the bottleneck has shifted from generation to the selection of candidates, particularly for normative criteria such as cultural relevance. Current LLM-as-a-Judge evaluations often suffer from circularity and preference leakage, where overlapping supervision and evaluation models inflate performance. We address this by formalising cultural relevance as a within-query ranking task and introducing a leakage-free two-judge framework that strictly separate",
-      "title": "Mitigating Preference Leakage via Strict Estimator Separation for Normative Generative Ranking"
-    },
-    {
-      "arxiv_id": "2602.20799",
-      "authors": [
-        "Guangsheng Ou",
-        "Qiming Zhang",
-        "Sirong Chen",
-        "Anji Li",
-        "Dong Xu",
-        "Tiancheng Luo",
-        "Dekun Dai",
-        "Cuiyun Gao",
-        "Long Wang",
-        "Jun Zhou",
-        "Mingwei Liu",
-        "Zibin Zheng"
-      ],
-      "categories": [
-        "cs.SE"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:36.798264+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-se",
-          "tier": 1,
-          "title": "Unseen-Codebases-Domain Data Synthesis and Training Based on Code Graphs",
-          "url": "https://arxiv.org/abs/2602.20799"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-se",
-        "tier": 1,
-        "title": "Unseen-Codebases-Domain Data Synthesis and Training Based on Code Graphs",
-        "url": "https://arxiv.org/abs/2602.20799"
-      },
-      "published_at": "2026-02-24T11:36:34+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9214330676845819,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.121433067684581
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20799",
-      "summary": "In the context of newly release software frameworks, large language models (LLMs) often exhibit poor performance and a high rate of hallucination, as they are not exposed to such environments during training. Although inference-time augmentation techniques such as retrieval-augmented generation (RAG) can partially mitigate hallucinations, knowledge injection through prompting alone is insufficient to enable models to fully understand the intrinsic relationships among different components of a co",
-      "title": "Unseen-Codebases-Domain Data Synthesis and Training Based on Code Graphs"
-    },
-    {
-      "arxiv_id": "2602.20759",
-      "authors": [
-        "Yu Fu",
-        "Seongho Son",
-        "Ilija Bogunovic"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:32.036959+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Overton Pluralistic Reinforcement Learning for Large Language Models",
-          "url": "https://arxiv.org/abs/2602.20759"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Overton Pluralistic Reinforcement Learning for Large Language Models",
-        "url": "https://arxiv.org/abs/2602.20759"
-      },
-      "published_at": "2026-02-24T10:39:27+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9177855018430142,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.117785501843015
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20759",
-      "summary": "Existing alignment paradigms remain limited in capturing the pluralistic nature of human values. Overton Pluralism addresses this gap by generating responses with diverse perspectives from a single query. This paper introduces OP-GRPO (Overton Pluralistic Group Relative Policy Optimization), a reinforcement learning framework for implicit Overton Pluralism that enables a single large language model to produce pluralistic responses without explicit prompting or modular orchestration. Our workflow",
-      "title": "Overton Pluralistic Reinforcement Learning for Large Language Models"
-    },
-    {
-      "arxiv_id": "2602.20749",
-      "authors": [
-        "Azrin Sultana",
-        "Firoz Ahmed"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:32.037342+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "Explicit Grammar Semantic Feature Fusion for Robust Text Classification",
-          "url": "https://arxiv.org/abs/2602.20749"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "Explicit Grammar Semantic Feature Fusion for Robust Text Classification",
-        "url": "https://arxiv.org/abs/2602.20749"
-      },
-      "published_at": "2026-02-24T10:25:29+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9168957664365955,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.116895766436595
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20749",
-      "summary": "Natural Language Processing enables computers to understand human language by analysing and classifying text efficiently with deep-level grammatical and semantic features. Existing models capture features by learning from large corpora with transformer models, which are computationally intensive and unsuitable for resource-constrained environments. Therefore, our proposed study incorporates comprehensive grammatical rules alongside semantic information to build a robust, lightweight classificati",
-      "title": "Explicit Grammar Semantic Feature Fusion for Robust Text Classification"
-    },
-    {
-      "arxiv_id": "2602.20727",
-      "authors": [
-        "Xindian Ma",
-        "Rundong Kong",
-        "Peng Zhang",
-        "Ruoxiang Huang",
-        "Yongyu Jiang"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:32.037906+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-cl",
-          "tier": 1,
-          "title": "ID-LoRA: Efficient Low-Rank Adaptation Inspired by Matrix Interpolative Decomposition",
-          "url": "https://arxiv.org/abs/2602.20727"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-cl",
-        "tier": 1,
-        "title": "ID-LoRA: Efficient Low-Rank Adaptation Inspired by Matrix Interpolative Decomposition",
-        "url": "https://arxiv.org/abs/2602.20727"
-      },
-      "published_at": "2026-02-24T09:45:10+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9143322608206703,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.114332260820671
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20727",
-      "summary": "LoRA has become a universal Parameter-Efficient Fine-Tuning (PEFT) technique that equips Large Language Models (LLMs) to adapt quickly to new tasks. However, when these models are scaled up, even the latest LoRA variants still introduce considerable overhead in trainable parameters. Conversely, aggressively lowering the rank to curb this overhead markedly degrades performance in complex multi-task settings. We propose ID-LoRA, a novel PEFT framework that breaks the trade-off. Its core innovation",
-      "title": "ID-LoRA: Efficient Low-Rank Adaptation Inspired by Matrix Interpolative Decomposition"
-    },
-    {
-      "arxiv_id": "2602.20717",
-      "authors": [
-        "Xiting Liu",
-        "Yuetong Liu",
-        "Yitong Zhang",
-        "Jia Li",
-        "Shi-Min Hu"
-      ],
-      "categories": [
-        "cs.SE",
-        "cs.CR"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:36.798653+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-se",
-          "tier": 1,
-          "title": "PackMonitor: Enabling Zero Package Hallucinations Through Decoding-Time Monitoring",
-          "url": "https://arxiv.org/abs/2602.20717"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-se",
-        "tier": 1,
-        "title": "PackMonitor: Enabling Zero Package Hallucinations Through Decoding-Time Monitoring",
-        "url": "https://arxiv.org/abs/2602.20717"
-      },
-      "published_at": "2026-02-24T09:26:11+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9131277026048744,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.113127702604874
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20717",
-      "summary": "As Large Language Models (LLMs) are increasingly integrated into software development workflows, their trustworthiness has become a critical concern. However, in dependency recommendation scenarios, the reliability of LLMs is undermined by widespread package hallucinations, where models often recommend hallucinated packages. Recent studies have proposed a range of approaches to mitigate this issue. Nevertheless, existing approaches typically merely reduce hallucination rates rather than eliminat",
-      "title": "PackMonitor: Enabling Zero Package Hallucinations Through Decoding-Time Monitoring"
-    },
-    {
-      "arxiv_id": "2602.20715",
-      "authors": [
-        "Zhian Su",
-        "Weijie Kong",
-        "Haonan Dong",
-        "Huixu Dong"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:35.633271+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "IG-RFT: An Interaction-Guided RL Framework for VLA Models in Long-Horizon Robotic Manipulation",
-          "url": "https://arxiv.org/abs/2602.20715"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "IG-RFT: An Interaction-Guided RL Framework for VLA Models in Long-Horizon Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2602.20715"
-      },
-      "published_at": "2026-02-24T09:19:50+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9127251274214443,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.112725127421445
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20715",
-      "summary": "Vision-Language-Action (VLA) models have demonstrated significant potential for generalist robotic policies; however, they struggle to generalize to long-horizon complex tasks in novel real-world domains due to distribution shifts and the scarcity of high-quality demonstrations. Although reinforcement learning (RL) offers a promising avenue for policy improvement, applying it to real-world VLA fine-tuning faces challenges regarding exploration efficiency, training stability, and sample cost. To ",
-      "title": "IG-RFT: An Interaction-Guided RL Framework for VLA Models in Long-Horizon Robotic Manipulation"
-    },
-    {
-      "arxiv_id": "2602.20645",
-      "authors": [
-        "Keisuke Takeshita",
-        "Takahiro Yamazaki",
-        "Tomohiro Ono",
-        "Takashi Yamamoto"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:35.633492+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "Robot Local Planner: A Periodic Sampling-Based Motion Planner with Minimal Waypoints for Home Environments",
-          "url": "https://arxiv.org/abs/2602.20645"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "Robot Local Planner: A Periodic Sampling-Based Motion Planner with Minimal Waypoints for Home Environments",
-        "url": "https://arxiv.org/abs/2602.20645"
-      },
-      "published_at": "2026-02-24T07:46:31+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9068294962375908,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.10682949623759
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20645",
-      "summary": "The objective of this study is to enable fast and safe manipulation tasks in home environments. Specifically, we aim to develop a system that can recognize its surroundings and identify target objects while in motion, enabling it to plan and execute actions accordingly. We propose a periodic sampling-based whole-body trajectory planning method, called the \"Robot Local Planner (RLP).\" This method leverages unique features of home environments to enhance computational efficiency, motion optimality",
-      "title": "Robot Local Planner: A Periodic Sampling-Based Motion Planner with Minimal Waypoints for Home Environments"
-    },
-    {
-      "arxiv_id": "2602.20644",
-      "authors": [
-        "Fida Khandaker Safa",
-        "Yupeng Jiang",
-        "Xi Zheng"
-      ],
-      "categories": [
-        "cs.SE"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:36.799072+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-se",
-          "tier": 1,
-          "title": "An LLM-driven Scenario Generation Pipeline Using an Extended Scenic DSL for Autonomous Driving Safety Validation",
-          "url": "https://arxiv.org/abs/2602.20644"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-se",
-        "tier": 1,
-        "title": "An LLM-driven Scenario Generation Pipeline Using an Extended Scenic DSL for Autonomous Driving Safety Validation",
-        "url": "https://arxiv.org/abs/2602.20644"
-      },
-      "published_at": "2026-02-24T07:44:26+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9066983093305881,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.106698309330588
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20644",
-      "summary": "Real-world crash reports, which combine textual summaries and sketches, are valuable for scenario-based testing of autonomous driving systems (ADS). However, current methods cannot effectively translate this multimodal data into precise, executable simulation scenarios, hindering the scalability of ADS safety validation. In this work, we propose a scalable and verifiable pipeline that uses a large language model (GPT-4o mini) and a probabilistic intermediate representation (an Extended Scenic do",
-      "title": "An LLM-driven Scenario Generation Pipeline Using an Extended Scenic DSL for Autonomous Driving Safety Validation"
-    },
-    {
-      "arxiv_id": "2602.20598",
-      "authors": [
-        "Shoma Ansai",
-        "Masaki Waga"
-      ],
-      "categories": [
-        "cs.SE"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:36.799533+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-se",
-          "tier": 1,
-          "title": "A Case Study on Runtime Verification of a Continuous Deployment Process",
-          "url": "https://arxiv.org/abs/2602.20598"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-se",
-        "tier": 1,
-        "title": "A Case Study on Runtime Verification of a Continuous Deployment Process",
-        "url": "https://arxiv.org/abs/2602.20598"
-      },
-      "published_at": "2026-02-24T06:39:48+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9026377806400568,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.102637780640057
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20598",
-      "summary": "We report our experience in applying runtime monitoring to a FluxCD-based continuous deployment (CD) process. Our target system consists of GitHub Actions, GitHub Container Registry (GHCR), FluxCD, and an application running on Kubernetes. We monitored its logs using SyMon. In our setting, we regard a deployment update as detected when FluxCD's polling log resolves the latest image tag. Through the case study, we found that FluxCD did not always detect a new image within five minutes after it wa",
-      "title": "A Case Study on Runtime Verification of a Continuous Deployment Process"
-    },
-    {
-      "arxiv_id": "2602.20963",
-      "authors": [
-        " Ang",
-        " Li",
-        "Alexander Yin",
-        "Alexander White",
-        "Sahib Sandhu",
-        "Matthew Francoeur",
-        "Victor Jimenez-Santiago",
-        "Van Remenar",
-        "Codrin Tugui",
-        "Mihai Duduta"
-      ],
-      "categories": [
-        "cs.RO"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:35.631063+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ro",
-          "tier": 1,
-          "title": "A Robotic Testing Platform for Pipelined Discovery of Resilient Soft Actuators",
-          "url": "https://arxiv.org/abs/2602.20963"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ro",
-        "tier": 1,
-        "title": "A Robotic Testing Platform for Pipelined Discovery of Resilient Soft Actuators",
-        "url": "https://arxiv.org/abs/2602.20963"
-      },
-      "published_at": "2026-02-24T14:41:28+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9333408099819653,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.9000000000000004,
-        "total_score": 8.033340809981965
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20963",
-      "summary": "Short lifetime under high electrical fields hinders the widespread robotic application of linear dielectric elastomer actuators (DEAs). Systematic scanning is difficult due to time-consuming per-sample testing and the high-dimensional parameter space affecting performance. To address this, we propose an optimization pipeline enabled by a novel testing robot capable of scanning DEA lifetime. The robot integrates electro-mechanical property measurement, programmable voltage input, and multi-channe",
-      "title": "A Robotic Testing Platform for Pipelined Discovery of Resilient Soft Actuators"
-    },
-    {
-      "arxiv_id": "2602.21041",
-      "authors": [
-        "Fabian Frank",
-        "Matija Novaković",
-        "René Romen"
-      ],
-      "categories": [
-        "cs.GT",
-        "cs.MA"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:34.606161+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ma",
-          "tier": 1,
-          "title": "Stability Under Valuation Updates in Coalition Formation",
-          "url": "https://arxiv.org/abs/2602.21041"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ma",
-        "tier": 1,
-        "title": "Stability Under Valuation Updates in Coalition Formation",
-        "url": "https://arxiv.org/abs/2602.21041"
-      },
-      "published_at": "2026-02-24T16:02:36+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9386143363393916,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.75,
-        "total_score": 7.8886143363393915
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.21041",
-      "summary": "Coalition formation studies how to partition a set of agents into disjoint coalitions under consideration of their preferences. We study the classical objective of stability in a variant of additively separable hedonic games where agents can change their valuations. Our objective is to find a stable partition after each change. To minimize the reconfiguration cost, we search for nearby stable coalition structures. Our focus is on stability concepts based on single-agent deviations. We present a ",
-      "title": "Stability Under Valuation Updates in Coalition Formation"
-    },
-    {
-      "arxiv_id": "2602.20603",
-      "authors": [
-        "Yamin Vahmian",
-        "Keith Paarporn"
-      ],
-      "categories": [
-        "cs.GT",
-        "cs.MA"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-02-25T06:31:34.607208+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "arxiv",
-          "source_id": "arxiv-cs-ma",
-          "tier": 1,
-          "title": "The Tragedy of the Commons in Multi-Population Resource Games",
-          "url": "https://arxiv.org/abs/2602.20603"
-        }
-      ],
-      "primary_link": {
-        "link_type": "arxiv",
-        "source_id": "arxiv-cs-ma",
-        "tier": 1,
-        "title": "The Tragedy of the Commons in Multi-Population Resource Games",
-        "url": "https://arxiv.org/abs/2602.20603"
-      },
-      "published_at": "2026-02-24T06:53:04+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.2,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9034697606754725,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 3.75,
-        "total_score": 7.853469760675472
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "arxiv:2602.20603",
-      "summary": "Self-optimizing behaviors can lead to outcomes where collective benefits are ultimately destroyed, a well-known phenomenon known as the ``tragedy of the commons\".\n  These scenarios are widely studied using game-theoretic approaches to analyze strategic agent decision-making.\n  In this paper, we examine this phenomenon in a bi-level decision-making hierarchy, where low-level agents belong to multiple distinct populations, and high-level agents make decisions that impact the choices of the local p",
-      "title": "The Tragedy of the Commons in Multi-Population Resource Games"
-    }
-  ],
   "run_date": "2026-02-24",
-  "run_id": "c69faafa-b71c-42aa-a997-f1ef500a209c",
+  "run_id": "0cf1f9be-77a8-43ed-9f15-f6121356847f",
   "run_info": {
     "error_summary": null,
     "finished_at": "2026-02-24T23:59:59+00:00",
     "items_total": 252,
-    "run_id": "c69faafa-b71c-42aa-a997-f1ef500a209c-2026-02-24",
+    "run_id": "0cf1f9be-77a8-43ed-9f15-f6121356847f-2026-02-24",
     "started_at": "2026-02-23T23:59:59+00:00",
     "stories_total": 252,
     "success": true
@@ -5473,11 +5463,11 @@
         "kind_score": 1.2,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9496597395018952,
+        "recency_score": 0.9458757978019748,
         "semantic_score": 0.0,
         "tier_score": 2.0,
         "topic_score": 4.0,
-        "total_score": 15.149659739501896
+        "total_score": 15.145875797801976
       },
       "section": null,
       "source_name": null,
@@ -5527,11 +5517,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9370360984409306,
+        "recency_score": 0.9333024559374787,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 13.437036098440931
+        "total_score": 13.43330245593748
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -5582,11 +5572,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9367422362160874,
+        "recency_score": 0.933009764613623,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 13.436742236216087
+        "total_score": 13.433009764613622
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -5644,11 +5634,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9375872029604199,
+        "recency_score": 0.9338513645679716,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 4.0,
-        "total_score": 11.43758720296042
+        "total_score": 11.433851364567971
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
@@ -5699,11 +5689,11 @@
         "kind_score": 1.5,
         "llm_raw_score": 0.0,
         "llm_relevance_score": 0.0,
-        "recency_score": 0.9373094404967546,
+        "recency_score": 0.9335747088554144,
         "semantic_score": 0.0,
         "tier_score": 3.0,
         "topic_score": 3.75,
-        "total_score": 11.187309440496755
+        "total_score": 11.183574708855414
       },
       "section": null,
       "source_name": "AWS Machine Learning Blog",
