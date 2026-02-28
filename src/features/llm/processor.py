@@ -7,7 +7,6 @@ import json
 import structlog
 
 from src.features.config.schemas.topics import TopicConfig
-from src.features.llm.client import GeminiCodeAssistClient
 from src.features.llm.errors import LlmApiError, LlmProcessingError
 from src.features.llm.json_utils import (
     json_candidates,
@@ -16,6 +15,7 @@ from src.features.llm.json_utils import (
 )
 from src.features.llm.models import LlmPhaseResult, LlmRelevanceResult
 from src.features.llm.prompts import SYSTEM_INSTRUCTION, build_batch_prompt
+from src.features.llm.protocols import LlmClient
 from src.linker.models import Story
 
 
@@ -35,13 +35,13 @@ class LlmRelevanceProcessor:
 
     def __init__(
         self,
-        client: GeminiCodeAssistClient,
+        client: LlmClient,
         topics: list[TopicConfig],
     ) -> None:
         """Initialize the processor.
 
         Args:
-            client: Configured Gemini CodeAssist client.
+            client: Any LLM client implementing the LlmClient protocol.
             topics: Topic configurations for relevance evaluation.
         """
         self._client = client

@@ -170,3 +170,112 @@ class TestGetProject:
 
         with pytest.raises(LlmApiError, match="project lookup"):
             client.generate_content("Test")
+
+
+class TestAuthRetry:
+    """Tests for 401/403 auto-refresh behaviour."""
+
+    @patch("src.features.llm.client.httpx.post")
+    def test_401_with_refresher_retries_successfully(
+        self, mock_post: MagicMock
+    ) -> None:
+        """Should refresh token and retry on 401.
+
+        After refresh, _project is invalidated so _get_project runs
+        again (project lookup + generate).
+        """
+        # 1st generate call: 401
+        auth_fail = MagicMock()
+        auth_fail.status_code = 401
+
+        # After refresh: project lookup succeeds
+        project_ok = MagicMock()
+        project_ok.status_code = 200
+        project_ok.json.return_value = {"project": "new-project"}
+
+        # 2nd generate call: success
+        success = MagicMock()
+        success.status_code = 200
+        success.json.return_value = {
+            "candidates": [{"content": {"parts": [{"text": "ok"}]}}]
+        }
+
+        mock_post.side_effect = [auth_fail, project_ok, success]
+
+        refresher = MagicMock(return_value="ya29.new-token")
+        client = GeminiCodeAssistClient(
+            access_token="ya29.expired",  # noqa: S106
+            token_refresher=refresher,
+        )
+        client._project = "test-project"  # noqa: SLF001
+
+        result = client.generate_content("Test")
+
+        assert result == "ok"
+        refresher.assert_called_once()
+
+    @patch("src.features.llm.client.httpx.post")
+    def test_401_without_refresher_raises(self, mock_post: MagicMock) -> None:
+        """Should raise immediately on 401 without a refresher."""
+        auth_fail = MagicMock()
+        auth_fail.status_code = 401
+        mock_post.return_value = auth_fail
+
+        client = _make_client()
+
+        with pytest.raises(LlmApiError, match="401"):
+            client.generate_content("Test")
+
+    @patch("src.features.llm.client.httpx.post")
+    def test_double_401_stops_retrying(self, mock_post: MagicMock) -> None:
+        """Should not retry auth refresh more than once.
+
+        After first refresh invalidates _project, _get_project also
+        encounters 401 and triggers a second refresh. The generate
+        loop's own auth check then sees auth_retried=True and raises.
+        """
+        auth_fail = MagicMock()
+        auth_fail.status_code = 401
+        mock_post.return_value = auth_fail
+
+        refresher = MagicMock(return_value="ya29.still-bad")
+        client = GeminiCodeAssistClient(
+            access_token="ya29.expired",  # noqa: S106
+            token_refresher=refresher,
+        )
+        client._project = "test-project"  # noqa: SLF001
+
+        with pytest.raises(LlmApiError):
+            client.generate_content("Test")
+
+    @patch("src.features.llm.client.httpx.post")
+    def test_project_401_triggers_refresh(self, mock_post: MagicMock) -> None:
+        """Should refresh token on 401 during project lookup."""
+        # First project call: 401
+        project_401 = MagicMock()
+        project_401.status_code = 401
+
+        # Second project call (after refresh): success
+        project_ok = MagicMock()
+        project_ok.status_code = 200
+        project_ok.json.return_value = {"project": "refreshed-project"}
+
+        # Generate call: success
+        generate_ok = MagicMock()
+        generate_ok.status_code = 200
+        generate_ok.json.return_value = {
+            "candidates": [{"content": {"parts": [{"text": "ok"}]}}]
+        }
+
+        mock_post.side_effect = [project_401, project_ok, generate_ok]
+
+        refresher = MagicMock(return_value="ya29.new-token")
+        client = GeminiCodeAssistClient(
+            access_token="ya29.expired",  # noqa: S106
+            token_refresher=refresher,
+        )
+
+        result = client.generate_content("Test")
+
+        assert result == "ok"
+        refresher.assert_called_once()

@@ -6,13 +6,13 @@ from pathlib import Path
 
 import structlog
 
-from src.features.llm.client import GeminiCodeAssistClient
 from src.features.llm.errors import LlmApiError, LlmProcessingError
 from src.features.llm.json_utils import (
     json_candidates,
     strip_markdown_fences,
     try_parse_json_array,
 )
+from src.features.llm.protocols import LlmClient
 from src.features.translation.models import TranslationCache, TranslationEntry
 from src.features.translation.prompts import (
     SYSTEM_INSTRUCTION,
@@ -35,13 +35,13 @@ class TranslationProcessor:
 
     def __init__(
         self,
-        client: GeminiCodeAssistClient,
+        client: LlmClient,
         output_dir: Path,
     ) -> None:
         """Initialize the translation processor.
 
         Args:
-            client: Configured Gemini CodeAssist client.
+            client: Any LLM client implementing the LlmClient protocol.
             output_dir: Output directory for cache file storage.
         """
         self._client = client

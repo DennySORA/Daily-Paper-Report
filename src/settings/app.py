@@ -28,6 +28,7 @@ class AppSettings(BaseSettings):
     gemini_oauth_client_secret: str | None = Field(
         default=None, validation_alias="GEMINI_OAUTH_CLIENT_SECRET"
     )
+    gemini_api_key: str | None = Field(default=None, validation_alias="GEMINI_API_KEY")
 
     def auth_token_for_platform(self, platform: str) -> str | None:
         """Return auth token for a platform identifier."""

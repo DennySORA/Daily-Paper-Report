@@ -341,8 +341,8 @@ def _run_llm_phase(
     from src.settings.app import get_settings
 
     settings = get_settings()
-    if not settings.gemini_refresh_token:
-        log.info("llm_phase_skipped", reason="no_gemini_refresh_token")
+    if not settings.gemini_api_key and not settings.gemini_refresh_token:
+        log.info("llm_phase_skipped", reason="no_gemini_credentials")
         return {}
 
     log.info("phase_started", phase="llm_relevance")
@@ -363,16 +363,15 @@ def _run_llm_phase(
                 log.warning("llm_cache_load_failed", path=str(cache_path))
 
     try:
-        from src.features.llm.auth import refresh_access_token
-        from src.features.llm.client import GeminiCodeAssistClient
+        from src.features.llm.factory import create_llm_client
         from src.features.llm.processor import LlmRelevanceProcessor
 
-        access_token = refresh_access_token(
-            settings.gemini_refresh_token,
+        client = create_llm_client(
+            api_key=settings.gemini_api_key,
+            refresh_token=settings.gemini_refresh_token,
             client_id=settings.gemini_oauth_client_id,
             client_secret=settings.gemini_oauth_client_secret,
         )
-        client = GeminiCodeAssistClient(access_token=access_token)
         processor = LlmRelevanceProcessor(
             client=client,
             topics=list(effective_config.topics.topics),
@@ -486,8 +485,8 @@ def _run_translation_phase(
     from src.settings.app import get_settings
 
     settings = get_settings()
-    if not settings.gemini_refresh_token:
-        log.info("translation_phase_skipped", reason="no_gemini_refresh_token")
+    if not settings.gemini_api_key and not settings.gemini_refresh_token:
+        log.info("translation_phase_skipped", reason="no_gemini_credentials")
         return None
 
     if output_dir is None:
@@ -497,16 +496,15 @@ def _run_translation_phase(
     log.info("phase_started", phase="translation")
 
     try:
-        from src.features.llm.auth import refresh_access_token
-        from src.features.llm.client import GeminiCodeAssistClient
+        from src.features.llm.factory import create_llm_client
         from src.features.translation.processor import TranslationProcessor
 
-        access_token = refresh_access_token(
-            settings.gemini_refresh_token,
+        client = create_llm_client(
+            api_key=settings.gemini_api_key,
+            refresh_token=settings.gemini_refresh_token,
             client_id=settings.gemini_oauth_client_id,
             client_secret=settings.gemini_oauth_client_secret,
         )
-        client = GeminiCodeAssistClient(access_token=access_token)
         processor = TranslationProcessor(client=client, output_dir=output_dir)
 
         unique_stories = _collect_ranker_story_dicts(ranker_result)
