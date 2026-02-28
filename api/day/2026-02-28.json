@@ -105,19 +105,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-02-28T06:15:35.477473+00:00",
+  "generated_at": "2026-02-28T14:47:09.317577+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
   "run_date": "2026-02-28",
-  "run_id": "91ba5d05-c958-4852-90b6-275b2b783d46",
+  "run_id": "ef45c6f7-f869-4c85-b1a3-1aa3175d14d6",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-02-28T06:15:35.421145+00:00",
-    "items_total": 1,
-    "run_id": "91ba5d05-c958-4852-90b6-275b2b783d46",
-    "started_at": "2026-02-28T06:14:36.480672+00:00",
-    "stories_total": 1,
+    "finished_at": "2026-02-28T14:47:09.291286+00:00",
+    "items_total": 0,
+    "run_id": "ef45c6f7-f869-4c85-b1a3-1aa3175d14d6",
+    "started_at": "2026-02-28T14:46:26.958922+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
@@ -634,16 +634,16 @@
     {
       "category": "other",
       "items_new": 0,
-      "items_updated": 1,
+      "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face Qwen",
-      "newest_item_date": "2026-02-27T09:48:22+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_UPDATED",
-      "reason_text": "Fetch and parse succeeded; items updated.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "hf-qwen",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 1
     },
     {
@@ -752,60 +752,5 @@
       "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [
-        "qwen"
-      ],
-      "first_seen_at": "2026-02-25T06:33:17.776682+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 258764,
-        "likes": 644,
-        "pipeline_tag": "image-text-to-text"
-      },
-      "hf_model_id": "qwen/qwen3.5-35b-a3b",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-qwen",
-          "tier": 1,
-          "title": "Qwen/Qwen3.5-35B-A3B",
-          "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-qwen",
-        "tier": 1,
-        "title": "Qwen/Qwen3.5-35B-A3B",
-        "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B"
-      },
-      "published_at": "2026-02-27T09:48:22+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9183147653765489,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 10.71831476537655
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:qwen/qwen3.5-35b-a3b",
-      "summary": "> This repository contains model weights and configuration files for the post-trained model in the Hugging Face Transformers format. > These artifacts are compatible with Hugging Face Transformers, vLLM, SGLang, KTransformers, etc. > For users seeking managed, scalable inference without infrastructure maintenance, the official Qwen API service is provided by Alibaba Cloud Model Studio. > In particular, **Qwen3.5-Flash** is the hosted version corresponding to Qwen3.5-35B-A3B with more production features, e.g., 1M context length by default and official built-in tools. > For more information, please refer to the User Guide. Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a significant leap...",
-      "summary_zh": "此儲存庫包含在 Hugging Face Transformers 格式下，針對後訓練模型（post-trained model）的模型權重（model weights）和配置檔案（configuration files）。這些檔案與 Hugging Face Transformers、vLLM、SGLang、KTransformers 等相容。對於需要受管、可擴展推論（scalable inference）且無需基礎設施維護（infrastructure maintenance）的使用者，阿里巴巴雲魔搭（Alibaba Cloud Model Studio）提供了官方 Qwen API 服務。特別是，**Qwen3.5-Flash** 是 Qwen3.5-35B-A3B 對應的託管版本（hosted version），具有更多生產功能（production features），例如預設 1M 上下文長度（context length）和官方內建工具（built-in tools）。更多資訊請參閱使用者指南（User Guide）。近幾個月來，我們已加強關注開發提供卓越實用性和效能的基礎模型（foundation models）。Qwen3.5 代表著一個重大的飛躍...",
-      "title": "Qwen/Qwen3.5-35B-A3B",
-      "title_zh": "Qwen/Qwen3.5-35B-A3B"
-    }
-  ]
+  "top5": []
 }
