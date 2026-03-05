@@ -1,60 +1,24 @@
-# Daily Digest Pipeline Workflow
-# Runs the digest pipeline daily and deploys static site to GitHub Pages
-# Persists state.sqlite to a dedicated state branch
-
 name: Daily Digest
 
 "on":
-  push:
-    branches:
-      - main
-    paths:
-      - 'public/**'
-      - 'src/**'
-      - 'frontend/**'
-      - 'tests/fixtures/config/**'
-      - '.github/workflows/daily-digest.yaml'
-  schedule:
-    # Asia/Taipei 14:00 (2:00 PM) = UTC 06:00
-    - cron: '0 6 * * *'
-  repository_dispatch:
-    types: [regenerate-archives]
   workflow_dispatch:
     inputs:
-      debug_enabled:
-        description: 'Enable debug logging'
-        required: false
-        default: 'false'
-        type: boolean
-      backfill_days:
-        description: 'Number of days to backfill archives (default: 7)'
-        required: false
-        default: '7'
-        type: string
       target_date:
-        description: 'Specific date to generate (YYYY-MM-DD). If set, only generates this date.'
-        required: false
-        default: ''
-        type: string
-      lookback_hours:
-        description: 'Hours to look back for items (default: 24). Use 96-168 for backfills.'
-        required: false
-        default: '24'
+        description: "Date to regenerate (YYYY-MM-DD)"
+        required: true
         type: string
 
-# Least privilege permissions
 permissions:
-  contents: write      # Push to state branch
-  pages: write         # Deploy to GitHub Pages
-  id-token: write      # OIDC for Pages deployment
+  contents: write
+  pages: write
+  id-token: write
 
-# Prevent concurrent runs to avoid state conflicts
 concurrency:
   group: digest-deploy
   cancel-in-progress: false
 
 env:
-  PYTHON_VERSION: '3.13'
+  PYTHON_VERSION: "3.13"
   STATE_BRANCH: state
   STATE_FILE: state.sqlite
   OUTPUT_DIR: public
@@ -63,21 +27,23 @@ env:
 
 jobs:
   digest:
-    name: Run Digest Pipeline
+    name: Rerun Day Data
     runs-on: ubuntu-latest
-    outputs:
-      run_success: ${{ steps.pipeline.outcome == 'success' }}
-      run_id: ${{ steps.init.outputs.run_id }}
-      state_checksum: ${{ steps.checksums.outputs.state_checksum }}
-      manifest_checksum: ${{ steps.checksums.outputs.manifest_checksum }}
 
     steps:
-      - name: Initialize run context
-        id: init
+      - name: Validate target date
+        id: validate-date
         run: |
-          RUN_ID="${{ github.run_id }}-${{ github.run_attempt }}"
-          echo "run_id=${RUN_ID}" >> "$GITHUB_OUTPUT"
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"init","event":"run_started","commit":"${{ github.sha }}","trigger":"${{ github.event_name }}"}'
+          TARGET_DATE="${{ inputs.target_date }}"
+
+          if ! [[ "${TARGET_DATE}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+            echo "::error::Invalid target_date format: ${TARGET_DATE} (expected YYYY-MM-DD)"
+            exit 1
+          fi
+
+          python3 -c "import datetime,sys; datetime.datetime.strptime(sys.argv[1], '%Y-%m-%d')" "${TARGET_DATE}"
+
+          echo "target_date=${TARGET_DATE}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout main branch
         uses: actions/checkout@v4
@@ -86,95 +52,32 @@ jobs:
           fetch-depth: 1
 
       - name: Restore state and archives from state branch
-        id: restore-state
         run: |
-          START_TIME=$(date +%s%3N)
-          RUN_ID="${{ steps.init.outputs.run_id }}"
-
-          # Try to fetch state branch
-          if git fetch origin "${{ env.STATE_BRANCH }}":"${{ env.STATE_BRANCH }}" 2>/dev/null; then
-            # Extract state.sqlite from state branch
-            if git show "${{ env.STATE_BRANCH }}":"${{ env.STATE_FILE }}" > "${{ env.STATE_FILE }}" 2>/dev/null; then
-              echo "state_restored=true" >> "$GITHUB_OUTPUT"
-              STATE_SIZE=$(stat -c%s "${{ env.STATE_FILE }}" 2>/dev/null || stat -f%z "${{ env.STATE_FILE }}")
-              echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_restored","state_size_bytes":'"${STATE_SIZE}"'}'
-            else
-              echo "state_restored=false" >> "$GITHUB_OUTPUT"
-              echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_file_not_found"}'
-            fi
-
-            # Extract day archive HTML files from state branch
-            mkdir -p "${OUTPUT_DIR}/day"
-            HTML_COUNT=0
-            for FILE in $(git ls-tree --name-only "${{ env.STATE_BRANCH }}" day/ 2>/dev/null || true); do
-              if git show "${{ env.STATE_BRANCH }}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null; then
-                HTML_COUNT=$((HTML_COUNT + 1))
-              fi
-            done
-            echo "html_archive_count=${HTML_COUNT}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"html_archives_restored","count":'"${HTML_COUNT}"'}'
-
-            # Extract day archive JSON files from state branch (critical for archive data)
-            mkdir -p "${OUTPUT_DIR}/api/day"
-            JSON_COUNT=0
-            for FILE in $(git ls-tree --name-only "${{ env.STATE_BRANCH }}" api/day/ 2>/dev/null || true); do
-              if git show "${{ env.STATE_BRANCH }}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null; then
-                JSON_COUNT=$((JSON_COUNT + 1))
-              fi
-            done
-            echo "json_archive_count=${JSON_COUNT}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"json_archives_restored","count":'"${JSON_COUNT}"'}'
-          else
-            {
-              echo "state_restored=false"
-              echo "html_archive_count=0"
-              echo "json_archive_count=0"
-            } >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","event":"state_branch_not_found","message":"Starting fresh"}'
+          if ! git fetch origin "${STATE_BRANCH}:${STATE_BRANCH}" 2>/dev/null; then
+            echo "::error::State branch '${STATE_BRANCH}' not found. Cannot rerun historical day without state.sqlite."
+            exit 1
           fi
 
-          END_TIME=$(date +%s%3N)
-          DURATION=$((END_TIME - START_TIME))
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_state","duration_ms":'"${DURATION}"'}'
-
-      - name: Restore archive pages from GitHub Pages
-        id: restore-archive
-        run: |
-          RUN_ID="${{ steps.init.outputs.run_id }}"
-          SITE_URL="https://paper.sorahane-kyoukai.org"
-
-          # Create directories
-          mkdir -p "${OUTPUT_DIR}/day"
-          mkdir -p "${OUTPUT_DIR}/api/day"
-
-          # Fetch archive dates from current deployed site and save to temp file
-          DATES_FILE=$(mktemp)
-          curl -sf "${SITE_URL}/api/daily.json" | jq -r '.archive_dates[]' 2>/dev/null > "${DATES_FILE}" || true
-
-          HTML_RESTORED=0
-          JSON_RESTORED=0
-          if [ -s "${DATES_FILE}" ]; then
-            while read -r DATE; do
-              # Download each day's HTML page
-              if curl -sf "${SITE_URL}/day/${DATE}.html" -o "${OUTPUT_DIR}/day/${DATE}.html" 2>/dev/null; then
-                HTML_RESTORED=$((HTML_RESTORED + 1))
-                echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"html_restored","date":"'"${DATE}"'"}'
-              fi
-              # Download each day's JSON data file (critical for archive functionality)
-              if curl -sf "${SITE_URL}/api/day/${DATE}.json" -o "${OUTPUT_DIR}/api/day/${DATE}.json" 2>/dev/null; then
-                JSON_RESTORED=$((JSON_RESTORED + 1))
-                echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"json_restored","date":"'"${DATE}"'"}'
-              fi
-            done < "${DATES_FILE}"
-            echo "html_restored=${HTML_RESTORED}" >> "$GITHUB_OUTPUT"
-            echo "json_restored=${JSON_RESTORED}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"archive_restored","html_count":'"${HTML_RESTORED}"',"json_count":'"${JSON_RESTORED}"'}'
-          else
-            echo "html_restored=0" >> "$GITHUB_OUTPUT"
-            echo "json_restored=0" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"restore_archive","event":"no_archive_found"}'
+          if ! git show "${STATE_BRANCH}:${STATE_FILE}" > "${STATE_FILE}" 2>/dev/null; then
+            echo "::error::${STATE_FILE} missing in state branch."
+            exit 1
           fi
-          rm -f "${DATES_FILE}"
+
+          mkdir -p "${OUTPUT_DIR}/api" "${OUTPUT_DIR}/api/day" "${OUTPUT_DIR}/day"
+
+          for FILE in $(git ls-tree --name-only "${STATE_BRANCH}" day/ 2>/dev/null || true); do
+            git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
+          done
+
+          for FILE in $(git ls-tree --name-only "${STATE_BRANCH}" api/day/ 2>/dev/null || true); do
+            git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
+          done
+
+          if git cat-file -e "${STATE_BRANCH}:api/daily.json" 2>/dev/null; then
+            git show "${STATE_BRANCH}:api/daily.json" > "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true
+          fi
+
+          echo '{"run_id":"${{ github.run_id }}-${{ github.run_attempt }}","step":"restore_state","event":"ok"}'
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -185,122 +88,36 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-          cache-dependency-glob: 'uv.lock'
+          cache-dependency-glob: "uv.lock"
 
       - name: Install dependencies
-        run: |
-          START_TIME=$(date +%s%3N)
-          RUN_ID="${{ steps.init.outputs.run_id }}"
+        run: uv sync --frozen
 
-          uv sync --frozen
-
-          END_TIME=$(date +%s%3N)
-          DURATION=$((END_TIME - START_TIME))
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"install_deps","duration_ms":'"${DURATION}"',"exit_code":0}'
-
-      - name: Run digest pipeline
-        id: pipeline
+      - name: Rerun target date
+        id: backfill
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          OPENREVIEW_TOKEN: ${{ secrets.OPENREVIEW_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
           GEMINI_OAUTH_CLIENT_ID: ${{ secrets.GEMINI_OAUTH_CLIENT_ID }}
           GEMINI_OAUTH_CLIENT_SECRET: ${{ secrets.GEMINI_OAUTH_CLIENT_SECRET }}
-          STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
-          DEBUG_ENABLED: ${{ inputs.debug_enabled }}
-          LOOKBACK_HOURS: ${{ inputs.lookback_hours || '24' }}
         run: |
-          START_TIME=$(date +%s%3N)
+          TARGET_DATE="${{ steps.validate-date.outputs.target_date }}"
 
-          # Create output directory
-          mkdir -p "${OUTPUT_DIR}"
-
-          # Build optional flags safely
-          VERBOSE_FLAG=""
-          if [ "${DEBUG_ENABLED}" = "true" ]; then
-            VERBOSE_FLAG="--verbose"
-          fi
-
-          LOOKBACK="${LOOKBACK_HOURS}"
-
-          # Run the digest pipeline
-          uv run python main.py run \
+          uv run python main.py backfill \
             --config "${CONFIG_DIR}/sources.yaml" \
             --entities "${CONFIG_DIR}/entities.yaml" \
             --topics "${CONFIG_DIR}/topics.yaml" \
             --state "${STATE_FILE}" \
             --out "${OUTPUT_DIR}" \
             --tz "${TIMEZONE}" \
-            --lookback "${LOOKBACK}" \
-            --json-logs \
-            ${VERBOSE_FLAG}
-
-          EXIT_CODE=$?
-          END_TIME=$(date +%s%3N)
-          DURATION=$((END_TIME - START_TIME))
-
-          echo '{"run_id":"'"${STEP_RUN_ID}"'","component":"workflow","step":"pipeline","duration_ms":'"${DURATION}"',"exit_code":'"${EXIT_CODE}"'}'
-
-          if [ ${EXIT_CODE} -eq 0 ]; then
-            echo "pipeline_success=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "pipeline_success=false" >> "$GITHUB_OUTPUT"
-            exit ${EXIT_CODE}
-          fi
-
-      - name: Backfill historical archives
-        id: backfill
-        env:
-          # Use workflow input, repository_dispatch payload, or default to 7 days
-          BACKFILL_DAYS: ${{ inputs.backfill_days || github.event.client_payload.backfill_days || '7' }}
-          TARGET_DATE: ${{ inputs.target_date || github.event.client_payload.target_date || '' }}
-          STEP_RUN_ID: ${{ steps.init.outputs.run_id }}
-        run: |
-          START_TIME=$(date +%s%3N)
-          RUN_ID="${STEP_RUN_ID}"
-
-          # Build backfill command arguments using array
-          BACKFILL_ARGS=(
-            "--config" "${CONFIG_DIR}/sources.yaml"
-            "--entities" "${CONFIG_DIR}/entities.yaml"
-            "--topics" "${CONFIG_DIR}/topics.yaml"
-            "--state" "${STATE_FILE}"
-            "--out" "${OUTPUT_DIR}"
-            "--tz" "${TIMEZONE}"
-            "--json-logs"
-          )
-          BACKFILL_MODE="--skip-existing"
-
-          if [ -n "${TARGET_DATE}" ]; then
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","target_date":"'"${TARGET_DATE}"'"}'
-            BACKFILL_ARGS+=("--date" "${TARGET_DATE}")
-            # Manual single-date backfills are typically intentional repairs.
-            # Allow overwrite for the requested date.
-            BACKFILL_MODE="--overwrite-existing"
-          else
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","days":'"${BACKFILL_DAYS}"'}'
-            BACKFILL_ARGS+=("--days" "${BACKFILL_DAYS}")
-          fi
-
-          # Run the backfill command
-          uv run python main.py backfill "${BACKFILL_MODE}" "${BACKFILL_ARGS[@]}"
-
-          EXIT_CODE=$?
-          END_TIME=$(date +%s%3N)
-          DURATION=$((END_TIME - START_TIME))
-
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","duration_ms":'"${DURATION}"',"exit_code":'"${EXIT_CODE}"'}'
-
-          if [ ${EXIT_CODE} -ne 0 ]; then
-            echo "Backfill failed with exit code ${EXIT_CODE}"
-            exit ${EXIT_CODE}
-          fi
+            --date "${TARGET_DATE}" \
+            --overwrite-existing \
+            --json-logs
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -309,134 +126,77 @@ jobs:
 
       - name: Build Vue.js frontend
         run: |
-          START_TIME=$(date +%s%3N)
-          RUN_ID="${{ steps.init.outputs.run_id }}"
-
           cd frontend
           pnpm install --frozen-lockfile
           pnpm run build-only
 
-          # Copy built files to public directory
           cp dist/index.html "../${OUTPUT_DIR}/"
           cp dist/index.html "../${OUTPUT_DIR}/404.html"
           cp -r dist/assets "../${OUTPUT_DIR}/"
 
-          END_TIME=$(date +%s%3N)
-          DURATION=$((END_TIME - START_TIME))
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"build_frontend","duration_ms":'"${DURATION}"'}'
-
-      - name: Update daily.json with all archive dates
+      - name: Prepare archive output
         run: |
-          RUN_ID="${{ steps.init.outputs.run_id }}"
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"update_daily_json","event":"started"}'
+          TARGET_DATE="${{ steps.validate-date.outputs.target_date }}"
+          mkdir -p "${OUTPUT_DIR}/api/day" "${OUTPUT_DIR}/day"
 
-          # Scan all JSON files in api/day/ to build complete archive_dates list
-          if [ -d "${OUTPUT_DIR}/api/day" ] && [ -f "${OUTPUT_DIR}/api/daily.json" ]; then
-            # Get all date JSON files and extract dates
-            DATES=$(find "${OUTPUT_DIR}/api/day" -maxdepth 1 -name "*.json" -printf "%f\n" 2>/dev/null | sed 's/\.json$//' | sort -r)
-
-            # Build JSON array of dates
-            DATES_JSON=$(echo "$DATES" | jq -R -s 'split("\n") | map(select(length > 0))')
-
-            # Update daily.json with complete archive_dates
-            jq --argjson dates "$DATES_JSON" '.archive_dates = $dates' "${OUTPUT_DIR}/api/daily.json" > "${OUTPUT_DIR}/api/daily.json.tmp"
-            mv "${OUTPUT_DIR}/api/daily.json.tmp" "${OUTPUT_DIR}/api/daily.json"
-
-            DATE_COUNT=$(echo "$DATES" | wc -l | tr -d ' ')
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"update_daily_json","event":"complete","archive_count":'"${DATE_COUNT}"'}'
-          else
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"update_daily_json","event":"skipped","reason":"no_api_day_dir"}'
+          if [ ! -f "${OUTPUT_DIR}/api/day/${TARGET_DATE}.json" ]; then
+            echo "::error::Missing rerun output: ${OUTPUT_DIR}/api/day/${TARGET_DATE}.json"
+            exit 1
           fi
 
-      - name: Generate day archive HTML files
-        run: |
-          RUN_ID="${{ steps.init.outputs.run_id }}"
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"started"}'
-
-          # Create day directory
-          mkdir -p "${OUTPUT_DIR}/day"
-
-          # Generate HTML files for all JSON files in api/day/
-          if [ -d "${OUTPUT_DIR}/api/day" ]; then
-            COUNT=0
-            for JSON_FILE in "${OUTPUT_DIR}/api/day/"*.json; do
-              if [ -f "$JSON_FILE" ]; then
-                DATE=$(basename "$JSON_FILE" .json)
-                # Copy Vue SPA index.html to day/YYYY-MM-DD.html
-                cp "${OUTPUT_DIR}/index.html" "${OUTPUT_DIR}/day/${DATE}.html"
-                COUNT=$((COUNT + 1))
-              fi
-            done
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"complete","files_created":'"${COUNT}"'}'
-          else
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"generate_day_html","event":"skipped","reason":"no_api_day_dir"}'
+          if [ ! -f "${OUTPUT_DIR}/api/daily.json" ]; then
+            cp "${OUTPUT_DIR}/api/day/${TARGET_DATE}.json" "${OUTPUT_DIR}/api/daily.json"
           fi
 
-      - name: Generate checksums
-        id: checksums
-        if: success()
-        run: |
-          RUN_ID="${{ steps.init.outputs.run_id }}"
+          DATES=$(find "${OUTPUT_DIR}/api/day" -maxdepth 1 -name "*.json" -printf "%f\n" | sed 's/\.json$//' | sort -r)
+          DATES_JSON=$(echo "${DATES}" | jq -R -s 'split("\n") | map(select(length > 0))')
 
-          # State checksum
-          if [ -f "${{ env.STATE_FILE }}" ]; then
-            STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
-            echo "state_checksum=${STATE_CHECKSUM}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"checksums","artifact":"state.sqlite","sha256":"'"${STATE_CHECKSUM}"'"}'
-          fi
+          jq --argjson dates "${DATES_JSON}" '.archive_dates = $dates' \
+            "${OUTPUT_DIR}/api/daily.json" > "${OUTPUT_DIR}/api/daily.json.tmp"
+          mv "${OUTPUT_DIR}/api/daily.json.tmp" "${OUTPUT_DIR}/api/daily.json"
 
-          # Public directory manifest
-          if [ -d "${{ env.OUTPUT_DIR }}" ]; then
-            MANIFEST_FILE="manifest.txt"
-            find "${{ env.OUTPUT_DIR }}" -type f -exec sha256sum {} \; | sort > "${MANIFEST_FILE}"
-            MANIFEST_CHECKSUM=$(sha256sum "${MANIFEST_FILE}" | cut -d' ' -f1)
-            echo "manifest_checksum=${MANIFEST_CHECKSUM}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"checksums","artifact":"public_manifest","sha256":"'"${MANIFEST_CHECKSUM}"'"}'
-
-            # Show manifest contents
-            echo "=== Public Directory Manifest ==="
-            cat "${MANIFEST_FILE}"
-          fi
+          for JSON_FILE in "${OUTPUT_DIR}/api/day/"*.json; do
+            [ -f "${JSON_FILE}" ] || continue
+            DATE=$(basename "${JSON_FILE}" .json)
+            cp "${OUTPUT_DIR}/index.html" "${OUTPUT_DIR}/day/${DATE}.html"
+          done
 
       - name: Upload state artifact
-        if: success() && hashFiles(env.STATE_FILE) != ''
         uses: actions/upload-artifact@v4
         with:
           name: state-sqlite
           path: ${{ env.STATE_FILE }}
           retention-days: 1
-          if-no-files-found: warn
+          if-no-files-found: error
 
       - name: Upload day archives artifact (HTML)
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: day-archives-html
           path: ${{ env.OUTPUT_DIR }}/day/
           retention-days: 1
-          if-no-files-found: ignore
+          if-no-files-found: error
 
       - name: Upload day archives artifact (JSON)
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: day-archives-json
           path: ${{ env.OUTPUT_DIR }}/api/day/
           retention-days: 1
-          if-no-files-found: ignore
+          if-no-files-found: error
+
+      - name: Upload daily.json artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-json
+          path: ${{ env.OUTPUT_DIR }}/api/daily.json
+          retention-days: 1
+          if-no-files-found: error
 
       - name: Upload Pages artifact
-        if: success()
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.OUTPUT_DIR }}
-
-      - name: Log pipeline completion
-        if: always()
-        run: |
-          RUN_ID="${{ steps.init.outputs.run_id }}"
-          STATUS="${{ job.status }}"
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"complete","job_status":"'"${STATUS}"'"}'
 
   deploy-pages:
     name: Deploy to GitHub Pages
@@ -452,11 +212,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Log deployment
-        run: |
-          RUN_ID="${{ needs.digest.outputs.run_id }}"
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"deploy_pages","event":"deployment_complete","url":"${{ steps.deployment.outputs.page_url }}"}'
 
   persist-state:
     name: Persist State to Branch
@@ -476,51 +231,27 @@ jobs:
         with:
           name: day-archives-html
           path: artifacts/day/
-        continue-on-error: true
 
       - name: Download day archives artifact (JSON)
         uses: actions/download-artifact@v4
         with:
           name: day-archives-json
           path: artifacts/api/day/
-        continue-on-error: true
 
-      - name: Verify state file
-        id: verify
+      - name: Download daily.json artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: daily-json
+          path: artifacts/api/
+
+      - name: Verify artifacts
         run: |
-          RUN_ID="${{ needs.digest.outputs.run_id }}"
-
-          if [ -f "artifacts/${{ env.STATE_FILE }}" ]; then
-            STATE_SIZE=$(stat -c%s "artifacts/${{ env.STATE_FILE }}" 2>/dev/null || stat -f%z "artifacts/${{ env.STATE_FILE }}")
-            STATE_CHECKSUM=$(sha256sum "artifacts/${{ env.STATE_FILE }}" | cut -d' ' -f1)
-            echo "state_exists=true" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"artifact_downloaded","size_bytes":'"${STATE_SIZE}"',"sha256":"'"${STATE_CHECKSUM}"'"}'
-          else
-            echo "state_exists=false" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"artifact_missing"}'
+          if [ ! -f "artifacts/${STATE_FILE}" ]; then
+            echo "::error::Missing artifacts/${STATE_FILE}"
             exit 1
           fi
 
-          # Count day HTML archives
-          if [ -d "artifacts/day" ]; then
-            HTML_COUNT=$(find artifacts/day -name "*.html" | wc -l)
-            echo "html_archive_count=${HTML_COUNT}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"html_archives_found","count":'"${HTML_COUNT}"'}'
-          else
-            echo "html_archive_count=0" >> "$GITHUB_OUTPUT"
-          fi
-
-          # Count day JSON archives
-          if [ -d "artifacts/api/day" ]; then
-            JSON_COUNT=$(find artifacts/api/day -name "*.json" | wc -l)
-            echo "json_archive_count=${JSON_COUNT}" >> "$GITHUB_OUTPUT"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"json_archives_found","count":'"${JSON_COUNT}"'}'
-          else
-            echo "json_archive_count=0" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Checkout state branch
-        if: steps.verify.outputs.state_exists == 'true'
         uses: actions/checkout@v4
         with:
           ref: ${{ env.STATE_BRANCH }}
@@ -529,19 +260,13 @@ jobs:
         continue-on-error: true
 
       - name: Initialize state branch if needed
-        if: steps.verify.outputs.state_exists == 'true'
-        id: init-branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          RUN_ID="${{ needs.digest.outputs.run_id }}"
-
           cd state-repo
-
-          # Check if checkout actually got the state branch (not just git init from failed checkout)
           CURRENT_BRANCH=$(git branch --show-current 2>/dev/null || echo "")
-          if [ "${CURRENT_BRANCH}" != "${{ env.STATE_BRANCH }}" ]; then
-            # State branch checkout failed or doesn't exist — reinitialize as orphan
+
+          if [ "${CURRENT_BRANCH}" != "${STATE_BRANCH}" ]; then
             cd ..
             rm -rf state-repo
             mkdir -p state-repo
@@ -550,105 +275,31 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
-            git checkout --orphan "${{ env.STATE_BRANCH }}"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"created_orphan_branch"}'
-          else
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_branch_checked_out"}'
+            git checkout --orphan "${STATE_BRANCH}"
           fi
 
-      - name: Push state and archives to state branch
-        if: steps.verify.outputs.state_exists == 'true'
+      - name: Push state and archives
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          RUN_ID="${{ needs.digest.outputs.run_id }}"
-          START_TIME=$(date +%s%3N)
-
           cd state-repo
-
-          # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Copy state file
-          cp "../artifacts/${{ env.STATE_FILE }}" "${{ env.STATE_FILE }}"
-          STATE_CHECKSUM=$(sha256sum "${{ env.STATE_FILE }}" | cut -d' ' -f1)
-          git add "${{ env.STATE_FILE }}"
+          cp "../artifacts/${STATE_FILE}" "${STATE_FILE}"
 
-          # Copy day HTML archives if they exist
-          HTML_COUNT=0
-          if [ -d "../artifacts/day" ] && [ "$(ls -A ../artifacts/day 2>/dev/null)" ]; then
-            mkdir -p day
-            cp -r ../artifacts/day/* day/ 2>/dev/null || true
-            HTML_COUNT=$(find day -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
-            git add day/
-          fi
+          mkdir -p day api/day api
+          cp -r ../artifacts/day/* day/ 2>/dev/null || true
+          cp -r ../artifacts/api/day/* api/day/ 2>/dev/null || true
+          cp ../artifacts/api/daily.json api/daily.json 2>/dev/null || true
 
-          # Copy day JSON archives if they exist (critical for archive data persistence)
-          JSON_COUNT=0
-          if [ -d "../artifacts/api/day" ] && [ "$(ls -A ../artifacts/api/day 2>/dev/null)" ]; then
-            mkdir -p api/day
-            cp -r ../artifacts/api/day/* api/day/ 2>/dev/null || true
-            JSON_COUNT=$(find api/day -name "*.json" 2>/dev/null | wc -l | tr -d ' ')
-            git add api/
-          fi
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"files_staged","html_count":'"${HTML_COUNT}"',"json_count":'"${JSON_COUNT}"'}'
+          git add "${STATE_FILE}" day/ api/
 
-          # Only commit if there are changes
           if git diff --cached --quiet; then
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"no_changes"}'
-          else
-            git commit -m "chore(state): update state.sqlite and day archives [skip ci]"
-
-            # Configure remote with token for push
-            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
-
-            # Push current HEAD to state branch (handles both checked-out and orphan cases)
-            git push --force origin "HEAD:refs/heads/${{ env.STATE_BRANCH }}"
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","event":"state_pushed","sha256":"'"${STATE_CHECKSUM}"'","archive_count":'"${ARCHIVE_COUNT}"'}'
+            echo "No state changes to persist"
+            exit 0
           fi
 
-          END_TIME=$(date +%s%3N)
-          DURATION=$((END_TIME - START_TIME))
-          echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"persist_state","duration_ms":'"${DURATION}"'}'
-
-  report:
-    name: Generate Run Report
-    needs: [digest, deploy-pages, persist-state]
-    if: always()
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Generate summary
-        run: |
-          RUN_ID="${{ needs.digest.outputs.run_id }}"
-          DIGEST_STATUS="${{ needs.digest.result }}"
-          DEPLOY_STATUS="${{ needs.deploy-pages.result }}"
-          PERSIST_STATUS="${{ needs.persist-state.result }}"
-
-          {
-            echo "## Daily Digest Run Report"
-            echo ""
-            echo "| Field | Value |"
-            echo "|-------|-------|"
-            echo "| Run ID | ${RUN_ID} |"
-            echo "| Commit | ${{ github.sha }} |"
-            echo "| Trigger | ${{ github.event_name }} |"
-            echo "| Digest | ${DIGEST_STATUS} |"
-            echo "| Deploy | ${DEPLOY_STATUS} |"
-            echo "| Persist | ${PERSIST_STATUS} |"
-            echo ""
-            echo "### Checksums"
-            echo ""
-            echo "| Artifact | SHA-256 |"
-            echo "|----------|---------|"
-            echo "| state.sqlite | ${{ needs.digest.outputs.state_checksum || 'N/A' }} |"
-            echo "| public manifest | ${{ needs.digest.outputs.manifest_checksum || 'N/A' }} |"
-          } >> "$GITHUB_STEP_SUMMARY"
-
-          # Log final metrics
-          if [ "${DIGEST_STATUS}" = "success" ] && [ "${DEPLOY_STATUS}" = "success" ]; then
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"report","metric":"workflow_success_total","value":1}'
-          else
-            echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"report","metric":"workflow_failure_total","value":1}'
-          fi
+          git commit -m "chore(state): rerun day archive [skip ci]"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+          git push --force origin "HEAD:refs/heads/${STATE_BRANCH}"

@@ -13,6 +13,7 @@ import yaml
 
 WORKFLOWS_DIR = Path(__file__).parent.parent.parent / ".github" / "workflows"
 DAILY_DIGEST_WORKFLOW = WORKFLOWS_DIR / "daily-digest.yaml"
+RESET_SITE_WORKFLOW = WORKFLOWS_DIR / "reset-site.yaml"
 LINT_WORKFLOW = WORKFLOWS_DIR / "lint-workflow.yaml"
 
 
@@ -38,24 +39,20 @@ class TestDailyDigestWorkflow:
         assert "name" in workflow
         assert workflow["name"] == "Daily Digest"
 
-    def test_schedule_trigger(self, workflow: dict[str, Any]) -> None:
-        """Verify workflow has schedule trigger for UTC 06:00."""
+    def test_only_workflow_dispatch_trigger(self, workflow: dict[str, Any]) -> None:
+        """Verify workflow is manual-only (rerun specific day)."""
         assert "on" in workflow
         triggers = workflow["on"]
-        assert "schedule" in triggers
-
-        schedules = triggers["schedule"]
-        assert len(schedules) >= 1
-
-        # Check cron expression: 0 6 * * * (UTC 06:00)
-        cron = schedules[0]["cron"]
-        assert cron == "0 6 * * *", f"Expected '0 6 * * *', got '{cron}'"
-
-    def test_workflow_dispatch_trigger(self, workflow: dict[str, Any]) -> None:
-        """Verify workflow supports manual triggering."""
-        assert "on" in workflow
-        triggers = workflow["on"]
+        assert set(triggers.keys()) == {"workflow_dispatch"}
         assert "workflow_dispatch" in triggers
+
+    def test_dispatch_requires_target_date(self, workflow: dict[str, Any]) -> None:
+        """Verify manual dispatch requires target_date input."""
+        dispatch = workflow["on"]["workflow_dispatch"]
+        inputs = dispatch.get("inputs", {})
+        assert "target_date" in inputs
+        assert inputs["target_date"].get("required") is True
+        assert set(inputs.keys()) == {"target_date"}
 
     def test_required_permissions(self, workflow: dict[str, Any]) -> None:
         """Verify workflow has required permissions (least privilege)."""
@@ -101,7 +98,7 @@ class TestDailyDigestWorkflow:
             assert job in jobs, f"Missing job: {job}"
 
     def test_digest_job_steps(self, workflow: dict[str, Any]) -> None:
-        """Verify digest job has required steps."""
+        """Verify digest job has rerun-date specific steps."""
         jobs = workflow["jobs"]
         digest_job = jobs["digest"]
 
@@ -121,7 +118,29 @@ class TestDailyDigestWorkflow:
         assert any("checkout" in name for name in step_names), "Missing checkout step"
         assert any("state" in name for name in step_names), "Missing state restore step"
         assert any("python" in name for name in step_names), "Missing Python setup step"
-        assert any("pipeline" in name for name in step_names), "Missing pipeline step"
+        assert any("validate target date" in name for name in step_names), (
+            "Missing target-date validation step"
+        )
+        assert any("rerun target date" in name for name in step_names), (
+            "Missing backfill rerun step"
+        )
+        assert not any("run digest pipeline" in name for name in step_names), (
+            "Should not run full daily pipeline in rerun workflow"
+        )
+
+    def test_backfill_step_uses_single_day_mode(
+        self, workflow: dict[str, Any]
+    ) -> None:
+        """Verify rerun command only executes backfill for one date."""
+        digest_steps = workflow["jobs"]["digest"]["steps"]
+        rerun_steps = [s for s in digest_steps if s.get("id") == "backfill"]
+        assert len(rerun_steps) == 1
+        run_script = rerun_steps[0].get("run", "")
+
+        assert "main.py backfill" in run_script
+        assert "--date" in run_script
+        assert "--overwrite-existing" in run_script
+        assert "main.py run" not in run_script
 
     def test_deploy_pages_job_depends_on_digest(self, workflow: dict[str, Any]) -> None:
         """Verify deploy-pages job depends on successful digest."""
@@ -174,17 +193,11 @@ class TestDailyDigestWorkflow:
             if f"secrets.{match}" not in workflow_text:
                 raise AssertionError(f"Potential hardcoded secret: {match}")
 
-    def test_outputs_defined(self, workflow: dict[str, Any]) -> None:
-        """Verify digest job defines required outputs."""
+    def test_digest_job_has_no_unused_outputs(self, workflow: dict[str, Any]) -> None:
+        """Verify digest job keeps state in artifacts, not job outputs."""
         jobs = workflow["jobs"]
         digest_job = jobs["digest"]
-
-        assert "outputs" in digest_job
-        outputs = digest_job["outputs"]
-
-        # Required outputs
-        assert "run_id" in outputs, "Missing run_id output"
-        assert "state_checksum" in outputs, "Missing state_checksum output"
+        assert "outputs" not in digest_job
 
     def test_state_artifact_upload(self, workflow: dict[str, Any]) -> None:
         """Verify digest job uploads state.sqlite as artifact."""
@@ -245,6 +258,43 @@ class TestDailyDigestWorkflow:
                 )
 
 
+class TestResetSiteWorkflow:
+    """Tests for the reset-site.yaml workflow."""
+
+    @pytest.fixture
+    def workflow(self) -> dict[str, Any]:
+        """Load the reset-site workflow."""
+        if not RESET_SITE_WORKFLOW.exists():
+            pytest.skip("reset-site.yaml not found")
+        return load_workflow(RESET_SITE_WORKFLOW)
+
+    def test_only_workflow_dispatch_trigger(self, workflow: dict[str, Any]) -> None:
+        """Verify reset workflow is manual-only."""
+        assert "on" in workflow
+        triggers = workflow["on"]
+        assert set(triggers.keys()) == {"workflow_dispatch"}
+
+    def test_dispatch_requires_confirmation(self, workflow: dict[str, Any]) -> None:
+        """Verify reset requires explicit confirmation input."""
+        dispatch = workflow["on"]["workflow_dispatch"]
+        inputs = dispatch.get("inputs", {})
+        assert set(inputs.keys()) == {"confirm_reset"}
+        assert inputs["confirm_reset"].get("required") is True
+
+    def test_jobs_structure(self, workflow: dict[str, Any]) -> None:
+        """Verify reset has validation, delete, deploy, and report jobs."""
+        jobs = workflow.get("jobs", {})
+        required_jobs = ["validate", "delete-state", "deploy-empty", "report"]
+        for job in required_jobs:
+            assert job in jobs, f"Missing job: {job}"
+
+    def test_reset_does_not_run_digest_pipeline(self, workflow: dict[str, Any]) -> None:
+        """Verify reset does not execute digest/backfill commands."""
+        workflow_text = yaml.dump(workflow)
+        assert "main.py run" not in workflow_text
+        assert "main.py backfill" not in workflow_text
+
+
 class TestLintWorkflow:
     """Tests for the lint-workflow.yaml workflow."""
 
@@ -293,6 +343,10 @@ class TestWorkflowFilesExist:
         assert DAILY_DIGEST_WORKFLOW.exists(), (
             f"Workflow not found: {DAILY_DIGEST_WORKFLOW}"
         )
+
+    def test_reset_site_workflow_exists(self) -> None:
+        """Verify reset-site.yaml exists."""
+        assert RESET_SITE_WORKFLOW.exists(), f"Workflow not found: {RESET_SITE_WORKFLOW}"
 
     def test_lint_workflow_exists(self) -> None:
         """Verify lint-workflow.yaml exists."""

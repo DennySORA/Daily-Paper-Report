@@ -434,27 +434,43 @@ def _run_llm_phase(
 def _collect_ranker_story_dicts(
     ranker_result: "RankerResult",
 ) -> list[dict[str, object]]:
-    """Collect deduplicated story dicts from all ranker output sections.
+    """Collect deduplicated paper-story dicts from ranker output sections.
+
+    Only paper-like stories are translated to reduce LLM cost:
+    - items in `papers` section
+    - top/radar/model stories that are paper-like (arXiv/paper/openreview)
 
     Args:
         ranker_result: Result from ranking phase.
 
     Returns:
-        Deduplicated list of story dicts.
+        Deduplicated list of paper-story dicts.
     """
     from itertools import chain
 
+    from src.features.config.schemas.base import LinkType
     from src.linker.models import Story
 
     model_release_stories: list[Story] = list(
         chain.from_iterable(ranker_result.output.model_releases_by_entity.values())
     )
-    all_stories = [
+
+    def _is_paper_story(story: Story) -> bool:
+        if story.arxiv_id:
+            return True
+        return story.primary_link.link_type in {
+            LinkType.ARXIV,
+            LinkType.PAPER,
+            LinkType.OPENREVIEW,
+        }
+
+    candidate_stories = [
         *ranker_result.output.top5,
         *ranker_result.output.papers,
         *ranker_result.output.radar,
         *model_release_stories,
     ]
+    all_stories = [story for story in candidate_stories if _is_paper_story(story)]
 
     seen: set[str] = set()
     unique: list[dict[str, object]] = []
@@ -1329,18 +1345,11 @@ def clear_archives(
     help="Timezone for date handling (e.g., Asia/Taipei).",
 )
 @click.option(
-    "--days",
-    "days",
-    type=int,
-    default=7,
-    help="Number of days to backfill (default: 7). Ignored if --date is specified.",
-)
-@click.option(
     "--date",
     "target_date_str",
     type=str,
-    default=None,
-    help="Specific date to generate (YYYY-MM-DD format). If specified, only this date is generated.",
+    required=True,
+    help="Specific date to generate (YYYY-MM-DD format).",
 )
 @click.option(
     "--overwrite-existing/--skip-existing",
@@ -1365,21 +1374,16 @@ def backfill(  # noqa: C901, PLR0913, PLR0915
     topics_path: Path,
     state_path: Path,
     output_dir: Path,
-    timezone: str,  # noqa: ARG001 - kept for CLI API compatibility
-    days: int,
-    target_date_str: str | None,
+    timezone: str,
+    target_date_str: str,
     overwrite_existing: bool,
     json_logs: bool,
     verbose: bool,
 ) -> None:
     """Backfill historical day archives from existing database data.
 
-    Generates day/YYYY-MM-DD.html pages for the past N days using
-    items already stored in the state database. This is useful for
-    populating the archive page with historical data.
-
-    Use --date to generate a specific date's report, or --days to
-    generate multiple days at once.
+    Generates day/YYYY-MM-DD.html and api/day/YYYY-MM-DD.json for one
+    specified date using items already stored in the state database.
 
     Note: This command does NOT fetch new data from sources. It only
     re-renders from existing database content.
@@ -1402,44 +1406,30 @@ def backfill(  # noqa: C901, PLR0913, PLR0915
         command="backfill",
     )
 
-    # Validate target_date_str if provided
-    target_dates: list[str] = []
-    if target_date_str:
-        try:
-            datetime.strptime(target_date_str, "%Y-%m-%d")
-            target_dates = [target_date_str]
-            log.info(
-                "backfill_started",
-                target_date=target_date_str,
-                state_path=str(state_path),
-                output_dir=str(output_dir),
-                overwrite_existing=overwrite_existing,
-            )
-        except ValueError:
-            click.echo(
-                f"Error: Invalid date format '{target_date_str}'. Use YYYY-MM-DD.",
-                err=True,
-            )
-            sys.exit(1)
-    else:
-        # Generate list of dates for backfill (skip today — run command already
-        # produced today's archive with full LLM scores)
-        now = datetime.now(UTC)
-        today_str = now.strftime("%Y-%m-%d")
-        for day_offset in range(days):
-            target_dt = now - timedelta(days=day_offset)
-            date_str = target_dt.strftime("%Y-%m-%d")
-            if date_str == today_str:
-                continue
-            target_dates.append(date_str)
-        log.info(
-            "backfill_started",
-            days=days,
-            skipped_today=today_str,
-            state_path=str(state_path),
-            output_dir=str(output_dir),
-            overwrite_existing=overwrite_existing,
+    # Validate timezone
+    try:
+        local_tz = zoneinfo.ZoneInfo(timezone)
+    except (KeyError, zoneinfo.ZoneInfoNotFoundError):
+        click.echo(f"Error: Invalid timezone '{timezone}'", err=True)
+        sys.exit(1)
+
+    # Validate target date
+    try:
+        datetime.strptime(target_date_str, "%Y-%m-%d")
+    except ValueError:
+        click.echo(
+            f"Error: Invalid date format '{target_date_str}'. Use YYYY-MM-DD.",
+            err=True,
         )
+        sys.exit(1)
+
+    log.info(
+        "backfill_started",
+        target_date=target_date_str,
+        state_path=str(state_path),
+        output_dir=str(output_dir),
+        overwrite_existing=overwrite_existing,
+    )
 
     # Load and validate configuration
     loader = ConfigLoader(run_id=run_id)
@@ -1466,7 +1456,7 @@ def backfill(  # noqa: C901, PLR0913, PLR0915
     ) as store:
         log.info("store_connected", db_path=str(state_path))
 
-        # Generate archives for each date in target_dates
+        # Generate archive for one target date
         generated_count = 0
         skipped_existing_count = 0
 
@@ -1476,28 +1466,27 @@ def backfill(  # noqa: C901, PLR0913, PLR0915
         api_day_dir = output_dir / "api" / "day"
         api_day_dir.mkdir(parents=True, exist_ok=True)
 
-        for target_date in target_dates:
-            # Preserve already-generated archives unless explicitly forced.
-            # This avoids accidental loss of enriched metadata (translations/scores)
-            # when backfill re-runs on subsequent days.
-            date_json_path = api_day_dir / f"{target_date}.json"
-            if date_json_path.exists() and not overwrite_existing:
-                skipped_existing_count += 1
-                log.info(
-                    "day_archive_skipped_existing",
-                    target_date=target_date,
-                    json_path=str(date_json_path),
-                )
-                continue
-
-            # Parse the target date
-            target_dt = datetime.strptime(target_date, "%Y-%m-%d").replace(tzinfo=UTC)
-
-            # Calculate the time window for this date (24h lookback from end of day)
-            day_end = datetime(
-                target_dt.year, target_dt.month, target_dt.day, 23, 59, 59, tzinfo=UTC
+        target_date = target_date_str
+        # Preserve already-generated archives unless explicitly forced.
+        # This avoids accidental loss of enriched metadata (translations/scores)
+        # when backfill re-runs on subsequent days.
+        date_json_path = api_day_dir / f"{target_date}.json"
+        if date_json_path.exists() and not overwrite_existing:
+            skipped_existing_count += 1
+            log.info(
+                "day_archive_skipped_existing",
+                target_date=target_date,
+                json_path=str(date_json_path),
             )
-            day_start = day_end - timedelta(hours=24)
+        else:
+            # Parse the target date
+            target_dt_local = datetime.strptime(target_date, "%Y-%m-%d").replace(
+                tzinfo=local_tz
+            )
+
+            # Build an exact local-day window [00:00, 24:00), then convert to UTC.
+            day_start = target_dt_local.astimezone(UTC)
+            day_end = (target_dt_local + timedelta(days=1)).astimezone(UTC)
 
             # Get items published on this date
             items = store.get_items_published_in_range(day_start, day_end)
@@ -1510,112 +1499,111 @@ def backfill(  # noqa: C901, PLR0913, PLR0915
 
             if not items:
                 log.info("no_items_for_date", target_date=target_date)
-                continue
+            else:
+                # === Run linking ===
+                linker = StoryLinker(
+                    run_id=run_id,
+                    entities_config=effective_config.entities,
+                    topics_config=effective_config.topics,
+                )
+                linker_result = linker.link_items(items)
 
-            # === Run linking ===
-            linker = StoryLinker(
-                run_id=run_id,
-                entities_config=effective_config.entities,
-                topics_config=effective_config.topics,
-            )
-            linker_result = linker.link_items(items)
+                # Enrich ranking with cached/new LLM relevance scores when available.
+                llm_scores = _run_llm_phase(
+                    linker_result,
+                    effective_config,
+                    run_id,
+                    log,
+                    output_dir=output_dir,
+                )
 
-            # Enrich ranking with cached/new LLM relevance scores when available.
-            llm_scores = _run_llm_phase(
-                linker_result,
-                effective_config,
-                run_id,
-                log,
-                output_dir=output_dir,
-            )
+                # === Run ranking ===
+                ranker = StoryRanker(
+                    run_id=run_id,
+                    topics_config=effective_config.topics,
+                    entities_config=effective_config.entities,
+                    llm_scores=llm_scores,
+                )
+                ranker_result = ranker.rank_stories(linker_result.stories)
 
-            # === Run ranking ===
-            ranker = StoryRanker(
-                run_id=run_id,
-                topics_config=effective_config.topics,
-                entities_config=effective_config.entities,
-                llm_scores=llm_scores,
-            )
-            ranker_result = ranker.rank_stories(linker_result.stories)
+                # Enrich with zh translations (cached-first, API when available).
+                translations = _run_translation_phase(
+                    ranker_result,
+                    run_id,
+                    log,
+                    output_dir=output_dir,
+                )
 
-            # Enrich with zh translations (cached-first, API when available).
-            translations = _run_translation_phase(
-                ranker_result,
-                run_id,
-                log,
-                output_dir=output_dir,
-            )
+                log.info(
+                    "backfill_processing",
+                    target_date=target_date,
+                    stories_count=len(linker_result.stories),
+                    top5_count=len(ranker_result.output.top5),
+                )
 
-            log.info(
-                "backfill_processing",
-                target_date=target_date,
-                stories_count=len(linker_result.stories),
-                top5_count=len(ranker_result.output.top5),
-            )
+                # === Generate JSON for this date ===
+                from src.renderer.json_renderer import JsonRenderer
+                from src.renderer.metrics import RendererMetrics
 
-            # === Generate JSON for this date ===
-            from src.renderer.json_renderer import JsonRenderer
-            from src.renderer.metrics import RendererMetrics
+                # For backfill, we don't have fresh fetch data, so sources_status is empty
+                # Historical archives focus on content, not source health
+                sources_status: list[SourceStatus] = []
 
-            # For backfill, we don't have fresh fetch data, so sources_status is empty
-            # Historical archives focus on content, not source health
-            sources_status: list[SourceStatus] = []
+                # Build run info for this date
+                run_info = RunInfo(
+                    run_id=f"{run_id}-{target_date}",
+                    started_at=day_start,
+                    finished_at=day_end,
+                    items_total=len(items),
+                    stories_total=len(linker_result.stories),
+                    success=True,
+                )
 
-            # Build run info for this date
-            run_info = RunInfo(
-                run_id=f"{run_id}-{target_date}",
-                started_at=day_start,
-                finished_at=day_end,
-                items_total=len(items),
-                stories_total=len(linker_result.stories),
-                success=True,
-            )
+                # Get archive dates (scan existing api/day/*.json files)
+                archive_dates = set()
+                date_str_len = len("YYYY-MM-DD")  # 10 characters
+                for json_file in api_day_dir.glob("*.json"):
+                    date_str = json_file.stem
+                    if len(date_str) == date_str_len:
+                        archive_dates.add(date_str)
+                archive_dates.add(target_date)
+                sorted_archive_dates = sorted(archive_dates, reverse=True)
 
-            # Get archive dates (scan existing api/day/*.json files)
-            archive_dates = set()
-            date_str_len = len("YYYY-MM-DD")  # 10 characters
-            for json_file in api_day_dir.glob("*.json"):
-                date_str = json_file.stem
-                if len(date_str) == date_str_len:
-                    archive_dates.add(date_str)
-            archive_dates.add(target_date)
-            sorted_archive_dates = sorted(archive_dates, reverse=True)
+                # Render JSON for this specific date only (skip daily.json update)
+                json_renderer = JsonRenderer(
+                    run_id=run_id,
+                    output_dir=output_dir,
+                    metrics=RendererMetrics.get_instance(),
+                    entity_configs=list(effective_config.entities.entities),
+                    translations=translations,
+                )
+                json_renderer.render(
+                    ranker_output=ranker_result.output,
+                    sources_status=sources_status,
+                    run_info=run_info,
+                    run_date=target_date,
+                    archive_dates=sorted_archive_dates,
+                    skip_daily_json=True,  # Don't overwrite daily.json during backfill
+                )
 
-            # Render JSON for this specific date only (skip daily.json update)
-            json_renderer = JsonRenderer(
-                run_id=run_id,
-                output_dir=output_dir,
-                metrics=RendererMetrics.get_instance(),
-                entity_configs=list(effective_config.entities.entities),
-                translations=translations,
-            )
-            json_renderer.render(
-                ranker_output=ranker_result.output,
-                sources_status=sources_status,
-                run_info=run_info,
-                run_date=target_date,
-                archive_dates=sorted_archive_dates,
-                skip_daily_json=True,  # Don't overwrite daily.json during backfill
-            )
+                # Create placeholder HTML file (will be replaced by Vue SPA)
+                placeholder_path = day_dir / f"{target_date}.html"
+                placeholder_content = (
+                    f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
+                )
+                placeholder_path.write_text(placeholder_content)
 
-            # Create placeholder HTML file (will be replaced by Vue SPA)
-            placeholder_path = day_dir / f"{target_date}.html"
-            placeholder_content = (
-                f"<!-- Placeholder for {target_date} - replaced by Vue SPA -->\n"
-            )
-            placeholder_path.write_text(placeholder_content)
-
-            generated_count += 1
-            log.info(
-                "day_archive_generated",
-                target_date=target_date,
-                items_count=len(items),
-                stories_count=len(linker_result.stories),
-            )
+                generated_count += 1
+                log.info(
+                    "day_archive_generated",
+                    target_date=target_date,
+                    items_count=len(items),
+                    stories_count=len(linker_result.stories),
+                )
 
         log.info(
             "backfill_complete",
-            days_requested=days,
+            days_requested=1,
             days_generated=generated_count,
             days_skipped_existing=skipped_existing_count,
         )

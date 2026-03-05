@@ -211,14 +211,15 @@ uv run bandit -r src/
 
 ## GitHub Actions Deployment
 
-The project includes a GitHub Actions workflow for automated daily execution:
+The project includes two manual data workflows:
 
 1. Fork this repository
 2. Enable GitHub Pages in repository settings
 3. Configure secrets (if using authenticated APIs):
-   - `HF_TOKEN` - Hugging Face API token
-   - `OPENREVIEW_TOKEN` - OpenReview API token
-4. The workflow runs daily at 07:00 Asia/Taipei time
+   - `GEMINI_*` - Optional, used for translation/relevance enrichment
+4. Run one of the workflows:
+   - `daily-digest.yaml` with `target_date=YYYY-MM-DD` to rerun one day
+   - `reset-site.yaml` with `confirm_reset=RESET` to clear all data
 
 ## Project Structure
 

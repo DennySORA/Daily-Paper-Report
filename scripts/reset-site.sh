@@ -47,7 +47,7 @@ for arg in "$@"; do
             echo "This script completely resets the Daily Paper Report site by:"
             echo "  1. Deleting the state branch (state.sqlite + archives)"
             echo "  2. Clearing local public/ directory (keeping CNAME)"
-            echo "  3. Triggering a clean workflow run to deploy empty site"
+            echo "  3. Triggering reset-site workflow to deploy empty site"
             exit 0
             ;;
     esac
@@ -218,17 +218,14 @@ clear_local_state() {
 
 # Trigger clean deployment
 trigger_clean_deploy() {
-    log_info "Triggering clean deployment workflow..."
+    log_info "Triggering reset-site workflow..."
 
-    # Trigger workflow with reset flags
-    run_cmd gh workflow run daily-digest.yaml \
+    run_cmd gh workflow run reset-site.yaml \
         --repo "${REPO}" \
         --ref main \
-        -f reset_state=true \
-        -f skip_archive_restore=true \
-        -f backfill_days=0
+        -f confirm_reset=RESET
 
-    log_success "Clean deployment workflow triggered"
+    log_success "Reset workflow triggered"
 
     if [ "$DRY_RUN" = false ]; then
         echo ""
@@ -274,9 +271,9 @@ main() {
     log_success "=========================================="
     echo ""
     log_info "The site will be empty after the workflow completes."
-    log_info "To backfill data, run:"
+    log_info "To regenerate one day of data, run:"
     echo ""
-    echo "  gh workflow run daily-digest.yaml --ref main -f backfill_days=7 -f lookback_hours=168"
+    echo "  gh workflow run daily-digest.yaml --ref main -f target_date=2026-03-05"
     echo ""
 }
 
