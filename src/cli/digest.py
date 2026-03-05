@@ -340,14 +340,8 @@ def _run_llm_phase(
 
     from src.settings.app import get_settings
 
-    settings = get_settings()
-    if not settings.gemini_api_key and not settings.gemini_refresh_token:
-        log.info("llm_phase_skipped", reason="no_gemini_credentials")
-        return {}
-
-    log.info("phase_started", phase="llm_relevance")
-
-    # Load cached scores from previous run
+    # Load cached scores from previous run first so we can reuse them even
+    # when LLM credentials are not available.
     cached_scores: dict[str, float] = {}
     if output_dir:
         cache_path = output_dir / "api" / "llm_scores.json"
@@ -361,6 +355,17 @@ def _run_llm_phase(
                 )
             except (ValueError, OSError):
                 log.warning("llm_cache_load_failed", path=str(cache_path))
+
+    settings = get_settings()
+    if not settings.gemini_api_key and not settings.gemini_refresh_token:
+        log.info(
+            "llm_phase_skipped",
+            reason="no_gemini_credentials",
+            cached_count=len(cached_scores),
+        )
+        return cached_scores
+
+    log.info("phase_started", phase="llm_relevance")
 
     try:
         from src.features.llm.factory import create_llm_client
@@ -460,6 +465,41 @@ def _collect_ranker_story_dicts(
     return unique
 
 
+def _load_cached_translations(
+    output_dir: Path,
+    stories: list[dict[str, object]],
+    log: structlog.typing.FilteringBoundLogger,
+) -> dict[str, object]:
+    """Load cached zh translations for the provided stories.
+
+    Args:
+        output_dir: Output directory containing api/translations_zh.json.
+        stories: Story dictionaries with story_id fields.
+        log: Logger instance.
+
+    Returns:
+        Mapping of story_id to cached TranslationEntry objects.
+    """
+    from src.features.translation.models import TranslationCache
+
+    cache = TranslationCache(output_dir / "api" / "translations_zh.json")
+    cache.load()
+
+    story_ids = {
+        str(story.get("story_id", "")) for story in stories if story.get("story_id")
+    }
+    matched = {sid: entry for sid, entry in cache.entries.items() if sid in story_ids}
+
+    if matched:
+        log.info(
+            "translation_cache_used",
+            cached_count=len(matched),
+            requested_count=len(story_ids),
+        )
+
+    return matched
+
+
 def _run_translation_phase(
     ranker_result: "RankerResult",
     run_id: str,  # noqa: ARG001
@@ -484,13 +524,24 @@ def _run_translation_phase(
     """
     from src.settings.app import get_settings
 
-    settings = get_settings()
-    if not settings.gemini_api_key and not settings.gemini_refresh_token:
-        log.info("translation_phase_skipped", reason="no_gemini_credentials")
-        return None
-
     if output_dir is None:
         log.info("translation_phase_skipped", reason="no_output_dir")
+        return None
+
+    unique_stories = _collect_ranker_story_dicts(ranker_result)
+    cached_translations = _load_cached_translations(output_dir, unique_stories, log)
+
+    settings = get_settings()
+    if not settings.gemini_api_key and not settings.gemini_refresh_token:
+        if cached_translations:
+            log.info(
+                "translation_phase_using_cached",
+                reason="no_gemini_credentials",
+                cached_count=len(cached_translations),
+            )
+            return cached_translations
+
+        log.info("translation_phase_skipped", reason="no_gemini_credentials")
         return None
 
     log.info("phase_started", phase="translation")
@@ -507,7 +558,6 @@ def _run_translation_phase(
         )
         processor = TranslationProcessor(client=client, output_dir=output_dir)
 
-        unique_stories = _collect_ranker_story_dicts(ranker_result)
         result = processor.translate(unique_stories)
 
         log.info(
@@ -520,6 +570,12 @@ def _run_translation_phase(
 
     except Exception:
         log.warning("translation_phase_failed", exc_info=True)
+        if cached_translations:
+            log.info(
+                "translation_phase_using_cached_fallback",
+                cached_count=len(cached_translations),
+            )
+            return cached_translations
         return None
 
 
@@ -1287,6 +1343,12 @@ def clear_archives(
     help="Specific date to generate (YYYY-MM-DD format). If specified, only this date is generated.",
 )
 @click.option(
+    "--overwrite-existing/--skip-existing",
+    "overwrite_existing",
+    default=False,
+    help="Overwrite existing day archives. Default skips existing files to preserve enriched historical data.",
+)
+@click.option(
     "--json-logs/--no-json-logs",
     default=True,
     help="Use JSON format for logs (default: true).",
@@ -1297,7 +1359,7 @@ def clear_archives(
     is_flag=True,
     help="Enable verbose logging.",
 )
-def backfill(  # noqa: PLR0913, PLR0915
+def backfill(  # noqa: C901, PLR0913, PLR0915
     config_path: Path,
     entities_path: Path,
     topics_path: Path,
@@ -1306,6 +1368,7 @@ def backfill(  # noqa: PLR0913, PLR0915
     timezone: str,  # noqa: ARG001 - kept for CLI API compatibility
     days: int,
     target_date_str: str | None,
+    overwrite_existing: bool,
     json_logs: bool,
     verbose: bool,
 ) -> None:
@@ -1320,6 +1383,9 @@ def backfill(  # noqa: PLR0913, PLR0915
 
     Note: This command does NOT fetch new data from sources. It only
     re-renders from existing database content.
+    Existing day archives are skipped by default to avoid downgrading
+    previously enriched historical pages (e.g., zh translations and
+    LLM relevance scores). Use --overwrite-existing to force regeneration.
     """
     from datetime import timedelta
 
@@ -1347,6 +1413,7 @@ def backfill(  # noqa: PLR0913, PLR0915
                 target_date=target_date_str,
                 state_path=str(state_path),
                 output_dir=str(output_dir),
+                overwrite_existing=overwrite_existing,
             )
         except ValueError:
             click.echo(
@@ -1371,6 +1438,7 @@ def backfill(  # noqa: PLR0913, PLR0915
             skipped_today=today_str,
             state_path=str(state_path),
             output_dir=str(output_dir),
+            overwrite_existing=overwrite_existing,
         )
 
     # Load and validate configuration
@@ -1400,8 +1468,28 @@ def backfill(  # noqa: PLR0913, PLR0915
 
         # Generate archives for each date in target_dates
         generated_count = 0
+        skipped_existing_count = 0
+
+        # Ensure day directories exist (for HTML routing and JSON data)
+        day_dir = output_dir / "day"
+        day_dir.mkdir(parents=True, exist_ok=True)
+        api_day_dir = output_dir / "api" / "day"
+        api_day_dir.mkdir(parents=True, exist_ok=True)
 
         for target_date in target_dates:
+            # Preserve already-generated archives unless explicitly forced.
+            # This avoids accidental loss of enriched metadata (translations/scores)
+            # when backfill re-runs on subsequent days.
+            date_json_path = api_day_dir / f"{target_date}.json"
+            if date_json_path.exists() and not overwrite_existing:
+                skipped_existing_count += 1
+                log.info(
+                    "day_archive_skipped_existing",
+                    target_date=target_date,
+                    json_path=str(date_json_path),
+                )
+                continue
+
             # Parse the target date
             target_dt = datetime.strptime(target_date, "%Y-%m-%d").replace(tzinfo=UTC)
 
@@ -1432,13 +1520,31 @@ def backfill(  # noqa: PLR0913, PLR0915
             )
             linker_result = linker.link_items(items)
 
+            # Enrich ranking with cached/new LLM relevance scores when available.
+            llm_scores = _run_llm_phase(
+                linker_result,
+                effective_config,
+                run_id,
+                log,
+                output_dir=output_dir,
+            )
+
             # === Run ranking ===
             ranker = StoryRanker(
                 run_id=run_id,
                 topics_config=effective_config.topics,
                 entities_config=effective_config.entities,
+                llm_scores=llm_scores,
             )
             ranker_result = ranker.rank_stories(linker_result.stories)
+
+            # Enrich with zh translations (cached-first, API when available).
+            translations = _run_translation_phase(
+                ranker_result,
+                run_id,
+                log,
+                output_dir=output_dir,
+            )
 
             log.info(
                 "backfill_processing",
@@ -1465,12 +1571,6 @@ def backfill(  # noqa: PLR0913, PLR0915
                 success=True,
             )
 
-            # Ensure day directories exist (for HTML routing and JSON data)
-            day_dir = output_dir / "day"
-            day_dir.mkdir(parents=True, exist_ok=True)
-            api_day_dir = output_dir / "api" / "day"
-            api_day_dir.mkdir(parents=True, exist_ok=True)
-
             # Get archive dates (scan existing api/day/*.json files)
             archive_dates = set()
             date_str_len = len("YYYY-MM-DD")  # 10 characters
@@ -1487,6 +1587,7 @@ def backfill(  # noqa: PLR0913, PLR0915
                 output_dir=output_dir,
                 metrics=RendererMetrics.get_instance(),
                 entity_configs=list(effective_config.entities.entities),
+                translations=translations,
             )
             json_renderer.render(
                 ranker_output=ranker_result.output,
@@ -1516,9 +1617,14 @@ def backfill(  # noqa: PLR0913, PLR0915
             "backfill_complete",
             days_requested=days,
             days_generated=generated_count,
+            days_skipped_existing=skipped_existing_count,
         )
 
-        click.echo(f"Backfill complete. Generated {generated_count} day archives.")
+        click.echo(
+            "Backfill complete. "
+            f"Generated {generated_count} day archives, "
+            f"skipped {skipped_existing_count} existing archives."
+        )
 
 
 if __name__ == "__main__":

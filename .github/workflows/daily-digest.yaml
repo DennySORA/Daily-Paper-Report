@@ -270,17 +270,21 @@ jobs:
             "--tz" "${TIMEZONE}"
             "--json-logs"
           )
+          BACKFILL_MODE="--skip-existing"
 
           if [ -n "${TARGET_DATE}" ]; then
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","target_date":"'"${TARGET_DATE}"'"}'
             BACKFILL_ARGS+=("--date" "${TARGET_DATE}")
+            # Manual single-date backfills are typically intentional repairs.
+            # Allow overwrite for the requested date.
+            BACKFILL_MODE="--overwrite-existing"
           else
             echo '{"run_id":"'"${RUN_ID}"'","component":"workflow","step":"backfill","event":"backfill_started","days":'"${BACKFILL_DAYS}"'}'
             BACKFILL_ARGS+=("--days" "${BACKFILL_DAYS}")
           fi
 
           # Run the backfill command
-          uv run python main.py backfill "${BACKFILL_ARGS[@]}"
+          uv run python main.py backfill "${BACKFILL_MODE}" "${BACKFILL_ARGS[@]}"
 
           EXIT_CODE=$?
           END_TIME=$(date +%s%3N)
