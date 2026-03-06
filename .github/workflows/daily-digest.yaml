@@ -1,11 +1,14 @@
 name: Daily Digest
 
 "on":
+  schedule:
+    # Asia/Taipei 14:00 = UTC 06:00
+    - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       target_date:
-        description: "Date to regenerate (YYYY-MM-DD)"
-        required: true
+        description: "Date to run (YYYY-MM-DD). Leave blank to use today in Asia/Taipei."
+        required: false
         type: string
 
 permissions:
@@ -27,14 +30,19 @@ env:
 
 jobs:
   digest:
-    name: Rerun Day Data
+    name: Run Digest Data
     runs-on: ubuntu-latest
 
     steps:
-      - name: Validate target date
+      - name: Resolve target date and mode
         id: validate-date
         run: |
           TARGET_DATE="${{ inputs.target_date }}"
+          TODAY_LOCAL=$(TZ="${TIMEZONE}" date +%F)
+
+          if [ -z "${TARGET_DATE}" ]; then
+            TARGET_DATE="${TODAY_LOCAL}"
+          fi
 
           if ! [[ "${TARGET_DATE}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
             echo "::error::Invalid target_date format: ${TARGET_DATE} (expected YYYY-MM-DD)"
@@ -44,6 +52,15 @@ jobs:
           python3 -c "import datetime,sys; datetime.datetime.strptime(sys.argv[1], '%Y-%m-%d')" "${TARGET_DATE}"
 
           echo "target_date=${TARGET_DATE}" >> "$GITHUB_OUTPUT"
+          echo "today_local=${TODAY_LOCAL}" >> "$GITHUB_OUTPUT"
+
+          if [ "${TARGET_DATE}" = "${TODAY_LOCAL}" ]; then
+            echo "run_mode=run" >> "$GITHUB_OUTPUT"
+            echo "::notice::Running full digest pipeline for ${TARGET_DATE}."
+          else
+            echo "run_mode=backfill" >> "$GITHUB_OUTPUT"
+            echo "::notice::Running historical backfill for ${TARGET_DATE}."
+          fi
 
       - name: Checkout main branch
         uses: actions/checkout@v4
@@ -52,32 +69,48 @@ jobs:
           fetch-depth: 1
 
       - name: Restore state and archives from state branch
+        id: restore-state
         run: |
-          if ! git fetch origin "${STATE_BRANCH}:${STATE_BRANCH}" 2>/dev/null; then
-            echo "::error::State branch '${STATE_BRANCH}' not found. Cannot rerun historical day without state.sqlite."
-            exit 1
-          fi
-
-          if ! git show "${STATE_BRANCH}:${STATE_FILE}" > "${STATE_FILE}" 2>/dev/null; then
-            echo "::error::${STATE_FILE} missing in state branch."
-            exit 1
-          fi
-
           mkdir -p "${OUTPUT_DIR}/api" "${OUTPUT_DIR}/api/day" "${OUTPUT_DIR}/day"
+          RUN_MODE="${{ steps.validate-date.outputs.run_mode }}"
+          STATE_RESTORED=false
 
-          for FILE in $(git ls-tree --name-only "${STATE_BRANCH}" day/ 2>/dev/null || true); do
-            git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
-          done
+          if git fetch origin "${STATE_BRANCH}:${STATE_BRANCH}" 2>/dev/null; then
+            echo "state_branch_exists=true" >> "$GITHUB_OUTPUT"
 
-          for FILE in $(git ls-tree --name-only "${STATE_BRANCH}" api/day/ 2>/dev/null || true); do
-            git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
-          done
+            for FILE in $(git ls-tree --name-only "${STATE_BRANCH}" day/ 2>/dev/null || true); do
+              git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
+            done
 
-          if git cat-file -e "${STATE_BRANCH}:api/daily.json" 2>/dev/null; then
-            git show "${STATE_BRANCH}:api/daily.json" > "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true
+            for FILE in $(git ls-tree --name-only "${STATE_BRANCH}" api/day/ 2>/dev/null || true); do
+              git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
+            done
+
+            if git cat-file -e "${STATE_BRANCH}:api/daily.json" 2>/dev/null; then
+              git show "${STATE_BRANCH}:api/daily.json" > "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true
+            fi
+
+            if git show "${STATE_BRANCH}:${STATE_FILE}" > "${STATE_FILE}" 2>/dev/null; then
+              STATE_RESTORED=true
+            fi
+          else
+            echo "state_branch_exists=false" >> "$GITHUB_OUTPUT"
           fi
 
-          echo '{"run_id":"${{ github.run_id }}-${{ github.run_attempt }}","step":"restore_state","event":"ok"}'
+          echo "state_restored=${STATE_RESTORED}" >> "$GITHUB_OUTPUT"
+
+          if [ "${STATE_RESTORED}" = "true" ]; then
+            echo "::notice::Restored state snapshot from ${STATE_BRANCH}."
+            exit 0
+          fi
+
+          if [ "${RUN_MODE}" = "run" ]; then
+            echo "::notice::No persisted state snapshot found. Bootstrapping today's digest from empty state."
+            exit 0
+          fi
+
+          echo "::error::State snapshot missing. Historical reruns require ${STATE_FILE} from ${STATE_BRANCH}."
+          exit 1
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -93,8 +126,28 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Rerun target date
-        id: backfill
+      - name: Run today's digest pipeline
+        if: steps.validate-date.outputs.run_mode == 'run'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          OPENREVIEW_TOKEN: ${{ secrets.OPENREVIEW_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
+          GEMINI_OAUTH_CLIENT_ID: ${{ secrets.GEMINI_OAUTH_CLIENT_ID }}
+          GEMINI_OAUTH_CLIENT_SECRET: ${{ secrets.GEMINI_OAUTH_CLIENT_SECRET }}
+        run: |
+          uv run python main.py run \
+            --config "${CONFIG_DIR}/sources.yaml" \
+            --entities "${CONFIG_DIR}/entities.yaml" \
+            --topics "${CONFIG_DIR}/topics.yaml" \
+            --state "${STATE_FILE}" \
+            --out "${OUTPUT_DIR}" \
+            --tz "${TIMEZONE}" \
+            --lookback 24 \
+            --json-logs
+
+      - name: Rerun target date from state
+        if: steps.validate-date.outputs.run_mode == 'backfill'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
