@@ -167,19 +167,19 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           OPENREVIEW_TOKEN: ${{ secrets.OPENREVIEW_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
-          GEMINI_OAUTH_CLIENT_ID: ${{ secrets.GEMINI_OAUTH_CLIENT_ID }}
-          GEMINI_OAUTH_CLIENT_SECRET: ${{ secrets.GEMINI_OAUTH_CLIENT_SECRET }}
         run: |
+          SEED_OUTPUT_DIR="${RUNNER_TEMP}/seed-output"
+          mkdir -p "${SEED_OUTPUT_DIR}"
+
           uv run python main.py run \
             --config "${CONFIG_DIR}/sources.yaml" \
             --entities "${CONFIG_DIR}/entities.yaml" \
             --topics "${CONFIG_DIR}/topics.yaml" \
             --state "${STATE_FILE}" \
-            --out "${OUTPUT_DIR}" \
+            --out "${SEED_OUTPUT_DIR}" \
             --tz "${TIMEZONE}" \
             --lookback "${{ steps.resolve.outputs.lookback_hours }}" \
+            --no-translate \
             --json-logs
 
       - name: Backfill historical dates sequentially
