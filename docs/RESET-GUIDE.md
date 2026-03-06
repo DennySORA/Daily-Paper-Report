@@ -1,9 +1,10 @@
 # RESET GUIDE
 
-目前資料 CICD 僅保留兩個操作：
+目前資料 CICD 保留三個操作：
 
 1. 重跑指定日期（`daily-digest.yaml`）
 2. 刪除全部資料（`reset-site.yaml`）
+3. 依日期區間逐日補跑（`backfill-date-range.yaml`）
 
 ## 1) 重跑指定日期
 
@@ -25,6 +26,18 @@ gh workflow run reset-site.yaml \
   --repo DennySORA/Daily-Paper-Report \
   --ref main \
   -f confirm_reset=RESET
+```
+
+## 3) 依日期區間逐日補跑
+
+會先依起始日自動放大 `lookback` 收集足夠資料，再按照日期順序逐天 backfill。前一天做完才會接下一天。
+
+```bash
+gh workflow run backfill-date-range.yaml \
+  --repo DennySORA/Daily-Paper-Report \
+  --ref main \
+  -f start_date=2026-03-03 \
+  -f end_date=2026-03-05
 ```
 
 ## 驗證
