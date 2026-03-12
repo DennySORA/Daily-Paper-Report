@@ -83,6 +83,8 @@ class QuotasConfig(StrictBaseModel):
         per_source_max: Maximum items per source.
         arxiv_per_category_max: Maximum arXiv items per category.
         papers_max: Maximum items in Papers section.
+        paper_exclusion_keywords: Case-insensitive keywords used to exclude
+            paper-like stories from selection before section assignment.
         llm_bypass_threshold: Raw LLM score (0-1) above which papers bypass
             the arxiv_per_category_max quota. Set to 1.0 to disable.
     """
@@ -92,7 +94,36 @@ class QuotasConfig(StrictBaseModel):
     per_source_max: Annotated[int, Field(ge=0)] = 10
     arxiv_per_category_max: Annotated[int, Field(ge=0)] = 10
     papers_max: Annotated[int, Field(ge=0)] = 20
+    paper_exclusion_keywords: list[str] = Field(
+        default_factory=lambda: [
+            "medical",
+            "clinical",
+            "healthcare",
+            "health care",
+            "biomedical",
+            "biomedicine",
+            "medicine",
+            "patient",
+            "patients",
+            "hospital",
+            "diagnosis",
+            "diagnostic",
+            "disease",
+            "diseases",
+            "medical imaging",
+            "drug discovery",
+        ]
+    )
     llm_bypass_threshold: Annotated[float, Field(ge=0.0, le=1.0)] = 1.0
+
+    @model_validator(mode="after")
+    def validate_paper_exclusion_keywords(self) -> "QuotasConfig":
+        """Ensure paper exclusion keywords are non-empty strings."""
+        for keyword in self.paper_exclusion_keywords:
+            if not keyword.strip():
+                msg = "paper_exclusion_keywords must contain non-empty strings"
+                raise ValueError(msg)
+        return self
 
 
 class TopicsConfig(StrictBaseModel):

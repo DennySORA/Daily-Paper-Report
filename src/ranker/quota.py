@@ -1,5 +1,6 @@
 """Quota filtering and source throttling for the ranker."""
 
+import json
 from collections import defaultdict
 
 import structlog
@@ -56,6 +57,7 @@ class QuotaFilter:
     """Applies quota constraints to scored stories.
 
     Enforces:
+    - paper_exclusion_keywords: Exclude paper-like stories by keyword
     - top5_max: Maximum items in Top 5
     - radar_max: Maximum items in Radar
     - per_source_max: Maximum items per source
@@ -112,15 +114,18 @@ class QuotaFilter:
         # Sort by score descending first
         sorted_stories = self._sort_by_score(scored_stories)
 
+        # Exclude configured paper domains before quota accounting
+        after_exclusion, excluded = self._apply_paper_exclusions(sorted_stories)
+
         # Apply per-source quota
-        after_source = self._apply_per_source_quota(sorted_stories)
+        after_source = self._apply_per_source_quota(after_exclusion)
 
         # Apply arXiv per-category quota
         after_arxiv = self._apply_arxiv_category_quota(after_source)
 
         # Separate kept and dropped
         kept = [s for s in after_arxiv if not s.dropped]
-        dropped = [s for s in after_arxiv if s.dropped]
+        dropped = excluded + [s for s in after_arxiv if s.dropped]
 
         self._log.info(
             "quota_filtering_complete",
@@ -128,6 +133,40 @@ class QuotaFilter:
             kept_count=len(kept),
             dropped_count=len(dropped),
         )
+
+        return kept, dropped
+
+    def _apply_paper_exclusions(
+        self, stories: list[ScoredStory]
+    ) -> tuple[list[ScoredStory], list[ScoredStory]]:
+        """Drop paper-like stories that match configured exclusion keywords."""
+        if not self._quotas.paper_exclusion_keywords:
+            return stories, []
+
+        kept: list[ScoredStory] = []
+        dropped: list[ScoredStory] = []
+
+        for story in stories:
+            matched_keyword = self._get_paper_exclusion_keyword(story.story)
+            if matched_keyword is None:
+                kept.append(story)
+                continue
+
+            dropped_story = ScoredStory(
+                story=story.story,
+                components=story.components,
+                assigned_section=story.assigned_section,
+                dropped=True,
+                drop_reason=f"paper_exclusion_keyword ({matched_keyword})",
+            )
+            dropped.append(dropped_story)
+            self._record_drop(story, f"paper_exclusion_keyword:{matched_keyword}")
+
+        if dropped:
+            self._log.info(
+                "paper_exclusions_applied",
+                dropped_count=len(dropped),
+            )
 
         return kept, dropped
 
@@ -305,6 +344,42 @@ class QuotaFilter:
             arxiv_category=arxiv_category,
         )
         self._dropped.append(entry)
+
+    def _get_paper_exclusion_keyword(self, story: Story) -> str | None:
+        """Return the matching exclusion keyword for a paper-like story."""
+        if not self._is_paper(story):
+            return None
+
+        search_text = self._build_story_search_text(story)
+        for keyword in self._quotas.paper_exclusion_keywords:
+            normalized = keyword.casefold().strip()
+            if normalized and normalized in search_text:
+                return keyword
+        return None
+
+    def _build_story_search_text(self, story: Story) -> str:
+        """Build searchable text from title, abstract, and categories."""
+        parts = [story.title]
+
+        for item in story.raw_items:
+            parts.append(item.title)
+            try:
+                raw = json.loads(item.raw_json) if item.raw_json else {}
+            except (json.JSONDecodeError, TypeError):
+                raw = {}
+
+            for field_name in ("abstract_snippet", "summary", "feed_category"):
+                value = raw.get(field_name)
+                if isinstance(value, str) and value:
+                    parts.append(value)
+
+            categories = raw.get("categories")
+            if isinstance(categories, list):
+                parts.extend(str(category) for category in categories if category)
+            elif isinstance(categories, str) and categories:
+                parts.append(categories)
+
+        return " ".join(parts).casefold()
 
     def assign_sections(
         self, kept_stories: list[ScoredStory]

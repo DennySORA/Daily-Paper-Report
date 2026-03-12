@@ -417,6 +417,13 @@ class TestQuotasConfig:
         assert config.radar_max == 10
         assert config.per_source_max == 10
         assert config.arxiv_per_category_max == 10
+        assert "medical" in config.paper_exclusion_keywords
+
+    @pytest.mark.unit
+    def test_blank_paper_exclusion_keyword_rejected(self) -> None:
+        """Blank paper exclusion keywords should fail validation."""
+        with pytest.raises(ValidationError):
+            QuotasConfig(paper_exclusion_keywords=["medical", ""])
 
     @pytest.mark.unit
     def test_negative_quota(self) -> None:

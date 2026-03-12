@@ -269,6 +269,70 @@ class TestDeterministicOrdering:
         assert ids[1] == "z-story"
 
 
+class TestPaperExclusions:
+    """Tests for keyword-based paper exclusion."""
+
+    def test_medical_paper_excluded_before_section_assignment(self) -> None:
+        """Medical paper-like stories are dropped before section assignment."""
+        quotas = QuotasConfig(top5_max=1, per_source_max=100)
+        quota_filter = QuotaFilter(run_id="test", quotas_config=quotas)
+
+        stories = [
+            _make_scored_story(
+                _make_story(
+                    story_id="medical-paper",
+                    title="Clinical foundation model for radiology",
+                    kind="paper",
+                    raw_json=(
+                        '{"summary": "A medical imaging benchmark for hospital '
+                        'diagnosis workflows."}'
+                    ),
+                ),
+                10,
+            ),
+            _make_scored_story(
+                _make_story(
+                    story_id="kept-paper",
+                    title="Efficient reasoning agents for code generation",
+                    kind="paper",
+                    raw_json='{"summary": "A general-purpose reasoning paper."}',
+                ),
+                9,
+            ),
+        ]
+
+        kept, dropped = quota_filter.apply_quotas(stories)
+        sections = quota_filter.assign_sections(kept)
+
+        assert [s.story.story_id for s in kept] == ["kept-paper"]
+        assert [s.story.story_id for s in dropped] == ["medical-paper"]
+        assert sections[StorySection.TOP5][0].story.story_id == "kept-paper"
+        assert dropped[0].drop_reason.startswith("paper_exclusion_keyword (")
+
+    def test_non_paper_medical_story_is_not_excluded(self) -> None:
+        """Non-paper medical stories still follow normal section assignment."""
+        quotas = QuotasConfig(top5_max=1, per_source_max=100)
+        quota_filter = QuotaFilter(run_id="test", quotas_config=quotas)
+
+        stories = [
+            _make_scored_story(
+                _make_story(
+                    story_id="medical-blog",
+                    title="Clinical AI deployment lessons",
+                    kind="blog",
+                    raw_json='{"summary": "A hospital deployment retrospective."}',
+                ),
+                10,
+            )
+        ]
+
+        kept, dropped = quota_filter.apply_quotas(stories)
+        sections = quota_filter.assign_sections(kept)
+
+        assert len(dropped) == 0
+        assert sections[StorySection.TOP5][0].story.story_id == "medical-blog"
+
+
 class TestSectionAssignment:
     """Tests for output section assignment."""
 
