@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-03-15",
     "2026-03-14",
     "2026-03-13",
     "2026-03-12",
@@ -111,19 +112,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-03-14T06:14:21.827734+00:00",
+  "generated_at": "2026-03-15T06:20:41.119151+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-03-14",
-  "run_id": "67935946-43d2-4234-b784-b554cf2d4fbe",
+  "run_date": "2026-03-15",
+  "run_id": "8370ad76-df75-4e8e-bd0c-0a1bcfc67834",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-03-14T06:14:21.796880+00:00",
-    "items_total": 2,
-    "run_id": "67935946-43d2-4234-b784-b554cf2d4fbe",
-    "started_at": "2026-03-14T06:13:32.176396+00:00",
-    "stories_total": 2,
+    "finished_at": "2026-03-15T06:20:41.043631+00:00",
+    "items_total": 0,
+    "run_id": "8370ad76-df75-4e8e-bd0c-0a1bcfc67834",
+    "started_at": "2026-03-15T06:19:52.707173+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
@@ -459,17 +460,17 @@
     },
     {
       "category": "other",
-      "items_new": 1,
+      "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "AWS Machine Learning Blog",
-      "newest_item_date": "2026-03-13T19:27:04+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "aws-ml-blog",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 0
     },
     {
@@ -594,17 +595,17 @@
     },
     {
       "category": "other",
-      "items_new": 1,
+      "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face Microsoft",
-      "newest_item_date": "2026-03-14T03:49:02+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "hf-microsoft",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 1
     },
     {
@@ -758,110 +759,5 @@
       "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "authors": [
-        "Xin Huang"
-      ],
-      "categories": [
-        "Announcements",
-        "Artificial Intelligence",
-        "Partner solutions"
-      ],
-      "entities": [
-        "vllm"
-      ],
-      "first_seen_at": "2026-03-14T06:13:35.476452+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "aws-ml-blog",
-          "tier": 0,
-          "title": "P-EAGLE: Faster LLM inference with Parallel Speculative Decoding in vLLM",
-          "url": "https://aws.amazon.com/blogs/machine-learning/p-eagle-faster-llm-inference-with-parallel-speculative-decoding-in-vllm"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "aws-ml-blog",
-        "tier": 0,
-        "title": "P-EAGLE: Faster LLM inference with Parallel Speculative Decoding in vLLM",
-        "url": "https://aws.amazon.com/blogs/machine-learning/p-eagle-faster-llm-inference-with-parallel-speculative-decoding-in-vllm"
-      },
-      "published_at": "2026-03-13T19:27:04+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.78,
-        "llm_relevance_score": 21.84,
-        "recency_score": 0.9560443584754718,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 4.0,
-        "total_score": 33.29604435847547
-      },
-      "section": null,
-      "source_name": "AWS Machine Learning Blog",
-      "story_id": "fallback:a8d3dc54bd488186",
-      "summary": "In this post, we explain how P-EAGLE works, how we integrated it into vLLM starting from v0.16.0 (PR#32887), and how to serve it with our pre-trained checkpoints.",
-      "title": "P-EAGLE: Faster LLM inference with Parallel Speculative Decoding in vLLM"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-03-14T06:14:13.073800+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 642,
-        "likes": 40,
-        "pipeline_tag": "zero-shot-image-classification"
-      },
-      "hf_model_id": "microsoft/colipri",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-microsoft",
-          "tier": 1,
-          "title": "microsoft/colipri",
-          "url": "https://huggingface.co/microsoft/colipri"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-microsoft",
-        "tier": 1,
-        "title": "microsoft/colipri",
-        "url": "https://huggingface.co/microsoft/colipri"
-      },
-      "published_at": "2026-03-14T03:49:02+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.989958584435653,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.789958584435652
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:microsoft/colipri",
-      "summary": "COLIPRI is a 3D vision&ndash;language transformer model trained to encode chest CT scans and reports. COLIPRI was trained using tens of thousands of chest CT scans and reports, without any annotations, using multiple objectives to learn strong joint representations of 3D images and text. The procedure is described in detail in our manuscript, _Comprehensive language-image pre-training for 3D medical image understanding_ (Wald et al. 2026). The weights shared here correspond to our best-performing model, COLIPRI-CRM. - **Developed by:** Microsoft Health Futures - **Model type:** 3D vision&ndash;language encoder - **License:** MIT COLIPRI is shared for research purposes only. It is **not meant to be used for clinical practice**. The encoders be plugged to other models, or used independently...",
-      "title": "microsoft/colipri"
-    }
-  ]
+  "top5": []
 }
