@@ -23,6 +23,8 @@ from src.features.translation.prompts import (
 logger = structlog.get_logger()
 
 BATCH_SIZE = 5
+_MAX_BATCH_RETRIES = 1
+_MAX_RAW_RESPONSE_LOG_LEN = 300
 
 
 class TranslationProcessor:
@@ -90,14 +92,88 @@ class TranslationProcessor:
     ) -> None:
         """Process a single batch of stories for translation.
 
-        On failure, skips the batch gracefully without penalizing
-        previously cached translations.
+        On failure or partial result, retries the batch once. If retry
+        still leaves untranslated stories, falls back to translating
+        each missing story individually.
 
         Args:
             batch: Story dicts in this batch.
             batch_idx: Batch index for logging.
         """
+        entries = self._attempt_batch(batch, batch_idx, attempt=0)
+        for entry in entries:
+            self._cache.put(entry)
+
+        translated_ids = {e.story_id for e in entries}
+        missing = [s for s in batch if str(s.get("story_id", "")) not in translated_ids]
+
+        if not missing:
+            self._log.info(
+                "translation_batch_complete",
+                batch=batch_idx,
+                translated=len(entries),
+                batch_size=len(batch),
+            )
+            return
+
+        # Retry the missing stories as a batch once.
+        if len(missing) > 1:
+            retry_entries = self._attempt_batch(missing, batch_idx, attempt=1)
+            for entry in retry_entries:
+                self._cache.put(entry)
+            retry_ids = {e.story_id for e in retry_entries}
+            missing = [
+                s for s in missing if str(s.get("story_id", "")) not in retry_ids
+            ]
+
+        # Fall back to single-item translation for any remaining.
+        single_ok = 0
+        for story in missing:
+            sid = str(story.get("story_id", ""))
+            single_entries = self._attempt_batch([story], batch_idx, attempt=2)
+            for entry in single_entries:
+                self._cache.put(entry)
+                single_ok += 1
+            if not single_entries:
+                self._log.warning(
+                    "translation_story_failed",
+                    batch=batch_idx,
+                    story_id=sid,
+                    title=str(story.get("title", ""))[:120],
+                )
+
+        total_translated = len(batch) - len(missing) + single_ok
+        self._log.info(
+            "translation_batch_complete",
+            batch=batch_idx,
+            translated=total_translated,
+            batch_size=len(batch),
+            retried_single=single_ok,
+            failed_ids=[
+                str(s.get("story_id", ""))
+                for s in missing
+                if not self._cache.has(str(s.get("story_id", "")))
+            ],
+        )
+
+    def _attempt_batch(
+        self,
+        batch: list[dict[str, object]],
+        batch_idx: int,
+        attempt: int,
+    ) -> list[TranslationEntry]:
+        """Make a single translation attempt for a batch.
+
+        Args:
+            batch: Story dicts to translate.
+            batch_idx: Batch index for logging.
+            attempt: Attempt number (0=first, 1=retry, 2=single fallback).
+
+        Returns:
+            List of successfully parsed TranslationEntry objects.
+        """
         prompt = build_translation_prompt(batch)
+        story_ids = [str(s.get("story_id", "")) for s in batch]
 
         try:
             raw_response = self._client.generate_content(
@@ -108,9 +184,11 @@ class TranslationProcessor:
             self._log.warning(
                 "translation_batch_api_error",
                 batch=batch_idx,
+                attempt=attempt,
+                story_ids=story_ids,
                 error=str(exc),
             )
-            return
+            return []
 
         try:
             entries = self._parse_response(raw_response, batch)
@@ -118,19 +196,23 @@ class TranslationProcessor:
             self._log.warning(
                 "translation_batch_parse_error",
                 batch=batch_idx,
+                attempt=attempt,
+                story_ids=story_ids,
                 error=str(exc),
+                raw_response_preview=raw_response[:_MAX_RAW_RESPONSE_LOG_LEN],
             )
-            return
+            return []
 
-        for entry in entries:
-            self._cache.put(entry)
+        if not entries and batch:
+            self._log.warning(
+                "translation_batch_empty_result",
+                batch=batch_idx,
+                attempt=attempt,
+                story_ids=story_ids,
+                raw_response_preview=raw_response[:_MAX_RAW_RESPONSE_LOG_LEN],
+            )
 
-        self._log.info(
-            "translation_batch_complete",
-            batch=batch_idx,
-            translated=len(entries),
-            batch_size=len(batch),
-        )
+        return entries
 
     def _parse_response(
         self,

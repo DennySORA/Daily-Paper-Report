@@ -113,6 +113,7 @@ class PapersWithCodeCollector(BaseCollector):
         result = http_client.fetch(
             source_id=source_config.id,
             url=url,
+            extra_headers={"Accept": "application/json"},
         )
 
         if not result.is_success:

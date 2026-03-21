@@ -44,15 +44,6 @@ sources:
     timezone: America/Los_Angeles
     max_items: 20
 
-  - id: meta-ai-blog
-    name: Meta AI Blog
-    url: https://ai.meta.com/blog/rss/
-    tier: 0
-    method: rss_atom
-    kind: blog
-    timezone: America/Los_Angeles
-    max_items: 20
-
   - id: microsoft-research-blog
     name: Microsoft Research Blog
     url: https://www.microsoft.com/en-us/research/feed/
@@ -306,25 +297,6 @@ sources:
     max_items: 50
     query: 'ti:"retrieval" OR ti:"RAG" OR ti:"knowledge graph" OR ti:"information retrieval" OR ti:"retrieval-augmented"'
 
-  - id: arxiv-api-interpretability
-    name: arXiv API Interpretability
-    url: https://export.arxiv.org/api/query
-    tier: 1
-    method: arxiv_api
-    kind: paper
-    timezone: UTC
-    max_items: 50
-    query: 'ti:"interpretability" OR ti:"mechanistic" OR ti:"attention" AND ti:"transformer" OR ti:"probing"'
-
-  - id: arxiv-api-rl
-    name: arXiv API Reinforcement Learning
-    url: https://export.arxiv.org/api/query
-    tier: 1
-    method: arxiv_api
-    kind: paper
-    timezone: UTC
-    max_items: 50
-    query: 'ti:"reinforcement learning" AND (ti:"language" OR ti:"LLM" OR ti:"agent") OR ti:"RLVR" OR ti:"GRPO"'
 
   # ============================================================
   # TIER 1 - HuggingFace Organization Model Releases
