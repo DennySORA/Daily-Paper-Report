@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-03-22",
     "2026-03-21",
     "2026-03-20",
     "2026-03-19",
@@ -118,18 +119,18 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-03-21T06:12:17.935831+00:00",
+  "generated_at": "2026-03-22T06:16:33.993091+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-03-21",
-  "run_id": "6c62f3a0-ecae-4697-8760-dd5480bfe46c",
+  "run_date": "2026-03-22",
+  "run_id": "3f686e0d-d89a-4c49-99b7-2d20b78b2a76",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-03-21T06:12:17.916358+00:00",
+    "finished_at": "2026-03-22T06:16:33.973738+00:00",
     "items_total": 0,
-    "run_id": "6c62f3a0-ecae-4697-8760-dd5480bfe46c",
-    "started_at": "2026-03-21T06:11:33.011953+00:00",
+    "run_id": "3f686e0d-d89a-4c49-99b7-2d20b78b2a76",
+    "started_at": "2026-03-22T06:16:00.417343+00:00",
     "stories_total": 0,
     "success": true
   },
@@ -200,21 +201,6 @@
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "arxiv_api",
-      "name": "arXiv API Interpretability",
-      "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
-      "source_id": "arxiv-api-interpretability",
-      "status": "FETCH_FAILED",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "arxiv_api",
       "name": "arXiv API LLM",
       "newest_item_date": null,
       "reason_code": "FETCH_PARSE_OK_NO_DELTA",
@@ -267,21 +253,6 @@
       "remediation_hint": null,
       "source_id": "arxiv-api-retrieval",
       "status": "NO_UPDATE",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "arxiv_api",
-      "name": "arXiv API Reinforcement Learning",
-      "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
-      "source_id": "arxiv-api-rl",
-      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -673,21 +644,6 @@
       "source_id": "hf-stabilityai",
       "status": "NO_UPDATE",
       "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
-      "method": "rss_atom",
-      "name": "Meta AI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
-      "source_id": "meta-ai-blog",
-      "status": "FETCH_FAILED",
-      "tier": 0
     },
     {
       "category": "other",
