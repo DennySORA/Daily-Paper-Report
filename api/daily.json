@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-03-30",
     "2026-03-29",
     "2026-03-28",
     "2026-03-27",
@@ -126,18 +127,18 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-03-29T06:34:16.932126+00:00",
+  "generated_at": "2026-03-30T06:47:13.853904+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-03-29",
-  "run_id": "63fad1d8-eb6d-4147-b493-038f10e23ea5",
+  "run_date": "2026-03-30",
+  "run_id": "b38c33c3-469f-4c29-ab37-eb9b7a97c41e",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-03-29T06:34:16.898940+00:00",
+    "finished_at": "2026-03-30T06:47:13.835438+00:00",
     "items_total": 0,
-    "run_id": "63fad1d8-eb6d-4147-b493-038f10e23ea5",
-    "started_at": "2026-03-29T06:23:15.391496+00:00",
+    "run_id": "b38c33c3-469f-4c29-ab37-eb9b7a97c41e",
+    "started_at": "2026-03-30T06:35:27.301273+00:00",
     "stories_total": 0,
     "success": true
   },
@@ -165,11 +166,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Alignment",
       "newest_item_date": null,
-      "reason_code": "PARSE_HTML_ERROR",
-      "reason_text": "Failed to parse HTML content.",
-      "remediation_hint": "Source HTML structure may have changed; update selectors.",
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-alignment",
-      "status": "PARSE_FAILED",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -180,11 +181,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Efficiency",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "PARSE_HTML_ERROR",
+      "reason_text": "Failed to parse HTML content.",
+      "remediation_hint": "Source HTML structure may have changed; update selectors.",
       "source_id": "arxiv-api-efficiency",
-      "status": "FETCH_FAILED",
+      "status": "PARSE_FAILED",
       "tier": 1
     },
     {
@@ -255,11 +256,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Retrieval",
       "newest_item_date": null,
-      "reason_code": "PARSE_HTML_ERROR",
-      "reason_text": "Failed to parse HTML content.",
-      "remediation_hint": "Source HTML structure may have changed; update selectors.",
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-retrieval",
-      "status": "PARSE_FAILED",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -300,11 +301,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.CL",
       "newest_item_date": null,
-      "reason_code": "PARSE_HTML_ERROR",
-      "reason_text": "Failed to parse HTML content.",
-      "remediation_hint": "Source HTML structure may have changed; update selectors.",
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-cl",
-      "status": "PARSE_FAILED",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -315,11 +316,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.CR",
       "newest_item_date": null,
-      "reason_code": "PARSE_HTML_ERROR",
-      "reason_text": "Failed to parse HTML content.",
-      "remediation_hint": "Source HTML structure may have changed; update selectors.",
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-cr",
-      "status": "PARSE_FAILED",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -345,11 +346,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.HC",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "PARSE_HTML_ERROR",
+      "reason_text": "Failed to parse HTML content.",
+      "remediation_hint": "Source HTML structure may have changed; update selectors.",
       "source_id": "arxiv-cs-hc",
-      "status": "FETCH_FAILED",
+      "status": "PARSE_FAILED",
       "tier": 1
     },
     {
@@ -360,11 +361,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.IR",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "PARSE_HTML_ERROR",
+      "reason_text": "Failed to parse HTML content.",
+      "remediation_hint": "Source HTML structure may have changed; update selectors.",
       "source_id": "arxiv-cs-ir",
-      "status": "FETCH_FAILED",
+      "status": "PARSE_FAILED",
       "tier": 1
     },
     {
@@ -405,11 +406,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.RO",
       "newest_item_date": null,
-      "reason_code": "PARSE_HTML_ERROR",
-      "reason_text": "Failed to parse HTML content.",
-      "remediation_hint": "Source HTML structure may have changed; update selectors.",
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-ro",
-      "status": "PARSE_FAILED",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -435,11 +436,11 @@
       "method": "arxiv_api",
       "name": "arXiv stat.ML",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "PARSE_HTML_ERROR",
+      "reason_text": "Failed to parse HTML content.",
+      "remediation_hint": "Source HTML structure may have changed; update selectors.",
       "source_id": "arxiv-stat-ml",
-      "status": "FETCH_FAILED",
+      "status": "PARSE_FAILED",
       "tier": 1
     },
     {
