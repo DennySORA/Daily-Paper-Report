@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-04-06",
     "2026-04-05",
     "2026-04-04",
     "2026-04-03",
@@ -133,19 +134,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-04-05T06:25:44.119919+00:00",
+  "generated_at": "2026-04-06T06:35:53.851934+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-04-05",
-  "run_id": "da5959ff-b769-4c92-bfb9-3102a7ef417f",
+  "run_date": "2026-04-06",
+  "run_id": "fefe1212-771e-486e-8ac9-877049277ba5",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-04-05T06:25:44.073067+00:00",
-    "items_total": 1,
-    "run_id": "da5959ff-b769-4c92-bfb9-3102a7ef417f",
-    "started_at": "2026-04-05T06:25:14.070303+00:00",
-    "stories_total": 1,
+    "finished_at": "2026-04-06T06:35:53.834611+00:00",
+    "items_total": 0,
+    "run_id": "fefe1212-771e-486e-8ac9-877049277ba5",
+    "started_at": "2026-04-06T06:35:29.513360+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
@@ -721,72 +722,19 @@
     },
     {
       "category": "other",
-      "items_new": 1,
+      "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "Sebastian Raschka Blog",
-      "newest_item_date": "2026-04-04T11:45:37+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "sebastian-raschka-blog",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [
-        "Reasoning Models",
-        "Large language models",
-        "Agents",
-        "LLMs",
-        "Python"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-04-05T06:25:16.593985+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "sebastian-raschka-blog",
-          "tier": 0,
-          "title": "Components of A Coding Agent",
-          "url": "https://magazine.sebastianraschka.com/p/components-of-a-coding-agent"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "sebastian-raschka-blog",
-        "tier": 0,
-        "title": "Components of A Coding Agent",
-        "url": "https://magazine.sebastianraschka.com/p/components-of-a-coding-agent"
-      },
-      "published_at": "2026-04-04T11:45:37+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.75,
-        "llm_relevance_score": 21.0,
-        "recency_score": 0.9251625388009792,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 4.0,
-        "total_score": 30.42516253880098
-      },
-      "section": null,
-      "source_name": "Sebastian Raschka Blog",
-      "story_id": "fallback:93e4f423cf1082e6",
-      "summary": "How coding agents use tools, memory, and repo context to make LLMs work better in practice",
-      "title": "Components of A Coding Agent"
-    }
-  ]
+  "top5": []
 }
