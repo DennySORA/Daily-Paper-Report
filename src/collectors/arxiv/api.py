@@ -6,7 +6,7 @@ to find targeted papers (e.g., CN frontier model technical reports).
 
 import time
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any, Protocol
 from urllib.parse import urlencode
 from xml.etree.ElementTree import Element, ParseError
@@ -17,6 +17,7 @@ import structlog
 from src.collectors.arxiv.constants import (
     ARXIV_API_BASE_URL,
     ARXIV_API_RATE_LIMIT_SECONDS,
+    ARXIV_API_DEFAULT_MAX_RESULTS,
     FIELD_ARXIV_ID,
     FIELD_SOURCE,
     SOURCE_TYPE_API,
@@ -36,6 +37,7 @@ logger = structlog.get_logger()
 # Atom namespace
 ATOM_NS = "{http://www.w3.org/2005/Atom}"
 ARXIV_NS = "{http://arxiv.org/schemas/atom}"
+ARXIV_API_MAX_PAGES = 100
 
 
 class RateLimiterProtocol(Protocol):
@@ -62,6 +64,7 @@ class ArxivApiConfig:
 
     query: str
     max_results: int = 50
+    start: int = 0
     sort_by: str = "submittedDate"
     sort_order: str = "descending"
 
@@ -133,6 +136,7 @@ class ArxivApiCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect items from arXiv API.
 
@@ -156,66 +160,59 @@ class ArxivApiCollector(BaseCollector):
             run_id=self._run_id,
         )
 
+        if self._should_skip_for_long_lookback(source_config, lookback_hours):
+            log.info(
+                "keyword_query_skipped_for_long_lookback",
+                lookback_hours=lookback_hours,
+                query=str(source_config.query or ""),
+            )
+            return CollectorResult(
+                items=[],
+                state=SourceState.SOURCE_DONE,
+            )
+
         parse_warnings: list[str] = []
+
+        resolved_max_items = self.resolve_max_items(
+            source_config.max_items,
+            max_items_override,
+        )
+        fetch_max_items = self.resolve_fetch_limit(
+            max_items=(
+                resolved_max_items
+                if resolved_max_items > 0
+                else source_config.max_items
+            ),
+            fallback_limit=ARXIV_API_DEFAULT_MAX_RESULTS,
+        )
 
         try:
             state_machine.to_fetching()
 
-            # Build API query
-            api_config = self._build_api_config(source_config)
-            api_url = self._build_api_url(api_config)
-
-            log.info(
-                "api_query",
-                query=api_config.query,
-                max_results=api_config.max_results,
-            )
-
-            # Rate limit
-            self._rate_limiter.wait_if_needed()
-
-            # Fetch with timing
-            start_time = time.monotonic()
-            result = http_client.fetch(
-                source_id=source_config.id,
-                url=api_url,
-                extra_headers={"Accept": "application/atom+xml"},
-            )
-            latency_ms = (time.monotonic() - start_time) * 1000
-            self._metrics.record_api_latency(latency_ms)
-
-            if result.error:
-                log.warning(
-                    "fetch_failed",
-                    error_class=(
-                        result.error.error_class.value
-                        if hasattr(result.error, "error_class")
-                        else "unknown"
-                    ),
-                    status_code=result.status_code,
+            try:
+                items, newest_id, oldest_id = self._collect_query_window(
+                    source_config=source_config,
+                    http_client=http_client,
+                    now=now,
+                    lookback_hours=lookback_hours,
+                    fetch_max_items=fetch_max_items,
+                    resolved_max_items=resolved_max_items,
+                    parse_warnings=parse_warnings,
                 )
-                self._metrics.record_error(
-                    "timeout" if "timeout" in str(result.error).lower() else "fetch"
-                )
+            except RuntimeError as e:
                 state_machine.to_failed()
                 return CollectorResult(
                     items=[],
                     error=ErrorRecord(
                         error_class=CollectorErrorClass.FETCH,
-                        message=str(result.error),
+                        message=str(e),
                         source_id=source_config.id,
                     ),
+                    parse_warnings=parse_warnings,
                     state=SourceState.SOURCE_FAILED,
                 )
 
             state_machine.to_parsing()
-
-            # Parse Atom response
-            items, newest_id, oldest_id = self._parse_atom_response(
-                body=result.body_bytes,
-                source_config=source_config,
-                parse_warnings=parse_warnings,
-            )
 
             if not items:
                 log.info("empty_response")
@@ -235,14 +232,14 @@ class ArxivApiCollector(BaseCollector):
             )
 
             items = self.sort_items_deterministically(items)
-            items = self.enforce_max_items(items, source_config.max_items)
+            items = self.enforce_max_items(items, resolved_max_items)
 
             self._metrics.record_items(len(items), "api")
 
             log.info(
                 "collection_complete",
                 items_emitted=len(items),
-                query=api_config.query,
+                query=str(source_config.query or ""),
                 result_count=len(items),
                 newest_id=newest_id,
                 oldest_id=oldest_id,
@@ -270,22 +267,26 @@ class ArxivApiCollector(BaseCollector):
                 state=SourceState.SOURCE_FAILED,
             )
 
-    def _build_api_config(self, source_config: SourceConfig) -> ArxivApiConfig:
+    def _build_api_config(
+        self,
+        source_config: SourceConfig,
+        max_results: int,
+        start: int = 0,
+    ) -> ArxivApiConfig:
         """Build API configuration from source config.
 
         Args:
             source_config: Source configuration.
+            max_results: Maximum results for API request.
 
         Returns:
             ArxivApiConfig instance.
         """
         # Get query from source_config.query field
-        query = source_config.query or ""
-        max_results = source_config.max_items
-
         return ArxivApiConfig(
-            query=str(query),
-            max_results=int(max_results) if max_results else 50,
+            query=str(source_config.query or ""),
+            max_results=max(1, max_results),
+            start=max(0, start),
             sort_by="submittedDate",
             sort_order="descending",
         )
@@ -301,11 +302,140 @@ class ArxivApiCollector(BaseCollector):
         """
         params = {
             "search_query": config.query,
+            "start": config.start,
             "max_results": config.max_results,
             "sortBy": config.sort_by,
             "sortOrder": config.sort_order,
         }
         return f"{ARXIV_API_BASE_URL}?{urlencode(params)}"
+
+    def _should_skip_for_long_lookback(
+        self,
+        source_config: SourceConfig,
+        lookback_hours: int,
+    ) -> bool:
+        """Skip broad keyword queries during extended backfills.
+
+        Category queries define the main paper universe. Keyword queries are
+        supplementary and can trigger arXiv throttling during multi-day runs.
+        """
+        if lookback_hours <= 24:
+            return False
+        query = str(source_config.query or "").strip()
+        return not query.startswith("cat:")
+
+    def _collect_query_window(
+        self,
+        source_config: SourceConfig,
+        http_client: HttpFetcher,
+        now: datetime,
+        lookback_hours: int,
+        fetch_max_items: int,
+        resolved_max_items: int,
+        parse_warnings: list[str],
+    ) -> tuple[list[Item], str | None, str | None]:
+        """Fetch paginated arXiv results until the lookback window is covered."""
+        log = logger.bind(
+            component="arxiv",
+            run_id=self._run_id,
+            source_id=source_config.id,
+            mode="api",
+        )
+        cutoff = now - timedelta(hours=lookback_hours)
+        if cutoff.tzinfo is None:
+            cutoff = cutoff.replace(tzinfo=UTC)
+
+        items: list[Item] = []
+        seen_urls: set[str] = set()
+        newest_id: str | None = None
+        oldest_id: str | None = None
+
+        for page_index in range(ARXIV_API_MAX_PAGES):
+            start = page_index * fetch_max_items
+            api_config = self._build_api_config(
+                source_config=source_config,
+                max_results=fetch_max_items,
+                start=start,
+            )
+            api_url = self._build_api_url(api_config)
+
+            log.info(
+                "api_query",
+                query=api_config.query,
+                max_results=api_config.max_results,
+                start=api_config.start,
+                resolved_max_items=resolved_max_items,
+            )
+
+            self._rate_limiter.wait_if_needed()
+
+            start_time = time.monotonic()
+            result = http_client.fetch(
+                source_id=source_config.id,
+                url=api_url,
+                extra_headers={"Accept": "application/atom+xml"},
+            )
+            latency_ms = (time.monotonic() - start_time) * 1000
+            self._metrics.record_api_latency(latency_ms)
+
+            if result.error:
+                log.warning(
+                    "fetch_failed",
+                    error_class=(
+                        result.error.error_class.value
+                        if hasattr(result.error, "error_class")
+                        else "unknown"
+                    ),
+                    status_code=result.status_code,
+                    start=api_config.start,
+                )
+                self._metrics.record_error(
+                    "timeout" if "timeout" in str(result.error).lower() else "fetch"
+                )
+                msg = str(result.error)
+                raise RuntimeError(msg)
+
+            page_items, page_newest_id, page_oldest_id = self._parse_atom_response(
+                body=result.body_bytes,
+                source_config=source_config,
+                parse_warnings=parse_warnings,
+            )
+
+            if not page_items:
+                break
+
+            if newest_id is None:
+                newest_id = page_newest_id
+            if page_oldest_id is not None:
+                oldest_id = page_oldest_id
+
+            oldest_published_at: datetime | None = None
+            for item in page_items:
+                if item.url in seen_urls:
+                    continue
+                seen_urls.add(item.url)
+                items.append(item)
+                if item.published_at is None:
+                    continue
+                item_published = item.published_at
+                if item_published.tzinfo is None:
+                    item_published = item_published.replace(tzinfo=UTC)
+                if oldest_published_at is None or item_published < oldest_published_at:
+                    oldest_published_at = item_published
+
+            if len(page_items) < fetch_max_items:
+                break
+            if oldest_published_at is not None and oldest_published_at < cutoff:
+                break
+        else:
+            log.warning(
+                "api_pagination_limit_reached",
+                max_pages=ARXIV_API_MAX_PAGES,
+                fetch_max_items=fetch_max_items,
+                items_collected=len(items),
+            )
+
+        return items, newest_id, oldest_id
 
     def _parse_atom_response(
         self,

@@ -63,6 +63,7 @@ class Collector(Protocol):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect items from a source.
 
@@ -99,6 +100,7 @@ class BaseCollector(ABC):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect items from a source.
 
@@ -107,10 +109,59 @@ class BaseCollector(ABC):
             http_client: HTTP client for fetching.
             now: Current timestamp for consistency.
             lookback_hours: Number of hours to look back for items.
+            max_items_override: Optional runtime override for source max_items. If
+                provided, overrides source_config.max_items. A value of 0 disables
+                source-level capping while still allowing a safe request fetch cap.
 
         Returns:
             CollectorResult with items and status.
         """
+
+    @staticmethod
+    def resolve_max_items(
+        source_max_items: int,
+        max_items_override: int | None,
+    ) -> int:
+        """Resolve effective max_items for this run.
+
+        Args:
+            source_max_items: Configured per-source max_items.
+            max_items_override: Optional runtime override.
+
+        Returns:
+            Effective max_items (may be 0 for unlimited).
+        """
+        if max_items_override is None:
+            return source_max_items
+        return max_items_override
+
+    @staticmethod
+    def resolve_fetch_limit(
+        max_items: int,
+        fallback_limit: int,
+        api_cap: int | None = None,
+    ) -> int:
+        """Resolve safe request-time fetch limit.
+
+        A runtime/config value of 0 means no collection cap, but upstream APIs
+        still require a finite request limit. This helper converts <=0 values to
+        a sensible fallback and optionally applies provider API caps.
+
+        Args:
+            max_items: Resolved max_items from config/override.
+            fallback_limit: Fallback fetch limit when max_items <= 0.
+            api_cap: Optional API maximum cap.
+
+        Returns:
+            Effective limit for fetch/query parameters.
+        """
+        if max_items <= 0:
+            max_items = fallback_limit
+
+        if api_cap is not None:
+            return min(max_items, api_cap)
+
+        return max_items
 
     def canonicalize_url(self, url: str, base_url: str | None = None) -> str:
         """Canonicalize a URL.

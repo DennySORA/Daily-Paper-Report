@@ -20,8 +20,8 @@ FIELD_TIMESTAMP_NOTE = "timestamp_note"
 TIMESTAMP_NOTE_API_PREFERRED = "API and RSS timestamps differ; using API timestamp"
 
 # arXiv API configuration
-ARXIV_API_BASE_URL = "http://export.arxiv.org/api/query"
-ARXIV_API_RATE_LIMIT_SECONDS = 1.0
+ARXIV_API_BASE_URL = "https://export.arxiv.org/api/query"
+ARXIV_API_RATE_LIMIT_SECONDS = 3.0
 ARXIV_API_DEFAULT_MAX_RESULTS = 100
 ARXIV_API_DEFAULT_SORT_BY = "submittedDate"
 ARXIV_API_DEFAULT_SORT_ORDER = "descending"

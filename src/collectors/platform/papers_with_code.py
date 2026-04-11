@@ -88,6 +88,7 @@ class PapersWithCodeCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect papers from Papers With Code API.
 
@@ -105,8 +106,18 @@ class PapersWithCodeCollector(BaseCollector):
         )
         state_machine.to_fetching()
 
-        max_items = source_config.max_items or 100
-        url = f"{PAPERS_WITH_CODE_API_BASE_URL}{PAPERS_WITH_CODE_PAPERS_PATH}?items_per_page={max_items}"
+        max_items = self.resolve_max_items(
+            source_config.max_items,
+            max_items_override,
+        )
+        fetch_max_items = self.resolve_fetch_limit(
+            max_items=max_items,
+            fallback_limit=1000,
+        )
+        url = (
+            f"{PAPERS_WITH_CODE_API_BASE_URL}{PAPERS_WITH_CODE_PAPERS_PATH}"
+            f"?items_per_page={fetch_max_items}"
+        )
 
         self._rate_limiter.acquire()
 
@@ -141,6 +152,7 @@ class PapersWithCodeCollector(BaseCollector):
                 lookback_hours=lookback_hours,
                 source_id=source_config.id,
             )
+            items = self.enforce_max_items(items, max_items)
 
             state_machine.to_done()
 

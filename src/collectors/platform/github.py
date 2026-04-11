@@ -106,6 +106,7 @@ class GitHubReleasesCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect releases from a GitHub repository.
 
@@ -152,7 +153,15 @@ class GitHubReleasesCollector(BaseCollector):
                 )
 
             owner, repo = owner_repo
-            api_url = self._build_api_url(owner, repo, source_config.max_items)
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+            api_url = self._build_api_url(
+                owner,
+                repo,
+                self.resolve_fetch_limit(max_items=max_items, fallback_limit=100, api_cap=100),
+            )
 
             log.info(
                 "fetching_releases",
@@ -243,7 +252,7 @@ class GitHubReleasesCollector(BaseCollector):
             )
 
             items = self.sort_items_deterministically(items)
-            items = self.enforce_max_items(items, source_config.max_items)
+            items = self.enforce_max_items(items, max_items)
 
             self._metrics.record_items(PLATFORM_GITHUB, len(items))
 

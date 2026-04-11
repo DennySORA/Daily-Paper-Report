@@ -66,6 +66,7 @@ class HuggingFaceDailyPapersCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect papers from HuggingFace Daily Papers API.
 
@@ -106,8 +107,11 @@ class HuggingFaceDailyPapersCollector(BaseCollector):
 
         try:
             data = json.loads(result.body_bytes.decode("utf-8"))
-            max_items = source_config.max_items or 50
-            items = self._parse_response(data, source_config, now, max_items)
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+            items = self._parse_response(data, source_config, now)
 
             # Filter by time: only keep items published in the last 24 hours
             items = self.filter_items_by_time(
@@ -116,6 +120,7 @@ class HuggingFaceDailyPapersCollector(BaseCollector):
                 lookback_hours=lookback_hours,
                 source_id=source_config.id,
             )
+            items = self.enforce_max_items(items, max_items)
 
             state_machine.to_done()
 
@@ -147,7 +152,6 @@ class HuggingFaceDailyPapersCollector(BaseCollector):
         data: list[dict[str, Any]] | dict[str, Any],
         source_config: SourceConfig,
         now: datetime,
-        max_items: int,
     ) -> list[Item]:
         """Parse HuggingFace Daily Papers API response.
 
@@ -155,7 +159,6 @@ class HuggingFaceDailyPapersCollector(BaseCollector):
             data: API response data (list of papers or dict with results).
             source_config: Source configuration.
             now: Current timestamp.
-            max_items: Maximum items to return.
 
         Returns:
             List of parsed Items.
@@ -165,7 +168,7 @@ class HuggingFaceDailyPapersCollector(BaseCollector):
         # Handle both list and dict response formats
         papers = data if isinstance(data, list) else data.get("papers", [])
 
-        for paper in papers[:max_items]:
+        for paper in papers:
             item = self._parse_paper(paper, source_config, now)
             if item:
                 items.append(item)

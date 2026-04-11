@@ -88,7 +88,8 @@ sources:
   # ============================================================
   # TIER 1 - arXiv Paper Categories (via API for full lookback support)
   # Using arxiv_api method instead of rss_atom to support --lookback parameter
-  # for fetching papers over configurable date ranges (e.g., 7 days)
+  # for fetching papers over configurable date ranges (e.g., 7 days).
+  # max_items=0 keeps the full time window and lets ranking decide the final 70.
   # ============================================================
 
   - id: arxiv-cs-ai
@@ -98,7 +99,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 500
+    max_items: 0
     query: 'cat:cs.AI'
 
   - id: arxiv-cs-lg
@@ -108,7 +109,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 500
+    max_items: 0
     query: 'cat:cs.LG'
 
   - id: arxiv-cs-cl
@@ -118,7 +119,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 500
+    max_items: 0
     query: 'cat:cs.CL'
 
   - id: arxiv-cs-cv
@@ -128,7 +129,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 500
+    max_items: 0
     query: 'cat:cs.CV'
 
   - id: arxiv-stat-ml
@@ -138,7 +139,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 0
     query: 'cat:stat.ML'
 
   - id: arxiv-cs-ma
@@ -148,7 +149,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 0
     query: 'cat:cs.MA'
 
   - id: arxiv-cs-ro
@@ -158,7 +159,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 0
     query: 'cat:cs.RO'
 
   - id: arxiv-cs-se
@@ -168,7 +169,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 0
     query: 'cat:cs.SE'
 
   - id: arxiv-cs-ir
@@ -178,7 +179,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 300
+    max_items: 0
     query: 'cat:cs.IR'
 
   - id: arxiv-cs-hc
@@ -188,7 +189,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 200
+    max_items: 0
     query: 'cat:cs.HC'
 
   - id: arxiv-cs-cr
@@ -198,7 +199,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 200
+    max_items: 0
     query: 'cat:cs.CR'
 
   # ============================================================

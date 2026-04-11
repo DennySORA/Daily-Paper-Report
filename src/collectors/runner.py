@@ -88,6 +88,7 @@ class CollectorRunner:
         max_workers: int = 4,
         strip_params: list[str] | None = None,
         lookback_hours: int = 24,
+        max_items_per_source: int | None = None,
     ) -> None:
         """Initialize the collector runner.
 
@@ -98,6 +99,8 @@ class CollectorRunner:
             max_workers: Maximum parallel workers.
             strip_params: URL parameters to strip.
             lookback_hours: Number of hours to look back for items.
+            max_items_per_source: Optional per-source max_items override for the run.
+                When set, it overrides source_config.max_items.
         """
         self._store = store
         self._http_client = http_client
@@ -105,6 +108,7 @@ class CollectorRunner:
         self._max_workers = max_workers
         self._strip_params = strip_params
         self._lookback_hours = lookback_hours
+        self._max_items_per_source = max_items_per_source
         self._metrics = CollectorMetrics.get_instance()
         self._log = logger.bind(
             component="runner",
@@ -275,7 +279,13 @@ class CollectorRunner:
             )
 
         # Run collector
-        result = collector.collect(source, self._http_client, now, self._lookback_hours)
+        result = collector.collect(
+            source,
+            self._http_client,
+            now,
+            self._lookback_hours,
+            self._max_items_per_source,
+        )
 
         # Calculate duration
         duration_ms = (time.perf_counter_ns() - start_time_ns) / 1_000_000

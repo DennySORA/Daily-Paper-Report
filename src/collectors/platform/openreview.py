@@ -111,6 +111,7 @@ class OpenReviewVenueCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect papers from an OpenReview venue.
 
@@ -160,7 +161,14 @@ class OpenReviewVenueCollector(BaseCollector):
                     state=SourceState.SOURCE_FAILED,
                 )
 
-            api_url = self._build_api_url(venue_id, source_config.max_items)
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+            api_url = self._build_api_url(
+                venue_id,
+                self.resolve_fetch_limit(max_items=max_items, fallback_limit=1000, api_cap=1000),
+            )
 
             log.info(
                 "fetching_papers",
@@ -249,7 +257,7 @@ class OpenReviewVenueCollector(BaseCollector):
             )
 
             items = self.sort_items_deterministically(items)
-            items = self.enforce_max_items(items, source_config.max_items)
+            items = self.enforce_max_items(items, max_items)
 
             self._metrics.record_items(PLATFORM_OPENREVIEW, len(items))
 

@@ -84,6 +84,7 @@ class RunOptions:
     verbose: bool
     dry_run: bool = False
     lookback_hours: int = 24
+    source_max_items: int | None = None
     retention_days: int = 90
     skip_translation: bool = False
 
@@ -205,6 +206,7 @@ def _run_collection_phase(  # noqa: PLR0913
     run_id: str,
     log: structlog.typing.FilteringBoundLogger,
     lookback_hours: int = 24,
+    source_max_items: int | None = None,
 ) -> "RunnerResult":
     """Execute the collection phase.
 
@@ -215,6 +217,7 @@ def _run_collection_phase(  # noqa: PLR0913
         run_id: Run identifier.
         log: Logger instance.
         lookback_hours: Number of hours to look back for items.
+        source_max_items: Optional per-source max_items override.
 
     Returns:
         CollectorRunner result.
@@ -235,6 +238,7 @@ def _run_collection_phase(  # noqa: PLR0913
         max_workers=1,
         strip_params=strip_params,
         lookback_hours=lookback_hours,
+        max_items_per_source=source_max_items,
     )
 
     runner_result = collector_runner.run(
@@ -814,7 +818,13 @@ def _execute_pipeline_phases(  # noqa: PLR0913
 
     # Phase 1: Collection
     runner_result = _run_collection_phase(
-        store, effective_config, strip_params, run_id, log, options.lookback_hours
+        store,
+        effective_config,
+        strip_params,
+        run_id,
+        log,
+        options.lookback_hours,
+        options.source_max_items,
     )
 
     # Phase 2: Linking
@@ -953,6 +963,13 @@ def cli() -> None:
     help="Lookback window in hours for filtering items by published_at (default: 24).",
 )
 @click.option(
+    "--source-max-items",
+    "source_max_items",
+    type=int,
+    default=None,
+    help="Per-source max_items override for this run. If omitted, use each source's configured max_items. 0 means unlimited while still using safe API fetch caps.",
+)
+@click.option(
     "--retention-days",
     "retention_days",
     type=int,
@@ -977,6 +994,7 @@ def run(  # noqa: PLR0913
     verbose: bool,
     dry_run: bool,
     lookback_hours: int,
+    source_max_items: int | None,
     retention_days: int,
     skip_translation: bool,
 ) -> None:
@@ -999,6 +1017,7 @@ def run(  # noqa: PLR0913
         verbose=verbose,
         dry_run=dry_run,
         lookback_hours=lookback_hours,
+        source_max_items=source_max_items,
         retention_days=retention_days,
         skip_translation=skip_translation,
     )

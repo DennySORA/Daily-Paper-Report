@@ -74,6 +74,7 @@ class HtmlListCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect items from an HTML list page.
 
@@ -216,8 +217,13 @@ class HtmlListCollector(BaseCollector):
             # Sort deterministically
             items = self.sort_items_deterministically(items)
 
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+
             # Enforce max_items
-            items = self.enforce_max_items(items, source_config.max_items)
+            items = self.enforce_max_items(items, max_items)
 
             duration_ms = (time.perf_counter_ns() - start_time) / 1_000_000
 

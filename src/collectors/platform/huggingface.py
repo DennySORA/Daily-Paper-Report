@@ -106,6 +106,7 @@ class HuggingFaceOrgCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect models from a HuggingFace organization.
 
@@ -151,7 +152,14 @@ class HuggingFaceOrgCollector(BaseCollector):
                     state=SourceState.SOURCE_FAILED,
                 )
 
-            api_url = self._build_api_url(org, source_config.max_items)
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+            api_url = self._build_api_url(
+                org,
+                self.resolve_fetch_limit(max_items=max_items, fallback_limit=100, api_cap=1000),
+            )
 
             log.info(
                 "fetching_models",
@@ -240,7 +248,7 @@ class HuggingFaceOrgCollector(BaseCollector):
             )
 
             items = self.sort_items_deterministically(items)
-            items = self.enforce_max_items(items, source_config.max_items)
+            items = self.enforce_max_items(items, max_items)
 
             # Fetch README summaries for each model
             items = self._enrich_with_readme_summaries(

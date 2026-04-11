@@ -1,6 +1,7 @@
 """Unit tests for arXiv API collector."""
 
 from datetime import UTC, datetime
+from urllib.parse import parse_qs, urlparse
 from unittest.mock import MagicMock
 
 from src.collectors.arxiv.api import (
@@ -64,6 +65,35 @@ EMPTY_API_RESPONSE = b"""<?xml version="1.0" encoding="UTF-8"?>
   <id>http://arxiv.org/api/query</id>
   <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:totalResults>
 </feed>"""
+
+
+def build_api_response(entries: list[dict[str, str]]) -> bytes:
+    """Build a minimal Atom API response for pagination tests."""
+    entry_xml = []
+    for entry in entries:
+        entry_xml.append(
+            f"""  <entry>
+    <id>http://arxiv.org/abs/{entry["id"]}</id>
+    <title>{entry["title"]}</title>
+    <summary>{entry["summary"]}</summary>
+    <author><name>{entry["author"]}</name></author>
+    <published>{entry["published"]}</published>
+    <updated>{entry["updated"]}</updated>
+    <arxiv:primary_category term="{entry["category"]}" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="{entry["category"]}" scheme="http://arxiv.org/schemas/atom"/>
+    <link href="http://arxiv.org/abs/{entry["id"]}" rel="alternate" type="text/html"/>
+  </entry>"""
+        )
+
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:arxiv="http://arxiv.org/schemas/atom">
+  <title type="html">ArXiv Query</title>
+  <id>http://arxiv.org/api/query</id>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">{count}</opensearch:totalResults>
+{entries}
+</feed>""".format(count=len(entries), entries="\n".join(entry_xml))
+    return xml.encode()
 
 
 def make_source_config(
@@ -211,6 +241,23 @@ class TestArxivApiCollector:
         assert result.success
         assert len(result.items) == 0
 
+    def test_keyword_query_skipped_for_long_lookback(self) -> None:
+        """Broad keyword queries are skipped during multi-day backfills."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config(query='ti:"DeepSeek"')
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        result = collector.collect(
+            source_config,
+            mock_client,
+            datetime.now(UTC),
+            lookback_hours=168,
+        )
+
+        assert result.success
+        assert result.items == []
+        mock_client.fetch.assert_not_called()
+
     def test_fetch_error_returns_failed(self) -> None:
         """Test that fetch error returns failed state."""
         collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
@@ -280,6 +327,159 @@ class TestArxivApiCollector:
         metrics = ArxivMetrics.get_instance()
         assert metrics.get_items_total("api") == 2
         assert metrics.get_api_latency_stats()["count"] == 1.0
+
+    def test_unlimited_override_paginates_until_cutoff(self) -> None:
+        """An unlimited override should fetch every page needed for the window."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config(max_results=2)
+
+        page_1 = build_api_response(
+            [
+                {
+                    "id": "2401.20001v1",
+                    "title": "Page 1 / Newest 1",
+                    "summary": "summary",
+                    "author": "Author 1",
+                    "published": "2024-01-16T11:00:00Z",
+                    "updated": "2024-01-16T11:10:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.20002v1",
+                    "title": "Page 1 / Newest 2",
+                    "summary": "summary",
+                    "author": "Author 2",
+                    "published": "2024-01-16T10:00:00Z",
+                    "updated": "2024-01-16T10:10:00Z",
+                    "category": "cs.AI",
+                },
+            ]
+        )
+        page_2 = build_api_response(
+            [
+                {
+                    "id": "2401.20003v1",
+                    "title": "Page 2 / Mid 1",
+                    "summary": "summary",
+                    "author": "Author 3",
+                    "published": "2024-01-15T14:00:00Z",
+                    "updated": "2024-01-15T14:10:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.20004v1",
+                    "title": "Page 2 / Mid 2",
+                    "summary": "summary",
+                    "author": "Author 4",
+                    "published": "2024-01-15T13:00:00Z",
+                    "updated": "2024-01-15T13:10:00Z",
+                    "category": "cs.AI",
+                },
+            ]
+        )
+        page_3 = build_api_response(
+            [
+                {
+                    "id": "2401.20005v1",
+                    "title": "Page 3 / Boundary",
+                    "summary": "summary",
+                    "author": "Author 5",
+                    "published": "2024-01-15T12:30:00Z",
+                    "updated": "2024-01-15T12:40:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.20006v1",
+                    "title": "Page 3 / Older",
+                    "summary": "summary",
+                    "author": "Author 6",
+                    "published": "2024-01-15T11:30:00Z",
+                    "updated": "2024-01-15T11:40:00Z",
+                    "category": "cs.AI",
+                },
+            ]
+        )
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        mock_client.fetch.side_effect = [
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=page_1,
+                cache_hit=False,
+                error=None,
+            ),
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=page_2,
+                cache_hit=False,
+                error=None,
+            ),
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=page_3,
+                cache_hit=False,
+                error=None,
+            ),
+        ]
+
+        run_timestamp = datetime(2024, 1, 16, 12, 0, 0, tzinfo=UTC)
+        result = collector.collect(
+            source_config,
+            mock_client,
+            run_timestamp,
+            max_items_override=0,
+        )
+
+        assert result.success
+        assert len(result.items) == 5
+
+        starts = []
+        for call in mock_client.fetch.call_args_list:
+            parsed = urlparse(call.kwargs["url"])
+            starts.append(parse_qs(parsed.query)["start"][0])
+        assert starts == ["0", "2", "4"]
+
+    def test_positive_override_still_enforces_final_cap(self) -> None:
+        """A positive override should still cap the final result set."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config(max_results=2)
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        mock_client.fetch.side_effect = [
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=SAMPLE_API_RESPONSE,
+                cache_hit=False,
+                error=None,
+            ),
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=EMPTY_API_RESPONSE,
+                cache_hit=False,
+                error=None,
+            ),
+        ]
+
+        run_timestamp = datetime(2024, 1, 15, 18, 0, 0, tzinfo=UTC)
+        result = collector.collect(
+            source_config,
+            mock_client,
+            run_timestamp,
+            max_items_override=1,
+        )
+
+        assert result.success
+        assert len(result.items) == 1
 
     def test_categories_extracted(self) -> None:
         """Test that categories are extracted from entries."""

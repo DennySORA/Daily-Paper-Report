@@ -62,6 +62,7 @@ class ArxivRssCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect items from an arXiv RSS feed.
 
@@ -165,7 +166,11 @@ class ArxivRssCollector(BaseCollector):
             )
 
             items = self.sort_items_deterministically(items)
-            items = self.enforce_max_items(items, source_config.max_items)
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+            items = self.enforce_max_items(items, max_items)
 
             self._metrics.record_items(len(items), "rss", category)
 

@@ -50,6 +50,7 @@ class RssAtomCollector(BaseCollector):
         http_client: HttpFetcher,
         now: datetime,
         lookback_hours: int = 24,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         """Collect items from an RSS/Atom feed.
 
@@ -158,7 +159,11 @@ class RssAtomCollector(BaseCollector):
             items = self.sort_items_deterministically(items)
 
             # Enforce max_items
-            items = self.enforce_max_items(items, source_config.max_items)
+            max_items = self.resolve_max_items(
+                source_config.max_items,
+                max_items_override,
+            )
+            items = self.enforce_max_items(items, max_items)
 
             log.info(
                 "collection_complete",

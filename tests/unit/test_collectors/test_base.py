@@ -17,6 +17,7 @@ class ConcreteCollector(BaseCollector):
         source_config: SourceConfig,
         http_client: HttpFetcher,
         now: datetime,
+        max_items_override: int | None = None,
     ) -> CollectorResult:
         return CollectorResult(items=[], state=SourceState.SOURCE_DONE)
 
