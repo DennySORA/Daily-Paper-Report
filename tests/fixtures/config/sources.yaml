@@ -460,13 +460,3 @@ sources:
     kind: paper
     timezone: UTC
     max_items: 50
-
-  - id: papers-with-code
-    name: Papers With Code
-    url: https://paperswithcode.com/
-    tier: 1
-    method: papers_with_code
-    kind: paper
-    timezone: UTC
-    enabled: false  # Legacy endpoint now serves HTML; hf-daily-papers covers this stream.
-    max_items: 50
