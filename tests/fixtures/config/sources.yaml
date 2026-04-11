@@ -468,4 +468,5 @@ sources:
     method: papers_with_code
     kind: paper
     timezone: UTC
+    enabled: false  # Legacy endpoint now serves HTML; hf-daily-papers covers this stream.
     max_items: 50

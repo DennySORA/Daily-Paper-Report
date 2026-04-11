@@ -38,6 +38,7 @@ logger = structlog.get_logger()
 ATOM_NS = "{http://www.w3.org/2005/Atom}"
 ARXIV_NS = "{http://arxiv.org/schemas/atom}"
 ARXIV_API_MAX_PAGES = 100
+ARXIV_API_MAX_KEYWORD_BACKFILL_PAGES = 2
 
 
 class RateLimiterProtocol(Protocol):
@@ -160,17 +161,6 @@ class ArxivApiCollector(BaseCollector):
             run_id=self._run_id,
         )
 
-        if self._should_skip_for_long_lookback(source_config, lookback_hours):
-            log.info(
-                "keyword_query_skipped_for_long_lookback",
-                lookback_hours=lookback_hours,
-                query=str(source_config.query or ""),
-            )
-            return CollectorResult(
-                items=[],
-                state=SourceState.SOURCE_DONE,
-            )
-
         parse_warnings: list[str] = []
 
         resolved_max_items = self.resolve_max_items(
@@ -196,6 +186,7 @@ class ArxivApiCollector(BaseCollector):
                     now=now,
                     lookback_hours=lookback_hours,
                     fetch_max_items=fetch_max_items,
+                    max_pages=self._resolve_max_pages(source_config, lookback_hours),
                     resolved_max_items=resolved_max_items,
                     parse_warnings=parse_warnings,
                 )
@@ -309,20 +300,26 @@ class ArxivApiCollector(BaseCollector):
         }
         return f"{ARXIV_API_BASE_URL}?{urlencode(params)}"
 
-    def _should_skip_for_long_lookback(
+    def _is_keyword_backfill(
         self,
         source_config: SourceConfig,
         lookback_hours: int,
     ) -> bool:
-        """Skip broad keyword queries during extended backfills.
-
-        Category queries define the main paper universe. Keyword queries are
-        supplementary and can trigger arXiv throttling during multi-day runs.
-        """
+        """Whether this query is a supplementary keyword backfill."""
         if lookback_hours <= 24:
             return False
         query = str(source_config.query or "").strip()
         return not query.startswith("cat:")
+
+    def _resolve_max_pages(
+        self,
+        source_config: SourceConfig,
+        lookback_hours: int,
+    ) -> int:
+        """Resolve pagination budget for this query window."""
+        if self._is_keyword_backfill(source_config, lookback_hours):
+            return ARXIV_API_MAX_KEYWORD_BACKFILL_PAGES
+        return ARXIV_API_MAX_PAGES
 
     def _collect_query_window(
         self,
@@ -331,6 +328,7 @@ class ArxivApiCollector(BaseCollector):
         now: datetime,
         lookback_hours: int,
         fetch_max_items: int,
+        max_pages: int,
         resolved_max_items: int,
         parse_warnings: list[str],
     ) -> tuple[list[Item], str | None, str | None]:
@@ -349,8 +347,12 @@ class ArxivApiCollector(BaseCollector):
         seen_urls: set[str] = set()
         newest_id: str | None = None
         oldest_id: str | None = None
+        partial_fetch_fail_ok = self._is_keyword_backfill(
+            source_config,
+            lookback_hours,
+        )
 
-        for page_index in range(ARXIV_API_MAX_PAGES):
+        for page_index in range(max_pages):
             start = page_index * fetch_max_items
             api_config = self._build_api_config(
                 source_config=source_config,
@@ -370,15 +372,30 @@ class ArxivApiCollector(BaseCollector):
             self._rate_limiter.wait_if_needed()
 
             start_time = time.monotonic()
-            result = http_client.fetch(
-                source_id=source_config.id,
-                url=api_url,
-                extra_headers={"Accept": "application/atom+xml"},
-            )
+            try:
+                result = http_client.fetch(
+                    source_id=source_config.id,
+                    url=api_url,
+                    extra_headers={"Accept": "application/atom+xml"},
+                )
+            except Exception as e:
+                if partial_fetch_fail_ok and page_index > 0 and items:
+                    log.warning(
+                        "api_page_fetch_failed_after_partial_success",
+                        start=api_config.start,
+                        error=str(e),
+                    )
+                    break
+                raise RuntimeError(str(e)) from e
             latency_ms = (time.monotonic() - start_time) * 1000
             self._metrics.record_api_latency(latency_ms)
 
-            if result.error:
+            if result.error or result.status_code >= 400:
+                error_message = (
+                    str(result.error)
+                    if result.error
+                    else f"HTTP {result.status_code}"
+                )
                 log.warning(
                     "fetch_failed",
                     error_class=(
@@ -390,10 +407,17 @@ class ArxivApiCollector(BaseCollector):
                     start=api_config.start,
                 )
                 self._metrics.record_error(
-                    "timeout" if "timeout" in str(result.error).lower() else "fetch"
+                    "timeout" if "timeout" in error_message.lower() else "fetch"
                 )
-                msg = str(result.error)
-                raise RuntimeError(msg)
+                if partial_fetch_fail_ok and page_index > 0 and items:
+                    log.warning(
+                        "api_page_fetch_failed_after_partial_success",
+                        start=api_config.start,
+                        status_code=result.status_code,
+                        error=error_message,
+                    )
+                    break
+                raise RuntimeError(error_message)
 
             page_items, page_newest_id, page_oldest_id = self._parse_atom_response(
                 body=result.body_bytes,
@@ -430,7 +454,7 @@ class ArxivApiCollector(BaseCollector):
         else:
             log.warning(
                 "api_pagination_limit_reached",
-                max_pages=ARXIV_API_MAX_PAGES,
+                max_pages=max_pages,
                 fetch_max_items=fetch_max_items,
                 items_collected=len(items),
             )

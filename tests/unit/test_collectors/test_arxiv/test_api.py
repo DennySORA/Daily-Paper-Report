@@ -241,22 +241,109 @@ class TestArxivApiCollector:
         assert result.success
         assert len(result.items) == 0
 
-    def test_keyword_query_skipped_for_long_lookback(self) -> None:
-        """Broad keyword queries are skipped during multi-day backfills."""
+    def test_keyword_query_long_lookback_uses_limited_page_budget(self) -> None:
+        """Broad keyword queries use a bounded page budget during backfills."""
         collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
-        source_config = make_source_config(query='ti:"DeepSeek"')
+        source_config = make_source_config(query='ti:"DeepSeek"', max_results=2)
 
         mock_client = MagicMock(spec=HttpFetcher)
+        body = build_api_response(
+            [
+                {
+                    "id": "2401.30001v1",
+                    "title": "Keyword Page 1",
+                    "summary": "summary",
+                    "author": "Author 1",
+                    "published": "2024-01-16T11:00:00Z",
+                    "updated": "2024-01-16T11:10:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.30002v1",
+                    "title": "Keyword Page 2",
+                    "summary": "summary",
+                    "author": "Author 2",
+                    "published": "2024-01-16T10:00:00Z",
+                    "updated": "2024-01-16T10:10:00Z",
+                    "category": "cs.AI",
+                },
+            ]
+        )
+        mock_client.fetch.side_effect = [
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=body,
+                cache_hit=False,
+                error=None,
+            )
+            for _ in range(6)
+        ]
+
         result = collector.collect(
             source_config,
             mock_client,
-            datetime.now(UTC),
+            datetime(2024, 1, 16, 12, 0, 0, tzinfo=UTC),
             lookback_hours=168,
+            max_items_override=0,
         )
 
         assert result.success
-        assert result.items == []
-        mock_client.fetch.assert_not_called()
+        assert mock_client.fetch.call_count == 2
+
+    def test_keyword_query_long_lookback_keeps_first_page_on_later_fetch_error(
+        self,
+    ) -> None:
+        """Keyword backfills should keep first-page results if a later page fails."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config(query='ti:"DeepSeek"', max_results=2)
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        body = build_api_response(
+            [
+                {
+                    "id": "2401.31001v1",
+                    "title": "Keyword Page 1",
+                    "summary": "summary",
+                    "author": "Author 1",
+                    "published": "2024-01-16T11:00:00Z",
+                    "updated": "2024-01-16T11:10:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.31002v1",
+                    "title": "Keyword Page 2",
+                    "summary": "summary",
+                    "author": "Author 2",
+                    "published": "2024-01-16T10:00:00Z",
+                    "updated": "2024-01-16T10:10:00Z",
+                    "category": "cs.AI",
+                },
+            ]
+        )
+        mock_client.fetch.side_effect = [
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=body,
+                cache_hit=False,
+                error=None,
+            ),
+            RuntimeError("HTTP 429"),
+        ]
+
+        result = collector.collect(
+            source_config,
+            mock_client,
+            datetime(2024, 1, 16, 12, 0, 0, tzinfo=UTC),
+            lookback_hours=168,
+            max_items_override=0,
+        )
+
+        assert result.success
+        assert len(result.items) == 2
 
     def test_fetch_error_returns_failed(self) -> None:
         """Test that fetch error returns failed state."""
