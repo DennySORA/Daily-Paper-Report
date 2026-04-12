@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-04-12",
     "2026-04-11",
     "2026-04-10",
     "2026-04-09",
@@ -139,122 +140,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-04-11T06:21:55.272095+00:00",
-  "model_releases_by_entity": {
-    "other": [
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [],
-        "first_seen_at": "2026-04-03T06:32:48.145588+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 1269031,
-          "likes": 591,
-          "pipeline_tag": "image-text-to-text"
-        },
-        "hf_model_id": "google/gemma-4-26b-a4b-it",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-google",
-            "tier": 1,
-            "title": "google/gemma-4-26B-A4B-it",
-            "url": "https://huggingface.co/google/gemma-4-26B-A4B-it"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/gemma-4-26B-A4B-it",
-          "url": "https://huggingface.co/google/gemma-4-26B-A4B-it"
-        },
-        "published_at": "2026-04-10T16:35:25+00:00",
-        "scores": {
-          "citation_score": 0.0,
-          "cross_source_score": 0.0,
-          "entity_score": 0.0,
-          "kind_score": 1.8,
-          "llm_raw_score": 0.0,
-          "llm_relevance_score": 0.0,
-          "recency_score": 0.9442201876671217,
-          "semantic_score": 0.0,
-          "tier_score": 2.0,
-          "topic_score": 4.0,
-          "total_score": 8.744220187667121
-        },
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:google/gemma-4-26b-a4b-it",
-        "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
-        "title": "google/gemma-4-26B-A4B-it"
-      },
-      {
-        "arxiv_id": null,
-        "authors": [],
-        "categories": [],
-        "entities": [],
-        "first_seen_at": "2026-04-03T06:32:48.145364+00:00",
-        "github_release_url": null,
-        "hf_metadata": {
-          "downloads": 1589761,
-          "likes": 1684,
-          "pipeline_tag": "image-text-to-text"
-        },
-        "hf_model_id": "google/gemma-4-31b-it",
-        "item_count": 1,
-        "links": [
-          {
-            "link_type": "huggingface",
-            "source_id": "hf-google",
-            "tier": 1,
-            "title": "google/gemma-4-31B-it",
-            "url": "https://huggingface.co/google/gemma-4-31B-it"
-          }
-        ],
-        "primary_link": {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/gemma-4-31B-it",
-          "url": "https://huggingface.co/google/gemma-4-31B-it"
-        },
-        "published_at": "2026-04-10T16:35:21+00:00",
-        "scores": {
-          "citation_score": 0.0,
-          "cross_source_score": 0.0,
-          "entity_score": 0.0,
-          "kind_score": 1.8,
-          "llm_raw_score": 0.0,
-          "llm_relevance_score": 0.0,
-          "recency_score": 0.9442158162874829,
-          "semantic_score": 0.0,
-          "tier_score": 2.0,
-          "topic_score": 4.0,
-          "total_score": 8.744215816287483
-        },
-        "section": null,
-        "source_name": null,
-        "story_id": "hf:google/gemma-4-31b-it",
-        "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
-        "title": "google/gemma-4-31B-it"
-      }
-    ]
-  },
+  "generated_at": "2026-04-12T06:32:23.986686+00:00",
+  "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-04-11",
-  "run_id": "2ea12118-5804-47ab-ad14-2434cbd3f0e1",
+  "run_date": "2026-04-12",
+  "run_id": "d0a5fdde-7c9f-4eb9-8199-6cec3e9ff779",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-04-11T06:21:55.222960+00:00",
-    "items_total": 7,
-    "run_id": "2ea12118-5804-47ab-ad14-2434cbd3f0e1",
-    "started_at": "2026-04-11T06:21:28.716083+00:00",
-    "stories_total": 7,
+    "finished_at": "2026-04-12T06:32:23.964513+00:00",
+    "items_total": 0,
+    "run_id": "d0a5fdde-7c9f-4eb9-8199-6cec3e9ff779",
+    "started_at": "2026-04-12T06:31:21.358983+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
@@ -665,17 +563,17 @@
     },
     {
       "category": "other",
-      "items_new": 2,
-      "items_updated": 5,
+      "items_new": 0,
+      "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face Google",
-      "newest_item_date": "2026-04-11T02:48:07+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "hf-google",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 1
     },
     {
@@ -818,21 +716,6 @@
       "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
-      "method": "papers_with_code",
-      "name": "Papers With Code",
-      "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
-      "source_id": "papers-with-code",
-      "status": "FETCH_FAILED",
-      "tier": 1
-    },
-    {
-      "category": "other",
-      "items_new": 0,
-      "items_updated": 0,
-      "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "Sebastian Raschka Blog",
       "newest_item_date": null,
@@ -844,258 +727,5 @@
       "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [
-        "huggingface"
-      ],
-      "first_seen_at": "2026-03-06T09:45:18.391096+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 117198,
-        "likes": 54,
-        "pipeline_tag": "time-series-forecasting"
-      },
-      "hf_model_id": "google/timesfm-2.5-200m-transformers",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/timesfm-2.5-200m-transformers",
-          "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-google",
-        "tier": 1,
-        "title": "google/timesfm-2.5-200m-transformers",
-        "url": "https://huggingface.co/google/timesfm-2.5-200m-transformers"
-      },
-      "published_at": "2026-04-10T23:15:28+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9708195761288672,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 10.770819576128867
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:google/timesfm-2.5-200m-transformers",
-      "summary": "TimesFM (Time Series Foundation Model) is a pretrained decoder-only model for time-series forecasting. This repository contains the **Transformers** port of the official TimesFM 2.5 PyTorch release. **Resources and Technical Documentation**: * Original model: google/timesfm-2.5-200m-pytorch * Paper: A decoder-only foundation model for time-series forecasting * Transformers docs: TimesFM 2.5 This model is converted from the official TimesFM 2.5 PyTorch checkpoint and integrated into `transformers` as `TimesFm2_5ModelForPrediction`. The converted checkpoint preserves the original architecture and forecasting behavior, including: * patch-based inputs for time-series contexts * decoder-only self-attention stack * point and quantile forecasts",
-      "title": "google/timesfm-2.5-200m-transformers"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-04-11T06:21:53.383722+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 14,
-        "likes": 1,
-        "pipeline_tag": "zero-shot-image-classification"
-      },
-      "hf_model_id": "google/tipsv2-b14",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/tipsv2-b14",
-          "url": "https://huggingface.co/google/tipsv2-b14"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-google",
-        "tier": 1,
-        "title": "google/tipsv2-b14",
-        "url": "https://huggingface.co/google/tipsv2-b14"
-      },
-      "published_at": "2026-04-11T02:48:07+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9852623980998616,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.785262398099862
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:google/tipsv2-b14",
-      "summary": "TIPSv2 (Text-Image Pre-training with Spatial awareness) is a family of contrastive vision-language models that produce spatially rich image features aligned with text embeddings. This is the Base variant with 86M vision params and 110M text params. | Variant | Vision params | Text params | Embed dim | |---------|--------------|-------------|-----------| | B/14 | 86M | 110M | 768 | | L/14 | 303M | 184M | 1024 | | SO400m/14 | 412M | 448M | 1152 | | g/14 | 1.1B | 389M | 1536 | pip install transformers torch torchvision sentencepiece scikit-learn from transformers import AutoModel model = AutoModel.from_pretrained(\"google/tipsv2-b14\", trust_remote_code=True)",
-      "title": "google/tipsv2-b14"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-04-11T06:21:53.384117+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 9,
-        "likes": 1,
-        "pipeline_tag": "depth-estimation"
-      },
-      "hf_model_id": "google/tipsv2-b14-dpt",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/tipsv2-b14-dpt",
-          "url": "https://huggingface.co/google/tipsv2-b14-dpt"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-google",
-        "tier": 1,
-        "title": "google/tipsv2-b14-dpt",
-        "url": "https://huggingface.co/google/tipsv2-b14-dpt"
-      },
-      "published_at": "2026-04-11T01:51:32+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9813985062137333,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.781398506213733
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:google/tipsv2-b14-dpt",
-      "summary": "DPT (Dense Prediction Transformer) heads for depth estimation, surface normal prediction, and semantic segmentation on top of the frozen TIPSv2 B/14 backbone. The backbone is loaded automatically. The depth and normals heads are trained on the NYU Depth V2 dataset and segmentation is trained on the ADE20K dataset (150 classes). pip install transformers torch torchvision sentencepiece from transformers import AutoModel from torchvision import transforms from PIL import Image import requests model = AutoModel.from_pretrained(\"google/tipsv2-b14-dpt\", trust_remote_code=True) model.eval().cuda() url = \"https://raw.githubusercontent.com/google-deepmind/tips/main/scenic/images/example_image_2.jpg\" image = Image.open(requests.get(url, stream=True).raw)",
-      "title": "google/tipsv2-b14-dpt"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-04-03T06:32:48.145157+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 646063,
-        "likes": 391,
-        "pipeline_tag": "any-to-any"
-      },
-      "hf_model_id": "google/gemma-4-e2b-it",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/gemma-4-E2B-it",
-          "url": "https://huggingface.co/google/gemma-4-E2B-it"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-google",
-        "tier": 1,
-        "title": "google/gemma-4-E2B-it",
-        "url": "https://huggingface.co/google/gemma-4-E2B-it"
-      },
-      "published_at": "2026-04-10T16:35:43+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9442398591259417,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.744239859125942
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:google/gemma-4-e2b-it",
-      "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
-      "title": "google/gemma-4-E2B-it"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [],
-      "first_seen_at": "2026-04-03T06:32:48.144941+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 961135,
-        "likes": 567,
-        "pipeline_tag": "any-to-any"
-      },
-      "hf_model_id": "google/gemma-4-e4b-it",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-google",
-          "tier": 1,
-          "title": "google/gemma-4-E4B-it",
-          "url": "https://huggingface.co/google/gemma-4-E4B-it"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-google",
-        "tier": 1,
-        "title": "google/gemma-4-E4B-it",
-        "url": "https://huggingface.co/google/gemma-4-E4B-it"
-      },
-      "published_at": "2026-04-10T16:35:38+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9442343947907162,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 8.744234394790716
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:google/gemma-4-e4b-it",
-      "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
-      "title": "google/gemma-4-E4B-it"
-    }
-  ]
+  "top5": []
 }
