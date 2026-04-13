@@ -474,12 +474,16 @@ class QuotaFilter:
         sections: dict[StorySection, list[ScoredStory]],
         assigned_ids: set[str],
     ) -> None:
-        """Assign remaining stories to RADAR section (up to max)."""
+        """Assign remaining stories to RADAR section.
+
+        Non-paper stories are always kept so official site updates remain fully
+        visible. Only overflow paper-like stories count against radar_max.
+        """
         radar_count = 0
         for s in stories:
             if s.story.story_id in assigned_ids:
                 continue
-            if radar_count >= self._quotas.radar_max:
+            if self._is_paper(s.story) and radar_count >= self._quotas.radar_max:
                 s.dropped = True
                 s.drop_reason = f"radar_max ({self._quotas.radar_max})"
                 self._record_drop(s, "radar_max")
@@ -487,7 +491,8 @@ class QuotaFilter:
             s.assigned_section = StorySection.RADAR
             sections[StorySection.RADAR].append(s)
             assigned_ids.add(s.story.story_id)
-            radar_count += 1
+            if self._is_paper(s.story):
+                radar_count += 1
 
     def _is_model_release(self, story: Story) -> bool:
         """Check if story is a model release.

@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 import structlog
 
 from src.collectors.html_profile.models import DomainProfile
+from src.collectors.html_profile.profiles import get_builtin_profile_for_url
 
 
 logger = structlog.get_logger()
@@ -136,6 +137,10 @@ class ProfileRegistry:
 
         if profile:
             return profile
+
+        builtin = get_builtin_profile_for_url(url)
+        if builtin is not None:
+            return builtin
 
         # Create default profile for the domain
         parsed = urlparse(url)

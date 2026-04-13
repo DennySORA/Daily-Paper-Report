@@ -351,19 +351,50 @@ class TestSectionAssignment:
         assert len(sections[StorySection.TOP5]) == 5
 
     def test_radar_max_enforced(self) -> None:
-        """Radar section respects max limit."""
-        quotas = QuotasConfig(top5_max=2, radar_max=3, per_source_max=100)
+        """Overflow paper-like stories still respect radar max."""
+        quotas = QuotasConfig(
+            top5_max=0,
+            papers_max=0,
+            radar_max=3,
+            per_source_max=100,
+        )
         quota_filter = QuotaFilter(run_id="test", quotas_config=quotas)
 
         stories = [
-            _make_scored_story(_make_story(story_id=f"s{i}"), 10 - i) for i in range(10)
+            _make_scored_story(_make_story(story_id=f"s{i}", kind="paper"), 10 - i)
+            for i in range(10)
         ]
 
         kept, _ = quota_filter.apply_quotas(stories)
         sections = quota_filter.assign_sections(kept)
 
-        assert len(sections[StorySection.TOP5]) == 2
+        assert len(sections[StorySection.TOP5]) == 0
         assert len(sections[StorySection.RADAR]) <= 3
+
+    def test_non_paper_updates_ignore_radar_max(self) -> None:
+        """Non-paper site updates are fully preserved in radar."""
+        quotas = QuotasConfig(
+            top5_max=0,
+            papers_max=0,
+            radar_max=1,
+            per_source_max=100,
+        )
+        quota_filter = QuotaFilter(run_id="test", quotas_config=quotas)
+
+        stories = [
+            _make_scored_story(_make_story(story_id="blog-1", kind="blog"), 10),
+            _make_scored_story(_make_story(story_id="blog-2", kind="blog"), 9),
+            _make_scored_story(_make_story(story_id="blog-3", kind="blog"), 8),
+            _make_scored_story(_make_story(story_id="paper-1", kind="paper"), 7),
+        ]
+
+        kept, _ = quota_filter.apply_quotas(stories)
+        sections = quota_filter.assign_sections(kept)
+        radar_ids = [s.story.story_id for s in sections[StorySection.RADAR]]
+
+        assert "blog-1" in radar_ids
+        assert "blog-2" in radar_ids
+        assert "blog-3" in radar_ids
 
     def test_papers_assigned_correctly(self) -> None:
         """Papers are assigned to PAPERS section."""
@@ -550,12 +581,18 @@ class TestPureFunction:
     def test_apply_quotas_pure(self) -> None:
         """Pure function applies quotas correctly."""
         stories = [
-            _make_scored_story(_make_story(story_id=f"s{i}"), 10 - i) for i in range(10)
+            _make_scored_story(_make_story(story_id=f"s{i}", kind="paper"), 10 - i)
+            for i in range(10)
         ]
 
         sections, dropped = apply_quotas_pure(
             scored_stories=stories,
-            quotas_config=QuotasConfig(top5_max=3, radar_max=2, per_source_max=100),
+            quotas_config=QuotasConfig(
+                top5_max=3,
+                papers_max=0,
+                radar_max=2,
+                per_source_max=100,
+            ),
         )
 
         assert len(sections[StorySection.TOP5]) == 3

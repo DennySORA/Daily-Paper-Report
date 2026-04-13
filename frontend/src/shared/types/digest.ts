@@ -33,6 +33,7 @@ export interface ScoreBreakdown {
   cross_source_score: number
   semantic_score: number
   llm_relevance_score: number
+  llm_raw_score?: number
 }
 
 export interface Story {

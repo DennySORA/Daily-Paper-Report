@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useDigestStore } from '@/stores/digest'
 import { useSearch, matchesSearch } from '@/shared/composables/useSearch'
 import StoryCard from '@/components/ui/StoryCard.vue'
+import type { Story } from '@/types/digest'
 
 const route = useRoute()
 const digestStore = useDigestStore()
@@ -90,57 +91,75 @@ const categoriesWithPapers = computed(() => {
     .filter(cat => cat.count > 0)
 })
 
-// Papers by source with top pick per source
+const isPaperStory = (story: Story): boolean => {
+  if (story.arxiv_id) return true
+  return story.primary_link.link_type === 'paper' || story.primary_link.link_type === 'arxiv'
+}
+
+// Non-paper stories grouped by source so official site updates stay complete.
 const sourceGroups = computed(() => {
-  const groups = digestStore.allStoriesBySourceCategory
   const query = searchQuery.value.trim()
-  const labels: Record<string, string> = {
-    arxiv: 'arXiv Papers',
-    huggingface: 'Hugging Face',
-    blog: 'Blog Posts',
-    github: 'GitHub',
-    news: 'News',
-    other: 'Other Sources',
-  }
   const icons: Record<string, string> = {
     arxiv: '📄',
     huggingface: '🤗',
     blog: '📝',
-    github: '🐙',
-    news: '📰',
     other: '📌',
   }
+  const deduped = new Map<string, Story>()
 
-  return Object.entries(groups)
-    .filter(([_, sourceList]) => sourceList.some(s => s.stories.length > 0))
-    .map(([sourceType, sourceList]) => {
-      const allStories = sourceList.flatMap(source => source.stories)
-      // Filter by search query
-      const filteredStories = query ? allStories.filter(s => matchesSearch(s, query)) : allStories
-      // Sort by date, most recent first
+  for (const story of [
+    ...digestStore.filteredTop5,
+    ...digestStore.filteredRadar,
+    ...Object.values(digestStore.filteredModelReleases).flat(),
+  ]) {
+    if (!isPaperStory(story)) {
+      deduped.set(story.story_id, story)
+    }
+  }
+
+  const storiesBySource: Record<string, Story[]> = {}
+  for (const story of deduped.values()) {
+    const sourceId = story.primary_link.source_id
+    if (!storiesBySource[sourceId]) {
+      storiesBySource[sourceId] = []
+    }
+    storiesBySource[sourceId].push(story)
+  }
+
+  return Object.entries(storiesBySource)
+    .map(([sourceId, stories]) => {
+      const sourceInfo = digestStore.getSourceInfo(sourceId)
+      const filteredStories = query ? stories.filter(s => matchesSearch(s, query)) : stories
       const sortedStories = [...filteredStories].sort((a, b) => {
         const dateA = a.published_at ? new Date(a.published_at).getTime() : 0
         const dateB = b.published_at ? new Date(b.published_at).getTime() : 0
         return dateB - dateA
       })
-      // First story is the top pick for this source type
-      const topPick = sortedStories[0] || null
+      const newestAt = sortedStories[0]?.published_at
+        ? new Date(sortedStories[0].published_at!).getTime()
+        : 0
+
       return {
-        sourceType,
+        sourceId,
+        sourceType: sourceId,
         stories: sortedStories,
-        topPick,
+        topPick: sortedStories[0] || null,
         count: sortedStories.length,
-        label: labels[sourceType] || sourceType,
-        icon: icons[sourceType] || '📌',
+        label: digestStore.sourceNames[sourceId] || sourceInfo.name,
+        icon: icons[sourceInfo.category] || '📌',
+        newestAt,
       }
     })
     .filter(group => group.count > 0)
-    .sort((a, b) => b.count - a.count)
+    .sort((a, b) => b.newestAt - a.newestAt || b.count - a.count)
 })
 
 // Total search results count
 const totalSearchResults = computed(() => {
   if (!searchQuery.value.trim()) return null
+  if (activeTab.value === 'source') {
+    return sourceGroups.value.reduce((sum, group) => sum + group.count, 0)
+  }
   return categoriesWithPapers.value.reduce((sum, cat) => sum + cat.count, 0)
 })
 
@@ -262,7 +281,7 @@ function getTabCount(tabId: TabView): number {
         </div>
         <div class="stat-body">
           <span class="stat-number">{{ stats.papers }}</span>
-          <span class="stat-label">Papers</span>
+          <span class="stat-label">Items</span>
         </div>
       </article>
 
@@ -428,8 +447,8 @@ function getTabCount(tabId: TabView): number {
           v-model="searchQuery"
           type="search"
           class="search-input"
-          placeholder="Search papers by title, author, or content..."
-          aria-label="Search papers"
+          placeholder="Search updates by title, author, or content..."
+          aria-label="Search updates"
           @focus="setFocus(true)"
           @blur="setFocus(false)"
         >
@@ -664,7 +683,7 @@ function getTabCount(tabId: TabView): number {
           <nav class="pill-nav">
             <button
               v-for="(group, idx) in sourceGroups"
-              :key="group.sourceType"
+              :key="group.sourceId"
               class="pill-btn"
               :class="{ active: activeSource === group.sourceType }"
               :style="{ '--idx': idx }"
@@ -679,45 +698,22 @@ function getTabCount(tabId: TabView): number {
           <!-- Source Content -->
           <div
             v-if="currentSourceData"
-            :key="currentSourceData.sourceType"
+            :key="currentSourceData.sourceId"
             class="panel-content"
           >
-            <!-- Top Pick for this source -->
-            <section
-              v-if="currentSourceData.topPick"
-              class="top-pick-section"
-            >
-              <header class="section-header">
-                <span class="section-badge">⭐ Top Pick</span>
-                <span class="section-hint">Latest from {{ currentSourceData.label }}</span>
-              </header>
-              <StoryCard
-                :story="currentSourceData.topPick"
-                :rank="1"
-                accent-type="highlight"
-                :featured="true"
-                :show-entities="true"
-                :show-categories="true"
-                :show-source="false"
-                :show-authors="true"
-                :show-summary="true"
-                class="featured-card"
-              />
-            </section>
-
-            <!-- Other Papers -->
             <section class="papers-section">
-              <header
-                v-if="currentSourceData.stories.filter(s => s.story_id !== currentSourceData?.topPick?.story_id).length > 0"
-                class="section-header"
-              >
-                <span class="section-badge section-badge-muted">📑 All from {{ currentSourceData.label }}</span>
+              <header class="section-header">
+                <span class="section-badge">✨ Full Feed</span>
+                <span class="section-hint">
+                  {{ currentSourceData.count }} update{{ currentSourceData.count !== 1 ? 's' : '' }} from {{ currentSourceData.label }}
+                </span>
               </header>
               <div class="papers-list">
                 <StoryCard
-                  v-for="(story, idx) in currentSourceData.stories.filter(s => s.story_id !== currentSourceData?.topPick?.story_id)"
+                  v-for="(story, idx) in currentSourceData.stories"
                   :key="story.story_id"
                   :story="story"
+                  accent-type="highlight"
                   :show-entities="true"
                   :show-categories="true"
                   :show-source="false"
@@ -743,7 +739,7 @@ function getTabCount(tabId: TabView): number {
             No Sources Found
           </h3>
           <p class="empty-desc">
-            No content from any source for this time range.
+            No non-paper site updates available for this time range.
           </p>
         </div>
       </div>

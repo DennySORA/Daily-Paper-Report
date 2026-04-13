@@ -51,6 +51,87 @@ def _reset_metrics() -> None:
 class TestHtmlListCollectorWithFixtures:
     """Integration tests using HTML fixture files."""
 
+    def test_parse_anthropic_research_publications(
+        self,
+        registry: ProfileRegistry,
+    ) -> None:
+        """Anthropic research page extracts only publication list entries."""
+        source_config = SourceConfig(
+            id="anthropic-research-publications",
+            name="Anthropic Research Publications",
+            url="https://www.anthropic.com/research",
+            tier=SourceTier.TIER_0,
+            method=SourceMethod.HTML_LIST,
+            kind=SourceKind.BLOG,
+            timezone="America/Los_Angeles",
+            max_items=50,
+        )
+
+        html_content = b"""
+        <!DOCTYPE html>
+        <html>
+          <body>
+            <main>
+              <section>
+                <a href="/research/team/alignment">Alignment Team</a>
+              </section>
+              <div class="PublicationList-module-scss-module__KxYrHG__root">
+                <ul class="PublicationList-module-scss-module__KxYrHG__list">
+                  <li>
+                    <a href="/research/trustworthy-agents" class="PublicationList-module-scss-module__KxYrHG__listItem">
+                      <div class="PublicationList-module-scss-module__KxYrHG__meta">
+                        <time class="PublicationList-module-scss-module__KxYrHG__date body-3">Apr 9, 2026</time>
+                        <span class="PublicationList-module-scss-module__KxYrHG__subject body-3">Policy</span>
+                      </div>
+                      <span class="PublicationList-module-scss-module__KxYrHG__title body-3">Trustworthy agents in practice</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/research/emotion-concepts-function" class="PublicationList-module-scss-module__KxYrHG__listItem">
+                      <div class="PublicationList-module-scss-module__KxYrHG__meta">
+                        <time class="PublicationList-module-scss-module__KxYrHG__date body-3">Apr 2, 2026</time>
+                        <span class="PublicationList-module-scss-module__KxYrHG__subject body-3">Interpretability</span>
+                      </div>
+                      <span class="PublicationList-module-scss-module__KxYrHG__title body-3">Emotion concepts and their function in a large language model</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </main>
+          </body>
+        </html>
+        """
+
+        mock_client = MagicMock()
+        mock_client.fetch.return_value = FetchResult(
+            status_code=200,
+            final_url=source_config.url,
+            headers={"content-type": "text/html; charset=utf-8"},
+            body_bytes=html_content,
+            cache_hit=False,
+            error=None,
+        )
+
+        collector = HtmlListCollector(
+            run_id="test-run",
+            profile_registry=registry,
+        )
+
+        result = collector.collect(
+            source_config=source_config,
+            http_client=mock_client,
+            now=FIXED_NOW,
+            lookback_hours=24 * 365 * 5,
+        )
+
+        assert result.success
+        assert result.state == SourceState.SOURCE_DONE
+        assert len(result.items) == 2
+        assert result.items[0].url == "https://www.anthropic.com/research/trustworthy-agents"
+        assert result.items[0].title == "Trustworthy agents in practice"
+        assert result.items[1].title == "Emotion concepts and their function in a large language model"
+        assert all(item.published_at is not None for item in result.items)
+
     def test_parse_blog_list_with_time_elements(
         self,
         source_config: SourceConfig,

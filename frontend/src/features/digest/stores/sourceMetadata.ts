@@ -31,6 +31,7 @@ export const SOURCE_DISPLAY_NAMES: Record<string, SourceInfo> = {
   'hf-01-ai': { name: '01.AI (Yi)', category: 'huggingface' },
   'google-ai-blog': { name: 'Google AI', category: 'blog' },
   'openai-blog': { name: 'OpenAI', category: 'blog' },
+  'anthropic-research-publications': { name: 'Anthropic Research', category: 'blog' },
   'deepmind-blog': { name: 'DeepMind', category: 'blog' },
   'meta-ai-blog': { name: 'Meta AI', category: 'blog' },
   'aws-ml-blog': { name: 'AWS ML', category: 'blog' },

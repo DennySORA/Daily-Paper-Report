@@ -26,6 +26,16 @@ sources:
     timezone: America/Los_Angeles
     enabled: false # Anthropic does not provide a public RSS feed
 
+  - id: anthropic-research-publications
+    name: Anthropic Research Publications
+    url: https://www.anthropic.com/research
+    tier: 0
+    method: html_list
+    kind: blog
+    timezone: America/Los_Angeles
+    max_items: 30
+    enabled: true
+
   - id: deepmind-blog
     name: DeepMind Blog
     url: https://deepmind.google/blog/rss.xml
