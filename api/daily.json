@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-04-13",
     "2026-04-12",
     "2026-04-11",
     "2026-04-10",
@@ -140,18 +141,18 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-04-12T06:32:23.986686+00:00",
+  "generated_at": "2026-04-13T06:42:42.629214+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-04-12",
-  "run_id": "d0a5fdde-7c9f-4eb9-8199-6cec3e9ff779",
+  "run_date": "2026-04-13",
+  "run_id": "4d667ffc-6adc-4b18-9cc3-72ca6a4548ae",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-04-12T06:32:23.964513+00:00",
+    "finished_at": "2026-04-13T06:42:42.607433+00:00",
     "items_total": 0,
-    "run_id": "d0a5fdde-7c9f-4eb9-8199-6cec3e9ff779",
-    "started_at": "2026-04-12T06:31:21.358983+00:00",
+    "run_id": "4d667ffc-6adc-4b18-9cc3-72ca6a4548ae",
+    "started_at": "2026-04-13T06:41:41.145615+00:00",
     "stories_total": 0,
     "success": true
   },
