@@ -91,12 +91,8 @@ const categoriesWithPapers = computed(() => {
     .filter(cat => cat.count > 0)
 })
 
-const isPaperStory = (story: Story): boolean => {
-  if (story.arxiv_id) return true
-  return story.primary_link.link_type === 'paper' || story.primary_link.link_type === 'arxiv'
-}
-
-// Non-paper stories grouped by source so official site updates stay complete.
+// Visible stories grouped by source. Papers stay curated, while non-paper
+// sources remain fully visible because radar no longer drops them.
 const sourceGroups = computed(() => {
   const query = searchQuery.value.trim()
   const icons: Record<string, string> = {
@@ -109,12 +105,11 @@ const sourceGroups = computed(() => {
 
   for (const story of [
     ...digestStore.filteredTop5,
+    ...digestStore.filteredPapers,
     ...digestStore.filteredRadar,
     ...Object.values(digestStore.filteredModelReleases).flat(),
   ]) {
-    if (!isPaperStory(story)) {
-      deduped.set(story.story_id, story)
-    }
+    deduped.set(story.story_id, story)
   }
 
   const storiesBySource: Record<string, Story[]> = {}
@@ -703,9 +698,9 @@ function getTabCount(tabId: TabView): number {
           >
             <section class="papers-section">
               <header class="section-header">
-                <span class="section-badge">✨ Full Feed</span>
+                <span class="section-badge">✨ Source View</span>
                 <span class="section-hint">
-                  {{ currentSourceData.count }} update{{ currentSourceData.count !== 1 ? 's' : '' }} from {{ currentSourceData.label }}
+                  {{ currentSourceData.count }} visible item{{ currentSourceData.count !== 1 ? 's' : '' }} from {{ currentSourceData.label }}
                 </span>
               </header>
               <div class="papers-list">
@@ -739,7 +734,7 @@ function getTabCount(tabId: TabView): number {
             No Sources Found
           </h3>
           <p class="empty-desc">
-            No non-paper site updates available for this time range.
+            No source updates available for this time range.
           </p>
         </div>
       </div>
