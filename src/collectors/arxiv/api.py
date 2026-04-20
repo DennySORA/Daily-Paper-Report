@@ -263,6 +263,7 @@ class ArxivApiCollector(BaseCollector):
         source_config: SourceConfig,
         max_results: int,
         start: int = 0,
+        query: str | None = None,
     ) -> ArxivApiConfig:
         """Build API configuration from source config.
 
@@ -273,9 +274,8 @@ class ArxivApiCollector(BaseCollector):
         Returns:
             ArxivApiConfig instance.
         """
-        # Get query from source_config.query field
         return ArxivApiConfig(
-            query=str(source_config.query or ""),
+            query=query if query is not None else str(source_config.query or ""),
             max_results=max(1, max_results),
             start=max(0, start),
             sort_by="submittedDate",
@@ -321,6 +321,26 @@ class ArxivApiCollector(BaseCollector):
             return ARXIV_API_MAX_KEYWORD_BACKFILL_PAGES
         return ARXIV_API_MAX_PAGES
 
+    def _build_windowed_query(
+        self,
+        source_config: SourceConfig,
+        now: datetime,
+        lookback_hours: int,
+    ) -> str:
+        """Build a search query bounded to the requested submitted-date window."""
+        base_query = str(source_config.query or "").strip()
+        window_end = now.astimezone(UTC) if now.tzinfo is not None else now.replace(tzinfo=UTC)
+        window_start = window_end - timedelta(hours=lookback_hours)
+        window_start = window_start.replace(second=0, microsecond=0)
+        window_end = window_end.replace(second=0, microsecond=0)
+        window_clause = (
+            f"submittedDate:[{window_start.strftime('%Y%m%d%H%M')} "
+            f"TO {window_end.strftime('%Y%m%d%H%M')}]"
+        )
+        if not base_query:
+            return window_clause
+        return f"({base_query}) AND {window_clause}"
+
     def _collect_query_window(
         self,
         source_config: SourceConfig,
@@ -339,9 +359,11 @@ class ArxivApiCollector(BaseCollector):
             source_id=source_config.id,
             mode="api",
         )
-        cutoff = now - timedelta(hours=lookback_hours)
-        if cutoff.tzinfo is None:
-            cutoff = cutoff.replace(tzinfo=UTC)
+        windowed_query = self._build_windowed_query(
+            source_config=source_config,
+            now=now,
+            lookback_hours=lookback_hours,
+        )
 
         items: list[Item] = []
         seen_urls: set[str] = set()
@@ -358,6 +380,7 @@ class ArxivApiCollector(BaseCollector):
                 source_config=source_config,
                 max_results=fetch_max_items,
                 start=start,
+                query=windowed_query,
             )
             api_url = self._build_api_url(api_config)
 
@@ -419,13 +442,19 @@ class ArxivApiCollector(BaseCollector):
                     break
                 raise RuntimeError(error_message)
 
-            page_items, page_newest_id, page_oldest_id = self._parse_atom_response(
+            (
+                page_items,
+                page_newest_id,
+                page_oldest_id,
+                page_total_results,
+                page_entry_count,
+            ) = self._parse_atom_response(
                 body=result.body_bytes,
                 source_config=source_config,
                 parse_warnings=parse_warnings,
             )
 
-            if not page_items:
+            if page_entry_count == 0:
                 break
 
             if newest_id is None:
@@ -433,23 +462,18 @@ class ArxivApiCollector(BaseCollector):
             if page_oldest_id is not None:
                 oldest_id = page_oldest_id
 
-            oldest_published_at: datetime | None = None
             for item in page_items:
                 if item.url in seen_urls:
                     continue
                 seen_urls.add(item.url)
                 items.append(item)
-                if item.published_at is None:
-                    continue
-                item_published = item.published_at
-                if item_published.tzinfo is None:
-                    item_published = item_published.replace(tzinfo=UTC)
-                if oldest_published_at is None or item_published < oldest_published_at:
-                    oldest_published_at = item_published
 
-            if len(page_items) < fetch_max_items:
+            if (
+                page_total_results is not None
+                and api_config.start + page_entry_count >= page_total_results
+            ):
                 break
-            if oldest_published_at is not None and oldest_published_at < cutoff:
+            if page_entry_count < fetch_max_items:
                 break
         else:
             log.warning(
@@ -466,7 +490,7 @@ class ArxivApiCollector(BaseCollector):
         body: bytes,
         source_config: SourceConfig,
         parse_warnings: list[str],
-    ) -> tuple[list[Item], str | None, str | None]:
+    ) -> tuple[list[Item], str | None, str | None, int | None, int]:
         """Parse Atom API response.
 
         Args:
@@ -475,7 +499,7 @@ class ArxivApiCollector(BaseCollector):
             parse_warnings: List to append warnings to.
 
         Returns:
-            Tuple of (items, newest_id, oldest_id).
+            Tuple of (items, newest_id, oldest_id, total_results, entry_count).
         """
         items: list[Item] = []
         newest_id: str | None = None
@@ -486,10 +510,17 @@ class ArxivApiCollector(BaseCollector):
         except ParseError as e:
             parse_warnings.append(f"Failed to parse Atom response: {e}")
             self._metrics.record_error("malformed_atom")
-            return [], None, None
+            return [], None, None, None, 0
 
         # Find all entry elements
         entries = root.findall(f"{ATOM_NS}entry")
+        total_results_elem = root.find("{http://a9.com/-/spec/opensearch/1.1/}totalResults")
+        total_results: int | None = None
+        if total_results_elem is not None and total_results_elem.text:
+            try:
+                total_results = int(total_results_elem.text)
+            except ValueError:
+                total_results = None
 
         for entry in entries:
             try:
@@ -504,7 +535,7 @@ class ArxivApiCollector(BaseCollector):
             except Exception as e:  # noqa: BLE001
                 parse_warnings.append(f"Failed to parse entry: {e}")
 
-        return items, newest_id, oldest_id
+        return items, newest_id, oldest_id, total_results, len(entries)
 
     def _parse_entry(
         self,

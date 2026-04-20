@@ -225,7 +225,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 100
+    max_items: 0
     query: 'ti:"large language model" OR ti:"LLM" OR ti:"foundation model" OR ti:"language model"'
 
   - id: arxiv-api-agents
@@ -235,7 +235,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 100
+    max_items: 0
     query: 'ti:"AI agent" OR ti:"agentic" OR ti:"tool use" OR ti:"function calling" OR ti:"multi-agent" OR ti:"multi agent" OR ti:"coding agent"'
 
   - id: arxiv-api-reasoning
@@ -245,7 +245,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"chain-of-thought" OR ti:"reasoning" OR ti:"test-time" OR ti:"think" OR ti:"thought"'
 
   - id: arxiv-api-alignment
@@ -255,7 +255,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"RLHF" OR ti:"alignment" OR ti:"preference optimization" OR ti:"DPO" OR ti:"reward model" OR ti:"fine-tuning"'
 
   - id: arxiv-api-multimodal
@@ -265,7 +265,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"multimodal" OR ti:"vision-language" OR ti:"VLM" OR ti:"MLLM" OR ti:"diffusion"'
 
   - id: arxiv-api-safety
@@ -275,7 +275,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"safety" OR ti:"jailbreak" OR ti:"red-team" OR ti:"adversarial attack" OR ti:"guardrail" OR ti:"harmful"'
 
   - id: arxiv-api-evaluation
@@ -285,7 +285,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"benchmark" OR ti:"evaluation" OR ti:"faithfulness" OR ti:"hallucination" OR ti:"leaderboard"'
 
   - id: arxiv-api-efficiency
@@ -295,7 +295,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"efficient" OR ti:"pruning" OR ti:"quantization" OR ti:"distillation" OR ti:"inference" OR ti:"LoRA"'
 
   - id: arxiv-api-retrieval
@@ -305,7 +305,7 @@ sources:
     method: arxiv_api
     kind: paper
     timezone: UTC
-    max_items: 50
+    max_items: 0
     query: 'ti:"retrieval" OR ti:"RAG" OR ti:"knowledge graph" OR ti:"information retrieval" OR ti:"retrieval-augmented"'
 
 

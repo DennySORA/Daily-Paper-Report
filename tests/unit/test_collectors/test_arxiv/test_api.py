@@ -67,7 +67,10 @@ EMPTY_API_RESPONSE = b"""<?xml version="1.0" encoding="UTF-8"?>
 </feed>"""
 
 
-def build_api_response(entries: list[dict[str, str]]) -> bytes:
+def build_api_response(
+    entries: list[dict[str, str]],
+    total_results: int | None = None,
+) -> bytes:
     """Build a minimal Atom API response for pagination tests."""
     entry_xml = []
     for entry in entries:
@@ -92,7 +95,10 @@ def build_api_response(entries: list[dict[str, str]]) -> bytes:
   <id>http://arxiv.org/api/query</id>
   <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">{count}</opensearch:totalResults>
 {entries}
-</feed>""".format(count=len(entries), entries="\n".join(entry_xml))
+</feed>""".format(
+        count=total_results if total_results is not None else len(entries),
+        entries="\n".join(entry_xml),
+    )
     return xml.encode()
 
 
@@ -267,7 +273,8 @@ class TestArxivApiCollector:
                     "updated": "2024-01-16T10:10:00Z",
                     "category": "cs.AI",
                 },
-            ]
+            ],
+            total_results=4,
         )
         mock_client.fetch.side_effect = [
             FetchResult(
@@ -320,7 +327,8 @@ class TestArxivApiCollector:
                     "updated": "2024-01-16T10:10:00Z",
                     "category": "cs.AI",
                 },
-            ]
+            ],
+            total_results=4,
         )
         mock_client.fetch.side_effect = [
             FetchResult(
@@ -440,7 +448,8 @@ class TestArxivApiCollector:
                     "updated": "2024-01-16T10:10:00Z",
                     "category": "cs.AI",
                 },
-            ]
+            ],
+            total_results=6,
         )
         page_2 = build_api_response(
             [
@@ -462,7 +471,8 @@ class TestArxivApiCollector:
                     "updated": "2024-01-15T13:10:00Z",
                     "category": "cs.AI",
                 },
-            ]
+            ],
+            total_results=6,
         )
         page_3 = build_api_response(
             [
@@ -484,7 +494,8 @@ class TestArxivApiCollector:
                     "updated": "2024-01-15T11:40:00Z",
                     "category": "cs.AI",
                 },
-            ]
+            ],
+            total_results=6,
         )
 
         mock_client = MagicMock(spec=HttpFetcher)
@@ -525,6 +536,141 @@ class TestArxivApiCollector:
 
         assert result.success
         assert len(result.items) == 5
+
+        starts = []
+        for call in mock_client.fetch.call_args_list:
+            parsed = urlparse(call.kwargs["url"])
+            starts.append(parse_qs(parsed.query)["start"][0])
+        assert starts == ["0", "2", "4"]
+
+    def test_query_is_bounded_to_submitted_date_window(self) -> None:
+        """The collector should bound arXiv queries to the requested time window."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config(query="cat:cs.AI", max_results=2)
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        mock_client.fetch.return_value = FetchResult(
+            status_code=200,
+            final_url="http://export.arxiv.org/api/query",
+            headers={},
+            body_bytes=EMPTY_API_RESPONSE,
+            cache_hit=False,
+            error=None,
+        )
+
+        run_timestamp = datetime(2024, 1, 16, 12, 34, 56, tzinfo=UTC)
+        collector.collect(source_config, mock_client, run_timestamp)
+
+        parsed = urlparse(mock_client.fetch.call_args.kwargs["url"])
+        search_query = parse_qs(parsed.query)["search_query"][0]
+        assert search_query == (
+            "(cat:cs.AI) AND submittedDate:[202401151234 TO 202401161234]"
+        )
+
+    def test_pagination_continues_past_older_published_entries(self) -> None:
+        """Stop conditions must follow API page bounds, not entry published_at order."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config(query="cat:cs.AI", max_results=2)
+
+        page_1 = build_api_response(
+            [
+                {
+                    "id": "2401.40001v1",
+                    "title": "Newest 1",
+                    "summary": "summary",
+                    "author": "Author 1",
+                    "published": "2024-01-16T11:00:00Z",
+                    "updated": "2024-01-16T11:05:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.40002v1",
+                    "title": "Newest 2",
+                    "summary": "summary",
+                    "author": "Author 2",
+                    "published": "2024-01-16T10:00:00Z",
+                    "updated": "2024-01-16T10:05:00Z",
+                    "category": "cs.AI",
+                },
+            ],
+            total_results=5,
+        )
+        page_2 = build_api_response(
+            [
+                {
+                    "id": "2401.40003v1",
+                    "title": "In window but later page",
+                    "summary": "summary",
+                    "author": "Author 3",
+                    "published": "2024-01-15T14:00:00Z",
+                    "updated": "2024-01-16T09:05:00Z",
+                    "category": "cs.AI",
+                },
+                {
+                    "id": "2401.40004v1",
+                    "title": "Older published but recent submit",
+                    "summary": "summary",
+                    "author": "Author 4",
+                    "published": "2024-01-15T11:00:00Z",
+                    "updated": "2024-01-16T09:00:00Z",
+                    "category": "cs.AI",
+                },
+            ],
+            total_results=5,
+        )
+        page_3 = build_api_response(
+            [
+                {
+                    "id": "2401.40005v1",
+                    "title": "Should still be fetched",
+                    "summary": "summary",
+                    "author": "Author 5",
+                    "published": "2024-01-15T13:00:00Z",
+                    "updated": "2024-01-16T08:55:00Z",
+                    "category": "cs.AI",
+                },
+            ],
+            total_results=5,
+        )
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        mock_client.fetch.side_effect = [
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=page_1,
+                cache_hit=False,
+                error=None,
+            ),
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=page_2,
+                cache_hit=False,
+                error=None,
+            ),
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=page_3,
+                cache_hit=False,
+                error=None,
+            ),
+        ]
+
+        run_timestamp = datetime(2024, 1, 16, 12, 0, 0, tzinfo=UTC)
+        result = collector.collect(
+            source_config,
+            mock_client,
+            run_timestamp,
+            max_items_override=0,
+        )
+
+        assert result.success
+        assert len(result.items) == 4
 
         starts = []
         for call in mock_client.fetch.call_args_list:
