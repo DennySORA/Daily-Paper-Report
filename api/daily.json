@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-04-20",
     "2026-04-19",
     "2026-04-18",
     "2026-04-17",
@@ -147,19 +148,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-04-19T06:34:23.963375+00:00",
+  "generated_at": "2026-04-20T06:43:44.432334+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-04-19",
-  "run_id": "cb193712-89f1-4fc6-86e9-aa4dc9769745",
+  "run_date": "2026-04-20",
+  "run_id": "7a955714-d7d4-4f8f-b735-b36e1d111f33",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-04-19T06:34:23.930813+00:00",
-    "items_total": 0,
-    "run_id": "cb193712-89f1-4fc6-86e9-aa4dc9769745",
-    "started_at": "2026-04-19T06:33:17.857069+00:00",
-    "stories_total": 0,
+    "finished_at": "2026-04-20T06:43:44.413843+00:00",
+    "items_total": 1,
+    "run_id": "7a955714-d7d4-4f8f-b735-b36e1d111f33",
+    "started_at": "2026-04-20T06:42:39.939573+00:00",
+    "stories_total": 1,
     "success": true
   },
   "sources_status": [
@@ -660,17 +661,17 @@
     },
     {
       "category": "other",
-      "items_new": 0,
+      "items_new": 1,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face Qwen",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "newest_item_date": "2026-04-20T02:45:58+00:00",
+      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
+      "reason_text": "Fetch and parse succeeded; new items found.",
       "remediation_hint": null,
       "source_id": "hf-qwen",
-      "status": "NO_UPDATE",
+      "status": "HAS_UPDATE",
       "tier": 1
     },
     {
@@ -749,5 +750,58 @@
       "tier": 0
     }
   ],
-  "top5": []
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "qwen"
+      ],
+      "first_seen_at": "2026-04-20T06:43:43.886331+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 6051527,
+        "likes": 988,
+        "pipeline_tag": "feature-extraction"
+      },
+      "hf_model_id": "qwen/qwen3-embedding-0.6b",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-qwen",
+          "tier": 1,
+          "title": "Qwen/Qwen3-Embedding-0.6B",
+          "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-qwen",
+        "tier": 1,
+        "title": "Qwen/Qwen3-Embedding-0.6B",
+        "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"
+      },
+      "published_at": "2026-04-20T02:45:58+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9836236449695149,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.783623644969515
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:qwen/qwen3-embedding-0.6b",
+      "summary": "The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. Building upon the dense foundational models of the Qwen3 series, it provides a comprehensive range of text embeddings and reranking models in various sizes (0.6B, 4B, and 8B). This series inherits the exceptional multilingual capabilities, long-text understanding, and reasoning skills of its foundational model. The Qwen3 Embedding series represents significant advancements in multiple text embedding and ranking tasks, including text retrieval, code retrieval, text classification, text clustering, and bitext mining. **Exceptional Versatility**: The embedding model has achieved state-of-the-art performance across a wide range of downstream...",
+      "title": "Qwen/Qwen3-Embedding-0.6B"
+    }
+  ]
 }
