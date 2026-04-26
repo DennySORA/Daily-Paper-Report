@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-04-26",
     "2026-04-25",
     "2026-04-24",
     "2026-04-23",
@@ -153,19 +154,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-04-25T06:30:43.256339+00:00",
+  "generated_at": "2026-04-26T06:38:00.464252+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-04-25",
-  "run_id": "7addb4cd-0825-4c89-8eb6-bb388158020f",
+  "run_date": "2026-04-26",
+  "run_id": "cc9d7c9f-01d2-4389-933c-b4d756216c11",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-04-25T06:30:43.232161+00:00",
-    "items_total": 4,
-    "run_id": "7addb4cd-0825-4c89-8eb6-bb388158020f",
-    "started_at": "2026-04-25T06:29:27.400090+00:00",
-    "stories_total": 4,
+    "finished_at": "2026-04-26T06:38:00.432934+00:00",
+    "items_total": 0,
+    "run_id": "cc9d7c9f-01d2-4389-933c-b4d756216c11",
+    "started_at": "2026-04-26T06:36:52.773547+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
@@ -486,17 +487,17 @@
     },
     {
       "category": "other",
-      "items_new": 1,
+      "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "AWS Machine Learning Blog",
-      "newest_item_date": "2026-04-24T18:04:20+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "aws-ml-blog",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 0
     },
     {
@@ -516,17 +517,17 @@
     },
     {
       "category": "other",
-      "items_new": 1,
+      "items_new": 0,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "Google AI Blog",
-      "newest_item_date": "2026-04-24T19:00:00+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
-      "reason_text": "Fetch and parse succeeded; new items found.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "google-ai-blog",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 0
     },
     {
@@ -577,16 +578,16 @@
     {
       "category": "other",
       "items_new": 0,
-      "items_updated": 2,
+      "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face DeepSeek AI",
-      "newest_item_date": "2026-04-24T10:00:14+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_UPDATED",
-      "reason_text": "Fetch and parse succeeded; items updated.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "hf-deepseek-ai",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 1
     },
     {
@@ -755,215 +756,5 @@
       "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "authors": [
-        "Vishnu Elangovan"
-      ],
-      "categories": [
-        "Amazon Quick Suite",
-        "Artificial Intelligence",
-        "Customer Solutions"
-      ],
-      "entities": [],
-      "first_seen_at": "2026-04-25T06:29:33.972335+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "aws-ml-blog",
-          "tier": 0,
-          "title": "Building Workforce AI Agents with Visier and Amazon Quick",
-          "url": "https://aws.amazon.com/blogs/machine-learning/building-workforce-ai-agents-with-visier-and-amazon-quick"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "aws-ml-blog",
-        "tier": 0,
-        "title": "Building Workforce AI Agents with Visier and Amazon Quick",
-        "url": "https://aws.amazon.com/blogs/machine-learning/building-workforce-ai-agents-with-visier-and-amazon-quick"
-      },
-      "published_at": "2026-04-24T18:04:20+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 0.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.15,
-        "llm_relevance_score": 4.2,
-        "recency_score": 0.9494881649579774,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 4.0,
-        "total_score": 13.649488164957976
-      },
-      "section": null,
-      "source_name": "AWS Machine Learning Blog",
-      "story_id": "fallback:484b3aa5c34b07f9",
-      "summary": "In this post, we show how connecting the Visier Workforce AI platform with Amazon Quick through Model Context Protocol (MCP) gives every knowledge worker a unified agentic workspace to ask questions in. Visier helps ground the workspace in live workforce data and the organizational context that surrounds it while letting your users act on the conversational results without switching tools.",
-      "title": "Building Workforce AI Agents with Visier and Amazon Quick"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [
-        "Ivy Levine"
-      ],
-      "categories": [
-        "Gemini",
-        "AI"
-      ],
-      "entities": [
-        "deepmind"
-      ],
-      "first_seen_at": "2026-04-25T06:29:32.292412+00:00",
-      "github_release_url": null,
-      "hf_metadata": null,
-      "hf_model_id": null,
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "blog",
-          "source_id": "google-ai-blog",
-          "tier": 0,
-          "title": "8 Gemini tips for organizing your space (and life)",
-          "url": "https://blog.google/products-and-platforms/products/gemini/gemini-spring-cleaning-tips"
-        }
-      ],
-      "primary_link": {
-        "link_type": "blog",
-        "source_id": "google-ai-blog",
-        "tier": 0,
-        "title": "8 Gemini tips for organizing your space (and life)",
-        "url": "https://blog.google/products-and-platforms/products/gemini/gemini-spring-cleaning-tips"
-      },
-      "published_at": "2026-04-24T19:00:00+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.5,
-        "llm_raw_score": 0.05,
-        "llm_relevance_score": 1.4000000000000001,
-        "recency_score": 0.9531657437433801,
-        "semantic_score": 0.0,
-        "tier_score": 3.0,
-        "topic_score": 3.75,
-        "total_score": 12.60316574374338
-      },
-      "section": null,
-      "source_name": "Google AI Blog",
-      "story_id": "fallback:0269e4bdf4e72bb2",
-      "summary": "Black screen with illustrations including a laptop with document and email icons streaming out, a smiling person holding a phone and looking at a checklist, and a user activating Gemini Live",
-      "title": "8 Gemini tips for organizing your space (and life)"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [
-        "deepseek"
-      ],
-      "first_seen_at": "2026-04-24T06:38:41.966491+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 30,
-        "likes": 2518,
-        "pipeline_tag": "text-generation"
-      },
-      "hf_model_id": "deepseek-ai/deepseek-v4-pro",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-deepseek-ai",
-          "tier": 1,
-          "title": "deepseek-ai/DeepSeek-V4-Pro",
-          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-deepseek-ai",
-        "tier": 1,
-        "title": "deepseek-ai/DeepSeek-V4-Pro",
-        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
-      },
-      "published_at": "2026-04-24T10:00:14+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9180988000167378,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 10.718098800016737
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:deepseek-ai/deepseek-v4-pro",
-      "summary": "Technical Report👁️ We present a preview version of **DeepSeek-V4** series, including two strong Mixture-of-Experts (MoE) language models — **DeepSeek-V4-Pro** with 1.6T parameters (49B activated) and **DeepSeek-V4-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**. DeepSeek-V4 series incorporate several key upgrades in architecture and optimization: 1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, DeepSeek-V4-Pro requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with DeepSeek-V3.2. 2. **Manifold-Constrained...",
-      "title": "deepseek-ai/DeepSeek-V4-Pro"
-    },
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [
-        "deepseek"
-      ],
-      "first_seen_at": "2026-04-24T06:38:41.966812+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 23,
-        "likes": 646,
-        "pipeline_tag": "text-generation"
-      },
-      "hf_model_id": "deepseek-ai/deepseek-v4-flash",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-deepseek-ai",
-          "tier": 1,
-          "title": "deepseek-ai/DeepSeek-V4-Flash",
-          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-deepseek-ai",
-        "tier": 1,
-        "title": "deepseek-ai/DeepSeek-V4-Flash",
-        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
-      },
-      "published_at": "2026-04-24T09:59:37+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.9180594841275579,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 10.718059484127558
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:deepseek-ai/deepseek-v4-flash",
-      "summary": "Technical Report👁️ We present a preview version of **DeepSeek-V4** series, including two strong Mixture-of-Experts (MoE) language models — **DeepSeek-V4-Pro** with 1.6T parameters (49B activated) and **DeepSeek-V4-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**. DeepSeek-V4 series incorporate several key upgrades in architecture and optimization: 1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, DeepSeek-V4-Pro requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with DeepSeek-V3.2. 2. **Manifold-Constrained...",
-      "title": "deepseek-ai/DeepSeek-V4-Flash"
-    }
-  ]
+  "top5": []
 }
