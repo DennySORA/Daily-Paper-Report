@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-04-27",
     "2026-04-26",
     "2026-04-25",
     "2026-04-24",
@@ -154,19 +155,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-04-26T06:38:00.464252+00:00",
+  "generated_at": "2026-04-27T06:51:57.526885+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-04-26",
-  "run_id": "cc9d7c9f-01d2-4389-933c-b4d756216c11",
+  "run_date": "2026-04-27",
+  "run_id": "89efa431-a30e-4895-a23a-24b1b3a2d0f9",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-04-26T06:38:00.432934+00:00",
-    "items_total": 0,
-    "run_id": "cc9d7c9f-01d2-4389-933c-b4d756216c11",
-    "started_at": "2026-04-26T06:36:52.773547+00:00",
-    "stories_total": 0,
+    "finished_at": "2026-04-27T06:51:57.441130+00:00",
+    "items_total": 4,
+    "run_id": "89efa431-a30e-4895-a23a-24b1b3a2d0f9",
+    "started_at": "2026-04-27T06:50:53.862282+00:00",
+    "stories_total": 4,
     "success": true
   },
   "sources_status": [
@@ -578,16 +579,16 @@
     {
       "category": "other",
       "items_new": 0,
-      "items_updated": 0,
+      "items_updated": 4,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face DeepSeek AI",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "newest_item_date": "2026-04-27T06:51:43+00:00",
+      "reason_code": "FETCH_PARSE_OK_HAS_UPDATED",
+      "reason_text": "Fetch and parse succeeded; items updated.",
       "remediation_hint": null,
       "source_id": "hf-deepseek-ai",
-      "status": "NO_UPDATE",
+      "status": "HAS_UPDATE",
       "tier": 1
     },
     {
@@ -756,5 +757,212 @@
       "tier": 0
     }
   ],
-  "top5": []
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "deepseek"
+      ],
+      "first_seen_at": "2026-04-24T06:38:41.966491+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 123431,
+        "likes": 2921,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "deepseek-ai/deepseek-v4-pro",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-deepseek-ai",
+          "tier": 1,
+          "title": "deepseek-ai/DeepSeek-V4-Pro",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-deepseek-ai",
+        "tier": 1,
+        "title": "deepseek-ai/DeepSeek-V4-Pro",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+      },
+      "published_at": "2026-04-27T06:51:04+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9999383396186721,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.799938339618672
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:deepseek-ai/deepseek-v4-pro",
+      "summary": "Technical Report👁️ We present a preview version of **DeepSeek-V4** series, including two strong Mixture-of-Experts (MoE) language models — **DeepSeek-V4-Pro** with 1.6T parameters (49B activated) and **DeepSeek-V4-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**. DeepSeek-V4 series incorporate several key upgrades in architecture and optimization: 1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, DeepSeek-V4-Pro requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with DeepSeek-V3.2. 2. **Manifold-Constrained...",
+      "title": "deepseek-ai/DeepSeek-V4-Pro"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "deepseek"
+      ],
+      "first_seen_at": "2026-04-24T06:38:41.966812+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 45986,
+        "likes": 751,
+        "pipeline_tag": "text-generation"
+      },
+      "hf_model_id": "deepseek-ai/deepseek-v4-flash",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-deepseek-ai",
+          "tier": 1,
+          "title": "deepseek-ai/DeepSeek-V4-Flash",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-deepseek-ai",
+        "tier": 1,
+        "title": "deepseek-ai/DeepSeek-V4-Flash",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+      },
+      "published_at": "2026-04-27T02:01:53+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.980057693425166,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 10.780057693425166
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:deepseek-ai/deepseek-v4-flash",
+      "summary": "Technical Report👁️ We present a preview version of **DeepSeek-V4** series, including two strong Mixture-of-Experts (MoE) language models — **DeepSeek-V4-Pro** with 1.6T parameters (49B activated) and **DeepSeek-V4-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**. DeepSeek-V4 series incorporate several key upgrades in architecture and optimization: 1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, DeepSeek-V4-Pro requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with DeepSeek-V3.2. 2. **Manifold-Constrained...",
+      "title": "deepseek-ai/DeepSeek-V4-Flash"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "deepseek"
+      ],
+      "first_seen_at": "2026-04-24T06:38:41.967297+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 2236,
+        "likes": 164
+      },
+      "hf_model_id": "deepseek-ai/deepseek-v4-flash-base",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-deepseek-ai",
+          "tier": 1,
+          "title": "deepseek-ai/DeepSeek-V4-Flash-Base",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Base"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-deepseek-ai",
+        "tier": 1,
+        "title": "deepseek-ai/DeepSeek-V4-Flash-Base",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Base"
+      },
+      "published_at": "2026-04-27T06:51:43+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.999983476742992,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 3.75,
+        "total_score": 10.549983476742991
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:deepseek-ai/deepseek-v4-flash-base",
+      "summary": null,
+      "title": "deepseek-ai/DeepSeek-V4-Flash-Base"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [
+        "deepseek"
+      ],
+      "first_seen_at": "2026-04-24T06:38:41.967084+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 1182,
+        "likes": 223
+      },
+      "hf_model_id": "deepseek-ai/deepseek-v4-pro-base",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-deepseek-ai",
+          "tier": 1,
+          "title": "deepseek-ai/DeepSeek-V4-Pro-Base",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-Base"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-deepseek-ai",
+        "tier": 1,
+        "title": "deepseek-ai/DeepSeek-V4-Pro-Base",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-Base"
+      },
+      "published_at": "2026-04-27T06:51:19+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9999556998099861,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 3.75,
+        "total_score": 10.549955699809987
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:deepseek-ai/deepseek-v4-pro-base",
+      "summary": null,
+      "title": "deepseek-ai/DeepSeek-V4-Pro-Base"
+    }
+  ]
 }
