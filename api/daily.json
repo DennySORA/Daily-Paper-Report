@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-05-04",
     "2026-05-03",
     "2026-05-02",
     "2026-05-01",
@@ -161,19 +162,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-05-03T06:50:49.825866+00:00",
+  "generated_at": "2026-05-04T07:06:48.062691+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-05-03",
-  "run_id": "2b740812-3679-44d9-aa66-960a5f303cf8",
+  "run_date": "2026-05-04",
+  "run_id": "c7e1b128-47da-4057-b426-5cefa94a4ab0",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-05-03T06:50:49.802179+00:00",
-    "items_total": 1,
-    "run_id": "2b740812-3679-44d9-aa66-960a5f303cf8",
-    "started_at": "2026-05-03T06:49:46.663615+00:00",
-    "stories_total": 1,
+    "finished_at": "2026-05-04T07:06:48.016507+00:00",
+    "items_total": 0,
+    "run_id": "c7e1b128-47da-4057-b426-5cefa94a4ab0",
+    "started_at": "2026-05-04T06:59:34.157503+00:00",
+    "stories_total": 0,
     "success": true
   },
   "sources_status": [
@@ -200,11 +201,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Agents",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-agents",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -215,11 +216,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Alignment",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-alignment",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -230,11 +231,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Efficiency",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-efficiency",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -245,11 +246,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Evaluation",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-evaluation",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -260,11 +261,11 @@
       "method": "arxiv_api",
       "name": "arXiv API LLM",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-llm",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -275,11 +276,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Multimodal",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-multimodal",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -290,11 +291,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Reasoning",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-reasoning",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -305,11 +306,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Retrieval",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-retrieval",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -320,11 +321,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Safety",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-safety",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -365,11 +366,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.CR",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-cr",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -395,11 +396,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.HC",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-hc",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -410,11 +411,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.IR",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-ir",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -645,16 +646,16 @@
     {
       "category": "other",
       "items_new": 0,
-      "items_updated": 1,
+      "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "hf_org",
       "name": "Hugging Face Mistral AI",
-      "newest_item_date": "2026-05-02T07:46:28+00:00",
-      "reason_code": "FETCH_PARSE_OK_HAS_UPDATED",
-      "reason_text": "Fetch and parse succeeded; items updated.",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
       "remediation_hint": null,
       "source_id": "hf-mistralai",
-      "status": "HAS_UPDATE",
+      "status": "NO_UPDATE",
       "tier": 1
     },
     {
@@ -763,57 +764,5 @@
       "tier": 0
     }
   ],
-  "top5": [
-    {
-      "arxiv_id": null,
-      "authors": [],
-      "categories": [],
-      "entities": [
-        "mistral-ai"
-      ],
-      "first_seen_at": "2026-04-30T06:52:04.661495+00:00",
-      "github_release_url": null,
-      "hf_metadata": {
-        "downloads": 8492,
-        "likes": 225
-      },
-      "hf_model_id": "mistralai/mistral-medium-3.5-128b",
-      "item_count": 1,
-      "links": [
-        {
-          "link_type": "huggingface",
-          "source_id": "hf-mistralai",
-          "tier": 1,
-          "title": "mistralai/Mistral-Medium-3.5-128B",
-          "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
-        }
-      ],
-      "primary_link": {
-        "link_type": "huggingface",
-        "source_id": "hf-mistralai",
-        "tier": 1,
-        "title": "mistralai/Mistral-Medium-3.5-128B",
-        "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
-      },
-      "published_at": "2026-05-02T07:46:28+00:00",
-      "scores": {
-        "citation_score": 0.0,
-        "cross_source_score": 0.0,
-        "entity_score": 2.0,
-        "kind_score": 1.8,
-        "llm_raw_score": 0.0,
-        "llm_relevance_score": 0.0,
-        "recency_score": 0.908340297203403,
-        "semantic_score": 0.0,
-        "tier_score": 2.0,
-        "topic_score": 4.0,
-        "total_score": 10.708340297203403
-      },
-      "section": null,
-      "source_name": null,
-      "story_id": "hf:mistralai/mistral-medium-3.5-128b",
-      "summary": "Mistral Medium 3.5 is our first flagship merged model. It is a dense 128B model with a 256k context window, handling instruction-following, reasoning, and coding in a single set of weights. Mistral Medium 3.5 replaces its predecessor Mistral Medium 3.1 and Magistral in Le Chat. It also replaces Devstral 2 in our coding agent Vibe. Concretely, expect better performance for instruct, reasoning and coding tasks in a new unified model in comparison with our previous released models. Reasoning effort is configurable per request, so the same model can answer a quick chat reply or work through a complex agentic run. We trained the vision encoder from scratch to handle variable image sizes and aspect ratios. Find more information on our blog. > To speed up local inference using vLLM or SGLang,...",
-      "title": "mistralai/Mistral-Medium-3.5-128B"
-    }
-  ]
+  "top5": []
 }
