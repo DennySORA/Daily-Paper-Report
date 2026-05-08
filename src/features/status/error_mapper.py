@@ -40,6 +40,8 @@ def map_fetch_error_to_reason_code(
             return ReasonCode.FETCH_SSL_ERROR
         if "too large" in msg_lower or "size limit" in msg_lower:
             return ReasonCode.FETCH_TOO_LARGE
+        if "rate limit" in msg_lower or "429" in msg_lower:
+            return ReasonCode.FETCH_HTTP_4XX
 
     return ReasonCode.FETCH_NETWORK_ERROR
 
