@@ -21,7 +21,7 @@ TIMESTAMP_NOTE_API_PREFERRED = "API and RSS timestamps differ; using API timesta
 
 # arXiv API configuration
 ARXIV_API_BASE_URL = "https://export.arxiv.org/api/query"
-ARXIV_API_RATE_LIMIT_SECONDS = 12.0
+ARXIV_API_RATE_LIMIT_SECONDS = 30.0
 ARXIV_API_DEFAULT_MAX_RESULTS = 100
 ARXIV_API_DEFAULT_SORT_BY = "submittedDate"
 ARXIV_API_DEFAULT_SORT_ORDER = "descending"

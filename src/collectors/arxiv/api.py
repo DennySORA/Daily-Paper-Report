@@ -39,6 +39,8 @@ ATOM_NS = "{http://www.w3.org/2005/Atom}"
 ARXIV_NS = "{http://arxiv.org/schemas/atom}"
 ARXIV_API_MAX_PAGES = 100
 ARXIV_API_MAX_KEYWORD_BACKFILL_PAGES = 2
+ARXIV_API_RATE_LIMIT_COOLDOWN_SECONDS = 300
+ARXIV_API_MAX_RATE_LIMIT_RECOVERY_ATTEMPTS = 2
 
 
 class RateLimiterProtocol(Protocol):
@@ -392,55 +394,77 @@ class ArxivApiCollector(BaseCollector):
                 resolved_max_items=resolved_max_items,
             )
 
-            self._rate_limiter.wait_if_needed()
+            page_aborted = False
+            for rate_limit_attempt in range(
+                ARXIV_API_MAX_RATE_LIMIT_RECOVERY_ATTEMPTS + 1
+            ):
+                self._rate_limiter.wait_if_needed()
 
-            start_time = time.monotonic()
-            try:
-                result = http_client.fetch(
-                    source_id=source_config.id,
-                    url=api_url,
-                    extra_headers={"Accept": "application/atom+xml"},
-                )
-            except Exception as e:
-                if partial_fetch_fail_ok and page_index > 0 and items:
-                    log.warning(
-                        "api_page_fetch_failed_after_partial_success",
-                        start=api_config.start,
-                        error=str(e),
+                start_time = time.monotonic()
+                try:
+                    result = http_client.fetch(
+                        source_id=source_config.id,
+                        url=api_url,
+                        extra_headers={"Accept": "application/atom+xml"},
                     )
-                    break
-                raise RuntimeError(str(e)) from e
-            latency_ms = (time.monotonic() - start_time) * 1000
-            self._metrics.record_api_latency(latency_ms)
+                except Exception as e:
+                    if partial_fetch_fail_ok and page_index > 0 and items:
+                        log.warning(
+                            "api_page_fetch_failed_after_partial_success",
+                            start=api_config.start,
+                            error=str(e),
+                        )
+                        page_aborted = True
+                        break
+                    raise RuntimeError(str(e)) from e
+                latency_ms = (time.monotonic() - start_time) * 1000
+                self._metrics.record_api_latency(latency_ms)
 
-            if result.error or result.status_code >= 400:
-                error_message = (
-                    str(result.error)
-                    if result.error
-                    else f"HTTP {result.status_code}"
-                )
-                log.warning(
-                    "fetch_failed",
-                    error_class=(
-                        result.error.error_class.value
-                        if hasattr(result.error, "error_class")
-                        else "unknown"
-                    ),
-                    status_code=result.status_code,
-                    start=api_config.start,
-                )
-                self._metrics.record_error(
-                    "timeout" if "timeout" in error_message.lower() else "fetch"
-                )
-                if partial_fetch_fail_ok and page_index > 0 and items:
+                if result.error or result.status_code >= 400:
+                    error_message = (
+                        str(result.error)
+                        if result.error
+                        else f"HTTP {result.status_code}"
+                    )
                     log.warning(
-                        "api_page_fetch_failed_after_partial_success",
-                        start=api_config.start,
+                        "fetch_failed",
+                        error_class=(
+                            result.error.error_class.value
+                            if hasattr(result.error, "error_class")
+                            else "unknown"
+                        ),
                         status_code=result.status_code,
-                        error=error_message,
+                        start=api_config.start,
                     )
-                    break
-                raise RuntimeError(error_message)
+                    self._metrics.record_error(
+                        "timeout" if "timeout" in error_message.lower() else "fetch"
+                    )
+                    if (
+                        result.status_code == 429
+                        and rate_limit_attempt
+                        < ARXIV_API_MAX_RATE_LIMIT_RECOVERY_ATTEMPTS
+                    ):
+                        log.warning(
+                            "rate_limit_recovery",
+                            cooldown_s=ARXIV_API_RATE_LIMIT_COOLDOWN_SECONDS,
+                            attempt=rate_limit_attempt + 1,
+                        )
+                        time.sleep(ARXIV_API_RATE_LIMIT_COOLDOWN_SECONDS)
+                        continue
+                    if partial_fetch_fail_ok and page_index > 0 and items:
+                        log.warning(
+                            "api_page_fetch_failed_after_partial_success",
+                            start=api_config.start,
+                            status_code=result.status_code,
+                            error=error_message,
+                        )
+                        page_aborted = True
+                        break
+                    raise RuntimeError(error_message)
+                break  # Fetch succeeded, exit rate-limit retry loop
+
+            if page_aborted:
+                break
 
             (
                 page_items,
