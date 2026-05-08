@@ -1,0 +1,1142 @@
+{
+  "archive_dates": [
+    "2026-05-08",
+    "2026-05-07",
+    "2026-05-06",
+    "2026-05-05",
+    "2026-05-04",
+    "2026-05-03",
+    "2026-05-02",
+    "2026-05-01",
+    "2026-04-30",
+    "2026-04-29",
+    "2026-04-28",
+    "2026-04-27",
+    "2026-04-26",
+    "2026-04-25",
+    "2026-04-24",
+    "2026-04-23",
+    "2026-04-22",
+    "2026-04-21",
+    "2026-04-20",
+    "2026-04-19",
+    "2026-04-18",
+    "2026-04-17",
+    "2026-04-16",
+    "2026-04-15",
+    "2026-04-14",
+    "2026-04-13",
+    "2026-04-12",
+    "2026-04-11",
+    "2026-04-10",
+    "2026-04-09",
+    "2026-04-08",
+    "2026-04-07",
+    "2026-04-06",
+    "2026-04-05",
+    "2026-04-04",
+    "2026-04-03",
+    "2026-04-02",
+    "2026-04-01",
+    "2026-03-31",
+    "2026-03-30",
+    "2026-03-29",
+    "2026-03-28",
+    "2026-03-27",
+    "2026-03-26",
+    "2026-03-25",
+    "2026-03-24",
+    "2026-03-23",
+    "2026-03-22",
+    "2026-03-21",
+    "2026-03-20",
+    "2026-03-19",
+    "2026-03-18",
+    "2026-03-17",
+    "2026-03-16",
+    "2026-03-15",
+    "2026-03-14",
+    "2026-03-13",
+    "2026-03-12",
+    "2026-03-11",
+    "2026-03-10",
+    "2026-03-09",
+    "2026-03-08",
+    "2026-03-07",
+    "2026-03-06",
+    "2026-03-05",
+    "2026-03-04",
+    "2026-03-03"
+  ],
+  "entity_catalog": {
+    "01-ai": {
+      "name": "01.AI",
+      "type": "organization"
+    },
+    "andrej-karpathy": {
+      "name": "Andrej Karpathy",
+      "type": "researcher"
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "type": "organization"
+    },
+    "aws": {
+      "name": "AWS",
+      "type": "organization"
+    },
+    "cohere": {
+      "name": "Cohere",
+      "type": "organization"
+    },
+    "deepmind": {
+      "name": "DeepMind",
+      "type": "organization"
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "type": "organization"
+    },
+    "geoffrey-hinton": {
+      "name": "Geoffrey Hinton",
+      "type": "researcher"
+    },
+    "google-research": {
+      "name": "Google Research",
+      "type": "institution"
+    },
+    "huggingface": {
+      "name": "Hugging Face",
+      "type": "organization"
+    },
+    "ilya-sutskever": {
+      "name": "Ilya Sutskever",
+      "type": "researcher"
+    },
+    "langchain": {
+      "name": "LangChain",
+      "type": "organization"
+    },
+    "llama-cpp": {
+      "name": "llama.cpp",
+      "type": "organization"
+    },
+    "meta-ai": {
+      "name": "Meta AI",
+      "type": "institution"
+    },
+    "microsoft-research": {
+      "name": "Microsoft Research",
+      "type": "institution"
+    },
+    "mistral-ai": {
+      "name": "Mistral AI",
+      "type": "organization"
+    },
+    "nvidia": {
+      "name": "NVIDIA",
+      "type": "organization"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "type": "organization"
+    },
+    "openai": {
+      "name": "OpenAI",
+      "type": "organization"
+    },
+    "qwen": {
+      "name": "Qwen",
+      "type": "organization"
+    },
+    "stability-ai": {
+      "name": "Stability AI",
+      "type": "organization"
+    },
+    "vllm": {
+      "name": "vLLM",
+      "type": "organization"
+    },
+    "yann-lecun": {
+      "name": "Yann LeCun",
+      "type": "researcher"
+    },
+    "yoshua-bengio": {
+      "name": "Yoshua Bengio",
+      "type": "researcher"
+    }
+  },
+  "generated_at": "2026-05-08T06:47:29.657769+00:00",
+  "model_releases_by_entity": {
+    "other": [
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-04-03T06:32:48.145588+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 6827004,
+          "likes": 911,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "google/gemma-4-26b-a4b-it",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/gemma-4-26B-A4B-it",
+            "url": "https://huggingface.co/google/gemma-4-26B-A4B-it"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/gemma-4-26B-A4B-it",
+          "url": "https://huggingface.co/google/gemma-4-26B-A4B-it"
+        },
+        "published_at": "2026-05-07T07:39:32+00:00",
+        "scores": {
+          "citation_score": 0.0,
+          "cross_source_score": 0.0,
+          "entity_score": 0.0,
+          "kind_score": 1.8,
+          "llm_raw_score": 0.0,
+          "llm_relevance_score": 0.0,
+          "recency_score": 0.9081134136414442,
+          "semantic_score": 0.0,
+          "tier_score": 2.0,
+          "topic_score": 4.0,
+          "total_score": 8.708113413641444
+        },
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/gemma-4-26b-a4b-it",
+        "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
+        "title": "google/gemma-4-26B-A4B-it"
+      },
+      {
+        "arxiv_id": null,
+        "authors": [],
+        "categories": [],
+        "entities": [],
+        "first_seen_at": "2026-04-03T06:32:48.145364+00:00",
+        "github_release_url": null,
+        "hf_metadata": {
+          "downloads": 8594149,
+          "likes": 2561,
+          "pipeline_tag": "image-text-to-text"
+        },
+        "hf_model_id": "google/gemma-4-31b-it",
+        "item_count": 1,
+        "links": [
+          {
+            "link_type": "huggingface",
+            "source_id": "hf-google",
+            "tier": 1,
+            "title": "google/gemma-4-31B-it",
+            "url": "https://huggingface.co/google/gemma-4-31B-it"
+          }
+        ],
+        "primary_link": {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/gemma-4-31B-it",
+          "url": "https://huggingface.co/google/gemma-4-31B-it"
+        },
+        "published_at": "2026-05-07T07:39:17+00:00",
+        "scores": {
+          "citation_score": 0.0,
+          "cross_source_score": 0.0,
+          "entity_score": 0.0,
+          "kind_score": 1.8,
+          "llm_raw_score": 0.0,
+          "llm_relevance_score": 0.0,
+          "recency_score": 0.9080976479204241,
+          "semantic_score": 0.0,
+          "tier_score": 2.0,
+          "topic_score": 4.0,
+          "total_score": 8.708097647920424
+        },
+        "section": null,
+        "source_name": null,
+        "story_id": "hf:google/gemma-4-31b-it",
+        "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
+        "title": "google/gemma-4-31B-it"
+      }
+    ]
+  },
+  "papers": [],
+  "radar": [],
+  "run_date": "2026-05-08",
+  "run_id": "fb7c20d2-a0f4-401c-ac13-556eda162ac9",
+  "run_info": {
+    "error_summary": null,
+    "finished_at": "2026-05-08T06:47:29.624441+00:00",
+    "items_total": 7,
+    "run_id": "fb7c20d2-a0f4-401c-ac13-556eda162ac9",
+    "started_at": "2026-05-08T06:34:47.487637+00:00",
+    "stories_total": 7,
+    "success": true
+  },
+  "sources_status": [
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "html_list",
+      "name": "Anthropic Research Publications",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "anthropic-research-publications",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Agents",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-agents",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Alignment",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-alignment",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Efficiency",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-efficiency",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Evaluation",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-evaluation",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API LLM",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-llm",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Multimodal",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-multimodal",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Reasoning",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-reasoning",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Retrieval",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-retrieval",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv API Safety",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-api-safety",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.AI",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-ai",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.CL",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-cl",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.CR",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-cr",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.CV",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-cv",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.HC",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-hc",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.IR",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-ir",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.LG",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-lg",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.MA",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-ma",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.RO",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-ro",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv cs.SE",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-cs-se",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "arxiv_api",
+      "name": "arXiv stat.ML",
+      "newest_item_date": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "source_id": "arxiv-stat-ml",
+      "status": "FETCH_FAILED",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 3,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "AWS Machine Learning Blog",
+      "newest_item_date": "2026-05-07T15:59:50+00:00",
+      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
+      "reason_text": "Fetch and parse succeeded; new items found.",
+      "remediation_hint": null,
+      "source_id": "aws-ml-blog",
+      "status": "HAS_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "DeepMind Blog",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "deepmind-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "Google AI Blog",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "google-ai-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face 01.AI (Yi)",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-01-ai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Cohere",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-cohere",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_daily_papers",
+      "name": "Hugging Face Daily Papers",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-daily-papers",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face DeepSeek AI",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-deepseek-ai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 4,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Google",
+      "newest_item_date": "2026-05-07T07:39:49+00:00",
+      "reason_code": "FETCH_PARSE_OK_HAS_UPDATED",
+      "reason_text": "Fetch and parse succeeded; items updated.",
+      "remediation_hint": null,
+      "source_id": "hf-google",
+      "status": "HAS_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Meta Llama",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-meta-llama",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Microsoft",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-microsoft",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Mistral AI",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-mistralai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face OpenAI",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-openai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Qwen",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-qwen",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "hf_org",
+      "name": "Hugging Face Stability AI",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "hf-stabilityai",
+      "status": "NO_UPDATE",
+      "tier": 1
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "Microsoft Research Blog",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "microsoft-research-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "NVIDIA AI Blog",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "nvidia-ai-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "OpenAI Blog",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "openai-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    },
+    {
+      "category": "other",
+      "items_new": 0,
+      "items_updated": 0,
+      "last_fetch_status_code": null,
+      "method": "rss_atom",
+      "name": "Sebastian Raschka Blog",
+      "newest_item_date": null,
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
+      "source_id": "sebastian-raschka-blog",
+      "status": "NO_UPDATE",
+      "tier": 0
+    }
+  ],
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Surya Kari"
+      ],
+      "categories": [
+        "Amazon SageMaker AI",
+        "Generative AI",
+        "Technical How-to",
+        "AI/ML",
+        "Amazon Machine Learning",
+        "Amazon SageMaker"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-05-08T06:34:50.225972+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Overcoming reward signal challenges: Verifiable rewards-based reinforcement learning with GRPO on SageMaker AI",
+          "url": "https://aws.amazon.com/blogs/machine-learning/overcoming-reward-signal-challenges-verifiable-rewards-based-reinforcement-learning-with-grpo-on-sagemaker-ai"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Overcoming reward signal challenges: Verifiable rewards-based reinforcement learning with GRPO on SageMaker AI",
+        "url": "https://aws.amazon.com/blogs/machine-learning/overcoming-reward-signal-challenges-verifiable-rewards-based-reinforcement-learning-with-grpo-on-sagemaker-ai"
+      },
+      "published_at": "2026-05-07T15:53:30+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.65,
+        "llm_relevance_score": 18.2,
+        "recency_score": 0.9398051029068227,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 4.0,
+        "total_score": 29.63980510290682
+      },
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:0c4ecffa5c42eae2",
+      "summary": "In this post, you will learn how to implement reinforcement learning with verifiable rewards (RLVR) to introduce verification and transparency into reward signals to improve training performance. This approach works best when outputs can be objectively verified for correctness, such as in mathematical reasoning, code generation, or symbolic manipulation tasks. You will also learn how to layer techniques like Group Relative Policy Optimization (GRPO) and few-shot examples to further improve results. You’ll use the GSM8K dataset (Grade School Math 8K: a collection of grade school math problems) to improve math problem solving accuracy, but the techniques used here can be adapted to a wide variety of other use cases.",
+      "title": "Overcoming reward signal challenges: Verifiable rewards-based reinforcement learning with GRPO on SageMaker AI"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Vanessa Ji"
+      ],
+      "categories": [
+        "Amazon EC2",
+        "Amazon SageMaker AI",
+        "Best Practices",
+        "Intermediate (200)"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-05-08T06:34:50.225473+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Secure short-term GPU capacity for ML workloads with EC2 Capacity Blocks for ML and SageMaker training plans",
+          "url": "https://aws.amazon.com/blogs/machine-learning/secure-short-term-gpu-capacity-for-ml-workloads-with-ec2-capacity-blocks-for-ml-and-sagemaker-training-plans"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Secure short-term GPU capacity for ML workloads with EC2 Capacity Blocks for ML and SageMaker training plans",
+        "url": "https://aws.amazon.com/blogs/machine-learning/secure-short-term-gpu-capacity-for-ml-workloads-with-ec2-capacity-blocks-for-ml-and-sagemaker-training-plans"
+      },
+      "published_at": "2026-05-07T15:59:50+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.15,
+        "llm_relevance_score": 4.2,
+        "recency_score": 0.9402185340240204,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 4.0,
+        "total_score": 15.640218534024022
+      },
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:df6f6876d8e9c39c",
+      "summary": "In this post, you will learn how to secure reserved GPU capacity for short-term workloads using Amazon Elastic Compute Cloud (Amazon EC2) Capacity Blocks for ML and Amazon SageMaker training plans. These solutions can address GPU availability challenges when you need short-term capacity for load testing, model validation, time-bound workshops, or preparing inference capacity ahead of a release.",
+      "title": "Secure short-term GPU capacity for ML workloads with EC2 Capacity Blocks for ML and SageMaker training plans"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [
+        "Preethi C N"
+      ],
+      "categories": [
+        "Amazon Bedrock AgentCore",
+        "Announcements",
+        "Foundational (100)"
+      ],
+      "entities": [
+        "aws"
+      ],
+      "first_seen_at": "2026-05-08T06:34:50.226212+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "aws-ml-blog",
+          "tier": 0,
+          "title": "Agents that transact: Introducing Amazon Bedrock AgentCore payments, built with Coinbase and Stripe",
+          "url": "https://aws.amazon.com/blogs/machine-learning/agents-that-transact-introducing-amazon-bedrock-agentcore-payments-built-with-coinbase-and-stripe"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "aws-ml-blog",
+        "tier": 0,
+        "title": "Agents that transact: Introducing Amazon Bedrock AgentCore payments, built with Coinbase and Stripe",
+        "url": "https://aws.amazon.com/blogs/machine-learning/agents-that-transact-introducing-amazon-bedrock-agentcore-payments-built-with-coinbase-and-stripe"
+      },
+      "published_at": "2026-05-07T12:55:17+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 2.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.15,
+        "llm_relevance_score": 4.2,
+        "recency_score": 0.92824560564606,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 3.75,
+        "total_score": 15.378245605646061
+      },
+      "section": null,
+      "source_name": "AWS Machine Learning Blog",
+      "story_id": "fallback:176d47d230afb7f7",
+      "summary": "Today, we're announcing a preview of Amazon Bedrock AgentCore Payments, a new set of features in Amazon Bedrock AgentCore that enables AI agents to instantly access and pay for what they use. AgentCore Payments was developed in partnership with Coinbase and Stripe.",
+      "title": "Agents that transact: Introducing Amazon Bedrock AgentCore payments, built with Coinbase and Stripe"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-04-03T06:32:48.145157+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 3403515,
+        "likes": 580,
+        "pipeline_tag": "any-to-any"
+      },
+      "hf_model_id": "google/gemma-4-e2b-it",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/gemma-4-E2B-it",
+          "url": "https://huggingface.co/google/gemma-4-E2B-it"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-google",
+        "tier": 1,
+        "title": "google/gemma-4-E2B-it",
+        "url": "https://huggingface.co/google/gemma-4-E2B-it"
+      },
+      "published_at": "2026-05-07T07:39:49+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.908131281789489,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.70813128178949
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:google/gemma-4-e2b-it",
+      "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
+      "title": "google/gemma-4-E2B-it"
+    },
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [],
+      "entities": [],
+      "first_seen_at": "2026-04-03T06:32:48.144941+00:00",
+      "github_release_url": null,
+      "hf_metadata": {
+        "downloads": 5494056,
+        "likes": 946,
+        "pipeline_tag": "any-to-any"
+      },
+      "hf_model_id": "google/gemma-4-e4b-it",
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "huggingface",
+          "source_id": "hf-google",
+          "tier": 1,
+          "title": "google/gemma-4-E4B-it",
+          "url": "https://huggingface.co/google/gemma-4-E4B-it"
+        }
+      ],
+      "primary_link": {
+        "link_type": "huggingface",
+        "source_id": "hf-google",
+        "tier": 1,
+        "title": "google/gemma-4-E4B-it",
+        "url": "https://huggingface.co/google/gemma-4-E4B-it"
+      },
+      "published_at": "2026-05-07T07:39:39+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.8,
+        "llm_raw_score": 0.0,
+        "llm_relevance_score": 0.0,
+        "recency_score": 0.9081207710715905,
+        "semantic_score": 0.0,
+        "tier_score": 2.0,
+        "topic_score": 4.0,
+        "total_score": 8.70812077107159
+      },
+      "section": null,
+      "source_name": null,
+      "story_id": "hf:google/gemma-4-e4b-it",
+      "summary": "Hugging Face | Launch Blog | Documentation License: Apache 2.0 | Authors: Google DeepMind Gemma is a family of open models built by Google DeepMind. Gemma 4 models are multimodal, handling text and image input (with audio supported on small models) and generating text output. This release includes open-weights models in both pre-trained and instruction-tuned variants. Gemma 4 features a context window of up to 256K tokens and maintains multilingual support in over 140 languages. Featuring both Dense and Mixture-of-Experts (MoE) architectures, Gemma 4 is well-suited for tasks like text generation, coding, and reasoning. The models are available in four distinct sizes: **E2B**, **E4B**, **26B A4B**, and **31B**. Their diverse sizes make them deployable in environments ranging from high-end...",
+      "title": "google/gemma-4-E4B-it"
+    }
+  ]
+}
