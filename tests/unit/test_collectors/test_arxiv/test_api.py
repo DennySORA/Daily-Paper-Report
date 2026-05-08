@@ -22,6 +22,9 @@ class MockRateLimiter:
     def wait_if_needed(self) -> None:
         """No-op implementation for tests."""
 
+    def notify_rate_limited(self) -> None:
+        """No-op implementation for tests."""
+
 
 # Sample arXiv API Atom response
 # Note: Published dates are set within a few hours of each other so both
@@ -147,8 +150,8 @@ class TestArxivApiRateLimiter:
     """Tests for ArxivApiRateLimiter class."""
 
     def test_first_call_no_wait(self) -> None:
-        """Test that first call doesn't wait."""
-        limiter = ArxivApiRateLimiter(min_interval=1.0)
+        """Test that first call doesn't wait (with warmup disabled)."""
+        limiter = ArxivApiRateLimiter(min_interval=1.0, warmup_seconds=0.0)
         import time
 
         start = time.monotonic()
@@ -159,7 +162,9 @@ class TestArxivApiRateLimiter:
 
     def test_rapid_calls_wait(self) -> None:
         """Test that rapid calls are rate limited."""
-        limiter = ArxivApiRateLimiter(min_interval=0.1)  # Short interval for testing
+        limiter = ArxivApiRateLimiter(
+            min_interval=0.1, warmup_seconds=0.0
+        )
         import time
 
         limiter.wait_if_needed()
