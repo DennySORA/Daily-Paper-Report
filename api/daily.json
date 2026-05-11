@@ -1,5 +1,6 @@
 {
   "archive_dates": [
+    "2026-05-11",
     "2026-05-10",
     "2026-05-09",
     "2026-05-08",
@@ -168,19 +169,19 @@
       "type": "researcher"
     }
   },
-  "generated_at": "2026-05-10T07:17:47.907544+00:00",
+  "generated_at": "2026-05-11T07:48:36.514351+00:00",
   "model_releases_by_entity": {},
   "papers": [],
   "radar": [],
-  "run_date": "2026-05-10",
-  "run_id": "253f6f3a-b4e2-4caa-9203-96985213c711",
+  "run_date": "2026-05-11",
+  "run_id": "ca4dfc11-66bd-43b4-b7b2-13883af6b4a6",
   "run_info": {
     "error_summary": null,
-    "finished_at": "2026-05-10T07:17:47.877398+00:00",
-    "items_total": 0,
-    "run_id": "253f6f3a-b4e2-4caa-9203-96985213c711",
-    "started_at": "2026-05-10T06:53:10.019650+00:00",
-    "stories_total": 0,
+    "finished_at": "2026-05-11T07:48:36.501460+00:00",
+    "items_total": 1,
+    "run_id": "ca4dfc11-66bd-43b4-b7b2-13883af6b4a6",
+    "started_at": "2026-05-11T07:08:39.058850+00:00",
+    "stories_total": 1,
     "success": true
   },
   "sources_status": [
@@ -222,11 +223,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Alignment",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "PARSE_HTML_ERROR",
+      "reason_text": "Failed to parse HTML content.",
+      "remediation_hint": "Source HTML structure may have changed; update selectors.",
       "source_id": "arxiv-api-alignment",
-      "status": "FETCH_FAILED",
+      "status": "PARSE_FAILED",
       "tier": 1
     },
     {
@@ -267,11 +268,11 @@
       "method": "arxiv_api",
       "name": "arXiv API LLM",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
+      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "remediation_hint": null,
       "source_id": "arxiv-api-llm",
-      "status": "FETCH_FAILED",
+      "status": "NO_UPDATE",
       "tier": 1
     },
     {
@@ -282,11 +283,11 @@
       "method": "arxiv_api",
       "name": "arXiv API Multimodal",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-api-multimodal",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -342,11 +343,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.AI",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-ai",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -432,11 +433,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.LG",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-lg",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -447,11 +448,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.MA",
       "newest_item_date": null,
-      "reason_code": "FETCH_NETWORK_ERROR",
-      "reason_text": "Network error during fetch.",
-      "remediation_hint": "Check network connectivity and DNS resolution.",
+      "reason_code": "PARSE_HTML_ERROR",
+      "reason_text": "Failed to parse HTML content.",
+      "remediation_hint": "Source HTML structure may have changed; update selectors.",
       "source_id": "arxiv-cs-ma",
-      "status": "FETCH_FAILED",
+      "status": "PARSE_FAILED",
       "tier": 1
     },
     {
@@ -462,11 +463,11 @@
       "method": "arxiv_api",
       "name": "arXiv cs.RO",
       "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
-      "remediation_hint": null,
+      "reason_code": "FETCH_NETWORK_ERROR",
+      "reason_text": "Network error during fetch.",
+      "remediation_hint": "Check network connectivity and DNS resolution.",
       "source_id": "arxiv-cs-ro",
-      "status": "NO_UPDATE",
+      "status": "FETCH_FAILED",
       "tier": 1
     },
     {
@@ -531,17 +532,17 @@
     },
     {
       "category": "other",
-      "items_new": 0,
+      "items_new": 1,
       "items_updated": 0,
       "last_fetch_status_code": null,
       "method": "rss_atom",
       "name": "Google AI Blog",
-      "newest_item_date": null,
-      "reason_code": "FETCH_PARSE_OK_NO_DELTA",
-      "reason_text": "Fetch and parse succeeded; no changes since last run.",
+      "newest_item_date": "2026-05-11T06:00:00+00:00",
+      "reason_code": "FETCH_PARSE_OK_HAS_NEW",
+      "reason_text": "Fetch and parse succeeded; new items found.",
       "remediation_hint": null,
       "source_id": "google-ai-blog",
-      "status": "NO_UPDATE",
+      "status": "HAS_UPDATE",
       "tier": 0
     },
     {
@@ -770,5 +771,55 @@
       "tier": 0
     }
   ],
-  "top5": []
+  "top5": [
+    {
+      "arxiv_id": null,
+      "authors": [],
+      "categories": [
+        "Search",
+        "AI"
+      ],
+      "entities": [],
+      "first_seen_at": "2026-05-11T07:08:41.465537+00:00",
+      "github_release_url": null,
+      "hf_metadata": null,
+      "hf_model_id": null,
+      "item_count": 1,
+      "links": [
+        {
+          "link_type": "blog",
+          "source_id": "google-ai-blog",
+          "tier": 0,
+          "title": "The new AI-powered Google Finance is expanding to Europe.",
+          "url": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe"
+        }
+      ],
+      "primary_link": {
+        "link_type": "blog",
+        "source_id": "google-ai-blog",
+        "tier": 0,
+        "title": "The new AI-powered Google Finance is expanding to Europe.",
+        "url": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe"
+      },
+      "published_at": "2026-05-11T06:00:00+00:00",
+      "scores": {
+        "citation_score": 0.0,
+        "cross_source_score": 0.0,
+        "entity_score": 0.0,
+        "kind_score": 1.5,
+        "llm_raw_score": 0.15,
+        "llm_relevance_score": 4.2,
+        "recency_score": 0.9924863480272956,
+        "semantic_score": 0.0,
+        "tier_score": 3.0,
+        "topic_score": 0.0,
+        "total_score": 9.692486348027295
+      },
+      "section": null,
+      "source_name": "Google AI Blog",
+      "story_id": "fallback:30c98ee2e1cd00b8",
+      "summary": "A screenshot of the AI-powered experience on Google Finance.",
+      "title": "The new AI-powered Google Finance is expanding to Europe."
+    }
+  ]
 }
