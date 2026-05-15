@@ -175,6 +175,24 @@ class TestArxivApiRateLimiter:
         # Should wait close to the interval
         assert elapsed >= 0.08
 
+    def test_concurrent_calls_are_serialized(self) -> None:
+        """Concurrent callers should not bypass the shared rate limiter."""
+        from concurrent.futures import ThreadPoolExecutor
+        import time
+
+        limiter = ArxivApiRateLimiter(
+            min_interval=0.02,
+            max_requests_per_window=100,
+            warmup_seconds=0.0,
+        )
+
+        start = time.monotonic()
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            list(executor.map(lambda _: limiter.wait_if_needed(), range(4)))
+        elapsed = time.monotonic() - start
+
+        assert elapsed >= 0.05
+
 
 class TestArxivApiCollector:
     """Tests for ArxivApiCollector class."""

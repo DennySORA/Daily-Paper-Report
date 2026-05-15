@@ -7,6 +7,7 @@ to find targeted papers (e.g., CN frontier model technical reports).
 import time
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
+from threading import Lock
 from typing import Any, Protocol
 from urllib.parse import urlencode
 from xml.etree.ElementTree import Element, ParseError
@@ -103,39 +104,41 @@ class ArxivApiRateLimiter:
         self._window_count: int = 0
         self._window_start: float = 0.0
         self._first_call: bool = True
+        self._lock = Lock()
 
     def wait_if_needed(self) -> None:
         """Wait if needed to respect the window-based rate limit."""
-        now = time.monotonic()
+        with self._lock:
+            now = time.monotonic()
 
-        if self._first_call:
-            self._first_call = False
-            if self._warmup_seconds > 0:
-                time.sleep(self._warmup_seconds)
-                now = time.monotonic()
-            self._last_request_time = now
-            self._window_start = now
-            self._window_count = 1
-            return
+            if self._first_call:
+                self._first_call = False
+                if self._warmup_seconds > 0:
+                    time.sleep(self._warmup_seconds)
+                    now = time.monotonic()
+                self._last_request_time = now
+                self._window_start = now
+                self._window_count = 1
+                return
 
-        # Window cooldown: if we've exhausted the window, sleep until it resets
-        if self._window_count >= self._max_per_window:
-            window_elapsed = now - self._window_start
-            if window_elapsed < self._window_duration:
-                time.sleep(self._window_duration - window_elapsed)
-                now = time.monotonic()
-            self._window_count = 0
-            self._window_start = now
+            # Window cooldown: if we've exhausted the window, sleep until it resets
+            if self._window_count >= self._max_per_window:
+                window_elapsed = now - self._window_start
+                if window_elapsed < self._window_duration:
+                    time.sleep(self._window_duration - window_elapsed)
+                    now = time.monotonic()
+                self._window_count = 0
+                self._window_start = now
 
-        # Per-request spacing
-        elapsed = now - self._last_request_time
-        if elapsed < self._min_interval:
-            time.sleep(self._min_interval - elapsed)
+            # Per-request spacing
+            elapsed = now - self._last_request_time
+            if elapsed < self._min_interval:
+                time.sleep(self._min_interval - elapsed)
 
-        self._last_request_time = time.monotonic()
-        if self._window_count == 0:
-            self._window_start = self._last_request_time
-        self._window_count += 1
+            self._last_request_time = time.monotonic()
+            if self._window_count == 0:
+                self._window_start = self._last_request_time
+            self._window_count += 1
 
     def notify_rate_limited(self) -> None:
         """Notify the rate limiter that a 429 was received.
@@ -143,8 +146,9 @@ class ArxivApiRateLimiter:
         Resets the current window and adds extra cooldown to clear the
         IP-level rate limit before the next request.
         """
-        self._window_count = self._max_per_window  # Force window reset
-        self._last_request_time = time.monotonic() + 300.0
+        with self._lock:
+            self._window_count = self._max_per_window  # Force window reset
+            self._last_request_time = time.monotonic() + 300.0
 
 
 class ArxivApiCollector(BaseCollector):
