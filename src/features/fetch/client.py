@@ -74,6 +74,8 @@ class HttpFetcher:
         source_id: str,
         url: str,
         extra_headers: dict[str, str] | None = None,
+        max_retries: int | None = None,
+        timeout_seconds: float | None = None,
     ) -> FetchResult:
         """Fetch a URL with caching and retry support.
 
@@ -81,6 +83,8 @@ class HttpFetcher:
             source_id: Identifier for the source being fetched.
             url: The URL to fetch.
             extra_headers: Additional headers to include.
+            max_retries: Optional override for the configured retry count.
+            timeout_seconds: Optional override for the configured request timeout.
 
         Returns:
             FetchResult with status, body, and cache information.
@@ -108,6 +112,8 @@ class HttpFetcher:
             domain=domain,
             headers=headers,
             log=log,
+            max_retries=max_retries,
+            timeout_seconds=timeout_seconds,
         )
 
         # Calculate duration
@@ -172,6 +178,9 @@ class HttpFetcher:
         domain: str,
         headers: dict[str, str],
         log: structlog.stdlib.BoundLogger,
+        *,
+        max_retries: int | None = None,
+        timeout_seconds: float | None = None,
     ) -> FetchResult:
         """Execute request with retry logic.
 
@@ -184,8 +193,16 @@ class HttpFetcher:
         Returns:
             FetchResult from the request.
         """
-        timeout = self._config.get_timeout_for_domain(domain)
-        policy = self._config.retry_policy
+        timeout = (
+            timeout_seconds
+            if timeout_seconds is not None
+            else self._config.get_timeout_for_domain(domain)
+        )
+        policy = (
+            self._config.retry_policy
+            if max_retries is None
+            else self._config.retry_policy.model_copy(update={"max_retries": max_retries})
+        )
         last_error: FetchError | None = None
 
         for attempt in range(policy.max_retries + 1):

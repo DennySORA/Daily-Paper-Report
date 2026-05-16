@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import structlog
 
@@ -21,8 +23,36 @@ from src.linker.models import Story
 
 logger = structlog.get_logger()
 
-BATCH_SIZE = 5
+DEFAULT_BATCH_SIZE = 5
+BATCH_SIZE = DEFAULT_BATCH_SIZE
+MAX_BATCH_SIZE = 50
+DEFAULT_CONCURRENCY = 1
+MAX_CONCURRENCY = 8
 _NEUTRAL_SCORE = 0.5
+
+
+def _resolve_batch_size() -> int:
+    """Resolve LLM relevance batch size from environment with safe bounds."""
+    raw = os.getenv("LLM_RELEVANCE_BATCH_SIZE") or os.getenv("LLM_BATCH_SIZE")
+    if not raw:
+        return DEFAULT_BATCH_SIZE
+    try:
+        value = int(raw)
+    except ValueError:
+        return DEFAULT_BATCH_SIZE
+    return max(1, min(value, MAX_BATCH_SIZE))
+
+
+def _resolve_concurrency() -> int:
+    """Resolve LLM relevance batch concurrency from environment."""
+    raw = os.getenv("LLM_RELEVANCE_CONCURRENCY") or os.getenv("LLM_MAX_CONCURRENCY")
+    if not raw:
+        return DEFAULT_CONCURRENCY
+    try:
+        value = int(raw)
+    except ValueError:
+        return DEFAULT_CONCURRENCY
+    return max(1, min(value, MAX_CONCURRENCY))
 
 
 class LlmRelevanceProcessor:
@@ -69,15 +99,22 @@ class LlmRelevanceProcessor:
             self._log.info("llm_no_evaluatable_stories")
             return result
 
-        batches = self._create_batches(evaluatable)
+        batch_size = _resolve_batch_size()
+        concurrency = _resolve_concurrency()
+        batches = self._create_batches(evaluatable, batch_size=batch_size)
         self._log.info(
             "llm_evaluation_started",
             stories=len(evaluatable),
             batches=len(batches),
+            batch_size=batch_size,
+            concurrency=concurrency,
         )
 
-        for batch_idx, batch in enumerate(batches):
-            self._process_batch(batch, batch_idx, result)
+        if concurrency == 1 or len(batches) <= 1:
+            for batch_idx, batch in enumerate(batches):
+                self._process_batch(batch, batch_idx, result)
+        else:
+            self._process_batches_concurrently(batches, concurrency, result)
 
         self._log.info(
             "llm_evaluation_complete",
@@ -126,7 +163,10 @@ class LlmRelevanceProcessor:
         return False
 
     @staticmethod
-    def _create_batches(stories: list[Story]) -> list[list[Story]]:
+    def _create_batches(
+        stories: list[Story],
+        batch_size: int = DEFAULT_BATCH_SIZE,
+    ) -> list[list[Story]]:
         """Split stories into batches of BATCH_SIZE.
 
         Args:
@@ -135,7 +175,7 @@ class LlmRelevanceProcessor:
         Returns:
             List of story batches.
         """
-        return [stories[i : i + BATCH_SIZE] for i in range(0, len(stories), BATCH_SIZE)]
+        return [stories[i : i + batch_size] for i in range(0, len(stories), batch_size)]
 
     def _process_batch(
         self,
@@ -145,14 +185,135 @@ class LlmRelevanceProcessor:
     ) -> None:
         """Process a single batch of stories.
 
-        On failure, assigns neutral score (0.5) to all stories in the
-        batch to avoid penalizing or boosting them unfairly.
+        On failure, adaptively splits the batch before falling back to
+        neutral scores. This avoids letting one provider truncation or
+        malformed response flatten an entire 25-50 story batch to 0.5.
 
         Args:
             batch: Stories in this batch.
             batch_idx: Batch index for logging.
             result: Accumulated phase result (mutated in place).
         """
+        self._merge_phase_result(
+            result,
+            self._process_batch_to_result(batch, batch_idx),
+        )
+
+    def _process_batches_concurrently(
+        self,
+        batches: list[list[Story]],
+        concurrency: int,
+        result: LlmPhaseResult,
+    ) -> None:
+        """Process LLM batches concurrently and merge deterministic results."""
+        completed: list[tuple[int, LlmPhaseResult]] = []
+
+        with ThreadPoolExecutor(max_workers=concurrency) as executor:
+            futures = {
+                executor.submit(
+                    self._process_batch_to_result,
+                    batch,
+                    batch_idx,
+                ): batch_idx
+                for batch_idx, batch in enumerate(batches)
+            }
+            for future in as_completed(futures):
+                batch_idx = futures[future]
+                try:
+                    batch_result = future.result()
+                except Exception as exc:  # noqa: BLE001
+                    self._log.warning(
+                        "llm_batch_unexpected_error",
+                        batch=batch_idx,
+                        error=str(exc),
+                    )
+                    batch_result = LlmPhaseResult()
+                    batch_result.errors.append(
+                        f"Batch {batch_idx} unexpected error: {exc}"
+                    )
+                    self._assign_neutral_scores(batches[batch_idx], batch_result)
+                completed.append((batch_idx, batch_result))
+
+        for _batch_idx, batch_result in sorted(completed, key=lambda item: item[0]):
+            self._merge_phase_result(result, batch_result)
+
+    def _process_batch_to_result(
+        self,
+        batch: list[Story],
+        batch_idx: int,
+    ) -> LlmPhaseResult:
+        """Process a single batch and return an isolated phase result."""
+        return self._process_batch_adaptive(batch, batch_idx, attempt=0)
+
+    def _process_batch_adaptive(
+        self,
+        batch: list[Story],
+        batch_idx: int,
+        attempt: int,
+    ) -> LlmPhaseResult:
+        """Process a batch, splitting recoverable failures into smaller chunks."""
+        result = LlmPhaseResult()
+        if not batch:
+            return result
+
+        attempt_result = self._attempt_batch_once(
+            batch=batch,
+            batch_idx=batch_idx,
+            attempt=attempt,
+            recoverable=len(batch) > 1,
+        )
+        self._merge_phase_result(result, attempt_result)
+
+        missing = [story for story in batch if story.story_id not in result.scores]
+        if not missing:
+            return result
+
+        if len(missing) == 1:
+            story = missing[0]
+            self._log.warning(
+                "llm_story_failed",
+                batch=batch_idx,
+                attempt=attempt,
+                story_id=story.story_id,
+                title=story.title[:120],
+            )
+            if not attempt_result.errors:
+                result.errors.append(
+                    f"Story {story.story_id} missing from LLM response"
+                )
+            self._assign_neutral_scores(missing, result)
+            return result
+
+        midpoint = max(1, len(missing) // 2)
+        left = missing[:midpoint]
+        right = missing[midpoint:]
+        self._log.warning(
+            "llm_batch_splitting",
+            batch=batch_idx,
+            attempt=attempt,
+            missing=len(missing),
+            left=len(left),
+            right=len(right),
+        )
+        self._merge_phase_result(
+            result,
+            self._process_batch_adaptive(left, batch_idx, attempt + 1),
+        )
+        self._merge_phase_result(
+            result,
+            self._process_batch_adaptive(right, batch_idx, attempt + 1),
+        )
+        return result
+
+    def _attempt_batch_once(
+        self,
+        batch: list[Story],
+        batch_idx: int,
+        attempt: int,
+        recoverable: bool,
+    ) -> LlmPhaseResult:
+        """Attempt exactly one LLM request without batch-level neutral fallback."""
+        result = LlmPhaseResult()
         prompt = build_batch_prompt(batch, self._topics)
 
         try:
@@ -163,31 +324,51 @@ class LlmRelevanceProcessor:
             result.api_calls_made += 1
         except LlmApiError as exc:
             error_msg = f"Batch {batch_idx} API error: {exc}"
-            self._log.warning("llm_batch_api_error", batch=batch_idx, error=str(exc))
-            result.errors.append(error_msg)
-            self._assign_neutral_scores(batch, result)
-            return
+            self._log.warning(
+                "llm_batch_api_retry" if recoverable else "llm_batch_api_error",
+                batch=batch_idx,
+                attempt=attempt,
+                batch_size=len(batch),
+                error=str(exc),
+            )
+            if not recoverable:
+                result.errors.append(error_msg)
+            return result
 
         try:
             parsed = self._parse_response(raw_response, batch)
         except LlmProcessingError as exc:
             error_msg = f"Batch {batch_idx} parse error: {exc}"
-            self._log.warning("llm_batch_parse_error", batch=batch_idx, error=str(exc))
-            result.errors.append(error_msg)
-            self._assign_neutral_scores(batch, result)
-            return
+            self._log.warning(
+                "llm_batch_parse_retry" if recoverable else "llm_batch_parse_error",
+                batch=batch_idx,
+                attempt=attempt,
+                batch_size=len(batch),
+                error=str(exc),
+            )
+            if not recoverable:
+                result.errors.append(error_msg)
+            return result
 
         for llm_result in parsed:
             result.scores[llm_result.story_id] = llm_result.relevance_score
             result.results.append(llm_result)
             result.stories_evaluated += 1
 
-        # Assign neutral scores to any stories not returned by the LLM
-        batch_ids = {s.story_id for s in batch}
-        returned_ids = {r.story_id for r in parsed}
-        for missing_id in batch_ids - returned_ids:
-            result.scores[missing_id] = _NEUTRAL_SCORE
-            result.stories_evaluated += 1
+        return result
+
+    @staticmethod
+    def _merge_phase_result(
+        target: LlmPhaseResult,
+        source: LlmPhaseResult,
+    ) -> None:
+        """Merge one isolated batch result into the accumulated phase result."""
+        target.scores.update(source.scores)
+        target.results.extend(source.results)
+        target.stories_evaluated += source.stories_evaluated
+        target.stories_skipped += source.stories_skipped
+        target.api_calls_made += source.api_calls_made
+        target.errors.extend(source.errors)
 
     def _parse_response(
         self,

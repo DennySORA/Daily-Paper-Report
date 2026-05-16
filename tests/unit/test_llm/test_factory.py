@@ -7,6 +7,7 @@ import pytest
 from src.features.llm.errors import LlmAuthError
 from src.features.llm.factory import create_llm_client
 from src.features.llm.gemini_client import GeminiApiKeyClient
+from src.features.llm.openai_compatible_client import OpenAiCompatibleClient
 from src.features.llm.protocols import LlmClient
 
 
@@ -70,10 +71,44 @@ class TestCreateLlmClient:
 
     def test_no_credentials_raises_auth_error(self) -> None:
         """Should raise LlmAuthError when no credentials are provided."""
-        with pytest.raises(LlmAuthError, match="No Gemini credentials"):
+        with pytest.raises(LlmAuthError, match="No LLM credentials"):
             create_llm_client()
 
     def test_empty_strings_treated_as_missing(self) -> None:
         """Should treat empty strings as missing credentials."""
         with pytest.raises(LlmAuthError):
             create_llm_client(api_key="", refresh_token="")
+
+    def test_openai_provider_creates_openai_compatible_client(self) -> None:
+        """Should create OpenAiCompatibleClient for OpenAI-compatible providers."""
+        client = create_llm_client(
+            provider="openai",
+            openai_api_key="test-openai-key",
+            openai_base_url="https://example.test/v1",
+            openai_model="provider-model",
+        )
+
+        assert isinstance(client, OpenAiCompatibleClient)
+        assert isinstance(client, LlmClient)
+        assert client.model == "provider-model"
+
+    def test_deepseek_provider_uses_deepseek_defaults(self) -> None:
+        """Should use DeepSeek defaults for the deepseek provider alias."""
+        client = create_llm_client(
+            provider="deepseek",
+            openai_api_key="test-deepseek-key",
+        )
+
+        assert isinstance(client, OpenAiCompatibleClient)
+        assert client.model == "deepseek-v4-pro"
+
+    def test_auto_provider_uses_openai_when_only_openai_key_exists(self) -> None:
+        """Should auto-select OpenAI-compatible when only that key is configured."""
+        client = create_llm_client(openai_api_key="test-openai-key")
+
+        assert isinstance(client, OpenAiCompatibleClient)
+
+    def test_openai_provider_requires_openai_key(self) -> None:
+        """Should require an OpenAI-compatible key for openai provider."""
+        with pytest.raises(LlmAuthError, match="OpenAI-compatible credentials"):
+            create_llm_client(provider="openai")

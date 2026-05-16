@@ -4,6 +4,7 @@ This module provides a collector for querying the arXiv API with keyword searche
 to find targeted papers (e.g., CN frontier model technical reports).
 """
 
+import os
 import time
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
@@ -29,11 +30,36 @@ from src.collectors.errors import CollectorErrorClass, ErrorRecord
 from src.collectors.state_machine import SourceState, SourceStateMachine
 from src.features.config.schemas.sources import SourceConfig
 from src.features.fetch.client import HttpFetcher
+from src.features.fetch.models import FetchErrorClass, FetchResult
 from src.features.store.hash import compute_content_hash
 from src.features.store.models import DateConfidence, Item
 
 
 logger = structlog.get_logger()
+
+
+def _read_float_env(name: str, default: float) -> float:
+    """Read a non-negative float environment override."""
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    try:
+        value = float(raw)
+    except ValueError:
+        return default
+    return max(0.0, value)
+
+
+def _read_int_env(name: str, default: int, min_value: int = 1) -> int:
+    """Read a bounded integer environment override."""
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        return default
+    return max(min_value, value)
 
 # Atom namespace
 ATOM_NS = "{http://www.w3.org/2005/Atom}"
@@ -44,7 +70,24 @@ ARXIV_API_MAX_KEYWORD_BACKFILL_PAGES = 2
 # This prevents arXiv 429 errors by staying well within the API's per-IP limits.
 ARXIV_API_RATE_LIMIT_WINDOW_MAX_REQUESTS = 4
 ARXIV_API_RATE_LIMIT_WINDOW_DURATION_SECONDS = 300.0
-ARXIV_API_RATE_LIMIT_WARMUP_SECONDS = 180.0
+ARXIV_API_RATE_LIMIT_WARMUP_SECONDS = _read_float_env(
+    "ARXIV_API_RATE_LIMIT_WARMUP_SECONDS",
+    180.0,
+)
+ARXIV_API_RATE_LIMIT_COOLDOWN_SECONDS = 300.0
+ARXIV_API_MAX_FETCH_ATTEMPTS = 5
+ARXIV_API_REQUEST_TIMEOUT_SECONDS = _read_float_env(
+    "ARXIV_API_REQUEST_TIMEOUT_SECONDS",
+    120.0,
+)
+ARXIV_API_RETRY_BACKOFF_BASE_SECONDS = _read_float_env(
+    "ARXIV_API_RETRY_BACKOFF_BASE_SECONDS",
+    10.0,
+)
+ARXIV_API_RETRY_BACKOFF_MAX_SECONDS = _read_float_env(
+    "ARXIV_API_RETRY_BACKOFF_MAX_SECONDS",
+    60.0,
+)
 
 
 class RateLimiterProtocol(Protocol):
@@ -57,7 +100,7 @@ class RateLimiterProtocol(Protocol):
         """Wait if needed to respect rate limit."""
         ...
 
-    def notify_rate_limited(self) -> None:
+    def notify_rate_limited(self, retry_after: float | None = None) -> None:
         """Notify the rate limiter that a 429 was received."""
         ...
 
@@ -91,18 +134,33 @@ class ArxivApiRateLimiter:
 
     def __init__(
         self,
-        min_interval: float = ARXIV_API_RATE_LIMIT_SECONDS,
-        max_requests_per_window: int = ARXIV_API_RATE_LIMIT_WINDOW_MAX_REQUESTS,
-        window_duration: float = ARXIV_API_RATE_LIMIT_WINDOW_DURATION_SECONDS,
+        min_interval: float = _read_float_env(
+            "ARXIV_API_RATE_LIMIT_SECONDS",
+            ARXIV_API_RATE_LIMIT_SECONDS,
+        ),
+        max_requests_per_window: int = _read_int_env(
+            "ARXIV_API_RATE_LIMIT_WINDOW_MAX_REQUESTS",
+            ARXIV_API_RATE_LIMIT_WINDOW_MAX_REQUESTS,
+        ),
+        window_duration: float = _read_float_env(
+            "ARXIV_API_RATE_LIMIT_WINDOW_DURATION_SECONDS",
+            ARXIV_API_RATE_LIMIT_WINDOW_DURATION_SECONDS,
+        ),
         warmup_seconds: float = ARXIV_API_RATE_LIMIT_WARMUP_SECONDS,
+        rate_limit_cooldown_seconds: float = _read_float_env(
+            "ARXIV_API_RATE_LIMIT_COOLDOWN_SECONDS",
+            ARXIV_API_RATE_LIMIT_COOLDOWN_SECONDS,
+        ),
     ) -> None:
         self._min_interval = min_interval
         self._max_per_window = max_requests_per_window
         self._window_duration = window_duration
         self._warmup_seconds = warmup_seconds
+        self._rate_limit_cooldown_seconds = rate_limit_cooldown_seconds
         self._last_request_time: float = 0.0
         self._window_count: int = 0
         self._window_start: float = 0.0
+        self._blocked_until: float = 0.0
         self._first_call: bool = True
         self._lock = Lock()
 
@@ -120,6 +178,12 @@ class ArxivApiRateLimiter:
                 self._window_start = now
                 self._window_count = 1
                 return
+
+            if now < self._blocked_until:
+                time.sleep(self._blocked_until - now)
+                now = time.monotonic()
+                self._window_count = 0
+                self._window_start = now
 
             # Window cooldown: if we've exhausted the window, sleep until it resets
             if self._window_count >= self._max_per_window:
@@ -140,15 +204,19 @@ class ArxivApiRateLimiter:
                 self._window_start = self._last_request_time
             self._window_count += 1
 
-    def notify_rate_limited(self) -> None:
+    def notify_rate_limited(self, retry_after: float | None = None) -> None:
         """Notify the rate limiter that a 429 was received.
 
         Resets the current window and adds extra cooldown to clear the
         IP-level rate limit before the next request.
         """
         with self._lock:
-            self._window_count = self._max_per_window  # Force window reset
-            self._last_request_time = time.monotonic() + 300.0
+            now = time.monotonic()
+            cooldown = max(float(retry_after or 0.0), self._rate_limit_cooldown_seconds)
+            self._blocked_until = max(self._blocked_until, now + cooldown)
+            self._window_count = 0
+            self._window_start = self._blocked_until
+            self._last_request_time = self._blocked_until
 
 
 class ArxivApiCollector(BaseCollector):
@@ -395,6 +463,163 @@ class ArxivApiCollector(BaseCollector):
             return window_clause
         return f"({base_query}) AND {window_clause}"
 
+    def _should_retry_api_fetch(self, result: FetchResult) -> bool:
+        """Whether an arXiv API fetch failure is safe to retry after cooldown."""
+        if result.status_code == 0 or result.status_code == 429 or result.status_code >= 500:
+            return True
+        if result.error is None:
+            return False
+        return result.error.error_class in {
+            FetchErrorClass.NETWORK_TIMEOUT,
+            FetchErrorClass.CONNECTION_ERROR,
+            FetchErrorClass.HTTP_5XX,
+            FetchErrorClass.RATE_LIMITED,
+            FetchErrorClass.UNKNOWN,
+        }
+
+    def _is_rate_limited_fetch(self, result: FetchResult) -> bool:
+        """Whether the failed fetch was an explicit arXiv rate-limit response."""
+        return (
+            result.status_code == 429
+            or (
+                result.error is not None
+                and result.error.error_class == FetchErrorClass.RATE_LIMITED
+            )
+        )
+
+    def _wait_before_retry(
+        self,
+        *,
+        result: FetchResult | None,
+        retry_after: float | None,
+        attempt: int,
+        api_start: int,
+        log: Any,
+    ) -> None:
+        """Wait before retrying an arXiv API page fetch."""
+        if result is not None and self._is_rate_limited_fetch(result):
+            self._rate_limiter.notify_rate_limited(retry_after=retry_after)
+            log.warning(
+                "api_page_retry_after_cooldown",
+                start=api_start,
+                attempt=attempt,
+                max_attempts=ARXIV_API_MAX_FETCH_ATTEMPTS,
+                retry_after=retry_after,
+            )
+            return
+
+        delay_seconds = min(
+            ARXIV_API_RETRY_BACKOFF_BASE_SECONDS * (2**attempt),
+            ARXIV_API_RETRY_BACKOFF_MAX_SECONDS,
+        )
+        if delay_seconds > 0:
+            log.warning(
+                "api_page_retry_after_backoff",
+                start=api_start,
+                attempt=attempt,
+                max_attempts=ARXIV_API_MAX_FETCH_ATTEMPTS,
+                delay_seconds=round(delay_seconds, 2),
+            )
+            self._sleep_before_retry(delay_seconds)
+
+    def _sleep_before_retry(self, seconds: float) -> None:
+        """Sleep before retrying. Isolated for unit tests."""
+        time.sleep(seconds)
+
+    def _fetch_api_page(
+        self,
+        source_config: SourceConfig,
+        http_client: HttpFetcher,
+        api_url: str,
+        api_start: int,
+        log: Any,
+    ) -> FetchResult:
+        """Fetch one arXiv API page with arXiv-owned cooldown/retry behavior."""
+        last_error_message = "Unknown arXiv API fetch failure"
+
+        for attempt in range(ARXIV_API_MAX_FETCH_ATTEMPTS):
+            result: FetchResult | None = None
+            wait_started_at = time.monotonic()
+            self._rate_limiter.wait_if_needed()
+            wait_seconds = time.monotonic() - wait_started_at
+            if wait_seconds >= 1.0:
+                log.info(
+                    "api_rate_limit_wait_complete",
+                    start=api_start,
+                    attempt=attempt,
+                    wait_seconds=round(wait_seconds, 2),
+                )
+
+            start_time = time.monotonic()
+            retry_after: float | None = None
+            try:
+                result = http_client.fetch(
+                    source_id=source_config.id,
+                    url=api_url,
+                    extra_headers={"Accept": "application/atom+xml"},
+                    max_retries=0,
+                    timeout_seconds=ARXIV_API_REQUEST_TIMEOUT_SECONDS,
+                )
+            except Exception as e:
+                latency_ms = (time.monotonic() - start_time) * 1000
+                self._metrics.record_api_latency(latency_ms)
+                last_error_message = str(e)
+                log.warning(
+                    "fetch_failed",
+                    error_class="exception",
+                    status_code=0,
+                    start=api_start,
+                    attempt=attempt,
+                    error=last_error_message,
+                )
+                self._metrics.record_error(
+                    "timeout" if "timeout" in last_error_message.lower() else "fetch"
+                )
+            else:
+                latency_ms = (time.monotonic() - start_time) * 1000
+                self._metrics.record_api_latency(latency_ms)
+
+                if not (result.error or result.status_code >= 400):
+                    return result
+
+                last_error_message = (
+                    str(result.error)
+                    if result.error
+                    else f"HTTP {result.status_code}"
+                )
+                retry_after = (
+                    float(result.error.retry_after)
+                    if result.error and result.error.retry_after
+                    else None
+                )
+                log.warning(
+                    "fetch_failed",
+                    error_class=(
+                        result.error.error_class.value
+                        if hasattr(result.error, "error_class")
+                        else "unknown"
+                    ),
+                    status_code=result.status_code,
+                    start=api_start,
+                    attempt=attempt,
+                )
+                self._metrics.record_error(
+                    "timeout" if "timeout" in last_error_message.lower() else "fetch"
+                )
+                if not self._should_retry_api_fetch(result):
+                    raise RuntimeError(last_error_message)
+
+            if attempt < ARXIV_API_MAX_FETCH_ATTEMPTS - 1:
+                self._wait_before_retry(
+                    result=result,
+                    retry_after=retry_after,
+                    attempt=attempt,
+                    api_start=api_start,
+                    log=log,
+                )
+
+        raise RuntimeError(last_error_message)
+
     def _collect_query_window(
         self,
         source_config: SourceConfig,
@@ -446,14 +671,13 @@ class ArxivApiCollector(BaseCollector):
                 resolved_max_items=resolved_max_items,
             )
 
-            self._rate_limiter.wait_if_needed()
-
-            start_time = time.monotonic()
             try:
-                result = http_client.fetch(
-                    source_id=source_config.id,
-                    url=api_url,
-                    extra_headers={"Accept": "application/atom+xml"},
+                result = self._fetch_api_page(
+                    source_config=source_config,
+                    http_client=http_client,
+                    api_url=api_url,
+                    api_start=api_config.start,
+                    log=log,
                 )
             except Exception as e:
                 if partial_fetch_fail_ok and page_index > 0 and items:
@@ -464,67 +688,8 @@ class ArxivApiCollector(BaseCollector):
                     )
                     break
                 raise RuntimeError(str(e)) from e
-            latency_ms = (time.monotonic() - start_time) * 1000
-            self._metrics.record_api_latency(latency_ms)
 
-            if result.error or result.status_code >= 400:
-                error_message = (
-                    str(result.error)
-                    if result.error
-                    else f"HTTP {result.status_code}"
-                )
-                log.warning(
-                    "fetch_failed",
-                    error_class=(
-                        result.error.error_class.value
-                        if hasattr(result.error, "error_class")
-                        else "unknown"
-                    ),
-                    status_code=result.status_code,
-                    start=api_config.start,
-                )
-                self._metrics.record_error(
-                    "timeout" if "timeout" in error_message.lower() else "fetch"
-                )
-                # On 429: notify the rate limiter so it forces a window reset
-                # for all subsequent sources, then retry this page once.
-                if result.status_code == 429:
-                    self._rate_limiter.notify_rate_limited()
-                    log.warning("rate_limited_retry", start=api_config.start)
-                    self._rate_limiter.wait_if_needed()
-                    retry_result = http_client.fetch(
-                        source_id=source_config.id,
-                        url=api_url,
-                        extra_headers={"Accept": "application/atom+xml"},
-                    )
-                    if not (retry_result.error or retry_result.status_code >= 400):
-                        result = retry_result  # Use the successful retry
-                    else:
-                        retry_error = (
-                            str(retry_result.error)
-                            if retry_result.error
-                            else f"HTTP {retry_result.status_code}"
-                        )
-                        if partial_fetch_fail_ok and page_index > 0 and items:
-                            log.warning(
-                                "api_page_fetch_failed_after_partial_success",
-                                start=api_config.start,
-                                status_code=retry_result.status_code,
-                                error=retry_error,
-                            )
-                            break
-                        raise RuntimeError(retry_error)
-                elif partial_fetch_fail_ok and page_index > 0 and items:
-                    log.warning(
-                        "api_page_fetch_failed_after_partial_success",
-                        start=api_config.start,
-                        status_code=result.status_code,
-                        error=error_message,
-                    )
-                    break
-                else:
-                    raise RuntimeError(error_message)
-
+            warning_count_before = len(parse_warnings)
             (
                 page_items,
                 page_newest_id,
@@ -536,6 +701,13 @@ class ArxivApiCollector(BaseCollector):
                 source_config=source_config,
                 parse_warnings=parse_warnings,
             )
+
+            if (
+                page_entry_count == 0
+                and page_total_results is None
+                and len(parse_warnings) > warning_count_before
+            ):
+                raise RuntimeError(parse_warnings[-1])
 
             if page_entry_count == 0:
                 break

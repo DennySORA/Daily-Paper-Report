@@ -59,7 +59,11 @@ class FetchResult(BaseModel):
 
     model_config = ConfigDict(frozen=True, extra="forbid", arbitrary_types_allowed=True)
 
-    status_code: int = Field(ge=100, le=599, description="HTTP status code")
+    status_code: int = Field(
+        ge=0,
+        le=599,
+        description="HTTP status code, or 0 when no HTTP response was received",
+    )
     final_url: Annotated[
         str, Field(min_length=1, description="Final URL after redirects")
     ]

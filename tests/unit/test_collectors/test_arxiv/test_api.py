@@ -2,7 +2,7 @@
 
 from datetime import UTC, datetime
 from urllib.parse import parse_qs, urlparse
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 from src.collectors.arxiv.api import (
     ArxivApiCollector,
@@ -19,11 +19,19 @@ from src.features.fetch.models import FetchError, FetchErrorClass, FetchResult
 class MockRateLimiter:
     """Mock rate limiter for testing without actual delays."""
 
+    def __init__(self) -> None:
+        self.wait_calls = 0
+        self.rate_limited_calls = 0
+        self.retry_after_values: list[float | None] = []
+
     def wait_if_needed(self) -> None:
         """No-op implementation for tests."""
+        self.wait_calls += 1
 
-    def notify_rate_limited(self) -> None:
+    def notify_rate_limited(self, retry_after: float | None = None) -> None:
         """No-op implementation for tests."""
+        self.rate_limited_calls += 1
+        self.retry_after_values.append(retry_after)
 
 
 # Sample arXiv API Atom response
@@ -200,6 +208,16 @@ class TestArxivApiCollector:
     def setup_method(self) -> None:
         """Reset metrics before each test."""
         ArxivMetrics.reset()
+        self._sleep_patcher = patch.object(
+            ArxivApiCollector,
+            "_sleep_before_retry",
+            lambda _collector, _seconds: None,
+        )
+        self._sleep_patcher.start()
+
+    def teardown_method(self) -> None:
+        """Restore patched retry sleep."""
+        self._sleep_patcher.stop()
 
     def test_successful_collection(self) -> None:
         """Test successful API query collection."""
@@ -401,6 +419,72 @@ class TestArxivApiCollector:
         assert result.state == SourceState.SOURCE_FAILED
         assert result.error is not None
 
+    def test_rate_limit_retries_with_arxiv_cooldown_not_fetcher_retry(self) -> None:
+        """429 should be retried by arXiv cooldown logic, not HttpFetcher retries."""
+        rate_limiter = MockRateLimiter()
+        collector = ArxivApiCollector(run_id="test", rate_limiter=rate_limiter)
+        source_config = make_source_config()
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        mock_client.fetch.side_effect = [
+            FetchResult(
+                status_code=429,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=b"",
+                cache_hit=False,
+                error=FetchError(
+                    error_class=FetchErrorClass.RATE_LIMITED,
+                    message="Too Many Requests",
+                    status_code=429,
+                    retry_after=7,
+                ),
+            ),
+            FetchResult(
+                status_code=200,
+                final_url="http://export.arxiv.org/api/query",
+                headers={},
+                body_bytes=EMPTY_API_RESPONSE,
+                cache_hit=False,
+                error=None,
+            ),
+        ]
+
+        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+
+        assert result.success
+        assert mock_client.fetch.call_count == 2
+        assert rate_limiter.rate_limited_calls == 1
+        assert rate_limiter.retry_after_values == [7.0]
+        assert all(
+            call.kwargs["max_retries"] == 0 for call in mock_client.fetch.call_args_list
+        )
+
+    def test_rate_limit_exhaustion_fails_daily_query(self) -> None:
+        """A daily arXiv query fails rather than silently publishing partial coverage."""
+        collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
+        source_config = make_source_config()
+
+        mock_client = MagicMock(spec=HttpFetcher)
+        mock_client.fetch.return_value = FetchResult(
+            status_code=429,
+            final_url="http://export.arxiv.org/api/query",
+            headers={},
+            body_bytes=b"",
+            cache_hit=False,
+            error=FetchError(
+                error_class=FetchErrorClass.RATE_LIMITED,
+                message="Too Many Requests",
+                status_code=429,
+            ),
+        )
+
+        result = collector.collect(source_config, mock_client, datetime.now(UTC))
+
+        assert not result.success
+        assert result.state == SourceState.SOURCE_FAILED
+        assert mock_client.fetch.call_count == 5
+
     def test_malformed_xml_handled(self) -> None:
         """Test that malformed XML is handled gracefully."""
         collector = ArxivApiCollector(run_id="test", rate_limiter=MockRateLimiter())
@@ -418,8 +502,8 @@ class TestArxivApiCollector:
 
         result = collector.collect(source_config, mock_client, datetime.now(UTC))
 
-        # Should succeed but with warnings and no items
-        assert result.success
+        # Malformed API responses must fail so coverage gaps are visible.
+        assert not result.success
         assert len(result.items) == 0
         assert len(result.parse_warnings) > 0
 

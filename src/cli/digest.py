@@ -17,6 +17,7 @@ import structlog
 if TYPE_CHECKING:
     from src.collectors.runner import RunnerResult
     from src.features.config.effective import EffectiveConfig
+    from src.features.llm.protocols import LlmClient
     from src.features.store.models import Run
     from src.linker.models import LinkerResult
     from src.ranker.models import RankerResult
@@ -257,6 +258,28 @@ def _run_collection_phase(  # noqa: PLR0913
     return runner_result
 
 
+def _failed_arxiv_sources(
+    runner_result: "RunnerResult",
+    effective_config: "EffectiveConfig",
+) -> list[str]:
+    """Return enabled arXiv API sources that did not complete successfully."""
+    from src.features.config.schemas.base import SourceMethod
+
+    arxiv_source_ids = {
+        source.id
+        for source in effective_config.sources.sources
+        if source.enabled and source.method == SourceMethod.ARXIV_API
+    }
+    failed_sources: list[str] = []
+
+    for source_id in arxiv_source_ids:
+        source_result = runner_result.source_results.get(source_id)
+        if source_result is None or not source_result.result.success:
+            failed_sources.append(source_id)
+
+    return sorted(failed_sources)
+
+
 def _run_linking_phase(  # noqa: PLR0913
     store: StateStore,
     effective_config: "EffectiveConfig",
@@ -361,10 +384,10 @@ def _run_llm_phase(
                 log.warning("llm_cache_load_failed", path=str(cache_path))
 
     settings = get_settings()
-    if not settings.gemini_api_key and not settings.gemini_refresh_token:
+    if not _has_llm_credentials(settings):
         log.info(
             "llm_phase_skipped",
-            reason="no_gemini_credentials",
+            reason="no_llm_credentials",
             cached_count=len(cached_scores),
         )
         return cached_scores
@@ -372,15 +395,9 @@ def _run_llm_phase(
     log.info("phase_started", phase="llm_relevance")
 
     try:
-        from src.features.llm.factory import create_llm_client
         from src.features.llm.processor import LlmRelevanceProcessor
 
-        client = create_llm_client(
-            api_key=settings.gemini_api_key,
-            refresh_token=settings.gemini_refresh_token,
-            client_id=settings.gemini_oauth_client_id,
-            client_secret=settings.gemini_oauth_client_secret,
-        )
+        client = _create_configured_llm_client(settings)
         processor = LlmRelevanceProcessor(
             client=client,
             topics=list(effective_config.topics.topics),
@@ -552,30 +569,24 @@ def _run_translation_phase(
     cached_translations = _load_cached_translations(output_dir, unique_stories, log)
 
     settings = get_settings()
-    if not settings.gemini_api_key and not settings.gemini_refresh_token:
+    if not _has_llm_credentials(settings):
         if cached_translations:
             log.info(
                 "translation_phase_using_cached",
-                reason="no_gemini_credentials",
+                reason="no_llm_credentials",
                 cached_count=len(cached_translations),
             )
             return cached_translations
 
-        log.info("translation_phase_skipped", reason="no_gemini_credentials")
+        log.info("translation_phase_skipped", reason="no_llm_credentials")
         return None
 
     log.info("phase_started", phase="translation")
 
     try:
-        from src.features.llm.factory import create_llm_client
         from src.features.translation.processor import TranslationProcessor
 
-        client = create_llm_client(
-            api_key=settings.gemini_api_key,
-            refresh_token=settings.gemini_refresh_token,
-            client_id=settings.gemini_oauth_client_id,
-            client_secret=settings.gemini_oauth_client_secret,
-        )
+        client = _create_configured_llm_client(settings)
         processor = TranslationProcessor(client=client, output_dir=output_dir)
 
         result = processor.translate(unique_stories)
@@ -597,6 +608,42 @@ def _run_translation_phase(
             )
             return cached_translations
         return None
+
+
+def _has_llm_credentials(settings: object) -> bool:
+    """Return whether any supported LLM provider has credentials."""
+    return bool(
+        getattr(settings, "gemini_api_key", None)
+        or getattr(settings, "gemini_refresh_token", None)
+        or getattr(settings, "openai_api_key", None)
+        or getattr(settings, "deepseek_api_key", None)
+    )
+
+
+def _create_configured_llm_client(settings: object) -> "LlmClient":
+    """Create the configured LLM client from application settings."""
+    from src.features.llm.factory import create_llm_client
+
+    openai_api_key = getattr(settings, "openai_api_key", None) or getattr(
+        settings, "deepseek_api_key", None
+    )
+    provider = getattr(settings, "llm_provider", None)
+    if not provider and getattr(settings, "deepseek_api_key", None):
+        provider = "deepseek"
+
+    return create_llm_client(
+        provider=provider,
+        api_key=getattr(settings, "gemini_api_key", None),
+        refresh_token=getattr(settings, "gemini_refresh_token", None),
+        client_id=getattr(settings, "gemini_oauth_client_id", None),
+        client_secret=getattr(settings, "gemini_oauth_client_secret", None),
+        openai_api_key=openai_api_key,
+        openai_base_url=getattr(settings, "openai_base_url", None),
+        openai_model=getattr(settings, "openai_model", None),
+        openai_reasoning_effort=getattr(settings, "openai_reasoning_effort", None),
+        openai_thinking_type=getattr(settings, "openai_thinking_type", None),
+        openai_max_tokens=getattr(settings, "openai_max_tokens", None),
+    )
 
 
 def _run_ranking_phase(
@@ -826,6 +873,19 @@ def _execute_pipeline_phases(  # noqa: PLR0913
         options.lookback_hours,
         options.source_max_items,
     )
+
+    failed_arxiv_sources = _failed_arxiv_sources(runner_result, effective_config)
+    if failed_arxiv_sources:
+        error_summary = "Critical arXiv coverage incomplete: " + ", ".join(
+            failed_arxiv_sources
+        )
+        log.error(
+            "critical_arxiv_coverage_incomplete",
+            failed_sources=failed_arxiv_sources,
+        )
+        store.end_run(run_id, success=False, error_summary=error_summary)
+        click.echo(f"Error: {error_summary}", err=True)
+        sys.exit(1)
 
     # Phase 2: Linking
     # Use the same lookback_hours for linking phase to ensure daily.json

@@ -183,6 +183,35 @@ class TestEvaluateStories:
         assert result.scores["parse-fail"] == pytest.approx(0.5)
         assert len(result.errors) == 1
 
+    def test_parse_error_splits_failed_batch(self) -> None:
+        """Should split a malformed multi-story response before using neutral."""
+        mock_client = MagicMock(spec=GeminiCodeAssistClient)
+        mock_client.generate_content.side_effect = [
+            "not valid json at all",
+            json.dumps(
+                [
+                    {"id": "s0", "score": 0.8, "rationale": "ok", "topics": []},
+                    {"id": "s1", "score": 0.7, "rationale": "ok", "topics": []},
+                ]
+            ),
+            json.dumps(
+                [
+                    {"id": "s2", "score": 0.6, "rationale": "ok", "topics": []},
+                    {"id": "s3", "score": 0.9, "rationale": "ok", "topics": []},
+                ]
+            ),
+        ]
+
+        processor = _make_processor(mock_client)
+        stories = [_make_story(story_id=f"s{i}") for i in range(4)]
+        result = processor.evaluate_stories(stories)
+
+        assert result.stories_evaluated == 4
+        assert result.errors == []
+        assert result.api_calls_made == 3
+        assert result.scores["s0"] == pytest.approx(0.8)
+        assert result.scores["s3"] == pytest.approx(0.9)
+
     def test_empty_stories_returns_empty_result(self) -> None:
         """Should return empty result for no stories."""
         mock_client = MagicMock(spec=GeminiCodeAssistClient)

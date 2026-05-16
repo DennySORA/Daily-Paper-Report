@@ -20,9 +20,11 @@ _BATCH_TEMPLATE = """## Stories to Translate
 Respond with a JSON array. Each element must have these fields:
 - "id": the story_id exactly as given
 - "title_zh": the title translated to Traditional Chinese
-- "summary_zh": the summary translated to Traditional Chinese (empty string if no summary)
+- "summary_zh": a concise Traditional Chinese summary, at most 120 Chinese characters (empty string if no summary)
 
 Keep technical terms, model names, acronyms, and proper nouns in English within the Chinese text.
+Do not use the numbered-list index as "id"; copy the bracketed story_id exactly.
+Do not translate the full abstract verbatim; compress it to the key contribution and method.
 
 Example:
 [{{"id": "example-1", "title_zh": "\u57fa\u65bc Transformer \u7684\u65b0\u578b\u591a\u6a21\u614b\u5b78\u7fd2\u67b6\u69cb", "summary_zh": "\u672c\u6587\u63d0\u51fa\u4e86\u4e00\u7a2e\u65b0\u7684 multi-modal learning \u67b6\u69cb..."}}]

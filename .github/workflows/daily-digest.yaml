@@ -135,6 +135,14 @@ jobs:
           GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
           GEMINI_OAUTH_CLIENT_ID: ${{ secrets.GEMINI_OAUTH_CLIENT_ID }}
           GEMINI_OAUTH_CLIENT_SECRET: ${{ secrets.GEMINI_OAUTH_CLIENT_SECRET }}
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          OPENAI_REASONING_EFFORT: ${{ secrets.OPENAI_REASONING_EFFORT }}
+          OPENAI_THINKING_TYPE: ${{ secrets.OPENAI_THINKING_TYPE }}
+          OPENAI_MAX_TOKENS: ${{ secrets.OPENAI_MAX_TOKENS }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           uv run python main.py run \
             --config "${CONFIG_DIR}/sources.yaml" \
@@ -153,6 +161,14 @@ jobs:
           GEMINI_REFRESH_TOKEN: ${{ secrets.GEMINI_REFRESH_TOKEN }}
           GEMINI_OAUTH_CLIENT_ID: ${{ secrets.GEMINI_OAUTH_CLIENT_ID }}
           GEMINI_OAUTH_CLIENT_SECRET: ${{ secrets.GEMINI_OAUTH_CLIENT_SECRET }}
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          OPENAI_REASONING_EFFORT: ${{ secrets.OPENAI_REASONING_EFFORT }}
+          OPENAI_THINKING_TYPE: ${{ secrets.OPENAI_THINKING_TYPE }}
+          OPENAI_MAX_TOKENS: ${{ secrets.OPENAI_MAX_TOKENS }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           TARGET_DATE="${{ steps.validate-date.outputs.target_date }}"
 

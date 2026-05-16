@@ -29,6 +29,24 @@ class AppSettings(BaseSettings):
         default=None, validation_alias="GEMINI_OAUTH_CLIENT_SECRET"
     )
     gemini_api_key: str | None = Field(default=None, validation_alias="GEMINI_API_KEY")
+    llm_provider: str | None = Field(default=None, validation_alias="LLM_PROVIDER")
+    openai_api_key: str | None = Field(default=None, validation_alias="OPENAI_API_KEY")
+    openai_base_url: str | None = Field(
+        default=None, validation_alias="OPENAI_BASE_URL"
+    )
+    openai_model: str | None = Field(default=None, validation_alias="OPENAI_MODEL")
+    openai_reasoning_effort: str | None = Field(
+        default=None, validation_alias="OPENAI_REASONING_EFFORT"
+    )
+    openai_thinking_type: str | None = Field(
+        default=None, validation_alias="OPENAI_THINKING_TYPE"
+    )
+    openai_max_tokens: int | None = Field(
+        default=None, validation_alias="OPENAI_MAX_TOKENS"
+    )
+    deepseek_api_key: str | None = Field(
+        default=None, validation_alias="DEEPSEEK_API_KEY"
+    )
 
     def auth_token_for_platform(self, platform: str) -> str | None:
         """Return auth token for a platform identifier."""

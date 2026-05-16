@@ -136,6 +136,31 @@ class TestTranslationProcessor:
         # Should return empty (no cached, no successful translations)
         assert "s1" not in result
 
+    def test_api_error_splits_failed_batch(self, tmp_path: Path) -> None:
+        responses: list[object] = [
+            LlmApiError("Empty content"),
+            _make_llm_response(
+                [
+                    {"id": "s0", "title_zh": "\u7ffb\u8b6f0", "summary_zh": ""},
+                    {"id": "s1", "title_zh": "\u7ffb\u8b6f1", "summary_zh": ""},
+                ]
+            ),
+            _make_llm_response(
+                [
+                    {"id": "s2", "title_zh": "\u7ffb\u8b6f2", "summary_zh": ""},
+                    {"id": "s3", "title_zh": "\u7ffb\u8b6f3", "summary_zh": ""},
+                ]
+            ),
+        ]
+        processor, client = self._make_processor(tmp_path)
+        client.generate_content.side_effect = responses
+
+        stories = [_make_story(f"s{i}", f"Title {i}") for i in range(4)]
+        result = processor.translate(stories)
+
+        assert len(result) == 4
+        assert client.generate_content.call_count == 3
+
     def test_parse_error_skips_batch(self, tmp_path: Path) -> None:
         processor, client = self._make_processor(tmp_path, ["not json at all"])
 
@@ -158,6 +183,35 @@ class TestTranslationProcessor:
 
         assert "s1" in result
         assert "unknown" not in result
+
+    def test_numeric_ids_map_to_batch_order(self, tmp_path: Path) -> None:
+        response = _make_llm_response(
+            [
+                {"id": "1", "title_zh": "\u7b2c\u4e00", "summary_zh": ""},
+                {"id": "2", "title_zh": "\u7b2c\u4e8c", "summary_zh": ""},
+            ]
+        )
+        processor, _client = self._make_processor(tmp_path, [response])
+
+        stories = [
+            _make_story("story-a", "First"),
+            _make_story("story-b", "Second"),
+        ]
+        result = processor.translate(stories)
+
+        assert result["story-a"].title_zh == "\u7b2c\u4e00"
+        assert result["story-b"].title_zh == "\u7b2c\u4e8c"
+
+    def test_bracketed_ids_map_to_story_ids(self, tmp_path: Path) -> None:
+        response = _make_llm_response(
+            [{"id": "[story-a]", "title_zh": "\u7ffb\u8b6f", "summary_zh": ""}]
+        )
+        processor, _client = self._make_processor(tmp_path, [response])
+
+        stories = [_make_story("story-a", "First")]
+        result = processor.translate(stories)
+
+        assert result["story-a"].title_zh == "\u7ffb\u8b6f"
 
     def test_missing_title_zh_skipped(self, tmp_path: Path) -> None:
         response = _make_llm_response(
