@@ -8,7 +8,11 @@ class AppSettings(BaseSettings):
     """Centralized environment configuration."""
 
     model_config = SettingsConfigDict(
-        env_prefix="", case_sensitive=False, env_file=".env", env_file_encoding="utf-8"
+        env_prefix="",
+        case_sensitive=False,
+        env_file=".env",
+        env_file_encoding="utf-8",
+        env_ignore_empty=True,
     )
 
     github_token: str | None = Field(default=None, validation_alias="GITHUB_TOKEN")
