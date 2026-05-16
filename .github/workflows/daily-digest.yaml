@@ -10,6 +10,11 @@ name: Daily Digest
         description: "Date to run (YYYY-MM-DD). Leave blank to use today in Asia/Taipei."
         required: false
         type: string
+      deploy_only:
+        description: "Deploy restored state branch archives without rerunning data/LLM processing."
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -38,6 +43,7 @@ jobs:
         id: validate-date
         run: |
           TARGET_DATE="${{ inputs.target_date }}"
+          DEPLOY_ONLY="${{ inputs.deploy_only }}"
           TODAY_LOCAL=$(TZ="${TIMEZONE}" date +%F)
 
           if [ -z "${TARGET_DATE}" ]; then
@@ -54,7 +60,10 @@ jobs:
           echo "target_date=${TARGET_DATE}" >> "$GITHUB_OUTPUT"
           echo "today_local=${TODAY_LOCAL}" >> "$GITHUB_OUTPUT"
 
-          if [ "${TARGET_DATE}" = "${TODAY_LOCAL}" ]; then
+          if [ "${DEPLOY_ONLY}" = "true" ]; then
+            echo "run_mode=deploy-only" >> "$GITHUB_OUTPUT"
+            echo "::notice::Deploying restored state archives for ${TARGET_DATE} without rerunning processing."
+          elif [ "${TARGET_DATE}" = "${TODAY_LOCAL}" ]; then
             echo "run_mode=run" >> "$GITHUB_OUTPUT"
             echo "::notice::Running full digest pipeline for ${TARGET_DATE}."
           else
@@ -89,6 +98,12 @@ jobs:
             if git cat-file -e "${STATE_BRANCH}:api/daily.json" 2>/dev/null; then
               git show "${STATE_BRANCH}:api/daily.json" > "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true
             fi
+
+            for FILE in api/llm_scores.json api/translations_zh.json; do
+              if git cat-file -e "${STATE_BRANCH}:${FILE}" 2>/dev/null; then
+                git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
+              fi
+            done
 
             if git show "${STATE_BRANCH}:${STATE_FILE}" > "${STATE_FILE}" 2>/dev/null; then
               STATE_RESTORED=true
@@ -258,7 +273,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: daily-json
-          path: ${{ env.OUTPUT_DIR }}/api/daily.json
+          path: |
+            ${{ env.OUTPUT_DIR }}/api/daily.json
+            ${{ env.OUTPUT_DIR }}/api/llm_scores.json
+            ${{ env.OUTPUT_DIR }}/api/translations_zh.json
           retention-days: 1
           if-no-files-found: error
 
@@ -361,6 +379,8 @@ jobs:
           cp -r ../artifacts/day/* day/ 2>/dev/null || true
           cp -r ../artifacts/api/day/* api/day/ 2>/dev/null || true
           cp ../artifacts/api/daily.json api/daily.json 2>/dev/null || true
+          cp ../artifacts/api/llm_scores.json api/llm_scores.json 2>/dev/null || true
+          cp ../artifacts/api/translations_zh.json api/translations_zh.json 2>/dev/null || true
 
           git add "${STATE_FILE}" day/ api/
 

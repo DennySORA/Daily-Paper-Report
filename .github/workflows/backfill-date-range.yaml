@@ -134,6 +134,12 @@ jobs:
               git show "${STATE_BRANCH}:api/daily.json" > "${OUTPUT_DIR}/api/daily.json" 2>/dev/null || true
             fi
 
+            for FILE in api/llm_scores.json api/translations_zh.json; do
+              if git cat-file -e "${STATE_BRANCH}:${FILE}" 2>/dev/null; then
+                git show "${STATE_BRANCH}:${FILE}" > "${OUTPUT_DIR}/${FILE}" 2>/dev/null || true
+              fi
+            done
+
             if git show "${STATE_BRANCH}:${STATE_FILE}" > "${STATE_FILE}" 2>/dev/null; then
               STATE_RESTORED=true
             fi
@@ -295,7 +301,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: daily-json
-          path: ${{ env.OUTPUT_DIR }}/api/daily.json
+          path: |
+            ${{ env.OUTPUT_DIR }}/api/daily.json
+            ${{ env.OUTPUT_DIR }}/api/llm_scores.json
+            ${{ env.OUTPUT_DIR }}/api/translations_zh.json
           retention-days: 1
           if-no-files-found: error
 
@@ -398,6 +407,8 @@ jobs:
           cp -r ../artifacts/day/* day/ 2>/dev/null || true
           cp -r ../artifacts/api/day/* api/day/ 2>/dev/null || true
           cp ../artifacts/api/daily.json api/daily.json 2>/dev/null || true
+          cp ../artifacts/api/llm_scores.json api/llm_scores.json 2>/dev/null || true
+          cp ../artifacts/api/translations_zh.json api/translations_zh.json 2>/dev/null || true
 
           git add "${STATE_FILE}" day/ api/
 
